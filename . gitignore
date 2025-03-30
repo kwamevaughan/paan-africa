@@ -1,0 +1,45 @@
+# Node.js
+node_modules/
+
+# Next.js
+.next/
+out/
+
+# Build output
+*.log
+*.log.*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# npm packages
+package-lock.json
+yarn.lock
+
+# Environment variables
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+
+# IDEs and Editors
+.vscode/
+.idea/
+
+# Tailwind CSS
+tailwind.config.js
+postcss.config.js
+
+# Next.js build files
+.next/
+build/
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Test output
+coverage/

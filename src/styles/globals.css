@@ -1,0 +1,9 @@
+/* src/app/globals.css */
+
+/* Importing Tailwind's default layers */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom variant for dark mode (optional) */
+@custom-variant dark (&:is(.dark *));
