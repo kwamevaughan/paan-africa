@@ -7,6 +7,7 @@ import Tier1 from "@/components/Tier1";
 import Tier2 from "@/components/Tier2";
 import Tier3 from "@/components/Tier3";
 import OfferingTab from "@/components/OfferingTab";
+import ContactForm from "@/components/ContactForm";
 
 const HomePage = () => {
   return (
@@ -437,6 +438,59 @@ const HomePage = () => {
               </div>
           </section>
         </div>
+
+
+
+        <div className="mx-auto max-w-6xl mt-20">
+
+
+          <section className="grid grid-cols-1 sm:grid-cols-3 gap-8 items-center mt-10">
+            {/* Left Column: Image (Smaller on Larger Screens) */}
+            <div className="relative col-span-1 sm:col-span-1 flex flex-col gap-10">
+              <div>
+              <h2 className="text-3xl font-medium mb-4">
+              Get in Touch
+              </h2>
+              <p className="text-gray-500">
+              Have questions about PAAN, membership, or upcoming events? 
+Reach out — we’re here to connect and support your journey.
+              </p>
+              </div>
+              <div>
+              <h2 className="text-lg font-medium mb-4">
+              Direct Contact Info
+              </h2>
+              <div className="flex items-center gap-2 pb-4">
+                    <Icon
+                      icon="zondicons:calendar"
+                      width="20"
+                      height="20"
+                      className="flex-shrink-0"
+                    />
+                    <p className="font-medium text-gray-500">secretariat@paan.org</p>
+                  </div>
+
+                  <div className="flex items-center gap-2 pb-4">
+                    <Icon
+                      icon="zondicons:calendar"
+                      width="20"
+                      height="20"
+                      className="flex-shrink-0"
+                    />
+                    <p className="font-medium text-gray-500">7th Floor, Mitsumi Business Park, Westlands,Nairobi, Kenya</p>
+                  </div>
+              </div>
+            </div>
+
+            {/* Right Column: Accordion (Larger Column) */}
+            <div className="col-span-1 sm:col-span-2 flex flex-col gap-4">
+              <ContactForm />
+            </div>
+          </section>
+        </div>
+
+
+
       </main>
     </>
   );
