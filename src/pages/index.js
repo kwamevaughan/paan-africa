@@ -17,7 +17,7 @@ const HomePage = () => {
         <div className="mx-auto max-w-6xl">
           <section className="grid grid-cols-1 sm:grid-cols-2 gap-8 items-center">
             <div className="flex flex-col gap-8">
-              <h2 className="text-5xl font-semibold uppercase text-[#172840]">
+              <h2 className="text-3xl md:text-5xl font-semibold uppercase text-[#172840]">
                 Redefining Africa’s Global Creative & Tech Footprint
               </h2>
               <p className="text-gray-500 font-normal">
@@ -26,7 +26,7 @@ const HomePage = () => {
                 mission to transform fragmentation into unity and potential into
                 global influence.
               </p>
-              <div className="flex gap-4">
+              <div className="flex md:flex-row flex-col gap-4">
                 <button className="bg-[#F25849] text-white px-8 py-3 rounded-full font-medium text-sm hover:bg-[#D6473C] transition duration-300">
                   Join the Network
                 </button>
@@ -139,38 +139,38 @@ const HomePage = () => {
 
               {/* Right: List with Icons */}
               <div className="flex flex-col gap-10 z-0">
-                <div className="flex items-center gap-3 -ml-24">
+                <div className="flex items-center gap-3 m-0 md:-ml-24">
                   <Image
                     src="/assets/images/icons/vision.svg"
                     width={140}
                     height={0}
                     alt="Vision Statement"
-                    className="bg-[#172840] p-4 rounded-full"
+                    className="bg-[#172840] p-4 rounded-full w-28"
                   />
                   <div>
                     <p className="text-2xl font-base text-white">
                       Vision Statement
                     </p>
-                    <span className="text-white font-light">
+                    <span className="text-white font-light text-sm">
                       To become Africa’s foremost collaborative network, shaping
                       global narratives through creativity and technology.
                     </span>
                   </div>
                 </div>
 
-                <div className="flex items-center gap-3 -ml-24">
+                <div className="flex items-center gap-3 m-0 md:-ml-24">
                   <Image
                     src="/assets/images/icons/mission.svg"
                     width={140}
                     height={0}
                     alt="Mission Statement"
-                    className="bg-[#172840] p-4 rounded-full"
+                    className="bg-[#172840] p-4 rounded-full w-28"
                   />
                   <div>
                     <p className="text-2xl font-base text-white">
                       Mission Statement
                     </p>
-                    <span className="text-white font-light">
+                    <span className="text-white font-light text-sm">
                       Empowering African agencies through partnerships, shared
                       resources, and advocacy to deliver world-class solutions.
                     </span>
@@ -194,7 +194,7 @@ const HomePage = () => {
                 tech minds.
               </p>
 
-              <div className="flex gap-4">
+              <div className="flex md:flex-row flex-col  gap-4">
                 <button className="bg-[#F25849] text-white px-8 py-3 rounded-full font-medium text-sm hover:bg-[#D6473C] transition duration-300">
                   Join us Today
                 </button>
@@ -280,11 +280,12 @@ const HomePage = () => {
               </p>
             </div>
 
-            <div class="grid grid-cols-3 gap-4">
-              <Tier1 />
-              <Tier2 />
-              <Tier3 />
-            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+  <Tier1 />
+  <Tier2 />
+  <Tier3 />
+</div>
+
           </section>
         </div>
 
@@ -317,7 +318,7 @@ const HomePage = () => {
           </section>
         </div>
 
-        <div className="mx-auto max-w-6xl mt-20">
+        <div className="mx-auto max-w-6xl mt-20 pb-20">
           <section>
             <p className="uppercase font-semibold mb-4">4. Summit & Events</p>
             <p className="text-2xl">
@@ -408,7 +409,33 @@ const HomePage = () => {
                 </p>
               </div>
             </div>
+            
           </div>
+
+          
+        </div>
+        <div className="network-bg">
+          <section className="mx-auto max-w-6xl py-28 px-6">
+            <div className="flex flex-col mb-10 w-full md:w-3/4">
+              <h2 className="text-3xl font-medium mb-4 text-[#F2B706]">
+              Join the Network That’s Redefining Africa’s Creative Future
+              </h2>
+
+              <p className="text-white font-light">
+              Step into a powerful alliance of agencies shaping the future of communication, marketing, and tech across Africa and beyond. 
+              Whether you're just starting or scaling fast — PAAN is your platform for global impact.
+              </p>
+            </div>
+
+            <div className="flex md:flex-row flex-col gap-4">
+                <button className="bg-[#F25849] text-white px-8 py-3 rounded-full font-medium text-sm hover:bg-[#D6473C] transition duration-300">
+                  Join us Today
+                </button>
+                <button className="bg-white  px-8 py-3 rounded-full font-medium text-sm transition duration-300 hover:bg-[#6FA1B7]">
+                Register for Webinar
+                </button>
+              </div>
+          </section>
         </div>
       </main>
     </>

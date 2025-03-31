@@ -48,3 +48,11 @@ body {
     height: 100%;
   }
   
+  .network-bg {
+    background-image: url('/assets/images/network-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 100%;
+  }
