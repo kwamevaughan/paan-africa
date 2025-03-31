@@ -29,8 +29,8 @@ const ContactForm = () => {
   };
 
   return (
-    <div className="bg-[#84C1D9] p-6 rounded-lg shadow-lg">
-      <h3 className="text-3xl font-semibold text-[#172840] mb-6">
+    <div className="bg-[#84C1D9] p-6 rounded-lg shadow-lg -mb-20">
+      <h3 className="text-3xl font-medium mb-6">
         Contact Form Fields
       </h3>
       <form onSubmit={handleSubmit} className="space-y-4">

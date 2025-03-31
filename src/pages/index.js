@@ -8,6 +8,7 @@ import Tier2 from "@/components/Tier2";
 import Tier3 from "@/components/Tier3";
 import OfferingTab from "@/components/OfferingTab";
 import ContactForm from "@/components/ContactForm";
+import Footer from "@/layouts/footer";
 
 const HomePage = () => {
   return (
@@ -462,20 +463,20 @@ Reach out — we’re here to connect and support your journey.
               </h2>
               <div className="flex items-center gap-2 pb-4">
                     <Icon
-                      icon="zondicons:calendar"
-                      width="20"
-                      height="20"
-                      className="flex-shrink-0"
+                      icon="material-symbols:call"
+                      width="32"
+                      height="32"
+                      className="flex-shrink-0 bg-[#F25849] p-2 rounded-full text-white"
                     />
                     <p className="font-medium text-gray-500">secretariat@paan.org</p>
                   </div>
 
                   <div className="flex items-center gap-2 pb-4">
                     <Icon
-                      icon="zondicons:calendar"
-                      width="20"
-                      height="20"
-                      className="flex-shrink-0"
+                      icon="mdi:location"
+                      width="32"
+                      height="32"
+                      className="flex-shrink-0 bg-[#F25849] p-2 rounded-full text-white"
                     />
                     <p className="font-medium text-gray-500">7th Floor, Mitsumi Business Park, Westlands,Nairobi, Kenya</p>
                   </div>
@@ -489,7 +490,7 @@ Reach out — we’re here to connect and support your journey.
           </section>
         </div>
 
-
+<Footer />
 
       </main>
     </>
