@@ -1,5 +1,5 @@
 // HomePage.js
-import Head from "next/head"; // Import Head from next/head
+import SEO from '@/components/SEO';
 import Header from "../layouts/header";
 import CustomSlider from "../components/CustomSlider";
 import Image from "next/image";
@@ -15,51 +15,13 @@ import Footer from "@/layouts/footer";
 const HomePage = () => {
   return (
     <>
-      {/* Add SEO Meta Tags */}
-      <Head>
-        {/* Basic Meta Tags */}
-        <title>Pan-African Agency Network (PAAN) | Redefining Africa’s Creative & Tech Footprint</title>
-        <meta
-          name="description"
-          content="The Pan-African Agency Network (PAAN) is a bold alliance of independent agencies across Africa and the diaspora, transforming fragmentation into unity and potential into global influence."
-        />
-        <meta
-          name="keywords"
-          content="Pan-African Agency Network, PAAN, African agencies, creative network, tech network, collaboration, innovation, global influence"
-        />
-        <meta name="author" content="Pan-African Agency Network (PAAN)" />
-        <meta name="robots" content="index, follow" />
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-        {/* Open Graph Meta Tags (for social media sharing) */}
-        <meta property="og:title" content="Pan-African Agency Network (PAAN) | Redefining Africa’s Creative & Tech Footprint" />
-        <meta
-          property="og:description"
-          content="Join the Pan-African Agency Network (PAAN), a bold alliance of independent agencies across Africa and the diaspora, transforming fragmentation into unity and potential into global influence."
-        />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://www.paan.org/" /> {/* Replace with your actual domain */}
-        <meta property="og:image" content="/assets/images/og-image.jpg" /> {/* Replace with an actual image path */}
-        <meta property="og:image:alt" content="PAAN - Redefining Africa’s Creative & Tech Footprint" />
-        <meta property="og:site_name" content="Pan-African Agency Network (PAAN)" />
-
-        {/* Twitter Card Meta Tags */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Pan-African Agency Network (PAAN) | Redefining Africa’s Creative & Tech Footprint" />
-        <meta
-          name="twitter:description"
-          content="Join the Pan-African Agency Network (PAAN), a bold alliance of independent agencies across Africa and the diaspora, transforming fragmentation into unity and potential into global influence."
-        />
-        <meta name="twitter:image" content="/assets/images/twitter-image.jpg" /> {/* Replace with an actual image path */}
-        <meta name="twitter:image:alt" content="PAAN - Redefining Africa’s Creative & Tech Footprint" />
-        <meta name="twitter:site" content="@PAANetwork" /> {/* Replace with your Twitter handle */}
-        <meta name="twitter:creator" content="@PAANetwork" /> {/* Replace with your Twitter handle */}
-
-        {/* Favicon */}
-        <link rel="icon" href="/favicon.ico" /> {/* Replace with your actual favicon path */}
-      </Head>
-
+      <SEO
+        title="Pan-African Agency Network (PAAN) | Redefining Africa’s Creative & Tech Footprint"
+        description="The Pan-African Agency Network (PAAN) is a bold alliance of independent agencies across Africa and the diaspora, transforming fragmentation into unity and potential into global influence."
+        keywords="Pan-African Agency Network, PAAN, African agencies, creative network, tech network, collaboration, innovation, global influence"
+        image="https://www.paan.africa/assets/images/logo.svg"
+      />
       <main className="px-3 pt-6 sm:px-0 sm:pt-0 relative">
         <Header />
 
@@ -114,7 +76,7 @@ const HomePage = () => {
           <section className="grid grid-cols-1 sm:grid-cols-2 gap-8 items-center mt-20">
             <div className="relative">
               <Image
-                src="/assets/images/who-we-are.png"
+                src="/assets/images/team.png"
                 width={500}
                 height={300}
                 alt="Team collaboration"
@@ -464,32 +426,34 @@ const HomePage = () => {
 
         </div>
 
-        <div className="network-bg">
-          <section className="mx-auto max-w-6xl py-28 px-6" id="join-network">
-            <div className="flex flex-col mb-10 w-full md:w-3/4">
-              <h2 className="text-3xl font-medium mb-4 text-[#F2B706]">
-                Join the Network That’s Redefining Africa’s Creative Future
-              </h2>
-
-              <p className="text-white font-light">
-                Step into a powerful alliance of agencies shaping the future of
-                communication, marketing, and tech across Africa and beyond.
-                Whether you're just starting or scaling fast — PAAN is your
-                platform for global impact.
-              </p>
-            </div>
-
-            <div className="flex md:flex-row flex-col gap-4">
-              <button className="bg-[#F25849] text-white px-8 py-3 rounded-full font-medium text-sm hover:bg-[#D6473C] transition duration-300">
-                Join us Today
-              </button>
-              <button className="bg-white px-8 py-3 rounded-full font-medium text-sm transition duration-300 hover:bg-[#6FA1B7]">
-                Register for Webinar
-              </button>
-            </div>
-          </section>
-        </div>
-
+        <div className="network-bg relative">
+  {/* Individual Dots */}
+  <div className="absolute -top-3 left-4 w-6 h-6 bg-[#84C1D9] rounded-full z-0"></div> {/* 44x44px */}
+  <div className="absolute -top-8 right-4 w-16 h-16 bg-yellow-400 rounded-full z-0"></div> 
+  <div className="absolute -bottom-12 right-4 w-28 h-28 bg-red-500 rounded-full z-0"></div> 
+  {/* Content */}
+  <section className="relative z-10 mx-auto max-w-6xl py-28 px-6" id="join-network">
+    <div className="flex flex-col mb-10 w-full md:w-3/4">
+      <h2 className="text-3xl font-medium mb-4 text-[#F2B706]">
+        Join the Network That’s Redefining Africa’s Creative Future
+      </h2>
+      <p className="text-white font-light">
+        Step into a powerful alliance of agencies shaping the future of
+        communication, marketing, and tech across Africa and beyond.
+        Whether you're just starting or scaling fast — PAAN is your
+        platform for global impact.
+      </p>
+    </div>
+    <div className="flex md:flex-row flex-col gap-4">
+      <button className="bg-[#F25849] text-white px-8 py-3 rounded-full font-medium text-sm hover:bg-[#D6473C] transition duration-300">
+        Join us Today
+      </button>
+      <button className="bg-white px-8 py-3 rounded-full font-medium text-sm transition duration-300 hover:bg-[#6FA1B7]">
+        Register for Webinar
+      </button>
+    </div>
+  </section>
+</div>
         <div className="mx-auto max-w-6xl mt-20" id="contact-us">
           <section className="grid grid-cols-1 sm:grid-cols-3 gap-8 items-center mt-10">
             {/* Left Column: Image (Smaller on Larger Screens) */}
