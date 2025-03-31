@@ -50,7 +50,7 @@ const Header = () => {
       }`}
     >
       <div className="max-w-7xl mx-auto">
-        <div className="flex items-center justify-between py-6">
+        <div className="flex items-center justify-between py-2">
           {/* Logo - Left Side */}
           <div className="flex-shrink-0">
             <Link href="/" passHref>
