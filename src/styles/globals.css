@@ -27,3 +27,24 @@ body {
     background-repeat: no-repeat;
     height: 100%;
   }
+
+  .pattern-bg-1 {
+    background-image: 
+      url('/assets/images/pattern-bg-1.png'), 
+      linear-gradient(rgba(132, 193, 217, 1), rgba(132, 193, 217, 1));
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100%;
+  }
+
+  .pattern-bg-2 {
+    background-image: 
+      url('/assets/images/pattern-bg-1.png'), 
+      linear-gradient(rgb(242 88 73 / 1), rgb(242 88 73 / 1));
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100%;
+  }
+  
