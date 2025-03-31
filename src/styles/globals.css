@@ -11,6 +11,11 @@ body {
     color: #172840;
 }
 
+/* globals.css */
+html {
+    scroll-behavior: smooth;
+  }
+
 /* Custom variant for dark mode (optional) */
 @custom-variant dark (&:is(.dark *));
 

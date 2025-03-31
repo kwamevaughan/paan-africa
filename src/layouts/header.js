@@ -3,14 +3,52 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState } from 'react';
-import { menuItems, ctaButton } from '../data/menuData'; // Import shared data
+import { useState, useEffect } from 'react';
+import { menuItems, ctaButton } from '../data/menuData';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isFixed, setIsFixed] = useState(false);
+
+  // Function to handle smooth scrolling with offset for fixed header
+  const handleScroll = (e, href) => {
+    e.preventDefault();
+    const targetId = href.replace('#', '');
+    const element = document.getElementById(targetId);
+    if (element) {
+      const headerHeight = document.querySelector('nav').offsetHeight;
+      const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+      window.scrollTo({
+        top: elementPosition - (isFixed ? headerHeight : 0),
+        behavior: 'smooth',
+      });
+    }
+    // Close mobile menu after clicking a link
+    setIsMenuOpen(false);
+  };
+
+  // Add scroll event listener to toggle fixed header
+  useEffect(() => {
+    const handleScrollEvent = () => {
+      if (window.scrollY > 50) {
+        setIsFixed(true);
+      } else {
+        setIsFixed(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScrollEvent);
+    return () => window.removeEventListener('scroll', handleScrollEvent);
+  }, []);
 
   return (
-    <nav className="bg-white">
+    <nav
+      className={`bg-white w-full z-50 transition-all duration-300 ${
+        isFixed
+          ? 'fixed top-0 left-0 shadow-lg backdrop-blur-md bg-white/80'
+          : 'relative'
+      }`}
+    >
       <div className="max-w-7xl mx-auto">
         <div className="flex items-center justify-between py-6">
           {/* Logo - Left Side */}
@@ -61,19 +99,24 @@ const Header = () => {
             {/* Menu Items */}
             <div className="flex space-x-2">
               {menuItems.map((item) => (
-                <Link key={item.href} href={item.href}>
-                  <span className="text-gray-950 hover:text-gray-900 hover:bg-[#F2B706] px-4 py-2 rounded-full transition-all duration-300">
-                    {item.label}
-                  </span>
-                </Link>
+                <a
+                  key={item.href}
+                  href={item.href}
+                  onClick={(e) => handleScroll(e, item.href)}
+                  className="text-gray-950 hover:text-gray-900 hover:bg-[#F2B706] px-4 py-2 rounded-full transition-all duration-300 cursor-pointer"
+                >
+                  {item.label}
+                </a>
               ))}
             </div>
             {/* CTA */}
-            <Link href={ctaButton.href}>
-              <span className={ctaButton.className}>
-                {ctaButton.label}
-              </span>
-            </Link>
+            <a
+              href={ctaButton.href}
+              onClick={(e) => handleScroll(e, ctaButton.href)}
+              className={ctaButton.className}
+            >
+              {ctaButton.label}
+            </a>
           </div>
         </div>
 
@@ -81,17 +124,22 @@ const Header = () => {
         <div className={`${isMenuOpen ? 'block' : 'hidden'} sm:hidden`}>
           <div className="px-2 pt-2 pb-3 space-y-1">
             {menuItems.map((item) => (
-              <Link key={item.href} href={item.href}>
-                <span className="text-gray-950 hover:text-gray-900 hover:bg-[#F2B706] block px-3 py-2 rounded-full transition-all duration-300">
-                  {item.label}
-                </span>
-              </Link>
+              <a
+                key={item.href}
+                href={item.href}
+                onClick={(e) => handleScroll(e, item.href)}
+                className="text-gray-950 hover:text-gray-900 hover:bg-[#F2B706] block px-3 py-2 rounded-full transition-all duration-300 cursor-pointer"
+              >
+                {item.label}
+              </a>
             ))}
-            <Link href={ctaButton.href}>
-              <span className={ctaButton.mobileClassName}>
-                {ctaButton.label}
-              </span>
-            </Link>
+            <a
+              href={ctaButton.href}
+              onClick={(e) => handleScroll(e, ctaButton.href)}
+              className={ctaButton.mobileClassName}
+            >
+              {ctaButton.label}
+            </a>
           </div>
         </div>
       </div>

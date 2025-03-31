@@ -19,7 +19,7 @@ const NewsletterSignup = () => {
   };
 
   return (
-    <div className="bg-[#172840] text-white rounded-lg relative overflow-hidden">
+    <div className="text-white rounded-lg relative overflow-hidden">
       {/* Background Pattern (simplified as a CSS background) */}
       <div />
 
