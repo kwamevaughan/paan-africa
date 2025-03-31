@@ -65,7 +65,8 @@ const Footer = () => {
           className="absolute top-0 left-0 w-full h-full object-cover z-0 opacity-10"
         />
         {/* Content Container */}
-        <section className="relative z-10 max-w-6xl mx-auto px-3 sm:px-0 grid grid-cols-1 sm:grid-cols-2 gap-8 mt-20 pb-10 justify-items-end">
+        <section className="relative z-10 max-w-6xl mx-auto px-3 sm:px-0 grid grid-cols-1 sm:grid-cols-2 gap-8 mt-20 pb-10 justify-items-start
+ md:justify-items-end">
           {/* Left: Newsletter Signup */}
           <div className="flex flex-col gap-8">
             <NewsletterSignup />
