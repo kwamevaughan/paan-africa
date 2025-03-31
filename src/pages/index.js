@@ -3,12 +3,15 @@ import Header from '../layouts/header';
 import CustomSlider from '../components/CustomSlider';
 import Image from 'next/image';
 import { Icon } from "@iconify/react";
+import Tier1 from '@/components/Tier1';
+import Tier2 from '@/components/Tier2';
+import Tier3 from '@/components/Tier3';
 
 const HomePage = () => {
   return (
     <>
       <main className="px-3 pt-6 sm:px-0 sm:pt-0 relative">
-        {/* Single Content Wrapper - Constrained */}
+
         <Header />
 
         <div className="mx-auto max-w-6xl">
@@ -36,7 +39,6 @@ const HomePage = () => {
           </section>
         </div>
 
-        {/* Full-Width Background Pattern Above "Who We Are" */}
         <div className="relative h-64 mt-[-10em] top-10 z-[-1]">
           <Image
             src="/assets/images/bg-pattern.svg"
@@ -47,9 +49,8 @@ const HomePage = () => {
           />
         </div>
 
-        {/* Single Content Wrapper Continues - Constrained */}
+
         <div className="mx-auto max-w-6xl">
-          {/* Who We Are Section */}
           <section>
             <p className="uppercase font-semibold mb-4">2. Who We Are</p>
             <p className="text-2xl">
@@ -59,7 +60,7 @@ const HomePage = () => {
           </section>
 
           <section className="grid grid-cols-1 sm:grid-cols-2 gap-8 items-center mt-20">
-            {/* Left: Image with Button */}
+
             <div className="relative">
               <Image
                 src="/assets/images/who-we-are.png"
@@ -146,6 +147,88 @@ const HomePage = () => {
               
             </div>
           </div>
+          </section>
+        </div>
+
+        <div className="mx-auto max-w-6xl mt-20">
+          <section>
+            <p className="uppercase font-semibold mb-4">3. Why Join PAAN?</p>
+            
+          </section>
+
+          <section className="grid grid-cols-1 sm:grid-cols-2 gap-8 items-center">
+
+            <div className='flex flex-col gap-20'>
+
+          <p className="text-2xl">
+          PAAN membership opens doors to global opportunities, exclusive resources, and a thriving network of Africa’s top creative and tech minds.
+            </p>
+
+            <div className="flex gap-4">
+                <button className="bg-[#F25849] text-white px-8 py-3 rounded-full font-medium text-sm hover:bg-[#D6473C] transition duration-300">
+                Join us Today
+                </button>
+                <button className="bg-[#172840] text-white px-8 py-3 rounded-full font-medium text-sm transition duration-300 hover:bg-[#6FA1B7]">
+                Discover More
+                </button>
+              </div>
+            </div>
+
+            
+
+            {/* Right: List with Icons */}
+            <div className="flex flex-col gap-4">
+              
+              <div className="flex items-center gap-3 border-b border-gray-200 pb-4">
+              <Image src="/assets/images/icons/pan-african-reach.svg" width={50} height={50} alt="Pan-African Reach" />
+                <p className="text-xl font-base"> Access to Global Brands & Markets</p>
+              </div>
+
+              <div className="flex items-center gap-3 border-b border-gray-200 pb-4">
+              <Image src="/assets/images/icons/strategic-collaboration.svg" width={50} height={50} alt="Strategic Collaboration" />
+                <p className="text-xl font-base">Shared Resources & Tools</p>
+              </div>
+
+              <div className="flex items-center gap-3 border-b border-gray-200 pb-4">
+              <Image src="/assets/images/icons/innovation-driven.svg" width={50} height={50} alt="Innovation-Driven" />
+                <p className="text-xl font-base">PAAN Certification Credibility</p>
+              </div>
+
+              <div className="flex items-center gap-3 border-b border-gray-200 pb-4">
+              <Image src="/assets/images/icons/shared-knowledge-growth.svg" width={50} height={50} alt="Shared Knowledge & Growth" />
+                <p className="text-xl font-base">Knowledge Hubs & Webinars</p>
+              </div>
+
+              <div className="flex items-center gap-3 border-b border-gray-200 pb-4">
+              <Image src="/assets/images/icons/shared-knowledge-growth.svg" width={50} height={50} alt="Shared Knowledge & Growth" />
+                <p className="text-xl font-base">Collaborative Revenue Opportunities</p>
+              </div>
+              
+              
+              
+            </div>
+          </section>
+        </div>
+
+        <div className=" bg-[#D1D3D4]">
+
+          <section className="mx-auto max-w-6xl py-20">
+
+            <div className='flex flex-col mb-10 mx-auto w-3/4'>
+
+          <h2 className='text-2xl text-center mb-4'>Our Structure & Tiers</h2>
+
+          <p className='text-center'>Whether you're a bold startup or a seasoned agency, PAAN offers a tier that fits your journey. 
+            Join a network designed to elevate, empower, and connect.</p>
+            </div>
+
+            <div class="grid grid-cols-3 gap-4">
+            <Tier1 />
+            <Tier2 />
+            <Tier3 />
+            
+          </div>
+
           </section>
         </div>
 
