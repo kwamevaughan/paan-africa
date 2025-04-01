@@ -1,8 +1,8 @@
 {
-  "name": "nextjs-15-starter-tailwind",
+  "name": "paan-africa",
   "version": "1.0.0",
   "private": false,
-  "website": "https://nextjs-15-starter-tailwind-core.vercel.app/",
+  "website": "https://paan.africa",
   "license": "MIT",
   "scripts": {
     "dev": "next dev --turbopack",
