@@ -142,7 +142,7 @@ const HomePage = () => {
 
 <div className="bg-[#172840] relative" id="our-mission">
   {/* Individual Dots */}
-  <div className="absolute top-4 left-28 w-28 h-28 bg-[#F25849] rounded-full z-20 "></div> 
+  <div className="hidden md:block absolute top-4 left-28 w-28 h-28 bg-[#F25849] rounded-full z-20 "></div> 
   <div className="absolute -top-14 -right-10 w-28 h-28 bg-[#D1D3D4] rounded-full z-0 "></div> 
   <div className="absolute bottom-40 right-40 w-16 h-16 bg-[#F25849] rounded-full z-0 "></div>
 
@@ -207,7 +207,7 @@ const HomePage = () => {
 <div className="mx-auto max-w-6xl mt-20 mb-20 relative" id="why-join-us">
   {/* Individual Dots */}
   <div className="absolute -top-24 -left-10 w-14 h-14 bg-yellow-400 rounded-full z-0"></div> 
-  <div className="absolute -top-14 right-52 w-16 h-16 bg-[#84C1D9] rounded-full z-0"></div> 
+  <div className="hidden md:block absolute -top-14 right-52 w-16 h-16 bg-[#84C1D9] rounded-full z-0"></div> 
   <div className="absolute -bottom-28 left-4 w-20 h-20 bg-[#F25849] rounded-full z-10 "></div> 
   <div className="absolute -bottom-14 right-4 w-11 h-11 bg-[#172840] rounded-full z-0"></div>
 
