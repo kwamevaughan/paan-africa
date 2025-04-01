@@ -12,13 +12,9 @@ import OfferingTab from "@/components/OfferingTab";
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/layouts/footer";
 import { useEffect, useRef } from "react";
-<<<<<<< HEAD
+import { useFixedHeader, handleScroll } from '../../utils/scrollUtils';
 import { LiveChatWidget } from "@livechat/widget-react";
 
-
-=======
-import { useFixedHeader, handleScroll } from '../../utils/scrollUtils';
->>>>>>> d3ea85134f2fbcdd16ee76479dec6c1e3002a1b7
 
 const HomePage = () => {
   const sectionRefs = {
@@ -436,7 +432,6 @@ const HomePage = () => {
             </div>
           </section>
         </div>
-        
         <LiveChatWidget license="19050853" />
         <Footer />
       </main>
