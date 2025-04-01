@@ -119,9 +119,8 @@ const PrivacyPolicy = () => {
                 6. Cookies and Tracking Technologies
               </h2>
               <p>
-                We use cookies and similar technologies to enhance your experience on our website, analyze usage, and deliver personalized content. You can manage your cookie preferences through your browser settings. However, disabling cookies may affect the functionality of our website.
-              </p>
-            </div>
+              We use cookies and similar technologies to enhance your experience on our website, analyze usage, and deliver personalized content. Our website may also function as a Progressive Web App (PWA), which allows you to add it to your device’s home screen for easier access. This feature does not collect additional personal information beyond what is already described in this policy. You can manage your cookie preferences through your browser settings. However, disabling cookies may affect the functionality of our website.
+              </p>            </div>
 
             {/* Your Rights */}
             <div>
