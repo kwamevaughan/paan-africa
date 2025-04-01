@@ -15,7 +15,6 @@ import { useEffect, useRef } from "react";
 import { useFixedHeader, handleScroll } from '../../utils/scrollUtils';
 import { LiveChatWidget } from "@livechat/widget-react";
 
-
 const HomePage = () => {
   const sectionRefs = {
     home: useRef(null),
