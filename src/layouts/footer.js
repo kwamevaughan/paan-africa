@@ -1,11 +1,11 @@
 // footer.js
-'use client';
+"use client";
 
-import NewsletterSignup from '@/components/NewsletterSignup';
-import Image from 'next/image';
-import Link from 'next/link';
-import { menuItems } from '../data/menuData';
-import { useState, useEffect } from 'react';
+import NewsletterSignup from "@/components/NewsletterSignup";
+import Image from "next/image";
+import Link from "next/link";
+import { menuItems } from "../data/menuData";
+import { useState, useEffect } from "react";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -21,21 +21,22 @@ const Footer = () => {
       }
     };
 
-    window.addEventListener('scroll', handleScrollEvent);
-    return () => window.removeEventListener('scroll', handleScrollEvent);
+    window.addEventListener("scroll", handleScrollEvent);
+    return () => window.removeEventListener("scroll", handleScrollEvent);
   }, []);
 
   // Function to handle smooth scrolling with offset for fixed header
   const handleScroll = (e, href) => {
     e.preventDefault();
-    const targetId = href.replace('#', '');
+    const targetId = href.replace("#", "");
     const element = document.getElementById(targetId);
     if (element) {
-      const headerHeight = document.querySelector('nav').offsetHeight;
-      const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+      const headerHeight = document.querySelector("nav").offsetHeight;
+      const elementPosition =
+        element.getBoundingClientRect().top + window.scrollY;
       window.scrollTo({
         top: elementPosition - (isHeaderFixed ? headerHeight : 0),
-        behavior: 'smooth',
+        behavior: "smooth",
       });
     }
   };
@@ -65,8 +66,10 @@ const Footer = () => {
           className="absolute top-0 left-0 w-full h-full object-cover z-0 opacity-10"
         />
         {/* Content Container */}
-        <section className="relative z-10 max-w-6xl mx-auto px-3 sm:px-0 grid grid-cols-1 sm:grid-cols-2 gap-8 mt-20 pb-10 justify-items-start
- md:justify-items-end">
+        <section
+          className="relative z-10 max-w-6xl mx-auto px-3 sm:px-0 grid grid-cols-1 sm:grid-cols-2 gap-8 mt-20 pb-10 justify-items-start
+ md:justify-items-end"
+        >
           {/* Left: Newsletter Signup */}
           <div className="flex flex-col gap-8">
             <NewsletterSignup />
@@ -94,7 +97,13 @@ const Footer = () => {
       {/* Footer Bottom Section */}
       <div className="max-w-6xl mx-auto px-3 sm:px-0">
         <p className="pt-10 border-t border-gray-400 text-center text-gray-200 text-sm">
-          © {currentYear} PAAN. All rights reserved. | Privacy Policy
+          © {currentYear} PAAN. All rights reserved. |
+          <Link
+            href="/privacy-policy"
+            className="ml-2 text-white hover:text-[#84c1d9]"
+          >
+            Privacy Policy
+          </Link>
         </p>
       </div>
     </section>
