@@ -12,6 +12,9 @@ import OfferingTab from "@/components/OfferingTab";
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/layouts/footer";
 import { useEffect, useRef } from "react";
+import { LiveChatWidget } from "@livechat/widget-react";
+
+
 
 const HomePage = () => {
   // Create refs for each section, excluding join-network
@@ -619,7 +622,8 @@ const HomePage = () => {
             </div>
           </section>
         </div>
-
+        
+        <LiveChatWidget license="19050853" />
         <Footer />
       </main>
     </>
