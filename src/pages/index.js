@@ -408,7 +408,7 @@ const HomePage = () => {
                 <div className="flex items-center gap-2 pb-4">
                   <Link href="mailto:secretariat@paan.africa" className="flex items-center gap-2 transform translate-y-[-5px] hover:translate-y-[-5px] transition-transform duration-200">
                     <Icon icon="material-symbols:call" width="32" height="32" className="flex-shrink-0 bg-[#F25849] p-2 rounded-full text-white" />
-                    <p className="font-medium text-gray-500">secretariat@paan.org</p>
+                    <p className="font-medium text-gray-500">secretariat@paan.africa</p>
                   </Link>
                 </div>
                 <div className="flex items-center gap-2 pb-4">
