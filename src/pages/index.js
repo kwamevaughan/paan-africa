@@ -20,7 +20,7 @@ const HomePage = () => {
     aboutUs: useRef(null),
     ourMission: useRef(null),
     whyJoinUs: useRef(null),
-    ourTier: useRef(null),
+    membership: useRef(null),
     services: useRef(null),
     events: useRef(null),
     contactUs: useRef(null),
@@ -364,8 +364,8 @@ const HomePage = () => {
 
         <div
           className="bg-[#D1D3D4] -z-10 relative section"
-          id="our-tier"
-          ref={sectionRefs.ourTier}
+          id="membership"
+          ref={sectionRefs.membership}
         >
           {/* Individual Dots */}
           <div className="absolute -bottom-8 right-32 w-16 h-16 bg-[#84C1D9] rounded-full z-0"></div>
@@ -577,7 +577,7 @@ const HomePage = () => {
                 </h2>
                 <div className="flex items-center gap-2 pb-4">
                   <Link
-                    href="mailto:secretariat@paan.org"
+                    href="mailto:secretariat@paan.africa"
                     className="flex items-center gap-2 transform translate-y-[-5px] hover:translate-y-[-5px] transition-transform duration-200"
                   >
                     <Icon

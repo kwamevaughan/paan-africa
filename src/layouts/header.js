@@ -1,4 +1,3 @@
-// header.js
 'use client';
 
 import Image from 'next/image';
@@ -49,7 +48,8 @@ const Header = () => {
           : 'relative'
       }`}
     >
-      <div className="max-w-7xl mx-auto">
+      {/* Full width container for header */}
+      <div className="w-full px-4 lg-custom:px-8">
         <div className="flex items-center justify-between py-2">
           {/* Logo - Left Side */}
           <div className="flex-shrink-0">
@@ -64,7 +64,7 @@ const Header = () => {
           </div>
 
           {/* Hamburger Menu Button (mobile only) */}
-          <div className="sm:hidden flex items-center">
+          <div className="lg-custom:hidden flex items-center">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="p-2 rounded-md text-gray-950 focus:outline-none"
@@ -95,15 +95,15 @@ const Header = () => {
           </div>
 
           {/* Desktop Menu and CTA (hidden on mobile) */}
-          <div className="hidden sm:flex sm:items-center sm:space-x-4">
+          <div className="hidden lg-custom:flex lg-custom:items-center lg-custom:space-x-4 w-full justify-end">
             {/* Menu Items */}
-            <div className="flex space-x-2">
+            <div className="flex space-x-0 flex-grow justify-center md:justify-center">
               {menuItems.map((item) => (
                 <a
                   key={item.href}
                   href={item.href}
                   onClick={(e) => handleScroll(e, item.href)}
-                  className="text-gray-950 hover:text-gray-900 hover:bg-[#F2B706] px-4 py-2 rounded-full transition-all duration-300 cursor-pointer"
+                  className=" text-gray-950 hover:text-gray-900 hover:bg-[#F2B706] px-4 py-2 rounded-full transition-all duration-300 cursor-pointer"
                 >
                   {item.label}
                 </a>
@@ -121,14 +121,14 @@ const Header = () => {
         </div>
 
         {/* Mobile Menu (shown when hamburger is clicked) */}
-        <div className={`${isMenuOpen ? 'block' : 'hidden'} sm:hidden`}>
+        <div className={`${isMenuOpen ? 'block' : 'hidden'} lg-custom:hidden`}>
           <div className="px-2 pt-2 pb-3 space-y-1">
             {menuItems.map((item) => (
               <a
                 key={item.href}
                 href={item.href}
                 onClick={(e) => handleScroll(e, item.href)}
-                className="text-gray-950 hover:text-gray-900 hover:bg-[#F2B706] block px-3 py-2 rounded-full transition-all duration-300 cursor-pointer"
+                className="text-gray-950 hover:text-gray-900 hover:bg-[#F2B706] block px-4 py-2 rounded-full transition-all duration-300 cursor-pointer"
               >
                 {item.label}
               </a>
