@@ -13,6 +13,7 @@ import ContactForm from "@/components/ContactForm";
 import Footer from "@/layouts/footer";
 import { useEffect, useRef } from "react";
 import { useFixedHeader, handleScroll } from '../../utils/scrollUtils';
+import { LiveChatWidget } from "@livechat/widget-react";
 
 const HomePage = () => {
   const sectionRefs = {
@@ -430,7 +431,7 @@ const HomePage = () => {
             </div>
           </section>
         </div>
-
+        <LiveChatWidget license="19050853" />
         <Footer />
       </main>
     </>
