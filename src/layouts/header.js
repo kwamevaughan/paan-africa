@@ -1,44 +1,15 @@
+// layouts/header.js
 'use client';
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { menuItems, ctaButton } from '../data/menuData';
+import { useFixedHeader, handleScroll } from '../../utils/scrollUtils';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isFixed, setIsFixed] = useState(false);
-
-  // Function to handle smooth scrolling with offset for fixed header
-  const handleScroll = (e, href) => {
-    e.preventDefault();
-    const targetId = href.replace('#', '');
-    const element = document.getElementById(targetId);
-    if (element) {
-      const headerHeight = document.querySelector('nav').offsetHeight;
-      const elementPosition = element.getBoundingClientRect().top + window.scrollY;
-      window.scrollTo({
-        top: elementPosition - (isFixed ? headerHeight : 0),
-        behavior: 'smooth',
-      });
-    }
-    // Close mobile menu after clicking a link
-    setIsMenuOpen(false);
-  };
-
-  // Add scroll event listener to toggle fixed header
-  useEffect(() => {
-    const handleScrollEvent = () => {
-      if (window.scrollY > 50) {
-        setIsFixed(true);
-      } else {
-        setIsFixed(false);
-      }
-    };
-
-    window.addEventListener('scroll', handleScrollEvent);
-    return () => window.removeEventListener('scroll', handleScrollEvent);
-  }, []);
+  const isFixed = useFixedHeader();
 
   return (
     <nav
@@ -48,7 +19,6 @@ const Header = () => {
           : 'relative'
       }`}
     >
-      {/* Full width container for header */}
       <div className="w-full px-4 lg-custom:px-8">
         <div className="flex items-center justify-between py-2">
           {/* Logo - Left Side */}
@@ -96,23 +66,21 @@ const Header = () => {
 
           {/* Desktop Menu and CTA (hidden on mobile) */}
           <div className="hidden lg-custom:flex lg-custom:items-center lg-custom:space-x-4 w-full justify-end">
-            {/* Menu Items */}
             <div className="flex space-x-0 flex-grow justify-center md:justify-center">
               {menuItems.map((item) => (
                 <a
                   key={item.href}
                   href={item.href}
-                  onClick={(e) => handleScroll(e, item.href)}
-                  className=" text-gray-950 hover:text-gray-900 hover:bg-[#F2B706] px-4 py-2 rounded-full transition-all duration-300 cursor-pointer"
+                  onClick={(e) => handleScroll(e, item.href, isFixed)}
+                  className="text-gray-950 hover:text-gray-900 hover:bg-[#F2B706] px-4 py-2 rounded-full transition-all duration-300 cursor-pointer"
                 >
                   {item.label}
                 </a>
               ))}
             </div>
-            {/* CTA */}
             <a
               href={ctaButton.href}
-              onClick={(e) => handleScroll(e, ctaButton.href)}
+              onClick={(e) => handleScroll(e, ctaButton.href, isFixed)}
               className={ctaButton.className}
             >
               {ctaButton.label}
@@ -127,7 +95,10 @@ const Header = () => {
               <a
                 key={item.href}
                 href={item.href}
-                onClick={(e) => handleScroll(e, item.href)}
+                onClick={(e) => {
+                  handleScroll(e, item.href, isFixed);
+                  setIsMenuOpen(false);
+                }}
                 className="text-gray-950 hover:text-gray-900 hover:bg-[#F2B706] block px-4 py-2 rounded-full transition-all duration-300 cursor-pointer"
               >
                 {item.label}
@@ -135,7 +106,10 @@ const Header = () => {
             ))}
             <a
               href={ctaButton.href}
-              onClick={(e) => handleScroll(e, ctaButton.href)}
+              onClick={(e) => {
+                handleScroll(e, ctaButton.href, isFixed);
+                setIsMenuOpen(false);
+              }}
               className={ctaButton.mobileClassName}
             >
               {ctaButton.label}
