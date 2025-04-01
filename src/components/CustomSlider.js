@@ -1,5 +1,5 @@
-// CustomSlider.js
 import { useState } from 'react';
+import Image from 'next/image';
 import { Icon } from "@iconify/react";
 
 const CustomSlider = () => {
@@ -20,16 +20,17 @@ const CustomSlider = () => {
 
   return (
     <div className="relative w-full max-w-lg mx-auto">
-      {/* Slider Image */}
       <div className="overflow-hidden rounded-lg">
-        <img
+        <Image
           src={slides[currentSlide]}
           alt={`Slide ${currentSlide + 1}`}
+          width={800}
+          height={450}
           className="w-full h-auto object-cover transition-all duration-500"
+          priority
         />
       </div>
 
-      {/* Navigation Arrows */}
       <div className="absolute bottom-[-1rem] right-4 flex gap-2">
         <button
           onClick={prevSlide}
