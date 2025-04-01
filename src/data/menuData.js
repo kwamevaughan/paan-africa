@@ -4,7 +4,7 @@ export const menuItems = [
     { href: '#about-us', label: 'About Us' },
     { href: '#our-mission', label: 'Our Mission' },
     { href: '#why-join-us', label: 'Why Join Us' },
-    { href: '#our-tier', label: 'Our Tier' },
+    { href: '#membership', label: 'Membership' },
     { href: '#services', label: 'Services' },
     { href: '#events', label: 'Events' },
     { href: '#contact-us', label: 'Contact Us' },
