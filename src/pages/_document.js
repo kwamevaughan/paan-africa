@@ -25,8 +25,8 @@ class MyDocument extends Document {
           <meta name="apple-mobile-web-app-capable" content="yes" />
           <meta name="apple-mobile-web-app-status-bar-style" content="default" />
           <meta name="apple-mobile-web-app-title" content="PAAN" />
-          {/* Link to the Apple Touch Icon (already included in favicon links, but ensuring consistency) */}
-          <link rel="apple-touch-icon" href="/assets/images/icon-192x192.png" />
+          {/* Link to the Apple Touch Icon */}
+          <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
           {/* Google Analytics Script */}
           <script async src="https://www.googletagmanager.com/gtag/js?id=G-W8K184ZV92"></script>
