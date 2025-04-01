@@ -15,7 +15,6 @@ import { useEffect, useRef } from "react";
 <<<<<<< HEAD
 import { LiveChatWidget } from "@livechat/widget-react";
 
-
 =======
 import { useFixedHeader, handleScroll } from '../../utils/scrollUtils';
 >>>>>>> d3ea85134f2fbcdd16ee76479dec6c1e3002a1b7
