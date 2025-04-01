@@ -42,7 +42,10 @@ const HomePage = () => {
       });
     };
 
-    const observer = new IntersectionObserver(observerCallback, observerOptions);
+    const observer = new IntersectionObserver(
+      observerCallback,
+      observerOptions
+    );
 
     // Observe each section
     Object.values(sectionRefs).forEach((ref) => {
@@ -72,7 +75,11 @@ const HomePage = () => {
       <main className="px-3 pt-6 sm:px-0 sm:pt-0 relative">
         <Header />
 
-        <div className="mx-auto max-w-6xl section" id="home" ref={sectionRefs.home}>
+        <div
+          className="mx-auto max-w-6xl section"
+          id="home"
+          ref={sectionRefs.home}
+        >
           <section className="grid grid-cols-1 sm:grid-cols-2 gap-8 items-center">
             <div className="flex flex-col gap-8">
               <h2 className="text-3xl md:text-5xl font-semibold uppercase text-[#172840]">
@@ -109,7 +116,11 @@ const HomePage = () => {
           />
         </div>
 
-        <div className="mx-auto max-w-6xl relative section" id="about-us" ref={sectionRefs.aboutUs}>
+        <div
+          className="mx-auto max-w-6xl relative section"
+          id="about-us"
+          ref={sectionRefs.aboutUs}
+        >
           {/* Individual Dots */}
           <div className="absolute -top-36 -left-36 w-28 h-28 bg-[#F2B706] rounded-full z-0"></div>
           <div className="absolute -top-10 -right-20 w-16 h-16 bg-[#F25849] rounded-full z-0"></div>
@@ -188,7 +199,11 @@ const HomePage = () => {
           </section>
         </div>
 
-        <div className="bg-[#172840] relative section" id="our-mission" ref={sectionRefs.ourMission}>
+        <div
+          className="bg-[#172840] relative section"
+          id="our-mission"
+          ref={sectionRefs.ourMission}
+        >
           {/* Individual Dots */}
           <div className="hidden md:block absolute top-4 left-28 w-28 h-28 bg-[#F25849] rounded-full z-20"></div>
           <div className="absolute -top-14 -right-10 w-28 h-28 bg-[#D1D3D4] rounded-full z-0"></div>
@@ -252,7 +267,11 @@ const HomePage = () => {
           </section>
         </div>
 
-        <div className="mx-auto max-w-6xl mt-20 mb-20 relative section" id="why-join-us" ref={sectionRefs.whyJoinUs}>
+        <div
+          className="mx-auto max-w-6xl mt-20 mb-20 relative section"
+          id="why-join-us"
+          ref={sectionRefs.whyJoinUs}
+        >
           {/* Individual Dots */}
           <div className="absolute -top-24 -left-10 w-14 h-14 bg-yellow-400 rounded-full z-0"></div>
           <div className="hidden md:block absolute -top-14 right-52 w-16 h-16 bg-[#84C1D9] rounded-full z-0"></div>
@@ -343,7 +362,11 @@ const HomePage = () => {
           </section>
         </div>
 
-        <div className="bg-[#D1D3D4] -z-10 relative section" id="our-tier" ref={sectionRefs.ourTier}>
+        <div
+          className="bg-[#D1D3D4] -z-10 relative section"
+          id="our-tier"
+          ref={sectionRefs.ourTier}
+        >
           {/* Individual Dots */}
           <div className="absolute -bottom-8 right-32 w-16 h-16 bg-[#84C1D9] rounded-full z-0"></div>
 
@@ -368,7 +391,11 @@ const HomePage = () => {
           </section>
         </div>
 
-        <div className="mx-auto max-w-6xl mt-20 section" id="services" ref={sectionRefs.services}>
+        <div
+          className="mx-auto max-w-6xl mt-20 section"
+          id="services"
+          ref={sectionRefs.services}
+        >
           <section>
             <p className="uppercase font-semibold mb-4">4. What We Offer</p>
             <p className="text-2xl">
@@ -397,7 +424,11 @@ const HomePage = () => {
           </section>
         </div>
 
-        <div className="mx-auto max-w-6xl mt-20 pb-20 section" id="events" ref={sectionRefs.events}>
+        <div
+          className="mx-auto max-w-6xl mt-20 pb-20 section"
+          id="events"
+          ref={sectionRefs.events}
+        >
           <section>
             <p className="uppercase font-semibold mb-4">4. Summit & Events</p>
             <p className="text-2xl">
@@ -519,7 +550,11 @@ const HomePage = () => {
           </section>
         </div>
 
-        <div className="mx-auto max-w-6xl mt-20 relative section" id="contact-us" ref={sectionRefs.contactUs}>
+        <div
+          className="mx-auto max-w-6xl mt-20 relative section"
+          id="contact-us"
+          ref={sectionRefs.contactUs}
+        >
           {/* Individual Dots */}
           <div className="absolute top-4 -right-5 w-12 h-12 bg-[#172840] rounded-full z-20"></div>
           <div className="absolute -bottom-9 -left-6 w-20 h-20 bg-[#F2B706] rounded-full z-0"></div>
@@ -560,6 +595,7 @@ const HomePage = () => {
                 <div className="flex items-center gap-2 pb-4">
                   <Link
                     href="https://www.google.com/maps?q=7th+Floor,+Mitsumi+Business+Park,+Westlands,+Nairobi,+Kenya"
+                    target="_blank" // This makes the link open in a new tab
                     className="flex items-center gap-2 transform translate-y-[-5px] hover:translate-y-[-10px] transition-transform duration-200"
                   >
                     <Icon
