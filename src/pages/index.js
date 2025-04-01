@@ -28,6 +28,7 @@ const HomePage = () => {
 
   const isFixed = useFixedHeader();
 
+  // Restore IntersectionObserver for section transitions
   useEffect(() => {
     const observerOptions = {
       root: null,
@@ -71,7 +72,7 @@ const HomePage = () => {
       <main className="px-3 pt-6 sm:px-0 sm:pt-0 relative">
         <Header />
 
-        <div className="mx-auto max-w-6xl section" id="home" ref={sectionRefs.home}>
+        <div className="mx-auto max-w-6xl section pt-0" id="home" ref={sectionRefs.home}>
           <section className="grid grid-cols-1 sm:grid-cols-2 gap-8 items-center">
             <div className="flex flex-col gap-8">
               <h2 className="text-3xl md:text-5xl font-semibold uppercase text-[#172840]">
@@ -84,23 +85,23 @@ const HomePage = () => {
                 global influence.
               </p>
               <div className="flex md:flex-row flex-col gap-4">
-  <button
-    onClick={(e) => {
-      handleScroll(e, '#contact-us', isFixed);
-    }}
-    className="bg-[#F25849] text-white px-8 py-3 rounded-full font-medium text-sm hover:bg-[#D6473C] transition duration-300"
-  >
-    Join the Network
-  </button>
-  <button
-    onClick={(e) => {
-      handleScroll(e, '#our-mission', isFixed);
-    }}
-    className="bg-[#84C1D9] text-[#172840] px-8 py-3 rounded-full font-medium text-sm transition duration-300 hover:bg-[#6FA1B7]"
-  >
-    Explore Our Vision
-  </button>
-</div>
+                <button
+                  onClick={(e) => {
+                    handleScroll(e, '#contact-us', isFixed);
+                  }}
+                  className="bg-[#F25849] text-white px-8 py-3 rounded-full font-medium text-sm hover:bg-[#D6473C] transition duration-300"
+                >
+                  Join the Network
+                </button>
+                <button
+                  onClick={(e) => {
+                    handleScroll(e, '#our-mission', isFixed);
+                  }}
+                  className="bg-[#84C1D9] text-[#172840] px-8 py-3 rounded-full font-medium text-sm transition duration-300 hover:bg-[#6FA1B7]"
+                >
+                  Explore Our Vision
+                </button>
+              </div>
             </div>
             <div>
               <CustomSlider />
@@ -142,12 +143,12 @@ const HomePage = () => {
                 className="rounded-lg object-cover w-full h-auto"
               />
               <div className="absolute top-100 bottom-0 bg-white flex flex-col gap-4 rounded-tr-[30px] rounded-br-[30px] pl-0 pt-4 pb-4 pr-4">
-                <button 
-                    onClick={(e) => {
-                      handleScroll(e, '#our-mission', isFixed);
-                    }}
-                
-                className="bg-[#F25849] text-white px-6 py-2 rounded-full font-medium text-sm hover:bg-[#D6473C] transition duration-300">
+                <button
+                  onClick={(e) => {
+                    handleScroll(e, '#our-mission', isFixed);
+                  }}
+                  className="bg-[#F25849] text-white px-6 py-2 rounded-full font-medium text-sm hover:bg-[#D6473C] transition duration-300"
+                >
                   Discover More
                 </button>
               </div>
@@ -226,24 +227,22 @@ const HomePage = () => {
                 PAAN membership opens doors to global opportunities, exclusive resources, and a thriving network of Africa’s top creative and tech minds.
               </p>
               <div className="flex md:flex-row flex-col gap-4">
-                <button 
-                    onClick={(e) => {
-                      handleScroll(e, '#contact-us', isFixed);
-                    }}
-                
-                className="bg-[#F25849] text-white px-8 py-3 rounded-full font-medium text-sm hover:bg-[#D6473C] transition duration-300">
+                <button
+                  onClick={(e) => {
+                    handleScroll(e, '#contact-us', isFixed);
+                  }}
+                  className="bg-[#F25849] text-white px-8 py-3 rounded-full font-medium text-sm hover:bg-[#D6473C] transition duration-300"
+                >
                   Join us Today
                 </button>
-                
-  <button 
-      onClick={(e) => {
-        handleScroll(e, '#services', isFixed);
-      }}
-  
-  className="bg-[#172840] text-white px-8 py-3 rounded-full font-medium text-sm transition duration-300 hover:bg-[#6FA1B7]">
-    Discover More
-  </button>
-
+                <button
+                  onClick={(e) => {
+                    handleScroll(e, '#services', isFixed);
+                  }}
+                  className="bg-[#172840] text-white px-8 py-3 rounded-full font-medium text-sm transition duration-300 hover:bg-[#6FA1B7]"
+                >
+                  Discover More
+                </button>
               </div>
             </div>
             <div className="flex flex-col gap-4">
@@ -372,20 +371,20 @@ const HomePage = () => {
               </p>
             </div>
             <div className="flex md:flex-row flex-col gap-4">
-              <button 
-                  onClick={(e) => {
-                    handleScroll(e, '#contact-us', isFixed);
-                  }}
-              
-              className="bg-[#F25849] text-white px-8 py-3 rounded-full font-medium text-sm hover:bg-[#D6473C] transition duration-300">
+              <button
+                onClick={(e) => {
+                  handleScroll(e, '#contact-us', isFixed);
+                }}
+                className="bg-[#F25849] text-white px-8 py-3 rounded-full font-medium text-sm hover:bg-[#D6473C] transition duration-300"
+              >
                 Join us Today
               </button>
-              <button 
-                  onClick={(e) => {
-                    handleScroll(e, '#events', isFixed);
-                  }}
-              
-              className="bg-white px-8 py-3 rounded-full font-medium text-sm transition duration-300 hover:bg-[#6FA1B7]">
+              <button
+                onClick={(e) => {
+                  handleScroll(e, '#events', isFixed);
+                }}
+                className="bg-white px-8 py-3 rounded-full font-medium text-sm transition duration-300 hover:bg-[#6FA1B7]"
+              >
                 Register for Webinar
               </button>
             </div>
