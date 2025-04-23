@@ -3,6 +3,7 @@
 
 import NewsletterSignup from "@/components/NewsletterSignup";
 import Image from "next/image";
+import { Icon } from "@iconify/react";
 import Link from "next/link";
 import { menuItems } from "../data/menuData";
 import { useState, useEffect } from "react";
@@ -73,6 +74,78 @@ const Footer = () => {
           {/* Left: Newsletter Signup */}
           <div className="flex flex-col gap-8">
             <NewsletterSignup />
+
+            <div>
+              <ul className="flex cursor-pointer gap-2">
+                {/* Facebook */}
+                <li className="group pb-4 hover:translate-y-[-4px] transition-transform duration-300">
+                  <Link
+                    href="https://www.facebook.com/panafricanagencynetwork"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Facebook"
+                  >
+                    <Icon
+                      icon="ic:baseline-facebook"
+                      width="32"
+                      height="32"
+                      className="text-gray-400 group-hover:text-[#1877F2]"
+                    />
+                  </Link>
+                </li>
+
+                {/* LinkedIn */}
+                <li className="group pb-4 hover:translate-y-[-4px] transition-transform duration-300">
+                  <Link
+                    href="https://www.linkedin.com/company/pan-african-agency-network"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="LinkedIn"
+                  >
+                    <Icon
+                      icon="mdi:linkedin"
+                      width="32"
+                      height="32"
+                      className="text-gray-400 group-hover:text-[#0077B5]"
+                    />
+                  </Link>
+                </li>
+
+                {/* Instagram */}
+                <li className="group pb-4 hover:translate-y-[-4px] transition-transform duration-300">
+                  <Link
+                    href="https://instagram.com/pan_african_agency_network"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Instagram"
+                  >
+                    <Icon
+                      icon="mingcute:instagram-fill"
+                      width="32"
+                      height="32"
+                      className="text-gray-400 group-hover:text-[#E4405F]"
+                    />
+                  </Link>
+                </li>
+
+                {/* X (formerly Twitter) */}
+                <li className="group pb-4 hover:translate-y-[-4px] transition-transform duration-300">
+                  <Link
+                    href="https://x.com/paan_network"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="X"
+                  >
+                    <Icon
+                      icon="iconoir:x"
+                      width="32"
+                      height="32"
+                      className="text-gray-400 group-hover:text-black"
+                    />
+                  </Link>
+                </li>
+              </ul>
+            </div>
           </div>
 
           {/* Right: Vertical Menu */}
