@@ -76,7 +76,7 @@ const Footer = () => {
             <NewsletterSignup />
 
             <div>
-              <ul className="flex cursor-pointer gap-2">
+              <ul className="flex gap-2">
                 {/* Facebook */}
                 <li className="group pb-4 hover:translate-y-[-4px] transition-transform duration-300">
                   <Link
