@@ -10,7 +10,6 @@ const ThankYouPage = () => {
         title="Thank You | Pan-African Agency Network (PAAN)"
         description="Thank you for contacting the Pan-African Agency Network (PAAN). We have received your message and will get back to you soon."
         keywords="PAAN, thank you, contact, Pan-African Agency Network"
-        image="https://www.paan.africa/assets/images/logo.svg"
         noindex={true} // Add noindex prop
       />
       <main className="min-h-screen flex flex-col">

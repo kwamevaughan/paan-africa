@@ -68,7 +68,6 @@ const HomePage = () => {
         title="Pan-African Agency Network (PAAN) | Redefining Africa’s Creative & Tech Footprint"
         description="The Pan-African Agency Network (PAAN) is a bold alliance of independent agencies across Africa and the diaspora, transforming fragmentation into unity and potential into global influence."
         keywords="Pan-African Agency Network, PAAN, African agencies, creative network, tech network, collaboration, innovation, global influence"
-        image="https://www.paan.africa/assets/images/logo.svg"
       />
       <main className="px-3 pt-6 sm:px-0 sm:pt-0 relative">
         <Header />
