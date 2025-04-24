@@ -11,7 +11,6 @@ const PrivacyPolicy = () => {
         title="Privacy Policy | Pan-African Agency Network (PAAN)"
         description="Learn how the Pan-African Agency Network (PAAN) collects, uses, and protects your personal information. Read our Privacy Policy for more details."
         keywords="PAAN, privacy policy, data protection, Pan-African Agency Network"
-        image="https://www.paan.africa/assets/images/logo.png"
       />
       <main className="min-h-screen flex flex-col">
         <Header />
