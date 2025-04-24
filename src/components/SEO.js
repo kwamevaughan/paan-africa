@@ -3,7 +3,7 @@ import { useRouter } from "next/router"; // Import useRouter for dynamic URL
 
 const SEO = ({
   title = "Pan-African Agency Network (PAAN)",
-  description = "The Pan-African Agency Network (PAAN) is a bold alliance of independent agencies across Africa and the diaspora, transforming fragmentation into unity and potential into global influence.",
+  description = "Discover the Pan-African Agency Network (PAAN), a dynamic alliance of creative and tech agencies across Africa and the diaspora. Join us to unlock global opportunities, access exclusive resources, and collaborate with top talent to redefine Africa’s creative and technological footprint. Explore our membership tiers, services, and upcoming events today!",
   keywords = "Pan-African Agency Network, PAAN, African agencies, creative network, tech network, collaboration, innovation, global influence",
   image = "https://www.paan.africa/assets/images/opengraph.png",
   noindex = false,
