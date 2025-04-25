@@ -426,7 +426,20 @@ const HomePage = () => {
           </section>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 items-center mt-10">
             <div className="col-span-1 pattern-bg-1 rounded-lg transform transition-transform duration-300 hover:translate-y-[-10px]">
-              <div className="bg-[#84C1D9]/50 py-16 px-8 rounded-lg h-full">
+              <Link
+                href="https://us06web.zoom.us/webinar/register/WN_3lR6MRbNT7Or-tqRnlRijw"
+                target="_blank" // Opens in new tab
+                rel="noopener noreferrer" // Security best practice for external links
+              >
+                <Image
+                  src="/assets/images/webinar.jpg"
+                  width={900}
+                  height={0}
+                  alt="Webinar"
+                  className="rounded-lg object-cover w-full h-full"
+                />
+              </Link>
+              {/* <div className="bg-[#84C1D9]/50 py-16 px-8 rounded-lg h-full">
                 <button className="bg-[#172840] text-white px-8 py-3 rounded-full font-medium text-sm transition duration-300 hover:bg-[#1f3c66] mb-4">
                   Webinar
                 </button>
@@ -456,7 +469,7 @@ const HomePage = () => {
                   with practical strategies for scaling, winning global clients,
                   and building sustainable operations.
                 </p>
-              </div>
+              </div> */}
             </div>
             <div className="col-span-1 pattern-bg-2 rounded-lg transform transition-transform duration-300 hover:translate-y-[-5px]">
               <div className="bg-[#F25849]/50 py-16 px-8 rounded-lg h-full">
