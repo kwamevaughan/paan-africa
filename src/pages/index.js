@@ -432,7 +432,7 @@ const HomePage = () => {
                 rel="noopener noreferrer" // Security best practice for external links
               >
                 <Image
-                  src="/assets/images/webinar.jpg"
+                  src="/assets/images/zoom-webinar.jpg"
                   width={900}
                   height={0}
                   alt="Webinar"
