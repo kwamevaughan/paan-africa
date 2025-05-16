@@ -1,0 +1,409 @@
+import SEO from "@/components/SEO";
+import Header from "../layouts/header";
+import { MapPin, Calendar } from "lucide-react";
+import Image from "next/image";
+import { Globe, Users, Cpu, BarChart3 } from "lucide-react";
+import BreakoutSessions from "@/components/BreakoutSessions";
+import Footer from "@/layouts/footer";
+import { useEffect, useRef, useState } from "react";
+import BenefitsToggle from "@/components/BenefitsToggle";
+import { useFixedHeader, handleScroll } from '../../utils/scrollUtils';
+import SeminarRegistration from "@/components/SeminarRegistration";
+
+const SummitPage = () => {
+  const sectionRefs = {
+    home: useRef(null),
+    aboutUs: useRef(null),
+    ourMission: useRef(null),
+    whyJoinUs: useRef(null),
+    membership: useRef(null),
+    services: useRef(null),
+    events: useRef(null),
+    contactUs: useRef(null),
+  };
+
+  const isFixed = useFixedHeader();
+
+  // Restore IntersectionObserver for section transitions
+  useEffect(() => {
+    const observerOptions = {
+      root: null,
+      rootMargin: "0px",
+      threshold: 0.1,
+    };
+
+    const observerCallback = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("section-visible");
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+    Object.values(sectionRefs).forEach((ref) => {
+      if (ref.current) {
+        observer.observe(ref.current);
+      }
+    });
+
+    return () => {
+      Object.values(sectionRefs).forEach((ref) => {
+        if (ref.current) {
+          observer.unobserve(ref.current);
+        }
+      });
+    };
+  }, []);
+
+  return (
+    <>
+      <SEO
+        title="Pan-African Agency Network (PAAN) | Redefining Africa's Creative & Tech Footprint"
+        description="Discover the Pan-African Agency Network (PAAN), a dynamic alliance of creative and tech agencies across Africa and the diaspora. Join us to unlock global opportunities, access exclusive resources, and collaborate with top talent to redefine Africa's creative and technological footprint. Explore our membership tiers, services, and upcoming events today!"
+        keywords="Pan-African Agency Network, PAAN, African agencies, creative network, tech network, collaboration, innovation, global influence"
+      />
+      <main className="px-3 pt-6 sm:px-0 sm:pt-0 relative">
+        <Header />
+
+        <Hero/>
+
+        <div className="bg-[#172840] relative">
+        <section className="relative z-10 mx-auto max-w-6xl">
+          <div className="grid md:grid-cols-2 sm:grid-cols-1 gap-8 py-20 items-center">
+            <div className="flex flex-col gap-4 z-0 pr-6">
+              <h2 className="text-4xl text-yellow-400 uppercase font-semibold">About the Summit</h2>
+              <h3 className="text-white text-xl text-left font-normal">The Pan-African Agency Network PAAN is set to host its inaugural summit in Nairobi, Kenya, 
+                bringing together creative and tech leaders from across Africa and the diaspora.<br/><br/> 
+                The summit promises to be a landmark event focused on collaboration, innovation, 
+                and empowerment within Africa's creative and technology sectors.
+              </h3>
+            </div>
+            <div className="flex justify-end">
+              <img src="/assets/images/mission.jpg" alt="PAAN Summit" className="h-96 object-cover rounded shadow-lg" />
+            </div>
+          </div>
+        </section>
+        <Image
+          src="/assets/images/bg-pattern.svg"
+          width={0}
+          height={0}
+          alt="Background Pattern"
+          className="absolute top-0 left-0 w-full h-full object-cover z-0 opacity-10"
+        />
+      </div>
+
+        <div
+          className="mx-auto max-w-6xl mt-20 mb-20 relative"
+        >
+          <section className="relative z-10">
+          </section>
+          <section className="relative z-10 grid grid-cols-1 sm:grid-cols-2 gap-8 items-center">
+            <div className="flex flex-col gap-6">
+              <Image
+                src="/assets/images/about-paan-1.png"
+                width={500}
+                height={300}
+                alt="Team collaboration"
+                className="rounded-lg object-cover w-full h-64"
+              />
+              <Image
+                src="/assets/images/about-paan-2.png"
+                width={500}
+                height={300}
+                alt="Team collaboration"
+                className="rounded-lg object-cover w-full h-64"
+              />
+            </div>
+            <div className="flex flex-col gap-4">
+              <h2 className="text-4xl uppercase font-bold">About PAAN</h2>
+              <h3 className="text-md text-left font-normal">PAAN is a bold alliance of independent agencies across Africa and the diaspora.
+                Empowering African agencies through partnerships, shared resources and advocacy to deliver world-class solutions.</h3>
+              <h4 className="font-normal">Summit Highlights</h4>
+              <div className="flex items-center gap-3 border-b border-gray-200 pb-4 transform transition-transform duration-300 hover:translate-y-[-5px]">
+                <Image
+                  src="/assets/images/icons/pan-african-reach.svg"
+                  width={40}
+                  height={40}
+                  alt="Pan-African Reach"
+                />
+                <div>
+                  <h4 className="text-sm text-red-500 font-bold mb-2">Keynotes & Showcases</h4>
+                  <p className="text-sm font-base">
+                    The summit will feature powerful keynotes and showcases from Africa's brightest creative and tech minds.
+                  </p>
+                </div>
+              </div>
+              <div className="flex items-center gap-3 border-b border-gray-200 pb-4 transform transition-transform duration-300 hover:translate-y-[-5px]">
+                <Image
+                  src="/assets/images/icons/pan-african-reach.svg"
+                  width={40}
+                  height={40}
+                  alt="Pan-African Reach"
+                />
+                <div>
+                  <h4 className="text-sm text-red-500 font-bold mb-2">Networking Opportunities</h4>
+                  <p className="text-sm font-base">
+                    Attendees will have the chance to connect with peers, potential collaborators, and industry leaders.​
+                  </p>
+                </div>
+              </div>
+              <div className="flex items-center gap-3 border-b border-gray-200 pb-4 transform transition-transform duration-300 hover:translate-y-[-5px]">
+                <Image
+                  src="/assets/images/icons/pan-african-reach.svg"
+                  width={40}
+                  height={40}
+                  alt="Pan-African Reach"
+                />
+                <div>
+                  <h4 className="text-sm text-red-500 font-bold mb-2">Workshops & Panels</h4>
+                  <p className="text-sm font-base">
+                    Interactive sessions designed to equip agencies with practical strategies for scaling, winning global clients, and building sustainable operations.​​
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <div className="bg-[#F25849] -z-10 relative">
+          <section className="relative z-10 mx-auto max-w-6xl">
+            <KeynotePanels/>
+          </section>
+        </div>
+
+        <div className="mx-auto max-w-6xl mt-20">          
+          <section className="grid grid-cols-1 sm:grid-cols-3 gap-8 items-center">            
+            <div className="col-span-1 sm:col-span-2 flex flex-col gap-4">
+              <h2 className="text-3xl uppercase font-bold text-left text-black mb-12">Breakout Sessions</h2>
+              <BreakoutSessions />
+            </div>
+            <div className="relative col-span-1 sm:col-span-1 flex flex-col gap-6">
+              <img 
+                src="/assets/images/breakout-session-1.png" 
+                alt="Breakout session 1" 
+                className="rounded-lg object-cover w-full h-64"
+              />
+              <img 
+                src="/assets/images/breakout-session-2.png" 
+                alt="Breakout session 2" 
+                className="rounded-lg object-cover w-full h-64"
+              />
+            </div>
+          </section>
+        </div>
+
+        <div className="bg-[#84C1D9] -z-10 relative mt-10 py-10">
+          <section className="relative z-10 mx-auto max-w-6xl">
+            <h2 className="text-3xl uppercase font-bold text-center text-black mb-12">WHAT TO LOOK FORWARD TO</h2>
+            <BenefitsToggle />
+          </section>
+        </div>
+
+        <div className="bg-[#D1D3D4] -z-10 relative py-10">
+          <section className="relative z-10 mx-auto max-w-6xl">
+            <SeminarRegistration />
+          </section>
+        </div>
+        
+        <Footer />
+      </main>
+    </>
+  );
+};
+
+const Hero = ({ sectionRefs, handleScroll, isFixed }) => {
+  // Countdown timer state and logic
+  const [timeLeft, setTimeLeft] = useState({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0
+  });
+
+  // Set target date to October 22, 2025
+  useEffect(() => {
+    const targetDate = new Date('October 22, 2025 00:00:00');
+    
+    const interval = setInterval(() => {
+      const now = new Date();
+      const difference = targetDate - now;
+      
+      if (difference <= 0) {
+        clearInterval(interval);
+        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+        return;
+      }
+      
+      const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((difference / (1000 * 60)) % 60);
+      const seconds = Math.floor((difference / 1000) % 60);
+      
+      setTimeLeft({ days, hours, minutes, seconds });
+    }, 1000);
+    
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <div
+      className="relative h-screen w-full" 
+      id="home"
+    >
+      {/* Full background image */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center"
+        style={{
+          backgroundImage: "url('/assets/images/hero.png')",
+          filter: "brightness(0.5)" // Darkening the image
+        }}
+      />
+             
+      {/* Content overlay */}
+      <div className="relative h-full flex items-center">
+        <div className="mx-auto max-w-6xl px-4 md:px-6 w-full">
+          <div className="max-w-2xl">
+          <h3 className="text-md text-yellow-400 mb-1">PAAN Inaugural Summit 2025</h3>
+            <h2 className="text-3xl md:text-3xl font-semibold uppercase text-yellow-400 mb-8">
+              Where Africa's Creative<br/>
+              and Tech Leaders Unite
+            </h2>
+            <p className="text-gray-100 font-normal mb-8">
+                  Join the first-ever Pan-African Agency Network (PAAN) Summit — <br/>
+                  a landmark gathering of bold thinkers and changemakers shaping Africa's creative and tech industries.
+            </p>
+            <div className="flex md:flex-row flex-col gap-4 mb-10">
+              <SeminarLocationAndDate />
+            </div>
+            <div>
+              <p className="text-white text-xs italic">Be part of history. Be part of the movement.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      {/* countdown bar */}
+      <div className="fixed bottom-0 left-0 right-0 w-full z-50 shadow-lg border-t border-gray-200"
+          style={{ background: 'linear-gradient(to right, #87CEEB, #B0E0E6)' }}>
+          <div className="flex flex-col md:flex-row items-center justify-between max-w-6xl mx-auto px-4 py-3">
+              <div className="flex flex-col md:flex-row items-center gap-4 md:gap-8 w-full">
+              <div className="text-center md:text-left">
+                  <h3 className="text-lg font-medium text-[#172840] mb-1">Limited Seats Available</h3>
+              </div>
+              <div className="flex justify-center space-x-6">
+                  <div className="text-center">
+                  <div className="text-2xl font-bold text-[#172840] bg-blue-100 px-3 py-1 rounded">
+                      {timeLeft.days}
+                      <div className="text-xs text-gray-600">DAYS</div>
+                  </div>
+                  </div>
+                  <div className="text-center">
+                  <div className="text-2xl font-bold text-[#172840] bg-blue-100 px-3 py-1 rounded">
+                      {timeLeft.hours}
+                      <div className="text-xs text-gray-600">HOURS</div>
+                  </div>
+                  </div>
+                  <div className="text-center">
+                  <div className="text-2xl font-bold text-[#172840] bg-blue-100 px-3 py-1 rounded">
+                      {timeLeft.minutes}
+                      <div className="text-xs text-gray-600">MINUTES</div>
+                  </div>
+                  </div>
+                  <div className="text-center">
+                  <div className="text-2xl font-bold text-[#172840] bg-blue-100 px-3 py-1 rounded">
+                      {timeLeft.seconds}
+                      <div className="text-xs text-gray-600">SECONDS</div>
+                  </div>
+                  </div>
+              </div>
+              </div>
+              <div className="mt-3 md:mt-0">
+              <button
+                  onClick={() => window.location.href="#registration"}
+                  className="bg-[#172840] text-white px-6 py-2 rounded-full font-medium text-sm hover:bg-[#D32F2F] transition duration-300 shadow"
+                  style={{ minWidth: '140px', textAlign: 'center' }}
+              >
+                  Register Now
+              </button>
+              </div>
+          </div>
+          </div>
+    </div>
+  );
+};
+
+
+const SeminarLocationAndDate = ()=> {
+    
+  return (
+    <div className="flex md:flex-row flex-col gap-4">
+      <div className="flex items-center gap-2 text-white text-sm">
+        <MapPin className="text-red-500" size={20} />
+        <span>Nairobi, Kenya</span>
+      </div>
+      
+      <div className="flex items-center gap-2 text-white text-sm">
+        <Calendar className="text-red-500" size={20} />
+        <span>22-24 October 2025</span>
+      </div>
+    </div>
+  );
+}
+
+const  KeynotePanels =()=> {
+  const themes = [
+    {
+      title: "Africa's Creative Future",
+      description: "Where Brands, Tech & Talent Collide- Opening keynote setting the tone for collaboration and innovation.",
+      icon: <Globe className="text-black w-10 h-10" />,
+    },
+    {
+      title: "The Power of Partnership",
+      description: "How African agencies and brands are building together — real stories co-presented by agency and client leaders.",
+      icon: <Users className="text-black w-10 h-10" />,
+    },
+    {
+      title: "Tech Meets Creativity",
+      description: "Driving results through innovation with Africa’s top tech and martech partners.",
+      icon: <Cpu className="text-black w-10 h-10" />,
+    },
+    {
+      title: "The World Of Data",
+      description: "How data is transforming strategy and innovation across African markets and industries.",
+      icon: <BarChart3 className="text-black w-10 h-10" />,
+    },
+  ];
+
+  return (
+    <div>
+      <section className="relative z-10 mx-auto max-w-6xl py-20">
+        <h2 className="text-3xl uppercase font-bold text-center text-white mb-12">MAIN THEMES AND KEYNOTE PANELS</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 px-4">
+          {themes.map((theme, index) => (
+            <div key={index} className="bg-white rounded-lg overflow-hidden shadow-lg flex">
+              {/* left margin */}
+              <div className="w-2 bg-[#84C1D9]"></div>
+              {/* Content container */}
+              <div className="flex p-6 flex-1">
+                {/* Icon */}
+                <div className="mr-6 flex items-start">
+                  {theme.icon}
+                </div>
+                
+                {/* Title and description */}
+                <div className="flex flex-col">
+                  <h3 className="font-bold text-xl mb-2 text-gray-800">{theme.title}</h3>
+                  <p className="text-gray-600">{theme.description}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+    </div>
+  );
+}
+
+export default SummitPage;
