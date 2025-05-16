@@ -43,7 +43,3 @@ yarn-error.log*
 
 # Test output
 coverage/
-
-# Editor history
-.history/
-.history
