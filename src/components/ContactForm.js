@@ -1,19 +1,18 @@
-// ContactForm.js
-import { useState, useRef } from 'react';
-import { useRouter } from 'next/router';
-import toast, { Toaster } from 'react-hot-toast';
-import ReCAPTCHA from 'react-google-recaptcha';
+import { useState, useRef } from "react";
+import { useRouter } from "next/router";
+import toast, { Toaster } from "react-hot-toast";
+import ReCAPTCHA from "react-google-recaptcha";
 
 const ContactForm = () => {
   const router = useRouter();
   const recaptchaRef = useRef(null);
   const [formData, setFormData] = useState({
-    firstName: '',
-    secondName: '',
-    email: '',
-    phone: '',
-    organization: '',
-    message: '',
+    firstName: "",
+    secondName: "",
+    email: "",
+    phone: "",
+    organization: "",
+    message: "",
   });
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -22,7 +21,9 @@ const ContactForm = () => {
   // Check if reCAPTCHA site key is available
   const recaptchaSiteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
   if (!recaptchaSiteKey) {
-    console.error('reCAPTCHA site key is missing. Please set NEXT_PUBLIC_RECAPTCHA_SITE_KEY in .env.local');
+    console.error(
+      "reCAPTCHA site key is missing. Please set NEXT_PUBLIC_RECAPTCHA_SITE_KEY in .env.local"
+    );
   }
 
   // Handle input changes
@@ -35,7 +36,7 @@ const ContactForm = () => {
     // Clear error for the field being edited
     setErrors((prevErrors) => ({
       ...prevErrors,
-      [name]: '',
+      [name]: "",
     }));
   };
 
@@ -44,22 +45,24 @@ const ContactForm = () => {
     setRecaptchaToken(token);
     setErrors((prevErrors) => ({
       ...prevErrors,
-      recaptcha: '',
+      recaptcha: "",
     }));
   };
 
   // Validate form fields
   const validateForm = () => {
     const newErrors = {};
-    if (!formData.firstName.trim()) newErrors.firstName = 'First name is required';
-    if (!formData.secondName.trim()) newErrors.secondName = 'Second name is required';
+    if (!formData.firstName.trim())
+      newErrors.firstName = "First name is required";
+    if (!formData.secondName.trim())
+      newErrors.secondName = "Second name is required";
     if (!formData.email.trim()) {
-      newErrors.email = 'Email is required';
+      newErrors.email = "Email is required";
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = 'Email is invalid';
+      newErrors.email = "Email is invalid";
     }
-    if (!formData.message.trim()) newErrors.message = 'Message is required';
-    if (!recaptchaToken) newErrors.recaptcha = 'Please complete the reCAPTCHA';
+    if (!formData.message.trim()) newErrors.message = "Message is required";
+    if (!recaptchaToken) newErrors.recaptcha = "Please complete the reCAPTCHA";
     return newErrors;
   };
 
@@ -71,18 +74,19 @@ const ContactForm = () => {
     const validationErrors = validateForm();
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
-      toast.error('Please fill in all required fields correctly.');
+      toast.error("Please fill in all required fields correctly.");
       return;
     }
 
     setIsSubmitting(true);
-    const loadingToast = toast.loading('Submitting your message...');
+    // Show immediate toast for user feedback
+    const toastId = toast.loading("Message being sent...");
 
     try {
-      const response = await fetch('/api/send-email', {
-        method: 'POST',
+      const response = await fetch("/api/send-email", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
           ...formData,
@@ -93,28 +97,28 @@ const ContactForm = () => {
       const data = await response.json();
 
       if (response.ok) {
-        toast.success('Message sent successfully!', { id: loadingToast });
+        toast.success("Message sent successfully!", { id: toastId });
         // Reset form and reCAPTCHA
         setFormData({
-          firstName: '',
-          secondName: '',
-          email: '',
-          phone: '',
-          organization: '',
-          message: '',
+          firstName: "",
+          secondName: "",
+          email: "",
+          phone: "",
+          organization: "",
+          message: "",
         });
         setRecaptchaToken(null);
         recaptchaRef.current.reset();
         // Redirect to thank-you page
-        router.push('/thank-you');
+        router.push("/thank-you");
       } else {
-        toast.error(data.message || 'Failed to send message.', { id: loadingToast });
+        toast.error(data.message || "Failed to send message.", { id: toastId });
         setIsSubmitting(false);
         recaptchaRef.current.reset();
         setRecaptchaToken(null);
       }
     } catch (error) {
-      toast.error('An error occurred. Please try again.', { id: loadingToast });
+      toast.error("An error occurred. Please try again.", { id: toastId });
       setIsSubmitting(false);
       recaptchaRef.current.reset();
       setRecaptchaToken(null);
@@ -139,9 +143,10 @@ const ContactForm = () => {
                 name="firstName"
                 value={formData.firstName}
                 onChange={handleChange}
+                disabled={isSubmitting}
                 className={`w-full border-b border-black bg-transparent focus:outline-none focus:border-[#F25849] transition-colors duration-300 ${
-                  errors.firstName ? 'border-red-500' : ''
-                }`}
+                  errors.firstName ? "border-red-500" : ""
+                } ${isSubmitting ? "opacity-50" : ""}`}
               />
               {errors.firstName && (
                 <p className="text-red-500 text-sm mt-1">{errors.firstName}</p>
@@ -157,9 +162,10 @@ const ContactForm = () => {
                 name="secondName"
                 value={formData.secondName}
                 onChange={handleChange}
+                disabled={isSubmitting}
                 className={`w-full border-b border-black bg-transparent focus:outline-none focus:border-[#F25849] transition-colors duration-300 ${
-                  errors.secondName ? 'border-red-500' : ''
-                }`}
+                  errors.secondName ? "border-red-500" : ""
+                } ${isSubmitting ? "opacity-50" : ""}`}
               />
               {errors.secondName && (
                 <p className="text-red-500 text-sm mt-1">{errors.secondName}</p>
@@ -179,9 +185,10 @@ const ContactForm = () => {
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
+                disabled={isSubmitting}
                 className={`w-full border-b border-black bg-transparent focus:outline-none focus:border-[#F25849] transition-colors duration-300 ${
-                  errors.email ? 'border-red-500' : ''
-                }`}
+                  errors.email ? "border-red-500" : ""
+                } ${isSubmitting ? "opacity-50" : ""}`}
               />
               {errors.email && (
                 <p className="text-red-500 text-sm mt-1">{errors.email}</p>
@@ -197,7 +204,10 @@ const ContactForm = () => {
                 name="phone"
                 value={formData.phone}
                 onChange={handleChange}
-                className="w-full border-b border-black bg-transparent focus:outline-none focus:border-[#F25849] transition-colors duration-300"
+                disabled={isSubmitting}
+                className={`w-full border-b border-black bg-transparent focus:outline-none focus:border-[#F25849] transition-colors duration-300 ${
+                  isSubmitting ? "opacity-50" : ""
+                }`}
               />
             </div>
           </div>
@@ -213,7 +223,10 @@ const ContactForm = () => {
               name="organization"
               value={formData.organization}
               onChange={handleChange}
-              className="w-full border-b border-black bg-transparent focus:outline-none focus:border-[#F25849] transition-colors duration-300"
+              disabled={isSubmitting}
+              className={`w-full border-b border-black bg-transparent focus:outline-none focus:border-[#F25849] transition-colors duration-300 ${
+                isSubmitting ? "opacity-50" : ""
+              }`}
             />
           </div>
 
@@ -227,10 +240,11 @@ const ContactForm = () => {
               name="message"
               value={formData.message}
               onChange={handleChange}
+              disabled={isSubmitting}
               rows="4"
               className={`w-full border-b border-black bg-transparent focus:outline-none focus:border-[#F25849] transition-colors duration-300 resize-none ${
-                errors.message ? 'border-red-500' : ''
-              }`}
+                errors.message ? "border-red-500" : ""
+              } ${isSubmitting ? "opacity-50" : ""}`}
             />
             {errors.message && (
               <p className="text-red-500 text-sm mt-1">{errors.message}</p>
@@ -255,10 +269,12 @@ const ContactForm = () => {
               type="submit"
               disabled={isSubmitting}
               className={`bg-[#F25849] text-white px-8 py-3 rounded-full font-medium text-sm transition duration-300 ${
-                isSubmitting ? 'opacity-50 cursor-not-allowed' : 'hover:bg-[#D6473C]'
+                isSubmitting
+                  ? "opacity-50 cursor-not-allowed"
+                  : "hover:bg-[#D6473C]"
               }`}
             >
-              {isSubmitting ? 'Submitting...' : 'Join us Today'}
+              {isSubmitting ? "Submitting..." : "Join us Today"}
             </button>
           </div>
         </form>

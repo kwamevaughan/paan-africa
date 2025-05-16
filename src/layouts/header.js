@@ -1,11 +1,10 @@
-// layouts/header.js
-'use client';
+"use client";
 
-import Image from 'next/image';
-import Link from 'next/link';
-import { useState } from 'react';
-import { menuItems, ctaButton } from '../data/menuData';
-import { useFixedHeader, handleScroll } from '../../utils/scrollUtils';
+import Image from "next/image";
+import Link from "next/link";
+import { useState } from "react";
+import { menuItems, ctaButton } from "../data/menuData";
+import { useFixedHeader, handleScroll } from "../../utils/scrollUtils";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -13,10 +12,10 @@ const Header = () => {
 
   return (
     <nav
-      className={`bg-white w-full z-50 transition-all duration-300 ${
+      className={`bg-white w-full z-10 transition-all duration-300 ${
         isFixed
-          ? 'fixed top-0 left-0 shadow-lg backdrop-blur-md bg-white/80'
-          : 'relative'
+          ? "fixed top-0 left-0 shadow-lg backdrop-blur-md bg-white/80"
+          : "relative"
       }`}
     >
       <div className="w-full px-4 lg-custom:px-8">
@@ -24,11 +23,11 @@ const Header = () => {
           {/* Logo - Left Side */}
           <div className="flex-shrink-0">
             <Link href="/" passHref>
-              <Image 
-                src="/assets/images/logo.svg" 
-                alt="Logo" 
-                width={200} 
-                height={70} 
+              <Image
+                src="/assets/images/logo.svg"
+                alt="Logo"
+                width={200}
+                height={70}
               />
             </Link>
           </div>
@@ -89,7 +88,7 @@ const Header = () => {
         </div>
 
         {/* Mobile Menu (shown when hamburger is clicked) */}
-        <div className={`${isMenuOpen ? 'block' : 'hidden'} lg-custom:hidden`}>
+        <div className={`${isMenuOpen ? "block" : "hidden"} lg-custom:hidden`}>
           <div className="px-2 pt-2 pb-3 space-y-1">
             {menuItems.map((item) => (
               <a

@@ -21,7 +21,7 @@ const SEO = ({
       <meta name="keywords" content={keywords} />
       <meta name="author" content="Pan-African Agency Network (PAAN)" />
       <meta name="robots" content={noindex ? "noindex" : "index, follow"} />
-      <meta charset="UTF-8" />
+      <meta charSet="UTF-8" /> {/* Updated charset to charSet */}
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       {/* Canonical URL */}
       <link rel="canonical" href={canonicalUrl} />
