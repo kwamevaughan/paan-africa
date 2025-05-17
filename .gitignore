@@ -30,3 +30,7 @@ Thumbs.db
 # Optional: If you're using a package-lock file or yarn.lock, you might want to ignore the following too
 package-lock.json
 yarn.lock
+
+# Editor history
+.history/
+.history
