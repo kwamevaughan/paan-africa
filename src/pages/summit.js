@@ -65,12 +65,12 @@ const SummitPage = () => {
         keywords="Pan-African Agency Network, PAAN, African agencies, creative network, tech network, collaboration, innovation, global influence"
       />
       <main className="px-3 pt-6 sm:px-0 sm:pt-0 relative">
-        <Header />
+        <Header navLinkColor='text-white' />
 
         <Hero/>
 
         <div className="bg-[#172840] relative">
-        <section className="relative z-10 mx-auto max-w-6xl">
+        <section className="relative mx-auto max-w-6xl">
           <div className="grid md:grid-cols-2 sm:grid-cols-1 gap-8 py-20 items-center">
             <div className="flex flex-col gap-4 z-0 pr-6">
               <h2 className="text-4xl text-yellow-400 uppercase font-semibold">About the Summit</h2>
@@ -97,9 +97,9 @@ const SummitPage = () => {
         <div
           className="mx-auto max-w-6xl mt-20 mb-20 relative"
         >
-          <section className="relative z-10">
+          <section className="relative">
           </section>
-          <section className="relative z-10 grid grid-cols-1 sm:grid-cols-2 gap-8 items-center">
+          <section className="relative grid grid-cols-1 sm:grid-cols-2 gap-8 items-center">
             <div className="flex flex-col gap-6">
               <Image
                 src="/assets/images/about-paan-1.png"
@@ -168,7 +168,7 @@ const SummitPage = () => {
         </div>
 
         <div className="bg-[#F25849] -z-10 relative">
-          <section className="relative z-10 mx-auto max-w-6xl">
+          <section className="relative mx-auto max-w-6xl">
             <KeynotePanels/>
           </section>
         </div>
@@ -195,14 +195,14 @@ const SummitPage = () => {
         </div>
 
         <div className="bg-[#84C1D9] -z-10 relative mt-10 py-10">
-          <section className="relative z-10 mx-auto max-w-6xl">
+          <section className="relative mx-auto max-w-6xl">
             <h2 className="text-3xl uppercase font-bold text-center text-black mb-12">WHAT TO LOOK FORWARD TO</h2>
             <BenefitsToggle />
           </section>
         </div>
 
         <div className="bg-[#D1D3D4] -z-10 relative py-10">
-          <section className="relative z-10 mx-auto max-w-6xl">
+          <section className="relative mx-auto max-w-6xl">
             <SeminarRegistration />
           </section>
         </div>
@@ -378,7 +378,7 @@ const  KeynotePanels =()=> {
 
   return (
     <div>
-      <section className="relative z-10 mx-auto max-w-6xl py-20">
+      <section className="relative mx-auto max-w-6xl py-20">
         <h2 className="text-3xl uppercase font-bold text-center text-white mb-12">MAIN THEMES AND KEYNOTE PANELS</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 px-4">
           {themes.map((theme, index) => (

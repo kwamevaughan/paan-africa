@@ -73,7 +73,7 @@ const HomePage = () => {
         <Header />
 
         <div
-          className="mx-auto max-w-6xl section pt-0"
+          className="mx-auto max-w-6xl section pt-0 mt-32 sm:mt-0"
           id="home"
           ref={sectionRefs.home}
         >
@@ -97,14 +97,11 @@ const HomePage = () => {
                 >
                   Join the Network
                 </button>
-                <button
-                  onClick={(e) => {
-                    handleScroll(e, "#our-mission", isFixed);
-                  }}
+                <a href="./freelancers"
                   className="bg-[#84C1D9] text-[#172840] px-8 py-3 rounded-full font-medium text-sm transition duration-300 hover:bg-[#6FA1B7]"
                 >
-                  Explore Our Vision
-                </button>
+                  PAAN Certified Freelancers
+                </a>
               </div>
             </div>
             <div>
@@ -203,15 +200,19 @@ const HomePage = () => {
         </div>
 
         <div
-          className="bg-[#172840] relative section"
+          className="bg-[#172840] relative section px-4 sm:px-6 lg:px-8"
           id="our-mission"
           ref={sectionRefs.ourMission}
         >
+          {/* Decorative Circles */}
           <div className="hidden md:block absolute top-4 left-28 w-28 h-28 bg-[#F25849] rounded-full z-20"></div>
-          <div className="absolute -top-14 -right-10 w-28 h-28 bg-[#D1D3D4] rounded-full z-0"></div>
-          <div className="absolute bottom-40 right-40 w-16 h-16 bg-[#F25849] rounded-full z-0"></div>
-          <section className="relative z-10 mt-20 mx-auto max-w-6xl">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 items-center py-20">
+          <div className="hidden sm:block absolute bottom-40 right-10 w-16 h-16 bg-[#F25849] rounded-full z-0"></div>
+          <div className="hidden sm:block absolute top-10 right-10 w-16 h-16 bg-[#D1D3D4] rounded-full z-0"></div>
+
+          {/* Main Section */}
+          <section className="relative z-10 mt-16 mx-auto max-w-6xl">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 items-center py-16">
+              {/* Image */}
               <div className="relative">
                 <Image
                   src="/assets/images/mission.jpg"
@@ -221,38 +222,43 @@ const HomePage = () => {
                   className="rounded-lg object-cover w-full h-auto"
                 />
               </div>
-              <div className="flex flex-col gap-10 z-0">
-                <div className="flex items-center gap-3 m-0 md:-ml-24 transform transition-transform duration-300 hover:translate-y-[-5px]">
+
+              {/* Vision & Mission Text */}
+              <div className="flex flex-col gap-10">
+                {/* Vision */}
+                <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 transform transition-transform duration-300 hover:-translate-y-1">
                   <Image
                     src="/assets/images/icons/vision.svg"
-                    width={140}
-                    height={0}
+                    width={112}
+                    height={112}
                     alt="Vision Statement"
-                    className="bg-[#172840] p-4 rounded-full w-28"
+                    className="bg-[#172840] p-4 rounded-full w-24 sm:w-28"
                   />
                   <div>
-                    <p className="text-2xl font-base text-white">
+                    <p className="text-xl sm:text-2xl font-semibold text-white">
                       Vision Statement
                     </p>
-                    <span className="text-white font-light text-sm">
+                    <span className="text-white font-light text-sm sm:text-base">
                       To become Africa’s foremost collaborative network, shaping
                       global narratives through creativity and technology.
                     </span>
                   </div>
                 </div>
-                <div className="flex items-center gap-3 m-0 md:-ml-24 transform transition-transform duration-300 hover:translate-y-[-5px]">
+
+                {/* Mission */}
+                <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 transform transition-transform duration-300 hover:-translate-y-1">
                   <Image
                     src="/assets/images/icons/mission.svg"
-                    width={140}
-                    height={0}
+                    width={112}
+                    height={112}
                     alt="Mission Statement"
-                    className="bg-[#172840] p-4 rounded-full w-28"
+                    className="bg-[#172840] p-4 rounded-full w-24 sm:w-28"
                   />
                   <div>
-                    <p className="text-2xl font-base text-white">
+                    <p className="text-xl sm:text-2xl font-semibold text-white">
                       Mission Statement
                     </p>
-                    <span className="text-white font-light text-sm">
+                    <span className="text-white font-light text-sm sm:text-base">
                       Empowering African agencies through partnerships, shared
                       resources, and advocacy to deliver world-class solutions.
                     </span>
@@ -262,6 +268,7 @@ const HomePage = () => {
             </div>
           </section>
         </div>
+
 
         <div
           className="mx-auto max-w-6xl mt-20 mb-20 relative section"
@@ -473,9 +480,9 @@ const HomePage = () => {
             </div>
             <div className="col-span-1 pattern-bg-2 rounded-lg transform transition-transform duration-300 hover:translate-y-[-5px]">
               <div className="bg-[#F25849]/50 py-16 px-8 rounded-lg h-full">
-                <button className="bg-white px-8 py-3 rounded-full font-medium text-sm transition duration-300 hover:bg-[#1f3c66] hover:text-white mb-4">
+                <a href="/summit" className="block w-32 bg-white px-8 py-3 rounded-full font-medium text-sm transition duration-300 hover:bg-[#1f3c66] hover:text-white mb-4">
                   Summit
-                </button>
+                </a>
                 <p className="text-2xl mb-4 text-white">
                   Inaugural PAAN Summit
                 </p>

@@ -6,16 +6,19 @@ import { useState } from "react";
 import { menuItems, ctaButton } from "../data/menuData";
 import { useFixedHeader, handleScroll } from "../../utils/scrollUtils";
 
-const Header = () => {
+const Header = ({ navLinkColor }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const isFixed = useFixedHeader();
+  
+  // Determine the current text color based on scroll position
+  const currentTextColor = isFixed ? "text-gray-950" : navLinkColor;
 
   return (
     <nav
-      className={`bg-white w-full z-10 transition-all duration-300 ${
+      className={`w-full z-10 transition-all duration-300 ${
         isFixed
           ? "fixed top-0 left-0 shadow-lg backdrop-blur-md bg-white/80"
-          : "relative"
+          : "absolute bg-transparent"
       }`}
     >
       <div className="w-full px-4 lg-custom:px-8">
@@ -34,9 +37,9 @@ const Header = () => {
 
           {/* Hamburger Menu Button (mobile only) */}
           <div className="lg-custom:hidden flex items-center">
-            <button
+                          <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="p-2 rounded-md text-gray-950 focus:outline-none"
+              className={`p-2 rounded-md ${currentTextColor} focus:outline-none`}
             >
               <svg
                 className="h-6 w-6"
@@ -71,7 +74,7 @@ const Header = () => {
                   key={item.href}
                   href={item.href}
                   onClick={(e) => handleScroll(e, item.href, isFixed)}
-                  className="text-gray-950 hover:text-gray-900 hover:bg-[#F2B706] px-4 py-2 rounded-full transition-all duration-300 cursor-pointer"
+                  className={`${currentTextColor} hover:text-gray-900 hover:bg-[#F2B706] px-4 py-2 rounded-full transition-all duration-300 cursor-pointer`}
                 >
                   {item.label}
                 </a>
@@ -89,7 +92,7 @@ const Header = () => {
 
         {/* Mobile Menu (shown when hamburger is clicked) */}
         <div className={`${isMenuOpen ? "block" : "hidden"} lg-custom:hidden`}>
-          <div className="px-2 pt-2 pb-3 space-y-1">
+          <div className="px-2 pt-2 pb-3 space-y-1 bg-white rounded-lg shadow-lg">
             {menuItems.map((item) => (
               <a
                 key={item.href}
@@ -98,7 +101,7 @@ const Header = () => {
                   handleScroll(e, item.href, isFixed);
                   setIsMenuOpen(false);
                 }}
-                className="text-gray-950 hover:text-gray-900 hover:bg-[#F2B706] block px-4 py-2 rounded-full transition-all duration-300 cursor-pointer"
+                className={`${currentTextColor} hover:text-gray-900 hover:bg-[#F2B706] block px-4 py-2 rounded-full transition-all duration-300 cursor-pointer`}
               >
                 {item.label}
               </a>

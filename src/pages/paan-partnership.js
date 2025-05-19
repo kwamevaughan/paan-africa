@@ -235,14 +235,14 @@ const FreelancersPage = () => {
 const Hero = () => {
   return (
     <div
-      className="relative h-screen w-full bg-white overflow-hidden" 
+      className="relative h-screen w-full bg-[#F25849] overflow-hidden" 
       id="home"
     >
       {/* Background image as an overlay */}
       <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-80"
+        className="absolute inset-0 bg-center bg-no-repeat opacity-80"
         style={{
-          backgroundImage: "url('/assets/images/freelancer-hero.png')"
+          backgroundImage: "url('/assets/images/bg-pattern.png')"
         }}
       />
              
@@ -251,78 +251,16 @@ const Hero = () => {
         <div className="max-w-6xl px-6 md:px-8 pt-24 pb-8 flex flex-col justify-between h-full">
           {/* Main content section with improved spacing */}
           <div className="max-w-2xl mx-auto text-center space-y-6 mt-4">
-            <h2 className="text-[#172840] text-3xl md:text-4xl font-bold mb-6 relative">
-              <span className="relative inline-block">
-                <span className="text-[#F25849] relative z-10">Freelance</span>
-                <img 
-                  src="/assets/images/sketch-1.png" 
-                  alt="" 
-                  className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-auto h-auto z-0"
-                  style={{ width: '120%', height: 'auto' }}
-                />
-              </span> with Purpose. Grow with Structure & Scale
+            <h2 className="text-white text-3xl md:text-4xl font-bold mb-6 relative uppercase">
+              PAAN Partnership Program
             </h2>
             
-            <p className="text-[#172840] text-md mb-6">
-              Join Africa&apos;s premier network of vetted creative, technical, and strategic talent—powering high-impact campaigns across the continent.
+            <p className="text-white text-md mb-6">
+                Power Your Growth Across AfricaUnlock Africa’s Potential with PAAN’s Agency Network.
             </p>
             
-            <div className="flex flex-col md:flex-row justify-center items-center md:space-x-8 space-y-4 md:space-y-0 mb-8">
-              <div className="text-[#172840] text-sm flex items-center whitespace-nowrap">
-                <div className="flex items-center justify-center bg-[#F2B706] rounded-full p-1 mr-2">
-                  <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1.92 14.05L6.5 12.38l1.41-1.41 2.17 2.17 5.84-5.84 1.41 1.41-7.25 7.34z" />
-                  </svg>
-                </div>
-                <p className="text-xs">Trusted by agencies in <span className="font-bold">20+ African countries</span></p>
-              </div>
-              <div className="text-[#172840] text-sm flex items-center whitespace-nowrap">
-                <div className="flex items-center justify-center bg-[#F2B706] rounded-full p-1 mr-2">
-                  <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1.92 14.05L6.5 12.38l1.41-1.41 2.17 2.17 5.84-5.84 1.41 1.41-7.25 7.34z" />
-                  </svg>
-                </div>
-                <p className="text-xs">Backed by the <span className="font-bold">Pan-African Agency Network (PAAN)</span></p>
-              </div>
-            </div>
-            
-            <button
-              type="submit"
-              className="bg-[#F25849] text-white py-3 px-8 rounded-full hover:bg-orange-600 transition duration-300 font-medium text-xs"
-            >
-              Become a Certified PAAN Freelancer
-            </button>            
-          </div>
-          
-          {/* Images section with better positioning */}
-          <div className="flex justify-center mt-auto mb-6">
-            <div className="flex flex-row max-w-5xl h-48 md:h-56 gap-3 md:gap-5 mx-auto">
-              <img 
-                src="/assets/images/freelancer-1.png" 
-                alt="Hero image 1"
-                className="w-1/5 h-full object-cover"
-              />
-              <img 
-                src="/assets/images/freelancer-2.png" 
-                alt="Hero image 2"
-                className="w-1/5 h-full object-cover"
-              />
-              <img 
-                src="/assets/images/freelancer-3.png" 
-                alt="Hero image 3"
-                className="w-1/5 h-full object-cover"
-              />
-              <img 
-                src="/assets/images/freelancer-4.png" 
-                alt="Hero image 4"
-                className="w-1/5 h-full object-cover"
-              />
-              <img 
-                src="/assets/images/freelancer-5.png" 
-                alt="Hero image 5"
-                className="w-1/5 h-full object-cover"
-              />
-            </div>
+        
+                        
           </div>
         </div>
       </div>
