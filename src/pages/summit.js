@@ -1,6 +1,5 @@
 import SEO from "@/components/SEO";
-import Header from "../layouts/header";
-import { MapPin, Calendar } from "lucide-react";
+import Header from "../layouts/summit-header";
 import Image from "next/image";
 import { Globe, Users, Cpu, BarChart3 } from "lucide-react";
 import BreakoutSessions from "@/components/BreakoutSessions";
@@ -81,51 +80,50 @@ const SummitPage = () => {
               </h3>
             </div>
             <div className="flex justify-end">
-              <img src="/assets/images/mission.jpg" alt="PAAN Summit" className="h-96 object-cover rounded shadow-lg" />
+              <img src="/assets/images/about-summit.png" alt="PAAN Summit" className="h-[30rem] object-cover rounded shadow-lg" />
             </div>
           </div>
         </section>
         <Image
-          src="/assets/images/bg-pattern.svg"
-          width={0}
-          height={0}
-          alt="Background Pattern"
-          className="absolute top-0 left-0 w-full h-full object-cover z-0 opacity-10"
-        />
-      </div>
+            src="/assets/images/bg-pattern.svg"
+            width={0}
+            height={0}
+            alt="Background Pattern"
+            className="absolute bottom-0 left-0 w-full h-1/3 object-cover z-0 opacity-10"
+          />
+        </div>
 
-        <div
-          className="mx-auto max-w-6xl mt-20 mb-20 relative"
-        >
-          <section className="relative">
-          </section>
-          <section className="relative grid grid-cols-1 sm:grid-cols-2 gap-8 items-center">
-            <div className="flex flex-col gap-6">
-              <Image
-                src="/assets/images/about-paan-1.png"
-                width={500}
-                height={300}
-                alt="Team collaboration"
-                className="rounded-lg object-cover w-full h-64"
-              />
-              <Image
-                src="/assets/images/about-paan-2.png"
-                width={500}
-                height={300}
-                alt="Team collaboration"
-                className="rounded-lg object-cover w-full h-64"
-              />
-            </div>
+        <div className="mx-auto max-w-6xl my-20 relative">
+          <section className="relative grid grid-cols-1 sm:grid-cols-3 gap-6 items-start">
+            {/* Image column - taking 1/3 of the space */}
             <div className="flex flex-col gap-4">
+              <div className="w-full relative overflow-hidden rounded-lg">
+                <img 
+                  src="/assets/images/about-paan-1.png" 
+                  alt="Breakout session 1" 
+                  className="object-cover w-full h-64"
+                />
+              </div>
+              <div className="w-full relative overflow-hidden rounded-lg">
+                <img 
+                  src="/assets/images/about-paan-2.png" 
+                  alt="Breakout session 2" 
+                  className="object-cover w-full h-64"
+                />
+              </div>
+            </div>
+            
+            {/* Content column - taking 2/3 of the space */}
+            <div className="flex flex-col gap-4 col-span-2">
               <h2 className="text-4xl uppercase font-bold">About PAAN</h2>
               <h3 className="text-md text-left font-normal">PAAN is a bold alliance of independent agencies across Africa and the diaspora.
                 Empowering African agencies through partnerships, shared resources and advocacy to deliver world-class solutions.</h3>
               <h4 className="font-normal">Summit Highlights</h4>
               <div className="flex items-center gap-3 border-b border-gray-200 pb-4 transform transition-transform duration-300 hover:translate-y-[-5px]">
                 <Image
-                  src="/assets/images/icons/pan-african-reach.svg"
-                  width={40}
-                  height={40}
+                  src="/assets/images/icon-1.png"
+                  width={60}
+                  height={60}
                   alt="Pan-African Reach"
                 />
                 <div>
@@ -137,29 +135,29 @@ const SummitPage = () => {
               </div>
               <div className="flex items-center gap-3 border-b border-gray-200 pb-4 transform transition-transform duration-300 hover:translate-y-[-5px]">
                 <Image
-                  src="/assets/images/icons/pan-african-reach.svg"
-                  width={40}
-                  height={40}
+                  src="/assets/images/icon-2.png"
+                  width={60}
+                  height={60}
                   alt="Pan-African Reach"
                 />
                 <div>
                   <h4 className="text-sm text-red-500 font-bold mb-2">Networking Opportunities</h4>
                   <p className="text-sm font-base">
-                    Attendees will have the chance to connect with peers, potential collaborators, and industry leaders.​
+                    Attendees will have the chance to connect with peers, potential collaborators, and industry leaders.
                   </p>
                 </div>
               </div>
               <div className="flex items-center gap-3 border-b border-gray-200 pb-4 transform transition-transform duration-300 hover:translate-y-[-5px]">
                 <Image
-                  src="/assets/images/icons/pan-african-reach.svg"
-                  width={40}
-                  height={40}
+                  src="/assets/images/icon-3.png"
+                  width={60}
+                  height={60}
                   alt="Pan-African Reach"
                 />
                 <div>
                   <h4 className="text-sm text-red-500 font-bold mb-2">Workshops & Panels</h4>
                   <p className="text-sm font-base">
-                    Interactive sessions designed to equip agencies with practical strategies for scaling, winning global clients, and building sustainable operations.​​
+                    Interactive sessions designed to equip agencies with practical strategies for scaling, winning global clients, and building sustainable operations.
                   </p>
                 </div>
               </div>
@@ -340,12 +338,14 @@ const SeminarLocationAndDate = ()=> {
   return (
     <div className="flex md:flex-row flex-col gap-4">
       <div className="flex items-center gap-2 text-white text-sm">
-        <MapPin className="text-red-500" size={20} />
+      <svg xmlns="http://www.w3.org/2000/svg" className="text-red-500" width="24" height="24" viewBox="0 0 24 24"><g fill="none">
+        <path d="m12.593 23.258l-.011.002l-.071.035l-.02.004l-.014-.004l-.071-.035q-.016-.005-.024.005l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427q-.004-.016-.017-.018m.265-.113l-.013.002l-.185.093l-.01.01l-.003.011l.018.43l.005.012l.008.007l.201.093q.019.005.029-.008l.004-.014l-.034-.614q-.005-.018-.02-.022m-.715.002a.02.02 0 0 0-.027.006l-.006.014l-.034.614q.001.018.017.024l.015-.002l.201-.093l.01-.008l.004-.011l.017-.43l-.003-.012l-.01-.01z"/><path fill="currentColor" d="M12 2a9 9 0 0 1 9 9c0 3.074-1.676 5.59-3.442 7.395a20.4 20.4 0 0 1-2.876 2.416l-.426.29l-.2.133l-.377.24l-.336.205l-.416.242a1.87 1.87 0 0 1-1.854 0l-.416-.242l-.52-.32l-.192-.125l-.41-.273a20.6 20.6 0 0 1-3.093-2.566C4.676 16.589 3 14.074 3 11a9 9 0 0 1 9-9m0 6a3 3 0 1 0 0 6a3 3 0 0 0 0-6"/></g></svg>
         <span>Nairobi, Kenya</span>
       </div>
       
       <div className="flex items-center gap-2 text-white text-sm">
-        <Calendar className="text-red-500" size={20} />
+      <svg xmlns="http://www.w3.org/2000/svg" className="text-red-500" width="24" height="24" viewBox="0 0 24 24"><g fill="none">
+        <path fill="currentColor" d="M2 9c0-1.886 0-2.828.586-3.414S4.114 5 6 5h12c1.886 0 2.828 0 3.414.586S22 7.114 22 9c0 .471 0 .707-.146.854C21.707 10 21.47 10 21 10H3c-.471 0-.707 0-.854-.146C2 9.707 2 9.47 2 9m0 9c0 1.886 0 2.828.586 3.414S4.114 22 6 22h12c1.886 0 2.828 0 3.414-.586S22 19.886 22 18v-5c0-.471 0-.707-.146-.854C21.707 12 21.47 12 21 12H3c-.471 0-.707 0-.854.146C2 12.293 2 12.53 2 13z"/><path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M7 3v3m10-3v3"/></g></svg>
         <span>22-24 October 2025</span>
       </div>
     </div>
@@ -357,22 +357,42 @@ const  KeynotePanels =()=> {
     {
       title: "Africa's Creative Future",
       description: "Where Brands, Tech & Talent Collide- Opening keynote setting the tone for collaboration and innovation.",
-      icon: <Globe className="text-black w-10 h-10" />,
+      icon: <Image
+      src="/assets/images/icons/brain-icon.png"
+      width={100}
+      height={100}
+      alt="Pan-African Reach"
+    />,
     },
     {
       title: "The Power of Partnership",
       description: "How African agencies and brands are building together — real stories co-presented by agency and client leaders.",
-      icon: <Users className="text-black w-10 h-10" />,
+      icon: <Image
+      src="/assets/images/icons/hands-icon.png"
+      width={120}
+      height={120}
+      alt="Pan-African Reach"
+    />,
     },
     {
       title: "Tech Meets Creativity",
       description: "Driving results through innovation with Africa’s top tech and martech partners.",
-      icon: <Cpu className="text-black w-10 h-10" />,
+      icon: <Image
+      src="/assets/images/icons/tech-icon.png"
+      width={100}
+      height={100}
+      alt="Pan-African Reach"
+    />,
     },
     {
       title: "The World Of Data",
       description: "How data is transforming strategy and innovation across African markets and industries.",
-      icon: <BarChart3 className="text-black w-10 h-10" />,
+      icon: <Image
+      src="/assets/images/icons/graph-icon.png"
+      width={100}
+      height={100}
+      alt="Pan-African Reach"
+    />,
     },
   ];
 
@@ -384,7 +404,7 @@ const  KeynotePanels =()=> {
           {themes.map((theme, index) => (
             <div key={index} className="bg-white rounded-lg overflow-hidden shadow-lg flex">
               {/* left margin */}
-              <div className="w-2 bg-[#84C1D9]"></div>
+              <div className="w-4 bg-[#84C1D9]"></div>
               {/* Content container */}
               <div className="flex p-6 flex-1">
                 {/* Icon */}

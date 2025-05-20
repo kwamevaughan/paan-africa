@@ -126,9 +126,9 @@ const HomePage = () => {
           ref={sectionRefs.aboutUs}
         >
           <div className="absolute -top-36 -left-36 w-28 h-28 bg-[#F2B706] rounded-full z-0"></div>
-          <div className="absolute -top-10 -right-20 w-16 h-16 bg-[#F25849] rounded-full z-0"></div>
+          {/* <div className="absolute -top-10 -right-20 w-16 h-16 bg-[#F25849] rounded-full z-0"></div> */}
           <div className="absolute bottom-60 -left-20 w-11 h-11 bg-[#D1D3D4] rounded-full z-0"></div>
-          <div className="absolute bottom-0 -right-10 w-11 h-11 bg-[#172840] rounded-full z-0"></div>
+          {/* <div className="absolute bottom-0 -right-10 w-11 h-11 bg-[#172840] rounded-full z-0"></div> */}
           <section className="relative z-10">
             <p className="uppercase font-semibold mb-4">2. Who We Are</p>
             <p className="text-2xl">
@@ -524,7 +524,7 @@ const HomePage = () => {
           <div className="absolute -top-3 left-4 w-6 h-6 bg-[#84C1D9] rounded-full z-0"></div>
           <div className="absolute -top-8 right-4 w-16 h-16 bg-yellow-400 rounded-full z-0"></div>
           <div className="absolute -bottom-12 right-4 w-28 h-28 bg-red-500 rounded-full z-0"></div>
-          <section className="relative z-10 mx-auto max-w-6xl py-28 px-6">
+          <section className="relative mx-auto max-w-6xl py-28 px-6">
             <div className="flex flex-col mb-10 w-full md:w-3/4">
               <h2 className="text-3xl font-medium mb-4 text-[#F2B706]">
                 Join the Network That’s Redefining Africa’s Creative Future
@@ -562,7 +562,7 @@ const HomePage = () => {
           id="contact-us"
           ref={sectionRefs.contactUs}
         >
-          <div className="absolute top-4 -right-5 w-12 h-12 bg-[#172840] rounded-full z-20"></div>
+          {/* <div className="absolute top-4 -right-5 w-12 h-12 bg-[#172840] rounded-full z-20"></div> */}
           <div className="absolute -bottom-9 -left-6 w-20 h-20 bg-[#F2B706] rounded-full z-0"></div>
           <div className="absolute bottom-4 left-56 w-11 h-11 bg-[#F25849] rounded-full z-0"></div>
           <section className="relative z-10 grid grid-cols-1 sm:grid-cols-3 gap-8 items-center mt-10">

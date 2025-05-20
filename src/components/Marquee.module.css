@@ -1,0 +1,48 @@
+/* components/Marquee.module.css */
+.marqueeContainer {
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  padding:40px 0;
+  background-color: #D1D3D4;
+}
+
+.marquee {
+  display: inline-flex; /* Use flex for precise alignment */
+  animation: marquee 40s linear infinite;
+  will-change: transform; /* Optimize performance */
+}
+
+.item {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0; /* Prevent items from shrinking */
+}
+
+.word {
+  margin: 0 1rem;
+  font-size: 2rem;
+  font-weight: 600;
+  color: #2A2B5F;
+}
+
+.dot {
+  color: #F2B706;
+  font-size: 1.8rem;
+  margin: 0 1rem;
+}
+
+/* Animation */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Optional: Pause animation on hover */
+/* .marqueeContainer:hover .marquee {
+  animation-play-state: paused;
+} */
