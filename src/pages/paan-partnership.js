@@ -6,9 +6,9 @@ import { Icon } from "@iconify/react";
 import Footer from "@/layouts/footer";
 import { useEffect, useRef } from "react";
 import { useFixedHeader } from '../../utils/scrollUtils';
-import FreelanceBenefitsSlider from "@/components/FreelanceBenefitsSlider";
 import ReadyToApplySection from "@/components/ReadyToApplySection";
 import ContactForm from "@/components/ContactForm";
+import PartnerBenefits from "@/components/PartnersBenefits";
 
 const FreelancersPage = () => {
   const sectionRefs = {
@@ -68,104 +68,110 @@ const FreelancersPage = () => {
         <Header />
         <Hero />
 
-        <div className="bg-[#172840] relative">
-          <section className="relative mx-auto max-w-6xl">
-            <div className="grid md:grid-cols-2 sm:grid-cols-1 gap-8 py-10 items-center">
-              <div className="flex flex-col gap-4 z-0 pr-6">
-                <h2 className="text-l text-yellow-400 uppercase font-semibold">WHY JOIN?</h2>
-                <h3 className="text-white text-xl text-left font-normal">
-                  You&apos;re <span className="relative inline-block">
-                    <span className="relative z-10">great</span>
-                    <img
-                      src="/assets/images/red-vector.png"
-                      alt=""
-                      className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-0 w-full h-auto"
-                    />
-                  </span> at what you do.<br/>
-                  <img 
-                    src="/assets/images/why-join-1.png" 
-                    alt=""
-                    className="inline-block align-middle mx-1 h-10"
-                  /> 
-                  Now join a <br/>network that helps you do it at scale.<br/><br/> PAAN Certified Freelancers get<br/> more than 
-                  <span className="relative inline-block">
-                    <span className="relative z-10">access to briefs</span>
-                    <img
-                      src="/assets/images/yellow-vector.png"
-                      alt=""
-                      className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-0 w-full h-auto"
-                    />
-                  </span><br/>
-                  <img 
-                    src="/assets/images/why-join-2.png" 
-                    alt=""
-                    className="inline-block align-middle mx-1 h-10"
-                  />
-                  They get structure,<br/> visibility, and opportunities built<br/> for 
-                  <span className="relative inline-block">
-                    <span className="relative z-10"> serious professional.</span>
-                    <img
-                      src="/assets/images/blue-vector.png"
-                      alt=""
-                      className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-0 w-full h-auto"
-                    />
-                  </span>
-                </h3>
-              </div>
-              <div className="flex justify-end">
-                <div className="absolute -top-30 -left-30 w-28 h-28 bg-[#84C1D9] rounded-full z-0"></div>
-                <div className="absolute -top-30 -right-20 w-16 h-16 bg-[#F25849] rounded-full z-0"></div>
-                <div className="absolute bottom-60 -left-100 w-11 h-11 bg-[#F2B706] rounded-full z-0"></div>
-                <img src="/assets/images/africa-map.png" alt="PAAN Summit" className="h-auto object-cover rounded shadow-lg" />
-              </div>
-            </div>
-          </section>
-          <Image
-            src="/assets/images/bg-pattern.svg"
-            width={0}
-            height={0}
-            alt="Background Pattern"
-            className="absolute top-0 left-0 w-full h-full object-cover z-0 opacity-10"
-          />
-        </div>
-
         <div className="mx-auto max-w-6xl mt-20 mb-20 relative">
           <section className="relative">
-            <h2 className="text-l uppercase font-bold text-left text-black mb-4">What you Get</h2>
-            <h3 className="text-left text-black">You Bring the Talent. We Unlock the Opportunity.</h3>
-            <FreelanceBenefitsSlider/ >
-          </section>
-        </div>
-
-        <ReadyToApplySection />
-        <div className="mb-20 relative bg-[#D1D3D4]">
-          <section className="relative">
-            <div className="flex items-center justify-center h-32">
-              <div className="flex items-center space-x-8">
-                <div className="flex items-center space-x-2">
-                  <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-                  <span className="text-gray-800 font-medium">Motion Designers</span>
+            <div className="mb-6">
+                <h2 className="text-l uppercase font-bold text-left text-black mb-4">For Technology Companies, Platforms, and Innovators</h2>
+                <h3 className="text-left text-black">
+                    At PAAN, we bridge the gap between cutting-edge technology solutions and Africa’s most dynamic markets. 
+                    Partner with us to connect with 200+ vetted communication, marketing, and tech agencies serving big brands,
+                    NGOs, and fast-growing enterprises across the continent.
+                </h3>
+            </div>
+            <div className="mb-10">
+                <h2 className="text-l uppercase font-bold text-left text-black mb-4">Why Partner with PAAN?</h2>
+                <h3 className="text-left text-black">
+                    Africa’s markets are diverse, complex, and ripe with opportunity—but navigating them alone is costly and time-consuming. 
+                    PAAN’s agency network acts as your local accelerator, providing:
+                </h3>   
+                <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <div className="mx-auto md:mx-0">
+                        <img src="/assets/images/black-girl.png" alt="Professional woman" className="rounded-lg shadow-md max-w-full h-auto" />
+                    </div>
+                    <div className="flex flex-col space-y-6">
+                        <div className="bg-white p-6 rounded-lg shadow-sm">
+                            <h2 className="text-xl font-bold mb-2 text-gray-800">Local Expertise</h2>
+                            <p className="text-gray-600">Agencies fluent in cultural, regulatory, and market nuances.</p>
+                        </div>
+                        <div className="bg-white p-6 rounded-lg shadow-sm">
+                            <h2 className="text-xl font-bold mb-2 text-gray-800">Scalable Distribution</h2>
+                            <p className="text-gray-600">Access decision-makers through trusted partners.</p>
+                        </div>
+                        <div className="bg-white p-6 rounded-lg shadow-sm">
+                            <h2 className="text-xl font-bold mb-2 text-gray-800">Credibility</h2>
+                            <p className="text-gray-600">PAAN's endorsement builds trust with agencies and their clients.</p>
+                        </div>
+                    </div>
                 </div>
-                <div className="flex items-center space-x-2">
-                  <div className="w-3 h-3 bg-[#F25849] rounded-full"></div>
-                  <span className="text-gray-800 font-medium">Copywriters</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <div className="w-3 h-3 bg-[#F2B706] rounded-full"></div>
-                  <span className="text-gray-800 font-medium">Frontend Developers</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <div className="w-3 h-3 bg-[#FFFFFF] rounded-full"></div>
-                  <span className="text-gray-800 font-medium">Brand Strategists</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <div className="w-3 h-3 bg-[#172840] rounded-full"></div>
-                  <span className="text-gray-800 font-medium">UX/UI Designers</span>
-                </div>
-              </div>
             </div>
           </section>
         </div>
+
+        <div className="bg-[#172840] relative">
+          <section className="relative mx-auto max-w-6xl py-16">
+          <h2 className="text-l text-white uppercase text-left font-semibold">Partner Benefits</h2>
+          <h3 className="text-2xl py-4 text-white text-left font-normal">Tailored to Drive Your Africa Growth Strategy</h3>
+          <PartnerBenefits />
+          </section>
+        </div>
+  
+    <div className="mb-20 relative bg-gray-200 py-16">
+      <section className="relative">
+        <h2 className="text-2xl text-center font-medium mb-4">How it Works</h2>
+        <div className="max-w-4xl mx-auto px-4">
+          <div className="flex flex-col md:flex-row justify-between items-center relative">
+            {/* Instead of one line, we'll create individual connecting lines between circles */}
+            <div className="hidden md:flex absolute top-24 w-full">
+              {/* Line from circle 1 to 2 */}
+              <div className="h-1 bg-blue-600 absolute" style={{ left: '16.5%', width: '16.6%' }} />
+              
+              {/* Line from circle 2 to 3 */}
+              <div className="h-1 bg-blue-600 absolute" style={{ left: '41.5%', width: '16.6%' }} />
+              
+              {/* Line from circle 3 to 4 */}
+              <div className="h-1 bg-blue-600 absolute" style={{ left: '66.5%', width: '16.6%' }} />
+            </div>
+            
+            {/* Step 1 */}
+            <div className="flex flex-col items-center mb-8 md:mb-0 relative z-10 w-full md:w-1/4">
+              <div className="flex items-center justify-center w-16 h-16 rounded-full bg-blue-600 text-white text-xl font-bold mb-3 relative z-20">
+                1
+              </div>
+              <h3 className="text-lg font-medium mb-2 text-center">Discovery</h3>
+              <p className="text-sm text-center px-4">Initial consultation to understand your needs and goals</p>
+            </div>
+            
+            {/* Step 2 */}
+            <div className="flex flex-col items-center mb-8 md:mb-0 relative z-10 w-full md:w-1/4">
+              <div className="flex items-center justify-center w-16 h-16 rounded-full bg-blue-600 text-white text-xl font-bold mb-3 relative z-20">
+                2
+              </div>
+              <h3 className="text-lg font-medium mb-2 text-center">Planning</h3>
+              <p className="text-sm text-center px-4">Develop comprehensive strategy and roadmap</p>
+            </div>
+            
+            {/* Step 3 */}
+            <div className="flex flex-col items-center mb-8 md:mb-0 relative z-10 w-full md:w-1/4">
+              <div className="flex items-center justify-center w-16 h-16 rounded-full bg-blue-600 text-white text-xl font-bold mb-3 relative z-20">
+                3
+              </div>
+              <h3 className="text-lg font-medium mb-2 text-center">Execution</h3>
+              <p className="text-sm text-center px-4">Implement solutions with regular check-ins</p>
+            </div>
+            
+            {/* Step 4 */}
+            <div className="flex flex-col items-center relative z-10 w-full md:w-1/4">
+              <div className="flex items-center justify-center w-16 h-16 rounded-full bg-blue-600 text-white text-xl font-bold mb-3 relative z-20">
+                4
+              </div>
+              <h3 className="text-lg font-medium mb-2 text-center">Results</h3>
+              <p className="text-sm text-center px-4">Analyze outcomes and refine for continued success</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+        
         <div
           className="mx-auto max-w-6xl mt-20 relative">
           <div className="absolute top-4 -right-5 w-12 h-12 bg-[#172840] rounded-full z-20"></div>
@@ -235,36 +241,32 @@ const FreelancersPage = () => {
 const Hero = () => {
   return (
     <div
-      className="relative h-screen w-full bg-[#F25849] overflow-hidden" 
-      id="home"
-    >
-      {/* Background image as an overlay */}
-      <div 
-        className="absolute inset-0 bg-center bg-no-repeat opacity-80"
-        style={{
-          backgroundImage: "url('/assets/images/bg-pattern.png')"
-        }}
-      />
-             
-      {/* Content overlay - Added pt-24 to prevent header overlap */}
-      <div className="relative h-full flex items-center justify-center">
-        <div className="max-w-6xl px-6 md:px-8 pt-24 pb-8 flex flex-col justify-between h-full">
-          {/* Main content section with improved spacing */}
-          <div className="max-w-2xl mx-auto text-center space-y-6 mt-4">
-            <h2 className="text-white text-3xl md:text-4xl font-bold mb-6 relative uppercase">
-              PAAN Partnership Program
-            </h2>
-            
-            <p className="text-white text-md mb-6">
-                Power Your Growth Across AfricaUnlock Africa’s Potential with PAAN’s Agency Network.
-            </p>
-            
-        
-                        
-          </div>
+    className="relative h-screen w-full bg-[#F25849] overflow-hidden" 
+    id="home"
+  >
+    {/* Background image positioned at the bottom */}
+    <div 
+      className="absolute inset-x-0 bottom-0 bg-bottom bg-no-repeat opacity-80"
+      style={{
+        backgroundImage: "url('/assets/images/bg-pattern.png')",
+        height: "100%"
+      }}
+    />
+
+    <div className="relative h-full flex">
+      <div className="max-w-6xl px-6 md:px-8 pb-16 flex flex-col justify-end h-full">
+      
+        <div className="max-w-2xl text-left space-y-6">
+          <h2 className="text-white font-bold mb-2 relative uppercase">
+            PAAN Partnership Program
+          </h2>
+          <p className="text-white text-3xl mb-6">
+            Power Your Growth Across Africa. <br/>Unlock Africa's Potential with PAAN's Agency Network.
+          </p>                        
         </div>
       </div>
     </div>
+  </div>
   );
 };
 

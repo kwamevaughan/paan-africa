@@ -68,7 +68,7 @@ const Footer = () => {
         />
         {/* Content Container */}
         <section
-          className="relative z-10 max-w-6xl mx-auto px-3 sm:px-0 grid grid-cols-1 sm:grid-cols-2 gap-8 mt-20 pb-10 justify-items-start
+          className="relative max-w-6xl mx-auto px-3 sm:px-0 grid grid-cols-1 sm:grid-cols-2 gap-8 mt-20 pb-10 justify-items-start
  md:justify-items-end"
         >
           {/* Left: Newsletter Signup */}

@@ -119,12 +119,14 @@ export default function SeminarRegistration() {
                 </div>
               </div>
               
-              <button
-                type="submit"
-                className="bg-[#F2B706] text-[#172840] py-3 px-6 rounded-full hover:bg-orange-600 transition duration-300 font-medium"
-              >
-                Register Now
-              </button>
+              <div className="flex w-full">
+                <button
+                  type="submit"
+                  className="bg-[#F2B706] text-[#172840] py-3 px-6 rounded-full hover:bg-orange-600 transition duration-300 font-medium ml-auto"
+                >
+                  Register Now
+                </button>
+              </div>
             </form>
           </div>
         </div>
