@@ -120,7 +120,7 @@ const FreelancersPage = () => {
                       muted
                       loop
                       playsInline
-                      src="/assets/videos/1.mp4"
+                      src="/assets/videos/2.mp4"
                       style={{
                         width: '100%',
                         height: '100%',

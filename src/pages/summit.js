@@ -172,34 +172,34 @@ const SummitPage = () => {
         </div>
 
         <div className="mx-auto max-w-6xl mt-20">          
-          <section className="grid grid-cols-1 sm:grid-cols-3 gap-8 items-center">            
-            <div className="col-span-1 sm:col-span-2 flex flex-col gap-4">
+          <section className="grid grid-cols-1 sm:grid-cols-2 gap-8 items-center">            
+            <div className="flex flex-col gap-4">
               <h2 className="text-3xl uppercase font-bold text-left text-black mb-12">Breakout Sessions</h2>
               <BreakoutSessions />
             </div>
-            <div className="relative col-span-1 sm:col-span-1 flex flex-col gap-6">
+            <div className="relative flex flex-col gap-6 h-full">
               <img 
                 src="/assets/images/breakout-session-1.png" 
                 alt="Breakout session 1" 
-                className="rounded-lg object-cover w-full h-64"
+                className="rounded-lg object-cover w-full h-64 sm:h-1/2"
               />
               <img 
                 src="/assets/images/breakout-session-2.png" 
                 alt="Breakout session 2" 
-                className="rounded-lg object-cover w-full h-64"
+                className="rounded-lg object-cover w-full h-64 sm:h-1/2"
               />
             </div>
           </section>
         </div>
 
-        <div className="bg-[#84C1D9] -z-10 relative mt-10 py-10">
+        <div className="bg-[#84C1D9] relative mt-10 py-10">
           <section className="relative mx-auto max-w-6xl">
             <h2 className="text-3xl uppercase font-bold text-center text-black mb-12">WHAT TO LOOK FORWARD TO</h2>
             <BenefitsToggle />
           </section>
         </div>
 
-        <div className="bg-[#D1D3D4] -z-10 relative py-10">
+        <div className="bg-[#D1D3D4] relative py-10">
           <section className="relative mx-auto max-w-6xl">
             <SeminarRegistration />
           </section>
