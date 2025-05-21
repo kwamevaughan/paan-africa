@@ -16,3 +16,10 @@ export const menuItems = [
     className: 'bg-[#F25849] text-white px-4 py-3 rounded-full text-sm font-bold hover:bg-[#D6473C] transition duration-300',
     mobileClassName: 'bg-[#F25849] text-white block px-3 py-2 rounded-full text-sm font-bold hover:bg-[#D6473C] transition duration-300',
   };
+
+  export const ctaButtonBlue = {
+    href: '#join-network',
+    label: 'Join the Network',
+    className: 'bg-[#84C1D9] text-dark px-4 py-3 rounded-full text-sm font-bold hover:bg-[#D6473C] transition duration-300',
+    mobileClassName: 'bg-[#84C1D9] text-dark block px-3 py-2 rounded-full text-sm font-bold hover:bg-[#D6473C] transition duration-300',
+  };
