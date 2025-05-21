@@ -1,14 +1,10 @@
 import SEO from "@/components/SEO";
-import Header from "../layouts/header";
-import Image from "next/image";
-import Link from "next/link";
-import { Icon } from "@iconify/react";
+import Header from "../layouts/partners-header"; 
 import Footer from "@/layouts/footer";
 import { useEffect, useRef } from "react";
 import { useFixedHeader } from '../../utils/scrollUtils';
-import ReadyToApplySection from "@/components/ReadyToApplySection";
-import ContactForm from "@/components/ContactForm";
 import PartnerBenefits from "@/components/PartnersBenefits";
+import Steps from "@/components/steps";
 
 const FreelancersPage = () => {
   const sectionRefs = {
@@ -107,129 +103,54 @@ const FreelancersPage = () => {
           </section>
         </div>
 
-        <div className="bg-[#172840] relative">
-          <section className="relative mx-auto max-w-6xl py-16">
-          <h2 className="text-l text-white uppercase text-left font-semibold">Partner Benefits</h2>
-          <h3 className="text-2xl py-4 text-white text-left font-normal">Tailored to Drive Your Africa Growth Strategy</h3>
+        <div className="bg-[#172840] relative w-full">
+        <section className="relative mx-auto max-w-6xl px-4 md:px-6 py-8 md:py-16">
+          <h2 className="text-base md:text-lg text-white uppercase text-left font-semibold">Partner Benefits</h2>
+          <h3 className="text-xl md:text-2xl py-2 md:py-4 text-white text-left font-normal">Tailored to Drive Your Africa Growth Strategy</h3>
           <PartnerBenefits />
-          </section>
-        </div>
-  
-    <div className="mb-20 relative bg-gray-200 py-16">
-      <section className="relative">
-        <h2 className="text-2xl text-center font-medium mb-4">How it Works</h2>
-        <div className="max-w-4xl mx-auto px-4">
-          <div className="flex flex-col md:flex-row justify-between items-center relative">
-            {/* Instead of one line, we'll create individual connecting lines between circles */}
-            <div className="hidden md:flex absolute top-24 w-full">
-              {/* Line from circle 1 to 2 */}
-              <div className="h-1 bg-blue-600 absolute" style={{ left: '16.5%', width: '16.6%' }} />
-              
-              {/* Line from circle 2 to 3 */}
-              <div className="h-1 bg-blue-600 absolute" style={{ left: '41.5%', width: '16.6%' }} />
-              
-              {/* Line from circle 3 to 4 */}
-              <div className="h-1 bg-blue-600 absolute" style={{ left: '66.5%', width: '16.6%' }} />
-            </div>
-            
-            {/* Step 1 */}
-            <div className="flex flex-col items-center mb-8 md:mb-0 relative z-10 w-full md:w-1/4">
-              <div className="flex items-center justify-center w-16 h-16 rounded-full bg-blue-600 text-white text-xl font-bold mb-3 relative z-20">
-                1
-              </div>
-              <h3 className="text-lg font-medium mb-2 text-center">Discovery</h3>
-              <p className="text-sm text-center px-4">Initial consultation to understand your needs and goals</p>
-            </div>
-            
-            {/* Step 2 */}
-            <div className="flex flex-col items-center mb-8 md:mb-0 relative z-10 w-full md:w-1/4">
-              <div className="flex items-center justify-center w-16 h-16 rounded-full bg-blue-600 text-white text-xl font-bold mb-3 relative z-20">
-                2
-              </div>
-              <h3 className="text-lg font-medium mb-2 text-center">Planning</h3>
-              <p className="text-sm text-center px-4">Develop comprehensive strategy and roadmap</p>
-            </div>
-            
-            {/* Step 3 */}
-            <div className="flex flex-col items-center mb-8 md:mb-0 relative z-10 w-full md:w-1/4">
-              <div className="flex items-center justify-center w-16 h-16 rounded-full bg-blue-600 text-white text-xl font-bold mb-3 relative z-20">
-                3
-              </div>
-              <h3 className="text-lg font-medium mb-2 text-center">Execution</h3>
-              <p className="text-sm text-center px-4">Implement solutions with regular check-ins</p>
-            </div>
-            
-            {/* Step 4 */}
-            <div className="flex flex-col items-center relative z-10 w-full md:w-1/4">
-              <div className="flex items-center justify-center w-16 h-16 rounded-full bg-blue-600 text-white text-xl font-bold mb-3 relative z-20">
-                4
-              </div>
-              <h3 className="text-lg font-medium mb-2 text-center">Results</h3>
-              <p className="text-sm text-center px-4">Analyze outcomes and refine for continued success</p>
-            </div>
-          </div>
-        </div>
-      </section>
-    </div>
+        </section>
+      </div>
+      
+        <Steps/>
+    
         
-        <div
-          className="mx-auto max-w-6xl mt-20 relative">
-          <div className="absolute top-4 -right-5 w-12 h-12 bg-[#172840] rounded-full z-20"></div>
-          <div className="absolute -bottom-9 -left-6 w-20 h-20 bg-[#F2B706] rounded-full z-0"></div>
-          <div className="absolute bottom-4 left-56 w-11 h-11 bg-[#F25849] rounded-full z-0"></div>
-          <section className="relative grid grid-cols-1 sm:grid-cols-3 gap-8 items-center mt-10">
-            <div className="relative col-span-1 sm:col-span-1 flex flex-col gap-10">
-              <div>
-                <h2 className="text-3xl font-medium mb-4">Get in Touch</h2>
-                <p className="text-gray-500">
-                  Have questions about PAAN, membership, or upcoming events?
-                  Reach out — we’re here to connect and support your journey.
-                </p>
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 mt-10 sm:mt-20 relative">
+        {/* Yellow circle - adjusted for mobile */}
+        <div className="absolute -bottom-6 sm:-bottom-9 -left-3 sm:-left-6 w-12 h-12 sm:w-20 sm:h-20 bg-[#F2B706] rounded-full z-0"></div>
+        {/* Red circle - adjusted for mobile */}
+        <div className="absolute bottom-2 sm:bottom-4 left-20 sm:left-56 w-8 h-8 sm:w-11 sm:h-11 bg-[#F25849] rounded-full z-0"></div>
+        
+        <section className="relative items-center mt-6 sm:mt-10">           
+          <h2 className="text-sm font-bold mb-3 sm:mb-4 uppercase">Ready to Scale Across Africa?</h2>
+          <h3 className="text-lg sm:text-xl font-normal mb-3 sm:mb-4">Join industry leaders in leveraging PAAN's network to:</h3>
+          
+          {/* Grid that changes from 1 column on mobile to 3 columns on medium screens */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8 pb-12 sm:pb-20 md:pb-32">
+            <div className="bg-[#84C1D9] rounded-lg p-4 sm:p-6 shadow-md transition-transform hover:transform hover:scale-105">
+              <div className="mb-8 sm:mb-20">
+                <img src="/assets/images/icons/power-icon.png" alt="" className="w-12 h-12 sm:w-16 sm:h-16"/>
               </div>
-              <div>
-                <h2 className="text-lg font-medium mb-4">
-                  Direct Contact Info
-                </h2>
-                <div className="flex items-center gap-2 pb-4">
-                  <Link
-                    href="mailto:secretariat@paan.africa"
-                    className="flex items-center gap-2 transform translate-y-[-5px] hover:translate-y-[-5px] transition-transform duration-200"
-                  >
-                    <Icon
-                      icon="material-symbols:call"
-                      width="32"
-                      height="32"
-                      className="flex-shrink-0 bg-[#F25849] p-2 rounded-full text-white"
-                    />
-                    <p className="font-medium text-gray-500">
-                      secretariat@paan.africa
-                    </p>
-                  </Link>
-                </div>
-                <div className="flex items-center gap-2 pb-4">
-                  <Link
-                    href="https://www.google.com/maps?q=7th+Floor,+Mitsumi+Business+Park,+Westlands,+Nairobi,+Kenya"
-                    target="_blank"
-                    className="flex items-center gap-2 transform translate-y-[-5px] hover:translate-y-[-10px] transition-transform duration-200"
-                  >
-                    <Icon
-                      icon="mdi:location"
-                      width="32"
-                      height="32"
-                      className="flex-shrink-0 bg-[#F25849] p-2 rounded-full text-white"
-                    />
-                    <p className="font-medium text-gray-500">
-                      7th Floor, Mitsumi Business Park, Westlands, Nairobi,
-                      Kenya
-                    </p>
-                  </Link>
-                </div>
+              <h2 className="text-lg sm:text-xl font-bold mb-2 sm:mb-3">Localize Faster</h2>
+              <p className="text-gray-800 text-sm sm:text-base">Cut through market complexity with agency expertise.</p>
+            </div>
+            
+            <div className="bg-[#84C1D9] rounded-lg p-4 sm:p-6 shadow-md transition-transform hover:transform hover:scale-105">
+              <div className="mb-8 sm:mb-16">
+                <img src="/assets/images/icons/caution-icon.png" alt="" className="w-12 h-12 sm:w-16 sm:h-16"/>
               </div>
+              <h2 className="text-lg sm:text-xl font-bold mb-2 sm:mb-3">Reduce Risk</h2>
+              <p className="text-gray-800 text-sm sm:text-base">PAAN-certified agencies ensure compliance and relevance.</p>
             </div>
-            <div className="col-span-1 sm:col-span-2 flex flex-col gap-4">
-              <ContactForm />
+            
+            <div className="bg-[#84C1D9] rounded-lg p-4 sm:p-6 shadow-md transition-transform hover:transform hover:scale-105">
+              <div className="mb-8 sm:mb-20">
+                <img src="/assets/images/icons/window-icon.png" alt="" className="w-12 h-12 sm:w-16 sm:h-16"/>
+              </div>
+              <h2 className="text-lg sm:text-xl font-bold mb-2 sm:mb-3">Maximize ROI</h2>
+              <p className="text-gray-800 text-sm sm:text-base">Turn partnerships into revenue with measurable outcomes.</p>
             </div>
-          </section>
+          </div>                
+        </section>
         </div>
         
         <Footer />
@@ -246,7 +167,7 @@ const Hero = () => {
   >
     {/* Background image positioned at the bottom */}
     <div 
-      className="absolute inset-x-0 bottom-0 bg-bottom bg-no-repeat opacity-80"
+      className="absolute inset-x-0 bottom-0 bg-bottom bg-no-repeat opacity-20"
       style={{
         backgroundImage: "url('/assets/images/bg-pattern.png')",
         height: "100%"
