@@ -18,7 +18,7 @@ export default function BenefitsToggle() {
       ]
     },
     agency: {
-      image: '/api/placeholder/400/300',
+      image: '/assets/images/tech-partner.png',
       title: 'Agency Members',
       benefits: [
         'White-label solutions for clients',
@@ -29,7 +29,7 @@ export default function BenefitsToggle() {
       ]
     },
     brand: {
-      image: '/api/placeholder/400/300',
+      image: '/assets/images/tech-partner.png',
       title: 'Brand Representatives',
       benefits: [
         'Brand-specific analytics',
@@ -51,7 +51,7 @@ export default function BenefitsToggle() {
             className={`px-4 py-2 text-sm font-medium border rounded-l-lg ${
               activeTab === 'tech' 
                 ? 'bg-[#172840] text-white border-[#172840]' 
-                : 'bg-white text-gray-700 border-gray-200 hover:bg-gray-100'
+                : 'bg-[#84C1D9] text-gray-700 border-[#172840] hover:bg-gray-100'
             }`}
             onClick={() => setActiveTab('tech')}
           >
