@@ -48,7 +48,7 @@ export default function ReadyToApplySection() {
           <button
             type="submit"
             onClick={() => window.location.href = 'https://membership.paan.africa/freelancers'}
-            className="bg-slate-900 text-white py-4 px-10 rounded-full hover:bg-orange-600 transition duration-300 font-medium text-lg"
+            className="bg-slate-900 text-white py-2 px-14 rounded-full hover:bg-orange-600 transition duration-300 font-medium text-lg"
           >
             Apply Now
           </button>  
