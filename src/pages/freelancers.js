@@ -61,9 +61,9 @@ const FreelancersPage = () => {
   return (
     <>
       <SEO
-        title="Pan-African Agency Network (PAAN) | Redefining Africa's Creative & Tech Footprint"
-        description="Discover the Pan-African Agency Network (PAAN), a dynamic alliance of creative and tech agencies across Africa and the diaspora. Join us to unlock global opportunities, access exclusive resources, and collaborate with top talent to redefine Africa's creative and technological footprint. Explore our membership tiers, services, and upcoming events today!"
-        keywords="Pan-African Agency Network, PAAN, African agencies, creative network, tech network, collaboration, innovation, global influence"
+        title="Join Africa’s Top Network for Freelancers | Pan-African Agency Network (PAAN)"
+        description="Become a PAAN Certified Freelancer and gain access to top-tier briefs, professional structure, and visibility. Join Africa’s most trusted network for creative, technical, and strategic freelance talent."
+        keywords="African freelancers, freelance network Africa, PAAN certified freelancer, join freelancer platform, vetted freelancers Africa, Pan-African creative network"
       />
       <main className="px-3 pt-6 sm:px-0 sm:pt-0 relative">
         <Header />
@@ -234,7 +234,7 @@ const FreelancersPage = () => {
 const Hero = () => {
   return (
     <div
-      className="relative h-screen w-full bg-white overflow-hidden" 
+      className="relative h-screen w-full bg-white overflow-hidden pt-10 md:pt-0 " 
       id="home"
     >
       {/* Background image */}
@@ -253,7 +253,7 @@ const Hero = () => {
         <div className="w-full px-6 md:px-8 pt-16 md:pt-32 flex flex-col justify-between h-full">
     
           <div className="max-w-2xl mx-auto text-center space-y-8 mt-8">
-            <h2 className="text-[#172840] text-3xl md:text-4xl font-bold uppercase relative">
+            <h2 className="text-[#172840] text-xl md:text-4xl font-bold uppercase relative">
               <span className="relative inline-block">
                 <span className="text-[#F25849] relative z-0">Freelance</span>
                 <img 
@@ -285,14 +285,14 @@ const Hero = () => {
             <button
             onClick={() => window.location.href = 'https://membership.paan.africa/freelancers'}
             className="bg-[#F25849] text-white py-3 px-10 rounded-full hover:bg-orange-600 transition duration-300 font-medium text-sm"
-          >
-            Become a Certified PAAN Freelancer
+            >
+              Become a Certified PAAN Freelancer
           </button>          
           </div>
            
           {/* Freelancer images - Updated to full width */}
-          <div className="w-[80%] mt-auto mb-1 flex justify-center items-center mx-auto">
-            <div className="flex flex-row w-full h-48 md:h-56 gap-1 md:gap-1">
+          <div className="mt-auto flex justify-center items-center mx-auto">
+            <div className="flex flex-row w-full h-48 md:h-56 gap-1 md:gap-8 pb-10">
               <img 
                 src="/assets/images/freelancer-1.png" 
                 alt="Hero image 1"

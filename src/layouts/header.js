@@ -81,8 +81,7 @@ const Header = ({ navLinkColor }) => {
               ))}
             </div>
             <a
-              href={ctaButton.href}
-              onClick={(e) => handleScroll(e, ctaButton.href, isFixed)}
+              href="https://membership.paan.africa/"
               className={ctaButton.className}
             >
               {ctaButton.label}
@@ -107,11 +106,7 @@ const Header = ({ navLinkColor }) => {
               </a>
             ))}
             <a
-              href={ctaButton.href}
-              onClick={(e) => {
-                handleScroll(e, ctaButton.href, isFixed);
-                setIsMenuOpen(false);
-              }}
+              href="https://membership.paan.africa/"
               className={ctaButton.mobileClassName}
             >
               {ctaButton.label}
