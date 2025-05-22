@@ -18,7 +18,7 @@ const Header = ({ navLinkColor }) => {
       className={`w-full z-10 transition-all duration-300 ${
         isFixed
           ? "fixed top-0 left-0 shadow-lg backdrop-blur-md bg-white/80"
-          : "absolute bg-transparent"
+          : "absolute bg-white"
       }`}
     >
       <div className="w-full px-4 lg-custom:px-8">
