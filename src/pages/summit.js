@@ -1,27 +1,35 @@
 import SEO from "@/components/SEO";
 import Header from "../layouts/summit-header";
 import Image from "next/image";
-import { Globe, Users, Cpu, BarChart3 } from "lucide-react";
 import BreakoutSessions from "@/components/BreakoutSessions";
 import Footer from "@/layouts/footer";
 import { useEffect, useRef, useState } from "react";
 import BenefitsToggle from "@/components/BenefitsToggle";
 import { useFixedHeader, handleScroll } from '../../utils/scrollUtils';
 import SeminarRegistration from "@/components/SeminarRegistration";
+import { ctaButton } from "../data/summitMenu";
 
 const SummitPage = () => {
   const sectionRefs = {
     home: useRef(null),
-    aboutUs: useRef(null),
-    ourMission: useRef(null),
-    whyJoinUs: useRef(null),
-    membership: useRef(null),
-    services: useRef(null),
+    about: useRef(null),
+    highlights: useRef(null),
+    themes: useRef(null),
+    sessions: useRef(null),
+    whoShouldAttend: useRef(null),
+    tickets: useRef(null),
     events: useRef(null),
     contactUs: useRef(null),
   };
 
   const isFixed = useFixedHeader();
+
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   // Restore IntersectionObserver for section transitions
   useEffect(() => {
@@ -59,16 +67,16 @@ const SummitPage = () => {
   return (
     <>
       <SEO
-        title="Pan-African Agency Network (PAAN) | Redefining Africa's Creative & Tech Footprint"
-        description="Discover the Pan-African Agency Network (PAAN), a dynamic alliance of creative and tech agencies across Africa and the diaspora. Join us to unlock global opportunities, access exclusive resources, and collaborate with top talent to redefine Africa's creative and technological footprint. Explore our membership tiers, services, and upcoming events today!"
-        keywords="Pan-African Agency Network, PAAN, African agencies, creative network, tech network, collaboration, innovation, global influence"
+        title="PAAN Summit 2025 | Africa's Premier Creative & Tech Leadership Conference"
+        description="Join the inaugural PAAN Summit in Nairobi, Kenya — a groundbreaking event uniting Africa's top creative and tech leaders for three days of innovation, collaboration, and growth."
+        keywords="PAAN Summit 2025, African creative summit, tech conference Africa, Nairobi summit, Pan-African events, African innovation, creative tech Africa, agency summit Africa"
       />
       <main className="px-3 pt-6 sm:px-0 sm:pt-0 relative">
         <Header navLinkColor='text-white' />
 
-        <Hero/>
+        <Hero sectionRefs={sectionRefs} handleScroll={handleScroll} isFixed={isFixed} scrollToSection={scrollToSection} />
 
-        <div className="bg-[#172840] relative">
+        <div className="bg-[#172840] relative" id="about-us" ref={sectionRefs.about} handleScroll={handleScroll} isFixed={isFixed}>
         <section className="relative mx-auto max-w-6xl">
           <div className="grid md:grid-cols-2 sm:grid-cols-1 gap-8 py-20 items-center">
             <div className="flex flex-col gap-4 z-0 pr-6">
@@ -114,7 +122,7 @@ const SummitPage = () => {
             </div>
             
             {/* Content column - taking 2/3 of the space */}
-            <div className="flex flex-col gap-4 col-span-2">
+            <div className="flex flex-col gap-4 col-span-2" id="highlights" ref={sectionRefs.highlights} handleScroll={handleScroll} isFixed={isFixed}>
               <h2 className="text-4xl uppercase font-bold">About PAAN</h2>
               <h3 className="text-md text-left font-normal">PAAN is a bold alliance of independent agencies across Africa and the diaspora.
                 Empowering African agencies through partnerships, shared resources and advocacy to deliver world-class solutions.</h3>
@@ -165,13 +173,13 @@ const SummitPage = () => {
           </section>
         </div>
 
-        <div className="bg-[#F25849] -z-10 relative">
+        <div className="bg-[#F25849] -z-10 relative" id="themes" ref={sectionRefs.themes} handleScroll={handleScroll} isFixed={isFixed}>
           <section className="relative mx-auto max-w-6xl">
             <KeynotePanels/>
           </section>
         </div>
 
-        <div className="mx-auto max-w-6xl mt-20">          
+        <div className="mx-auto max-w-6xl mt-20" id="sessions" ref={sectionRefs.sessions} handleScroll={handleScroll} isFixed={isFixed}>          
           <section className="grid grid-cols-1 sm:grid-cols-2 gap-8 items-center">            
             <div className="flex flex-col gap-4">
               <h2 className="text-3xl uppercase font-bold text-left text-black mb-12">Breakout Sessions</h2>
@@ -192,14 +200,14 @@ const SummitPage = () => {
           </section>
         </div>
 
-        <div className="bg-[#84C1D9] relative mt-10 py-10">
+        <div className="bg-[#84C1D9] relative mt-10 py-10" id="whoShouldAttend" ref={sectionRefs.whoShouldAttend} handleScroll={handleScroll} isFixed={isFixed}>
           <section className="relative mx-auto max-w-6xl">
             <h2 className="text-3xl uppercase font-bold text-center text-black mb-12">WHAT TO LOOK FORWARD TO</h2>
             <BenefitsToggle />
           </section>
         </div>
 
-        <div className="bg-[#D1D3D4] relative py-10">
+        <div className="bg-[#D1D3D4] relative py-10" id="tickets" ref={sectionRefs.tickets} handleScroll={handleScroll} isFixed={isFixed}>
           <section className="relative mx-auto max-w-6xl">
             <SeminarRegistration />
           </section>
@@ -246,43 +254,46 @@ const Hero = ({ sectionRefs, handleScroll, isFixed }) => {
   }, []);
 
   return (
-    <div
-      className="relative h-screen w-full" 
-      id="home"
-    >
-      {/* Full background image */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center"
-        style={{
-          backgroundImage: "url('/assets/images/hero.png')",
-          filter: "brightness(0.5)" // Darkening the image
-        }}
-      />
-             
-      {/* Content overlay */}
-      <div className="relative h-full flex items-center">
-        <div className="mx-auto max-w-6xl px-4 md:px-6 w-full">
-          <div className="max-w-2xl">
-          <h3 className="text-md text-yellow-400 mb-1">PAAN Inaugural Summit 2025</h3>
-            <h2 className="text-3xl md:text-3xl font-semibold uppercase text-yellow-400 mb-8">
-              Where Africa's Creative<br/>
-              and Tech Leaders Unite
-            </h2>
-            <p className="text-gray-100 font-normal mb-8">
-                  Join the first-ever Pan-African Agency Network (PAAN) Summit — <br/>
-                  a landmark gathering of bold thinkers and changemakers shaping Africa's creative and tech industries.
-            </p>
-            <div className="flex md:flex-row flex-col gap-4 mb-10">
-              <SeminarLocationAndDate />
-            </div>
-            <div>
-              <p className="text-white text-xs italic">Be part of history. Be part of the movement.</p>
+    <>
+      <div
+        className="relative h-screen w-full" 
+        id="home"
+        ref={sectionRefs.home}
+      >
+        {/* Full background image */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage: "url('/assets/images/hero.png')",
+            filter: "brightness(0.5)" // Darkening the image
+          }}
+        />
+               
+        {/* Content overlay */}
+        <div className="relative h-full flex items-center">
+          <div className="mx-auto max-w-6xl px-4 md:px-6 w-full">
+            <div className="max-w-2xl">
+            <h3 className="text-md text-yellow-400 mb-1">PAAN Inaugural Summit 2025</h3>
+              <h2 className="text-3xl md:text-3xl font-semibold uppercase text-yellow-400 mb-8">
+                Where Africa's Creative<br/>
+                and Tech Leaders Unite
+              </h2>
+              <p className="text-gray-100 font-normal mb-8">
+                    Join the first-ever Pan-African Agency Network (PAAN) Summit — <br/>
+                    a landmark gathering of bold thinkers and changemakers shaping Africa's creative and tech industries.
+              </p>
+              <div className="flex md:flex-row flex-col gap-4 mb-10">
+                <SeminarLocationAndDate />
+              </div>
+              <div>
+                <p className="text-white text-xs italic">Be part of history. Be part of the movement.</p>
+              </div>
             </div>
           </div>
         </div>
       </div>
       
-      {/* countdown bar */}
+      {/* Fixed countdown bar at bottom of screen */}
       <div className="fixed bottom-0 left-0 right-0 w-full z-50 shadow-lg border-t border-gray-200"
           style={{ background: 'linear-gradient(to right, #87CEEB, #B0E0E6)' }}>
           <div className="flex flex-col md:flex-row items-center justify-between max-w-6xl mx-auto px-4 py-3">
@@ -319,19 +330,19 @@ const Hero = ({ sectionRefs, handleScroll, isFixed }) => {
               </div>
               <div className="mt-3 md:mt-0">
               <button
-                  onClick={() => window.location.href="#registration"}
-                  className="bg-[#172840] text-white px-6 py-2 rounded-full font-medium text-sm hover:bg-[#D32F2F] transition duration-300 shadow"
-                  style={{ minWidth: '140px', textAlign: 'center' }}
+                href={ctaButton.href}
+                onClick={(e) => handleScroll(e, ctaButton.href, isFixed)}
+                className={`bg-[#172840] text-white px-6 py-2 rounded-full font-medium text-sm hover:bg-[#D32F2F] transition duration-300 shadow ${isFixed ? 'fixed-class' : ''}`}
+                style={{ minWidth: '140px', textAlign: 'center' }}
               >
-                  Register Now
+                Register Now
               </button>
               </div>
           </div>
-          </div>
-    </div>
+      </div>
+    </>
   );
 };
-
 
 const SeminarLocationAndDate = ()=> {
     
@@ -376,7 +387,7 @@ const  KeynotePanels =()=> {
     },
     {
       title: "Tech Meets Creativity",
-      description: "Driving results through innovation with Africa’s top tech and martech partners.",
+      description: "Driving results through innovation with Africa's top tech and martech partners.",
       icon: <Image
       src="/assets/images/icons/tech-icon.png"
       width={100}

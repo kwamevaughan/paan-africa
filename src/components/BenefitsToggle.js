@@ -42,7 +42,7 @@ export default function BenefitsToggle() {
   };
 
   return (
-    <div className="font-sans">
+    <div>
       {/* Partner Selector Toggle */}
       <div className="flex justify-center mb-8">
         <div className="inline-flex rounded-md shadow-sm" role="group">
