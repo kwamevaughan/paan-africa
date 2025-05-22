@@ -365,7 +365,7 @@ const HomePage = () => {
         </div>
 
         <div
-          className="bg-[#D1D3D4] -z-10 relative section"
+          className="bg-[#D1D3D4] relative section"
           id="membership"
           ref={sectionRefs.membership}
         >
@@ -381,10 +381,15 @@ const HomePage = () => {
                 elevate, empower, and connect.
               </p>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
               <Tier1 />
               <Tier2 />
               <Tier3 />
+            </div>
+            <div className="flex justify-center">
+              <button onClick={() => window.location.href = 'https://membership.paan.africa/'} className="bg-[#F26522] hover:bg-[#6BB0CC] text-white font-semibold py-3 px-8 rounded-lg transition-colors duration-300 shadow-md hover:shadow-lg">
+                Register Now
+              </button>
             </div>
           </section>
         </div>
@@ -480,8 +485,10 @@ const HomePage = () => {
             </div>
             <div className="col-span-1 pattern-bg-2 rounded-lg transform transition-transform duration-300 hover:translate-y-[-5px]">
               <div className="bg-[#F25849]/50 py-16 px-8 rounded-lg h-full">
-                <a href="/summit" className="block w-32 bg-white px-8 py-3 rounded-full font-medium text-sm transition duration-300 hover:bg-[#1f3c66] hover:text-white mb-4">
-                  Summit
+                <a href="/summit"
+                  className="inline-block bg-white px-6 py-3 rounded-full font-medium text-sm text-center transition duration-300 hover:bg-[#1f3c66] hover:text-white mb-4"
+                >
+                  Learn More
                 </a>
                 <p className="text-2xl mb-4 text-white">
                   Inaugural PAAN Summit
@@ -506,7 +513,7 @@ const HomePage = () => {
                       className="flex-shrink-0 text-white"
                     />
                     <p className="text-lg font-medium text-white">
-                      Coming Soon
+                      22<sup>nd</sup>–24<sup>th</sup> October
                     </p>
                   </div>
                 </div>

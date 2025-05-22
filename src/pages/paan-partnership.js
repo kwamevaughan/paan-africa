@@ -56,9 +56,9 @@ const FreelancersPage = () => {
   return (
     <>
       <SEO
-        title="Pan-African Agency Network (PAAN) | Redefining Africa's Creative & Tech Footprint"
-        description="Discover the Pan-African Agency Network (PAAN), a dynamic alliance of creative and tech agencies across Africa and the diaspora. Join us to unlock global opportunities, access exclusive resources, and collaborate with top talent to redefine Africa's creative and technological footprint. Explore our membership tiers, services, and upcoming events today!"
-        keywords="Pan-African Agency Network, PAAN, African agencies, creative network, tech network, collaboration, innovation, global influence"
+        title="Partner with PAAN | Unlock Growth Across Africa's Creative & Tech Markets"
+        description="Join PAAN's Partnership Program to connect with 200+ vetted agencies across Africa. Accelerate your market entry, build trust, and scale with local expertise."
+        keywords="PAAN partnerships, Africa agency network, tech partnerships Africa, creative agency Africa, expand in Africa, African market entry, local tech partners Africa, scale in African markets"
       />
       <main className="px-3 pt-6 sm:px-0 sm:pt-0 relative">
         <Header />
