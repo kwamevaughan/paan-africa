@@ -17,8 +17,8 @@ const FreelancerHero = () => {
                 <span className="text-[#F25849] relative z-0">Freelance</span>
                 <Image
                                   src="/assets/images/hero-vector.png"
-                  width={100}
-                  height={100}
+                  width={400}
+                  height={0}
                   alt=""
                   className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-auto h-auto z-[-2]"
                 />
