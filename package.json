@@ -6,8 +6,8 @@
   "license": "MIT",
   "scripts": {
     "dev": "next dev --turbopack",
-    "generate-sitemap": "node scripts/generate-sitemap.js",
-    "build": "npm run generate-sitemap && next build",
+    "build": "next build",
+    "postbuild": "next-sitemap",
     "start": "next start",
     "lint": "eslint --fix \"src/**/*.{js,jsx,ts,tsx}\"",
     "lint:fix": "eslint --fix \"src/**/*.{js,jsx,ts,tsx}\"",
