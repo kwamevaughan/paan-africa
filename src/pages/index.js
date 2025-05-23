@@ -9,11 +9,9 @@ import Tier1 from "@/components/Tier1";
 import Tier2 from "@/components/Tier2";
 import Tier3 from "@/components/Tier3";
 import OfferingTab from "@/components/OfferingTab";
-import ContactForm from "@/components/ContactForm";
 import Footer from "@/layouts/footer";
 import { useEffect, useRef } from "react";
 import { useFixedHeader, handleScroll } from '../../utils/scrollUtils';
-import { LiveChatWidget } from "@livechat/widget-react";
 import ContactSection from "@/components/ContactSection";
 
 const HomePage = () => {
