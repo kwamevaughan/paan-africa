@@ -68,7 +68,7 @@ export default async function handler(req, res) {
         <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px; font-family: Arial, sans-serif; color: #172840;">
           <tr>
             <td align="center" style="padding: 20px 0;">
-              <img src="https://www.paan.africa/assets/images/logo.png" alt="PAAN Logo" style="max-width: 200px;" />
+              <img src="https://paan.africa/assets/images/logo.png" alt="PAAN Logo" style="max-width: 200px;" />
             </td>
           </tr>
           <tr>
@@ -82,7 +82,7 @@ export default async function handler(req, res) {
               <p style="margin: 0 0 10px; font-size: 16px;">Thank you for subscribing to the Pan-African Agency Network (PAAN) newsletter! You'll receive insights, trend reports, and event invites straight to your inbox.</p>
               <p style="margin: 20px 0 0; font-size: 16px;">Explore more about PAAN:</p>
               <p style="text-align: center; margin: 20px 0;">
-                <a href="https://www.paan.africa/#join-network" style="background-color: #F25849; color: #ffffff; padding: 10px 20px; text-decoration: none; border-radius: 25px; font-size: 14px; font-weight: bold;">Join the Network</a>
+                <a href="https://paan.africa/#join-network" style="background-color: #F25849; color: #ffffff; padding: 10px 20px; text-decoration: none; border-radius: 25px; font-size: 14px; font-weight: bold;">Join the Network</a>
               </p>
             </td>
           </tr>
