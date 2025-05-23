@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 Disallow: /thank-you
-Sitemap: https://www.paan.africa/sitemap.xml
+Sitemap: https://paan.africa/sitemap.xml
