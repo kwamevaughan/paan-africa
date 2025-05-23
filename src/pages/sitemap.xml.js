@@ -1,16 +1,15 @@
-// pages/api/sitemap.xml.js
-import fs from "fs";
+// pages/sitemap.xml.js
 import path from "path";
 
-export default function handler(req, res) {
+export async function getServerSideProps({ res }) {
+  const fs = await import("fs"); // Dynamically import to ensure server-side use
   const baseUrl = "https://paan.africa";
 
-  // Get static pages
-  const pagesDirectory = path.join(process.cwd(), "pages");
-  const staticPages = getStaticPages(pagesDirectory);
-
-  // Get dynamic content (replace with your data source)
-  const dynamicPages = getDynamicPages();
+  const staticPages = getStaticPages(
+    path.join(process.cwd(), "pages"),
+    fs.default
+  );
+  const dynamicPages = await getDynamicPages();
 
   const allPages = [...staticPages, ...dynamicPages];
 
@@ -32,22 +31,22 @@ ${allPages
   res.setHeader("Content-Type", "text/xml");
   res.write(sitemap);
   res.end();
+
+  return { props: {} };
 }
 
-function getStaticPages(dir, pages = [], basePath = "") {
-  const files = fs.readdirSync(dir);
+function getStaticPages(dir, fsModule, pages = [], basePath = "") {
+  const files = fsModule.readdirSync(dir);
 
   files.forEach((file) => {
     const filePath = path.join(dir, file);
-    const stat = fs.statSync(filePath);
+    const stat = fsModule.statSync(filePath);
 
     if (stat.isDirectory() && !file.startsWith("[") && file !== "api") {
-      // Recursively get pages from subdirectories
-      getStaticPages(filePath, pages, `${basePath}/${file}`);
+      getStaticPages(filePath, fsModule, pages, `${basePath}/${file}`);
     } else if (file.endsWith(".js") || file.endsWith(".tsx")) {
       const pagePath = `${basePath}/${file.replace(/\.(js|tsx)$/, "")}`;
 
-      // Skip API routes, dynamic routes, and special files
       if (
         !file.startsWith("[") &&
         file !== "_app.js" &&
@@ -68,19 +67,10 @@ function getStaticPages(dir, pages = [], basePath = "") {
 }
 
 async function getDynamicPages() {
-  try {
-    // Example: Fetch from your CMS or database
-    // const posts = await fetchBlogPosts()
-    // return posts.map(post => ({
-    //   url: `/blog/${post.slug}`,
-    //   lastModified: post.updatedAt,
-    //   changeFreq: 'weekly',
-    //   priority: '0.6'
-    // }))
+  return [];
+}
 
-    return [];
-  } catch (error) {
-    console.error("Error fetching dynamic pages:", error);
-    return [];
-  }
+export default function Sitemap() {
+  // This page will never be rendered, since getServerSideProps ends the response
+  return null;
 }
