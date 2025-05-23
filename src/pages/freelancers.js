@@ -8,8 +8,8 @@ import { useEffect, useRef } from "react";
 import { useFixedHeader } from '../../utils/scrollUtils';
 import FreelanceBenefitsSlider from "@/components/FreelanceBenefitsSlider";
 import ReadyToApplySection from "@/components/ReadyToApplySection";
-import ContactForm from "@/components/ContactForm";
 import Marquee from "@/components/Marquee";
+import ContactSection from "@/components/ContactSection";
 
 const FreelancersPage = () => {
   const sectionRefs = {
@@ -157,73 +157,15 @@ const FreelancersPage = () => {
 
         <div className="mx-auto max-w-6xl mt-20 mb-20 relative">
           <section className="relative">
-            <h2 className="text-l uppercase font-bold text-left text-black mb-4">What you Get</h2>
-            <h3 className="text-left text-black">You Bring the Talent. We Unlock the Opportunity.</h3>
+            <h2 className="text-lg uppercase font-bold text-left mb-4">What you Get</h2>
+            <h3 className="text-2xl">You Bring the Talent. We Unlock the Opportunity.</h3>
             <FreelanceBenefitsSlider/ >
           </section>
         </div>
 
         <ReadyToApplySection /> 
         <Marquee />
-        <div
-          className="mx-auto max-w-6xl mt-20 relative">
-          <div className="absolute top-4 -right-5 w-12 h-12 bg-[#172840] rounded-full z-20"></div>
-          <div className="absolute -bottom-9 -left-6 w-20 h-20 bg-[#F2B706] rounded-full z-0"></div>
-          <div className="absolute bottom-4 left-56 w-11 h-11 bg-[#F25849] rounded-full z-0"></div>
-          <section className="relative grid grid-cols-1 sm:grid-cols-3 gap-8 items-center mt-10">
-            <div className="relative col-span-1 sm:col-span-1 flex flex-col gap-10">
-              <div>
-                <h2 className="text-3xl font-medium mb-4">Get in Touch</h2>
-                <p className="text-gray-500">
-                  Have questions about PAAN, membership, or upcoming events?
-                  Reach out — we’re here to connect and support your journey.
-                </p>
-              </div>
-              <div>
-                <h2 className="text-lg font-medium mb-4">
-                  Direct Contact Info
-                </h2>
-                <div className="flex items-center gap-2 pb-4">
-                  <Link
-                    href="mailto:secretariat@paan.africa"
-                    className="flex items-center gap-2 transform translate-y-[-5px] hover:translate-y-[-5px] transition-transform duration-200"
-                  >
-                    <Icon
-                      icon="material-symbols:call"
-                      width="32"
-                      height="32"
-                      className="flex-shrink-0 bg-[#F25849] p-2 rounded-full text-white"
-                    />
-                    <p className="font-medium text-gray-500">
-                      secretariat@paan.africa
-                    </p>
-                  </Link>
-                </div>
-                <div className="flex items-center gap-2 pb-4">
-                  <Link
-                    href="https://www.google.com/maps?q=7th+Floor,+Mitsumi+Business+Park,+Westlands,+Nairobi,+Kenya"
-                    target="_blank"
-                    className="flex items-center gap-2 transform translate-y-[-5px] hover:translate-y-[-10px] transition-transform duration-200"
-                  >
-                    <Icon
-                      icon="mdi:location"
-                      width="32"
-                      height="32"
-                      className="flex-shrink-0 bg-[#F25849] p-2 rounded-full text-white"
-                    />
-                    <p className="font-medium text-gray-500">
-                      7th Floor, Mitsumi Business Park, Westlands, Nairobi,
-                      Kenya
-                    </p>
-                  </Link>
-                </div>
-              </div>
-            </div>
-            <div className="col-span-1 sm:col-span-2 flex flex-col gap-4">
-              <ContactForm />
-            </div>
-          </section>
-        </div>
+        <ContactSection />
         
         <Footer />
       </main>
@@ -234,43 +176,31 @@ const FreelancersPage = () => {
 const Hero = () => {
   return (
     <div
-      className="relative h-screen w-full bg-white overflow-hidden pt-10 md:pt-0 "
+      className="relative h-screen w-full overflow-hidden pt-10 md:pt-0 "
       id="home"
     >
-      {/* Background image */}
-      <div
-        className="absolute bottom-0 left-0 right-0 bg-center bg-no-repeat opacity-70"
-        style={{
-          backgroundImage: "url('/assets/images/freelancer-hero.png')",
-          height: "60%",
-          backgroundSize: "contain",
-          backgroundPosition: "bottom center",
-        }}
-      />
-
       {/* Content overlay with increased top padding to move away from header */}
       <div className="relative h-full flex items-center justify-center">
-        <div className="w-full px-6 md:px-8 pt-16 md:pt-32 flex flex-col justify-between h-full">
-          <div className="max-w-2xl mx-auto text-center space-y-8 mt-8">
-            <h2 className="text-[#172840] text-xl md:text-4xl font-bold uppercase relative">
+        <div className="w-full px-6 md:px-8 pt-16 md:pt-32 flex flex-col justify-between freelance-hero-bg">
+          <div className=" mx-auto text-center space-y-8 mt-8">
+            <h2 className="text-[#172840] text-xl md:text-5xl font-bold uppercase relative">
               <span className="relative inline-block">
                 <span className="text-[#F25849] relative z-0">Freelance</span>
                 <img
                   src="/assets/images/hero-vector.png"
                   alt=""
-                  className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-auto h-auto z-0"
-                  style={{ width: "120%", height: "auto" }}
+                  className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-auto h-auto z-[-2]"
                 />
               </span>{" "}
               with Purpose. <br />
-              Grow with Structure & Scale
+              Grow with Structure & Scale.
             </h2>
             <p className="text-[#172840] text-md mb-6 px-4">
               Join Africa&apos;s premier network of vetted creative, technical,
-              and strategic talent—powering high-impact campaigns across the
+              and strategic <br></br>talent—powering high-impact campaigns across the
               continent.
             </p>
-            <div className="flex flex-col md:flex-row justify-center items-center md:space-x-12 space-y-6 md:space-y-0 mb-12">
+            <div className="flex flex-col md:flex-row justify-center items-center md:space-x-12  md:space-y-0 ">
               <div className="text-[#172840] text-sm flex items-center whitespace-nowrap">
                 <Icon
                   icon="mdi:shield-check"
@@ -295,54 +225,50 @@ const Hero = () => {
               </div>
             </div>
 
-            <button
-              onClick={() =>
-                (window.location.href =
-                  "https://membership.paan.africa/freelancers")
-              }
-              className="bg-[#F25849] text-white py-3 px-10 rounded-full hover:bg-orange-600 transition duration-300 font-medium text-sm"
-            >
-              Become a Certified PAAN Freelancer
+            <button className="bg-[#F25849] text-white py-3 px-10 rounded-full hover:bg-orange-600 transition-all duration-300 transform ease-in-out hover:translate-y-[-5px] font-medium text-sm">
+              <Link href="https://membership.paan.africa/freelancers" passHref>
+                Become a Certified PAAN Freelancer
+              </Link>
             </button>
           </div>
 
           {/* Freelancer images - Updated to full width */}
-          <div className="mt-auto flex justify-center items-center mx-auto">
-            <div className="flex flex-row w-full h-48 md:h-56 gap-1 md:gap-8 pb-10">
+          <div className="mt-auto flex justify-center items-center mx-auto pt-20">
+            <div className="flex flex-row w-full gap-1 md:gap-8">
               <Image
                 src="/assets/images/freelancer-1.png"
                 width={200}
                 height={0}
                 alt="Hero image 1"
-                className="w-1/5 h-full object-contain"
+                className="rounded-md transition-transform transform ease-in-out duration-300 hover:translate-y-[-10px]"
               />
               <Image
                 src="/assets/images/freelancer-2.png"
                 width={200}
                 height={0}
                 alt="Hero image 2"
-                className="w-1/5 h-full object-contain"
+                className="rounded-md transition-transform transform ease-in-out duration-300 hover:translate-y-[-10px]"
               />
               <Image
                 src="/assets/images/freelancer-3.png"
                 width={200}
                 height={0}
                 alt="Hero image 3"
-                className="w-1/5 h-full object-contain"
+                className="rounded-md transition-transform transform ease-in-out duration-300 hover:translate-y-[-10px]"
               />
               <Image
                 src="/assets/images/freelancer-4.png"
                 width={200}
                 height={0}
                 alt="Hero image 4"
-                className="w-1/5 h-full object-contain"
+                className="rounded-md transition-transform transform ease-in-out duration-300 hover:translate-y-[-10px]"
               />
               <Image
                 src="/assets/images/freelancer-5.png"
                 width={200}
                 height={0}
                 alt="Hero image 5"
-                className="w-1/5 h-full object-contain"
+                className="rounded-md transition-transform transform ease-in-out duration-300 hover:translate-y-[-10px]"
               />
             </div>
           </div>
