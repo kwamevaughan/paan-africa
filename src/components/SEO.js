@@ -5,14 +5,14 @@ const SEO = ({
   title = "Pan-African Agency Network (PAAN)",
   description = "Discover the Pan-African Agency Network (PAAN), a dynamic alliance of creative and tech agencies across Africa and the diaspora. Join us to unlock global opportunities, access exclusive resources, and collaborate with top talent to redefine Africa’s creative and technological footprint. Explore our membership tiers, services, and upcoming events today!",
   keywords = "Pan-African Agency Network, PAAN, African agencies, creative network, tech network, collaboration, innovation, global influence",
-  image = "https://www.paan.africa/assets/images/opengraph.png",
+  image = "https://paan.africa/assets/images/opengraph.png",
   noindex = false,
   imageWidth = 1200, // Default image width
   imageHeight = 630, // Default image height
 }) => {
   const router = useRouter();
   // Construct the full URL for the current page
-  const canonicalUrl = `https://www.paan.africa${router.asPath === "/" ? "" : router.asPath.split("?")[0]}`;
+  const canonicalUrl = `https://paan.africa${router.asPath === "/" ? "" : router.asPath.split("?")[0]}`;
 
   return (
     <Head>

@@ -9,11 +9,10 @@ import Tier1 from "@/components/Tier1";
 import Tier2 from "@/components/Tier2";
 import Tier3 from "@/components/Tier3";
 import OfferingTab from "@/components/OfferingTab";
-import ContactForm from "@/components/ContactForm";
 import Footer from "@/layouts/footer";
 import { useEffect, useRef } from "react";
 import { useFixedHeader, handleScroll } from '../../utils/scrollUtils';
-import { LiveChatWidget } from "@livechat/widget-react";
+import ContactSection from "@/components/ContactSection";
 
 const HomePage = () => {
   const sectionRefs = {
@@ -97,11 +96,11 @@ const HomePage = () => {
                 >
                   Join the Network
                 </button>
-                <a href="./freelancers"
+                <Link href="/freelancers"
                   className="bg-[#84C1D9] text-[#172840] px-8 py-3 rounded-full font-medium text-sm transition duration-300 hover:bg-[#6FA1B7]"
                 >
                   PAAN Certified Freelancers
-                </a>
+                </Link>
               </div>
             </div>
             <div>
@@ -483,49 +482,47 @@ const HomePage = () => {
                 </p>
               </div> */}
             </div>
-            <a href="/summit" className="block h-full">
-              <div className="col-span-1 pattern-bg-2 rounded-lg transform transition-transform duration-300 hover:translate-y-[-5px] h-full">
-                <div className="bg-[#F25849]/50 py-16 px-8 rounded-lg h-full flex flex-col">
-                  <div
-                    className="inline-block bg-white px-6 py-3 rounded-full font-medium text-sm text-center transition duration-300 hover:bg-[#1f3c66] hover:text-white mb-4 w-fit"
-                  >
-                    Summit
+            <div className="col-span-1 pattern-bg-2 rounded-lg transform transition-transform duration-300 hover:translate-y-[-5px]">
+              <div className="bg-[#F25849]/50 py-16 px-8 rounded-lg h-full">
+                <a href="/summit"
+                  className="inline-block bg-white px-6 py-3 rounded-full font-medium text-sm text-center transition duration-300 hover:bg-[#1f3c66] hover:text-white mb-4"
+                >
+                  Learn More
+                </a>
+                <p className="text-2xl mb-4 text-white">
+                  Inaugural PAAN Summit
+                </p>
+                <div className="flex gap-4 mb-4">
+                  <div className="flex items-center gap-2 pb-4">
+                    <Icon
+                      icon="mdi:location"
+                      width="20"
+                      height="20"
+                      className="flex-shrink-0 text-white"
+                    />
+                    <p className="text-lg font-medium text-white">
+                      Nairobi, Kenya
+                    </p>
                   </div>
-                  <p className="text-2xl mb-4 text-white font-semibold">
-                    Inaugural PAAN Summit
-                  </p>
-                  <div className="flex flex-col sm:flex-row gap-4 mb-4">
-                    <div className="flex items-center gap-2">
-                      <Icon
-                        icon="mdi:location"
-                        width="20"
-                        height="20"
-                        className="flex-shrink-0 text-white"
-                      />
-                      <p className="text-lg font-medium text-white">
-                        Nairobi, Kenya
-                      </p>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <Icon
-                        icon="zondicons:calendar"
-                        width="20"
-                        height="20"
-                        className="flex-shrink-0 text-white"
-                      />
-                      <p className="text-lg font-medium text-white">
-                        22<sup>nd</sup>–24<sup>th</sup> October
-                      </p>
-                    </div>
+                  <div className="flex items-center gap-2 pb-4">
+                    <Icon
+                      icon="zondicons:calendar"
+                      width="20"
+                      height="20"
+                      className="flex-shrink-0 text-white"
+                    />
+                    <p className="text-lg font-medium text-white">
+                      22<sup>nd</sup>–24<sup>th</sup> October
+                    </p>
                   </div>
-                  <p className="text-white flex-grow">
-                    Our flagship event bringing together Africa's brightest
-                    creative and tech minds for powerful keynotes, networking, and
-                    showcases.
-                  </p>
                 </div>
+                <p className="text-white">
+                  Our flagship event bringing together Africa’s brightest
+                  creative and tech minds for powerful keynotes, networking, and
+                  showcases.
+                </p>
               </div>
-            </a>
+            </div>
           </div>
         </div>
 
@@ -574,61 +571,9 @@ const HomePage = () => {
           {/* <div className="absolute top-4 -right-5 w-12 h-12 bg-[#172840] rounded-full z-20"></div> */}
           <div className="absolute -bottom-9 -left-6 w-20 h-20 bg-[#F2B706] rounded-full z-0"></div>
           <div className="absolute bottom-4 left-56 w-11 h-11 bg-[#F25849] rounded-full z-0"></div>
-          <section className="relative z-10 grid grid-cols-1 sm:grid-cols-3 gap-8 items-center mt-10">
-            <div className="relative col-span-1 sm:col-span-1 flex flex-col gap-10">
-              <div>
-                <h2 className="text-3xl font-medium mb-4">Get in Touch</h2>
-                <p className="text-gray-500">
-                  Have questions about PAAN, membership, or upcoming events?
-                  Reach out — we’re here to connect and support your journey.
-                </p>
-              </div>
-              <div>
-                <h2 className="text-lg font-medium mb-4">
-                  Direct Contact Info
-                </h2>
-                <div className="flex items-center gap-2 pb-4">
-                  <Link
-                    href="mailto:secretariat@paan.africa"
-                    className="flex items-center gap-2 transform translate-y-[-5px] hover:translate-y-[-5px] transition-transform duration-200"
-                  >
-                    <Icon
-                      icon="material-symbols:call"
-                      width="32"
-                      height="32"
-                      className="flex-shrink-0 bg-[#F25849] p-2 rounded-full text-white"
-                    />
-                    <p className="font-medium text-gray-500">
-                      secretariat@paan.africa
-                    </p>
-                  </Link>
-                </div>
-                <div className="flex items-center gap-2 pb-4">
-                  <Link
-                    href="https://www.google.com/maps?q=7th+Floor,+Mitsumi+Business+Park,+Westlands,+Nairobi,+Kenya"
-                    target="_blank"
-                    className="flex items-center gap-2 transform translate-y-[-5px] hover:translate-y-[-10px] transition-transform duration-200"
-                  >
-                    <Icon
-                      icon="mdi:location"
-                      width="32"
-                      height="32"
-                      className="flex-shrink-0 bg-[#F25849] p-2 rounded-full text-white"
-                    />
-                    <p className="font-medium text-gray-500">
-                      7th Floor, Mitsumi Business Park, Westlands, Nairobi,
-                      Kenya
-                    </p>
-                  </Link>
-                </div>
-              </div>
-            </div>
-            <div className="col-span-1 sm:col-span-2 flex flex-col gap-4">
-              <ContactForm />
-            </div>
-          </section>
+          
+          <ContactSection />
         </div>
-        <LiveChatWidget license="19050853" />
         <Footer />
       </main>
     </>
