@@ -234,87 +234,113 @@ const FreelancersPage = () => {
 const Hero = () => {
   return (
     <div
-      className="relative h-screen w-full bg-white overflow-hidden pt-10 md:pt-0 " 
+      className="relative h-screen w-full bg-white overflow-hidden pt-10 md:pt-0 "
       id="home"
     >
       {/* Background image */}
-      <div 
+      <div
         className="absolute bottom-0 left-0 right-0 bg-center bg-no-repeat opacity-70"
         style={{
           backgroundImage: "url('/assets/images/freelancer-hero.png')",
-          height: "60%", 
+          height: "60%",
           backgroundSize: "contain",
-          backgroundPosition: "bottom center"
+          backgroundPosition: "bottom center",
         }}
       />
-             
+
       {/* Content overlay with increased top padding to move away from header */}
       <div className="relative h-full flex items-center justify-center">
         <div className="w-full px-6 md:px-8 pt-16 md:pt-32 flex flex-col justify-between h-full">
-    
           <div className="max-w-2xl mx-auto text-center space-y-8 mt-8">
             <h2 className="text-[#172840] text-xl md:text-4xl font-bold uppercase relative">
               <span className="relative inline-block">
                 <span className="text-[#F25849] relative z-0">Freelance</span>
-                <img 
-                  src="/assets/images/hero-vector.png" 
-                  alt="" 
+                <img
+                  src="/assets/images/hero-vector.png"
+                  alt=""
                   className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-auto h-auto z-0"
-                  style={{ width: '120%', height: 'auto' }}
+                  style={{ width: "120%", height: "auto" }}
                 />
-              </span> with Purpose. <br/>
+              </span>{" "}
+              with Purpose. <br />
               Grow with Structure & Scale
-            </h2>            
+            </h2>
             <p className="text-[#172840] text-md mb-6 px-4">
-              Join Africa&apos;s premier network of vetted creative, technical, and strategic talent—powering high-impact campaigns across the continent.
-            </p>            
+              Join Africa&apos;s premier network of vetted creative, technical,
+              and strategic talent—powering high-impact campaigns across the
+              continent.
+            </p>
             <div className="flex flex-col md:flex-row justify-center items-center md:space-x-12 space-y-6 md:space-y-0 mb-12">
-              <div className="text-[#172840] text-sm flex items-center whitespace-nowrap">                
-                  <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 text-[#F2B706] mr-2" fill="currentColor" viewBox="0 0 256 256">
-                    <path fill="currentColor" d="M225.86 102.82c-3.77-3.94-7.67-8-9.14-11.57c-1.36-3.27-1.44-8.69-1.52-13.94c-.15-9.76-.31-20.82-8-28.51s-18.75-7.85-28.51-8c-5.25-.08-10.67-.16-13.94-1.52c-3.56-1.47-7.63-5.37-11.57-9.14C146.28 23.51 138.44 16 128 16s-18.27 7.51-25.18 14.14c-3.94 3.77-8 7.67-11.57 9.14c-3.25 1.36-8.69 1.44-13.94 1.52c-9.76.15-20.82.31-28.51 8s-7.8 18.75-8 28.51c-.08 5.25-.16 10.67-1.52 13.94c-1.47 3.56-5.37 7.63-9.14 11.57C23.51 109.72 16 117.56 16 128s7.51 18.27 14.14 25.18c3.77 3.94 7.67 8 9.14 11.57c1.36 3.27 1.44 8.69 1.52 13.94c.15 9.76.31 20.82 8 28.51s18.75 7.85 28.51 8c5.25.08 10.67.16 13.94 1.52c3.56 1.47 7.63 5.37 11.57 9.14c6.9 6.63 14.74 14.14 25.18 14.14s18.27-7.51 25.18-14.14c3.94-3.77 8-7.67 11.57-9.14c3.27-1.36 8.69-1.44 13.94-1.52c9.76-.15 20.82-.31 28.51-8s7.85-18.75 8-28.51c.08-5.25.16-10.67 1.52-13.94c1.47-3.56 5.37-7.63 9.14-11.57c6.63-6.9 14.14-14.74 14.14-25.18s-7.51-18.27-14.14-25.18m-52.2 6.84l-56 56a8 8 0 0 1-11.32 0l-24-24a8 8 0 0 1 11.32-11.32L112 148.69l50.34-50.35a8 8 0 0 1 11.32 11.32"/>
-                  </svg>                
-                <p className="text-xs">Trusted by agencies in <span className="font-bold">20+ African countries</span></p>
+              <div className="text-[#172840] text-sm flex items-center whitespace-nowrap">
+                <Icon
+                  icon="mdi:shield-check"
+                  className="w-5 h-5 text-[#F2B706] mr-2"
+                />
+                <p className="text-xs">
+                  Trusted by agencies in{" "}
+                  <span className="font-bold">20+ African countries</span>
+                </p>
               </div>
               <div className="text-[#172840] text-sm flex items-center whitespace-nowrap">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 text-[#F2B706] mr-2" fill="currentColor" viewBox="0 0 256 256">
-                      <path fill="currentColor" d="M225.86 102.82c-3.77-3.94-7.67-8-9.14-11.57c-1.36-3.27-1.44-8.69-1.52-13.94c-.15-9.76-.31-20.82-8-28.51s-18.75-7.85-28.51-8c-5.25-.08-10.67-.16-13.94-1.52c-3.56-1.47-7.63-5.37-11.57-9.14C146.28 23.51 138.44 16 128 16s-18.27 7.51-25.18 14.14c-3.94 3.77-8 7.67-11.57 9.14c-3.25 1.36-8.69 1.44-13.94 1.52c-9.76.15-20.82-.31-28.51 8s-7.8 18.75-8 28.51c-.08 5.25-.16 10.67-1.52 13.94c-1.47 3.56-5.37 7.63-9.14 11.57C23.51 109.72 16 117.56 16 128s7.51 18.27 14.14 25.18c3.77 3.94 7.67 8 9.14 11.57c1.36 3.27 1.44 8.69 1.52 13.94c.15 9.76.31 20.82 8 28.51s18.75 7.85 28.51 8c5.25.08 10.67.16 13.94 1.52c3.56 1.47 7.63 5.37 11.57 9.14c6.9 6.63 14.74 14.14 25.18 14.14s18.27-7.51 25.18-14.14c3.94-3.77 8-7.67 11.57-9.14c3.27-1.36 8.69-1.44 13.94-1.52c9.76-.15 20.82-.31 28.51-8s7.85-18.75 8-28.51c.08-5.25.16-10.67 1.52-13.94c1.47-3.56 5.37-7.63 9.14-11.57c6.63-6.9 14.14-14.74 14.14-25.18s-7.51-18.27-14.14-25.18m-52.2 6.84l-56 56a8 8 0 0 1-11.32 0l-24-24a8 8 0 0 1 11.32-11.32L112 148.69l50.34-50.35a8 8 0 0 1 11.32 11.32"/>
-                  </svg>
-                <p className="text-xs">Backed by the <span className="font-bold">Pan-African Agency Network (PAAN)</span></p>
+                <Icon
+                  icon="mdi:shield-check"
+                  className="w-5 h-5 text-[#F2B706] mr-2"
+                />
+                <p className="text-xs">
+                  Backed by the{" "}
+                  <span className="font-bold">
+                    Pan-African Agency Network (PAAN)
+                  </span>
+                </p>
               </div>
-            </div>            
+            </div>
+
             <button
-            onClick={() => window.location.href = 'https://membership.paan.africa/freelancers'}
-            className="bg-[#F25849] text-white py-3 px-10 rounded-full hover:bg-orange-600 transition duration-300 font-medium text-sm"
+              onClick={() =>
+                (window.location.href =
+                  "https://membership.paan.africa/freelancers")
+              }
+              className="bg-[#F25849] text-white py-3 px-10 rounded-full hover:bg-orange-600 transition duration-300 font-medium text-sm"
             >
               Become a Certified PAAN Freelancer
-          </button>          
+            </button>
           </div>
-           
+
           {/* Freelancer images - Updated to full width */}
           <div className="mt-auto flex justify-center items-center mx-auto">
             <div className="flex flex-row w-full h-48 md:h-56 gap-1 md:gap-8 pb-10">
-              <img 
-                src="/assets/images/freelancer-1.png" 
+              <Image
+                src="/assets/images/freelancer-1.png"
+                width={200}
+                height={0}
                 alt="Hero image 1"
                 className="w-1/5 h-full object-contain"
               />
-              <img 
-                src="/assets/images/freelancer-2.png" 
+              <Image
+                src="/assets/images/freelancer-2.png"
+                width={200}
+                height={0}
                 alt="Hero image 2"
                 className="w-1/5 h-full object-contain"
               />
-              <img 
-                src="/assets/images/freelancer-3.png" 
+              <Image
+                src="/assets/images/freelancer-3.png"
+                width={200}
+                height={0}
                 alt="Hero image 3"
                 className="w-1/5 h-full object-contain"
               />
-              <img 
-                src="/assets/images/freelancer-4.png" 
+              <Image
+                src="/assets/images/freelancer-4.png"
+                width={200}
+                height={0}
                 alt="Hero image 4"
                 className="w-1/5 h-full object-contain"
               />
-              <img 
-                src="/assets/images/freelancer-5.png" 
+              <Image
+                src="/assets/images/freelancer-5.png"
+                width={200}
+                height={0}
                 alt="Hero image 5"
                 className="w-1/5 h-full object-contain"
               />
