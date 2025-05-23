@@ -29,7 +29,7 @@ const PrivacyPolicy = () => {
                 1. Introduction
               </h2>
               <p>
-                Welcome to the Pan-African Agency Network (PAAN). We are committed to protecting your privacy and ensuring that your personal information is handled in a safe and responsible manner. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website (<a href="https://www.paan.africa" className="text-[#F25849] hover:underline">www.paan.africa</a>) or interact with us through our contact forms or other services.
+                Welcome to the Pan-African Agency Network (PAAN). We are committed to protecting your privacy and ensuring that your personal information is handled in a safe and responsible manner. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website (<a href="https://paan.africa" className="text-[#F25849] hover:underline">paan.africa</a>) or interact with us through our contact forms or other services.
               </p>
               <p className="mt-2">
                 By using our website or submitting your information, you agree to the terms of this Privacy Policy. If you do not agree with this policy, please do not use our website or services.
@@ -190,7 +190,7 @@ const PrivacyPolicy = () => {
                 <strong>Email:</strong> <a href="mailto:secretariat@paan.africa" className="text-[#F25849] hover:underline">secretariat@paan.africa</a>
               </p>
               <p>
-                <strong>Website:</strong> <a href="https://www.paan.africa" className="text-[#F25849] hover:underline">www.paan.africa</a>
+                <strong>Website:</strong> <a href="https://paan.africa" className="text-[#F25849] hover:underline">paan.africa</a>
               </p>
             </div>
           </section>

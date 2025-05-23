@@ -79,7 +79,7 @@ export default async function handler(req, res) {
           <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px; font-family: Arial, sans-serif; color: #172840;">
             <tr>
               <td align="center" style="padding: 20px 0;">
-                <img src="https://www.paan.africa/assets/images/logo.png" alt="PAAN Logo" style="max-width: 200px;" />
+                <img src="https://paan.africa/assets/images/logo.png" alt="PAAN Logo" style="max-width: 200px;" />
               </td>
             </tr>
             <tr>
@@ -116,7 +116,7 @@ export default async function handler(req, res) {
           <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px; font-family: Arial, sans-serif; color: #172840;">
             <tr>
               <td align="center" style="padding: 20px 0;">
-                <img src="https://www.paan.africa/assets/images/logo.png" alt="PAAN Logo" style="max-width: 200px;" />
+                <img src="https://paan.africa/assets/images/logo.png" alt="PAAN Logo" style="max-width: 200px;" />
               </td>
             </tr>
             <tr>
@@ -131,7 +131,7 @@ export default async function handler(req, res) {
                 <p style="margin: 0 0 10px; font-size: 16px;"><strong>Your Message:</strong> ${message}</p>
                 <p style="margin: 20px 0 0; font-size: 16px;">In the meantime, explore more about how PAAN is redefining Africa’s creative and tech footprint:</p>
                 <p style="text-align: center; margin: 20px 0;">
-                  <a href="https://www.paan.africa/#join-network" style="background-color: #F25849; color: #ffffff; padding: 10px 20px; text-decoration: none; border-radius: 25px; font-size: 14px; font-weight: bold;">Join the Network</a>
+                  <a href="https://paan.africa/#join-network" style="background-color: #F25849; color: #ffffff; padding: 10px 20px; text-decoration: none; border-radius: 25px; font-size: 14px; font-weight: bold;">Join the Network</a>
                 </p>
               </td>
             </tr>
