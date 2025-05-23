@@ -77,8 +77,10 @@ const FreelancersPage = () => {
                 <h3 className="text-white text-3xl text-left font-normal">
                   You&apos;re <span className="relative inline-block">
                     <span className="relative z-10">great</span>
-                    <img
+                    <Image
                       src="/assets/images/red-vector.png"
+                      width={100}
+                      height={0}
                       alt=""
                       className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-0 w-full h-auto"
                     />
