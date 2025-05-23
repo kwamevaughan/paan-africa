@@ -387,7 +387,7 @@ const HomePage = () => {
               <Tier3 />
             </div>
             <div className="flex justify-center">
-              <button onClick={() => window.location.href = 'https://membership.paan.africa/'} className="bg-[#F26522] hover:bg-[#6BB0CC] text-white font-semibold py-3 px-8 rounded-lg transition-colors duration-300 shadow-md hover:shadow-lg">
+              <button onClick={() => window.location.href = 'https://membership.paan.africa/'} className="bg-[#F26522] hover:bg-[#6BB0CC] text-white font-semibold py-3 px-8 rounded-full transition-colors duration-300 shadow-md hover:shadow-lg">
                 Register Now
               </button>
             </div>
@@ -483,47 +483,49 @@ const HomePage = () => {
                 </p>
               </div> */}
             </div>
-            <div className="col-span-1 pattern-bg-2 rounded-lg transform transition-transform duration-300 hover:translate-y-[-5px]">
-              <div className="bg-[#F25849]/50 py-16 px-8 rounded-lg h-full">
-                <a href="/summit"
-                  className="inline-block bg-white px-6 py-3 rounded-full font-medium text-sm text-center transition duration-300 hover:bg-[#1f3c66] hover:text-white mb-4"
-                >
-                  Learn More
-                </a>
-                <p className="text-2xl mb-4 text-white">
-                  Inaugural PAAN Summit
-                </p>
-                <div className="flex gap-4 mb-4">
-                  <div className="flex items-center gap-2 pb-4">
-                    <Icon
-                      icon="mdi:location"
-                      width="20"
-                      height="20"
-                      className="flex-shrink-0 text-white"
-                    />
-                    <p className="text-lg font-medium text-white">
-                      Nairobi, Kenya
-                    </p>
+            <a href="/summit" className="block h-full">
+              <div className="col-span-1 pattern-bg-2 rounded-lg transform transition-transform duration-300 hover:translate-y-[-5px] h-full">
+                <div className="bg-[#F25849]/50 py-16 px-8 rounded-lg h-full flex flex-col">
+                  <div
+                    className="inline-block bg-white px-6 py-3 rounded-full font-medium text-sm text-center transition duration-300 hover:bg-[#1f3c66] hover:text-white mb-4 w-fit"
+                  >
+                    Summit
                   </div>
-                  <div className="flex items-center gap-2 pb-4">
-                    <Icon
-                      icon="zondicons:calendar"
-                      width="20"
-                      height="20"
-                      className="flex-shrink-0 text-white"
-                    />
-                    <p className="text-lg font-medium text-white">
-                      22<sup>nd</sup>–24<sup>th</sup> October
-                    </p>
+                  <p className="text-2xl mb-4 text-white font-semibold">
+                    Inaugural PAAN Summit
+                  </p>
+                  <div className="flex flex-col sm:flex-row gap-4 mb-4">
+                    <div className="flex items-center gap-2">
+                      <Icon
+                        icon="mdi:location"
+                        width="20"
+                        height="20"
+                        className="flex-shrink-0 text-white"
+                      />
+                      <p className="text-lg font-medium text-white">
+                        Nairobi, Kenya
+                      </p>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Icon
+                        icon="zondicons:calendar"
+                        width="20"
+                        height="20"
+                        className="flex-shrink-0 text-white"
+                      />
+                      <p className="text-lg font-medium text-white">
+                        22<sup>nd</sup>–24<sup>th</sup> October
+                      </p>
+                    </div>
                   </div>
+                  <p className="text-white flex-grow">
+                    Our flagship event bringing together Africa's brightest
+                    creative and tech minds for powerful keynotes, networking, and
+                    showcases.
+                  </p>
                 </div>
-                <p className="text-white">
-                  Our flagship event bringing together Africa’s brightest
-                  creative and tech minds for powerful keynotes, networking, and
-                  showcases.
-                </p>
               </div>
-            </div>
+            </a>
           </div>
         </div>
 
