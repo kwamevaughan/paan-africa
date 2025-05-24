@@ -1,5 +1,5 @@
 import SEO from "@/components/SEO";
-import Header from "../layouts/header";
+import Header from "../layouts/freelancers-header";
 import Image from "next/image";
 import Link from "next/link";
 import { Icon } from "@iconify/react";

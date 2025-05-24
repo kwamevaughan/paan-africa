@@ -5,6 +5,7 @@ import { useEffect, useRef } from "react";
 import { useFixedHeader } from '../../utils/scrollUtils';
 import PartnerBenefits from "@/components/PartnersBenefits";
 import Steps from "@/components/steps";
+import Link from "next/link";
 
 const FreelancersPage = () => {
   const sectionRefs = {
@@ -65,40 +66,38 @@ const FreelancersPage = () => {
         <Hero />
 
         <div className="mx-auto max-w-6xl mt-20 mb-20 relative">
-          <section className="relative">
-            <div className="mb-6">
-                <h2 className="text-l uppercase font-bold text-left text-black mb-4">For Technology Companies, Platforms, and Innovators</h2>
-                <h3 className="text-left text-black">
-                    At PAAN, we bridge the gap between cutting-edge technology solutions and Africa’s most dynamic markets. 
-                    Partner with us to connect with 200+ vetted communication, marketing, and tech agencies serving big brands,
-                    NGOs, and fast-growing enterprises across the continent.
-                </h3>
-            </div>
+          <div className="absolute top-80 right-0 w-16 h-16 bg-[#F2B706] rounded-full z-0"></div>
+          <div className="absolute bottom-40 right-80 w-11 h-11 bg-[#84C1D9] rounded-full z-0"></div>
+          <div className="absolute -bottom-24 -right-40 w-14 h-14 bg-[#F25849] rounded-full z-10"></div>
+          <section className="relative">            
             <div className="mb-10">
-                <h2 className="text-l uppercase font-bold text-left text-black mb-4">Why Partner with PAAN?</h2>
-                <h3 className="text-left text-black">
-                    Africa’s markets are diverse, complex, and ripe with opportunity—but navigating them alone is costly and time-consuming. 
-                    PAAN’s agency network acts as your local accelerator, providing:
-                </h3>   
-                <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-                    <div className="mx-auto md:mx-0">
-                        <img src="/assets/images/black-girl.png" alt="Professional woman" className="rounded-lg shadow-md max-w-full h-auto" />
-                    </div>
-                    <div className="flex flex-col space-y-6">
-                        <div className="bg-white p-6 rounded-lg shadow-sm">
-                            <h2 className="text-xl font-bold mb-2 text-gray-800">Local Expertise</h2>
-                            <p className="text-gray-600">Agencies fluent in cultural, regulatory, and market nuances.</p>
-                        </div>
-                        <div className="bg-white p-6 rounded-lg shadow-sm">
-                            <h2 className="text-xl font-bold mb-2 text-gray-800">Scalable Distribution</h2>
-                            <p className="text-gray-600">Access decision-makers through trusted partners.</p>
-                        </div>
-                        <div className="bg-white p-6 rounded-lg shadow-sm">
-                            <h2 className="text-xl font-bold mb-2 text-gray-800">Credibility</h2>
-                            <p className="text-gray-600">PAAN's endorsement builds trust with agencies and their clients.</p>
-                        </div>
-                    </div>
+              <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div className="mx-auto md:mx-0 flex justify-center">
+                  <img 
+                    src="/assets/images/black-girl.png" 
+                    alt="Professional woman" 
+                    className="rounded-lg shadow-md w-full max-w-md h-auto object-cover" 
+                  />
                 </div>
+                <div className="flex flex-col space-y-6 max-w-lg">
+                  <h3 className="text-xl font-semibold">For Technology Companies, Platforms, and Innovators</h3>
+                  <p className="text-gray-700 leading-relaxed">
+                    At PAAN, we bridge the gap between cutting-edge technology solutions and 
+                    Africa's most dynamic markets. Partner with us to connect with 200+ vetted 
+                    communication, marketing, and tech agencies serving big brands, NGOs, and fast-growing enterprises across the continent.
+                  </p>
+                  <button className="bg-[#F25849] text-white py-3 px-8 rounded-full hover:bg-orange-600 transition-all duration-300 transform ease-in-out hover:translate-y-[-5px] font-medium text-sm w-fit">
+                    <Link href="https://membership.paan.africa/" passHref>
+                      Become a member
+                    </Link>
+                  </button> 
+                </div>
+              </div>
+              <div className="mt-20">
+                <h2 className="text-2xl font-semibold">Why Partner with PAAN?</h2>
+                <p className="text-gray-700 leading-relaxed mt-4 font-normal text-2xl">Africa’s markets are diverse, complex, and ripe with opportunity—but navigating them alone is costly and time-consuming. 
+                  PAAN’s agency network acts as your local accelerator, providing:</p>
+              </div>
             </div>
           </section>
         </div>
@@ -162,32 +161,43 @@ const FreelancersPage = () => {
 const Hero = () => {
   return (
     <div
-    className="relative h-screen w-full bg-[#F25849] overflow-hidden" 
-    id="home"
-  >
-    {/* Background image positioned at the bottom */}
-    <div 
-      className="absolute inset-x-0 bottom-0 bg-bottom bg-no-repeat opacity-20"
-      style={{
-        backgroundImage: "url('/assets/images/bg-pattern.png')",
-        height: "100%"
-      }}
-    />
+      className="relative h-screen w-full bg-gray-900 overflow-hidden" 
+      id="home"
+    >
+      {/* Background video positioned to cover full container */}
+      <video
+        className="absolute inset-0 w-full h-full object-cover"
+        autoPlay
+        muted
+        loop
+        playsInline
+      >
+        <source src="/assets/videos/1.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
 
-    <div className="relative h-full flex">
-      <div className="max-w-6xl px-6 md:px-8 pb-16 flex flex-col justify-end h-full">
-      
-        <div className="max-w-2xl text-left space-y-6">
-          <h2 className="text-white font-bold mb-2 relative uppercase">
-            PAAN Partnership Program
-          </h2>
-          <p className="text-white text-3xl mb-6">
-            Power Your Growth Across Africa. <br/>Unlock Africa's Potential with PAAN's Agency Network.
-          </p>                        
+      {/* Dark overlay */}
+      <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+
+      <div className="relative h-full flex mx-auto max-w-6xl">
+        <div className="max-w-6xl px-6 md:px-8 pb-16 flex flex-col justify-end h-full">
+        
+          <div className="max-w-2xl text-left space-y-6">
+            <h2 className="text-white font-bold mb-2 relative uppercase">
+                Power Your Growth Across Africa
+            </h2>
+            <p className="text-white text-4xl mb-6">
+                Unlock Africa’s Potential<br/> with PAAN’s Agency Network
+            </p>  
+            <button className="bg-[#F25849] text-white py-3 px-10 rounded-full hover:bg-orange-600 transition-all duration-300 transform ease-in-out hover:translate-y-[-5px] font-medium text-sm">
+              <Link href="https://membership.paan.africa/" passHref>
+                Become a member
+              </Link>
+            </button>             
+          </div>
         </div>
       </div>
     </div>
-  </div>
   );
 };
 

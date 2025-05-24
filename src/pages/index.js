@@ -132,8 +132,26 @@ const HomePage = () => {
             <p className="uppercase font-semibold mb-4">2. Who We Are</p>
             <p className="text-2xl">
               The Pan-African Agency Network (PAAN) is a bold alliance of
-              independent agencies across Africa and the diaspora. We’re on a
-              mission to transform fragmentation into unity and potential into
+              <span className="relative inline-block">
+                <span className="text-[#F25849] font-semibold relative ml-2 z-0">independent</span>
+                <Image
+                                  src="/assets/images/sketch-1.png"
+                  width={400}
+                  height={0}
+                  alt=""
+                  className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-auto h-auto z-[-2]"
+                />
+              </span>{" "} agencies across Africa and the diaspora. We’re on a
+              mission to <span className="relative inline-block">
+                <span className="text-[#F2B706] font-semibold relative z-0">transform</span>
+                <Image
+                                  src="/assets/images/sketch-3.png"
+                  width={400}
+                  height={0}
+                  alt=""
+                  className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-auto h-auto z-[-2]"
+                />
+              </span> fragmentation into unity and potential into
               global influence.
             </p>
           </section>
@@ -214,7 +232,7 @@ const HomePage = () => {
               {/* Image */}
               <div className="relative">
                 <Image
-                  src="/assets/images/mission.jpg"
+                  src="/assets/images/mission.png"
                   width={500}
                   height={300}
                   alt="Team collaboration"
@@ -436,92 +454,21 @@ const HomePage = () => {
             </p>
           </section>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 items-center mt-10">
-            <div className="col-span-1 pattern-bg-1 rounded-lg transform transition-transform duration-300 hover:translate-y-[-10px]">
+            
+            <div className="col-span-1 pattern-bg-2 rounded-lg transform transition-transform duration-300 hover:translate-y-[-5px]">
               <Link
-                href="https://us06web.zoom.us/webinar/register/WN_3lR6MRbNT7Or-tqRnlRijw"
+                href="/summit"
                 target="_blank" // Opens in new tab
                 rel="noopener noreferrer" // Security best practice for external links
               >
                 <Image
-                  src="/assets/images/zoom-webinar.jpg"
+                  src="/assets/images/oct-summit.jpg"
                   width={900}
                   height={0}
                   alt="Webinar"
                   className="rounded-lg object-cover w-full h-full"
                 />
               </Link>
-              {/* <div className="bg-[#84C1D9]/50 py-16 px-8 rounded-lg h-full">
-                <button className="bg-[#172840] text-white px-8 py-3 rounded-full font-medium text-sm transition duration-300 hover:bg-[#1f3c66] mb-4">
-                  Webinar
-                </button>
-                <p className="text-2xl mb-4">Agency Growth Blueprint Webinar</p>
-                <div className="flex gap-4 mb-4">
-                  <div className="flex items-center gap-2 pb-4">
-                    <Icon
-                      icon="mdi:location"
-                      width="20"
-                      height="20"
-                      className="flex-shrink-0"
-                    />
-                    <p className="text-lg font-medium">Online</p>
-                  </div>
-                  <div className="flex items-center gap-2 pb-4">
-                    <Icon
-                      icon="zondicons:calendar"
-                      width="20"
-                      height="20"
-                      className="flex-shrink-0"
-                    />
-                    <p className="text-lg font-medium">Coming Soon</p>
-                  </div>
-                </div>
-                <p>
-                  An exclusive webinar designed to equip independent agencies
-                  with practical strategies for scaling, winning global clients,
-                  and building sustainable operations.
-                </p>
-              </div> */}
-            </div>
-            <div className="col-span-1 pattern-bg-2 rounded-lg transform transition-transform duration-300 hover:translate-y-[-5px]">
-              <div className="bg-[#F25849]/50 py-16 px-8 rounded-lg h-full">
-                <a href="/summit"
-                  className="inline-block bg-white px-6 py-3 rounded-full font-medium text-sm text-center transition duration-300 hover:bg-[#1f3c66] hover:text-white mb-4"
-                >
-                  Learn More
-                </a>
-                <p className="text-2xl mb-4 text-white">
-                  Inaugural PAAN Summit
-                </p>
-                <div className="flex gap-4 mb-4">
-                  <div className="flex items-center gap-2 pb-4">
-                    <Icon
-                      icon="mdi:location"
-                      width="20"
-                      height="20"
-                      className="flex-shrink-0 text-white"
-                    />
-                    <p className="text-lg font-medium text-white">
-                      Nairobi, Kenya
-                    </p>
-                  </div>
-                  <div className="flex items-center gap-2 pb-4">
-                    <Icon
-                      icon="zondicons:calendar"
-                      width="20"
-                      height="20"
-                      className="flex-shrink-0 text-white"
-                    />
-                    <p className="text-lg font-medium text-white">
-                      22<sup>nd</sup>–24<sup>th</sup> October
-                    </p>
-                  </div>
-                </div>
-                <p className="text-white">
-                  Our flagship event bringing together Africa’s brightest
-                  creative and tech minds for powerful keynotes, networking, and
-                  showcases.
-                </p>
-              </div>
             </div>
           </div>
         </div>

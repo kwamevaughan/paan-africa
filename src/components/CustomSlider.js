@@ -4,8 +4,8 @@ import { Icon } from "@iconify/react";
 
 const CustomSlider = () => {
   const slides = [
-    '/assets/images/slides/slide-img-1.png',
-    '/assets/images/slides/slide-img-2.png',
+    '/assets/images/slides/home-hero.png',
+    '/assets/images/slides/home-hero.png',
   ];
 
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -20,7 +20,7 @@ const CustomSlider = () => {
 
   return (
     <div className="relative w-full max-w-lg mx-auto">
-      <div className="overflow-hidden rounded-lg">
+      <div className="overflow-hidden rounded-lg mt-28">
         <Image
           src={slides[currentSlide]}
           alt={`Slide ${currentSlide + 1}`}
