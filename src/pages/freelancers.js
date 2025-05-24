@@ -109,10 +109,12 @@ const FreelancersPage = () => {
                     ></video>
                   </span>
                   Now join a <br/>network that helps you do it at scale.<br/><br/> PAAN Certified Freelancers get<br/> more than 
-                  <span className="relative inline-block">
-                    <span className="relative z-10">access to briefs</span>
-                    <img
+                  <span className="relative">
+                    <span className="relative z-10"> access to briefs</span>
+                    <Image
                       src="/assets/images/yellow-vector.png"
+                      width={100}
+                      height={0}
                       alt=""
                       className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-0 w-full h-auto"
                     />
@@ -137,10 +139,12 @@ const FreelancersPage = () => {
                     ></video>
                   </span>
                   They get structure,<br/> visibility, and opportunities built<br/> for 
-                  <span className="relative inline-block">
+                  <span className="relative">
                     <span className="relative z-10"> serious professional.</span>
-                    <img
+                    <Image
                       src="/assets/images/blue-vector.png"
+                      width={100}
+                      height={0}
                       alt=""
                       className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-0 w-full h-auto"
                     />
@@ -148,7 +152,7 @@ const FreelancersPage = () => {
                 </h3>
               </div>
               <div className="flex justify-end">
-                <img src="/assets/images/africa-map.png" alt="PAAN Summit" className="h-auto object-cover rounded shadow-lg" />
+                <Image src="/assets/images/africa-map.png" width={600} height={0} alt="PAAN Summit" className="h-auto object-cover rounded shadow-lg" />
               </div>
             </div>
           </section>
