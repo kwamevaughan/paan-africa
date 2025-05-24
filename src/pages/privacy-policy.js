@@ -14,7 +14,7 @@ const PrivacyPolicy = () => {
       />
       <main className="min-h-screen flex flex-col">
         <Header />
-        <div className="flex-grow px-4 py-16 max-w-6xl mx-auto">
+        <div className="flex-grow px-4 py-28 max-w-6xl mx-auto">
           <h1 className="text-4xl font-semibold text-[#172840] mb-6 text-center">
             Privacy Policy
           </h1>
