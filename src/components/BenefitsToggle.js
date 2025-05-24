@@ -85,8 +85,10 @@ export default function BenefitsToggle() {
       {/* Partner Details Section */}
       <div className="flex flex-col md:flex-row gap-8 p-6 rounded-lg">
         <div className="md:w-2/5">
-          <img
+          <Image
             src={partnerData[activeTab].image}
+            width={400}
+            height={0}
             alt={`${partnerData[activeTab].title} illustration`}
             className="w-full h-64 rounded-lg object-cover shadow-md"
           />
