@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Icon } from "@iconify/react"; // Import Icon from iconify
+import Image from "next/image";
 
 export default function FreelanceBenefitsSlider() {
   const [startIndex, setStartIndex] = useState(0);
@@ -99,8 +100,10 @@ export default function FreelanceBenefitsSlider() {
 
                       {/* Image */}
                       <div className="w-full md:w-1/2 flex items-center justify-center">
-                        <img
+                        <Image
                           src={card.image}
+                          width={300}
+                          height={300}
                           alt={card.title}
                           className="rounded w-full h-auto object-cover shadow"
                         />
