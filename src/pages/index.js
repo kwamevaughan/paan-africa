@@ -386,7 +386,7 @@ const HomePage = () => {
               <Tier3 />
             </div>
             <div className="flex justify-center">
-              <button onClick={() => window.location.href = 'https://membership.paan.africa/'} className="bg-[#F26522] hover:bg-[#6BB0CC] text-white font-semibold py-3 px-8 rounded-lg transition-colors duration-300 shadow-md hover:shadow-lg">
+              <button onClick={() => window.location.href = 'https://membership.paan.africa/'} className="bg-[#F26522] hover:bg-[#6BB0CC] text-white font-semibold py-3 px-8 rounded-full transition-colors duration-300 shadow-md hover:shadow-lg">
                 Register Now
               </button>
             </div>
@@ -484,11 +484,11 @@ const HomePage = () => {
             </div>
             <div className="col-span-1 pattern-bg-2 rounded-lg transform transition-transform duration-300 hover:translate-y-[-5px]">
               <div className="bg-[#F25849]/50 py-16 px-8 rounded-lg h-full">
-                <Link href="/summit"
+                <a href="/summit"
                   className="inline-block bg-white px-6 py-3 rounded-full font-medium text-sm text-center transition duration-300 hover:bg-[#1f3c66] hover:text-white mb-4"
                 >
                   Learn More
-                </Link>
+                </a>
                 <p className="text-2xl mb-4 text-white">
                   Inaugural PAAN Summit
                 </p>
