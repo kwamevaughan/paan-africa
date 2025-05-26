@@ -209,7 +209,7 @@ const SummitPage = () => {
 
         <div className="bg-[#D1D3D4] relative py-10" id="tickets" ref={sectionRefs.tickets} handleScroll={handleScroll} isFixed={isFixed}>
           <section className="relative mx-auto max-w-6xl">
-            {/* <SeminarRegistration /> */}
+            <SeminarRegistration />
           </section>
         </div>
         
