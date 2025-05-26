@@ -1,8 +1,6 @@
 import SEO from "@/components/SEO";
 import Header from "../layouts/freelancers-header";
 import Image from "next/image";
-import Link from "next/link";
-import { Icon } from "@iconify/react";
 import Footer from "@/layouts/footer";
 import { useEffect, useRef } from "react";
 import { useFixedHeader } from '../../utils/scrollUtils';
