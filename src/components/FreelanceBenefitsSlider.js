@@ -1,9 +1,16 @@
-import { useState } from "react";
-import { Icon } from "@iconify/react"; // Import Icon from iconify
+import { useState, useRef } from "react";
+import { Icon } from "@iconify/react";
 import Image from "next/image";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, EffectCoverflow } from 'swiper/modules';
+
+// Swiper styles
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/effect-coverflow';
 
 export default function FreelanceBenefitsSlider() {
-  const [startIndex, setStartIndex] = useState(0);
+  const swiperRef = useRef(null);
 
   const cards = [
     {
@@ -50,96 +57,92 @@ export default function FreelanceBenefitsSlider() {
     },
   ];
 
-  // Calculate the visible cards (3 at a time)
-  const visibleCards = [];
-  for (let i = 0; i < 3; i++) {
-    const index = (startIndex + i) % cards.length;
-    visibleCards.push({
-      ...cards[index],
-      originalIndex: index,
-    });
-  }
-
-  const nextSlide = () => {
-    setStartIndex((prevIndex) => (prevIndex + 1) % cards.length);
-  };
-
-  const prevSlide = () => {
-    setStartIndex((prevIndex) =>
-      prevIndex === 0 ? cards.length - 1 : prevIndex - 1
-    );
-  };
-
   return (
-    <div className="mt-10 mb-16 relative">
+    <div className="mt-10 mb-24 relative">
       <section className="relative">
         <div className="relative">
-          {/* Card Container */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {visibleCards.map((card, index) => (
-              <div
-                key={card.originalIndex}
-                className={`${card.bgColor} rounded-lg shadow overflow-hidden transition-all duration-300 h-full ${
-                  index === 1
-                    ? "ring-2 ring-blue-500 transform scale-105"
-                    : "scale-95"
-                }`}
-              >
-                <div className="h-full flex flex-col">
-                  <div className="p-4 flex flex-col h-full">
-                    {/* Content Container - Equal Height */}
-                    <div className="flex flex-col md:flex-row gap-3 flex-grow">
-                      {/* Description */}
-                      <div className="w-full md:w-1/2 text-xs">
-                        {/* Title */}
-                        <h4 className="text-md font-bold mb-4 text-gray-800">
-                          {card.title}
-                        </h4>
-                        <p className="text-gray-600">{card.description}</p>
-                      </div>
-
-                      {/* Image */}
-                      <div className="w-full md:w-1/2 flex items-center justify-center">
-                        <Image
-                          src={card.image}
-                          width={300}
-                          height={300}
-                          alt={card.title}
-                          className="rounded w-full h-auto object-cover shadow"
-                        />
+          <Swiper
+            modules={[Navigation, EffectCoverflow]}
+            effect="coverflow"
+            grabCursor={true}
+            centeredSlides={true}
+            slidesPerView={1.2}
+            spaceBetween={30}
+            onBeforeInit={(swiper) => {
+              swiperRef.current = swiper;
+            }}
+            breakpoints={{
+              640: {
+                slidesPerView: 1.5,
+                spaceBetween: 40,
+              },
+              1024: {
+                slidesPerView: 1.8,
+                spaceBetween: 50,
+              },
+            }}
+            coverflowEffect={{
+              rotate: 0,
+              stretch: 0,
+              depth: 100,
+              modifier: 1,
+              slideShadows: false,
+            }}
+            className="w-full px-4"
+          >
+            {cards.map((card, index) => (
+              <SwiperSlide key={index} className="!w-[85%] md:!w-[70%] lg:!w-[60%]">
+                <div
+                  className={`${card.bgColor} rounded-lg shadow-lg overflow-hidden transition-all duration-300 h-[400px]`}
+                >
+                  <div className="h-full flex flex-col">
+                    <div className="p-8 flex flex-col h-full">
+                      <div className="flex flex-col md:flex-row gap-8 flex-grow items-center">
+                        <div className="w-full md:w-1/2 text-base h-full flex flex-col justify-center">
+                          <h4 className="text-xl font-bold mb-6 text-gray-800">
+                            {card.title}
+                          </h4>
+                          <p className="text-gray-600 leading-relaxed text-md">{card.description}</p>
+                        </div>
+                        <div className="w-full md:w-1/2 h-full flex items-center justify-center">
+                          <div className="relative w-full h-full">
+                            <Image
+                              src={card.image}
+                              fill
+                              alt={card.title}
+                              className="rounded-lg object-cover shadow-lg"
+                            />
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
+              </SwiperSlide>
             ))}
-          </div>
-
-          {/* Navigation Arrows */}
-          <div className="absolute -bottom-10 right-0 flex items-center space-x-2 mt-6">
-            <button
-              onClick={prevSlide}
-              className="p-2 bg-[#F25849] hover:bg-gray-300 rounded-full transition-colors shadow text-white"
-              aria-label="Previous slide"
+          </Swiper>
+            
+          {/* Navigation Buttons */}
+          <div className="absolute -bottom-20 right-4 flex items-center space-x-4 z-9">
+            <button 
+              onClick={() => swiperRef.current?.slidePrev()}
+              className="swiper-button-prev-custom w-12 h-12 bg-[#F25849] rounded-full text-white hover:bg-[#e04a3b] transition-colors flex items-center justify-center"
             >
-              {/* Iconify Left Chevron Icon */}
               <Icon
                 icon="mdi:chevron-left"
-                width={24}
-                height={24}
+                width={28}
+                height={28}
                 color="white"
               />
             </button>
-            <button
-              onClick={nextSlide}
-              className="p-2 bg-[#F25849] hover:bg-gray-300 rounded-full transition-colors shadow text-white"
-              aria-label="Next slide"
+            <button 
+              onClick={() => swiperRef.current?.slideNext()}
+              className="swiper-button-next-custom w-12 h-12 bg-[#F25849] rounded-full text-white hover:bg-[#e04a3b] transition-colors flex items-center justify-center"
             >
-              {/* Iconify Right Chevron Icon */}
               <Icon
                 icon="mdi:chevron-right"
-                width={24}
-                height={24}
+                width={28}
+                height={28}
                 color="white"
               />
             </button>
