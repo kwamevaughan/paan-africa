@@ -16,7 +16,7 @@ export const menuItems = [
     { href: '/partners', label: 'For Partners' },
     { href: '/clients', label: 'For Clients' },
     { href: 'https://membership.paan.africa/hr/login', label: 'Member Portal' },
-    { href: '/summit', label: '2025 Creative Summmt' },
+    { href: '/summit', label: '2025 Creative Summit' },
   ];
 
   export const PartnersPageMenu = [
@@ -25,7 +25,7 @@ export const menuItems = [
     { href: '/partners', label: 'For Partners' },
     { href: '/clients', label: 'For Clients' },
     { href: 'https://membership.paan.africa/hr/login', label: 'Member Portal' },
-    { href: '/summit', label: '2025 Creative Summmt' },
+    { href: '/summit', label: '2025 Creative Summit' },
   ];
   
   export const ctaButton = {
