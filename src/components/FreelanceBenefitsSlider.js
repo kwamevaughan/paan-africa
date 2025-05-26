@@ -92,33 +92,37 @@ export default function FreelanceBenefitsSlider() {
           >
             {cards.map((card, index) => (
               <SwiperSlide key={index} className="!w-[85%] md:!w-[70%] lg:!w-[60%]">
-                <div
-                  className={`${card.bgColor} rounded-lg shadow-lg overflow-hidden transition-all duration-300 h-[400px]`}
-                >
-                  <div className="h-full flex flex-col">
-                    <div className="p-8 flex flex-col h-full">
-                      <div className="flex flex-col md:flex-row gap-8 flex-grow items-center">
-                        <div className="w-full md:w-1/2 text-base h-full flex flex-col justify-center">
-                          <h4 className="text-xl font-bold mb-6 text-gray-800">
-                            {card.title}
-                          </h4>
-                          <p className="text-gray-600 leading-relaxed text-md">{card.description}</p>
-                        </div>
-                        <div className="w-full md:w-1/2 h-full flex items-center justify-center">
-                          <div className="relative w-full h-full">
-                            <Image
-                              src={card.image}
-                              fill
-                              alt={card.title}
-                              className="rounded-lg object-cover shadow-lg"
-                            />
-                          </div>
+              <div
+                className={`${card.bgColor} rounded-lg shadow-lg overflow-hidden transition-all duration-300 h-[400px] relative`}
+              >
+                {/* Decorative circles */}
+                <div className="hidden sm:block absolute bottom-4 left-4 w-10 h-10 bg-[#172840] rounded-full z-10"></div>
+                <div className="hidden sm:block absolute bottom-4 right-4 w-16 h-16 bg-[#F2B706] rounded-full z-10"></div>
+                
+                <div className="h-full flex flex-col">
+                  <div className="p-8 flex flex-col h-full">
+                    <div className="flex flex-col md:flex-row gap-8 flex-grow items-center">
+                      <div className="w-full md:w-1/2 text-base h-full flex flex-col justify-center">
+                        <h4 className="text-xl font-bold mb-6 text-gray-800">
+                          {card.title}
+                        </h4>
+                        <p className="text-gray-600 leading-relaxed text-md">{card.description}</p>
+                      </div>
+                      <div className="w-full md:w-1/2 h-full flex items-center justify-center">
+                        <div className="relative w-full h-full">
+                          <Image
+                            src={card.image}
+                            fill
+                            alt={card.title}
+                            className="rounded-lg object-cover shadow-lg"
+                          />
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </SwiperSlide>
+              </div>
+            </SwiperSlide>
             ))}
           </Swiper>
             
