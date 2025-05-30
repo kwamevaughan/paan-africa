@@ -8,24 +8,25 @@ export const menuItems = [
     { href: '#services', label: 'Services' },
     { href: '#events', label: 'Events' },
     { href: '#contact-us', label: 'Contact Us' },
+    { href: '/blogs', label: 'Blogs' },
   ];
 
   export const freelancersMenu = [
-    { href: '/agencies', label: 'For Agencies' },
+    { href: '/', label: 'For Agencies' },
     { href: '/freelancers', label: 'For Freelancers' },
     { href: '/partners', label: 'For Partners' },
     { href: '/clients', label: 'For Clients' },
-    { href: 'https://membership.paan.africa/hr/login', label: 'Member Portal' },
-    { href: '/summit', label: '2025 Creative Summit' },
+    { href: '/blogs', label: 'Blogs' },
+    { href: '/summit', label: '2025 Summit' },
   ];
 
   export const PartnersPageMenu = [
-    { href: '/agencies', label: 'For Agencies' },
+    { href: '/', label: 'For Agencies' },
     { href: '/freelancers', label: 'For Freelancers' },
     { href: '/partners', label: 'For Partners' },
     { href: '/clients', label: 'For Clients' },
-    { href: 'https://membership.paan.africa/hr/login', label: 'Member Portal' },
-    { href: '/summit', label: '2025 Creative Summit' },
+    { href: '/blogs', label: 'Blogs' },
+    { href: '/summit', label: '2025 Summit' },
   ];
   
   export const ctaButton = {

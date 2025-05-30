@@ -69,7 +69,7 @@ const HomePage = () => {
         keywords="Pan-African Agency Network, PAAN, African agencies, creative network, tech network, collaboration, innovation, global influence"
       />
       <main className="px-3 pt-6 sm:px-0 sm:pt-0 relative">
-        <Header />
+        <Header/>
 
         <div
           className="mx-auto max-w-6xl section pt-0 mt-32 sm:mt-0"
@@ -88,18 +88,18 @@ const HomePage = () => {
                 global influence.
               </p>
               <div className="flex md:flex-row flex-col gap-4">
-                <button
-                  onClick={(e) => {
-                    handleScroll(e, "#contact-us", isFixed);
-                  }}
+                <button                  
                   className="bg-[#F25849] text-white px-8 py-3 rounded-full font-medium text-sm hover:bg-[#D6473C] transition duration-300"
                 >
-                  Join the Network
+                  <Link href="https://membership.paan.africa/"    
+                  >
+                    Join the Network
+                  </Link>                  
                 </button>
-                <Link href="/freelancers"
+                <Link href="https://member-portal.paan.africa/"
                   className="bg-[#84C1D9] text-[#172840] px-8 py-3 rounded-full font-medium text-sm transition duration-300 hover:bg-[#6FA1B7]"
                 >
-                  PAAN Certified Freelancers
+                  Membership Portal
                 </Link>
               </div>
             </div>

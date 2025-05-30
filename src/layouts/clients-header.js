@@ -8,11 +8,11 @@ import { useFixedHeader } from "../../utils/scrollUtils";
 
 const Header = ({ navLinkColor }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [activeNav, setActiveNav] = useState("For Agencies"); 
+  const [activeNav, setActiveNav] = useState("For Clients"); 
   const isFixed = useFixedHeader();
   
   // Determine the current text color based on scroll position
-  const currentTextColor = isFixed ? "text-gray-950" : navLinkColor;
+  const currentTextColor = isFixed ? "text-white" : navLinkColor;
 
   const handleNavClick = (label) => {
     setActiveNav(label);
@@ -20,19 +20,19 @@ const Header = ({ navLinkColor }) => {
 
   return (
     <nav
-      className={`w-full z-10 transition-all duration-300 ${
+      className={`w-full text-white z-20 transition-all duration-300 ${
         isFixed
-          ? "fixed top-0 left-0 shadow-lg backdrop-blur-md bg-white/80"
-          : "absolute bg-white"
+          ? "fixed top-0 left-0 shadow-lg backdrop-blur-md text-white bg-[#172840]"
+          : "absolute bg-transparent"
       }`}
     >
-      <div className="w-full px-4 lg-custom:px-8">
+      <div className="w-full px-4 lg-custom:px-8 text-white">
         <div className="flex items-center justify-between py-2">
           {/* Logo - Left Side */}
           <div className="flex-shrink-0">
             <Link href="/" passHref>
               <Image
-                src="/assets/images/logo.svg"
+                src="/assets/images/white-logo.png"
                 alt="Logo"
                 width={200}
                 height={70}
@@ -116,7 +116,7 @@ const Header = ({ navLinkColor }) => {
               </a>
             ))}
             <a
-              href="https://membership.paan.africa/"
+              href="https://member-portal.paan.africa/"
               className={ctaButton.mobileClassName}
             >
               {ctaButton.label}
