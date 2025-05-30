@@ -8,7 +8,7 @@ export const menuItems = [
     { href: '#services', label: 'Services' },
     { href: '#events', label: 'Events' },
     { href: '#contact-us', label: 'Contact Us' },
-    { href: '/blogs', label: 'Blogs' },
+    // { href: '/blogs', label: 'Blogs' },
   ];
 
   export const freelancersMenu = [
@@ -16,7 +16,7 @@ export const menuItems = [
     { href: '/freelancers', label: 'For Freelancers' },
     { href: '/partners', label: 'For Partners' },
     { href: '/clients', label: 'For Clients' },
-    { href: '/blogs', label: 'Blogs' },
+    // { href: '/blogs', label: 'Blogs' },
     { href: '/summit', label: '2025 Summit' },
   ];
 
@@ -25,7 +25,7 @@ export const menuItems = [
     { href: '/freelancers', label: 'For Freelancers' },
     { href: '/partners', label: 'For Partners' },
     { href: '/clients', label: 'For Clients' },
-    { href: '/blogs', label: 'Blogs' },
+    // { href: '/blogs', label: 'Blogs' },
     { href: '/summit', label: '2025 Summit' },
   ];
   
