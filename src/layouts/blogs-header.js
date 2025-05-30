@@ -8,7 +8,7 @@ import { useFixedHeader } from "../../utils/scrollUtils";
 
 const Header = ({ navLinkColor }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [activeNav, setActiveNav] = useState("For Agencies"); 
+  const [activeNav, setActiveNav] = useState("Blogs"); 
   const isFixed = useFixedHeader();
   
   // Determine the current text color based on scroll position
