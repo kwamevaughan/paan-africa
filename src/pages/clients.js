@@ -57,9 +57,9 @@ const AgenciesPage = () => {
   return (
     <>
       <SEO
-        title="Join Africa's Top Network for Freelancers | Pan-African Agency Network (PAAN)"
-        description="Become a PAAN Certified Freelancer and gain access to top-tier briefs, professional structure, and visibility. Join Africa's most trusted network for creative, technical, and strategic freelance talent."
-        keywords="African freelancers, freelance network Africa, PAAN certified freelancer, join freelancer platform, vetted freelancers Africa, Pan-African creative network"
+        title="Grow Your Brand in Africa with Trusted Partners | Pan-African Agency Network (PAAN)"
+        description="Connect with certified agencies and freelancers across 20+ African countries to launch campaigns with cultural fluency and regional expertise. Find your delivery partner today."
+        keywords="African marketing, certified agencies Africa, freelancers Africa, campaign execution, PAAN Summit, brand growth Africa, vetted creators, regional campaigns"
       />
       <main className="px-3 pt-6 sm:px-0 sm:pt-0 relative">
         <Header />

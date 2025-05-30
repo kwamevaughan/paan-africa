@@ -2,7 +2,7 @@ import React from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import Image from 'next/image';
-import Header from '@/layouts/header';
+import Header from '@/layouts/blogs-header';
 import SEO from '@/components/SEO';
 import Footer from '@/layouts/footer';
 
