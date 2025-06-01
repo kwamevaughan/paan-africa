@@ -183,9 +183,9 @@ const Hero = () => {
         <div className="max-w-6xl px-6 md:px-8 pb-16 flex flex-col justify-end h-full">
         
           <div className="max-w-2xl text-left space-y-6">
-            <h2 className="text-white font-bold mb-2 relative uppercase">
+            <h1 className="text-white font-bold mb-2 relative uppercase">
                 Power Your Growth Across Africa
-            </h2>
+            </h1>
             <p className="text-white text-4xl mb-6">
                 Unlock Africa’s Potential<br/> with PAAN’s Agency Network
             </p>  
