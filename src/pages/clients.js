@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from "react";
 import { useFixedHeader } from '../../utils/scrollUtils';
 import ClientsSlider from "@/components/ClientsSlider";
 import Link from "next/link";
+import EnquiryModal from "@/components/EnquiryModal";
 
 const AgenciesPage = () => {
   const sectionRefs = {
@@ -20,6 +21,7 @@ const AgenciesPage = () => {
   };
 
   const isFixed = useFixedHeader();
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   // Restore IntersectionObserver for section transitions
   useEffect(() => {
@@ -54,6 +56,9 @@ const AgenciesPage = () => {
     };
   }, []);
 
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
+
   return (
     <>
       <SEO
@@ -63,7 +68,7 @@ const AgenciesPage = () => {
       />
       <main className="px-3 pt-6 sm:px-0 sm:pt-0 relative">
         <Header />
-        <Hero />
+        <Hero openModal={openModal} />
           <div className="bg-white relative">
             <div className="absolute top-50 right-10 w-16 h-16 bg-[#F25849] rounded-full z-0"></div>
             <div className="absolute top-40 left-40 w-8 h-8 bg-[#F25849] rounded-full z-0"></div>
@@ -220,12 +225,13 @@ const AgenciesPage = () => {
                     alt="How it works"
                   />
                   <div className="pt-4">
-                  <button className="bg-[#F25849] text-[#172840] py-3 px-8 rounded-full hover:bg-orange-600 transition-all duration-300 transform ease-in-out hover:translate-y-[-2px] hover:shadow-lg font-medium text-sm tracking-wider">
-                    <Link href="#" passHref>
+                    <button 
+                      onClick={openModal}
+                      className="bg-[#F25849] text-[#172840] py-3 px-8 rounded-full hover:bg-orange-600 transition-all duration-300 transform ease-in-out hover:translate-y-[-2px] hover:shadow-lg font-medium text-sm tracking-wider"
+                    >
                       Submit Your Brief
-                    </Link>
-                  </button>
-                </div>
+                    </button>
+                  </div>
                 </div>                  
                 <div className="mx-auto md:mx-0 flex justify-center">
                   <VerticalSteps />
@@ -259,22 +265,24 @@ const AgenciesPage = () => {
                 <p className="text-[#172840] text-base md:text-lg mb-6 font-light max-w-lg">
                   Don't build a patchwork of vendors. Work with a network designed for scale, fluency, and performance.
                 </p>  
-                <button className="bg-[#F25849] border border-[#F25849] text-[#172840] py-3 px-8 rounded-full hover:bg-orange-600 transition-all duration-300 transform ease-in-out hover:translate-y-[-2px] font-medium text-sm">
-                  <Link href="https://membership.paan.africa/" passHref>
-                    Find Your Delivery Partner
-                  </Link>
+                <button 
+                  onClick={openModal}
+                  className="bg-[#F25849] border border-[#F25849] text-[#172840] py-3 px-8 rounded-full hover:bg-orange-600 transition-all duration-300 transform ease-in-out hover:translate-y-[-2px] font-medium text-sm"
+                >
+                  Find Your Delivery Partner
                 </button>             
               </div>
             </div>
           </div>
         </div>
         <Footer />
+        <EnquiryModal isOpen={isModalOpen} onClose={closeModal} />
       </main>
     </>
   );
 };
 
-const Hero = () => {
+const Hero = ({ openModal }) => {
   return (
     <div
       className="relative h-screen w-full bg-gray-900 overflow-visible" 
@@ -294,9 +302,9 @@ const Hero = () => {
       <div className="relative h-full flex mx-auto max-w-6xl">
         <div className="max-w-6xl px-6 md:px-8 pb-44 flex flex-col justify-end h-full">
           <div className="max-w-2xl text-left space-y-4">
-            <h3 className="text-md text-white relative uppercase">
+            <h1 className="text-md text-white relative uppercase">
               Grow Your Brand in Africa
-            </h3>
+            </h1>
             <h2 className="text-3xl text-white relative font-semibold">
               With <span className="text-[#F25849]">Partners</span> You Can <span className="text-[#F2B706]">Trust</span>
             </h2>
@@ -304,10 +312,11 @@ const Hero = () => {
               Work with certified agencies and freelancers who understand the
               markets, move fast, and deliver with cultural fluency.
             </p>  
-            <button className="bg-transparent border border-white text-white py-3 px-10 rounded-full hover:bg-orange-600 transition-all duration-300 transform ease-in-out hover:translate-y-[-5px] font-medium text-sm">
-              <Link href="https://membership.paan.africa/" passHref>
-                Find Your Delivery Partner
-              </Link>
+            <button 
+              onClick={openModal}
+              className="bg-transparent border border-white text-white py-3 px-10 rounded-full hover:bg-orange-600 transition-all duration-300 transform ease-in-out hover:translate-y-[-5px] font-medium text-sm"
+            >
+              Find Your Delivery Partner
             </button>             
           </div>
         </div>

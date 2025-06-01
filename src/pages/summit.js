@@ -274,10 +274,10 @@ const Hero = ({ sectionRefs, handleScroll, isFixed }) => {
           <div className="mx-auto max-w-6xl px-4 md:px-6 w-full">
             <div className="max-w-2xl">
             <h3 className="text-md text-yellow-400 mb-1">PAAN Inaugural Summit 2025</h3>
-              <h2 className="text-3xl md:text-3xl font-semibold uppercase text-yellow-400 mb-8">
+              <h1 className="text-3xl md:text-3xl font-semibold uppercase text-yellow-400 mb-8">
                 Where Africa's Creative<br/>
                 and Tech Leaders Unite
-              </h2>
+              </h1>
               <p className="text-gray-100 font-normal mb-8">
                     Join the first-ever Pan-African Agency Network (PAAN) Summit — <br/>
                     a landmark gathering of bold thinkers and changemakers shaping Africa's creative and tech industries.

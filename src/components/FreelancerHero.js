@@ -12,7 +12,7 @@ const FreelancerHero = () => {
       <div className="relative flex items-center justify-center">
         <div className="w-full px-6 md:px-8 pt-16 md:pt-32 flex flex-col justify-between freelance-hero-bg">
           <div className=" mx-auto text-center space-y-8 mt-8">
-            <h2 className="text-[#172840] text-xl md:text-5xl font-bold uppercase relative">
+            <h1 className="text-[#172840] text-xl md:text-5xl font-bold uppercase relative">
               <span className="relative inline-block">
                 <span className="text-[#F25849] relative z-0">Freelance</span>
                 <Image
@@ -25,7 +25,7 @@ const FreelancerHero = () => {
               </span>{" "}
               with Purpose. <br />
               Grow with Structure & Scale.
-            </h2>
+            </h1>
             <p className="text-[#172840] text-md mb-6 px-4">
               Join Africa&apos;s premier network of vetted creative, technical,
               and strategic <br></br>talent—powering high-impact campaigns
