@@ -69,7 +69,7 @@ const AgenciesPage = () => {
       <main className="px-3 pt-6 sm:px-0 sm:pt-0 relative">
         <Header />
         <Hero openModal={openModal} />
-          <div className="bg-white relative">
+        <div className="bg-white relative">
             <div className="absolute top-50 right-10 w-16 h-16 bg-[#F25849] rounded-full z-0"></div>
             <div className="absolute top-40 left-40 w-8 h-8 bg-[#F25849] rounded-full z-0"></div>
             <div className="absolute top-10 right-40 w-8 h-8 bg-[#F2B706] rounded-full z-0"></div>
@@ -152,7 +152,7 @@ const AgenciesPage = () => {
             <h2 className="text-lg uppercase font-bold text-left mb-4">What you Get</h2>
             <h3 className="text-2xl">Certified Talent. Regional Execution. Real Results</h3>
             <p className="text-sm">Working with PAAN gives you access to:</p>
-            <ClientsSlider />
+            <ClientsSlider openModal={openModal} />
           </section>
           {/* Background Pattern */}
           <Image

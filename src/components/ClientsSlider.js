@@ -3,14 +3,13 @@ import { Icon } from "@iconify/react";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, EffectCoverflow } from 'swiper/modules';
-import Link from "next/link";
 
 // Swiper styles
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/effect-coverflow';
 
-export default function ClientsSlider() {
+export default function ClientsSlider({ openModal }) {
   const swiperRef = useRef(null);
 
   const cards = [
@@ -37,6 +36,7 @@ export default function ClientsSlider() {
   ];
 
   return (
+    <>
     <div className="w-full relative">
       
       
@@ -136,13 +136,14 @@ export default function ClientsSlider() {
         
         {/* Centered Button */}
         <div className="flex justify-center">
-          <button className="bg-[#F2B706] my-10 text-gray-700 py-3 px-10 rounded-full hover:bg-orange-600 transition-all duration-300 transform ease-in-out hover:translate-y-[-5px] font-medium text-sm">
-            <Link href="https://membership.paan.africa/freelancers" passHref>
+          <button className="bg-[#F2B706] my-10 text-gray-700 py-3 px-10 rounded-full hover:bg-orange-600 transition-all duration-300 transform ease-in-out hover:translate-y-[-5px] font-medium text-sm"
+            onClick={openModal}
+          >
               Find Your Delivery Partner
-            </Link>
           </button>
         </div>
       </section>
     </div>
+    </>
   );
 }
