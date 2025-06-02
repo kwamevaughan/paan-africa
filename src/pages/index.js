@@ -10,9 +10,10 @@ import Tier2 from "@/components/Tier2";
 import Tier3 from "@/components/Tier3";
 import OfferingTab from "@/components/OfferingTab";
 import Footer from "@/layouts/footer";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useFixedHeader, handleScroll } from '../../utils/scrollUtils';
 import ContactSection from "@/components/ContactSection";
+import AgencyEnquiryModal from "@/components/AgencyEnquiryModal";
 
 const HomePage = () => {
   const sectionRefs = {
@@ -27,6 +28,10 @@ const HomePage = () => {
   };
 
   const isFixed = useFixedHeader();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
 
   // Restore IntersectionObserver for section transitions
   useEffect(() => {
@@ -64,8 +69,8 @@ const HomePage = () => {
   return (
     <>
       <SEO
-        title="Pan-African Agency Network (PAAN) | Redefining Africa’s Creative & Tech Footprint"
-        description="Discover the Pan-African Agency Network (PAAN), a dynamic alliance of creative and tech agencies across Africa and the diaspora. Join us to unlock global opportunities, access exclusive resources, and collaborate with top talent to redefine Africa’s creative and technological footprint. Explore our membership tiers, services, and upcoming events today!"
+        title="Pan-African Agency Network (PAAN) | Redefining Africa's Creative & Tech Footprint"
+        description="Discover the Pan-African Agency Network (PAAN), a dynamic alliance of creative and tech agencies across Africa and the diaspora. Join us to unlock global opportunities, access exclusive resources, and collaborate with top talent to redefine Africa's creative and technological footprint. Explore our membership tiers, services, and upcoming events today!"
         keywords="Pan-African Agency Network, PAAN, African agencies, creative network, tech network, collaboration, innovation, global influence"
       />
       <main className="px-3 pt-6 sm:px-0 sm:pt-0 relative">
@@ -79,22 +84,20 @@ const HomePage = () => {
           <section className="grid grid-cols-1 sm:grid-cols-2 gap-8 items-center">
             <div className="flex flex-col gap-8">
               <h2 className="text-3xl md:text-5xl font-semibold uppercase text-[#172840]">
-                Redefining Africa’s Global Creative & Tech Footprint
+                Redefining Africa's Global Creative & Tech Footprint
               </h2>
               <p className="text-gray-500 font-normal">
                 The Pan-African Agency Network (PAAN) is a bold alliance of
-                independent agencies across Africa and the diaspora. We’re on a
+                independent agencies across Africa and the diaspora. We're on a
                 mission to transform fragmentation into unity and potential into
                 global influence.
               </p>
               <div className="flex md:flex-row flex-col gap-4">
                 <button                  
                   className="bg-[#F25849] text-white px-8 py-3 rounded-full font-medium text-sm hover:bg-[#D6473C] transition duration-300"
+                  onClick={openModal}
                 >
-                  <Link href="https://membership.paan.africa/"    
-                  >
-                    Join the Network
-                  </Link>                  
+                  Enquire Now
                 </button>
                 <Link href="https://member-portal.paan.africa/"
                   className="bg-[#84C1D9] text-[#172840] px-8 py-3 rounded-full font-medium text-sm transition duration-300 hover:bg-[#6FA1B7]"
@@ -141,7 +144,7 @@ const HomePage = () => {
                   alt=""
                   className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-auto h-auto z-[-2]"
                 />
-              </span>{" "} agencies across Africa and the diaspora. We’re on a
+              </span>{" "} agencies across Africa and the diaspora. We're on a
               mission to <span className="relative inline-block">
                 <span className="text-[#F2B706] font-semibold relative z-0">transform</span>
                 <Image
@@ -256,7 +259,7 @@ const HomePage = () => {
                       Vision Statement
                     </p>
                     <span className="text-white font-light text-sm sm:text-base">
-                      To become Africa’s foremost collaborative network, shaping
+                      To become Africa's foremost collaborative network, shaping
                       global narratives through creativity and technology.
                     </span>
                   </div>
@@ -303,7 +306,7 @@ const HomePage = () => {
             <div className="flex flex-col gap-20">
               <p className="text-2xl">
                 PAAN membership opens doors to global opportunities, exclusive
-                resources, and a thriving network of Africa’s top creative and
+                resources, and a thriving network of Africa's top creative and
                 tech minds.
               </p>
               <div className="flex md:flex-row flex-col gap-4">
@@ -449,7 +452,7 @@ const HomePage = () => {
             <p className="uppercase font-semibold mb-4">4. Summit & Events</p>
             <p className="text-2xl">
               Experience collaboration in action. Our signature events bring
-              together brands, agencies, and thought leaders to shape Africa’s
+              together brands, agencies, and thought leaders to shape Africa's
               creative future.
             </p>
           </section>
@@ -480,7 +483,7 @@ const HomePage = () => {
           <section className="relative mx-auto max-w-6xl py-28 px-6">
             <div className="flex flex-col mb-10 w-full md:w-3/4">
               <h2 className="text-3xl font-medium mb-4 text-[#F2B706]">
-                Join the Network That’s Redefining Africa’s Creative Future
+                Join the Network That's Redefining Africa's Creative Future
               </h2>
               <p className="text-white font-light">
                 Step into a powerful alliance of agencies shaping the future of
@@ -522,6 +525,7 @@ const HomePage = () => {
           <ContactSection />
         </div>
         <Footer />
+        <AgencyEnquiryModal isOpen={isModalOpen} onClose={closeModal} />
       </main>
     </>
   );
