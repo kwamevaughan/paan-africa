@@ -1,11 +1,23 @@
 import { Icon } from "@iconify/react";
+import Image from "next/image";
 
 const Tier1 = () => {
   return (
-    <div className="bg-white rounded-lg shadow-md hover:shadow-none hover:translate-y-[-5px] transition-all duration-300 ease-in-out">
+    <div className="relative bg-white rounded-lg shadow-md hover:shadow-none hover:translate-y-[-5px] transition-all duration-300 ease-in-out">
+     
+      {/* Badge */}
+      <div className="absolute -top-4 left-4 w-14 h-14 bg-white rounded-full shadow-md flex items-center justify-center">
+        <Image
+          src="/assets/images/gold-member.png"
+          width={28}
+          height={28}
+          alt="badge"
+        />
+      </div>
+
       {/* Header */}
-      <div className="bg-[#8DC63F] text-white text-center py-6 rounded-t-lg">
-        <h3 className="text-xl font-semibold ">Founding Agencies</h3>
+      <div className="bg-[#F2B706] text-white text-center py-6 rounded-t-lg">
+        <h3 className="text-xl font-semibold ">Gold Members</h3>
       </div>
 
       {/* Content */}
@@ -21,10 +33,10 @@ const Tier1 = () => {
               icon="mdi:check-circle"
               width="24"
               height="24"
-              className="text-[#8DC63F] flex-shrink-0"
+              className="text-[#F2B706] flex-shrink-0"
             />
             <p className=" text-sm leading-tight">
-              Leading agency in communication, marketing, or tech
+                Access to exclusive RFPs/Tenders/RFQs 
             </p>
           </li>
           <li className="flex items-start gap-3 border-b border-dashed border-gray-300 pb-4">
@@ -32,10 +44,10 @@ const Tier1 = () => {
               icon="mdi:check-circle"
               width="24"
               height="24"
-              className="text-[#8DC63F] flex-shrink-0"
+              className="text-[#F2B706] flex-shrink-0"
             />
             <p className=" text-sm leading-tight">
-              Participate in PAAN governance
+                Co-bidding opportunities
             </p>
           </li>
           <li className="flex items-start gap-3 border-b border-dashed border-gray-300 pb-4">
@@ -43,10 +55,10 @@ const Tier1 = () => {
               icon="mdi:check-circle"
               width="24"
               height="24"
-              className="text-[#8DC63F] flex-shrink-0"
+              className="text-[#F2B706] flex-shrink-0"
             />
             <p className=" text-sm leading-tight">
-              Contribute to funding seed initiatives
+                Tech Reseller Program
             </p>
           </li>
           <li className="flex items-start gap-3 border-b border-dashed border-gray-300 pb-4">
@@ -54,10 +66,10 @@ const Tier1 = () => {
               icon="mdi:check-circle"
               width="24"
               height="24"
-              className="text-[#8DC63F] flex-shrink-0"
+              className="text-[#F2B706] flex-shrink-0"
             />
             <p className=" text-sm leading-tight">
-              Mentor newer member agencies
+                Cross-Border Client Match-Making
             </p>
           </li>
           <li className="flex items-start gap-3 border-b border-dashed border-gray-300 pb-4">
@@ -65,10 +77,10 @@ const Tier1 = () => {
               icon="mdi:check-circle"
               width="24"
               height="24"
-              className="text-[#8DC63F] flex-shrink-0"
+              className="text-[#F2B706] flex-shrink-0"
             />
             <p className=" text-sm leading-tight">
-              Help shape the network’s strategic direction
+                Market insights & Data for Africa
             </p>
           </li>
         </ul>
