@@ -102,7 +102,7 @@ const HomePage = () => {
                 <Link href="https://member-portal.paan.africa/"
                   className="bg-[#84C1D9] text-[#172840] px-8 py-3 rounded-full font-medium text-sm transition duration-300 hover:bg-[#6FA1B7]"
                 >
-                  Membership Portal
+                  Members Portal
                 </Link>
               </div>
             </div>
@@ -507,7 +507,7 @@ const HomePage = () => {
                 }}
                 className="bg-white px-8 py-3 rounded-full font-medium text-sm transition duration-300 hover:bg-[#6FA1B7]"
               >
-                Register for Webinar
+                Register for Summit
               </button>
             </div>
           </section>

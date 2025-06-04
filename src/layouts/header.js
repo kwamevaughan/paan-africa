@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { freelancersMenu, ctaButton } from "../data/menuData";
-import { useFixedHeader } from "../../utils/scrollUtils";
+import { handleScroll, useFixedHeader } from "../../utils/scrollUtils";
 
 const Header = ({ navLinkColor }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -90,7 +90,9 @@ const Header = ({ navLinkColor }) => {
               ))}
             </div>
             <a
-              href="https://membership.paan.africa/"
+              onClick={(e) => {
+                handleScroll(e, "#contact-us", isFixed);
+              }}
               className={ctaButton.className}
             >
               {ctaButton.label}
@@ -116,8 +118,9 @@ const Header = ({ navLinkColor }) => {
               </a>
             ))}
             <a
-              href="https://membership.paan.africa/"
-              className={ctaButton.mobileClassName}
+              onClick={(e) => {
+                handleScroll(e, "#contact-us", isFixed);
+              }}
             >
               {ctaButton.label}
             </a>
