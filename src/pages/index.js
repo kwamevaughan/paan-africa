@@ -97,7 +97,7 @@ const HomePage = () => {
                   className="bg-[#F25849] text-white px-8 py-3 rounded-full font-medium text-sm hover:bg-[#D6473C] transition duration-300"
                   onClick={openModal}
                 >
-                  Enquire Now
+                  Join The Network
                 </button>
                 <Link href="https://member-portal.paan.africa/"
                   className="bg-[#84C1D9] text-[#172840] px-8 py-3 rounded-full font-medium text-sm transition duration-300 hover:bg-[#6FA1B7]"
@@ -397,7 +397,7 @@ const HomePage = () => {
               </h2>
               <p className="text-center">
                 Whether you're a bold startup or a seasoned agency, PAAN offers
-                a tier that fits your journey. Join a network designed to
+                a tier that fits your<br/> journey. Join a network designed to
                 elevate, empower, and connect.
               </p>
             </div>
