@@ -68,6 +68,7 @@ export default function FreelanceBenefitsSlider() {
             centeredSlides={true}
             slidesPerView={1.2}
             spaceBetween={30}
+            initialSlide={1.5}
             onBeforeInit={(swiper) => {
               swiperRef.current = swiper;
             }}
