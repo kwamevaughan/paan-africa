@@ -93,7 +93,7 @@ const Header = ({ navLinkColor }) => {
               onClick={(e) => {
                 handleScroll(e, "#contact-us", isFixed);
               }}
-              className={ctaButton.className}
+              className="bg-[#F25849] text-white px-4 py-3 rounded-full text-sm font-bold hover:bg-[#D6473C] transition duration-300 cursor-pointer"
             >
               {ctaButton.label}
             </a>
