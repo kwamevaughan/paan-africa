@@ -14,6 +14,7 @@ import { useEffect, useRef, useState } from "react";
 import { useFixedHeader, handleScroll } from '../../utils/scrollUtils';
 import ContactSection from "@/components/ContactSection";
 import AgencyEnquiryModal from "@/components/AgencyEnquiryModal";
+import AgenciesMarquee from "@/components/AgenciesMarquee";
 
 const HomePage = () => {
   const sectionRefs = {
@@ -123,7 +124,7 @@ const HomePage = () => {
         </div>
 
         <div
-          className="mx-auto max-w-6xl relative section"
+          className="mx-auto max-w-6xl relative section mb-10"
           id="about-us"
           ref={sectionRefs.aboutUs}
         >
@@ -218,7 +219,8 @@ const HomePage = () => {
             </div>
           </section>
         </div>
-
+        <AgenciesMarquee />
+        
         <div
           className="bg-[#172840] relative section px-4 sm:px-6 lg:px-8"
           id="our-mission"
@@ -230,7 +232,7 @@ const HomePage = () => {
           <div className="hidden sm:block absolute top-10 right-10 w-16 h-16 bg-[#D1D3D4] rounded-full z-0"></div>
 
           {/* Main Section */}
-          <section className="relative z-10 mt-16 mx-auto max-w-6xl">
+          <section className="relative z-10 mt-0 mx-auto max-w-6xl">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 items-center py-16">
               {/* Image */}
               <div className="relative">
@@ -407,8 +409,9 @@ const HomePage = () => {
               <Tier3 />
             </div>
             <div className="flex justify-center">
-              <button onClick={() => window.location.href = 'https://membership.paan.africa/'} className="bg-[#F26522] hover:bg-[#6BB0CC] text-white font-semibold py-3 px-8 rounded-full transition-colors duration-300 shadow-md hover:shadow-lg">
-                Register Now
+              <button onClick={() => window.location.href = 'https://calendly.com/antony-paan/45min'} className="bg-[#F26522] hover:bg-[#D6473C] text-white font-semibold py-3 px-8 rounded-full transition-all duration-300 shadow-md hover:shadow-lg flex items-center gap-2 group">
+                <Icon icon="mdi:calendar-clock" className="w-5 h-5 group-hover:scale-110 transition-transform duration-300" />
+                Schedule a call to explore full benefits
               </button>
             </div>
           </section>

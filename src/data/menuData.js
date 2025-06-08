@@ -1,13 +1,11 @@
 // data/menuData.js
 export const menuItems = [
-    { href: '#home', label: 'Home' },
-    { href: '#about-us', label: 'About Us' },
-    { href: '#our-mission', label: 'Our Mission' },
-    { href: '#why-join-us', label: 'Why Join Us' },
-    { href: '#membership', label: 'Membership' },
-    { href: '#services', label: 'Services' },
-    { href: '#events', label: 'Events' },
-    { href: '#contact-us', label: 'Contact Us' },
+    { href: '/', label: 'For Agencies' },
+    { href: '/freelancers', label: 'For freelancers' },
+    { href: '/partners', label: 'For Partners' },
+    { href: '/clients', label: 'For Clients' },
+    { href: '/summit', label: 'Upcoming Summit' },
+    { href: '/pricing', label: 'Pricing' },
     // { href: '/blogs', label: 'Blogs' },
   ];
 

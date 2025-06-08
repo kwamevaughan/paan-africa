@@ -155,7 +155,6 @@ const Footer = () => {
                 <li key={item.href}>
                   <a
                     href={item.href}
-                    onClick={(e) => handleScroll(e, item.href)}
                     className="font-normal text-gray-200 hover:text-white hover:underline transition-all duration-300 cursor-pointer"
                   >
                     {item.label}
