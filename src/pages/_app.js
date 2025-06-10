@@ -6,28 +6,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       <Component {...pageProps} />
-      <Toaster 
-        position="top-center"
-        toastOptions={{
-          // Default options for all toasts
-          duration: 5000,
-          
-          success: {
-            style: {
-              background: '#10B981',
-              color: '#fff',
-            },
-            icon: '🎉',
-          },
-          error: {
-            style: {
-              background: '#EF4444',
-              color: '#fff',
-            },
-            icon: '❌',
-          },
-        }}
-      />
+      
     </>
   );
 }

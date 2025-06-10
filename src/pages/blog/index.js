@@ -212,7 +212,7 @@ const Blogs = () => {
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 tracking-tight">
               Our <span className="text-[#F2B706]">Blog</span>
             </h1>
-            <p className="text-gray-300 text-xl md:text-2xl max-w-3xl mx-auto leading-relaxed mb-8">
+            <p className="text-gray-300 text-xl md:text-lg max-w-3xl mx-auto leading-relaxedm mb-8">
               Insights, trends, and stories from Africa's creative and tech landscape
             </p>
 
@@ -365,12 +365,12 @@ const Blogs = () => {
 
           {/* Regular Posts Grid */}
           <div className="mb-12">
-            <h3 className="text-3xl font-bold text-[#172840] mb-12 text-center">
+            <h3 className="text-3xl font-bold text-[#172840] mb-12 text-center capitalize">
               {searchQuery
                 ? 'Search Results'
                 : selectedCategory
                 ? `${selectedCategory} Articles`
-                : 'Latest Articles'}
+                : ''}
             </h3>
             
             {filteredAndSortedPosts.length > 0 ? (
@@ -393,7 +393,7 @@ const Blogs = () => {
                     
                     <div className="p-6">
                       <div className="flex items-center justify-between mb-3">
-                        <div className="flex items-center gap-3 text-xs text-gray-500 uppercase tracking-wide">
+                        <div className="flex items-center gap-3 text-xs text-gray-500 capitalize tracking-wide">
                           <span>{blog.date}</span>
                           <span>•</span>
                           <span>{blog.readTime}</span>
@@ -405,14 +405,14 @@ const Blogs = () => {
                               e.stopPropagation();
                               setSelectedCategory(blog.category);
                             }}
-                            className="px-3 py-1 text-xs font-medium text-[#F25849] bg-[#F25849]/10 rounded-full hover:bg-[#F25849]/20 transition-colors"
+                            className="px-3 py-1 text-xs font-medium capitalize text-[#F25849] bg-[#F25849]/10 rounded-full hover:bg-[#F25849]/20 transition-colors"
                           >
                             {blog.category}
                           </button>
                         )}
                       </div>
                       
-                      <h3 className="text-xl font-bold text-[#172840] mb-3 leading-tight group-hover:text-[#F25849] transition-colors duration-300">
+                      <h3 className="text-xl font-semibold text-[#172840] mb-3 leading-tight group-hover:text-[#F25849] transition-colors duration-300">
                         {blog.title}
                       </h3>
                       

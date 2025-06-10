@@ -8,6 +8,9 @@ export const usePublicBlog = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [currentBlog, setCurrentBlog] = useState(null);
+  const [comments, setComments] = useState([]);
+  const [commentsLoading, setCommentsLoading] = useState(false);
+  const [commentsError, setCommentsError] = useState(null);
 
   const fetchBlogs = async () => {
     try {
@@ -116,9 +119,77 @@ export const usePublicBlog = () => {
     }
   };
 
+  const fetchComments = useCallback(async (blogId) => {
+    if (!blogId) {
+      console.log('No blogId provided to fetchComments');
+      return;
+    }
+    
+    try {
+      // Only set loading if we don't already have comments
+      if (comments.length === 0) {
+        setCommentsLoading(true);
+      }
+      setCommentsError(null);
+
+      const { data: commentsData, error: commentsError } = await supabase
+        .from('blog_comments')
+        .select('*')
+        .eq('blog_id', blogId)
+        .order('created_at', { ascending: false });
+
+      if (commentsError) {
+        console.error('Comments query error:', commentsError);
+        throw commentsError;
+      }
+
+      // Only update if we have new comments
+      if (JSON.stringify(commentsData) !== JSON.stringify(comments)) {
+        setComments(commentsData || []);
+      }
+    } catch (err) {
+      console.error("Error fetching comments:", err);
+      setCommentsError(err.message);
+    } finally {
+      setCommentsLoading(false);
+    }
+  }, [comments]);
+
+  const addComment = async (commentData) => {
+    try {
+      const { data, error } = await supabase
+        .from('blog_comments')
+        .insert([{
+          blog_id: commentData.blogId,
+          author_name: commentData.name,
+          author_email: commentData.email,
+          content: commentData.content,
+          is_approved: true  // Set to true by default
+        }])
+        .select()
+        .single();
+
+      if (error) {
+        console.error('Error adding comment:', error);
+        throw error;
+      }
+
+      // Refresh comments after adding a new one
+      await fetchComments(commentData.blogId);
+      
+      return { success: true, data };
+    } catch (err) {
+      console.error("Error adding comment:", err);
+      return { success: false, error: err.message };
+    }
+  };
+
   const fetchBlogBySlug = useCallback(async (slug) => {
     try {
-      setLoading(true);
+      // Only set loading if we don't already have the blog data
+      if (!currentBlog) {
+        setLoading(true);
+      }
       setError(null);
       
       // First fetch the blog
@@ -142,6 +213,7 @@ export const usePublicBlog = () => {
 
       if (!blogData) {
         setCurrentBlog(null);
+        setLoading(false);
         return;
       }
 
@@ -162,10 +234,19 @@ export const usePublicBlog = () => {
         ...blogData,
         article_category: blogData.category?.name || 'Uncategorized',
         article_tags: blogData.tags?.map((t) => t.tag.name) || [],
-        author: authorData?.name || 'Unknown Author'
+        author: authorData?.name || 'Unknown Author',
+        read_time: `${Math.ceil((blogData.article_body?.replace(/<[^>]*>/g, '').length || 0) / 1000) || 5} min read`
       };
 
+      // Fetch comments in parallel with setting the blog data
+      const commentsPromise = fetchComments(blogData.id);
+      
+      // Update blog data
       setCurrentBlog(transformedBlog);
+      
+      // Wait for comments to be fetched
+      await commentsPromise;
+
     } catch (err) {
       console.error("Error fetching blog by slug:", err);
       setError(err.message);
@@ -173,7 +254,7 @@ export const usePublicBlog = () => {
     } finally {
       setLoading(false);
     }
-  }, []);
+  }, [fetchComments, currentBlog]);
 
   useEffect(() => {
     fetchBlogs();
@@ -186,7 +267,12 @@ export const usePublicBlog = () => {
     currentBlog,
     loading,
     error,
+    comments,
+    commentsLoading,
+    commentsError,
     refetch: fetchBlogs,
     fetchBlogBySlug,
+    addComment,
+    fetchComments
   };
 }; 
