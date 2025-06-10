@@ -4,54 +4,55 @@ import Image from 'next/image';
 import Header from '@/layouts/blogs-header';
 import SEO from '@/components/SEO';
 import Footer from '@/layouts/footer';
-
-// Sample blog data - replace with your actual data source
-const blogs = [
-  {
-    slug: "future-of-technology-in-africa",
-    title: "Proven Ways for African Agencies to Attract and Retain Clients",
-    excerpt: "Exploring how emerging technologies are shaping the future of African businesses and communities, from fintech innovations to AI-driven solutions that are transforming industries across the continent.",
-    image: "/images/blog1.jpg",
-    date: "March 15, 2024",
-    author: "Tech Team",
-    readTime: "5 min read",
-    featured: true
-  },
-  {
-    slug: "digital-transformation-african-enterprises",
-    title: "Digital Transformation in African Enterprises",
-    excerpt: "Understanding the key steps and challenges in digital transformation for African businesses, including infrastructure development and talent acquisition strategies.",
-    image: "/images/blog2.jpg",
-    date: "March 10, 2024",
-    author: "PAAN Editorial",
-    readTime: "4 min read",
-    featured: false
-  },
-  {
-    slug: "creative-industries-growth-africa",
-    title: "Creative Industries Driving Economic Growth",
-    excerpt: "How Africa's creative sector is becoming a major economic force, contributing to GDP growth and creating employment opportunities across the continent.",
-    image: "/images/blog3.jpg",
-    date: "March 8, 2024",
-    author: "Creative Team",
-    readTime: "6 min read",
-    featured: false
-  },
-  {
-    slug: "startup-ecosystem-nairobi",
-    title: "Nairobi's Thriving Startup Ecosystem",
-    excerpt: "An in-depth look at how Nairobi has become the Silicon Savannah, attracting global investment and fostering innovation in East Africa.",
-    image: "/images/blog4.jpg",
-    date: "March 5, 2024",
-    author: "Business Team",
-    readTime: "7 min read",
-    featured: false
-  }
-];
+import { usePublicBlog } from '@/hooks/usePublicBlog';
 
 const Blogs = () => {
-  const featuredPost = blogs.find(blog => blog.featured);
-  const regularPosts = blogs.filter(blog => !blog.featured);
+  const { featuredPost, regularPosts, loading, error } = usePublicBlog();
+
+  console.log('Blogs page - Loading:', loading);
+  console.log('Blogs page - Error:', error);
+  console.log('Blogs page - Featured post:', featuredPost);
+  console.log('Blogs page - Regular posts:', regularPosts);
+
+  if (loading) {
+    return (
+      <>
+        <Header />
+        <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#F25849]"></div>
+        </div>
+      </>
+    );
+  }
+
+  if (error) {
+    return (
+      <>
+        <Header />
+        <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+          <div className="text-red-500">Error loading blogs: {error}</div>
+        </div>
+      </>
+    );
+  }
+
+  // If no blogs are found
+  if (!featuredPost && (!regularPosts || regularPosts.length === 0)) {
+    return (
+      <>
+        <Header />
+        <div className="min-h-screen bg-gray-50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+            <div className="text-center">
+              <h2 className="text-3xl font-bold text-[#172840] mb-4">No Blogs Found</h2>
+              <p className="text-gray-600">We're currently working on new content. Please check back soon!</p>
+            </div>
+          </div>
+        </div>
+        <Footer />
+      </>
+    );
+  }
 
   return (
     <>

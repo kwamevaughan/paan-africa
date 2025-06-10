@@ -15,6 +15,7 @@ import { useFixedHeader, handleScroll } from '../../utils/scrollUtils';
 import ContactSection from "@/components/ContactSection";
 import AgencyEnquiryModal from "@/components/AgencyEnquiryModal";
 import AgenciesMarquee from "@/components/AgenciesMarquee";
+import AgencyLogosGrid from "@/components/AgencyLogosGrid";
 
 const HomePage = () => {
   const sectionRefs = {
@@ -416,6 +417,8 @@ const HomePage = () => {
             </div>
           </section>
         </div>
+
+        <AgencyLogosGrid />
 
         <div
           className="mx-auto max-w-6xl mt-20 section"
