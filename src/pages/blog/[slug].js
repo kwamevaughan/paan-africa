@@ -3,21 +3,109 @@ import { useRouter } from "next/router";
 import Image from "next/image";
 import { Icon } from "@iconify/react";
 import Link from "next/link";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Header from "@/layouts/blogs-header";
 import Footer from "@/layouts/footer";
 import SEO from "@/components/SEO";
+
+// Social share icons component
+const SocialShare = ({ url, title }) => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      setIsVisible(scrollPosition > 300);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const shareLinks = {
+    twitter: `https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(title)}`,
+    facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`,
+    linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`,
+    whatsapp: `https://wa.me/?text=${encodeURIComponent(`${title} ${url}`)}`
+  };
+
+  return (
+    <div className={`fixed left-4 top-1/2 transform -translate-y-1/2 z-50 transition-all duration-300 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'}`}>
+      <div className="flex flex-col gap-3 bg-white rounded-full p-3 shadow-lg">
+        <a
+          href={shareLinks.twitter}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-[#1DA1F2] hover:scale-110 transition-transform"
+          title="Share on Twitter"
+        >
+          <Icon icon="mdi:twitter" className="w-6 h-6" />
+        </a>
+        <a
+          href={shareLinks.facebook}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-[#4267B2] hover:scale-110 transition-transform"
+          title="Share on Facebook"
+        >
+          <Icon icon="mdi:facebook" className="w-6 h-6" />
+        </a>
+        <a
+          href={shareLinks.linkedin}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-[#0077B5] hover:scale-110 transition-transform"
+          title="Share on LinkedIn"
+        >
+          <Icon icon="mdi:linkedin" className="w-6 h-6" />
+        </a>
+        <a
+          href={shareLinks.whatsapp}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-[#25D366] hover:scale-110 transition-transform"
+          title="Share on WhatsApp"
+        >
+          <Icon icon="mdi:whatsapp" className="w-6 h-6" />
+        </a>
+      </div>
+    </div>
+  );
+};
+
+// Format date helper
+const formatDate = (dateString) => {
+  const date = new Date(dateString);
+  const day = date.getDate();
+  const month = date.toLocaleString('default', { month: 'long' });
+  const year = date.getFullYear();
+  
+  // Add ordinal suffix to day
+  const ordinal = (day) => {
+    if (day > 3 && day < 21) return 'th';
+    switch (day % 10) {
+      case 1: return 'st';
+      case 2: return 'nd';
+      case 3: return 'rd';
+      default: return 'th';
+    }
+  };
+
+  return `Published on ${day}${ordinal(day)} ${month}, ${year}`;
+};
 
 export default function BlogPost() {
   const router = useRouter();
   const { slug } = router.query;
   const { currentBlog, loading, error, fetchBlogBySlug } = usePublicBlog();
+  const [currentUrl, setCurrentUrl] = useState('');
 
   useEffect(() => {
     if (slug && typeof slug === 'string' && slug !== 'index') {
-      console.log('Fetching blog for slug:', slug);
       fetchBlogBySlug(slug);
     }
+    // Set current URL for sharing
+    setCurrentUrl(window.location.href);
   }, [slug]);
 
   if (!router.isReady) {
@@ -114,6 +202,9 @@ export default function BlogPost() {
       <Header />
       
       <main className="bg-gray-50 min-h-screen">
+        {/* Social Share Icons */}
+        <SocialShare url={currentUrl} title={currentBlog?.article_name || ''} />
+
         {/* Hero Section */}
         <div className="bg-gradient-to-br from-[#172840] via-[#1e3147] to-[#243a52] relative py-12 sm:py-16 md:py-24 pt-20 sm:pt-24 md:pt-32 overflow-hidden">
           {/* Decorative Elements */}
@@ -125,17 +216,17 @@ export default function BlogPost() {
           
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <div className="flex flex-wrap items-center justify-center gap-2 mb-4 sm:mb-6">
-              {currentBlog.article_category && (
+              {currentBlog?.article_category && (
                 <span className="px-3 py-1 sm:px-4 sm:py-1.5 text-sm font-medium text-[#F25849] bg-[#F25849]/10 rounded-full">
                   {currentBlog.article_category}
                 </span>
               )}
               <span className="text-sm text-gray-300">
-                {new Date(currentBlog.created_at).toLocaleDateString()}
+                {currentBlog?.created_at && formatDate(currentBlog.created_at)}
               </span>
             </div>
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6 tracking-tight px-4">
-              {currentBlog.article_name}
+              {currentBlog?.article_name}
             </h1>
             <div className="mt-6 sm:mt-8 flex justify-center">
               <div className="w-20 sm:w-24 h-1 bg-gradient-to-r from-[#F25849] via-[#F2B706] to-[#84C1D9] rounded-full"></div>
@@ -146,7 +237,7 @@ export default function BlogPost() {
         {/* Article Content */}
         <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16 md:py-20">
           <article className="bg-white rounded-xl sm:rounded-2xl shadow-lg sm:shadow-xl overflow-hidden">
-            {currentBlog.article_image && (
+            {currentBlog?.article_image && (
               <div className="relative h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] w-full">
                 <Image
                   src={currentBlog.article_image}
@@ -179,7 +270,7 @@ export default function BlogPost() {
                 </div>
               )}
 
-              {currentBlog.article_tags && currentBlog.article_tags.length > 0 && (
+              {currentBlog?.article_tags && currentBlog.article_tags.length > 0 && (
                 <div className="mt-8 sm:mt-12 pt-6 sm:pt-8 border-t border-gray-200">
                   <h3 className="text-sm sm:text-base font-medium text-[#172840] mb-3 sm:mb-4">Tags:</h3>
                   <div className="flex flex-wrap gap-2 sm:gap-3">
@@ -199,7 +290,7 @@ export default function BlogPost() {
 
           <div className="mt-8 sm:mt-12 flex justify-center">
             <Link
-              href="/blogs"
+              href="/blog"
               className="inline-flex items-center bg-gradient-to-r from-[#F25849] to-[#D6473C] text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full text-sm sm:text-base font-semibold hover:from-[#D6473C] hover:to-[#C13F32] transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
             >
               <Icon icon="heroicons:arrow-left" className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
