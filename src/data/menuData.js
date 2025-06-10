@@ -1,29 +1,27 @@
 // data/menuData.js
 export const menuItems = [
     { href: '/', label: 'For Agencies' },
-    { href: '/freelancers', label: 'For freelancers' },
-    { href: '/partners', label: 'For Partners' },
     { href: '/clients', label: 'For Clients' },
-    { href: '/summit', label: 'Upcoming Summit' },
+    { href: '/partners', label: 'For Partners' },
+    { href: '/freelancers', label: 'For freelancers' },   
+    { href: '/summit', label: '2025 Summit' },
     { href: '/pricing', label: 'Pricing' },
     { href: '/blogs', label: 'Blogs' },
   ];
 
   export const freelancersMenu = [
     { href: '/', label: 'For Agencies' },
-    { href: '/freelancers', label: 'For Freelancers' },
-    { href: '/partners', label: 'For Partners' },
     { href: '/clients', label: 'For Clients' },
-    // { href: '/blogs', label: 'Blogs' },
+    { href: '/partners', label: 'For Partners' },
+    { href: '/freelancers', label: 'For Freelancers' },
     { href: '/summit', label: '2025 Summit' },
   ];
 
   export const PartnersPageMenu = [
     { href: '/', label: 'For Agencies' },
-    { href: '/freelancers', label: 'For Freelancers' },
-    { href: '/partners', label: 'For Partners' },
     { href: '/clients', label: 'For Clients' },
-    // { href: '/blogs', label: 'Blogs' },
+    { href: '/partners', label: 'For Partners' },
+    { href: '/freelancers', label: 'For Freelancers' },
     { href: '/summit', label: '2025 Summit' },
   ];
   

@@ -192,7 +192,7 @@ const Blogs = () => {
                     
                     <div className="flex items-center justify-between">
                       <span className="text-sm text-gray-500 font-medium">
-                        By {blog.author}
+                        By PAAN Team
                       </span>
                       
                       <Link 
