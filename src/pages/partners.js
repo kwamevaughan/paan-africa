@@ -6,6 +6,8 @@ import { useFixedHeader } from '../../utils/scrollUtils';
 import PartnerBenefits from "@/components/PartnersBenefits";
 import Steps from "@/components/steps";
 import Link from "next/link";
+import AgencyLogosGrid from "@/components/AgencyLogosGrid";
+
 
 const FreelancersPage = () => {
   const sectionRefs = {
@@ -151,7 +153,7 @@ const FreelancersPage = () => {
           </div>                
         </section>
         </div>
-        
+        <AgencyLogosGrid/>
         <Footer />
       </main>
     </>

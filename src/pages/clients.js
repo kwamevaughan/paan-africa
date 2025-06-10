@@ -7,6 +7,8 @@ import { useFixedHeader } from '../../utils/scrollUtils';
 import ClientsSlider from "@/components/ClientsSlider";
 import Link from "next/link";
 import EnquiryModal from "@/components/EnquiryModal";
+import AgencyLogosGrid from "@/components/AgencyLogosGrid";
+
 
 const AgenciesPage = () => {
   const sectionRefs = {
@@ -241,6 +243,9 @@ const AgenciesPage = () => {
           </section>
         </div>
         </div>
+
+        <AgencyLogosGrid />
+
         <div className="relative w-full bg-gray-900 overflow-visible h-[70vh] min-h-[500px]">
         <div className="absolute -bottom-9 left-[40%] w-12 h-12 bg-[#84C1D9] rounded-full z-10"></div>
         <div className="absolute bottom-10 left-[60%] w-8 h-8 bg-[#84C1D9] rounded-full z-10"></div>

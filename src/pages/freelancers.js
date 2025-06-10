@@ -9,6 +9,8 @@ import ReadyToApplySection from "@/components/ReadyToApplySection";
 import Marquee from "@/components/Marquee";
 import ContactSection from "@/components/ContactSection";
 import FreelancerHero from "@/components/FreelancerHero";
+import AgencyLogosGrid from "@/components/AgencyLogosGrid";
+
 
 const FreelancersPage = () => {
   const sectionRefs = {
@@ -170,6 +172,7 @@ const FreelancersPage = () => {
             <FreelanceBenefitsSlider/ >
           </section>
         </div>
+        <AgencyLogosGrid />
 
         <ReadyToApplySection /> 
         <Marquee />
