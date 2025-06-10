@@ -14,8 +14,8 @@ export const usePublicBlog = () => {
       setLoading(true);
       setError(null);
 
-      console.log('Fetching blogs from Supabase...');
-      const { data, error } = await supabase
+      // First fetch blogs with categories and tags
+      const { data: blogsData, error: blogsError } = await supabase
         .from("blogs")
         .select(`
           *,
@@ -27,40 +27,83 @@ export const usePublicBlog = () => {
         .eq("is_published", true)
         .order("created_at", { ascending: false });
 
-      if (error) {
-        console.error('Supabase error:', error);
-        throw error;
+      if (blogsError) {
+        console.error('Blogs query error:', blogsError);
+        throw blogsError;
       }
 
-      console.log('Fetched blogs data:', data);
+      if (!blogsData || blogsData.length === 0) {
+        setBlogs([]);
+        setFeaturedPost(null);
+        setRegularPosts([]);
+        setLoading(false);
+        return;
+      }
+
+      // Get unique author IDs from all blogs
+      const authorIds = [...new Set(blogsData.map(blog => blog.author))].filter(Boolean);
+
+      // Fetch all authors in one query
+      const { data: authorsData, error: authorsError } = await supabase
+        .from("hr_users")
+        .select('id, name')
+        .in('id', authorIds);
+
+      if (authorsError) {
+        console.error('Authors query error:', authorsError);
+        throw authorsError;
+      }
+
+      // Create a map of author IDs to names
+      const authorMap = new Map(
+        (authorsData || []).map(author => [author.id, author.name])
+      );
 
       // Transform the data to match the blog page structure
-      const transformedData = data.map((blog) => ({
-        slug: blog.slug || '',
-        title: blog.article_name || 'Untitled',
-        excerpt: blog.meta_description || (blog.article_body ? `${blog.article_body.substring(0, 200)}...` : 'No content available'),
-        image: blog.article_image || '/images/blog-placeholder.jpg',
-        date: blog.created_at ? new Date(blog.created_at).toLocaleDateString("en-US", {
-          year: "numeric",
-          month: "long",
-          day: "numeric",
-        }) : 'No date',
-        author: blog.author || 'PAAN Team',
-        readTime: `${Math.ceil((blog.article_body?.length || 0) / 1000) || 5} min read`,
-        featured: blog.is_featured || false,
-        category: blog.category?.name || 'Uncategorized',
-        tags: blog.tags?.map((t) => t.tag.name) || [],
-      }));
+      const transformedData = blogsData.map((blog) => {
+        // Clean HTML and get a snippet of the content
+        const cleanContent = blog.article_body 
+          ? blog.article_body
+              .replace(/<[^>]*>/g, '') // Remove HTML tags
+              .replace(/\s+/g, ' ')     // Replace multiple spaces with single space
+              .trim()                   // Trim whitespace
+          : '';
+        
+        // Get first 150 characters of clean content
+        const contentSnippet = cleanContent.length > 150 
+          ? cleanContent.substring(0, 150) + '...' 
+          : cleanContent;
 
-      console.log('Transformed blogs data:', transformedData);
+        return {
+          id: blog.id,
+          slug: blog.slug || '',
+          title: blog.article_name || 'Untitled',
+          excerpt: contentSnippet || 'No content available',
+          image: blog.article_image || '/images/blog-placeholder.jpg',
+          date: blog.created_at ? new Date(blog.created_at).toLocaleDateString("en-US", {
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+          }) : 'No date',
+          author: authorMap.get(blog.author) || 'Unknown Author',
+          readTime: `${Math.ceil((cleanContent.length || 0) / 1000) || 5} min read`,
+          featured: blog.is_featured || false,
+          category: blog.category?.name || 'Uncategorized',
+          tags: blog.tags?.map((t) => t.tag.name) || [],
+          article_body: blog.article_body || '',
+          meta_description: blog.meta_description || '',
+          article_category: blog.category?.name || 'Uncategorized',
+          article_tags: blog.tags?.map((t) => t.tag.name) || [],
+          article_image: blog.article_image || '/images/blog-placeholder.jpg',
+          created_at: blog.created_at,
+          updated_at: blog.updated_at
+        };
+      });
 
       // Find the first featured post
       const featured = transformedData.find(blog => blog.featured);
       // Get all non-featured posts
       const regular = transformedData.filter(blog => !blog.featured);
-
-      console.log('Featured post:', featured);
-      console.log('Regular posts:', regular);
 
       setFeaturedPost(featured || null);
       setRegularPosts(regular || []);
@@ -77,9 +120,9 @@ export const usePublicBlog = () => {
     try {
       setLoading(true);
       setError(null);
-
-      console.log('Fetching blog by slug:', slug);
-      const { data, error } = await supabase
+      
+      // First fetch the blog
+      const { data: blogData, error: blogError } = await supabase
         .from("blogs")
         .select(`
           *,
@@ -92,24 +135,36 @@ export const usePublicBlog = () => {
         .eq("is_published", true)
         .single();
 
-      if (error) {
-        console.error('Supabase error:', error);
-        throw error;
+      if (blogError) {
+        console.error('Blog query error:', blogError);
+        throw blogError;
       }
 
-      if (!data) {
+      if (!blogData) {
         setCurrentBlog(null);
         return;
       }
 
+      // Fetch the author
+      const { data: authorData, error: authorError } = await supabase
+        .from("hr_users")
+        .select('id, name')
+        .eq('id', blogData.author)
+        .single();
+
+      if (authorError) {
+        console.error('Author query error:', authorError);
+        // Don't throw here, just use Unknown Author
+      }
+
       // Transform the blog data
       const transformedBlog = {
-        ...data,
-        article_category: data.category?.name || 'Uncategorized',
-        article_tags: data.tags?.map((t) => t.tag.name) || [],
+        ...blogData,
+        article_category: blogData.category?.name || 'Uncategorized',
+        article_tags: blogData.tags?.map((t) => t.tag.name) || [],
+        author: authorData?.name || 'Unknown Author'
       };
 
-      console.log('Fetched blog data:', transformedBlog);
       setCurrentBlog(transformedBlog);
     } catch (err) {
       console.error("Error fetching blog by slug:", err);
