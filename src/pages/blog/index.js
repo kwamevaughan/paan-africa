@@ -77,7 +77,7 @@ export default function BlogList() {
                     {blog.article_name}
                   </h2>
                   <p className="text-gray-600 line-clamp-3">
-                    {blog.meta_description || blog.article_body.substring(0, 150) + "..."}
+                    {blog.meta_description || (blog.article_body ? `${blog.article_body.substring(0, 150)}...` : 'No content available')}
                   </p>
                   <div className="mt-4 flex items-center gap-2">
                     {blog.article_tags?.slice(0, 3).map((tag, index) => (

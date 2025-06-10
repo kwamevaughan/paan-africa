@@ -57,9 +57,17 @@ const Blogs = () => {
   return (
     <>
       <SEO
-        title="PAAN Summit 2025 | Africa's Premier Creative & Tech Leadership Conference"
-        description="Join the inaugural PAAN Summit in Nairobi, Kenya — a groundbreaking event uniting Africa's top creative and tech leaders for three days of innovation, collaboration, and growth."
-        keywords="PAAN Summit 2025, African creative summit, tech conference Africa, Nairobi summit, Pan-African events, African innovation, creative tech Africa, agency summit Africa"
+        title="PAAN Blog | Insights from Africa's Creative & Tech Landscape"
+        description="Explore the latest insights, trends, and stories from Africa's creative and tech landscape. Stay informed with expert analysis, industry news, and thought leadership from PAAN."
+        keywords="PAAN blog, African tech insights, creative industry Africa, tech trends Africa, African innovation, creative tech blog, African digital transformation, tech leadership Africa"
+        ogTitle="PAAN Blog | Africa's Creative & Tech Insights"
+        ogDescription="Discover the latest insights and trends from Africa's creative and tech landscape. Expert analysis, industry news, and thought leadership from PAAN."
+        ogImage="/images/blog-og-image.jpg"
+        twitterCard="summary_large_image"
+        twitterTitle="PAAN Blog | Africa's Creative & Tech Insights"
+        twitterDescription="Discover the latest insights and trends from Africa's creative and tech landscape. Expert analysis, industry news, and thought leadership from PAAN."
+        twitterImage="/images/blog-og-image.jpg"
+        canonicalUrl="https://paan.africa/blogs"
       />
       
       {/* Header */}
@@ -188,7 +196,7 @@ const Blogs = () => {
                       </span>
                       
                       <Link 
-                        href={`/blogs/${blog.slug}`}
+                        href={`/blog/${blog.slug}`}
                         className="inline-flex items-center bg-[#84C1D9] text-[#172840] px-6 py-2 rounded-full text-sm font-semibold hover:bg-[#6FA1B7] hover:text-white transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-lg"
                       >
                         Read More
