@@ -20,21 +20,7 @@ const SEO = ({
 }) => {
   const router = useRouter();
   
-  // Debug logging
-  console.log('SEO Component Props:', {
-    title,
-    description,
-    keywords,
-    image,
-    ogTitle,
-    ogDescription,
-    ogImage,
-    twitterCard,
-    twitterTitle,
-    twitterDescription,
-    twitterImage,
-    canonicalUrl
-  });
+  
 
   // Construct the full URL for the current page if not provided
   const finalCanonicalUrl = canonicalUrl || `https://paan.africa${router.asPath === "/" ? "" : router.asPath.split("?")[0]}`;
