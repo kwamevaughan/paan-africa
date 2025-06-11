@@ -321,7 +321,23 @@ export default function BlogPost() {
 
               {hasContent && (
                 <div
-                  className="prose prose-sm sm:prose-base md:prose-lg max-w-none prose-headings:text-[#172840] prose-a:text-[#F25849] prose-strong:text-[#172840] prose-img:rounded-xl prose-img:shadow-lg"
+                  className="prose prose-sm sm:prose-base md:prose-lg max-w-none
+                    prose-headings:font-bold prose-headings:text-[#172840] prose-headings:tracking-tight
+                    prose-h1:text-4xl prose-h1:mb-8 prose-h1:mt-12
+                    prose-h2:text-3xl prose-h2:mb-6 prose-h2:mt-10
+                    prose-h3:text-2xl prose-h3:mb-4 prose-h3:mt-8
+                    prose-h4:text-xl prose-h4:mb-4 prose-h4:mt-6
+                    prose-p:text-gray-600 prose-p:leading-relaxed prose-p:mb-6
+                    prose-a:text-[#F25849] prose-a:no-underline hover:prose-a:underline
+                    prose-strong:text-[#172840] prose-strong:font-semibold
+                    prose-img:rounded-xl prose-img:shadow-lg prose-img:my-8
+                    prose-blockquote:border-l-4 prose-blockquote:border-[#F25849] prose-blockquote:pl-4 prose-blockquote:italic
+                    prose-ul:list-disc prose-ul:pl-6 prose-ul:my-6
+                    prose-ol:list-decimal prose-ol:pl-6 prose-ol:my-6
+                    prose-li:mb-2 prose-li:text-gray-600
+                    prose-code:text-[#F25849] prose-code:bg-gray-100 prose-code:px-1 prose-code:py-0.5 prose-code:rounded
+                    prose-pre:bg-gray-900 prose-pre:text-white prose-pre:p-4 prose-pre:rounded-lg
+                    prose-hr:my-8 prose-hr:border-gray-200"
                   dangerouslySetInnerHTML={{
                     __html: currentBlog.article_body,
                   }}
@@ -420,26 +436,7 @@ export default function BlogPost() {
               >
                 {subscribeStatus.loading ? (
                   <span className="flex items-center justify-center">
-                    <svg
-                      className="animate-spin -ml-1 mr-2 h-4 w-4 text-white"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                    >
-                      <circle
-                        className="opacity-25"
-                        cx="12"
-                        cy="12"
-                        r="10"
-                        stroke="currentColor"
-                        strokeWidth="4"
-                      ></circle>
-                      <path
-                        className="opacity-75"
-                        fill="currentColor"
-                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                      ></path>
-                    </svg>
+                    <Icon icon="eos-icons:loading" className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" />
                     Subscribing...
                   </span>
                 ) : (
