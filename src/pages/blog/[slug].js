@@ -180,20 +180,30 @@ export default function BlogPost() {
     );
   }
 
+  // Debug logs
+  console.log('Current Blog Data:', {
+    meta_title: currentBlog.meta_title,
+    meta_description: currentBlog.meta_description,
+    meta_keywords: currentBlog.meta_keywords,
+    article_name: currentBlog.article_name,
+    article_image: currentBlog.article_image
+  });
+
   const hasContent = currentBlog.article_body !== null && 
                     currentBlog.article_body !== undefined && 
                     currentBlog.article_body !== '' && 
                     currentBlog.article_body.trim().length > 0;
 
   // Generate SEO metadata
-  const seoTitle = currentBlog.article_name ? `${currentBlog.article_name} | PAAN Blog` : 'PAAN Blog';
+  const seoTitle = currentBlog.meta_title || currentBlog.article_name;
   const seoDescription = currentBlog.meta_description || 
                         (currentBlog.article_body ? 
                           currentBlog.article_body.replace(/<[^>]*>/g, '').substring(0, 160) + '...' : 
                           'Read the latest insights and trends from Africa\'s creative and tech landscape on the PAAN blog.');
-  const seoKeywords = currentBlog.article_tags ? 
-                     currentBlog.article_tags.join(', ') + ', PAAN blog, African tech insights, creative industry Africa' : 
-                     'PAAN blog, African tech insights, creative industry Africa, tech trends Africa';
+  const seoKeywords = currentBlog.meta_keywords || 
+                     (currentBlog.article_tags ? 
+                        currentBlog.article_tags.join(', ') + ', PAAN blog, African tech insights, creative industry Africa' : 
+                        'PAAN blog, African tech insights, creative industry Africa, tech trends Africa');
   const seoImage = currentBlog.article_image || 'https://paan.africa/assets/images/opengraph.png';
 
   const handleSubscribe = async (e) => {
@@ -222,17 +232,29 @@ export default function BlogPost() {
   return (
     <>
       <SEO
-        title={seoTitle}
-        description={seoDescription}
-        keywords={seoKeywords}
-        image={seoImage}
-        ogTitle={seoTitle}
-        ogDescription={seoDescription}
-        ogImage={seoImage}
+        title={currentBlog.meta_title || currentBlog.article_name}
+        description={currentBlog.meta_description || 
+          (currentBlog.article_body ? 
+            currentBlog.article_body.replace(/<[^>]*>/g, '').substring(0, 160) + '...' : 
+            'Read the latest insights and trends from Africa\'s creative and tech landscape on the PAAN blog.')}
+        keywords={currentBlog.meta_keywords || 
+          (currentBlog.article_tags ? 
+            currentBlog.article_tags.join(', ') + ', PAAN blog, African tech insights, creative industry Africa' : 
+            'PAAN blog, African tech insights, creative industry Africa, tech trends Africa')}
+        image={currentBlog.article_image || 'https://paan.africa/assets/images/opengraph.png'}
+        ogTitle={currentBlog.meta_title || currentBlog.article_name}
+        ogDescription={currentBlog.meta_description || 
+          (currentBlog.article_body ? 
+            currentBlog.article_body.replace(/<[^>]*>/g, '').substring(0, 160) + '...' : 
+            'Read the latest insights and trends from Africa\'s creative and tech landscape on the PAAN blog.')}
+        ogImage={currentBlog.article_image || 'https://paan.africa/assets/images/opengraph.png'}
         twitterCard="summary_large_image"
-        twitterTitle={seoTitle}
-        twitterDescription={seoDescription}
-        twitterImage={seoImage}
+        twitterTitle={currentBlog.meta_title || currentBlog.article_name}
+        twitterDescription={currentBlog.meta_description || 
+          (currentBlog.article_body ? 
+            currentBlog.article_body.replace(/<[^>]*>/g, '').substring(0, 160) + '...' : 
+            'Read the latest insights and trends from Africa\'s creative and tech landscape on the PAAN blog.')}
+        twitterImage={currentBlog.article_image || 'https://paan.africa/assets/images/opengraph.png'}
         canonicalUrl={`https://paan.africa/blog/${slug}`}
       />
       <Header />
