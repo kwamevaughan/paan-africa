@@ -6,8 +6,9 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import Header from "@/layouts/blogs-header";
 import Footer from "@/layouts/footer";
-import SEO from "@/components/SEO";
 import BlogComments from '@/components/BlogComments';
+import Head from 'next/head';
+import { supabase } from "@/lib/supabase";
 
 // Social share icons component
 const SocialShare = ({ url, title }) => {
@@ -95,27 +96,83 @@ const formatDate = (dateString) => {
   return `Published on ${day}${ordinal(day)} ${month}, ${year}`;
 };
 
-export default function BlogPost() {
+export async function getServerSideProps(context) {
+  const { slug } = context.params;
+
+  try {
+    // Fetch blog data
+    const { data: blogData, error: blogError } = await supabase
+      .from("blogs")
+      .select(`
+        *,
+        category:blog_categories(name),
+        tags:blog_post_tags(
+          tag:blog_tags(name)
+        )
+      `)
+      .eq("slug", slug)
+      .eq("is_published", true)
+      .single();
+
+    if (blogError) throw blogError;
+
+    if (!blogData) {
+      return {
+        props: {
+          blog: null,
+          error: 'Blog not found'
+        }
+      };
+    }
+
+    // Fetch author data
+    const { data: authorData } = await supabase
+      .from("hr_users")
+      .select('id, name')
+      .eq('id', blogData.author)
+      .single();
+
+    // Transform the blog data
+    const transformedBlog = {
+      ...blogData,
+      article_category: blogData.category?.name || 'Uncategorized',
+      article_tags: blogData.tags?.map((t) => t.tag.name) || [],
+      author: authorData?.name || 'Unknown Author',
+      read_time: `${Math.ceil((blogData.article_body?.replace(/<[^>]*>/g, '').length || 0) / 1000) || 5} min read`,
+      meta_title: blogData.meta_title || blogData.article_name,
+      meta_description: blogData.meta_description || '',
+      meta_keywords: blogData.meta_keywords || '',
+      focus_keyword: blogData.focus_keyword || ''
+    };
+
+    return {
+      props: {
+        blog: transformedBlog,
+        error: null
+      }
+    };
+  } catch (error) {
+    console.error('Error in getServerSideProps:', error);
+    return {
+      props: {
+        blog: null,
+        error: error.message
+      }
+    };
+  }
+}
+
+export default function BlogPost({ blog: initialBlog, error: serverError }) {
   const router = useRouter();
   const { slug } = router.query;
-  const { currentBlog, loading, error, fetchBlogBySlug, comments, fetchComments } = usePublicBlog();
+  const { currentBlog, loading, error: clientError, fetchBlogBySlug, comments, fetchComments } = usePublicBlog();
   const [currentUrl, setCurrentUrl] = useState('');
   const [subscribeForm, setSubscribeForm] = useState({ name: '', email: '' });
   const [subscribeStatus, setSubscribeStatus] = useState({ loading: false, message: '', error: false });
 
-  // Single useEffect to handle both blog and comment fetching
-  useEffect(() => {
-    const loadBlogAndComments = async () => {
-      if (slug && typeof slug === 'string' && slug !== 'index') {
-        try {
-          await fetchBlogBySlug(slug);
-        } catch (err) {
-          console.error('Error loading blog:', err);
-        }
-      }
-    };
-    loadBlogAndComments();
-  }, [slug]);
+  // Use the server-rendered blog data if available
+  const blog = currentBlog || initialBlog;
+  const error = clientError || serverError;
 
   useEffect(() => {
     setCurrentUrl(window.location.href);
@@ -129,7 +186,7 @@ export default function BlogPost() {
     return null;
   }
 
-  if (loading) {
+  if (loading && !initialBlog) {
     return (
       <>
         <Header />
@@ -151,9 +208,13 @@ export default function BlogPost() {
     );
   }
 
-  if (!currentBlog) {
+  if (!blog) {
     return (
       <>
+        <Head>
+          <title>Blog Not Found | PAAN</title>
+          <meta name="robots" content="noindex" />
+        </Head>
         <Header />
         <div className="min-h-screen bg-gray-50 flex items-center justify-center">
           <div className="text-center">
@@ -180,37 +241,15 @@ export default function BlogPost() {
     );
   }
 
-  // Debug logs
-  console.log('Current Blog Data:', {
-    meta_title: currentBlog.meta_title,
-    meta_description: currentBlog.meta_description,
-    meta_keywords: currentBlog.meta_keywords,
-    article_name: currentBlog.article_name,
-    article_image: currentBlog.article_image
-  });
-
-  const hasContent = currentBlog.article_body !== null && 
-                    currentBlog.article_body !== undefined && 
-                    currentBlog.article_body !== '' && 
-                    currentBlog.article_body.trim().length > 0;
-
-  // Generate SEO metadata
-  const seoTitle = currentBlog.meta_title || currentBlog.article_name;
-  const seoDescription = currentBlog.meta_description || 
-                        (currentBlog.article_body ? 
-                          currentBlog.article_body.replace(/<[^>]*>/g, '').substring(0, 160) + '...' : 
-                          'Read the latest insights and trends from Africa\'s creative and tech landscape on the PAAN blog.');
-  const seoKeywords = currentBlog.meta_keywords || 
-                     (currentBlog.article_tags ? 
-                        currentBlog.article_tags.join(', ') + ', PAAN blog, African tech insights, creative industry Africa' : 
-                        'PAAN blog, African tech insights, creative industry Africa, tech trends Africa');
-  const seoImage = currentBlog.article_image || 'https://paan.africa/assets/images/opengraph.png';
+  const hasContent = blog.article_body !== null && 
+                    blog.article_body !== undefined && 
+                    blog.article_body !== '' && 
+                    blog.article_body.trim().length > 0;
 
   const handleSubscribe = async (e) => {
     e.preventDefault();
     setSubscribeStatus({ loading: true, message: '', error: false });
     try {
-      // Replace with actual API endpoint
       const response = await fetch('/api/subscribe', {
         method: 'POST',
         headers: {
@@ -231,37 +270,55 @@ export default function BlogPost() {
 
   return (
     <>
-      <SEO
-        title={currentBlog.meta_title || currentBlog.article_name}
-        description={currentBlog.meta_description || 
-          (currentBlog.article_body ? 
-            currentBlog.article_body.replace(/<[^>]*>/g, '').substring(0, 160) + '...' : 
-            'Read the latest insights and trends from Africa\'s creative and tech landscape on the PAAN blog.')}
-        keywords={currentBlog.meta_keywords || 
-          (currentBlog.article_tags ? 
-            currentBlog.article_tags.join(', ') + ', PAAN blog, African tech insights, creative industry Africa' : 
-            'PAAN blog, African tech insights, creative industry Africa, tech trends Africa')}
-        image={currentBlog.article_image || 'https://paan.africa/assets/images/opengraph.png'}
-        ogTitle={currentBlog.meta_title || currentBlog.article_name}
-        ogDescription={currentBlog.meta_description || 
-          (currentBlog.article_body ? 
-            currentBlog.article_body.replace(/<[^>]*>/g, '').substring(0, 160) + '...' : 
-            'Read the latest insights and trends from Africa\'s creative and tech landscape on the PAAN blog.')}
-        ogImage={currentBlog.article_image || 'https://paan.africa/assets/images/opengraph.png'}
-        twitterCard="summary_large_image"
-        twitterTitle={currentBlog.meta_title || currentBlog.article_name}
-        twitterDescription={currentBlog.meta_description || 
-          (currentBlog.article_body ? 
-            currentBlog.article_body.replace(/<[^>]*>/g, '').substring(0, 160) + '...' : 
-            'Read the latest insights and trends from Africa\'s creative and tech landscape on the PAAN blog.')}
-        twitterImage={currentBlog.article_image || 'https://paan.africa/assets/images/opengraph.png'}
-        canonicalUrl={`https://paan.africa/blog/${slug}`}
-      />
+      <Head>
+        <title>{blog.meta_title || blog.article_name}</title>
+        <meta name="description" content={blog.meta_description || 
+          (blog.article_body ? 
+            blog.article_body.replace(/<[^>]*>/g, '').substring(0, 160) + '...' : 
+            'Read the latest insights and trends from Africa\'s creative and tech landscape on the PAAN blog.')} 
+        />
+        <meta name="keywords" content={blog.meta_keywords || 
+          (blog.article_tags ? 
+            blog.article_tags.join(', ') + ', PAAN blog, African tech insights, creative industry Africa' : 
+            'PAAN blog, African tech insights, creative industry Africa, tech trends Africa')} 
+        />
+        
+        {/* Open Graph */}
+        <meta property="og:title" content={blog.meta_title || blog.article_name} />
+        <meta property="og:description" content={blog.meta_description || 
+          (blog.article_body ? 
+            blog.article_body.replace(/<[^>]*>/g, '').substring(0, 160) + '...' : 
+            'Read the latest insights and trends from Africa\'s creative and tech landscape on the PAAN blog.')} 
+        />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content={`https://paan.africa/blog/${slug}`} />
+        <meta property="og:image" content={blog.article_image || 'https://paan.africa/assets/images/opengraph.png'} />
+        <meta property="og:image:secure_url" content={blog.article_image || 'https://paan.africa/assets/images/opengraph.png'} />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:site_name" content="Pan-African Agency Network (PAAN)" />
+        
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={blog.meta_title || blog.article_name} />
+        <meta name="twitter:description" content={blog.meta_description || 
+          (blog.article_body ? 
+            blog.article_body.replace(/<[^>]*>/g, '').substring(0, 160) + '...' : 
+            'Read the latest insights and trends from Africa\'s creative and tech landscape on the PAAN blog.')} 
+        />
+        <meta name="twitter:image" content={blog.article_image || 'https://paan.africa/assets/images/opengraph.png'} />
+        <meta name="twitter:site" content="@paan_network" />
+        <meta name="twitter:creator" content="@paan_network" />
+        
+        {/* Canonical URL */}
+        <link rel="canonical" href={`https://paan.africa/blog/${slug}`} />
+      </Head>
+
       <Header />
 
       <main className="bg-gray-50 min-h-screen">
         {/* Social Share Icons */}
-        <SocialShare url={currentUrl} title={currentBlog?.article_name || ""} />
+        <SocialShare url={currentUrl} title={blog?.article_name || ""} />
 
         {/* Hero Section */}
         <div className="bg-gradient-to-br from-[#172840] via-[#1e3147] to-[#243a52] relative py-12 sm:py-16 md:py-24 pt-20 sm:pt-24 md:pt-32 overflow-hidden">
@@ -274,17 +331,17 @@ export default function BlogPost() {
 
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <div className="flex flex-wrap items-center justify-center gap-2 mb-4 sm:mb-6">
-              {currentBlog?.article_category && (
+              {blog?.article_category && (
                 <span className="px-3 py-1 sm:px-4 sm:py-1.5 text-sm font-medium capitalize text-[#F25849] bg-[#F25849]/10 rounded-full">
-                  {currentBlog.article_category}
+                  {blog.article_category}
                 </span>
               )}
               <span className="text-sm text-gray-300">
-                {currentBlog?.created_at && formatDate(currentBlog.created_at)}
+                {blog?.created_at && formatDate(blog.created_at)}
               </span>
             </div>
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6 tracking-tight px-4">
-              {currentBlog?.article_name}
+              {blog?.article_name}
             </h1>
             <div className="mt-6 sm:mt-8 flex justify-center">
               <div className="w-20 sm:w-24 h-1 bg-gradient-to-r from-[#F25849] via-[#F2B706] to-[#84C1D9] rounded-full"></div>
@@ -296,11 +353,11 @@ export default function BlogPost() {
         <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16 md:py-20">
           {/* Article */}
           <article className="bg-white rounded-xl overflow-hidden mb-12">
-            {currentBlog?.article_image && (
+            {blog?.article_image && (
               <div className="relative h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] w-full">
                 <Image
-                  src={currentBlog.article_image}
-                  alt={currentBlog.article_name}
+                  src={blog.article_image}
+                  alt={blog.article_name}
                   fill
                   className="object-cover"
                   priority
@@ -312,16 +369,16 @@ export default function BlogPost() {
             <div className="p-6 sm:p-8 md:p-12 lg:p-16">
               {/* Add read time and author info */}
               <div className="flex items-center gap-4 text-sm text-gray-500 mb-6 border-b border-gray-100 pb-6">
-                {currentBlog?.read_time && (
+                {blog?.read_time && (
                   <div className="flex items-center gap-2">
                     <Icon icon="heroicons:clock" className="w-4 h-4" />
-                    <span>{currentBlog.read_time}</span>
+                    <span>{blog.read_time}</span>
                   </div>
                 )}
-                {currentBlog?.author && (
+                {blog?.author && (
                   <div className="flex items-center gap-2">
                     <Icon icon="heroicons:user" className="w-4 h-4" />
-                    <span>By {currentBlog.author}</span>
+                    <span>By {blog.author}</span>
                   </div>
                 )}
               </div>
@@ -361,19 +418,19 @@ export default function BlogPost() {
                     prose-pre:bg-gray-900 prose-pre:text-white prose-pre:p-4 prose-pre:rounded-lg
                     prose-hr:my-8 prose-hr:border-gray-200"
                   dangerouslySetInnerHTML={{
-                    __html: currentBlog.article_body,
+                    __html: blog.article_body,
                   }}
                 />
               )}
 
-              {currentBlog?.article_tags &&
-                currentBlog.article_tags.length > 0 && (
+              {blog?.article_tags &&
+                blog.article_tags.length > 0 && (
                   <div className="mt-8 sm:mt-12 pt-6 sm:pt-8 border-t border-gray-200">
                     <h3 className="text-sm sm:text-base font-medium text-[#172840] mb-3 sm:mb-4">
                       Tags:
                     </h3>
                     <div className="flex flex-wrap gap-2 sm:gap-3">
-                      {currentBlog.article_tags.map((tag, index) => (
+                      {blog.article_tags.map((tag, index) => (
                         <span
                           key={index}
                           className="px-3 py-1 sm:px-4 sm:py-1.5 text-xs sm:text-sm text-[#172840] bg-[#172840]/5 rounded-full"
@@ -390,9 +447,9 @@ export default function BlogPost() {
           {/* Newsletter Section */}
 
           {/* Comments Section - Only show if article has content */}
-          {hasContent && currentBlog?.id && (
+          {hasContent && blog?.id && (
             <div className="bg-white rounded-xl sm:rounded-2xl overflow-hidden">
-              <BlogComments blogId={currentBlog.id} />
+              <BlogComments blogId={blog.id} />
             </div>
           )}
 
