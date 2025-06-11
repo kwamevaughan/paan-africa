@@ -235,7 +235,11 @@ export const usePublicBlog = () => {
         article_category: blogData.category?.name || 'Uncategorized',
         article_tags: blogData.tags?.map((t) => t.tag.name) || [],
         author: authorData?.name || 'Unknown Author',
-        read_time: `${Math.ceil((blogData.article_body?.replace(/<[^>]*>/g, '').length || 0) / 1000) || 5} min read`
+        read_time: `${Math.ceil((blogData.article_body?.replace(/<[^>]*>/g, '').length || 0) / 1000) || 5} min read`,
+        meta_title: blogData.meta_title || blogData.article_name,
+        meta_description: blogData.meta_description || '',
+        meta_keywords: blogData.meta_keywords || '',
+        focus_keyword: blogData.focus_keyword || ''
       };
 
       // Fetch comments in parallel with setting the blog data
