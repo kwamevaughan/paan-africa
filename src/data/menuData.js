@@ -6,7 +6,7 @@ export const menuItems = [
     { href: '/freelancers', label: 'For freelancers' },   
     { href: '/summit', label: '2025 Summit' },
     { href: '/pricing', label: 'Pricing' },
-    { href: '/blogs', label: 'Blogs' },
+    { href: '/blog', label: 'Blog' },
   ];
 
   export const freelancersMenu = [

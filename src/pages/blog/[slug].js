@@ -109,18 +109,17 @@ export default function BlogPost() {
       if (slug && typeof slug === 'string' && slug !== 'index') {
         try {
           await fetchBlogBySlug(slug);
-          // Comments will be fetched automatically by fetchBlogBySlug
-          // as it's already set up to call fetchComments after getting the blog
         } catch (err) {
           console.error('Error loading blog:', err);
         }
       }
     };
-
     loadBlogAndComments();
-    // Set current URL for sharing
+  }, [slug]);
+
+  useEffect(() => {
     setCurrentUrl(window.location.href);
-  }, [slug, fetchBlogBySlug]);
+  }, []);
 
   if (!router.isReady) {
     return null;
@@ -321,13 +320,12 @@ export default function BlogPost() {
               )}
 
               {hasContent && (
-                <div className="prose prose-sm sm:prose-base md:prose-lg max-w-none prose-headings:text-[#172840] prose-a:text-[#F25849] prose-strong:text-[#172840] prose-img:rounded-xl prose-img:shadow-lg">
-                  <div
-                    dangerouslySetInnerHTML={{
-                      __html: currentBlog.article_body,
-                    }}
-                  />
-                </div>
+                <div
+                  className="prose prose-sm sm:prose-base md:prose-lg max-w-none prose-headings:text-[#172840] prose-a:text-[#F25849] prose-strong:text-[#172840] prose-img:rounded-xl prose-img:shadow-lg"
+                  dangerouslySetInnerHTML={{
+                    __html: currentBlog.article_body,
+                  }}
+                />
               )}
 
               {currentBlog?.article_tags &&
