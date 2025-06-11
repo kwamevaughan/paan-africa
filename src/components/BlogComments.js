@@ -107,9 +107,6 @@ const BlogComments = ({ blogId }) => {
 
         {/* Comment Form */}
         <div className="mb-12">
-          <h2 className="text-2xl font-bold text-slate-800 mb-6">
-            Share Your Thoughts
-          </h2>
           <div className="bg-white/70 backdrop-blur-xl rounded-2xl shadow-xl border border-white/50 p-8">
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -273,8 +270,9 @@ const BlogComments = ({ blogId }) => {
                 </div>
               </div>
 
-              <div className="mt-6">
-                <div className="flex justify-center">
+              {/* ReCAPTCHA and Button on the Same Row */}
+              <div className="mt-6 flex flex-col sm:flex-row sm:items-center sm:gap-4">
+                <div className="mb-4 sm:mb-0 sm:flex-1">
                   <ReCAPTCHA
                     ref={recaptchaRef}
                     sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
@@ -285,58 +283,65 @@ const BlogComments = ({ blogId }) => {
                       setFormErrors((prev) => ({ ...prev, captcha: true }))
                     }
                   />
+                  {formErrors.captcha && (
+                    <p className="mt-2 text-sm text-red-500 text-center">
+                      Please complete the captcha verification
+                    </p>
+                  )}
                 </div>
-                {formErrors.captcha && (
-                  <p className="mt-2 text-sm text-red-500 text-center">
-                    Please complete the captcha verification
-                  </p>
-                )}
+                <button
+                  type="submit"
+                  className={`w-full sm:w-auto px-6 py-3 rounded-xl font-semibold text-white transition-all duration-300 transform ${
+                    isSubmitting
+                      ? "bg-slate-400 cursor-not-allowed scale-95"
+                      : "bg-gradient-to-r from-[#F25849] to-orange-400 hover:from-[#D6473C] to-red-400 hover:scale-105 shadow-lg hover:shadow-xl active:scale-95"
+                  }`}
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? (
+                    <>
+                      <div className="w-5 h-5 mr-3 rounded-full border-2 border-white/30 border-t-white animate-spin"></div>
+                      Publishing Comment...
+                    </>
+                  ) : (
+                    <>
+                      <Icon
+                        icon="heroicons:paper-airplane"
+                        className="w-5 h-5 mr-2"
+                      />
+                      Publish Comment
+                    </>
+                  )}
+                </button>
               </div>
 
-              <button
-                type="submit"
-                className={`max-w-xs mx-auto mt-6 inline-flex items-center justify-center px-6 py-3 rounded-xl font-semibold text-white transition-all duration-300 transform ${
-                  isSubmitting
-                    ? "bg-slate-400 cursor-not-allowed scale-95"
-                    : "bg-gradient-to-r from-[#F25849] to-orange-400 hover:from-[#D6473C] to-red-400 hover:scale-105 shadow-lg hover:shadow-xl active:scale-95"
-                }`}
-                disabled={isSubmitting}
-              >
-                {isSubmitting ? (
-                  <>
-                    <div className="w-5 h-5 mr-3 rounded-full border-2 border-white/30 border-t-white animate-spin"></div>
-                    Publishing Comment...
-                  </>
-                ) : (
-                  <>
-                    <Icon
-                      icon="heroicons:paper-airplane"
-                      className="w-5 h-5 mr-2"
-                    />
-                    Publish Comment
-                  </>
-                )}
-              </button>
+              <p className="text-xs text-slate-500 mt-4 text-center">
+                Fields marked with <span className="text-[#F25849]">*</span> are
+                required. Your email will not be published.
+              </p>
             </form>
-
-            <p className="text-xs text-slate-500 mt-4 text-center">
-              Fields marked with <span className="text-[#F25849]">*</span> are
-              required. Your email will not be published.
-            </p>
           </div>
         </div>
 
         {/* Comments List */}
         <div>
-          <div className="flex items-center justify-between mb-8">
-            <h2 className="text-2xl font-bold text-slate-800">
-              Comments{" "}
-              {comments?.length > 0 && (
-                <span className="inline-flex items-center justify-center w-8 h-8 ml-3 text-sm font-medium text-[#F25849] bg-red-50 rounded-full border border-red-100">
-                  {comments.length}
-                </span>
-              )}
-            </h2>
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-3 bg-white/80 backdrop-blur-sm px-6 py-3 rounded-full shadow-lg border border-white/50 mb-6">
+              <Icon
+                icon="heroicons:chat-bubble-left-right-20-solid"
+                className="w-6 h-6 text-[#F25849]"
+              />
+              <span className="text-lg font-semibold text-slate-800">
+                Comments{" "}
+                {comments?.length > 0 && (
+                  <span className="inline-flex items-center justify-center w-8 h-8 ml-3 text-sm font-medium text-[#F25849] bg-red-50 rounded-full border border-red-100">
+                    {comments.length}
+                  </span>
+                )}
+              </span>
+            </div>
+          </div>
+          <div className="flex items-center justify-end mb-8">
             <button
               onClick={() => fetchComments(blogId)}
               className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-slate-600 bg-white rounded-lg border border-slate-200 hover:bg-slate-50 hover:border-slate-300 transition-all duration-200"
@@ -347,7 +352,7 @@ const BlogComments = ({ blogId }) => {
           </div>
 
           <div className="bg-white/70 backdrop-blur-xl rounded-2xl shadow-xl border border-white/50 overflow-hidden">
-            <div className="h-[500px] overflow-y-auto">
+            <div className="h-auto overflow-y-auto">
               {commentsLoading ? (
                 <div className="flex flex-col items-center justify-center py-16">
                   <div className="relative">
