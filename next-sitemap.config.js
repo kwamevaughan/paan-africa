@@ -7,6 +7,22 @@ const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
 );
 
+// Helper function to ensure valid date format
+const getValidDate = (date) => {
+  try {
+    if (!date) return new Date().toISOString();
+    const parsedDate = new Date(date);
+    if (isNaN(parsedDate.getTime())) {
+      console.warn('Invalid date encountered:', date);
+      return new Date().toISOString();
+    }
+    return parsedDate.toISOString();
+  } catch (error) {
+    console.error('Error parsing date:', error);
+    return new Date().toISOString();
+  }
+};
+
 module.exports = {
   siteUrl: "https://paan.africa",
   generateRobotsTxt: true,
@@ -18,26 +34,28 @@ module.exports = {
         loc: '/blog',
         changefreq: 'daily',
         priority: 0.7,
-        lastmod: new Date().toISOString(),
+        lastmod: getValidDate(new Date()),
       }
     ];
 
     try {
-      // Fetch all published blog posts
+      // Fetch all published blog posts with both created_at and updated_at
       const { data: blogs, error } = await supabase
         .from('blogs')
-        .select('slug, updated_at')
+        .select('slug, created_at, updated_at')
         .eq('is_published', true);
 
       if (error) throw error;
 
       // Add each blog post to the sitemap
       blogs.forEach(blog => {
+        // Use updated_at if available, otherwise fall back to created_at
+        const lastModified = blog.updated_at || blog.created_at;
         result.push({
           loc: `/blog/${blog.slug}`,
           changefreq: 'weekly',
           priority: 0.8,
-          lastmod: blog.updated_at || new Date().toISOString(),
+          lastmod: getValidDate(lastModified),
         });
       });
     } catch (error) {
