@@ -175,6 +175,10 @@ export default function BlogPost({ blog: initialBlog, error: serverError }) {
   const [subscribeStatus, setSubscribeStatus] = useState({ loading: false, message: '', error: false });
   const hasFetchedRef = useRef(false);
 
+  // Use the server-rendered blog data if available
+  const blog = currentBlog || initialBlog;
+  const error = clientError || serverError;
+
   // Fetch blog and comments when slug is available
   useEffect(() => {
     if (slug && slug !== 'index' && !hasFetchedRef.current) {
@@ -182,6 +186,8 @@ export default function BlogPost({ blog: initialBlog, error: serverError }) {
       fetchBlogBySlug(slug);
     }
   }, [slug, fetchBlogBySlug]);
+
+
 
   // Add debug logging for comments
   useEffect(() => {
@@ -193,10 +199,6 @@ export default function BlogPost({ blog: initialBlog, error: serverError }) {
       stringified: JSON.stringify(comments)
     });
   }, [comments]);
-
-  // Use the server-rendered blog data if available
-  const blog = currentBlog || initialBlog;
-  const error = clientError || serverError;
 
   useEffect(() => {
     setCurrentUrl(window.location.href);
@@ -390,6 +392,9 @@ export default function BlogPost({ blog: initialBlog, error: serverError }) {
         <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16 md:py-20">
           {/* Article */}
           <div className="flex gap-8">
+            {/* Table of Contents Sidebar - now on the left */}
+            <TableOfContents content={blog.article_body} />
+
             {/* Main Content */}
             <article className="flex-1 bg-white rounded-xl overflow-hidden">
               {blog?.article_image && (
@@ -493,9 +498,6 @@ export default function BlogPost({ blog: initialBlog, error: serverError }) {
                   )}
               </div>
             </article>
-
-            {/* Table of Contents Sidebar */}
-            <TableOfContents content={blog.article_body} />
           </div>
 
           {/* Newsletter Section */}
