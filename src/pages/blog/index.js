@@ -9,22 +9,141 @@ import { usePublicBlog } from '@/hooks/usePublicBlog';
 import { toast } from 'react-hot-toast';
 import ScrollToTop from "@/components/ScrollToTop";
 import SEO from '@/components/SEO';
+import { supabase } from "@/lib/supabase";
 
-const Blogs = () => {
+export async function getServerSideProps() {
+  try {
+    // Fetch blogs with categories and tags
+    const { data: blogsData, error: blogsError } = await supabase
+      .from("blogs")
+      .select(`
+        *,
+        category:blog_categories(name),
+        tags:blog_post_tags(
+          tag:blog_tags(name)
+        )
+      `)
+      .eq("is_published", true)
+      .order("created_at", { ascending: false });
+
+    if (blogsError) throw blogsError;
+
+    if (!blogsData || blogsData.length === 0) {
+      return {
+        props: {
+          initialBlogs: {
+            featuredPost: null,
+            regularPosts: [],
+            blogs: []
+          }
+        }
+      };
+    }
+
+    // Get unique author IDs from all blogs
+    const authorIds = [...new Set(blogsData.map(blog => blog.author))].filter(Boolean);
+
+    // Fetch all authors in one query
+    const { data: authorsData, error: authorsError } = await supabase
+      .from("hr_users")
+      .select('id, name')
+      .in('id', authorIds);
+
+    if (authorsError) throw authorsError;
+
+    // Create a map of author IDs to names
+    const authorMap = new Map(
+      (authorsData || []).map(author => [author.id, author.name])
+    );
+
+    // Transform the data
+    const transformedData = blogsData.map((blog) => {
+      const cleanContent = blog.article_body 
+        ? blog.article_body
+            .replace(/<[^>]*>/g, '')
+            .replace(/\s+/g, ' ')
+            .trim()
+        : '';
+      
+      const contentSnippet = cleanContent.length > 150 
+        ? cleanContent.substring(0, 150) + '...' 
+        : cleanContent;
+
+      return {
+        id: blog.id,
+        slug: blog.slug || '',
+        title: blog.article_name || 'Untitled',
+        excerpt: contentSnippet || 'No content available',
+        image: blog.article_image || '/images/blog-placeholder.jpg',
+        date: blog.created_at ? new Date(blog.created_at).toLocaleDateString("en-US", {
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        }) : 'No date',
+        author: authorMap.get(blog.author) || 'Unknown Author',
+        readTime: `${Math.ceil((cleanContent.length || 0) / 1000) || 5} min read`,
+        featured: blog.is_featured || false,
+        category: blog.category?.name || 'Uncategorized',
+        tags: blog.tags?.map((t) => t.tag.name) || [],
+        article_body: blog.article_body || '',
+        meta_description: blog.meta_description || '',
+        article_category: blog.category?.name || 'Uncategorized',
+        article_tags: blog.tags?.map((t) => t.tag.name) || [],
+        article_image: blog.article_image || '/images/blog-placeholder.jpg',
+        created_at: blog.created_at,
+        updated_at: blog.updated_at
+      };
+    });
+
+    // Find the first featured post
+    const featured = transformedData.find(blog => blog.featured);
+    // Get all non-featured posts
+    const regular = transformedData.filter(blog => !blog.featured);
+
+    return {
+      props: {
+        initialBlogs: {
+          featuredPost: featured || null,
+          regularPosts: regular || [],
+          blogs: transformedData
+        }
+      }
+    };
+  } catch (error) {
+    console.error('Error in getServerSideProps:', error);
+    return {
+      props: {
+        initialBlogs: {
+          featuredPost: null,
+          regularPosts: [],
+          blogs: [],
+          error: error.message
+        }
+      }
+    };
+  }
+}
+
+const Blogs = ({ initialBlogs }) => {
   const router = useRouter();
   const { category, search, sort } = router.query;
-  const { featuredPost, regularPosts, loading, error } = usePublicBlog();
+  const { featuredPost, regularPosts, loading, error } = usePublicBlog(initialBlogs);
   
-  // Add debug logs
-  console.log('Blog State:', {
-    loading,
-    error,
-    hasFeaturedPost: !!featuredPost,
-    regularPostsCount: regularPosts?.length,
-    category,
-    search,
-    sort
-  });
+  // Add detailed debug logs
+  useEffect(() => {
+    console.log('Blog Page State:', {
+      loading,
+      error,
+      hasFeaturedPost: !!featuredPost,
+      regularPostsCount: regularPosts?.length,
+      category,
+      search,
+      sort,
+      routerReady: router.isReady,
+      featuredPostData: featuredPost,
+      firstRegularPost: regularPosts?.[0]
+    });
+  }, [loading, error, featuredPost, regularPosts, category, search, sort, router.isReady]);
 
   // State management
   const [selectedCategory, setSelectedCategory] = useState(category || '');
@@ -150,7 +269,9 @@ const Blogs = () => {
     }
   };
 
+  // Render loading state
   if (loading) {
+    console.log('Rendering loading state');
     return (
       <>
         <SEO 
@@ -166,7 +287,9 @@ const Blogs = () => {
     );
   }
 
+  // Render error state
   if (error) {
+    console.log('Rendering error state:', error);
     return (
       <>
         <SEO 
@@ -182,8 +305,9 @@ const Blogs = () => {
     );
   }
 
-  // If no blogs are found
+  // Render no blogs state
   if (!featuredPost && (!regularPosts || regularPosts.length === 0)) {
+    console.log('Rendering no blogs state');
     return (
       <>
         <SEO 
@@ -205,6 +329,12 @@ const Blogs = () => {
     );
   }
 
+  // Main render
+  console.log('Rendering main content with:', {
+    hasFeaturedPost: !!featuredPost,
+    regularPostsCount: regularPosts?.length
+  });
+
   return (
     <>
       <SEO 
@@ -221,10 +351,8 @@ const Blogs = () => {
         canonicalUrl="https://paan.africa/blog"
       />
       
-      {/* Header */}
       <Header />
       
-      {/* Main Content */}
       <main className="bg-gray-50 min-h-screen">
         {/* Hero Section */}
         <div className="bg-gradient-to-br from-[#172840] via-[#1e3147] to-[#243a52] relative py-24 pt-32 overflow-hidden">
@@ -560,8 +688,7 @@ const Blogs = () => {
         </div>
       </main>
       
-      {/* Footer */}
-      <Footer/>
+      <Footer />
       <ScrollToTop />
     </>
   );

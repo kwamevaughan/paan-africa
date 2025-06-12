@@ -1,20 +1,30 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import { supabase } from "@/lib/supabase";
 
-export const usePublicBlog = () => {
-  const [blogs, setBlogs] = useState([]);
-  const [featuredPost, setFeaturedPost] = useState(null);
-  const [regularPosts, setRegularPosts] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+export const usePublicBlog = (initialData) => {
+  const [blogs, setBlogs] = useState(initialData?.blogs || []);
+  const [featuredPost, setFeaturedPost] = useState(initialData?.featuredPost || null);
+  const [regularPosts, setRegularPosts] = useState(initialData?.regularPosts || []);
+  const [loading, setLoading] = useState(!initialData);
+  const [error, setError] = useState(initialData?.error || null);
   const [currentBlog, setCurrentBlog] = useState(null);
   const [comments, setComments] = useState([]);
   const [commentsLoading, setCommentsLoading] = useState(false);
   const [commentsError, setCommentsError] = useState(null);
   const commentsFetchedRef = useRef(new Set());
+  const isMounted = useRef(true);
+
+  useEffect(() => {
+    return () => {
+      isMounted.current = false;
+    };
+  }, []);
 
   const fetchBlogs = async () => {
+    if (!isMounted.current) return;
+
     try {
+      console.log('Starting to fetch blogs...');
       setLoading(true);
       setError(null);
 
@@ -31,27 +41,45 @@ export const usePublicBlog = () => {
         .eq("is_published", true)
         .order("created_at", { ascending: false });
 
+      console.log('Blogs data received:', {
+        hasData: !!blogsData,
+        dataLength: blogsData?.length,
+        error: blogsError,
+        firstBlog: blogsData?.[0]
+      });
+
       if (blogsError) {
         console.error('Blogs query error:', blogsError);
         throw blogsError;
       }
 
       if (!blogsData || blogsData.length === 0) {
-        setBlogs([]);
-        setFeaturedPost(null);
-        setRegularPosts([]);
-        setLoading(false);
+        console.log('No blogs data found');
+        if (isMounted.current) {
+          setBlogs([]);
+          setFeaturedPost(null);
+          setRegularPosts([]);
+          setLoading(false);
+        }
         return;
       }
 
       // Get unique author IDs from all blogs
       const authorIds = [...new Set(blogsData.map(blog => blog.author))].filter(Boolean);
+      console.log('Author IDs to fetch:', authorIds);
 
       // Fetch all authors in one query
       const { data: authorsData, error: authorsError } = await supabase
         .from("hr_users")
         .select('id, name')
         .in('id', authorIds);
+
+      console.log('Authors data received:', {
+        hasData: !!authorsData,
+        dataLength: authorsData?.length,
+        error: authorsError,
+        firstAuthor: authorsData?.[0]
+      });
 
       if (authorsError) {
         console.error('Authors query error:', authorsError);
@@ -104,19 +132,34 @@ export const usePublicBlog = () => {
         };
       });
 
+      console.log('Transformed data:', {
+        totalBlogs: transformedData.length,
+        hasFeaturedPost: transformedData.some(blog => blog.featured),
+        regularPostsCount: transformedData.filter(blog => !blog.featured).length,
+        firstTransformedBlog: transformedData[0]
+      });
+
       // Find the first featured post
       const featured = transformedData.find(blog => blog.featured);
       // Get all non-featured posts
       const regular = transformedData.filter(blog => !blog.featured);
 
-      setFeaturedPost(featured || null);
-      setRegularPosts(regular || []);
-      setBlogs(transformedData);
+      if (isMounted.current) {
+        setFeaturedPost(featured || null);
+        setRegularPosts(regular || []);
+        setBlogs(transformedData);
+        console.log('State updated with new data');
+      }
     } catch (err) {
       console.error("Error fetching blogs:", err);
-      setError(err.message);
+      if (isMounted.current) {
+        setError(err.message);
+      }
     } finally {
-      setLoading(false);
+      if (isMounted.current) {
+        console.log('Setting loading to false');
+        setLoading(false);
+      }
     }
   };
 
@@ -270,8 +313,13 @@ export const usePublicBlog = () => {
   }, [comments]);
 
   useEffect(() => {
-    fetchBlogs();
-  }, []);
+    if (!initialData) {
+      console.log('No initial data, fetching blogs...');
+      fetchBlogs();
+    } else {
+      console.log('Using initial data from getServerSideProps');
+    }
+  }, [initialData]);
 
   return {
     blogs,
