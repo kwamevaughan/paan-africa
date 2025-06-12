@@ -10,6 +10,7 @@ import Marquee from "@/components/Marquee";
 import ContactSection from "@/components/ContactSection";
 import FreelancerHero from "@/components/FreelancerHero";
 import AgencyLogosGrid from "@/components/AgencyLogosGrid";
+import ScrollToTop from "@/components/ScrollToTop";
 
 
 const FreelancersPage = () => {
@@ -179,6 +180,7 @@ const FreelancersPage = () => {
         <ContactSection />
         
         <Footer />
+        <ScrollToTop />
       </main>
     </>
   );

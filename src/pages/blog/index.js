@@ -8,6 +8,7 @@ import SEO from '@/components/SEO';
 import Footer from '@/layouts/footer';
 import { usePublicBlog } from '@/hooks/usePublicBlog';
 import { toast } from 'react-hot-toast';
+import ScrollToTop from "@/components/ScrollToTop";
 
 const Blogs = () => {
   const router = useRouter();
@@ -535,6 +536,7 @@ const Blogs = () => {
       
       {/* Footer */}
       <Footer/>
+      <ScrollToTop />
     </>
   );
 };

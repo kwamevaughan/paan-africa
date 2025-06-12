@@ -5,6 +5,7 @@ import Footer from "@/layouts/footer";
 import { useEffect, useRef } from "react";
 import { useFixedHeader, handleScroll } from '../../utils/scrollUtils';
 import MemberTiers from "@/components/MemberTiers";
+import ScrollToTop from "@/components/ScrollToTop";
 
 const HomePage = () => {
   const sectionRefs = {
@@ -64,6 +65,7 @@ const HomePage = () => {
         <Header/>
         <MemberTiers/>
         <Footer />
+        <ScrollToTop />
       </main>
     </>
   );

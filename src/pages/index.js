@@ -16,6 +16,7 @@ import ContactSection from "@/components/ContactSection";
 import AgencyEnquiryModal from "@/components/AgencyEnquiryModal";
 import AgenciesMarquee from "@/components/AgenciesMarquee";
 import AgencyLogosGrid from "@/components/AgencyLogosGrid";
+import ScrollToTop from "@/components/ScrollToTop";
 
 const HomePage = () => {
   const sectionRefs = {
@@ -532,6 +533,7 @@ const HomePage = () => {
         </div>
         <Footer />
         <AgencyEnquiryModal isOpen={isModalOpen} onClose={closeModal} />
+        <ScrollToTop />
       </main>
     </>
   );

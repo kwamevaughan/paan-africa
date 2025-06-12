@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Header from '../layouts/header';
 import Footer from '../layouts/footer';
 import SEO from '@/components/SEO';
+import ScrollToTop from "@/components/ScrollToTop";
 
 const PrivacyPolicy = () => {
   return (
@@ -205,6 +206,7 @@ const PrivacyPolicy = () => {
           </div>
         </div>
         <Footer />
+        <ScrollToTop />
       </main>
     </>
   );

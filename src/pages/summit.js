@@ -8,6 +8,7 @@ import BenefitsToggle from "@/components/BenefitsToggle";
 import { useFixedHeader, handleScroll } from '../../utils/scrollUtils';
 import SeminarRegistration from "@/components/SeminarRegistration";
 import { ctaButton } from "../data/summitMenu";
+import ScrollToTop from "@/components/ScrollToTop";
 
 const SummitPage = () => {
   const sectionRefs = {
@@ -214,6 +215,7 @@ const SummitPage = () => {
         </div>
         
         <Footer />
+        <ScrollToTop />
       </main>
     </>
   );
