@@ -103,6 +103,10 @@ const BlogComments = ({ blogId, comments, commentsLoading, commentsError, onComm
         <div className="mb-12">
           <div className="bg-white/70 backdrop-blur-xl rounded-2xl shadow-xl border border-white/50 p-8">
             <form onSubmit={handleSubmit} className="space-y-6">
+              <p className="text-xs text-slate-500">
+                Fields marked with <span className="text-[#F25849]">*</span> are
+                required. Your email will not be published.
+              </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="relative">
                   <label
@@ -285,7 +289,7 @@ const BlogComments = ({ blogId, comments, commentsLoading, commentsError, onComm
                 </div>
                 <button
                   type="submit"
-                  className={`w-full sm:w-auto px-6 py-3 rounded-xl font-semibold text-white transition-all duration-300 transform ${
+                  className={`flex w-full sm:w-auto px-6 py-3 rounded-xl font-semibold text-white transition-all duration-300 transform ${
                     isSubmitting
                       ? "bg-slate-400 cursor-not-allowed scale-95"
                       : "bg-gradient-to-r from-[#F25849] to-orange-400 hover:from-[#D6473C] to-red-400 hover:scale-105 shadow-lg hover:shadow-xl active:scale-95"
@@ -308,11 +312,6 @@ const BlogComments = ({ blogId, comments, commentsLoading, commentsError, onComm
                   )}
                 </button>
               </div>
-
-              <p className="text-xs text-slate-500 mt-4 text-center">
-                Fields marked with <span className="text-[#F25849]">*</span> are
-                required. Your email will not be published.
-              </p>
             </form>
           </div>
         </div>
