@@ -122,18 +122,15 @@ export const usePublicBlog = () => {
 
   const fetchComments = useCallback(async (blogId) => {
     if (!blogId) {
-      console.log('No blogId provided to fetchComments');
       return;
     }
 
     // Check if we've already fetched comments for this blog
     if (commentsFetchedRef.current.has(blogId)) {
-      console.log('Comments already fetched for blogId:', blogId);
       return;
     }
     
     try {
-      console.log('Fetching comments for blogId:', blogId);
       setCommentsLoading(true);
       setCommentsError(null);
 
@@ -148,7 +145,6 @@ export const usePublicBlog = () => {
         throw commentsError;
       }
 
-      console.log('Fetched comments data:', commentsData);
       
       // Always update comments state with the fetched data
       setComments(commentsData || []);
@@ -194,7 +190,6 @@ export const usePublicBlog = () => {
 
   const fetchBlogBySlug = useCallback(async (slug) => {
     try {
-      console.log('Fetching blog by slug:', slug);
       if (!currentBlog) {
         setLoading(true);
       }
@@ -252,7 +247,6 @@ export const usePublicBlog = () => {
       setCurrentBlog(transformedBlog);
       
       // Then fetch comments
-      console.log('Fetching comments for blog ID:', blogData.id);
       await fetchComments(blogData.id);
 
     } catch (err) {
@@ -267,14 +261,12 @@ export const usePublicBlog = () => {
   // Add effect to fetch comments when blogId changes
   useEffect(() => {
     if (currentBlog?.id) {
-      console.log('Fetching comments for blog:', currentBlog.id);
       fetchComments(currentBlog.id);
     }
   }, [currentBlog?.id, fetchComments]);
 
   // Add effect to monitor comments state
   useEffect(() => {
-    console.log('Comments state changed:', comments);
   }, [comments]);
 
   useEffect(() => {

@@ -22,16 +22,7 @@ const BlogComments = ({ blogId, comments, commentsLoading, commentsError, onComm
   });
   const recaptchaRef = useRef(null);
 
-  // Debug logging for comments
-  useEffect(() => {
-    console.log('BlogComments: Comments state:', {
-      comments,
-      isArray: Array.isArray(comments),
-      length: comments?.length,
-      type: typeof comments,
-      stringified: JSON.stringify(comments)
-    });
-  }, [comments]);
+ 
 
   const validateForm = () => {
     const errors = {
@@ -329,7 +320,7 @@ const BlogComments = ({ blogId, comments, commentsLoading, commentsError, onComm
         {/* Comments List */}
         <div>
           <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-3 bg-white/80 backdrop-blur-sm px-6 py-3 rounded-full shadow-lg border border-white/50 mb-6">
+            {/* <div className="inline-flex items-center gap-3 bg-white/80 backdrop-blur-sm px-6 py-3 rounded-full shadow-lg border border-white/50 mb-6">
               <Icon
                 icon="heroicons:chat-bubble-left-right-20-solid"
                 className="w-6 h-6 text-[#F25849]"
@@ -339,7 +330,7 @@ const BlogComments = ({ blogId, comments, commentsLoading, commentsError, onComm
                 loading={commentsLoading}
                 showIcon={false}
               />
-            </div>
+            </div> */}
           </div>
           <div className="flex items-center justify-end mb-8">
             <button
