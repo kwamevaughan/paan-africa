@@ -3,10 +3,12 @@ import { useRouter } from "next/router";
 import Image from "next/image";
 import { Icon } from "@iconify/react";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import Header from "@/layouts/blogs-header";
 import Footer from "@/layouts/footer";
-import BlogComments from '@/components/BlogComments';
+import BlogComments from '@/components/blog/BlogComments';
+import CommentCount from '@/components/blog/CommentCount';
+import TableOfContents from '@/components/blog/TableOfContents';
 import Head from 'next/head';
 import { supabase } from "@/lib/supabase";
 
@@ -165,10 +167,30 @@ export async function getServerSideProps(context) {
 export default function BlogPost({ blog: initialBlog, error: serverError }) {
   const router = useRouter();
   const { slug } = router.query;
-  const { currentBlog, loading, error: clientError, fetchBlogBySlug, comments, fetchComments } = usePublicBlog();
+  const { currentBlog, loading, error: clientError, fetchBlogBySlug, comments, fetchComments, commentsLoading, commentsError } = usePublicBlog();
   const [currentUrl, setCurrentUrl] = useState('');
   const [subscribeForm, setSubscribeForm] = useState({ name: '', email: '' });
   const [subscribeStatus, setSubscribeStatus] = useState({ loading: false, message: '', error: false });
+  const hasFetchedRef = useRef(false);
+
+  // Fetch blog and comments when slug is available
+  useEffect(() => {
+    if (slug && slug !== 'index' && !hasFetchedRef.current) {
+      hasFetchedRef.current = true;
+      fetchBlogBySlug(slug);
+    }
+  }, [slug, fetchBlogBySlug]);
+
+  // Add debug logging for comments
+  useEffect(() => {
+    console.log('Comments state in [slug].js:', {
+      comments,
+      isArray: Array.isArray(comments),
+      length: comments?.length,
+      type: typeof comments,
+      stringified: JSON.stringify(comments)
+    });
+  }, [comments]);
 
   // Use the server-rendered blog data if available
   const blog = currentBlog || initialBlog;
@@ -321,7 +343,18 @@ export default function BlogPost({ blog: initialBlog, error: serverError }) {
         <SocialShare url={currentUrl} title={blog?.article_name || ""} />
 
         {/* Hero Section */}
-        <div className="bg-gradient-to-br from-[#172840] via-[#1e3147] to-[#243a52] relative py-12 sm:py-16 md:py-24 pt-20 sm:pt-24 md:pt-32 overflow-hidden">
+        <div 
+          className="relative py-12 sm:py-16 md:py-24 pt-20 sm:pt-24 md:pt-32 overflow-hidden"
+          style={{
+            backgroundImage: blog?.article_image ? `url(${blog.article_image})` : 'linear-gradient(to bottom right, #172840, #243a52)',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundAttachment: 'fixed'
+          }}
+        >
+          {/* Dark Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-br from-[#172840]/90 via-[#1e3147]/90 to-[#243a52]/90"></div>
+
           {/* Decorative Elements */}
           <div className="absolute -top-4 left-8 w-6 h-6 sm:w-8 sm:h-8 bg-[#84C1D9] rounded-full opacity-80 animate-pulse"></div>
           <div className="absolute -top-6 right-12 w-16 h-16 sm:w-20 sm:h-20 bg-[#F2B706] rounded-full opacity-70"></div>
@@ -329,7 +362,7 @@ export default function BlogPost({ blog: initialBlog, error: serverError }) {
           <div className="absolute top-1/2 left-1/4 w-3 h-3 sm:w-4 sm:h-4 bg-[#84C1D9] rounded-full opacity-50"></div>
           <div className="absolute bottom-1/4 right-1/3 w-4 h-4 sm:w-6 sm:h-6 bg-[#F2B706] rounded-full opacity-40"></div>
 
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
             <div className="flex flex-wrap items-center justify-center gap-2 mb-4 sm:mb-6">
               {blog?.article_category && (
                 <span className="px-3 py-1 sm:px-4 sm:py-1.5 text-sm font-medium capitalize text-[#F25849] bg-[#F25849]/10 rounded-full">
@@ -340,9 +373,10 @@ export default function BlogPost({ blog: initialBlog, error: serverError }) {
                 {blog?.created_at && formatDate(blog.created_at)}
               </span>
             </div>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6 tracking-tight px-4">
-              {blog?.article_name}
-            </h1>
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6 tracking-tight px-4 leading-snug lg:leading-tight">
+  {blog?.article_name}
+</h1>
+
             <div className="mt-6 sm:mt-8 flex justify-center">
               <div className="w-20 sm:w-24 h-1 bg-gradient-to-r from-[#F25849] via-[#F2B706] to-[#84C1D9] rounded-full"></div>
             </div>
@@ -352,104 +386,124 @@ export default function BlogPost({ blog: initialBlog, error: serverError }) {
         {/* Article Content and Comments */}
         <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16 md:py-20">
           {/* Article */}
-          <article className="bg-white rounded-xl overflow-hidden mb-12">
-            {blog?.article_image && (
-              <div className="relative h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] w-full">
-                <Image
-                  src={blog.article_image}
-                  alt={blog.article_name}
-                  fill
-                  className="object-cover"
-                  priority
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
-              </div>
-            )}
-
-            <div className="p-6 sm:p-8 md:p-12 lg:p-16">
-              {/* Add read time and author info */}
-              <div className="flex items-center gap-4 text-sm text-gray-500 mb-6 border-b border-gray-100 pb-6">
-                {blog?.read_time && (
-                  <div className="flex items-center gap-2">
-                    <Icon icon="heroicons:clock" className="w-4 h-4" />
-                    <span>{blog.read_time}</span>
-                  </div>
-                )}
-                {blog?.author && (
-                  <div className="flex items-center gap-2">
-                    <Icon icon="heroicons:user" className="w-4 h-4" />
-                    <span>By {blog.author}</span>
-                  </div>
-                )}
-              </div>
-
-              {!hasContent && (
-                <div className="text-center py-12 sm:py-16">
-                  <Icon
-                    icon="heroicons:document-text"
-                    className="mx-auto h-12 w-12 sm:h-16 sm:w-16 text-[#172840]"
+          <div className="flex gap-8">
+            {/* Main Content */}
+            <article className="flex-1 bg-white rounded-xl overflow-hidden">
+              {blog?.article_image && (
+                <div className="relative w-full h-[400px]">
+                  <Image
+                    src={blog.article_image}
+                    alt={blog.article_name}
+                    fill
+                    className="object-cover"
+                    priority
                   />
-                  <h3 className="mt-4 text-base sm:text-lg font-medium text-[#172840]">
-                    Content Coming Soon
-                  </h3>
-                  <p className="mt-2 text-sm sm:text-base text-gray-500">
-                    This article is being prepared. Please check back later.
-                  </p>
                 </div>
               )}
 
-              {hasContent && (
-                <div
-                  className="prose prose-sm sm:prose-base md:prose-lg max-w-none
-                    prose-headings:font-bold prose-headings:text-[#172840] prose-headings:tracking-tight
-                    prose-h1:text-4xl prose-h1:mb-8 prose-h1:mt-12
-                    prose-h2:text-3xl prose-h2:mb-6 prose-h2:mt-10
-                    prose-h3:text-2xl prose-h3:mb-4 prose-h3:mt-8
-                    prose-h4:text-xl prose-h4:mb-4 prose-h4:mt-6
-                    prose-p:text-gray-600 prose-p:leading-relaxed prose-p:mb-6
-                    prose-a:text-[#F25849] prose-a:no-underline hover:prose-a:underline
-                    prose-strong:text-[#172840] prose-strong:font-semibold
-                    prose-img:rounded-xl prose-img:shadow-lg prose-img:my-8
-                    prose-blockquote:border-l-4 prose-blockquote:border-[#F25849] prose-blockquote:pl-4 prose-blockquote:italic
-                    prose-ul:list-disc prose-ul:pl-6 prose-ul:my-6
-                    prose-ol:list-decimal prose-ol:pl-6 prose-ol:my-6
-                    prose-li:mb-2 prose-li:text-gray-600
-                    prose-code:text-[#F25849] prose-code:bg-gray-100 prose-code:px-1 prose-code:py-0.5 prose-code:rounded
-                    prose-pre:bg-gray-900 prose-pre:text-white prose-pre:p-4 prose-pre:rounded-lg
-                    prose-hr:my-8 prose-hr:border-gray-200"
-                  dangerouslySetInnerHTML={{
-                    __html: blog.article_body,
-                  }}
-                />
-              )}
-
-              {blog?.article_tags &&
-                blog.article_tags.length > 0 && (
-                  <div className="mt-8 sm:mt-12 pt-6 sm:pt-8 border-t border-gray-200">
-                    <h3 className="text-sm sm:text-base font-medium text-[#172840] mb-3 sm:mb-4">
-                      Tags:
-                    </h3>
-                    <div className="flex flex-wrap gap-2 sm:gap-3">
-                      {blog.article_tags.map((tag, index) => (
-                        <span
-                          key={index}
-                          className="px-3 py-1 sm:px-4 sm:py-1.5 text-xs sm:text-sm text-[#172840] bg-[#172840]/5 rounded-full"
-                        >
-                          #{tag}
-                        </span>
-                      ))}
+              <div className="p-6 sm:p-8 md:p-12 lg:p-10">
+                {/* Add read time and author info */}
+                <div className="flex items-center gap-4 text-sm text-gray-500 mb-6 border-b border-gray-100 pb-6">
+                  {blog?.read_time && (
+                    <div className="flex items-center gap-2">
+                      <Icon icon="heroicons:clock" className="w-4 h-4" />
+                      <span>{blog.read_time}</span>
                     </div>
+                  )}
+                  {blog?.author && (
+                    <div className="flex items-center gap-2">
+                      <Icon icon="heroicons:user" className="w-4 h-4" />
+                      <span>By {blog.author}</span>
+                    </div>
+                  )}
+                  {hasContent && blog?.id && (
+                    <CommentCount 
+                      comments={comments}
+                      loading={commentsLoading}
+                      onClick={() => {
+                        document.querySelector('#comments-section')?.scrollIntoView({ behavior: 'smooth' });
+                      }}
+                    />
+                  )}
+                </div>
+
+                {!hasContent && (
+                  <div className="text-center py-12 sm:py-16">
+                    <Icon
+                      icon="heroicons:document-text"
+                      className="mx-auto h-12 w-12 sm:h-16 sm:w-16 text-[#172840]"
+                    />
+                    <h3 className="mt-4 text-base sm:text-lg font-medium text-[#172840]">
+                      Content Coming Soon
+                    </h3>
+                    <p className="mt-2 text-sm sm:text-base text-gray-500">
+                      This article is being prepared. Please check back later.
+                    </p>
                   </div>
                 )}
-            </div>
-          </article>
+
+                {hasContent && (
+                  <div
+                    className="prose prose-sm sm:prose-base md:prose-lg max-w-none
+                      prose-headings:font-bold prose-headings:text-[#172840] prose-headings:tracking-tight
+                      prose-h1:text-4xl prose-h1:mb-8 prose-h1:mt-12
+                      prose-h2:text-3xl prose-h2:mb-6 prose-h2:mt-10
+                      prose-h3:text-2xl prose-h3:mb-4 prose-h3:mt-8
+                      prose-h4:text-xl prose-h4:mb-4 prose-h4:mt-6
+                      prose-p:text-gray-600 prose-p:leading-relaxed prose-p:mb-6
+                      prose-a:text-[#F25849] prose-a:no-underline hover:prose-a:underline
+                      prose-strong:text-[#172840] prose-strong:font-semibold
+                      prose-img:rounded-xl prose-img:shadow-lg prose-img:my-8
+                      prose-blockquote:border-l-4 prose-blockquote:border-[#F25849] prose-blockquote:pl-4 prose-blockquote:italic
+                      prose-ul:list-disc prose-ul:pl-6 prose-ul:my-6
+                      prose-ol:list-decimal prose-ol:pl-6 prose-ol:my-6
+                      prose-li:mb-2 prose-li:text-gray-600
+                      prose-code:text-[#F25849] prose-code:bg-gray-100 prose-code:px-1 prose-code:py-0.5 prose-code:rounded
+                      prose-pre:bg-gray-900 prose-pre:text-white prose-pre:p-4 prose-pre:rounded-lg
+                      prose-hr:my-8 prose-hr:border-gray-200"
+                    id="blog-content"
+                  >
+                    <div dangerouslySetInnerHTML={{ __html: blog.article_body }} />
+                  </div>
+                )}
+
+                {blog?.article_tags &&
+                  blog.article_tags.length > 0 && (
+                    <div className="mt-8 sm:mt-12 pt-6 sm:pt-8 border-t border-gray-200">
+                      <h3 className="text-sm sm:text-base font-medium text-[#172840] mb-3 sm:mb-4">
+                        Tags:
+                      </h3>
+                      <div className="flex flex-wrap gap-2 sm:gap-3">
+                        {blog.article_tags.map((tag, index) => (
+                          <span
+                            key={index}
+                            className="px-3 py-1 sm:px-4 sm:py-1.5 text-xs sm:text-sm text-[#172840] bg-[#172840]/5 rounded-full"
+                          >
+                            #{tag}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+              </div>
+            </article>
+
+            {/* Table of Contents Sidebar */}
+            <TableOfContents content={blog.article_body} />
+          </div>
 
           {/* Newsletter Section */}
 
           {/* Comments Section - Only show if article has content */}
           {hasContent && blog?.id && (
-            <div className="bg-white rounded-xl sm:rounded-2xl overflow-hidden">
-              <BlogComments blogId={blog.id} />
+            <div id="comments-section" className="bg-white rounded-xl sm:rounded-2xl overflow-hidden">
+              <BlogComments 
+                blogId={blog.id} 
+                comments={comments}
+                commentsLoading={commentsLoading}
+                commentsError={commentsError}
+                onCommentAdded={() => fetchComments(blog.id)}
+              />
             </div>
           )}
 
