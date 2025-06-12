@@ -130,7 +130,7 @@ const FreelancersPage = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8 pb-12 sm:pb-20 md:pb-32">
             <div className="bg-[#84C1D9] rounded-lg p-4 sm:p-6 shadow-md transition-transform hover:transform hover:scale-105">
               <div className="mb-8 sm:mb-20">
-                <img src="/assets/images/icons/power-icon.png" alt="" className="w-12 h-12 sm:w-16 sm:h-16"/>
+                <img src="/assets/images/icons/power-icon.png" alt="Localize Faster" className="w-12 h-12 sm:w-16 sm:h-16"/>
               </div>
               <h2 className="text-lg sm:text-xl font-bold mb-2 sm:mb-3">Localize Faster</h2>
               <p className="text-gray-800 text-sm sm:text-base">Cut through market complexity with agency expertise.</p>
@@ -138,7 +138,7 @@ const FreelancersPage = () => {
             
             <div className="bg-[#84C1D9] rounded-lg p-4 sm:p-6 shadow-md transition-transform hover:transform hover:scale-105">
               <div className="mb-8 sm:mb-16">
-                <img src="/assets/images/icons/caution-icon.png" alt="" className="w-12 h-12 sm:w-16 sm:h-16"/>
+                <img src="/assets/images/icons/caution-icon.png" alt="Reduce Risk" className="w-12 h-12 sm:w-16 sm:h-16"/>
               </div>
               <h2 className="text-lg sm:text-xl font-bold mb-2 sm:mb-3">Reduce Risk</h2>
               <p className="text-gray-800 text-sm sm:text-base">PAAN-certified agencies ensure compliance and relevance.</p>
@@ -146,7 +146,7 @@ const FreelancersPage = () => {
             
             <div className="bg-[#84C1D9] rounded-lg p-4 sm:p-6 shadow-md transition-transform hover:transform hover:scale-105">
               <div className="mb-8 sm:mb-20">
-                <img src="/assets/images/icons/window-icon.png" alt="" className="w-12 h-12 sm:w-16 sm:h-16"/>
+                <img src="/assets/images/icons/window-icon.png" alt="Maximize ROI" className="w-12 h-12 sm:w-16 sm:h-16"/>
               </div>
               <h2 className="text-lg sm:text-xl font-bold mb-2 sm:mb-3">Maximize ROI</h2>
               <p className="text-gray-800 text-sm sm:text-base">Turn partnerships into revenue with measurable outcomes.</p>
