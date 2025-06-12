@@ -10,6 +10,7 @@ import { toast } from 'react-hot-toast';
 import ScrollToTop from "@/components/ScrollToTop";
 import SEO from '@/components/SEO';
 import { supabase } from "@/lib/supabase";
+import { calculateReadTime } from '@/utils/readTime';
 
 export async function getServerSideProps() {
   try {
@@ -81,7 +82,7 @@ export async function getServerSideProps() {
           day: "numeric",
         }) : 'No date',
         author: authorMap.get(blog.author) || 'Unknown Author',
-        readTime: `${Math.ceil((cleanContent.length || 0) / 1000) || 5} min read`,
+        readTime: calculateReadTime(blog.article_body),
         featured: blog.is_featured || false,
         category: blog.category?.name || 'Uncategorized',
         tags: blog.tags?.map((t) => t.tag.name) || [],

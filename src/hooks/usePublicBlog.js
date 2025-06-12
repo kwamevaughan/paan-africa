@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import { supabase } from "@/lib/supabase";
+import { calculateReadTime } from '@/utils/readTime';
 
 export const usePublicBlog = (initialData) => {
   const [blogs, setBlogs] = useState(initialData?.blogs || []);
@@ -118,7 +119,7 @@ export const usePublicBlog = (initialData) => {
             day: "numeric",
           }) : 'No date',
           author: authorMap.get(blog.author) || 'Unknown Author',
-          readTime: `${Math.ceil((cleanContent.length || 0) / 1000) || 5} min read`,
+          readTime: calculateReadTime(blog.article_body),
           featured: blog.is_featured || false,
           category: blog.category?.name || 'Uncategorized',
           tags: blog.tags?.map((t) => t.tag.name) || [],
@@ -279,7 +280,7 @@ export const usePublicBlog = (initialData) => {
         article_category: blogData.category?.name || 'Uncategorized',
         article_tags: blogData.tags?.map((t) => t.tag.name) || [],
         author: authorData?.name || 'Unknown Author',
-        read_time: `${Math.ceil((blogData.article_body?.replace(/<[^>]*>/g, '').length || 0) / 1000) || 5} min read`,
+        read_time: calculateReadTime(blogData.article_body),
         meta_title: blogData.meta_title || blogData.article_name,
         meta_description: blogData.meta_description || '',
         meta_keywords: blogData.meta_keywords || '',
