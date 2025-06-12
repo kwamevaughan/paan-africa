@@ -8,13 +8,24 @@ import Footer from '@/layouts/footer';
 import { usePublicBlog } from '@/hooks/usePublicBlog';
 import { toast } from 'react-hot-toast';
 import ScrollToTop from "@/components/ScrollToTop";
-import Head from 'next/head';
+import SEO from '@/components/SEO';
 
 const Blogs = () => {
   const router = useRouter();
   const { category, search, sort } = router.query;
   const { featuredPost, regularPosts, loading, error } = usePublicBlog();
   
+  // Add debug logs
+  console.log('Blog State:', {
+    loading,
+    error,
+    hasFeaturedPost: !!featuredPost,
+    regularPostsCount: regularPosts?.length,
+    category,
+    search,
+    sort
+  });
+
   // State management
   const [selectedCategory, setSelectedCategory] = useState(category || '');
   const [searchQuery, setSearchQuery] = useState(search || '');
@@ -142,6 +153,11 @@ const Blogs = () => {
   if (loading) {
     return (
       <>
+        <SEO 
+          title="Loading Blog | PAAN"
+          description="Loading blog content..."
+          noindex={true}
+        />
         <Header />
         <div className="min-h-screen bg-gray-50 flex items-center justify-center">
           <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#F25849]"></div>
@@ -153,18 +169,12 @@ const Blogs = () => {
   if (error) {
     return (
       <>
+        <SEO 
+          title="Blog Not Found | PAAN"
+          description={`Error loading blogs: ${error}`}
+          noindex={true}
+        />
         <Header />
-        <Head>
-          <title>Blog Not Found | PAAN</title>
-          <meta name="robots" content="noindex" />
-          <meta name="description" content="Error loading blogs: {error}" />
-          <meta name="keywords" content="PAAN blog, African tech insights, creative industry Africa, tech trends Africa, African innovation, creative tech blog, African digital transformation, tech leadership Africa" />
-          <meta property="og:title" content="Blog Not Found | PAAN" />
-          <meta property="og:description" content="Error loading blogs: {error}" />
-          <meta property="og:image" content="/assets/images/opengraph.png" />
-          <meta property="og:type" content="article" />
-          <meta property="og:url" content="https://paan.africa/blog" />
-        </Head>
         <div className="min-h-screen bg-gray-50 flex items-center justify-center">
           <div className="text-red-500">Error loading blogs: {error}</div>
         </div>
@@ -175,54 +185,41 @@ const Blogs = () => {
   // If no blogs are found
   if (!featuredPost && (!regularPosts || regularPosts.length === 0)) {
     return (
-          <>
-            <Header />
-            <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="text-center">
-                  <h2 className="text-3xl font-bold text-[#172840] mb-4">No Blogs Found</h2>
-                  <p className="text-gray-600">We're currently working on new content. Please check back soon!</p>
-                </div>
-              </div>
+      <>
+        <SEO 
+          title="No Blogs Found | PAAN"
+          description="We're currently working on new content. Please check back soon!"
+          noindex={true}
+        />
+        <Header />
+        <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center">
+              <h2 className="text-3xl font-bold text-[#172840] mb-4">No Blogs Found</h2>
+              <p className="text-gray-600">We're currently working on new content. Please check back soon!</p>
             </div>
-            <Footer />
-          </>
+          </div>
+        </div>
+        <Footer />
+      </>
     );
   }
 
   return (
     <>
-      <>
-        <Head>
-          <title>PAAN Blog | Insights from Africa's Creative & Tech Landscape</title>
-          <meta name="description" content="Explore the latest insights, trends, and stories from Africa's creative and tech landscape. Stay informed with expert analysis, industry news, and thought leadership from PAAN." />
-          <meta name="keywords" content="PAAN blog, African tech insights, creative industry Africa, tech trends Africa, African innovation, creative tech blog, African digital transformation, tech leadership Africa" />
-          <meta property="og:title" content="PAAN Blog | Africa's Creative & Tech Insights" />
-          <meta property="og:description" content="Discover the latest insights and trends from Africa's creative and tech landscape. Expert analysis, industry news, and thought leadership from PAAN." />
-          <meta property="og:image" content="/assets/images/opengraph.png" />
-          <meta property="og:type" content="article" />
-          <meta property="og:url" content="https://paan.africa/blog" />
-          <meta property="og:image" content="/assets/images/opengraph.png" />
-          <meta property="og:image:width" content="1200" />
-          <meta property="og:image:height" content="630" />
-          <meta property="og:image:alt" content="PAAN Blog | Africa's Creative & Tech Insights" />
-          <meta property="og:image:type" content="image/jpeg" />
-          <meta property="og:image:secure_url" content="https://paan.africa/images/blog-og-image.jpg" />
-          <meta name="twitter:card" content="summary_large_image" />
-          <meta name="twitter:title" content="PAAN Blog | Africa's Creative & Tech Insights" />
-          <meta name="twitter:description" content="Discover the latest insights and trends from Africa's creative and tech landscape. Expert analysis, industry news, and thought leadership from PAAN." />
-          <meta name="twitter:image" content="/images/blog-og-image.jpg" />
-          <meta name="twitter:image:alt" content="PAAN Blog | Africa's Creative & Tech Insights" />
-          <meta name="twitter:image:width" content="1200" />
-          <meta name="twitter:image:height" content="630" />
-          <meta name="twitter:image:secure_url" content="https://paan.africa/images/blog-og-image.jpg" />
-          <meta name="twitter:image:alt" content="PAAN Blog | Africa's Creative & Tech Insights" />
-          <meta name="twitter:image:type" content="image/jpeg" />
-          <link rel="canonical" href="https://paan.africa/blog" />
-          
-         
-        </Head>
-      </>
+      <SEO 
+        title="PAAN Blog | Insights from Africa's Creative & Tech Landscape"
+        description="Explore the latest insights, trends, and stories from Africa's creative and tech landscape. Stay informed with expert analysis, industry news, and thought leadership from PAAN."
+        keywords="PAAN blog, African tech insights, creative industry Africa, tech trends Africa, African innovation, creative tech blog, African digital transformation, tech leadership Africa"
+        ogTitle="PAAN Blog | Africa's Creative & Tech Insights"
+        ogDescription="Discover the latest insights and trends from Africa's creative and tech landscape. Expert analysis, industry news, and thought leadership from PAAN."
+        ogImage="/assets/images/opengraph.png"
+        twitterCard="summary_large_image"
+        twitterTitle="PAAN Blog | Africa's Creative & Tech Insights"
+        twitterDescription="Discover the latest insights and trends from Africa's creative and tech landscape. Expert analysis, industry news, and thought leadership from PAAN."
+        twitterImage="/assets/images/opengraph.png"
+        canonicalUrl="https://paan.africa/blog"
+      />
       
       {/* Header */}
       <Header />
