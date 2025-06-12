@@ -12,6 +12,8 @@ export const usePublicBlog = (initialData) => {
   const [comments, setComments] = useState([]);
   const [commentsLoading, setCommentsLoading] = useState(false);
   const [commentsError, setCommentsError] = useState(null);
+  const [relatedPosts, setRelatedPosts] = useState([]);
+  const [relatedPostsLoading, setRelatedPostsLoading] = useState(false);
   const commentsFetchedRef = useRef(new Set());
   const isMounted = useRef(true);
 
@@ -234,10 +236,10 @@ export const usePublicBlog = (initialData) => {
 
   const fetchBlogBySlug = useCallback(async (slug) => {
     try {
-      if (!currentBlog) {
-        setLoading(true);
-      }
+      console.log('Fetching blog by slug:', slug);
+      setLoading(true);
       setError(null);
+      setCurrentBlog(null); // Clear current blog before fetching new one
       
       const { data: blogData, error: blogError } = await supabase
         .from("blogs")
@@ -287,6 +289,8 @@ export const usePublicBlog = (initialData) => {
         focus_keyword: blogData.focus_keyword || ''
       };
 
+      console.log('Setting new blog data:', transformedBlog);
+      
       // Update blog data first
       setCurrentBlog(transformedBlog);
       
@@ -300,7 +304,7 @@ export const usePublicBlog = (initialData) => {
     } finally {
       setLoading(false);
     }
-  }, [fetchComments, currentBlog]);
+  }, [fetchComments]);
 
   // Add effect to fetch comments when blogId changes
   useEffect(() => {
@@ -312,6 +316,93 @@ export const usePublicBlog = (initialData) => {
   // Add effect to monitor comments state
   useEffect(() => {
   }, [comments]);
+
+  const fetchRelatedPosts = useCallback(async (currentBlog) => {
+    if (!currentBlog) {
+      console.log('No current blog to fetch related posts for');
+      return;
+    }
+    
+    try {
+      console.log('Fetching related posts for blog:', {
+        id: currentBlog.id,
+        category: currentBlog.article_category,
+        tags: currentBlog.article_tags
+      });
+      
+      setRelatedPostsLoading(true);
+      
+      // Build the filter conditions
+      let query = supabase
+        .from("blogs")
+        .select(`
+          *,
+          category:blog_categories(name),
+          tags:blog_post_tags(
+            tag:blog_tags(name)
+          )
+        `)
+        .eq("is_published", true)
+        .neq("id", currentBlog.id); // Exclude current post
+
+      // Add category filter if it exists
+      if (currentBlog.article_category) {
+        query = query.eq('category.name', currentBlog.article_category);
+      }
+
+      // Add tags filter if they exist
+      if (currentBlog.article_tags && currentBlog.article_tags.length > 0) {
+        query = query.contains('tags.tag.name', currentBlog.article_tags);
+      }
+
+      // Execute the query
+      const { data: relatedData, error: relatedError } = await query
+        .order("created_at", { ascending: false })
+        .limit(3);
+
+      console.log('Related posts query result:', {
+        data: relatedData,
+        error: relatedError,
+        count: relatedData?.length
+      });
+
+      if (relatedError) throw relatedError;
+
+      // Transform related posts data
+      const transformedRelatedPosts = relatedData.map(post => ({
+        id: post.id,
+        slug: post.slug || post.id.toString(), // Ensure we have a slug
+        title: post.article_name,
+        excerpt: post.article_body 
+          ? post.article_body.replace(/<[^>]*>/g, '').substring(0, 150) + '...'
+          : 'No content available',
+        image: post.article_image || '/images/blog-placeholder.jpg',
+        date: post.created_at ? new Date(post.created_at).toLocaleDateString("en-US", {
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        }) : 'No date',
+        category: post.category?.name || 'Uncategorized',
+        readTime: calculateReadTime(post.article_body)
+      }));
+
+      console.log('Transformed related posts:', transformedRelatedPosts);
+
+      setRelatedPosts(transformedRelatedPosts);
+    } catch (err) {
+      console.error("Error fetching related posts:", err);
+      setRelatedPosts([]);
+    } finally {
+      setRelatedPostsLoading(false);
+    }
+  }, []);
+
+  // Add effect to fetch related posts when current blog changes
+  useEffect(() => {
+    if (currentBlog?.id) {
+      fetchRelatedPosts(currentBlog);
+    }
+  }, [currentBlog, fetchRelatedPosts]);
 
   useEffect(() => {
     if (!initialData) {
@@ -332,6 +423,8 @@ export const usePublicBlog = (initialData) => {
     comments,
     commentsLoading,
     commentsError,
+    relatedPosts,
+    relatedPostsLoading,
     refetch: fetchBlogs,
     fetchBlogBySlug,
     addComment,

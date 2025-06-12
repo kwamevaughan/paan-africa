@@ -10,6 +10,7 @@ import BlogComments from '@/components/blog/BlogComments';
 import CommentCount from '@/components/blog/CommentCount';
 import TableOfContents from '@/components/blog/TableOfContents';
 import BlogAuthor from '@/components/blog/BlogAuthor';
+import RelatedPosts from '@/components/blog/RelatedPosts';
 import Head from 'next/head';
 import { supabase } from "@/lib/supabase";
 import ScrollToTop from "@/components/ScrollToTop";
@@ -170,25 +171,36 @@ export async function getServerSideProps(context) {
 export default function BlogPost({ blog: initialBlog, error: serverError }) {
   const router = useRouter();
   const { slug } = router.query;
-  const { currentBlog, loading, error: clientError, fetchBlogBySlug, comments, fetchComments, commentsLoading, commentsError } = usePublicBlog();
+  const { 
+    currentBlog, 
+    loading, 
+    error: clientError, 
+    fetchBlogBySlug, 
+    comments, 
+    fetchComments, 
+    commentsLoading, 
+    commentsError,
+    relatedPosts,
+    relatedPostsLoading 
+  } = usePublicBlog();
   const [currentUrl, setCurrentUrl] = useState('');
   const [subscribeForm, setSubscribeForm] = useState({ name: '', email: '' });
   const [subscribeStatus, setSubscribeStatus] = useState({ loading: false, message: '', error: false });
   const hasFetchedRef = useRef(false);
+  const authorRef = useRef(null);
 
   // Use the server-rendered blog data if available
   const blog = currentBlog || initialBlog;
   const error = clientError || serverError;
 
-  // Fetch blog and comments when slug is available
+  // Fetch blog and comments when slug changes
   useEffect(() => {
-    if (slug && slug !== 'index' && !hasFetchedRef.current) {
-      hasFetchedRef.current = true;
+    if (slug && slug !== 'index') {
+      console.log('Slug changed, fetching new blog:', slug);
+      hasFetchedRef.current = false;
       fetchBlogBySlug(slug);
     }
   }, [slug, fetchBlogBySlug]);
-
-
 
   // Add debug logging for comments
   useEffect(() => {
@@ -476,8 +488,8 @@ export default function BlogPost({ blog: initialBlog, error: serverError }) {
                   </div>
                 )}
 
-                {/* Add BlogAuthor component */}
-                {blog?.author && <BlogAuthor author={blog.author} />}
+                {/* Add BlogAuthor component with ref */}
+                {blog?.author && <div ref={authorRef}><BlogAuthor author={blog.author} /></div>}
 
                 {blog?.article_tags &&
                   blog.article_tags.length > 0 && (
@@ -599,9 +611,16 @@ export default function BlogPost({ blog: initialBlog, error: serverError }) {
             )}
           </div>
         </div>
-      </main>
 
-      <Footer />
+        {/* Add Related Posts with authorRef */}
+        <RelatedPosts 
+          posts={relatedPosts}
+          loading={relatedPostsLoading}
+          authorRef={authorRef}
+        />
+
+        <Footer />
+      </main>
     </>
   );
 } 
