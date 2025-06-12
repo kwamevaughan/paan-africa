@@ -57,13 +57,14 @@ const HomePage = () => {
   return (
     <>
       <SEO
-        title="Pan-African Agency Network (PAAN) | Redefining Africa's Creative & Tech Footprint"
-        description="Discover the Pan-African Agency Network (PAAN), a dynamic alliance of creative and tech agencies across Africa and the diaspora. Join us to unlock global opportunities, access exclusive resources, and collaborate with top talent to redefine Africa's creative and technological footprint. Explore our membership tiers, services, and upcoming events today!"
-        keywords="Pan-African Agency Network, PAAN, African agencies, creative network, tech network, collaboration, innovation, global influence"
+        title="PAAN Agency Membership Tiers | Unlock Opportunities Across Africa"
+        description="Explore PAAN’s tailored agency membership tiers designed to boost your agency’s visibility, client access, and growth across Africa. Choose from Free, Associate, Full, and Gold membership options to expand your reach."
+        keywords="PAAN Agency Membership, Africa Agency Network, agency growth Africa, Africa business expansion, RFPs, Cross-border projects, agency co-bidding"
       />
+
       <main className="px-3 pt-6 sm:px-0 sm:pt-0 relative">
-        <Header/>
-        <MemberTiers/>
+        <Header />
+        <MemberTiers />
         <Footer />
         <ScrollToTop />
       </main>
