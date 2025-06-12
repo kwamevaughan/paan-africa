@@ -13,6 +13,7 @@ import BlogAuthor from '@/components/blog/BlogAuthor';
 import Head from 'next/head';
 import { supabase } from "@/lib/supabase";
 import ScrollToTop from "@/components/ScrollToTop";
+import { calculateReadTime } from '@/utils/readTime';
 
 // Social share icons component
 const SocialShare = ({ url, title }) => {
@@ -142,7 +143,7 @@ export async function getServerSideProps(context) {
       article_category: blogData.category?.name || 'Uncategorized',
       article_tags: blogData.tags?.map((t) => t.tag.name) || [],
       author: authorData?.name || 'Unknown Author',
-      read_time: `${Math.ceil((blogData.article_body?.replace(/<[^>]*>/g, '').length || 0) / 1000) || 5} min read`,
+      read_time: calculateReadTime(blogData.article_body),
       meta_title: blogData.meta_title || blogData.article_name,
       meta_description: blogData.meta_description || '',
       meta_keywords: blogData.meta_keywords || '',
