@@ -8,7 +8,7 @@ import ClientsSlider from "@/components/ClientsSlider";
 import Link from "next/link";
 import EnquiryModal from "@/components/EnquiryModal";
 import AgencyLogosGrid from "@/components/AgencyLogosGrid";
-
+import ScrollToTop from "@/components/ScrollToTop";
 
 const AgenciesPage = () => {
   const sectionRefs = {
@@ -282,6 +282,7 @@ const AgenciesPage = () => {
         </div>
         <Footer />
         <EnquiryModal isOpen={isModalOpen} onClose={closeModal} />
+        <ScrollToTop />
       </main>
     </>
   );

@@ -7,6 +7,7 @@ import PartnerBenefits from "@/components/PartnersBenefits";
 import Steps from "@/components/steps";
 import Link from "next/link";
 import AgencyLogosGrid from "@/components/AgencyLogosGrid";
+import ScrollToTop from "@/components/ScrollToTop";
 
 
 const FreelancersPage = () => {
@@ -155,6 +156,7 @@ const FreelancersPage = () => {
         </div>
         <AgencyLogosGrid/>
         <Footer />
+        <ScrollToTop />
       </main>
     </>
   );

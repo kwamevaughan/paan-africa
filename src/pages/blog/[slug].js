@@ -12,6 +12,7 @@ import TableOfContents from '@/components/blog/TableOfContents';
 import BlogAuthor from '@/components/blog/BlogAuthor';
 import Head from 'next/head';
 import { supabase } from "@/lib/supabase";
+import ScrollToTop from "@/components/ScrollToTop";
 
 // Social share icons component
 const SocialShare = ({ url, title }) => {
@@ -340,6 +341,7 @@ export default function BlogPost({ blog: initialBlog, error: serverError }) {
       <Header />
 
       <main className="bg-gray-50 min-h-screen">
+        <ScrollToTop />
         {/* Social Share Icons */}
         <SocialShare url={currentUrl} title={blog?.article_name || ""} />
 
