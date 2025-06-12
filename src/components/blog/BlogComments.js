@@ -3,15 +3,10 @@ import { usePublicBlog } from "@/hooks/usePublicBlog";
 import { toast } from "react-hot-toast";
 import { Icon } from "@iconify/react";
 import ReCAPTCHA from "react-google-recaptcha";
+import CommentCount from './CommentCount';
 
-const BlogComments = ({ blogId }) => {
-  const {
-    comments,
-    commentsLoading,
-    commentsError,
-    addComment,
-    fetchComments,
-  } = usePublicBlog();
+const BlogComments = ({ blogId, comments, commentsLoading, commentsError, onCommentAdded }) => {
+  const { addComment, fetchComments } = usePublicBlog();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -27,12 +22,16 @@ const BlogComments = ({ blogId }) => {
   });
   const recaptchaRef = useRef(null);
 
-  // Fetch comments when component mounts
+  // Debug logging for comments
   useEffect(() => {
-    if (blogId) {
-      fetchComments(blogId);
-    }
-  }, [blogId, fetchComments]);
+    console.log('BlogComments: Comments state:', {
+      comments,
+      isArray: Array.isArray(comments),
+      length: comments?.length,
+      type: typeof comments,
+      stringified: JSON.stringify(comments)
+    });
+  }, [comments]);
 
   const validateForm = () => {
     const errors = {
@@ -74,6 +73,10 @@ const BlogComments = ({ blogId }) => {
         toast.success("Comment submitted successfully!");
         setFormData({ name: "", email: "", content: "" });
         recaptchaRef.current?.reset();
+        // Notify parent to refresh comments
+        if (onCommentAdded) {
+          onCommentAdded();
+        }
       } else {
         throw new Error(result.error || "Failed to submit comment");
       }
@@ -331,14 +334,11 @@ const BlogComments = ({ blogId }) => {
                 icon="heroicons:chat-bubble-left-right-20-solid"
                 className="w-6 h-6 text-[#F25849]"
               />
-              <span className="text-lg font-semibold text-slate-800">
-                Comments{" "}
-                {comments?.length > 0 && (
-                  <span className="inline-flex items-center justify-center w-8 h-8 ml-3 text-sm font-medium text-[#F25849] bg-red-50 rounded-full border border-red-100">
-                    {comments.length}
-                  </span>
-                )}
-              </span>
+              <CommentCount 
+                comments={comments}
+                loading={commentsLoading}
+                showIcon={false}
+              />
             </div>
           </div>
           <div className="flex items-center justify-end mb-8">

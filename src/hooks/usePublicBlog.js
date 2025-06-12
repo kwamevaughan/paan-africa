@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { supabase } from "@/lib/supabase";
 
 export const usePublicBlog = () => {
@@ -11,6 +11,7 @@ export const usePublicBlog = () => {
   const [comments, setComments] = useState([]);
   const [commentsLoading, setCommentsLoading] = useState(false);
   const [commentsError, setCommentsError] = useState(null);
+  const commentsFetchedRef = useRef(new Set());
 
   const fetchBlogs = async () => {
     try {
@@ -124,12 +125,16 @@ export const usePublicBlog = () => {
       console.log('No blogId provided to fetchComments');
       return;
     }
+
+    // Check if we've already fetched comments for this blog
+    if (commentsFetchedRef.current.has(blogId)) {
+      console.log('Comments already fetched for blogId:', blogId);
+      return;
+    }
     
     try {
-      // Only set loading if we don't already have comments
-      if (comments.length === 0) {
-        setCommentsLoading(true);
-      }
+      console.log('Fetching comments for blogId:', blogId);
+      setCommentsLoading(true);
       setCommentsError(null);
 
       const { data: commentsData, error: commentsError } = await supabase
@@ -143,17 +148,20 @@ export const usePublicBlog = () => {
         throw commentsError;
       }
 
-      // Only update if we have new comments
-      if (JSON.stringify(commentsData) !== JSON.stringify(comments)) {
-        setComments(commentsData || []);
-      }
+      console.log('Fetched comments data:', commentsData);
+      
+      // Always update comments state with the fetched data
+      setComments(commentsData || []);
+      // Mark this blog's comments as fetched
+      commentsFetchedRef.current.add(blogId);
+      
     } catch (err) {
       console.error("Error fetching comments:", err);
       setCommentsError(err.message);
     } finally {
       setCommentsLoading(false);
     }
-  }, [comments]);
+  }, []);
 
   const addComment = async (commentData) => {
     try {
@@ -186,13 +194,12 @@ export const usePublicBlog = () => {
 
   const fetchBlogBySlug = useCallback(async (slug) => {
     try {
-      // Only set loading if we don't already have the blog data
+      console.log('Fetching blog by slug:', slug);
       if (!currentBlog) {
         setLoading(true);
       }
       setError(null);
       
-      // First fetch the blog
       const { data: blogData, error: blogError } = await supabase
         .from("blogs")
         .select(`
@@ -226,7 +233,6 @@ export const usePublicBlog = () => {
 
       if (authorError) {
         console.error('Author query error:', authorError);
-        // Don't throw here, just use Unknown Author
       }
 
       // Transform the blog data
@@ -242,14 +248,12 @@ export const usePublicBlog = () => {
         focus_keyword: blogData.focus_keyword || ''
       };
 
-      // Fetch comments in parallel with setting the blog data
-      const commentsPromise = fetchComments(blogData.id);
-      
-      // Update blog data
+      // Update blog data first
       setCurrentBlog(transformedBlog);
       
-      // Wait for comments to be fetched
-      await commentsPromise;
+      // Then fetch comments
+      console.log('Fetching comments for blog ID:', blogData.id);
+      await fetchComments(blogData.id);
 
     } catch (err) {
       console.error("Error fetching blog by slug:", err);
@@ -259,6 +263,19 @@ export const usePublicBlog = () => {
       setLoading(false);
     }
   }, [fetchComments, currentBlog]);
+
+  // Add effect to fetch comments when blogId changes
+  useEffect(() => {
+    if (currentBlog?.id) {
+      console.log('Fetching comments for blog:', currentBlog.id);
+      fetchComments(currentBlog.id);
+    }
+  }, [currentBlog?.id, fetchComments]);
+
+  // Add effect to monitor comments state
+  useEffect(() => {
+    console.log('Comments state changed:', comments);
+  }, [comments]);
 
   useEffect(() => {
     fetchBlogs();

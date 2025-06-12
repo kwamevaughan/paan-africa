@@ -413,7 +413,9 @@ const Blogs = () => {
                       </div>
                       
                       <h3 className="text-xl font-semibold text-[#172840] mb-3 leading-tight group-hover:text-[#F25849] transition-colors duration-300">
-                        {blog.title}
+                        <Link href={`/blog/${blog.slug}`} className="hover:text-[#F25849] transition-colors duration-300">
+                          {blog.title}
+                        </Link>
                       </h3>
                       
                       <p className="text-gray-600 mb-6 line-clamp-3 leading-relaxed">
