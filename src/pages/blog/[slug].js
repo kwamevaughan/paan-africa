@@ -9,6 +9,7 @@ import Footer from "@/layouts/footer";
 import BlogComments from '@/components/blog/BlogComments';
 import CommentCount from '@/components/blog/CommentCount';
 import TableOfContents from '@/components/blog/TableOfContents';
+import BlogAuthor from '@/components/blog/BlogAuthor';
 import Head from 'next/head';
 import { supabase } from "@/lib/supabase";
 
@@ -466,6 +467,9 @@ export default function BlogPost({ blog: initialBlog, error: serverError }) {
                     <div dangerouslySetInnerHTML={{ __html: blog.article_body }} />
                   </div>
                 )}
+
+                {/* Add BlogAuthor component */}
+                {blog?.author && <BlogAuthor author={blog.author} />}
 
                 {blog?.article_tags &&
                   blog.article_tags.length > 0 && (
