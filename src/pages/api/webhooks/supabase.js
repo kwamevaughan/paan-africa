@@ -1,7 +1,4 @@
 import { createClient } from '@supabase/supabase-js';
-import fs from 'fs';
-import path from 'path';
-import { glob } from 'glob';
 
 // Initialize Supabase client with error handling
 let supabase;
@@ -99,13 +96,23 @@ export default async function handler(req, res) {
         // Generate sitemap XML
         const sitemap = await generateSitemap(blogs);
         
-        // Write sitemap to file
-        const sitemapPath = path.join(process.cwd(), 'public', 'sitemap.xml');
-        fs.writeFileSync(sitemapPath, sitemap);
+        // Update sitemap in database
+        const { error: updateError } = await supabase
+          .from('sitemap')
+          .upsert({ 
+            id: 1, // We'll only have one sitemap record
+            content: sitemap,
+            updated_at: new Date().toISOString()
+          });
+
+        if (updateError) {
+          console.error('Error updating sitemap:', updateError);
+          throw updateError;
+        }
         
-        console.log('Sitemap regenerated successfully');
+        console.log('Sitemap regenerated and stored in database successfully');
         return res.status(200).json({ 
-          message: 'Sitemap regenerated successfully',
+          message: 'Sitemap regenerated and stored in database successfully',
           blogCount: blogs?.length || 0
         });
       } catch (error) {
