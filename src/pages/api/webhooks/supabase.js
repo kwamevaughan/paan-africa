@@ -10,22 +10,40 @@ const supabase = createClient(
 );
 
 export default async function handler(req, res) {
-  console.log('Webhook received for sitemap regeneration:', {
-    method: req.method,
+  // Log all headers for debugging
+  console.log('All request headers:', req.headers);
+  
+  // Get the webhook secret from headers (case-insensitive)
+  const webhookSecret = req.headers['x-webhook-secret'] || 
+                       req.headers['X-Webhook-Secret'] || 
+                       req.headers['X-WEBHOOK-SECRET'];
+
+  console.log('Webhook secret check:', {
+    received: webhookSecret,
+    expected: process.env.WEBHOOK_SECRET,
     headers: req.headers,
-    body: req.body,
-    supabaseUrl: process.env.NEXT_PUBLIC_SUPABASE_URL,
-    hasServiceKey: !!process.env.SUPABASE_SERVICE_KEY
+    allHeaderKeys: Object.keys(req.headers)
   });
 
-  // Verify webhook secret if you have one
-  const webhookSecret = req.headers['x-webhook-secret'];
+  if (!webhookSecret) {
+    console.error('No webhook secret provided in headers');
+    return res.status(401).json({ 
+      message: 'Unauthorized - No webhook secret provided',
+      headers: req.headers
+    });
+  }
+
   if (webhookSecret !== process.env.WEBHOOK_SECRET) {
     console.error('Webhook secret mismatch:', {
       received: webhookSecret,
+      expected: process.env.WEBHOOK_SECRET,
+      headers: req.headers
+    });
+    return res.status(401).json({ 
+      message: 'Unauthorized - Invalid webhook secret',
+      received: webhookSecret,
       expected: process.env.WEBHOOK_SECRET
     });
-    return res.status(401).json({ message: 'Unauthorized' });
   }
 
   if (req.method !== 'POST') {
