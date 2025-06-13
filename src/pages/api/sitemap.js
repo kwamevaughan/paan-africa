@@ -19,8 +19,8 @@ export default async function handler(req, res) {
       return res.status(500).json({ error: 'Failed to fetch blogs' });
     }
 
-    // Generate sitemap XML
-    const sitemap = generateSitemap(blogs || []);
+    // Generate sitemap XML for blog posts only
+    const sitemap = generateBlogSitemap(blogs || []);
 
     // Set the content type to XML
     res.setHeader('Content-Type', 'application/xml');
@@ -33,19 +33,8 @@ export default async function handler(req, res) {
   }
 }
 
-function generateSitemap(blogs) {
+function generateBlogSitemap(blogs) {
   const baseUrl = 'https://paan.africa';
-  const now = new Date().toISOString();
-  
-  // Define static pages manually
-  const staticPages = [
-    { url: '/', priority: '1.0' },
-    { url: '/blog', priority: '0.8' },
-    { url: '/about', priority: '0.7' },
-    { url: '/contact', priority: '0.7' },
-    { url: '/privacy-policy', priority: '0.5' },
-    { url: '/terms-of-service', priority: '0.5' }
-  ];
   
   let xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" 
@@ -54,17 +43,6 @@ function generateSitemap(blogs) {
         xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" 
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" 
         xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">`;
-
-  // Add static pages
-  staticPages.forEach(page => {
-    xml += `
-  <url>
-    <loc>${baseUrl}${page.url}</loc>
-    <lastmod>${now}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>${page.priority}</priority>
-  </url>`;
-  });
 
   // Add blog posts
   blogs.forEach(blog => {
