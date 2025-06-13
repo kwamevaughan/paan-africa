@@ -1,6 +1,5 @@
 import { supabase } from "@/lib/supabase";
-import fs from 'fs';
-import path from 'path';
+import { getAllPages } from '@/lib/getAllPages';
 
 const getValidDate = (date) => {
   try {
@@ -17,86 +16,35 @@ const getValidDate = (date) => {
   }
 };
 
-// Function to get all static pages
-const getStaticPages = () => {
-  const pagesDirectory = path.join(process.cwd(), 'src', 'pages');
-  const pages = [];
-
-  // Function to recursively get all pages
-  const getPages = (dir, baseRoute = '') => {
-    const files = fs.readdirSync(dir);
-
-    files.forEach(file => {
-      const filePath = path.join(dir, file);
-      const stat = fs.statSync(filePath);
-      
-      if (stat.isDirectory()) {
-        // Skip api and internal Next.js directories
-        if (!['api', '_'].includes(file)) {
-          getPages(filePath, path.join(baseRoute, file));
-        }
-      } else if (stat.isFile() && /\.(js|jsx|ts|tsx)$/.test(file)) {
-        // Skip special Next.js files and API routes
-        if (!file.startsWith('_') && !file.startsWith('[') && file !== 'sitemap.xml.js') {
-          // Convert file path to route
-          let route = path.join(baseRoute, file.replace(/\.(js|jsx|ts|tsx)$/, ''));
-          
-          // Special handling for index files
-          if (route === 'index') {
-            route = ''; // Root index becomes empty string
-          } else {
-            route = route.replace(/\/index$/, ''); // Other index files just remove the index
-          }
-
-          // Skip thank-you page and other excluded pages
-          if (['thank-you'].includes(route)) {
-            return;
-          }
-
-          // Determine priority and change frequency based on route
-          let priority = 0.8;
-          let changefreq = 'weekly';
-
-          // Adjust priority for important pages
-          if (route === '') {
-            priority = 1.0;
-            changefreq = 'daily';
-          } else if (route === 'blog') {
-            priority = 0.9;
-            changefreq = 'daily';
-          } else if (['clients', 'summit'].includes(route)) {
-            priority = 0.9;
-          }
-
-          pages.push({
-            path: route,
-            priority,
-            changefreq
-          });
-        }
-      }
-    });
+const generateSiteMap = (blogs, pages) => {
+  const currentDate = new Date().toISOString();
+  
+  // Function to determine priority and change frequency based on route
+  const getRoutePriority = (path) => {
+    if (path === '') return { priority: 1.0, changefreq: 'daily' }; // Homepage
+    if (path === 'blog') return { priority: 0.9, changefreq: 'daily' };
+    if (['clients', 'summit'].includes(path)) return { priority: 0.9, changefreq: 'weekly' };
+    return { priority: 0.8, changefreq: 'weekly' }; // Default
   };
 
-  getPages(pagesDirectory);
-  return pages;
-};
-
-const generateSiteMap = (blogs) => {
-  const currentDate = new Date().toISOString();
-  const staticPages = getStaticPages();
-  
   return `<?xml version="1.0" encoding="UTF-8"?>
     <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
       <!-- Static Routes -->
-      ${staticPages.map(({ path, priority, changefreq }) => `
-        <url>
-          <loc>https://paan.africa${path ? `/${path}` : ''}</loc>
-          <lastmod>${currentDate}</lastmod>
-          <changefreq>${changefreq}</changefreq>
-          <priority>${priority}</priority>
-        </url>
-      `).join('')}
+      ${pages
+        .filter(page => !page.startsWith('api/') && !page.startsWith('_') && !page.includes('[') && page !== 'sitemap.xml')
+        .map(page => {
+          const path = page.replace(/\.(js|jsx|ts|tsx)$/, '').replace(/\/index$/, '');
+          const { priority, changefreq } = getRoutePriority(path);
+          return `
+            <url>
+              <loc>https://paan.africa${path ? `/${path}` : ''}</loc>
+              <lastmod>${currentDate}</lastmod>
+              <changefreq>${changefreq}</changefreq>
+              <priority>${priority}</priority>
+            </url>
+          `;
+        })
+        .join('')}
 
       <!-- Dynamic Blog Posts -->
       ${blogs
@@ -124,8 +72,11 @@ export async function getServerSideProps({ res }) {
 
     if (error) throw error;
 
+    // Get all pages using Next.js's getStaticPaths
+    const pages = await getAllPages();
+
     // Generate the XML sitemap
-    const sitemap = generateSiteMap(blogs || []);
+    const sitemap = generateSiteMap(blogs || [], pages);
 
     // Set the appropriate headers
     res.setHeader('Content-Type', 'text/xml');
