@@ -1,7 +1,7 @@
 import { createClient } from '@supabase/supabase-js';
 import fs from 'fs';
 import path from 'path';
-import glob from 'glob';
+import { glob } from 'glob';
 
 // Initialize Supabase client with error handling
 let supabase;
@@ -129,30 +129,17 @@ async function generateSitemap(blogs) {
   const baseUrl = 'https://paan.africa';
   const now = new Date().toISOString();
   
-  // Get all pages from the pages directory
-  const pages = await new Promise((resolve, reject) => {
-    glob('src/pages/**/*.{js,jsx,ts,tsx}', (err, files) => {
-      if (err) reject(err);
-      resolve(files);
-    });
-  });
+  // Define static pages manually instead of using glob
+  const staticPages = [
+    { url: '/', priority: '1.0' },
+    { url: '/blog', priority: '0.8' },
+    { url: '/about', priority: '0.7' },
+    { url: '/contact', priority: '0.7' },
+    { url: '/privacy-policy', priority: '0.5' },
+    { url: '/terms-of-service', priority: '0.5' }
+  ];
 
-  // Transform page paths to URLs
-  const staticPages = pages
-    .map(page => {
-      // Remove src/pages from the path
-      const path = page.replace('src/pages', '');
-      // Remove file extension
-      const pathWithoutExt = path.replace(/\.(js|jsx|ts|tsx)$/, '');
-      // Handle index pages
-      const url = pathWithoutExt === '/index' ? '/' : pathWithoutExt;
-      // Skip API routes and dynamic routes
-      if (url.startsWith('/api') || url.includes('[')) return null;
-      return { url, priority: '0.7' };
-    })
-    .filter(Boolean); // Remove null entries
-
-  console.log('Discovered static pages:', staticPages);
+  console.log('Using static pages:', staticPages);
   
   let xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" 
