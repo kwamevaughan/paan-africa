@@ -102,10 +102,10 @@ const HomePage = () => {
                 >
                   Join The Network
                 </button>
-                <Link href="https://member-portal.paan.africa/"
+                <Link href="https://calendly.com/antony-paan/45min"
                   className="bg-[#84C1D9] text-[#172840] px-8 py-3 rounded-full font-medium text-sm transition duration-300 hover:bg-[#6FA1B7]"
                 >
-                  Members Portal
+                  Book a Demo
                 </Link>
               </div>
             </div>
@@ -250,44 +250,49 @@ const HomePage = () => {
               {/* Vision & Mission Text */}
               <div className="flex flex-col gap-10">
                 {/* Vision */}
-                <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 transform transition-transform duration-300 hover:-translate-y-1">
-                  <Image
-                    src="/assets/images/icons/vision.svg"
-                    width={112}
-                    height={112}
-                    alt="Vision Statement"
-                    className="bg-[#172840] p-4 rounded-full w-24 sm:w-28"
-                  />
-                  <div>
-                    <p className="text-xl sm:text-2xl font-semibold text-white">
-                      Vision Statement
-                    </p>
-                    <span className="text-white font-light text-sm sm:text-base">
-                      To become Africa's foremost collaborative network, shaping
-                      global narratives through creativity and technology.
-                    </span>
+                <div className="bg-[#84C1D9] p-6 rounded-lg flex flex-row items-start gap-4 transform transition-transform duration-300 hover:-translate-y-1">
+                  <div className="flex flex-col items-left">
+                    <Image
+                      src="/assets/images/icons/vision.png"
+                      width={60}
+                      height={60}
+                      alt="Vision Statement"
+                      className="mb-2"
+                    />
+                    <div className="text-left">
+                      <p className="text-xl sm:text-2xl font-semibold text-[#172840] mb-2">
+                        Vision Statement
+                      </p>
+                      <span className="text-[#172840] font-light text-sm sm:text-base">
+                        To become Africa's foremost collaborative network, shaping
+                        global narratives through creativity and technology.
+                      </span>
+                    </div>
                   </div>
                 </div>
 
                 {/* Mission */}
-                <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 transform transition-transform duration-300 hover:-translate-y-1">
-                  <Image
-                    src="/assets/images/icons/mission.svg"
-                    width={112}
-                    height={112}
-                    alt="Mission Statement"
-                    className="bg-[#172840] p-4 rounded-full w-24 sm:w-28"
-                  />
-                  <div>
-                    <p className="text-xl sm:text-2xl font-semibold text-white">
-                      Mission Statement
-                    </p>
-                    <span className="text-white font-light text-sm sm:text-base">
-                      Empowering African agencies through partnerships, shared
-                      resources, and advocacy to deliver world-class solutions.
-                    </span>
+                <div className="bg-[#F2B706] p-6 rounded-lg flex flex-row items-start gap-4 transform transition-transform duration-300 hover:-translate-y-1">
+                  <div className="flex flex-col items-left">
+                    <Image
+                      src="/assets/images/icons/mission.png"
+                      width={60}
+                      height={60}
+                      alt="Vision Statement"
+                      className="mb-2"
+                    />
+                    <div className="text-left">
+                      <p className="text-xl sm:text-2xl font-semibold text-[#172840] mb-2">
+                        Mission Statement
+                      </p>
+                      <span className="text-[#172840] font-light text-sm sm:text-base">
+                        Empowering African agencies through partnerships, shared resources, 
+                        and advocacy to deliver world-class solutions.
+                      </span>
+                    </div>
                   </div>
                 </div>
+
               </div>
             </div>
           </section>
