@@ -1,6 +1,11 @@
+# *
 User-agent: *
 Allow: /
 Disallow: /thank-you
 Disallow: /api/*
 
+# Host
+Host: https://paan.africa
+
+# Sitemaps
 Sitemap: https://paan.africa/sitemap.xml
