@@ -1,4 +1,6 @@
 import { createClient } from '@supabase/supabase-js';
+import fs from 'fs';
+import path from 'path';
 
 // Initialize Supabase client
 const supabase = createClient(
@@ -7,7 +9,7 @@ const supabase = createClient(
 );
 
 export default async function handler(req, res) {
-  console.log('Webhook received:', {
+  console.log('Webhook received for sitemap regeneration:', {
     method: req.method,
     headers: req.headers,
     body: req.body
@@ -35,26 +37,34 @@ export default async function handler(req, res) {
     if (table === 'blogs') {
       console.log('Blog change detected, regenerating sitemap...');
       
-      // Regenerate sitemap
-      const { exec } = require('child_process');
-      const { promisify } = require('util');
-      const execAsync = promisify(exec);
-
       try {
-        const { stdout, stderr } = await execAsync('npx next-sitemap');
-        console.log('Sitemap regeneration output:', { stdout, stderr });
-        
-        if (stderr) {
-          console.error('Sitemap regeneration error:', stderr);
+        // Fetch all published blog posts
+        const { data: blogs, error } = await supabase
+          .from('blogs')
+          .select('slug, created_at, updated_at')
+          .eq('is_published', true);
+
+        if (error) {
+          console.error('Error fetching blogs:', error);
+          throw error;
         }
+
+        console.log(`Found ${blogs?.length || 0} published blogs`);
+
+        // Generate sitemap XML
+        const sitemap = generateSitemap(blogs);
         
-        console.log(`Sitemap regenerated after ${type} operation on blogs table`);
+        // Write sitemap to file
+        const sitemapPath = path.join(process.cwd(), 'public', 'sitemap.xml');
+        fs.writeFileSync(sitemapPath, sitemap);
+        
+        console.log('Sitemap regenerated successfully');
         return res.status(200).json({ 
           message: 'Sitemap regenerated successfully',
-          output: stdout
+          blogCount: blogs?.length || 0
         });
       } catch (error) {
-        console.error('Error executing next-sitemap:', error);
+        console.error('Error regenerating sitemap:', error);
         throw error;
       }
     }
@@ -68,4 +78,54 @@ export default async function handler(req, res) {
       stack: error.stack
     });
   }
+}
+
+function generateSitemap(blogs) {
+  const baseUrl = 'https://paan.africa';
+  const staticPages = [
+    { url: '/', priority: '0.7' },
+    { url: '/blog', priority: '0.7' },
+    { url: '/clients', priority: '0.7' },
+    { url: '/freelancers', priority: '0.7' },
+    { url: '/partners', priority: '0.7' },
+    { url: '/pricing', priority: '0.7' },
+    { url: '/privacy-policy', priority: '0.7' },
+    { url: '/summit', priority: '0.7' }
+  ];
+
+  const now = new Date().toISOString();
+  
+  let xml = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" 
+        xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" 
+        xmlns:xhtml="http://www.w3.org/1999/xhtml" 
+        xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" 
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" 
+        xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">`;
+
+  // Add static pages
+  staticPages.forEach(page => {
+    xml += `
+  <url>
+    <loc>${baseUrl}${page.url}</loc>
+    <lastmod>${now}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>${page.priority}</priority>
+  </url>`;
+  });
+
+  // Add blog posts
+  blogs?.forEach(blog => {
+    const lastmod = new Date(blog.updated_at || blog.created_at).toISOString();
+    xml += `
+  <url>
+    <loc>${baseUrl}/blog/${blog.slug}</loc>
+    <lastmod>${lastmod}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>`;
+  });
+
+  xml += '\n</urlset>';
+  return xml;
 } 
