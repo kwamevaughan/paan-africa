@@ -39,7 +39,7 @@ const SocialShare = ({ url, title }) => {
 
   return (
     <div className={`fixed left-4 top-1/2 transform -translate-y-1/2 z-50 transition-all duration-300 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'}`}>
-      <div className="flex flex-col gap-3 bg-white rounded-full p-3 shadow-lg">
+      <div className="flex flex-col gap-3 bg-white/90 rounded-full p-3 shadow-lg">
         <a
           href={shareLinks.twitter}
           target="_blank"
