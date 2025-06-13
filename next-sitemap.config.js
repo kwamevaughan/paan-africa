@@ -16,8 +16,8 @@ module.exports = {
   priority: 0.7,
   sitemapSize: 7000,
   generateIndexSitemap: false,
-  // The sitemap will be served from Supabase storage
-  sitemapUrl: 'https://[YOUR-PROJECT-REF].supabase.co/storage/v1/object/public/public/sitemap.xml',
+  // The sitemap will be served from our API endpoint
+  sitemapUrl: 'https://paan.africa/api/sitemap',
   additionalPaths: async (config) => {
     try {
       console.log('Starting to fetch blogs for sitemap...');
