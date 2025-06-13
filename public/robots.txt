@@ -1,6 +1,6 @@
 User-agent: *
 Allow: /
 Disallow: /thank-you
-Disallow: /api
+Disallow: /api/*
 
 Sitemap: https://paan.africa/sitemap.xml
