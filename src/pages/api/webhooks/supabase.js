@@ -1,18 +1,21 @@
 import { createClient } from '@supabase/supabase-js';
 import fs from 'fs';
 import path from 'path';
+import glob from 'glob';
 
 // Initialize Supabase client
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL,
-  process.env.SUPABASE_SERVICE_ROLE_KEY
+  process.env.SUPABASE_SERVICE_KEY
 );
 
 export default async function handler(req, res) {
   console.log('Webhook received for sitemap regeneration:', {
     method: req.method,
     headers: req.headers,
-    body: req.body
+    body: req.body,
+    supabaseUrl: process.env.NEXT_PUBLIC_SUPABASE_URL,
+    hasServiceKey: !!process.env.SUPABASE_SERVICE_KEY
   });
 
   // Verify webhook secret if you have one
@@ -52,7 +55,7 @@ export default async function handler(req, res) {
         console.log(`Found ${blogs?.length || 0} published blogs`);
 
         // Generate sitemap XML
-        const sitemap = generateSitemap(blogs);
+        const sitemap = await generateSitemap(blogs);
         
         // Write sitemap to file
         const sitemapPath = path.join(process.cwd(), 'public', 'sitemap.xml');
@@ -80,20 +83,34 @@ export default async function handler(req, res) {
   }
 }
 
-function generateSitemap(blogs) {
+async function generateSitemap(blogs) {
   const baseUrl = 'https://paan.africa';
-  const staticPages = [
-    { url: '/', priority: '0.7' },
-    { url: '/blog', priority: '0.7' },
-    { url: '/clients', priority: '0.7' },
-    { url: '/freelancers', priority: '0.7' },
-    { url: '/partners', priority: '0.7' },
-    { url: '/pricing', priority: '0.7' },
-    { url: '/privacy-policy', priority: '0.7' },
-    { url: '/summit', priority: '0.7' }
-  ];
-
   const now = new Date().toISOString();
+  
+  // Get all pages from the pages directory
+  const pages = await new Promise((resolve, reject) => {
+    glob('src/pages/**/*.{js,jsx,ts,tsx}', (err, files) => {
+      if (err) reject(err);
+      resolve(files);
+    });
+  });
+
+  // Transform page paths to URLs
+  const staticPages = pages
+    .map(page => {
+      // Remove src/pages from the path
+      const path = page.replace('src/pages', '');
+      // Remove file extension
+      const pathWithoutExt = path.replace(/\.(js|jsx|ts|tsx)$/, '');
+      // Handle index pages
+      const url = pathWithoutExt === '/index' ? '/' : pathWithoutExt;
+      // Skip API routes and dynamic routes
+      if (url.startsWith('/api') || url.includes('[')) return null;
+      return { url, priority: '0.7' };
+    })
+    .filter(Boolean); // Remove null entries
+
+  console.log('Discovered static pages:', staticPages);
   
   let xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" 
