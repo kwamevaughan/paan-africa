@@ -3,8 +3,14 @@
   width: 100%;
   overflow: hidden;
   white-space: nowrap;
-  padding:40px 0;
+  padding: 20px 0; /* Reduced padding for mobile */
   background-color: #D1D3D4;
+}
+
+@media (min-width: 640px) {
+  .marqueeContainer {
+    padding: 40px 0; /* Restore original padding for larger screens */
+  }
 }
 
 .marquee {
@@ -20,16 +26,30 @@
 }
 
 .word {
-  margin: 0 1rem;
-  font-size: 2rem;
+  margin: 0 0.5rem; /* Reduced margin for mobile */
+  font-size: 1.25rem; /* Smaller font size for mobile */
   font-weight: 600;
   color: #2A2B5F;
 }
 
+@media (min-width: 640px) {
+  .word {
+    margin: 0 1rem; /* Restore original margin for larger screens */
+    font-size: 2rem; /* Restore original font size for larger screens */
+  }
+}
+
 .dot {
   color: #F2B706;
-  font-size: 1.8rem;
-  margin: 0 1rem;
+  font-size: 1.1rem; /* Smaller font size for mobile */
+  margin: 0 0.5rem; /* Reduced margin for mobile */
+}
+
+@media (min-width: 640px) {
+  .dot {
+    font-size: 1.8rem; /* Restore original font size for larger screens */
+    margin: 0 1rem; /* Restore original margin for larger screens */
+  }
 }
 
 /* Animation */

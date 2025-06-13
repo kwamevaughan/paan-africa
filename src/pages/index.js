@@ -527,7 +527,7 @@ const HomePage = () => {
         >
           {/* <div className="absolute top-4 -right-5 w-12 h-12 bg-[#172840] rounded-full z-20"></div> */}
           <div className="absolute -bottom-9 -left-6 w-20 h-20 bg-[#F2B706] rounded-full z-0"></div>
-          <div className="absolute bottom-4 left-56 w-11 h-11 bg-[#F25849] rounded-full z-0"></div>
+          <div className="absolute bottom-4 left-50 w-11 h-11 bg-[#F25849] rounded-full z-0"></div>
           
           <ContactSection />
         </div>

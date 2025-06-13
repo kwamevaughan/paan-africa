@@ -115,7 +115,7 @@ const NewsletterSignup = () => {
           },
         }}
       />
-      <div className="relative z-10">
+      <div className="relative z-0">
         <h3 className="text-2xl font-normal mb-4">
           Sign up for our newsletter
         </h3>
