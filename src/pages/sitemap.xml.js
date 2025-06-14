@@ -5,10 +5,10 @@ export const getServerSideProps = async ({ res }) => {
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <sitemap>
-    <loc>https://paan.africa/sitemap-0.xml</loc>
+    <loc>https://paan.africa/sitemap-static.xml</loc>
   </sitemap>
   <sitemap>
-    <loc>https://paan.africa/api/sitemap</loc>
+    <loc>https://paan.africa/api/sitemap-blogs.xml</loc>
   </sitemap>
 </sitemapindex>`;
 

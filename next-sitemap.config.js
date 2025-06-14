@@ -16,5 +16,6 @@ module.exports = {
   priority: 0.7,
   sitemapSize: 7000,
   generateIndexSitemap: false, // We're handling the index ourselves
-  outDir: 'public' // Ensure sitemap is generated in the public directory
+  outDir: 'public', // Ensure sitemap is generated in the public directory
+  sitemapBaseFileName: 'sitemap-static' // Use the new sitemap filename
 } 
