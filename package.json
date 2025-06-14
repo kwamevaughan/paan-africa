@@ -11,7 +11,8 @@
     "lint": "eslint --fix \"src/**/*.{js,jsx,ts,tsx}\"",
     "lint:fix": "eslint --fix \"src/**/*.{js,jsx,ts,tsx}\"",
     "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx}\"",
-    "postbuild": "next-sitemap"
+    "postbuild": "next-sitemap",
+    "generate-sitemap": "node scripts/generate-sitemap.js"
   },
   "dependencies": {
     "@iconify/react": "^5.2.0",
