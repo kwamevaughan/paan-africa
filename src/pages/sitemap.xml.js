@@ -8,7 +8,7 @@ export const getServerSideProps = async ({ res }) => {
     <loc>https://paan.africa/sitemap-static.xml</loc>
   </sitemap>
   <sitemap>
-    <loc>https://paan.africa/api/sitemap-blogs.xml</loc>
+    <loc>https://paan.africa/sitemap-blogs.xml</loc>
   </sitemap>
 </sitemapindex>`;
 
