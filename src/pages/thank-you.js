@@ -14,7 +14,7 @@ const ThankYouPage = () => {
       />
       <main className="min-h-screen flex flex-col">
         <Header />
-        <div className="flex-grow flex items-center justify-center px-4 py-16">
+        <div className="flex-grow flex items-center justify-center px-4 py-16 mt-20">
           <div className="text-center max-w-2xl">
             <h1 className="text-4xl font-semibold text-[#172840] mb-4">
               Thank You for Reaching Out!
