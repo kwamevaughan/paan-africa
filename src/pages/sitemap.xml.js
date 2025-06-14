@@ -1,6 +1,6 @@
-import { NextResponse } from 'next/server';
+const SitemapIndex = () => null;
 
-export async function GET() {
+export const getServerSideProps = async ({ res }) => {
   // Generate the sitemap index XML
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -12,10 +12,13 @@ export async function GET() {
   </sitemap>
 </sitemapindex>`;
 
-  // Return the XML with the correct content type
-  return new NextResponse(xml, {
-    headers: {
-      'Content-Type': 'application/xml',
-    },
-  });
-} 
+  res.setHeader('Content-Type', 'application/xml');
+  res.write(xml);
+  res.end();
+
+  return {
+    props: {},
+  };
+};
+
+export default SitemapIndex; 
