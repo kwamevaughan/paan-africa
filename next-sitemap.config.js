@@ -16,10 +16,45 @@ module.exports = {
   priority: 0.7,
   sitemapSize: 7000,
   generateIndexSitemap: false,
-  // Configure the sitemap index
-  sitemapIndex: {
-    additionalSitemaps: [
-      'https://paan.africa/api/sitemap'
-    ]
+  outDir: 'public',
+  additionalPaths: async (config) => {
+    return [
+      {
+        loc: '/',
+        changefreq: 'weekly',
+        priority: 1.0,
+        lastmod: new Date().toISOString(),
+      },
+      {
+        loc: '/blog',
+        changefreq: 'weekly',
+        priority: 0.8,
+        lastmod: new Date().toISOString(),
+      },
+      {
+        loc: '/about',
+        changefreq: 'weekly',
+        priority: 0.7,
+        lastmod: new Date().toISOString(),
+      },
+      {
+        loc: '/contact',
+        changefreq: 'weekly',
+        priority: 0.7,
+        lastmod: new Date().toISOString(),
+      },
+      {
+        loc: '/privacy-policy',
+        changefreq: 'weekly',
+        priority: 0.5,
+        lastmod: new Date().toISOString(),
+      },
+      {
+        loc: '/terms-of-service',
+        changefreq: 'weekly',
+        priority: 0.5,
+        lastmod: new Date().toISOString(),
+      }
+    ];
   }
 } 
