@@ -2,7 +2,7 @@
 module.exports = {
   siteUrl: 'https://paan.africa',
   generateRobotsTxt: true,
-  exclude: ['/thank-you', '/api/*'],
+  exclude: ['/thank-you', '/api/*', '/sitemap.xml'],
   robotsTxtOptions: {
     policies: [
       {
