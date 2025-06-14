@@ -11,6 +11,9 @@ module.exports = {
         disallow: ['/thank-you', '/api/*'],
       },
     ],
+    additionalSitemaps: [
+      'https://paan.africa/sitemap-blogs.xml'
+    ]
   },
   changefreq: 'weekly',
   priority: 0.7,
