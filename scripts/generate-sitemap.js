@@ -15,6 +15,7 @@ const pages = glob.sync('**/*.{js,jsx,ts,tsx}', {
     '**/api/**', // Ignore API routes
     '**/sitemap*.{js,jsx,ts,tsx}', // Ignore sitemap files
     '**/\[*\]*.{js,jsx,ts,tsx}', // Ignore dynamic routes
+    '**/thank-you.{js,jsx,ts,tsx}', // Ignore thank-you page
   ],
 });
 
