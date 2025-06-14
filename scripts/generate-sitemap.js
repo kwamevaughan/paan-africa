@@ -14,6 +14,7 @@ const pages = glob.sync('**/*.{js,jsx,ts,tsx}', {
     '**/_*.{js,jsx,ts,tsx}', // Ignore Next.js special files
     '**/api/**', // Ignore API routes
     '**/sitemap*.{js,jsx,ts,tsx}', // Ignore sitemap files
+    '**/\[*\]*.{js,jsx,ts,tsx}', // Ignore dynamic routes
   ],
 });
 
@@ -25,13 +26,18 @@ const urls = pages.map(page => {
     .replace(/\/index$/, '')
     .replace(/^index$/, '');
   
+  // Skip if the path contains dynamic segments
+  if (urlPath.includes('[') || urlPath.includes(']')) {
+    return null;
+  }
+  
   return {
     loc: `${siteUrl}/${urlPath}`,
     lastmod: new Date().toISOString(),
     changefreq: 'weekly',
     priority: urlPath === '' ? '1.0' : '0.7',
   };
-});
+}).filter(Boolean); // Remove null entries
 
 // Generate sitemap XML
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
