@@ -15,7 +15,7 @@ module.exports = {
   changefreq: 'weekly',
   priority: 0.7,
   sitemapSize: 7000,
-  generateIndexSitemap: true,
+  generateIndexSitemap: false,
   // Configure the sitemap index
   sitemapIndex: {
     additionalSitemaps: [
