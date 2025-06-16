@@ -168,7 +168,7 @@ const Footer = () => {
 
       {/* Footer Bottom Section */}
       <div className="max-w-6xl mx-auto px-3 sm:px-0">
-        <p className="pt-10 border-t border-gray-400 text-center text-gray-200 text-sm">
+        <p className="pt-10 pb-24 border-t border-gray-400 text-center text-gray-200 text-sm relative z-10">
           © {currentYear} PAAN. All rights reserved. |
           <Link
             href="/privacy-policy"
@@ -177,6 +177,14 @@ const Footer = () => {
             Privacy Policy
           </Link>
         </p>
+      </div>
+      <div className="absolute bottom-0 left-0 w-[calc(100%-32px)] mx-4 sm:mx-0 sm:w-full h-[40px] sm:h-[60px] md:h-[80px] z-0">
+        <Image
+          src="/assets/images/footer-banner.png"
+          fill
+          alt="Footer Pattern"
+          className="object-cover"
+        />
       </div>
     </section>
   );
