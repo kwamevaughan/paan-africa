@@ -2,13 +2,13 @@
 module.exports = {
   siteUrl: 'https://paan.africa',
   generateRobotsTxt: true,
-  exclude: ['/thank-you', '/api/*', '/sitemap.xml', '/sitemap-blogs.xml'],
+  exclude: ['/thank-you', '/pricing', '/api/*', '/sitemap.xml', '/sitemap-blogs.xml'],
   robotsTxtOptions: {
     policies: [
       {
         userAgent: '*',
         allow: '/',
-        disallow: ['/thank-you', '/api/*'],
+        disallow: ['/thank-you', '/pricing', '/api/*'],
       },
     ],
     additionalSitemaps: [
