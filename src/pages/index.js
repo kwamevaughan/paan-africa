@@ -80,42 +80,42 @@ const HomePage = () => {
         <Header/>
 
         <div
-          className="mx-auto max-w-6xl section pt-0 mt-32 sm:mt-0"
+          className="mx-auto max-w-6xl section pt-0 mt-0 sm:mt-0"
           id="home"
           ref={sectionRefs.home}
         >
-          <section className="grid grid-cols-1 sm:grid-cols-2 gap-8 items-center">
-            <div className="flex flex-col gap-8">
-              <h2 className="text-3xl md:text-5xl font-semibold uppercase text-[#172840]">
+          <section className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 items-center px-4 sm:px-0 pt-40 sm:pt-0">
+            <div className="flex flex-col gap-4 sm:gap-8 text-center sm:text-left">
+              <h2 className="text-2xl sm:text-3xl md:text-5xl font-semibold uppercase text-[#172840] leading-tight">
                 Redefining Africa's Global Creative & Tech Footprint
               </h2>
-              <p className="text-gray-500 font-normal">
+              <p className="text-gray-500 font-normal text-sm sm:text-base">
                 The Pan-African Agency Network (PAAN) is a bold alliance of
                 independent agencies across Africa and the diaspora. We're on a
                 mission to transform fragmentation into unity and potential into
                 global influence.
               </p>
-              <div className="flex md:flex-row flex-col gap-4">
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center sm:justify-start">
                 <button                  
-                  className="bg-[#F25849] text-white px-8 py-3 rounded-full font-medium text-sm hover:bg-[#D6473C] transition duration-300"
+                  className="bg-[#F25849] text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-full font-medium text-sm hover:bg-[#D6473C] transition duration-300 w-full sm:w-auto"
                   onClick={openModal}
                 >
                   Join The Network
                 </button>
                 <Link href="https://calendly.com/antony-paan/45min"
-                  className="bg-[#84C1D9] text-[#172840] px-8 py-3 rounded-full font-medium text-sm transition duration-300 hover:bg-[#6FA1B7]"
+                  className="bg-[#84C1D9] text-[#172840] px-6 sm:px-8 py-2.5 sm:py-3 rounded-full font-medium text-sm transition duration-300 hover:bg-[#6FA1B7] text-center w-full sm:w-auto"
                 >
                   Book a Demo
                 </Link>
               </div>
             </div>
-            <div>
+            <div className="mt-8 sm:mt-0">
               <CustomSlider />
             </div>
           </section>
         </div>
 
-        <div className="relative h-64 mt-[-10em] top-10 z-[-1]">
+        <div className="relative h-48 sm:h-64 mt-[-5em] sm:mt-[-10em] top-10 z-[-1]">
           <Image
             src="/assets/images/bg-pattern.svg"
             width={0}
@@ -306,7 +306,7 @@ const HomePage = () => {
         >
           <div className="absolute -top-24 -left-10 w-14 h-14 bg-yellow-400 rounded-full z-0"></div>
           <div className="hidden md:block absolute -top-14 right-52 w-16 h-16 bg-[#84C1D9] rounded-full z-0"></div>
-          <div className="absolute -bottom-28 left-4 w-20 h-20 bg-[#F25849] rounded-full z-10"></div>
+          <div className="absolute -bottom-28 left-4 w-20 h-20 bg-[#F25849] rounded-full z-0"></div>
           <div className="absolute -bottom-14 right-4 w-11 h-11 bg-[#172840] rounded-full z-0"></div>
           <section className="relative z-10">
             <p className="uppercase font-semibold mb-4">3. Why Join PAAN?</p>
@@ -318,24 +318,13 @@ const HomePage = () => {
                 resources, and a thriving network of Africa's top creative and
                 tech minds.
               </p>
-              <div className="flex md:flex-row flex-col gap-4">
-                <button
-                  onClick={(e) => {
-                    handleScroll(e, "#contact-us", isFixed);
-                  }}
-                  className="bg-[#F25849] text-white px-8 py-3 rounded-full font-medium text-sm hover:bg-[#D6473C] transition duration-300"
-                >
-                  Join us Today
-                </button>
-                <button
-                  onClick={(e) => {
-                    handleScroll(e, "#services", isFixed);
-                  }}
-                  className="bg-[#172840] text-white px-8 py-3 rounded-full font-medium text-sm transition duration-300 hover:bg-[#6FA1B7]"
-                >
-                  Discover More
-                </button>
-              </div>
+              <Image
+                  src="/assets/images/recently-added.png"
+                  width={400}
+                  height={400}
+                  alt="Pan-African Reach"
+                  className="shadow-lg shadow-gray-400/50 rounded-lg"
+                />
             </div>
             <div className="flex flex-col gap-4">
               <div className="flex items-center gap-3 border-b border-gray-200 pb-4 transform transition-transform duration-300 hover:translate-y-[-5px]">
@@ -389,6 +378,24 @@ const HomePage = () => {
                   Collaborative Revenue Opportunities
                 </p>
               </div>
+              <div className="flex md:flex-row flex-col gap-4 mt-10">
+                <button
+                  onClick={(e) => {
+                    handleScroll(e, "#contact-us", isFixed);
+                  }}
+                  className="bg-[#F25849] text-white px-8 py-3 rounded-full font-medium text-sm hover:bg-[#D6473C] transition duration-300"
+                >
+                  Join us Today
+                </button>
+                <button
+                  onClick={(e) => {
+                    handleScroll(e, "#services", isFixed);
+                  }}
+                  className="bg-[#172840] text-white px-8 py-3 rounded-full font-medium text-sm transition duration-300 hover:bg-[#6FA1B7]"
+                >
+                  Discover More
+                </button>
+              </div>
             </div>
           </section>
         </div>
@@ -399,25 +406,28 @@ const HomePage = () => {
           ref={sectionRefs.membership}
         >
           <div className="absolute -bottom-8 right-32 w-16 h-16 bg-[#84C1D9] rounded-full z-0"></div>
-          <section className="relative z-10 mx-auto max-w-6xl py-20">
-            <div className="flex flex-col mb-10 mx-auto w-3/4">
-              <h2 className="text-2xl text-center mb-4">
+          <section className="relative mx-auto max-w-6xl py-12 sm:py-20 px-4 sm:px-6">
+            <div className="flex flex-col mb-8 sm:mb-10 mx-auto w-full sm:w-3/4">
+              <h2 className="text-xl sm:text-2xl text-center mb-3 sm:mb-4">
                 Our Structure & Tiers
               </h2>
-              <p className="text-center">
+              <p className="text-center text-sm sm:text-base">
                 Whether you're a bold startup or a seasoned agency, PAAN offers
-                a tier that fits your<br/> journey. Join a network designed to
+                a tier that fits your journey. Join a network designed to
                 elevate, empower, and connect.
               </p>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 mb-8">
               <Tier1 />
               <Tier2 />
               <Tier3 />
             </div>
             <div className="flex justify-center">
-              <button onClick={() => window.location.href = 'https://calendly.com/antony-paan/45min'} className="bg-[#F26522] hover:bg-[#D6473C] text-white font-semibold py-3 px-8 rounded-full transition-all duration-300 shadow-md hover:shadow-lg flex items-center gap-2 group">
-                <Icon icon="mdi:calendar-clock" className="w-5 h-5 group-hover:scale-110 transition-transform duration-300" />
+              <button 
+                onClick={() => window.location.href = 'https://calendly.com/antony-paan/45min'} 
+                className="bg-[#F26522] hover:bg-[#D6473C] text-white font-semibold py-2 sm:py-3 px-6 sm:px-8 rounded-full transition-all duration-300 shadow-md hover:shadow-lg flex items-center gap-2 group text-sm sm:text-base whitespace-nowrap"
+              >
+                <Icon icon="mdi:calendar-clock" className="w-4 h-4 sm:w-5 sm:h-5 group-hover:scale-110 transition-transform duration-300" />
                 Schedule a call to explore full benefits
               </button>
             </div>
