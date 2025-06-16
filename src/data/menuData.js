@@ -5,7 +5,7 @@ export const menuItems = [
     { href: '/partners', label: 'For Partners' },
     { href: '/freelancers', label: 'For freelancers' },   
     { href: '/summit', label: '2025 Summit' },
-    { href: '/pricing', label: 'Pricing' },
+    // { href: '/pricing', label: 'Pricing' },
     { href: '/blog', label: 'Blog' },
   ];
 
