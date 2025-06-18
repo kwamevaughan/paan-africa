@@ -161,82 +161,15 @@ export default async function handler(req, res) {
 
     console.log('Parsed Opportunities:', parsedOpportunities);
 
-    // Upload files to Google Drive
-    console.log('Starting Google Drive uploads...');
-    const uploadedFiles = [];
-    
-    // Upload credentials files
-    for (const file of credentialsFiles) {
-      console.log('🔄 Starting upload for credentials file:', file.originalFilename);
-      console.log('📄 File details:', {
+    // Prepare attachments for nodemailer
+    const attachments = [];
+    for (const file of [...credentialsFiles, ...experienceFiles]) {
+      attachments.push({
         filename: file.originalFilename,
-        size: file.size,
-        mimetype: file.mimetype,
-        filepath: file.filepath
+        path: file.filepath,
+        contentType: file.mimetype
       });
-      try {
-        const uploadedFile = await uploadToGoogleDrive(
-          file,
-          `credentials_${name}_${file.originalFilename}`
-        );
-        console.log('📤 Upload result received:', uploadedFile);
-        uploadedFiles.push({
-          name: file.originalFilename,
-          link: uploadedFile.link,
-          type: 'Credentials'
-        });
-        console.log('✅ Credentials file uploaded successfully:', file.originalFilename);
-        console.log('🔗 Google Drive Shareable Link:', uploadedFile.link);
-        console.log('📁 File ID:', uploadedFile.id);
-      } catch (uploadError) {
-        console.error('❌ Failed to upload credentials file:', file.originalFilename, uploadError);
-        console.error('❌ Upload error details:', {
-          message: uploadError.message,
-          stack: uploadError.stack
-        });
-        // Continue with other files even if one fails
-      }
     }
-
-    // Upload experience files
-    for (const file of experienceFiles) {
-      console.log('🔄 Starting upload for experience file:', file.originalFilename);
-      console.log('📄 File details:', {
-        filename: file.originalFilename,
-        size: file.size,
-        mimetype: file.mimetype,
-        filepath: file.filepath
-      });
-      try {
-        const uploadedFile = await uploadToGoogleDrive(
-          file,
-          `experience_${name}_${file.originalFilename}`
-        );
-        console.log('📤 Upload result received:', uploadedFile);
-        uploadedFiles.push({
-          name: file.originalFilename,
-          link: uploadedFile.link,
-          type: 'Experience'
-        });
-        console.log('✅ Experience file uploaded successfully:', file.originalFilename);
-        console.log('🔗 Google Drive Shareable Link:', uploadedFile.link);
-        console.log('📁 File ID:', uploadedFile.id);
-      } catch (uploadError) {
-        console.error('❌ Failed to upload experience file:', file.originalFilename, uploadError);
-        console.error('❌ Upload error details:', {
-          message: uploadError.message,
-          stack: uploadError.stack
-        });
-        // Continue with other files even if one fails
-      }
-    }
-
-    console.log('🎉 Google Drive uploads completed');
-    console.log('📋 Summary of all uploaded files:');
-    uploadedFiles.forEach((file, index) => {
-      console.log(`   ${index + 1}. ${file.type}: ${file.name}`);
-      console.log(`      🔗 Link: ${file.link}`);
-    });
 
     // Create email transporter
     console.log('Creating email transporter...');
@@ -284,18 +217,7 @@ export default async function handler(req, res) {
             <p style="margin: 0 0 10px; font-size: 16px;"><strong>Selected Opportunities:</strong> ${parsedOpportunities.join(', ')}</p>
             <p style="margin: 0 0 10px; font-size: 16px;"><strong>Credentials:</strong></p>
             <p style="margin: 0 0 10px; font-size: 16px; white-space: pre-wrap;">${credentials}</p>
-            
-            ${uploadedFiles.length > 0 ? `
-              <p style="margin: 20px 0 10px; font-size: 16px;"><strong>Uploaded Files:</strong></p>
-              <ul style="margin: 0; padding-left: 20px;">
-                ${uploadedFiles.map(file => `
-                  <li style="margin: 0 0 10px; font-size: 16px;">
-                    <strong>${file.type}:</strong> ${file.name}<br>
-                    <a href="${file.link}" style="color: #F25849; text-decoration: none;">View File</a>
-                  </li>
-                `).join('')}
-              </ul>
-            ` : '<p style="margin: 20px 0 10px; font-size: 16px;"><strong>No files uploaded</strong></p>'}
+            <p style="margin: 20px 0 10px; font-size: 16px;"><strong>Uploaded Files:</strong> See attached files.</p>
           </td>
         </tr>
         <tr>
@@ -322,6 +244,7 @@ export default async function handler(req, res) {
       cc: 'norah@paan.africa',
       subject: `New Expression of Interest from ${agencyName}`,
       html: emailContent,
+      attachments: attachments
     });
 
     // Add timeout to email sending
@@ -331,10 +254,19 @@ export default async function handler(req, res) {
 
     await Promise.race([emailPromise, timeoutPromise]);
 
+    // Clean up temp files
+    for (const file of [...credentialsFiles, ...experienceFiles]) {
+      try {
+        fs.unlinkSync(file.filepath);
+      } catch (err) {
+        console.error('Failed to delete temp file:', file.filepath, err);
+      }
+    }
+
     console.log('Email sent successfully');
     res.status(200).json({ 
       message: 'Expression of Interest submitted successfully!',
-      filesUploaded: uploadedFiles.length
+      filesUploaded: attachments.length
     });
   } catch (error) {
     console.error('Error processing form:', error);
