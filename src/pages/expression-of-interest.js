@@ -67,9 +67,9 @@ const ExpressionOfInterest = () => {
 
       console.log('Sending fetch request...');
       const controller = new AbortController();
-      const fetchTimeoutId = setTimeout(() => controller.abort(), 45000); // 45 second timeout
+      const fetchTimeoutId = setTimeout(() => controller.abort(), 120000); // 120 second timeout (2 minutes)
       
-      const response = await fetch('/api/send-email', {
+      const response = await fetch('/api/send-email-eoi', {
         method: 'POST',
         body: formDataToSend,
         signal: controller.signal,
@@ -100,7 +100,13 @@ const ExpressionOfInterest = () => {
       setCountrySearch("");
     } catch (error) {
       console.error('Error submitting form:', error);
-      toast.error(error.message || 'Failed to submit Expression of Interest');
+      
+      // Handle specific abort error
+      if (error.name === 'AbortError') {
+        toast.error('Request timed out. Please try again or contact support if the issue persists.');
+      } else {
+        toast.error(error.message || 'Failed to submit Expression of Interest');
+      }
     } finally {
       console.log('Form submission completed');
       setIsSubmitting(false);
