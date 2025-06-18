@@ -294,7 +294,7 @@ const ExpressionOfInterest = () => {
 
                   <div>
                     <label htmlFor="experience" className="block text-sm font-semibold text-gray-700 mb-2">
-                      Experience & Portfolio Files
+                      Experience & Portfolio Files <span className="text-red-500">*</span>
                     </label>
                     <div className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-200 border-dashed rounded-lg hover:border-[#F25849] transition-colors duration-200">
                       <div className="space-y-1 text-center">

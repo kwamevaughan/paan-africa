@@ -8,15 +8,17 @@ export default async function handler(req, res) {
   }
 
   try {
-    const {
-      name,
-      agencyName,
-      country,
-      opportunities,
-      credentials,
-      credentialsFiles,
-      experience
-    } = req.body;
+    // Parse form data properly
+    const formData = req.body;
+    
+    // Extract individual fields
+    const name = formData.name || '';
+    const agencyName = formData.agencyName || '';
+    const country = formData.country || '';
+    const opportunities = formData.opportunities || '[]';
+    const credentials = formData.credentials || '';
+    const credentialsFiles = formData.credentialsFiles || [];
+    const experience = formData.experience || [];
 
     // Parse opportunities if it's a string
     const parsedOpportunities = typeof opportunities === 'string' 
@@ -99,7 +101,7 @@ export default async function handler(req, res) {
                   </li>
                 `).join('')}
               </ul>
-            ` : ''}
+            ` : '<p style="margin: 20px 0 10px; font-size: 16px;"><strong>No files uploaded</strong></p>'}
           </td>
         </tr>
         <tr>
