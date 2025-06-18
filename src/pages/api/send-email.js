@@ -41,30 +41,30 @@ export default async function handler(req, res) {
       }
     }
 
-    // Upload experience file
-    if (experience) {
-      const uploadedFile = await uploadToGoogleDrive(
-        experience,
-        `experience_${name}_${experience.name}`
-      );
-      uploadedFiles.push({
-        name: experience.name,
-        link: uploadedFile.link,
-        type: 'Experience'
-      });
+    // Upload experience files
+    if (experience && experience.length > 0) {
+      for (const file of experience) {
+        const uploadedFile = await uploadToGoogleDrive(
+          file,
+          `experience_${name}_${file.name}`
+        );
+        uploadedFiles.push({
+          name: file.name,
+          link: uploadedFile.link,
+          type: 'Experience'
+        });
+      }
     }
 
-    // Create a transporter using Gmail SMTP
+    // Create a transporter using SMTP (same as other forms)
     const transporter = nodemailer.createTransport({
-      service: 'gmail',
+      host: process.env.SMTP_HOST,
+      port: parseInt(process.env.SMTP_PORT, 10),
+      secure: process.env.EMAIL_SECURE === "true",
       auth: {
-        user: process.env.SMTP_USER,
+        user: process.env.SMTP_EMAIL,
         pass: process.env.SMTP_PASSWORD,
       },
-      secure: true,
-      tls: {
-        rejectUnauthorized: false
-      }
     });
 
     // Format the email content
@@ -113,8 +113,9 @@ export default async function handler(req, res) {
 
     // Send the email
     await transporter.sendMail({
-      from: process.env.SMTP_FROM_EMAIL,
-      to: process.env.RECIPIENT_EMAIL,
+      from: `"PAAN Expression of Interest" <${process.env.SMTP_EMAIL}>`,
+      to: process.env.SMTP_EMAIL,
+      cc: 'norah@paan.africa',
       subject: `New Expression of Interest from ${agencyName}`,
       html: emailContent,
     });

@@ -14,6 +14,7 @@ const africanCountries = [
   "South Africa", "South Sudan", "Sudan", "Tanzania", "Togo", "Tunisia", "Uganda", "Zambia", "Zimbabwe"
 ];
 
+
 const ExpressionOfInterest = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -22,7 +23,7 @@ const ExpressionOfInterest = () => {
     opportunities: [],
     credentials: "",
     credentialsFiles: [],
-    experience: null
+    experience: []
   });
 
   const [countrySearch, setCountrySearch] = useState("");
@@ -46,15 +47,18 @@ const ExpressionOfInterest = () => {
       formDataToSend.append('opportunities', JSON.stringify(formData.opportunities));
       formDataToSend.append('credentials', formData.credentials);
       
-      // Append files
+      // Append credentials files
       if (formData.credentialsFiles && formData.credentialsFiles.length > 0) {
         formData.credentialsFiles.forEach(file => {
           formDataToSend.append('credentialsFiles', file);
         });
       }
       
-      if (formData.experience) {
-        formDataToSend.append('experience', formData.experience);
+      // Append experience files
+      if (formData.experience && formData.experience.length > 0) {
+        formData.experience.forEach(file => {
+          formDataToSend.append('experience', file);
+        });
       }
 
       const response = await fetch('/api/send-email', {
@@ -78,7 +82,7 @@ const ExpressionOfInterest = () => {
         opportunities: [],
         credentials: "",
         credentialsFiles: [],
-        experience: null
+        experience: []
       });
       setCountrySearch("");
     } catch (error) {
@@ -117,7 +121,8 @@ const ExpressionOfInterest = () => {
               Expression Of Interest
             </h1>
             <p className="text-gray-200 text-lg max-w-2xl mx-auto">
-              Join PAAN's network of professional agencies. Submit your interest and take the first step towards exciting opportunities.
+                A global crypto investment platform is seeking 3 agency partners to support its expansion in Africa. The project focuses on Paid Advertising, SEO, and App Store Optimization across Nigeria, Ghana, Ethiopia, South Africa, and Kenya. 
+                Agencies with proven experience in these markets are invited to express interest by submitting relevant portfolios and service capabilities before <span className="font-bold text-[#F25849]">June 19, 10:00 PM EAT</span>.
             </p>
           </div>
         </div>
@@ -234,6 +239,12 @@ const ExpressionOfInterest = () => {
                       required
                       placeholder="Describe your relevant credentials and expertise"
                     />
+                  </div>
+
+                  <div>
+                    <label htmlFor="credentials-files" className="block text-sm font-semibold text-gray-700 mb-2">
+                      Credentials Files (Portfolio, Case Studies, etc.) <span className="text-gray-500 font-normal">(Optional)</span>
+                    </label>
                     <div className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-200 border-dashed rounded-lg hover:border-[#F25849] transition-colors duration-200">
                       <div className="space-y-1 text-center">
                         <svg className="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48">
@@ -241,7 +252,7 @@ const ExpressionOfInterest = () => {
                         </svg>
                         <div className="flex text-sm text-gray-600">
                           <label htmlFor="credentials-files" className="relative cursor-pointer rounded-md font-medium text-[#F25849] hover:text-[#D6473C] focus-within:outline-none">
-                            <span>Upload credentials</span>
+                            <span>Upload credentials files</span>
                             <input
                               id="credentials-files"
                               type="file"
@@ -256,7 +267,7 @@ const ExpressionOfInterest = () => {
                         <p className="text-xs text-gray-500">PDF, DOC, DOCX, JPG, PNG up to 10MB</p>
                         {formData.credentialsFiles.length > 0 && (
                           <div className="mt-2">
-                            <p className="text-sm text-gray-600">Selected files:</p>
+                            <p className="text-sm text-gray-600">Selected credentials files:</p>
                             <ul className="mt-1 text-xs text-gray-500">
                               {Array.from(formData.credentialsFiles).map((file, index) => (
                                 <li key={index} className="flex items-center justify-center space-x-2">
@@ -283,7 +294,7 @@ const ExpressionOfInterest = () => {
 
                   <div>
                     <label htmlFor="experience" className="block text-sm font-semibold text-gray-700 mb-2">
-                      Experience & Portfolio
+                      Experience & Portfolio Files
                     </label>
                     <div className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-200 border-dashed rounded-lg hover:border-[#F25849] transition-colors duration-200">
                       <div className="space-y-1 text-center">
@@ -292,11 +303,12 @@ const ExpressionOfInterest = () => {
                         </svg>
                         <div className="flex text-sm text-gray-600">
                           <label htmlFor="experience" className="relative cursor-pointer rounded-md font-medium text-[#F25849] hover:text-[#D6473C] focus-within:outline-none">
-                            <span>Upload files</span>
+                            <span>Upload experience files</span>
                             <input
                               id="experience"
                               type="file"
-                              onChange={(e) => setFormData({ ...formData, experience: e.target.files[0] })}
+                              multiple
+                              onChange={(e) => setFormData({ ...formData, experience: [...e.target.files] })}
                               className="sr-only"
                               accept=".pdf,.doc,.docx,.jpg,.jpeg,.png"
                               required
@@ -305,6 +317,29 @@ const ExpressionOfInterest = () => {
                           <p className="pl-1">or drag and drop</p>
                         </div>
                         <p className="text-xs text-gray-500">PDF, DOC, DOCX, JPG, PNG up to 10MB</p>
+                        {formData.experience && formData.experience.length > 0 && (
+                          <div className="mt-2">
+                            <p className="text-sm text-gray-600">Selected experience files:</p>
+                            <ul className="mt-1 text-xs text-gray-500">
+                              {Array.from(formData.experience).map((file, index) => (
+                                <li key={index} className="flex items-center justify-center space-x-2">
+                                  <span>{file.name}</span>
+                                  <button
+                                    type="button"
+                                    onClick={() => {
+                                      const newFiles = Array.from(formData.experience);
+                                      newFiles.splice(index, 1);
+                                      setFormData({ ...formData, experience: newFiles });
+                                    }}
+                                    className="text-red-500 hover:text-red-700"
+                                  >
+                                    ×
+                                  </button>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        )}
                       </div>
                     </div>
                   </div>
