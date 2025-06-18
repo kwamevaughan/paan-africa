@@ -354,7 +354,7 @@ const Blogs = ({ initialBlogs }) => {
       
       <Header />
       
-      <main className="bg-gray-50 min-h-screen">
+      <main className="bg-gray-50 min-h-screen relative">
         {/* Hero Section */}
         <div className="bg-gradient-to-br from-[#172840] via-[#1e3147] to-[#243a52] relative py-24 pt-32 overflow-hidden">
           {/* Decorative Elements */}
@@ -687,9 +687,8 @@ const Blogs = ({ initialBlogs }) => {
             )}
           </div>
         </div>
-      </main>
-      
-      <Footer />
+        <Footer />
+      </main> 
       <ScrollToTop />
     </>
   );

@@ -355,7 +355,7 @@ export default function BlogPost({ blog: initialBlog, error: serverError }) {
 
       <Header />
 
-      <main className="bg-gray-50 min-h-screen">
+      <main className="bg-gray-50 min-h-screen relative">
         <ScrollToTop />
         {/* Social Share Icons */}
         <SocialShare url={currentUrl} title={blog?.article_name || ""} />
