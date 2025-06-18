@@ -1,9 +1,9 @@
 // Import the necessary modules
 const withPWA = require("next-pwa")({
   dest: "public",
-  disable: process.env.NODE_ENV === "development", // Disable in development to avoid caching issues
-  register: true,
-  skipWaiting: true,
+  disable: true, // Temporarily disable PWA to fix service worker errors
+  register: false,
+  skipWaiting: false,
   runtimeCaching: [
     {
       urlPattern: /^https:\/\/fonts\.(?:gstatic|googleapis)\.com\/.*/i,
