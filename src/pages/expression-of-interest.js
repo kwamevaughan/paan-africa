@@ -36,9 +36,11 @@ const ExpressionOfInterest = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log('Form submission started');
     setIsSubmitting(true);
 
     try {
+      console.log('Creating FormData...');
       // Create FormData object to handle file uploads
       const formDataToSend = new FormData();
       formDataToSend.append('name', formData.name);
@@ -49,6 +51,7 @@ const ExpressionOfInterest = () => {
       
       // Append credentials files
       if (formData.credentialsFiles && formData.credentialsFiles.length > 0) {
+        console.log('Appending credentials files:', formData.credentialsFiles.length);
         formData.credentialsFiles.forEach(file => {
           formDataToSend.append('credentialsFiles', file);
         });
@@ -56,17 +59,27 @@ const ExpressionOfInterest = () => {
       
       // Append experience files
       if (formData.experience && formData.experience.length > 0) {
+        console.log('Appending experience files:', formData.experience.length);
         formData.experience.forEach(file => {
           formDataToSend.append('experience', file);
         });
       }
 
+      console.log('Sending fetch request...');
+      const controller = new AbortController();
+      const fetchTimeoutId = setTimeout(() => controller.abort(), 45000); // 45 second timeout
+      
       const response = await fetch('/api/send-email', {
         method: 'POST',
         body: formDataToSend,
+        signal: controller.signal,
       });
+      
+      clearTimeout(fetchTimeoutId);
 
+      console.log('Response received:', response.status);
       const data = await response.json();
+      console.log('Response data:', data);
 
       if (!response.ok) {
         throw new Error(data.message || 'Something went wrong');
@@ -89,6 +102,7 @@ const ExpressionOfInterest = () => {
       console.error('Error submitting form:', error);
       toast.error(error.message || 'Failed to submit Expression of Interest');
     } finally {
+      console.log('Form submission completed');
       setIsSubmitting(false);
     }
   };

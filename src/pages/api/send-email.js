@@ -1,63 +1,111 @@
 import nodemailer from "nodemailer";
-import { createClient } from "@supabase/supabase-js";
 import { uploadToGoogleDrive } from '@/utils/googleDrive';
+import formidable from 'formidable';
 
 export default async function handler(req, res) {
   if (req.method !== "POST") {
     return res.status(405).json({ message: "Method not allowed" });
   }
 
+  console.log('API endpoint called');
+
   try {
-    // Parse form data properly
-    const formData = req.body;
-    
-    // Extract individual fields
-    const name = formData.name || '';
-    const agencyName = formData.agencyName || '';
-    const country = formData.country || '';
-    const opportunities = formData.opportunities || '[]';
-    const credentials = formData.credentials || '';
-    const credentialsFiles = formData.credentialsFiles || [];
-    const experience = formData.experience || [];
+    console.log('Starting formidable parsing...');
+    // Parse form data with formidable
+    const form = formidable({
+      multiples: true,
+      keepExtensions: true,
+    });
+
+    const [fields, files] = await new Promise((resolve, reject) => {
+      form.parse(req, (err, fields, files) => {
+        console.log('Formidable parsing completed');
+        if (err) {
+          console.error('Formidable error:', err);
+          reject(err);
+        }
+        resolve([fields, files]);
+      });
+    });
+
+    console.log('Fields and files extracted');
+
+    // Extract form fields
+    const name = fields.name?.[0] || '';
+    const agencyName = fields.agencyName?.[0] || '';
+    const country = fields.country?.[0] || '';
+    const opportunities = fields.opportunities?.[0] || '[]';
+    const credentials = fields.credentials?.[0] || '';
+
+    // Handle credentials files
+    const credentialsFiles = files.credentialsFiles || [];
+    const credentialsFilesArray = Array.isArray(credentialsFiles) ? credentialsFiles : [credentialsFiles];
+
+    // Handle experience files
+    const experienceFiles = files.experience || [];
+    const experienceFilesArray = Array.isArray(experienceFiles) ? experienceFiles : [experienceFiles];
+
+    // Console log all the values
+    console.log('=== FORM DATA RECEIVED ===');
+    console.log('Name:', name);
+    console.log('Agency Name:', agencyName);
+    console.log('Country:', country);
+    console.log('Opportunities:', opportunities);
+    console.log('Credentials:', credentials);
+    console.log('Credentials Files Count:', credentialsFilesArray.length);
+    console.log('Experience Files Count:', experienceFilesArray.length);
+    console.log('Raw fields:', fields);
+    console.log('Raw files:', files);
+    console.log('========================');
 
     // Parse opportunities if it's a string
     const parsedOpportunities = typeof opportunities === 'string' 
       ? JSON.parse(opportunities) 
       : opportunities || [];
 
+    console.log('Parsed Opportunities:', parsedOpportunities);
+
     // Upload files to Google Drive
+    console.log('Starting Google Drive uploads...');
     const uploadedFiles = [];
     
     // Upload credentials files
-    if (credentialsFiles && credentialsFiles.length > 0) {
-      for (const file of credentialsFiles) {
+    for (const file of credentialsFilesArray) {
+      if (file && file.filepath) {
+        console.log('Uploading credentials file:', file.originalFilename);
         const uploadedFile = await uploadToGoogleDrive(
           file,
-          `credentials_${name}_${file.name}`
+          `credentials_${name}_${file.originalFilename}`
         );
         uploadedFiles.push({
-          name: file.name,
+          name: file.originalFilename,
           link: uploadedFile.link,
           type: 'Credentials'
         });
+        console.log('Credentials file uploaded:', file.originalFilename);
       }
     }
 
     // Upload experience files
-    if (experience && experience.length > 0) {
-      for (const file of experience) {
+    for (const file of experienceFilesArray) {
+      if (file && file.filepath) {
+        console.log('Uploading experience file:', file.originalFilename);
         const uploadedFile = await uploadToGoogleDrive(
           file,
-          `experience_${name}_${file.name}`
+          `experience_${name}_${file.originalFilename}`
         );
         uploadedFiles.push({
-          name: file.name,
+          name: file.originalFilename,
           link: uploadedFile.link,
           type: 'Experience'
         });
+        console.log('Experience file uploaded:', file.originalFilename);
       }
     }
 
+    console.log('Google Drive uploads completed');
+
+    console.log('Creating email transporter...');
     // Create a transporter using SMTP (same as other forms)
     const transporter = nodemailer.createTransport({
       host: process.env.SMTP_HOST,
@@ -67,6 +115,19 @@ export default async function handler(req, res) {
         user: process.env.SMTP_EMAIL,
         pass: process.env.SMTP_PASSWORD,
       },
+      // Add timeout settings
+      connectionTimeout: 10000, // 10 seconds
+      greetingTimeout: 10000,   // 10 seconds
+      socketTimeout: 10000,     // 10 seconds
+    });
+
+    console.log('Email transporter created');
+    console.log('SMTP Config:', {
+      host: process.env.SMTP_HOST,
+      port: process.env.SMTP_PORT,
+      secure: process.env.EMAIL_SECURE,
+      user: process.env.SMTP_EMAIL ? '***' : 'NOT SET',
+      pass: process.env.SMTP_PASSWORD ? '***' : 'NOT SET'
     });
 
     // Format the email content
@@ -113,8 +174,16 @@ export default async function handler(req, res) {
       </table>
     `;
 
-    // Send the email
-    await transporter.sendMail({
+    console.log('Sending email...');
+    console.log('Email details:', {
+      from: `"PAAN Expression of Interest" <${process.env.SMTP_EMAIL}>`,
+      to: process.env.SMTP_EMAIL,
+      cc: 'norah@paan.africa',
+      subject: `New Expression of Interest from ${agencyName}`
+    });
+
+    // Send the email with timeout
+    const emailPromise = transporter.sendMail({
       from: `"PAAN Expression of Interest" <${process.env.SMTP_EMAIL}>`,
       to: process.env.SMTP_EMAIL,
       cc: 'norah@paan.africa',
@@ -122,6 +191,14 @@ export default async function handler(req, res) {
       html: emailContent,
     });
 
+    // Add timeout to email sending
+    const timeoutPromise = new Promise((_, reject) => {
+      setTimeout(() => reject(new Error('Email sending timeout')), 15000); // 15 second timeout
+    });
+
+    await Promise.race([emailPromise, timeoutPromise]);
+
+    console.log('Email sent successfully');
     res.status(200).json({ message: 'Email sent successfully' });
   } catch (error) {
     console.error('Error sending email:', error);
