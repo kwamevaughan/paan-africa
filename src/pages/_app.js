@@ -6,7 +6,7 @@ import { Toaster } from 'react-hot-toast';
 
 function MyApp({ Component, pageProps }) {
   useEffect(() => {
-    // Clear old service worker caches and register new one
+    // Clear old service worker caches and unregister service workers
     if ('serviceWorker' in navigator) {
       // Clear all caches
       caches.keys().then(cacheNames => {
@@ -22,31 +22,11 @@ function MyApp({ Component, pageProps }) {
         console.error('Error clearing caches:', error);
       });
 
-      // Unregister old service workers
+      // Unregister all service workers
       navigator.serviceWorker.getRegistrations().then(registrations => {
         for (let registration of registrations) {
           registration.unregister();
           console.log('Service worker unregistered');
-        }
-      });
-
-      // Register new service worker
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js')
-          .then(registration => {
-            console.log('SW registered: ', registration);
-          })
-          .catch(registrationError => {
-            console.log('SW registration failed: ', registrationError);
-          });
-      });
-    }
-
-    // Handle service worker errors
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.addEventListener('message', event => {
-        if (event.data && event.data.type === 'SKIP_WAITING') {
-          window.location.reload();
         }
       });
     }
@@ -55,13 +35,27 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       <Component {...pageProps} />
-      <Toaster 
-        position="top-center"
+      <Toaster
+        position="top-right"
         toastOptions={{
-          duration: 5000,
+          duration: 4000,
           style: {
-            background: '#172840',
+            background: '#363636',
             color: '#fff',
+          },
+          success: {
+            duration: 3000,
+            iconTheme: {
+              primary: '#4ade80',
+              secondary: '#fff',
+            },
+          },
+          error: {
+            duration: 5000,
+            iconTheme: {
+              primary: '#ef4444',
+              secondary: '#fff',
+            },
           },
         }}
       />
