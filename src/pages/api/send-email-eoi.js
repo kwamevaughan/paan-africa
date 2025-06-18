@@ -1,5 +1,5 @@
 import nodemailer from "nodemailer";
-import { uploadToGoogleDrive } from '@/utils/googleDrive';
+import { uploadToGoogleDrive } from '../../utils/googleDrive';
 import Busboy from 'busboy';
 import fs from 'fs';
 import path from 'path';
@@ -13,7 +13,10 @@ export const config = {
 };
 
 export default async function handler(req, res) {
+  console.log('EOI API endpoint called - Method:', req.method);
+  
   if (req.method !== "POST") {
+    console.log('Method not allowed:', req.method);
     return res.status(405).json({ message: "Method not allowed" });
   }
 
@@ -39,6 +42,9 @@ export default async function handler(req, res) {
         reject(new Error('Form parsing timeout'));
       }, 15000);
 
+      let pendingFiles = 0;
+      let hasError = false;
+
       busboy.on('field', (name, value) => {
         console.log('Field received:', name, value);
         fields[name] = value;
@@ -47,34 +53,68 @@ export default async function handler(req, res) {
       busboy.on('file', (name, file, info) => {
         console.log('File received:', name, info.filename);
         const { filename, encoding, mimeType } = info;
+        pendingFiles++;
         
         // Create temporary file
         const tmpDir = os.tmpdir();
         const tmpFile = path.join(tmpDir, `upload_${Date.now()}_${filename}`);
         
+        console.log('📁 Creating temp file:', tmpFile);
+        
         const writeStream = fs.createWriteStream(tmpFile);
         file.pipe(writeStream);
         
         writeStream.on('finish', () => {
+          console.log('✅ File write completed:', filename);
+          const fileSize = fs.statSync(tmpFile).size;
+          console.log('📊 File size:', fileSize, 'bytes');
+          
           files.push({
             fieldname: name,
             originalFilename: filename,
             mimetype: mimeType,
             filepath: tmpFile,
-            size: fs.statSync(tmpFile).size
+            size: fileSize
           });
+          
+          pendingFiles--;
+          console.log('📋 Pending files remaining:', pendingFiles);
+          
+          // If this was the last file and busboy is finished, resolve
+          if (pendingFiles === 0 && busboy.finished) {
+            console.log('🎉 All files processed, resolving promise');
+            resolve({ fields, files });
+          }
+        });
+        
+        writeStream.on('error', (err) => {
+          console.error('❌ File write error:', err);
+          hasError = true;
+          pendingFiles--;
+          reject(err);
         });
       });
 
       busboy.on('finish', () => {
         clearTimeout(timeout);
-        console.log('Busboy parsing completed');
-        resolve({ fields, files });
+        console.log('🏁 Busboy parsing completed');
+        console.log('📋 Files array at finish:', files.length);
+        console.log('⏳ Pending files:', pendingFiles);
+        
+        // If no files were uploaded, resolve immediately
+        if (pendingFiles === 0) {
+          console.log('✅ No pending files, resolving immediately');
+          resolve({ fields, files });
+        } else {
+          console.log('⏳ Waiting for file processing to complete...');
+          // The promise will be resolved when the last file finishes processing
+        }
       });
 
       busboy.on('error', (err) => {
         clearTimeout(timeout);
-        console.error('Busboy error:', err);
+        console.error('❌ Busboy error:', err);
+        hasError = true;
         reject(err);
       });
 
@@ -95,6 +135,13 @@ export default async function handler(req, res) {
     // Handle credentials files
     const credentialsFiles = parsedFiles.filter(file => file.fieldname === 'credentialsFiles');
     const experienceFiles = parsedFiles.filter(file => file.fieldname === 'experience');
+
+    // Debug: Log all parsed files
+    console.log('🔍 All parsed files:', parsedFiles.map(file => ({
+      fieldname: file.fieldname,
+      originalFilename: file.originalFilename,
+      size: file.size
+    })));
 
     // Console log all the values
     console.log('=== FORM DATA RECEIVED ===');
@@ -120,46 +167,76 @@ export default async function handler(req, res) {
     
     // Upload credentials files
     for (const file of credentialsFiles) {
-      console.log('Uploading credentials file:', file.originalFilename);
+      console.log('🔄 Starting upload for credentials file:', file.originalFilename);
+      console.log('📄 File details:', {
+        filename: file.originalFilename,
+        size: file.size,
+        mimetype: file.mimetype,
+        filepath: file.filepath
+      });
       try {
         const uploadedFile = await uploadToGoogleDrive(
           file,
           `credentials_${name}_${file.originalFilename}`
         );
+        console.log('📤 Upload result received:', uploadedFile);
         uploadedFiles.push({
           name: file.originalFilename,
           link: uploadedFile.link,
           type: 'Credentials'
         });
-        console.log('Credentials file uploaded successfully:', file.originalFilename);
+        console.log('✅ Credentials file uploaded successfully:', file.originalFilename);
+        console.log('🔗 Google Drive Shareable Link:', uploadedFile.link);
+        console.log('📁 File ID:', uploadedFile.id);
       } catch (uploadError) {
-        console.error('Failed to upload credentials file:', file.originalFilename, uploadError);
+        console.error('❌ Failed to upload credentials file:', file.originalFilename, uploadError);
+        console.error('❌ Upload error details:', {
+          message: uploadError.message,
+          stack: uploadError.stack
+        });
         // Continue with other files even if one fails
       }
     }
 
     // Upload experience files
     for (const file of experienceFiles) {
-      console.log('Uploading experience file:', file.originalFilename);
+      console.log('🔄 Starting upload for experience file:', file.originalFilename);
+      console.log('📄 File details:', {
+        filename: file.originalFilename,
+        size: file.size,
+        mimetype: file.mimetype,
+        filepath: file.filepath
+      });
       try {
         const uploadedFile = await uploadToGoogleDrive(
           file,
           `experience_${name}_${file.originalFilename}`
         );
+        console.log('📤 Upload result received:', uploadedFile);
         uploadedFiles.push({
           name: file.originalFilename,
           link: uploadedFile.link,
           type: 'Experience'
         });
-        console.log('Experience file uploaded successfully:', file.originalFilename);
+        console.log('✅ Experience file uploaded successfully:', file.originalFilename);
+        console.log('🔗 Google Drive Shareable Link:', uploadedFile.link);
+        console.log('📁 File ID:', uploadedFile.id);
       } catch (uploadError) {
-        console.error('Failed to upload experience file:', file.originalFilename, uploadError);
+        console.error('❌ Failed to upload experience file:', file.originalFilename, uploadError);
+        console.error('❌ Upload error details:', {
+          message: uploadError.message,
+          stack: uploadError.stack
+        });
         // Continue with other files even if one fails
       }
     }
 
-    console.log('Google Drive uploads completed');
-    console.log('Uploaded files:', uploadedFiles);
+    console.log('🎉 Google Drive uploads completed');
+    console.log('📋 Summary of all uploaded files:');
+    uploadedFiles.forEach((file, index) => {
+      console.log(`   ${index + 1}. ${file.type}: ${file.name}`);
+      console.log(`      🔗 Link: ${file.link}`);
+    });
 
     // Create email transporter
     console.log('Creating email transporter...');
