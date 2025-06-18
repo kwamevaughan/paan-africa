@@ -1,11 +1,30 @@
 import { google } from 'googleapis';
-import { Readable } from 'stream';
+import fs from 'fs';
+
+// Initialize Google Auth with Service Account
+const getServiceAccountCredentials = () => {
+  try {
+    const serviceAccountJson = process.env.GOOGLE_SERVICE_ACCOUNT;
+    if (!serviceAccountJson) {
+      throw new Error('GOOGLE_SERVICE_ACCOUNT environment variable is not set');
+    }
+    
+    const credentials = JSON.parse(serviceAccountJson);
+    
+    // Ensure private key is properly formatted
+    if (credentials.private_key) {
+      credentials.private_key = credentials.private_key.replace(/\\n/g, '\n');
+    }
+    
+    return credentials;
+  } catch (error) {
+    console.error('Error parsing Google Service Account credentials:', error);
+    throw error;
+  }
+};
 
 const auth = new google.auth.GoogleAuth({
-  credentials: {
-    client_email: process.env.GOOGLE_CLIENT_EMAIL,
-    private_key: process.env.GOOGLE_PRIVATE_KEY?.replace(/\\n/g, '\n'),
-  },
+  credentials: getServiceAccountCredentials(),
   scopes: ['https://www.googleapis.com/auth/drive.file'],
 });
 
@@ -13,21 +32,20 @@ const drive = google.drive({ version: 'v3', auth });
 
 export async function uploadToGoogleDrive(file, fileName) {
   try {
-    // Convert file buffer to stream
-    const fileStream = new Readable();
-    fileStream.push(Buffer.from(file));
-    fileStream.push(null);
+    // Read file from filepath (formidable stores files temporarily)
+    const fileBuffer = fs.readFileSync(file.filepath);
+    const mimeType = file.mimetype || 'application/octet-stream';
 
     // Upload file to Google Drive
     const response = await drive.files.create({
       requestBody: {
         name: fileName,
-        mimeType: file.type || 'application/octet-stream',
-        parents: [process.env.GOOGLE_DRIVE_FOLDER_ID],
+        mimeType: mimeType,
+        parents: process.env.GOOGLE_DRIVE_FOLDER_ID ? [process.env.GOOGLE_DRIVE_FOLDER_ID] : undefined,
       },
       media: {
-        mimeType: file.type || 'application/octet-stream',
-        body: fileStream,
+        mimeType: mimeType,
+        body: fileBuffer,
       },
     });
 
