@@ -29,15 +29,15 @@ export default async function handler(req, res) {
       headers: req.headers,
       limits: {
         fileSize: 10 * 1024 * 1024, // 10MB
-        files: 10, // Max 10 files
-        fields: 10 // Max 10 fields
+        files: 10, 
+        fields: 10 
       }
     });
 
     const parsePromise = new Promise((resolve, reject) => {
       const timeout = setTimeout(() => {
         reject(new Error('Form parsing timeout'));
-      }, 15000); // 15 second timeout
+      }, 15000);
 
       busboy.on('field', (name, value) => {
         console.log('Field received:', name, value);
