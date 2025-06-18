@@ -67,7 +67,7 @@ const ExpressionOfInterest = () => {
 
       console.log('Sending fetch request...');
       const controller = new AbortController();
-      const fetchTimeoutId = setTimeout(() => controller.abort(), 120000); // 120 second timeout (2 minutes)
+      const fetchTimeoutId = setTimeout(() => controller.abort(), 180000); // 180 second timeout (3 minutes)
       
       const response = await fetch('/api/send-email-eoi', {
         method: 'POST',
@@ -275,6 +275,7 @@ const ExpressionOfInterest = () => {
                             <span>Upload credentials files</span>
                             <input
                               id="credentials-files"
+                              name="credentialsFiles"
                               type="file"
                               multiple
                               onChange={(e) => setFormData({ ...formData, credentialsFiles: [...e.target.files] })}
@@ -326,6 +327,7 @@ const ExpressionOfInterest = () => {
                             <span>Upload experience files</span>
                             <input
                               id="experience"
+                              name="experience"
                               type="file"
                               multiple
                               onChange={(e) => setFormData({ ...formData, experience: [...e.target.files] })}
