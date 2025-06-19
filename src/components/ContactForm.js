@@ -127,7 +127,6 @@ const ContactForm = () => {
 
   return (
     <div className="bg-[#84C1D9] p-6 rounded-lg shadow-lg -mb-20">
-      <Toaster position="top-right" />
       <h3 className="text-3xl font-medium mb-6">Contact Form</h3>
       {recaptchaSiteKey ? (
         <form onSubmit={handleSubmit} className="space-y-4">
