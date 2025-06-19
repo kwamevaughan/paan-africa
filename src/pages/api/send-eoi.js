@@ -235,17 +235,20 @@ export default async function handler(req, res) {
         }
 
         // Send the email (with attachments) with retry
-        await sendMailWithRetry(transporter, {
-          from: `"PAAN" <${process.env.INFO_EMAIL}>`,
-          to: process.env.SMTP_EMAIL,
-          cc: process.env.CC_EMAIL,
-          replyTo: getFieldValue(email),
-          subject: `New Expression of Interest from ${agencyName}`,
-          html: emailContent,
-          attachments: attachments,
-        });
-
-        console.log('Email sent successfully');
+        try {
+          await sendMailWithRetry(transporter, {
+            from: `"PAAN" <${process.env.INFO_EMAIL}>`,
+            to: process.env.SMTP_EMAIL,
+            cc: process.env.CC_EMAIL,
+            replyTo: getFieldValue(email),
+            subject: `New Expression of Interest from ${agencyName}`,
+            html: emailContent,
+            attachments: attachments,
+          });
+          console.log('✅ Email sent successfully (after retry logic)');
+        } catch (emailError) {
+          console.error('❌ Failed to send email after all retries:', emailError);
+        }
       } catch (error) {
         console.error('Error processing form in background:', error);
       }
