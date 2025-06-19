@@ -211,7 +211,9 @@ const ExpressionOfInterest = () => {
                       className="block text-sm font-semibold text-slate-700 mb-3 flex items-center"
                     >
                       Full Name
+                      <span className="text-paan-red ml-1">*</span>
                     </label>
+
                     <div className="relative">
                       <input
                         type="text"
@@ -239,6 +241,7 @@ const ExpressionOfInterest = () => {
                       className="block text-sm font-semibold text-slate-700 mb-3 flex items-center"
                     >
                       Email Address
+                      <span className="text-paan-red ml-1">*</span>
                     </label>
                     <div className="relative">
                       <input
@@ -270,6 +273,7 @@ const ExpressionOfInterest = () => {
                       className="block text-sm font-semibold text-slate-700 mb-3 flex items-center"
                     >
                       Agency Name
+                      <span className="text-paan-red ml-1">*</span>
                     </label>
                     <div className="relative">
                       <input
@@ -302,6 +306,7 @@ const ExpressionOfInterest = () => {
                       className="block text-sm font-semibold text-slate-700 mb-3 flex items-center"
                     >
                       Country of Operation
+                      <span className="text-paan-red ml-1">*</span>
                     </label>
                     <div className="relative">
                       <input
@@ -370,9 +375,7 @@ const ExpressionOfInterest = () => {
                   <div>
                     <label className="block text-sm font-semibold text-slate-700 mb-4 flex items-center">
                       Choose Opportunities{" "}
-                      <span className="text-slate-500 ml-2">
-                        (Select up to 2)
-                      </span>
+                      <span className="text-paan-red ml-1">*</span>
                     </label>
                     <div className="grid grid-cols-1 gap-3">
                       {["Paid Advertising", "SEO", "SAO"].map((opportunity) => (
@@ -428,6 +431,7 @@ const ExpressionOfInterest = () => {
                       className="block text-sm font-semibold text-slate-700 mb-3 flex items-center"
                     >
                       Project Credentials
+                      <span className="text-paan-red ml-1">*</span>
                     </label>
                     <div className="relative">
                       <textarea
