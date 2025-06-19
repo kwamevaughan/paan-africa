@@ -32,6 +32,7 @@ export default async function handler(req, res) {
   await supabase.from('eoi_submissions').update({ status: 'processing' }).eq('id', submission.id);
 
   try {
+    const functionStart = Date.now();
     // 3. Upload only one file to Google Drive using base64 from DB
     let credentialsFiles = submission.credentials_files_base64 || [];
     let experienceFiles = submission.experience_files_base64 || [];
@@ -63,6 +64,8 @@ export default async function handler(req, res) {
     let justUploadedDriveLink = null;
 
     if (fileToProcess && fileToProcess.base64) {
+      const uploadStart = Date.now();
+      console.log('Starting upload for file:', fileToProcess.originalFilename, 'size:', fileToProcess.size, 'bytes');
       // Upload this file to Google Drive
       const uploadResult = await require('../../utils/googleDrive').uploadFileToDrive(
         submission.name,
@@ -72,6 +75,7 @@ export default async function handler(req, res) {
         null,
         fileToProcess.mimetype || 'application/octet-stream'
       );
+      console.log('Upload completed for file:', fileToProcess.originalFilename, 'in', (Date.now() - uploadStart) / 1000, 'seconds');
       justUploadedDriveLink = {
         name: fileToProcess.originalFilename,
         url: uploadResult.url
@@ -154,6 +158,7 @@ export default async function handler(req, res) {
         experience_files_base64: null,
         drive_files: driveFiles
       }).eq('id', submission.id);
+      console.log('Function completed in', (Date.now() - functionStart) / 1000, 'seconds');
       return res.status(200).json({ message: 'All files processed, email sent.' });
     } else {
       // Not done yet, update the arrays and keep status as processing
@@ -164,6 +169,7 @@ export default async function handler(req, res) {
         status: 'processing',
         error_message: null
       }).eq('id', submission.id);
+      console.log('Function completed in', (Date.now() - functionStart) / 1000, 'seconds');
       return res.status(200).json({ message: 'Processed one file, more to go.' });
     }
   } catch (error) {
