@@ -498,6 +498,47 @@ const HomePage = () => {
           </div>
         </div>
 
+        <div className="mx-auto max-w-6xl mt-20" id="webinar-banner">
+          <section className="relative bg-gradient-to-r from-[#F2B706]/20 via-[#84C1D9]/10 to-white rounded-xl shadow-xl overflow-hidden flex flex-col md:flex-row items-center gap-8 p-6 md:p-12 mb-16 border border-[#F2B706]/30">
+            {/* Accent bar */}
+            <div className="absolute left-0 top-0 h-full w-2 bg-[#F25849] rounded-l-xl" />
+            {/* Badge */}
+            <div className="absolute top-6 left-8 z-10">
+              <span className="inline-block bg-[#F25849] text-white text-xs font-bold px-4 py-1 rounded-full shadow-md tracking-widest uppercase">Live Webinar</span>
+            </div>
+            <div className="w-full md:w-1/2 flex justify-center relative z-0">
+              <Image
+                src="/assets/images/webinar-banner.png"
+                width={600}
+                height={340}
+                alt="Webinar Banner"
+                className="rounded-lg object-cover w-full h-auto max-h-80 shadow-md border border-gray-200"
+                priority
+              />
+            </div>
+            <div className="w-full md:w-1/2 flex flex-col gap-6 items-start">
+              <div className="flex items-center gap-3">
+                <span className="inline-flex items-center justify-center bg-[#84C1D9] text-[#172840] rounded-full p-2">
+                  <Icon icon="mdi:calendar-clock" className="w-6 h-6" />
+                </span>
+                <h2 className="text-2xl sm:text-3xl font-bold text-[#172840]">AI For Client Retension & Growth</h2>
+              </div>
+              <p className="text-[#F25849] text-base font-semibold">Upcoming Webinar • July 2 2025</p>
+              <p className="text-gray-700 text-base sm:text-lg">
+                Join our exclusive webinar to discover how agency account managers can use AI to strengthen client relationships, save time and unlock new opportunities.
+              </p>
+              <a
+                href="https://us06web.zoom.us/webinar/register/WN_pcXn_bVhQx2V0f00u0guwA#/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-[#F25849] hover:bg-[#D6473C] text-white font-bold py-3 px-8 rounded-full transition-all duration-300 shadow-lg text-base sm:text-lg mt-2"
+              >
+                Register Now
+              </a>
+            </div>
+          </section>
+        </div>
+
         <div className="network-bg relative" id="join-network">
           <div className="absolute -top-3 left-4 w-6 h-6 bg-[#84C1D9] rounded-full z-0"></div>
           <div className="absolute -top-8 right-4 w-16 h-16 bg-yellow-400 rounded-full z-0"></div>
