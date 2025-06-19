@@ -55,7 +55,7 @@ export default async function handler(req, res) {
     const opportunities = getFieldValue(formFields.opportunities) || '[]';
     const credentials = getFieldValue(formFields.credentials) || '';
 
-    // Prepare files for upload
+    // Prepare files for base64 storage
     const credentialsFiles = Array.isArray(formFiles.credentialsFiles)
       ? formFiles.credentialsFiles
       : formFiles.credentialsFiles
@@ -67,24 +67,25 @@ export default async function handler(req, res) {
       ? [formFiles.experience]
       : [];
 
-    // Upload files to Google Drive and collect links
-    const driveUploadResults = [];
-    for (const file of [...credentialsFiles, ...experienceFiles]) {
+    // Store file metadata and base64
+    const credentialsFilesBase64 = credentialsFiles.map(file => {
       const fileBuffer = fs.readFileSync(file.filepath);
-      const base64String = fileBuffer.toString('base64');
-      const uploadResult = await uploadFileToDrive(
-        name,
-        agencyName,
-        base64String,
-        file.originalFilename || 'file',
-        null,
-        file.mimetype || 'application/octet-stream'
-      );
-      driveUploadResults.push({
-        name: file.originalFilename,
-        url: uploadResult.url
-      });
-    }
+      return {
+        originalFilename: file.originalFilename,
+        mimetype: file.mimetype,
+        size: file.size,
+        base64: fileBuffer.toString('base64'),
+      };
+    });
+    const experienceFilesBase64 = experienceFiles.map(file => {
+      const fileBuffer = fs.readFileSync(file.filepath);
+      return {
+        originalFilename: file.originalFilename,
+        mimetype: file.mimetype,
+        size: file.size,
+        base64: fileBuffer.toString('base64'),
+      };
+    });
 
     // Clean up temp files
     for (const file of [...credentialsFiles, ...experienceFiles]) {
@@ -107,7 +108,8 @@ export default async function handler(req, res) {
       country,
       opportunities: typeof opportunities === 'string' ? JSON.parse(opportunities) : opportunities,
       credentials,
-      drive_files: driveUploadResults, // Save Google Drive links
+      credentials_files_base64: credentialsFilesBase64,
+      experience_files_base64: experienceFilesBase64,
       status: 'pending_email',
       created_at: new Date().toISOString(),
       processed_at: null,
