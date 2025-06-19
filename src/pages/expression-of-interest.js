@@ -124,9 +124,11 @@ const ExpressionOfInterest = () => {
     <>
       <SEO
         title="Expression of Interest | PAAN"
-        description="Submit your Expression of Interest for PAAN opportunities"
+        description="Apply to become a partner agency with the Pan-African Agency Network (PAAN). Submit your Expression of Interest to join exclusive opportunities in Paid Advertising, SEO, and App Store Optimization across Africa."
+        keywords="Expression of Interest, PAAN, opportunities, submit, application, Africa, agency, advertising, SEO, ASO"
         noindex={true}
       />
+
       <main className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 relative overflow-hidden">
         {/* Background decorative elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -267,7 +269,6 @@ const ExpressionOfInterest = () => {
                       htmlFor="agencyName"
                       className="block text-sm font-semibold text-slate-700 mb-3 flex items-center"
                     >
-                      
                       Agency Name
                     </label>
                     <div className="relative">
@@ -291,7 +292,6 @@ const ExpressionOfInterest = () => {
                         required
                         placeholder="Enter your agency name"
                       />
-                      
                     </div>
                   </div>
 
@@ -301,7 +301,6 @@ const ExpressionOfInterest = () => {
                       htmlFor="country"
                       className="block text-sm font-semibold text-slate-700 mb-3 flex items-center"
                     >
-                      
                       Country of Operation
                     </label>
                     <div className="relative">
@@ -327,7 +326,7 @@ const ExpressionOfInterest = () => {
                         required
                         autoComplete="off"
                       />
-                      
+
                       {showCountryDropdown && (
                         <div className="absolute z-20 w-full mt-2 bg-white/95 backdrop-blur-xl border border-slate-200 rounded-2xl shadow-2xl max-h-60 overflow-y-auto">
                           {filteredCountries.length > 0 ? (
@@ -370,7 +369,6 @@ const ExpressionOfInterest = () => {
                   {/* Opportunities */}
                   <div>
                     <label className="block text-sm font-semibold text-slate-700 mb-4 flex items-center">
-                      
                       Choose Opportunities{" "}
                       <span className="text-slate-500 ml-2">
                         (Select up to 2)
@@ -429,7 +427,6 @@ const ExpressionOfInterest = () => {
                       htmlFor="credentials"
                       className="block text-sm font-semibold text-slate-700 mb-3 flex items-center"
                     >
-                      
                       Project Credentials
                     </label>
                     <div className="relative">
@@ -453,7 +450,6 @@ const ExpressionOfInterest = () => {
                         required
                         placeholder="Describe your relevant credentials and expertise..."
                       />
-                      
                     </div>
                   </div>
                 </div>
@@ -464,7 +460,6 @@ const ExpressionOfInterest = () => {
                 {/* Credentials Files */}
                 <div>
                   <label className="block text-sm font-semibold text-slate-700 mb-4 flex items-center">
-                    
                     Credentials Files{" "}
                     <span className="text-slate-500 ml-2">(Optional)</span>
                   </label>
@@ -538,9 +533,8 @@ const ExpressionOfInterest = () => {
                 {/* Experience Files */}
                 <div>
                   <label className="block text-sm font-semibold text-slate-700 mb-4 flex items-center">
-                    
                     Experience & Portfolio Files{" "}
-                      <span className="text-paan-red ml-1">*</span>
+                    <span className="text-paan-red ml-1">*</span>
                   </label>
                   <div className="relative group">
                     <input
