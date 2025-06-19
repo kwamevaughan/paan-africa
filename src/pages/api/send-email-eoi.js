@@ -1,9 +1,9 @@
 import nodemailer from "nodemailer";
 import { uploadToGoogleDrive } from '../../utils/googleDrive';
-import Busboy from 'busboy';
 import fs from 'fs';
 import path from 'path';
 import os from 'os';
+import formidable from 'formidable';
 
 // Disable Next.js body parsing for this route
 export const config = {
@@ -23,122 +23,55 @@ export default async function handler(req, res) {
   console.log('EOI API endpoint called');
 
   try {
-    console.log('Starting fast form parsing with Busboy...');
+    console.log('Starting form parsing with formidable...');
     
     const fields = {};
     const files = [];
     
-    const busboy = Busboy({ 
-      headers: req.headers,
-      limits: {
-        fileSize: 10 * 1024 * 1024, // 10MB
-        files: 10, 
-        fields: 10 
+    // Parse form data using formidable
+    const form = formidable({
+      maxFileSize: 10 * 1024 * 1024, // 10MB
+      maxFiles: 10,
+      keepExtensions: true,
+      uploadDir: os.tmpdir(),
+      filename: (name, ext, part, form) => {
+        return `upload_${Date.now()}_${part.originalFilename || 'file'}`;
       }
     });
 
-    const parsePromise = new Promise((resolve, reject) => {
-      const timeout = setTimeout(() => {
-        reject(new Error('Form parsing timeout'));
-      }, 15000);
-
-      let pendingFiles = 0;
-      let hasError = false;
-
-      busboy.on('field', (name, value) => {
-        console.log('Field received:', name, value);
-        fields[name] = value;
-      });
-
-      busboy.on('file', (name, file, info) => {
-        console.log('File received:', name, info.filename);
-        const { filename, encoding, mimeType } = info;
-        pendingFiles++;
-        
-        // Create temporary file
-        const tmpDir = os.tmpdir();
-        const tmpFile = path.join(tmpDir, `upload_${Date.now()}_${filename}`);
-        
-        console.log('📁 Creating temp file:', tmpFile);
-        
-        const writeStream = fs.createWriteStream(tmpFile);
-        file.pipe(writeStream);
-        
-        writeStream.on('finish', () => {
-          console.log('✅ File write completed:', filename);
-          const fileSize = fs.statSync(tmpFile).size;
-          console.log('📊 File size:', fileSize, 'bytes');
-          
-          files.push({
-            fieldname: name,
-            originalFilename: filename,
-            mimetype: mimeType,
-            filepath: tmpFile,
-            size: fileSize
-          });
-          
-          pendingFiles--;
-          console.log('📋 Pending files remaining:', pendingFiles);
-          
-          // If this was the last file and busboy is finished, resolve
-          if (pendingFiles === 0 && busboy.finished) {
-            console.log('🎉 All files processed, resolving promise');
-            resolve({ fields, files });
-          }
-        });
-        
-        writeStream.on('error', (err) => {
-          console.error('❌ File write error:', err);
-          hasError = true;
-          pendingFiles--;
+    const [formFields, formFiles] = await new Promise((resolve, reject) => {
+      form.parse(req, (err, fields, files) => {
+        if (err) {
+          console.error('Form parsing error:', err);
           reject(err);
-        });
-      });
-
-      busboy.on('finish', () => {
-        clearTimeout(timeout);
-        console.log('🏁 Busboy parsing completed');
-        console.log('📋 Files array at finish:', files.length);
-        console.log('⏳ Pending files:', pendingFiles);
-        
-        // If no files were uploaded, resolve immediately
-        if (pendingFiles === 0) {
-          console.log('✅ No pending files, resolving immediately');
-          resolve({ fields, files });
         } else {
-          console.log('⏳ Waiting for file processing to complete...');
-          // The promise will be resolved when the last file finishes processing
+          console.log('Form parsed successfully');
+          resolve([fields, files]);
         }
       });
-
-      busboy.on('error', (err) => {
-        clearTimeout(timeout);
-        console.error('❌ Busboy error:', err);
-        hasError = true;
-        reject(err);
-      });
-
-      req.pipe(busboy);
     });
-
-    const { fields: parsedFields, files: parsedFiles } = await parsePromise;
 
     console.log('Fields and files extracted');
 
     // Extract form fields
-    const name = parsedFields.name || '';
-    const agencyName = parsedFields.agencyName || '';
-    const country = parsedFields.country || '';
-    const opportunities = parsedFields.opportunities || '[]';
-    const credentials = parsedFields.credentials || '';
+    const name = formFields.name || '';
+    const agencyName = formFields.agencyName || '';
+    const country = formFields.country || '';
+    const opportunities = formFields.opportunities || '[]';
+    const credentials = formFields.credentials || '';
 
     // Handle credentials files
-    const credentialsFiles = parsedFiles.filter(file => file.fieldname === 'credentialsFiles');
-    const experienceFiles = parsedFiles.filter(file => file.fieldname === 'experience');
+    const credentialsFiles = Array.isArray(formFiles.credentialsFiles) 
+      ? formFiles.credentialsFiles 
+      : formFiles.credentialsFiles ? [formFiles.credentialsFiles] : [];
+    
+    const experienceFiles = Array.isArray(formFiles.experience) 
+      ? formFiles.experience 
+      : formFiles.experience ? [formFiles.experience] : [];
 
     // Debug: Log all parsed files
-    console.log('🔍 All parsed files:', parsedFiles.map(file => ({
-      fieldname: file.fieldname,
+    console.log('🔍 All parsed files:', [...credentialsFiles, ...experienceFiles].map(file => ({
+      fieldname: file.fieldName,
       originalFilename: file.originalFilename,
       size: file.size
     })));
@@ -165,7 +98,7 @@ export default async function handler(req, res) {
     const attachments = [];
     for (const file of [...credentialsFiles, ...experienceFiles]) {
       attachments.push({
-        filename: file.originalFilename,
+        filename: file.originalFilename || 'file',
         path: file.filepath,
         contentType: file.mimetype
       });
