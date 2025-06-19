@@ -210,8 +210,32 @@ export default async function handler(req, res) {
           subject: `New Expression of Interest from ${agencyName}`
         });
 
-        // Send the email (with attachments)
-        const emailPromise = transporter.sendMail({
+        // Retry logic for sending email
+        async function sendMailWithRetry(transporter, mailOptions, maxRetries = 3, delay = 2000) {
+          let attempt = 0;
+          while (attempt < maxRetries) {
+            try {
+              // Add timeout to email sending
+              const emailPromise = transporter.sendMail(mailOptions);
+              const timeoutPromise = new Promise((_, reject) => {
+                setTimeout(() => reject(new Error('Email sending timeout')), 15000); // 15 second timeout
+              });
+              await Promise.race([emailPromise, timeoutPromise]);
+              return; // Success!
+            } catch (err) {
+              if ((err.code === 'ETIMEDOUT' || err.message === 'Email sending timeout') && attempt < maxRetries - 1) {
+                console.warn(`Email send attempt ${attempt + 1} failed due to timeout. Retrying in ${delay}ms...`);
+                await new Promise(res => setTimeout(res, delay));
+                attempt++;
+              } else {
+                throw err; // Rethrow if not timeout or out of retries
+              }
+            }
+          }
+        }
+
+        // Send the email (with attachments) with retry
+        await sendMailWithRetry(transporter, {
           from: `"PAAN" <${process.env.INFO_EMAIL}>`,
           to: process.env.SMTP_EMAIL,
           cc: process.env.CC_EMAIL,
@@ -220,13 +244,6 @@ export default async function handler(req, res) {
           html: emailContent,
           attachments: attachments,
         });
-
-        // Add timeout to email sending
-        const timeoutPromise = new Promise((_, reject) => {
-          setTimeout(() => reject(new Error('Email sending timeout')), 15000); // 15 second timeout
-        });
-
-        await Promise.race([emailPromise, timeoutPromise]);
 
         console.log('Email sent successfully');
       } catch (error) {
