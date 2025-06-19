@@ -1,130 +1,123 @@
 import SEO from "@/components/SEO";
 import Header from "../layouts/header";
 import Footer from "@/layouts/footer";
-import { useState } from "react";
-import { toast } from 'react-hot-toast';
-import { useRouter } from 'next/router';
-
-const africanCountries = [
-  "Algeria", "Angola", "Benin", "Botswana", "Burkina Faso", "Burundi", "Cabo Verde", "Cameroon",
-  "Central African Republic", "Chad", "Comoros", "Congo", "Côte d'Ivoire", "Democratic Republic of the Congo",
-  "Djibouti", "Egypt", "Equatorial Guinea", "Eritrea", "Eswatini", "Ethiopia", "Gabon", "Gambia",
-  "Ghana", "Guinea", "Guinea-Bissau", "Kenya", "Lesotho", "Liberia", "Libya", "Madagascar",
-  "Malawi", "Mali", "Mauritania", "Mauritius", "Morocco", "Mozambique", "Namibia", "Niger",
-  "Nigeria", "Rwanda", "São Tomé and Príncipe", "Senegal", "Seychelles", "Sierra Leone", "Somalia",
-  "South Africa", "South Sudan", "Sudan", "Tanzania", "Togo", "Tunisia", "Uganda", "Zambia", "Zimbabwe"
-];
-
+import { useState, useEffect } from "react";
+import { toast } from "react-hot-toast";
+import { useRouter } from "next/router";
+import { Icon } from "@iconify/react";
+import countriesData from "../../public/assets/misc/countries.json";
 
 const ExpressionOfInterest = () => {
   const [formData, setFormData] = useState({
     name: "",
+    email: "",
     agencyName: "",
     country: "",
     opportunities: [],
     credentials: "",
     credentialsFiles: [],
-    experience: []
+    experience: [],
   });
 
   const [countrySearch, setCountrySearch] = useState("");
   const [showCountryDropdown, setShowCountryDropdown] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [focusedField, setFocusedField] = useState(null);
   const router = useRouter();
 
-  const filteredCountries = africanCountries.filter(country =>
-    country.toLowerCase().includes(countrySearch.toLowerCase())
-  );
+  const [filteredCountries, setFilteredCountries] = useState(countriesData);
+
+  useEffect(() => {
+    setFilteredCountries(
+      countriesData.filter((country) =>
+        country.name.toLowerCase().includes(countrySearch.toLowerCase())
+      )
+    );
+  }, [countrySearch]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Form submission started');
+    console.log("Form submission started");
     setIsSubmitting(true);
 
     try {
-      console.log('Creating FormData...');
-      // Create FormData object to handle file uploads
+      console.log("Creating FormData...");
       const formDataToSend = new FormData();
-      formDataToSend.append('name', formData.name);
-      formDataToSend.append('agencyName', formData.agencyName);
-      formDataToSend.append('country', formData.country);
-      formDataToSend.append('opportunities', JSON.stringify(formData.opportunities));
-      formDataToSend.append('credentials', formData.credentials);
-      
-      // Append credentials files
+      formDataToSend.append("name", formData.name);
+      formDataToSend.append("email", formData.email);
+      formDataToSend.append("agencyName", formData.agencyName);
+      formDataToSend.append("country", formData.country);
+      formDataToSend.append(
+        "opportunities",
+        JSON.stringify(formData.opportunities)
+      );
+      formDataToSend.append("credentials", formData.credentials);
+
       if (formData.credentialsFiles && formData.credentialsFiles.length > 0) {
-        console.log('Appending credentials files:', formData.credentialsFiles.length);
-        formData.credentialsFiles.forEach(file => {
-          formDataToSend.append('credentialsFiles', file);
+        console.log(
+          "Appending credentials files:",
+          formData.credentialsFiles.length
+        );
+        formData.credentialsFiles.forEach((file) => {
+          formDataToSend.append("credentialsFiles", file);
         });
       }
-      
-      // Append experience files
+
       if (formData.experience && formData.experience.length > 0) {
-        console.log('Appending experience files:', formData.experience.length);
-        formData.experience.forEach(file => {
-          formDataToSend.append('experience', file);
+        console.log("Appending experience files:", formData.experience.length);
+        formData.experience.forEach((file) => {
+          formDataToSend.append("experience", file);
         });
       }
 
-      const controller = new AbortController();
-      const fetchTimeoutId = setTimeout(() => controller.abort(), 180000); // 180 second timeout (3 minutes)
-      
-      const response = await fetch('/api/send-eoi', {
-        method: 'POST',
+      const response = await fetch("/api/send-eoi", {
+        method: "POST",
         body: formDataToSend,
-        signal: controller.signal,
       });
-      
-      clearTimeout(fetchTimeoutId);
-
-      console.log('Response received:', response.status);
-      const data = await response.json();
-      console.log('Response data:', data);
 
       if (response.ok) {
-        // toast.success(`Thank you, ${data.name}!\nYour EOI for ${data.agencyName} (${data.country}) was submitted.`);
-        router.push('/thank-you');
+        toast.success("Your application is being processed!");
+        router.push("/thank-you");
       } else {
-        throw new Error(data.message || 'Something went wrong');
+        const data = await response.json();
+        throw new Error(data.message || "Something went wrong");
       }
-      
-      
-      // Reset form
+
       setFormData({
         name: "",
+        email: "",
         agencyName: "",
         country: "",
         opportunities: [],
         credentials: "",
         credentialsFiles: [],
-        experience: []
+        experience: [],
       });
       setCountrySearch("");
     } catch (error) {
-      console.error('Error submitting form:', error);
-      
-      // Handle specific abort error
-      if (error.name === 'AbortError') {
-        toast.error('Request timed out. Please try again or contact support if the issue persists.');
-      } else {
-        toast.error(error.message || 'Failed to submit Expression of Interest');
-      }
+      console.error("Error submitting form:", error);
+      toast.error(error.message || "Failed to submit Expression of Interest");
     } finally {
-      console.log('Form submission completed');
+      console.log("Form submission completed");
       setIsSubmitting(false);
     }
   };
 
   const handleOpportunityChange = (opportunity) => {
-    setFormData(prev => {
+    setFormData((prev) => {
       const opportunities = prev.opportunities.includes(opportunity)
-        ? prev.opportunities.filter(opt => opt !== opportunity)
+        ? prev.opportunities.filter((opt) => opt !== opportunity)
         : prev.opportunities.length < 2
           ? [...prev.opportunities, opportunity]
           : prev.opportunities;
       return { ...prev, opportunities };
     });
+  };
+
+  const opportunityIcons = {
+    "Paid Advertising": "mdi:chart-line",
+    SEO: "mdi:magnify",
+    SAO: "mdi:cellphone",
   };
 
   return (
@@ -134,60 +127,181 @@ const ExpressionOfInterest = () => {
         description="Submit your Expression of Interest for PAAN opportunities"
         noindex={true}
       />
-      <main className="min-h-screen bg-gray-50 relative">
+      <main className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 relative overflow-hidden">
+        {/* Background decorative elements */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-blue-400/20 to-purple-600/20 rounded-full blur-3xl"></div>
+          <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-tr from-orange-400/20 to-pink-600/20 rounded-full blur-3xl"></div>
+        </div>
+
         <Header />
-        
+
         {/* Hero Section */}
-        <div className="bg-gradient-to-r from-[#172840] to-[#2A3F5F] pt-40 pb-20">
-          <div className="max-w-4xl mx-auto px-4 text-center">
-            <h1 className="text-4xl sm:text-5xl font-bold text-white mb-6">
+        <div className="relative bg-paan-dark-blue pt-40 pb-20 overflow-hidden">
+          {/* Hero background pattern */}
+          <div className="absolute inset-0 opacity-30">
+            <div
+              className="absolute inset-0"
+              style={{
+                backgroundImage: `radial-gradient(circle at 30px 30px, rgba(255,255,255,0.05) 2px, transparent 2px)`,
+                backgroundSize: "60px 60px",
+              }}
+            ></div>
+          </div>
+
+          <div className="relative max-w-4xl mx-auto px-4 text-center">
+            <div className="inline-flex items-center bg-white/10 backdrop-blur-sm rounded-full px-6 py-2 mb-8 border border-white/20">
+              <Icon
+                icon="mdi:rocket-launch"
+                className="w-4 h-4 text-white/80 mr-2"
+              />
+              <span className="text-white/80 text-sm font-medium">
+                Partnership Opportunity
+              </span>
+            </div>
+
+            <h1 className="text-5xl sm:text-6xl font-bold text-white mb-6 bg-gradient-to-r from-white to-blue-100 bg-clip-text text-transparent">
               Expression Of Interest
             </h1>
-            <p className="text-gray-200 text-lg max-w-2xl mx-auto">
-                A global crypto investment platform is seeking 3 agency partners to support its expansion in Africa. The project focuses on Paid Advertising, SEO, and App Store Optimization across Nigeria, Ghana, Ethiopia, South Africa, and Kenya. 
-                Agencies with proven experience in these markets are invited to express interest by submitting relevant portfolios and service capabilities before <span className="font-bold text-[#F25849]">June 19, 10:00 PM EAT</span>.
+            <p className="text-slate-200 text-lg max-w-3xl mx-auto leading-relaxed">
+              A global crypto investment platform is seeking{" "}
+              <span className="font-semibold text-paan-blue">
+                3 agency partners
+              </span>{" "}
+              to support its expansion in Africa. The project focuses on{" "}
+              <span className="font-semibold text-paan-yellow">
+                Paid Advertising, SEO, and App Store Optimization
+              </span>{" "}
+              across Nigeria, Ghana, Ethiopia, South Africa, and Kenya.
             </p>
+            <div className="mt-6 inline-flex items-center bg-paan-yellow rounded-full px-6 py-3 text-paan-dark-blue font-semibold">
+              <Icon icon="mdi:clock-outline" className="w-4 h-4 mr-2" />
+              Deadline: June 30, 10:00 PM EAT
+            </div>
           </div>
         </div>
 
         {/* Form Section */}
-        <div className="max-w-4xl mx-auto px-4 py-16">
-          <div className="bg-white rounded-2xl shadow-xl p-8 sm:p-12">
-            <form onSubmit={handleSubmit} className="space-y-8">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div className="space-y-6">
-                  <div>
-                    <label htmlFor="name" className="block text-sm font-semibold text-gray-700 mb-2">
+        <div className="relative max-w-5xl mx-auto px-4 -mt-10 pb-20">
+          <div className="bg-white/80 backdrop-blur-xl rounded-3xl shadow-2xl border border-white/20 overflow-hidden">
+            {/* Form header */}
+            <div className="bg-paan-dark-blue px-8 py-6">
+              <h2 className="text-2xl font-bold text-white flex items-center">
+                <span className="w-8 h-8 bg-paan-yellow rounded-lg flex items-center justify-center mr-3">
+                  <Icon icon="mdi:sparkles" className="w-4 h-4 text-white" />
+                </span>
+                Submit Your Application
+              </h2>
+              <p className="text-slate-300 mt-2">
+                Fill out the form below to express your interest in our
+                partnership program
+              </p>
+            </div>
+
+            <form onSubmit={handleSubmit} className="p-8 sm:p-12">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                {/* Left Column */}
+                <div className="space-y-8">
+                  {/* Name Field */}
+                  <div className="group">
+                    <label
+                      htmlFor="name"
+                      className="block text-sm font-semibold text-slate-700 mb-3 flex items-center"
+                    >
                       Full Name
                     </label>
-                    <input
-                      type="text"
-                      id="name"
-                      value={formData.name}
-                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#F25849] focus:border-transparent transition-all duration-200"
-                      required
-                      placeholder="Enter your full name"
-                    />
+                    <div className="relative">
+                      <input
+                        type="text"
+                        id="name"
+                        value={formData.name}
+                        onChange={(e) =>
+                          setFormData({ ...formData, name: e.target.value })
+                        }
+                        onFocus={() => setFocusedField("name")}
+                        onBlur={() => setFocusedField(null)}
+                        className={`w-full px-6 py-4 bg-slate-50/50 border-2 rounded-2xl focus:outline-none transition-all duration-300 text-slate-800 placeholder-slate-400 ${
+                          focusedField === "name"
+                            ? "border-paan-blue bg-white shadow-lg shadow-paan-blue/10 scale-[1.02]"
+                            : "border-slate-200 hover:border-slate-300"
+                        }`}
+                        required
+                        placeholder="Enter your full name"
+                      />
+                    </div>
+                  </div>
+                  {/* Email Field */}
+                  <div className="group">
+                    <label
+                      htmlFor="email"
+                      className="block text-sm font-semibold text-slate-700 mb-3 flex items-center"
+                    >
+                      Email Address
+                    </label>
+                    <div className="relative">
+                      <input
+                        type="email"
+                        id="email"
+                        value={formData.email}
+                        onChange={(e) =>
+                          setFormData({ ...formData, email: e.target.value })
+                        }
+                        onFocus={() => setFocusedField("email")}
+                        onBlur={() => setFocusedField(null)}
+                        className={`w-full px-6 py-4 bg-slate-50/50 border-2 rounded-2xl focus:outline-none transition-all duration-300 text-slate-800 placeholder-slate-400 ${
+                          focusedField === "email"
+                            ? "border-paan-blue bg-white shadow-lg shadow-paan-blue/10 scale-[1.02]"
+                            : "border-slate-200 hover:border-slate-300"
+                        }`}
+                        required
+                        placeholder="Enter your email address"
+                        pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$"
+                        autoComplete="email"
+                      />
+                    </div>
                   </div>
 
-                  <div>
-                    <label htmlFor="agencyName" className="block text-sm font-semibold text-gray-700 mb-2">
+                  {/* Agency Name Field */}
+                  <div className="group">
+                    <label
+                      htmlFor="agencyName"
+                      className="block text-sm font-semibold text-slate-700 mb-3 flex items-center"
+                    >
+                      
                       Agency Name
                     </label>
-                    <input
-                      type="text"
-                      id="agencyName"
-                      value={formData.agencyName}
-                      onChange={(e) => setFormData({ ...formData, agencyName: e.target.value })}
-                      className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#F25849] focus:border-transparent transition-all duration-200"
-                      required
-                      placeholder="Enter your agency name"
-                    />
+                    <div className="relative">
+                      <input
+                        type="text"
+                        id="agencyName"
+                        value={formData.agencyName}
+                        onChange={(e) =>
+                          setFormData({
+                            ...formData,
+                            agencyName: e.target.value,
+                          })
+                        }
+                        onFocus={() => setFocusedField("agencyName")}
+                        onBlur={() => setFocusedField(null)}
+                        className={`w-full px-6 py-4 bg-slate-50/50 border-2 rounded-2xl focus:outline-none transition-all duration-300 text-slate-800 placeholder-slate-400 ${
+                          focusedField === "agencyName"
+                            ? "border-paan-yellow bg-white shadow-lg shadow-paan-yellow/10 scale-[1.02]"
+                            : "border-slate-200 hover:border-slate-300"
+                        }`}
+                        required
+                        placeholder="Enter your agency name"
+                      />
+                      
+                    </div>
                   </div>
 
-                  <div>
-                    <label htmlFor="country" className="block text-sm font-semibold text-gray-700 mb-2">
+                  {/* Country Field */}
+                  <div className="group">
+                    <label
+                      htmlFor="country"
+                      className="block text-sm font-semibold text-slate-700 mb-3 flex items-center"
+                    >
+                      
                       Country of Operation
                     </label>
                     <div className="relative">
@@ -199,29 +313,51 @@ const ExpressionOfInterest = () => {
                           setCountrySearch(e.target.value);
                           setShowCountryDropdown(true);
                         }}
-                        onFocus={() => setShowCountryDropdown(true)}
-                        className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#F25849] focus:border-transparent transition-all duration-200"
+                        onFocus={() => {
+                          setShowCountryDropdown(true);
+                          setFocusedField("country");
+                        }}
+                        onBlur={() => setFocusedField(null)}
+                        className={`w-full px-6 py-4 bg-slate-50/50 border-2 rounded-2xl focus:outline-none transition-all duration-300 text-slate-800 placeholder-slate-400 ${
+                          focusedField === "country"
+                            ? "border-paan-blue bg-white shadow-lg shadow-paan-blue/10 scale-[1.02]"
+                            : "border-slate-200 hover:border-slate-300"
+                        }`}
                         placeholder="Search for your country"
                         required
+                        autoComplete="off"
                       />
+                      
                       {showCountryDropdown && (
-                        <div className="absolute z-5 w-full mt-1 bg-white border border-gray-200 rounded-lg shadow-lg max-h-60 overflow-y-auto">
+                        <div className="absolute z-20 w-full mt-2 bg-white/95 backdrop-blur-xl border border-slate-200 rounded-2xl shadow-2xl max-h-60 overflow-y-auto">
                           {filteredCountries.length > 0 ? (
                             filteredCountries.map((country) => (
                               <div
-                                key={country}
-                                className="px-4 py-2 hover:bg-gray-100 cursor-pointer transition-colors duration-200"
+                                key={country.code}
+                                className="flex items-center px-6 py-3 hover:bg-gradient-to-r hover:from-slate-50 hover:to-blue-50 cursor-pointer transition-all duration-200 border-b border-slate-100 last:border-b-0"
                                 onClick={() => {
-                                  setFormData({ ...formData, country });
-                                  setCountrySearch(country);
+                                  setFormData({
+                                    ...formData,
+                                    country: country.name,
+                                  });
+                                  setCountrySearch(country.name);
                                   setShowCountryDropdown(false);
                                 }}
                               >
-                                {country}
+                                <img
+                                  src={country.image}
+                                  alt={country.code}
+                                  className="w-6 h-6 mr-3 rounded-full border border-slate-200"
+                                />
+                                <span className="text-slate-700 font-medium">
+                                  {country.name}
+                                </span>
                               </div>
                             ))
                           ) : (
-                            <div className="px-4 py-2 text-gray-500">No countries found</div>
+                            <div className="px-6 py-4 text-slate-500 text-center">
+                              No countries found
+                            </div>
                           )}
                         </div>
                       )}
@@ -229,169 +365,280 @@ const ExpressionOfInterest = () => {
                   </div>
                 </div>
 
-                <div className="space-y-6">
+                {/* Right Column */}
+                <div className="space-y-8">
+                  {/* Opportunities */}
                   <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-3">
-                      Choose Opportunities (Select up to 2)
+                    <label className="block text-sm font-semibold text-slate-700 mb-4 flex items-center">
+                      
+                      Choose Opportunities{" "}
+                      <span className="text-slate-500 ml-2">
+                        (Select up to 2)
+                      </span>
                     </label>
-                    <div className="space-y-3 bg-gray-50 p-4 rounded-lg">
+                    <div className="grid grid-cols-1 gap-3">
                       {["Paid Advertising", "SEO", "SAO"].map((opportunity) => (
-                        <label key={opportunity} className="flex items-center space-x-3 p-2 hover:bg-gray-100 rounded-md transition-colors duration-200">
+                        <label
+                          key={opportunity}
+                          className="group relative cursor-pointer"
+                        >
                           <input
                             type="checkbox"
-                            checked={formData.opportunities.includes(opportunity)}
-                            onChange={() => handleOpportunityChange(opportunity)}
-                            className="h-5 w-5 text-[#F25849] focus:ring-[#F25849] border-gray-300 rounded"
+                            checked={formData.opportunities.includes(
+                              opportunity
+                            )}
+                            onChange={() =>
+                              handleOpportunityChange(opportunity)
+                            }
+                            className="sr-only"
                           />
-                          <span className="text-gray-700 font-medium">{opportunity}</span>
+                          <div
+                            className={`flex items-center p-4 rounded-2xl border-2 transition-all duration-300 ${
+                              formData.opportunities.includes(opportunity)
+                                ? "border-paan-yellow bg-paan-yellow shadow-lg shadow-paan-yellow/10"
+                                : "border-slate-200 bg-slate-50/50 hover:border-slate-300 hover:bg-white"
+                            }`}
+                          >
+                            <div
+                              className={`w-6 h-6 rounded-lg border-2 flex items-center justify-center mr-4 transition-all duration-300 ${
+                                formData.opportunities.includes(opportunity)
+                                  ? "border-paan-yellow bg-paan-yellow text-paan-dark-blue"
+                                  : "border-slate-300 bg-white"
+                              }`}
+                            >
+                              {formData.opportunities.includes(opportunity) && (
+                                <Icon icon="mdi:check" className="w-4 h-4" />
+                              )}
+                            </div>
+                            <Icon
+                              icon={opportunityIcons[opportunity]}
+                              className="w-6 h-6 text-slate-600 mr-3"
+                            />
+                            <span className="text-slate-700 font-semibold">
+                              {opportunity}
+                            </span>
+                          </div>
                         </label>
                       ))}
                     </div>
                   </div>
 
-                  <div>
-                    <label htmlFor="credentials" className="block text-sm font-semibold text-gray-700 mb-2">
+                  {/* Credentials */}
+                  <div className="group">
+                    <label
+                      htmlFor="credentials"
+                      className="block text-sm font-semibold text-slate-700 mb-3 flex items-center"
+                    >
+                      
                       Project Credentials
                     </label>
-                    <textarea
-                      id="credentials"
-                      value={formData.credentials}
-                      onChange={(e) => setFormData({ ...formData, credentials: e.target.value })}
-                      rows="4"
-                      className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#F25849] focus:border-transparent transition-all duration-200 mb-4"
-                      required
-                      placeholder="Describe your relevant credentials and expertise"
-                    />
-                  </div>
-
-                  <div>
-                    <label htmlFor="credentials-files" className="block text-sm font-semibold text-gray-700 mb-2">
-                      Credentials Files (Portfolio, Case Studies, etc.) <span className="text-gray-500 font-normal">(Optional)</span>
-                    </label>
-                    <div className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-200 border-dashed rounded-lg hover:border-[#F25849] transition-colors duration-200">
-                      <div className="space-y-1 text-center">
-                        <svg className="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48">
-                          <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                        </svg>
-                        <div className="flex text-sm text-gray-600">
-                          <label htmlFor="credentials-files" className="relative cursor-pointer rounded-md font-medium text-[#F25849] hover:text-[#D6473C] focus-within:outline-none">
-                            <span>Upload credentials files</span>
-                            <input
-                              id="credentials-files"
-                              name="credentialsFiles"
-                              type="file"
-                              multiple
-                              onChange={(e) => setFormData({ ...formData, credentialsFiles: [...e.target.files] })}
-                              className="sr-only"
-                              accept=".pdf,.doc,.docx,.jpg,.jpeg,.png"
-                            />
-                          </label>
-                          <p className="pl-1">or drag and drop</p>
-                        </div>
-                        <p className="text-xs text-gray-500">PDF, DOC, DOCX, JPG, PNG up to 10MB</p>
-                        {formData.credentialsFiles.length > 0 && (
-                          <div className="mt-2">
-                            <p className="text-sm text-gray-600">Selected credentials files:</p>
-                            <ul className="mt-1 text-xs text-gray-500">
-                              {Array.from(formData.credentialsFiles).map((file, index) => (
-                                <li key={index} className="flex items-center justify-center space-x-2">
-                                  <span>{file.name}</span>
-                                  <button
-                                    type="button"
-                                    onClick={() => {
-                                      const newFiles = Array.from(formData.credentialsFiles);
-                                      newFiles.splice(index, 1);
-                                      setFormData({ ...formData, credentialsFiles: newFiles });
-                                    }}
-                                    className="text-red-500 hover:text-red-700"
-                                  >
-                                    ×
-                                  </button>
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-
-                  <div>
-                    <label htmlFor="experience" className="block text-sm font-semibold text-gray-700 mb-2">
-                      Experience & Portfolio Files <span className="text-red-500">*</span>
-                    </label>
-                    <div className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-200 border-dashed rounded-lg hover:border-[#F25849] transition-colors duration-200">
-                      <div className="space-y-1 text-center">
-                        <svg className="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48">
-                          <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                        </svg>
-                        <div className="flex text-sm text-gray-600">
-                          <label htmlFor="experience" className="relative cursor-pointer rounded-md font-medium text-[#F25849] hover:text-[#D6473C] focus-within:outline-none">
-                            <span>Upload experience files</span>
-                            <input
-                              id="experience"
-                              name="experience"
-                              type="file"
-                              multiple
-                              onChange={(e) => setFormData({ ...formData, experience: [...e.target.files] })}
-                              className="sr-only"
-                              accept=".pdf,.doc,.docx,.jpg,.jpeg,.png"
-                              required
-                            />
-                          </label>
-                          <p className="pl-1">or drag and drop</p>
-                        </div>
-                        <p className="text-xs text-gray-500">PDF, DOC, DOCX, JPG, PNG up to 10MB</p>
-                        {formData.experience && formData.experience.length > 0 && (
-                          <div className="mt-2">
-                            <p className="text-sm text-gray-600">Selected experience files:</p>
-                            <ul className="mt-1 text-xs text-gray-500">
-                              {Array.from(formData.experience).map((file, index) => (
-                                <li key={index} className="flex items-center justify-center space-x-2">
-                                  <span>{file.name}</span>
-                                  <button
-                                    type="button"
-                                    onClick={() => {
-                                      const newFiles = Array.from(formData.experience);
-                                      newFiles.splice(index, 1);
-                                      setFormData({ ...formData, experience: newFiles });
-                                    }}
-                                    className="text-red-500 hover:text-red-700"
-                                  >
-                                    ×
-                                  </button>
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
-                        )}
-                      </div>
+                    <div className="relative">
+                      <textarea
+                        id="credentials"
+                        value={formData.credentials}
+                        onChange={(e) =>
+                          setFormData({
+                            ...formData,
+                            credentials: e.target.value,
+                          })
+                        }
+                        onFocus={() => setFocusedField("credentials")}
+                        onBlur={() => setFocusedField(null)}
+                        rows="4"
+                        className={`w-full px-6 py-4 bg-slate-50/50 border-2 rounded-2xl focus:outline-none transition-all duration-300 text-slate-800 placeholder-slate-400 resize-none ${
+                          focusedField === "credentials"
+                            ? "border-paan-blue bg-white shadow-lg shadow-paan-blue/10 scale-[1.02]"
+                            : "border-slate-200 hover:border-slate-300"
+                        }`}
+                        required
+                        placeholder="Describe your relevant credentials and expertise..."
+                      />
+                      
                     </div>
                   </div>
                 </div>
               </div>
 
-              <div className="flex justify-center pt-8">
+              {/* File Upload Section */}
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-12">
+                {/* Credentials Files */}
+                <div>
+                  <label className="block text-sm font-semibold text-slate-700 mb-4 flex items-center">
+                    
+                    Credentials Files{" "}
+                    <span className="text-slate-500 ml-2">(Optional)</span>
+                  </label>
+                  <div className="relative group">
+                    <input
+                      id="credentials-files"
+                      name="credentialsFiles"
+                      type="file"
+                      multiple
+                      onChange={(e) =>
+                        setFormData({
+                          ...formData,
+                          credentialsFiles: [...e.target.files],
+                        })
+                      }
+                      className="sr-only"
+                      accept=".pdf,.doc,.docx,.jpg,.jpeg,.png"
+                    />
+                    <label
+                      htmlFor="credentials-files"
+                      className="flex flex-col items-center justify-center p-8 border-2 border-dashed border-slate-300 rounded-2xl cursor-pointer transition-all duration-300 hover:border-cyan-400 hover:bg-gradient-to-br hover:from-cyan-50 hover:to-blue-50 group-hover:scale-[1.02]"
+                    >
+                      <div className="w-16 h-16 bg-paan-blue rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                        <Icon
+                          icon="mdi:cloud-upload"
+                          className="w-8 h-8 text-white"
+                        />
+                      </div>
+                      <p className="text-slate-600 font-medium mb-2">
+                        Drop files here or click to upload
+                      </p>
+                      <p className="text-sm text-slate-500">
+                        PDF, DOC, DOCX, JPG, PNG up to 10MB
+                      </p>
+                    </label>
+                    {formData.credentialsFiles.length > 0 && (
+                      <div className="mt-4 space-y-2">
+                        {Array.from(formData.credentialsFiles).map(
+                          (file, index) => (
+                            <div
+                              key={index}
+                              className="flex items-center justify-between p-3 bg-paan-blue rounded-xl border border-paan-blue"
+                            >
+                              <span className="text-slate-700 text-sm font-medium truncate">
+                                {file.name}
+                              </span>
+                              <button
+                                type="button"
+                                onClick={() => {
+                                  const newFiles = Array.from(
+                                    formData.credentialsFiles
+                                  );
+                                  newFiles.splice(index, 1);
+                                  setFormData({
+                                    ...formData,
+                                    credentialsFiles: newFiles,
+                                  });
+                                }}
+                                className="w-6 h-6 bg-paan-red hover:bg-paan-red/80 text-paan-dark-blue rounded-full flex items-center justify-center transition-colors duration-200"
+                              >
+                                <Icon icon="mdi:close" className="w-4 h-4" />
+                              </button>
+                            </div>
+                          )
+                        )}
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+                {/* Experience Files */}
+                <div>
+                  <label className="block text-sm font-semibold text-slate-700 mb-4 flex items-center">
+                    
+                    Experience & Portfolio Files{" "}
+                      <span className="text-paan-red ml-1">*</span>
+                  </label>
+                  <div className="relative group">
+                    <input
+                      id="experience"
+                      name="experience"
+                      type="file"
+                      multiple
+                      onChange={(e) =>
+                        setFormData({
+                          ...formData,
+                          experience: [...e.target.files],
+                        })
+                      }
+                      className="sr-only"
+                      accept=".pdf,.doc,.docx,.jpg,.jpeg,.png"
+                      required
+                    />
+                    <label
+                      htmlFor="experience"
+                      className="flex flex-col items-center justify-center p-8 border-2 border-dashed border-slate-300 rounded-2xl cursor-pointer transition-all duration-300 hover:border-cyan-400 hover:bg-gradient-to-br hover:from-cyan-50 hover:to-blue-50 group-hover:scale-[1.02]"
+                    >
+                      <div className="w-16 h-16 bg-paan-blue rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                        <Icon
+                          icon="mdi:file-document-multiple"
+                          className="w-8 h-8 text-white"
+                        />
+                      </div>
+                      <p className="text-slate-600 font-medium mb-2">
+                        Upload your portfolio & case studies
+                      </p>
+                      <p className="text-sm text-slate-500">
+                        PDF, DOC, DOCX, JPG, PNG up to 10MB
+                      </p>
+                    </label>
+                    {formData.experience && formData.experience.length > 0 && (
+                      <div className="mt-4 space-y-2">
+                        {Array.from(formData.experience).map((file, index) => (
+                          <div
+                            key={index}
+                            className="flex items-center justify-between p-3 bg-paan-yellow rounded-xl border border-paan-yellow"
+                          >
+                            <span className="text-slate-700 text-sm font-medium truncate">
+                              {file.name}
+                            </span>
+                            <button
+                              type="button"
+                              onClick={() => {
+                                const newFiles = Array.from(
+                                  formData.experience
+                                );
+                                newFiles.splice(index, 1);
+                                setFormData({
+                                  ...formData,
+                                  experience: newFiles,
+                                });
+                              }}
+                              className="w-6 h-6 bg-paan-red hover:bg-paan-red/80 text-paan-dark-blue rounded-full flex items-center justify-center transition-colors duration-200"
+                            >
+                              <Icon icon="mdi:close" className="w-4 h-4" />
+                            </button>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </div>
+
+              {/* Submit Button */}
+              <div className="flex justify-center pt-12">
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className={`bg-[#F25849] text-white px-12 py-4 rounded-full font-semibold text-base transform transition-all duration-300 shadow-lg hover:shadow-xl ${
-                    isSubmitting 
-                      ? 'opacity-70 cursor-not-allowed' 
-                      : 'hover:bg-[#D6473C] hover:scale-105'
+                  className={`relative overflow-hidden bg-paan-red text-white px-12 py-4 rounded-2xl font-bold text-lg transition-all duration-300 shadow-xl hover:shadow-2xl ${
+                    isSubmitting
+                      ? "opacity-70 cursor-not-allowed"
+                      : "hover:from-paan-yellow hover:to-paan-red hover:scale-105 hover:-translate-y-1"
                   }`}
                 >
-                  {isSubmitting ? (
-                    <div className="flex items-center space-x-2">
-                      <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                      </svg>
-                      <span>Submitting...</span>
-                    </div>
-                  ) : (
-                    'Submit'
-                  )}
+                  {/* Button background animation */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
+
+                  <div className="relative flex items-center space-x-3">
+                    {isSubmitting ? (
+                      <>
+                        <div className="w-6 h-6 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+                        <span>Submitting...</span>
+                      </>
+                    ) : (
+                      <>
+                        <span>Submit Application</span>
+                        <Icon
+                          icon="mdi:arrow-right"
+                          className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1"
+                        />
+                      </>
+                    )}
+                  </div>
                 </button>
               </div>
             </form>
@@ -404,4 +651,4 @@ const ExpressionOfInterest = () => {
   );
 };
 
-export default ExpressionOfInterest; 
+export default ExpressionOfInterest;
