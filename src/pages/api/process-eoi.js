@@ -33,8 +33,16 @@ export default async function handler(req, res) {
 
   try {
     // 3. Prepare email content with Google Drive links
-    const driveLinksHtml = (submission.drive_files && submission.drive_files.length > 0)
-      ? `<ul>` + submission.drive_files.map(f => `<li><a href="${f.url}" target="_blank" rel="noopener">${f.name}</a></li>`).join('') + `</ul>`
+    let driveFiles = submission.drive_files;
+    if (typeof driveFiles === 'string') {
+      try {
+        driveFiles = JSON.parse(driveFiles);
+      } catch (e) {
+        driveFiles = [];
+      }
+    }
+    const driveLinksHtml = (driveFiles && driveFiles.length > 0)
+      ? `<ul>` + driveFiles.map(f => `<li><a href="${f.url}" target="_blank" rel="noopener">${f.name}</a></li>`).join('') + `</ul>`
       : '<p>No files uploaded.</p>';
 
     const emailContent = `
