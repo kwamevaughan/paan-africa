@@ -32,17 +32,36 @@ export default async function handler(req, res) {
   await supabase.from('eoi_submissions').update({ status: 'processing' }).eq('id', submission.id);
 
   try {
-    // 3. Prepare email content with Google Drive links
-    let driveFiles = submission.drive_files;
-    if (typeof driveFiles === 'string') {
-      try {
-        driveFiles = JSON.parse(driveFiles);
-      } catch (e) {
-        driveFiles = [];
-      }
+    // 3. Upload files to Google Drive using base64 from DB
+    let credentialsFiles = submission.credentials_files_base64 || [];
+    let experienceFiles = submission.experience_files_base64 || [];
+    // If stored as string, parse
+    if (typeof credentialsFiles === 'string') {
+      try { credentialsFiles = JSON.parse(credentialsFiles); } catch (e) { credentialsFiles = []; }
     }
-    const driveLinksHtml = (driveFiles && driveFiles.length > 0)
-      ? `<ul>` + driveFiles.map(f => `<li><a href="${f.url}" target="_blank" rel="noopener">${f.name}</a></li>`).join('') + `</ul>`
+    if (typeof experienceFiles === 'string') {
+      try { experienceFiles = JSON.parse(experienceFiles); } catch (e) { experienceFiles = []; }
+    }
+    const driveUploadResults = [];
+    for (const file of [...credentialsFiles, ...experienceFiles]) {
+      if (!file.base64) continue;
+      const uploadResult = await require('../../utils/googleDrive').uploadFileToDrive(
+        submission.name,
+        submission.agency_name,
+        file.base64,
+        file.originalFilename || 'file',
+        null,
+        file.mimetype || 'application/octet-stream'
+      );
+      driveUploadResults.push({
+        name: file.originalFilename,
+        url: uploadResult.url
+      });
+    }
+
+    // 4. Prepare email content with Google Drive links
+    const driveLinksHtml = (driveUploadResults && driveUploadResults.length > 0)
+      ? `<ul>` + driveUploadResults.map(f => `<li><a href="${f.url}" target="_blank" rel="noopener">${f.name}</a></li>`).join('') + `</ul>`
       : '<p>No files uploaded.</p>';
 
     const emailContent = `
@@ -79,7 +98,7 @@ export default async function handler(req, res) {
       </table>
     `;
 
-    // 4. Send the email
+    // 5. Send the email
     const transporter = nodemailer.createTransport({
       host: process.env.SMTP_HOST,
       port: parseInt(process.env.SMTP_PORT, 10),
@@ -102,11 +121,14 @@ export default async function handler(req, res) {
       html: emailContent,
     });
 
-    // 5. Mark as done
+    // 5. Mark as done and clear base64 fields
     await supabase.from('eoi_submissions').update({
       status: 'done',
       processed_at: new Date().toISOString(),
-      error_message: null
+      error_message: null,
+      credentials_files_base64: null,
+      experience_files_base64: null,
+      drive_files: driveUploadResults
     }).eq('id', submission.id);
 
     return res.status(200).json({ message: 'Submission processed and email sent.' });
