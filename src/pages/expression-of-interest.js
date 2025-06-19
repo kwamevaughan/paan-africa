@@ -68,7 +68,7 @@ const ExpressionOfInterest = () => {
       const controller = new AbortController();
       const fetchTimeoutId = setTimeout(() => controller.abort(), 180000); // 180 second timeout (3 minutes)
       
-      const response = await fetch('/api/send-email-eoi', {
+      const response = await fetch('/api/send-eoi', {
         method: 'POST',
         body: formDataToSend,
         signal: controller.signal,
