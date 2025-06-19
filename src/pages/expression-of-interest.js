@@ -3,6 +3,7 @@ import Header from "../layouts/header";
 import Footer from "@/layouts/footer";
 import { useState } from "react";
 import { toast } from 'react-hot-toast';
+import { useRouter } from 'next/router';
 
 const africanCountries = [
   "Algeria", "Angola", "Benin", "Botswana", "Burkina Faso", "Burundi", "Cabo Verde", "Cameroon",
@@ -29,6 +30,7 @@ const ExpressionOfInterest = () => {
   const [countrySearch, setCountrySearch] = useState("");
   const [showCountryDropdown, setShowCountryDropdown] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const router = useRouter();
 
   const filteredCountries = africanCountries.filter(country =>
     country.toLowerCase().includes(countrySearch.toLowerCase())
@@ -80,11 +82,13 @@ const ExpressionOfInterest = () => {
       const data = await response.json();
       console.log('Response data:', data);
 
-      if (!response.ok) {
+      if (response.ok) {
+        // toast.success(`Thank you, ${data.name}!\nYour EOI for ${data.agencyName} (${data.country}) was submitted.`);
+        router.push('/thank-you');
+      } else {
         throw new Error(data.message || 'Something went wrong');
       }
-
-      toast.success('Expression of Interest submitted successfully!');
+      
       
       // Reset form
       setFormData({
