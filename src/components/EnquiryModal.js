@@ -268,7 +268,6 @@ const EnquiryModal = ({ isOpen, onClose }) => {
           </form>
         </div>
       </div>
-      <Toaster position="top-right" />
     </div>
   );
 };
