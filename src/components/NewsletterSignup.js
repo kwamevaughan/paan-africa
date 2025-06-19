@@ -1,5 +1,4 @@
 import { useState } from "react";
-import toast, { Toaster } from "react-hot-toast";
 
 const NewsletterSignup = () => {
   const [formData, setFormData] = useState({
@@ -42,16 +41,10 @@ const NewsletterSignup = () => {
     const validationErrors = validateForm();
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
-      toast.error("Please fill in all required fields correctly.", {
-        duration: 4000,
-      });
       return;
     }
 
     setIsSubmitting(true);
-    const toastId = toast.loading("Processing your subscription...", {
-      duration: Infinity,
-    });
 
     try {
       console.log("Submitting newsletter subscription:", {
@@ -74,47 +67,22 @@ const NewsletterSignup = () => {
       console.log("API response:", { status: response.status, data });
 
       if (response.ok) {
-        toast.success("Subscribed successfully!", {
-          id: toastId,
-          duration: 4000,
-        });
         // Delay form reset to ensure toast is visible
         setTimeout(() => {
           setFormData({ name: "", email: "" });
           setIsSubmitting(false);
         }, 500);
       } else {
-        toast.error(data.message || "Failed to subscribe.", {
-          id: toastId,
-          duration: 4000,
-        });
         setIsSubmitting(false);
       }
     } catch (error) {
       console.error("Submission error:", error);
-      toast.error("An error occurred. Please try again.", {
-        id: toastId,
-        duration: 4000,
-      });
       setIsSubmitting(false);
     }
   };
 
   return (
     <div className="text-white rounded-lg relative overflow-hidden">
-      <Toaster
-        position="top-center"
-        toastOptions={{
-          duration: 4000,
-          style: {
-            zIndex: 1000000, // Increased to ensure toast appears above fixed header
-            background: "#333",
-            color: "#fff",
-            padding: "16px",
-            borderRadius: "8px",
-          },
-        }}
-      />
       <div className="relative z-0">
         <h3 className="text-2xl font-normal mb-4">
           Sign up for our newsletter
