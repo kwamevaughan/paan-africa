@@ -132,7 +132,7 @@ const ExpressionOfInterest = () => {
       <SEO
         title="Expression of Interest | PAAN"
         description="Submit your Expression of Interest for PAAN opportunities"
-        keywords="PAAN, Expression of Interest, Opportunities, Advertising, SEO, SAO"
+        noindex={true}
       />
       <main className="min-h-screen bg-gray-50 relative">
         <Header />
