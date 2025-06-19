@@ -1,7 +1,5 @@
 import nodemailer from "nodemailer";
-import { uploadToGoogleDrive } from '../../utils/googleDrive';
 import fs from 'fs';
-import path from 'path';
 import os from 'os';
 import formidable from 'formidable';
 
@@ -15,10 +13,6 @@ export const config = {
 export default async function handler(req, res) {
   console.log('EOI API endpoint called - Method:', req.method);
   
-  if (req.method !== "POST") {
-    console.log('Method not allowed:', req.method);
-    return res.status(405).json({ message: "Method not allowed" });
-  }
 
   console.log('EOI API endpoint called');
 
