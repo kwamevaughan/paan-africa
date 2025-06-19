@@ -65,7 +65,6 @@ const ExpressionOfInterest = () => {
         });
       }
 
-      console.log('Sending fetch request...');
       const controller = new AbortController();
       const fetchTimeoutId = setTimeout(() => controller.abort(), 180000); // 180 second timeout (3 minutes)
       
