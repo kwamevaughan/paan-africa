@@ -46,7 +46,7 @@ const ScrollToTop = () => {
                 a 15.9155 15.9155 0 0 1 0 -31.831"
             />
             <path
-              className="fill-none stroke-[#ED761E] stroke-2"
+              className="fill-none stroke-paan-red stroke-2"
               strokeDasharray={`${scrollProgress}, 100`}
               d="M18 2.0845
                 a 15.9155 15.9155 0 0 1 0 31.831
@@ -58,7 +58,7 @@ const ScrollToTop = () => {
             icon="mdi:arrow-up"
             width="24"
             height="24"
-            className="text-[#ED761E] relative z-10"
+            className="text-paan-red relative z-10"
           />
         </button>
       )}
