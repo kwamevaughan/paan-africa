@@ -2,6 +2,9 @@ import { createClient } from '@supabase/supabase-js';
 import nodemailer from 'nodemailer';
 
 export default async function handler(req, res) {
+  const functionStart = Date.now();
+  console.log('Function handler started');
+  
   if (req.method !== 'POST') {
     return res.status(405).json({ message: 'Method not allowed' });
   }
@@ -10,6 +13,7 @@ export default async function handler(req, res) {
     process.env.SUPABASE_URL,
     process.env.SUPABASE_SERVICE_KEY
   );
+  console.log('Supabase client created:', (Date.now() - functionStart) / 1000, 'seconds');
 
   // 1. Get the oldest pending_email submission
   const { data: submissions, error: fetchError } = await supabase
@@ -18,6 +22,7 @@ export default async function handler(req, res) {
     .eq('status', 'pending_email')
     .order('created_at', { ascending: true })
     .limit(1);
+  console.log('DB query completed:', (Date.now() - functionStart) / 1000, 'seconds');
 
   if (fetchError) {
     return res.status(500).json({ message: 'Failed to fetch pending submission', error: fetchError.message });
@@ -27,12 +32,13 @@ export default async function handler(req, res) {
   }
 
   const submission = submissions[0];
+  console.log('Found submission:', submission.id, 'at', (Date.now() - functionStart) / 1000, 'seconds');
 
   // 2. Mark as processing
   await supabase.from('eoi_submissions').update({ status: 'processing' }).eq('id', submission.id);
+  console.log('Marked as processing:', (Date.now() - functionStart) / 1000, 'seconds');
 
   try {
-    const functionStart = Date.now();
     // 3. Upload only one file to Google Drive using base64 from DB
     let credentialsFiles = submission.credentials_files_base64 || [];
     let experienceFiles = submission.experience_files_base64 || [];
@@ -47,6 +53,7 @@ export default async function handler(req, res) {
       try { driveFiles = JSON.parse(driveFiles); } catch (e) { driveFiles = []; }
     }
     driveFiles = driveFiles || [];
+    console.log('Parsed file arrays:', (Date.now() - functionStart) / 1000, 'seconds');
 
     // Find the next file to process
     let fileToProcess, fileType, fileIndex;
@@ -59,6 +66,7 @@ export default async function handler(req, res) {
       fileType = 'experience';
       fileIndex = 0;
     }
+    console.log('Found file to process:', fileToProcess?.originalFilename, 'at', (Date.now() - functionStart) / 1000, 'seconds');
 
     let allFilesProcessed = false;
     let justUploadedDriveLink = null;
@@ -87,10 +95,12 @@ export default async function handler(req, res) {
       } else if (fileType === 'experience') {
         experienceFiles.splice(fileIndex, 1);
       }
+      console.log('File processing completed:', (Date.now() - functionStart) / 1000, 'seconds');
     }
 
     // If all files are processed, send the email and mark as done
     if (credentialsFiles.length === 0 && experienceFiles.length === 0) {
+      console.log('All files processed, preparing email:', (Date.now() - functionStart) / 1000, 'seconds');
       // Prepare email content with Google Drive links
       const driveLinksHtml = (driveFiles && driveFiles.length > 0)
         ? `<ul>` + driveFiles.map(f => `<li><a href="${f.url}" target="_blank" rel="noopener">${f.name}</a></li>`).join('') + `</ul>`
@@ -128,6 +138,7 @@ export default async function handler(req, res) {
           </tr>
         </table>
       `;
+      console.log('Email content prepared:', (Date.now() - functionStart) / 1000, 'seconds');
       // Send the email
       const transporter = nodemailer.createTransport({
         host: process.env.SMTP_HOST,
@@ -141,6 +152,7 @@ export default async function handler(req, res) {
         greetingTimeout: 10000,
         socketTimeout: 10000,
       });
+      console.log('Email transporter created:', (Date.now() - functionStart) / 1000, 'seconds');
       await transporter.sendMail({
         from: `"PAAN" <${process.env.INFO_EMAIL}>`,
         to: process.env.SMTP_EMAIL,
@@ -149,6 +161,7 @@ export default async function handler(req, res) {
         subject: `New Expression of Interest from ${submission.agency_name}`,
         html: emailContent,
       });
+      console.log('Email sent:', (Date.now() - functionStart) / 1000, 'seconds');
       // Mark as done and clear base64 fields
       await supabase.from('eoi_submissions').update({
         status: 'done',
@@ -158,6 +171,7 @@ export default async function handler(req, res) {
         experience_files_base64: null,
         drive_files: driveFiles
       }).eq('id', submission.id);
+      console.log('Final DB update completed:', (Date.now() - functionStart) / 1000, 'seconds');
       console.log('Function completed in', (Date.now() - functionStart) / 1000, 'seconds');
       return res.status(200).json({ message: 'All files processed, email sent.' });
     } else {
@@ -169,6 +183,7 @@ export default async function handler(req, res) {
         status: 'processing',
         error_message: null
       }).eq('id', submission.id);
+      console.log('DB update for partial completion:', (Date.now() - functionStart) / 1000, 'seconds');
       console.log('Function completed in', (Date.now() - functionStart) / 1000, 'seconds');
       return res.status(200).json({ message: 'Processed one file, more to go.' });
     }
