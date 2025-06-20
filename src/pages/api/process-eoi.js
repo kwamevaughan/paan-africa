@@ -17,10 +17,10 @@ export default async function handler(req, res) {
 
   // 1. Get the oldest pending_email submission
   const { data: submissions, error: fetchError } = await supabase
-    .from('eoi_submissions')
-    .select('*')
-    .eq('status', 'pending_email')
-    .order('created_at', { ascending: true })
+    .from("eoi_submissions")
+    .select("*")
+    .or("status.eq.pending_email,status.eq.processing")
+    .order("created_at", { ascending: true })
     .limit(1);
   console.log('DB query completed:', (Date.now() - functionStart) / 1000, 'seconds');
 
