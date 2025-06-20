@@ -43,6 +43,7 @@ export default async function handler(req, res) {
     let credentialsFiles = submission.credentials_files_base64 || [];
     let experienceFiles = submission.experience_files_base64 || [];
     let driveFiles = submission.drive_files;
+    let emailSent = submission.email_sent || false;
     if (typeof credentialsFiles === 'string') {
       try { credentialsFiles = JSON.parse(credentialsFiles); } catch (e) { credentialsFiles = []; }
     }
@@ -55,7 +56,7 @@ export default async function handler(req, res) {
     driveFiles = driveFiles || [];
     console.log('Parsed file arrays:', (Date.now() - functionStart) / 1000, 'seconds');
 
-    // Find the next file to process
+    // If there are files left, upload one file only
     let fileToProcess, fileType, fileIndex;
     if (credentialsFiles.length > 0) {
       fileToProcess = credentialsFiles[0];
@@ -66,11 +67,6 @@ export default async function handler(req, res) {
       fileType = 'experience';
       fileIndex = 0;
     }
-    console.log('Found file to process:', fileToProcess?.originalFilename, 'at', (Date.now() - functionStart) / 1000, 'seconds');
-
-    let allFilesProcessed = false;
-    let justUploadedDriveLink = null;
-
     if (fileToProcess && fileToProcess.base64) {
       const uploadStart = Date.now();
       console.log('Starting upload for file:', fileToProcess.originalFilename, 'size:', fileToProcess.size, 'bytes');
@@ -84,7 +80,7 @@ export default async function handler(req, res) {
         fileToProcess.mimetype || 'application/octet-stream'
       );
       console.log('Upload completed for file:', fileToProcess.originalFilename, 'in', (Date.now() - uploadStart) / 1000, 'seconds');
-      justUploadedDriveLink = {
+      const justUploadedDriveLink = {
         name: fileToProcess.originalFilename,
         url: uploadResult.url
       };
@@ -95,51 +91,59 @@ export default async function handler(req, res) {
       } else if (fileType === 'experience') {
         experienceFiles.splice(fileIndex, 1);
       }
-      console.log('File processing completed:', (Date.now() - functionStart) / 1000, 'seconds');
+      // Update DB, keep status as processing
+      await supabase.from('eoi_submissions').update({
+        credentials_files_base64: credentialsFiles,
+        experience_files_base64: experienceFiles,
+        drive_files: driveFiles,
+        status: 'processing',
+        error_message: null
+      }).eq('id', submission.id);
+      console.log('DB update for partial completion:', (Date.now() - functionStart) / 1000, 'seconds');
+      console.log('Function completed in', (Date.now() - functionStart) / 1000, 'seconds');
+      return res.status(200).json({ message: 'Processed one file, more to go.' });
     }
 
-    // If all files are processed, send the email and mark as done
-    if (credentialsFiles.length === 0 && experienceFiles.length === 0) {
+    // If all files are uploaded and email not sent, send the email and mark as done
+    if (credentialsFiles.length === 0 && experienceFiles.length === 0 && !emailSent) {
       console.log('All files processed, preparing email:', (Date.now() - functionStart) / 1000, 'seconds');
-      // Prepare email content with Google Drive links
       const driveLinksHtml = (driveFiles && driveFiles.length > 0)
-        ? `<ul>` + driveFiles.map(f => `<li><a href="${f.url}" target="_blank" rel="noopener">${f.name}</a></li>`).join('') + `</ul>`
+        ? `<ul>` + driveFiles.map(f => `<li><a href=\"${f.url}\" target=\"_blank\" rel=\"noopener\">${f.name}</a></li>`).join('') + `</ul>`
         : '<p>No files uploaded.</p>';
       const emailContent = `
-        <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px; font-family: Arial, sans-serif; color: #172840;">
+        <table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" style=\"max-width: 600px; font-family: Arial, sans-serif; color: #172840;\">
           <tr>
-            <td align="center" style="padding: 20px 0;">
-              <img src="https://paan.africa/assets/images/logo.png" alt="PAAN Logo" style="max-width: 200px;" />
+            <td align=\"center\" style=\"padding: 20px 0;\">
+              <img src=\"https://paan.africa/assets/images/logo.png\" alt=\"PAAN Logo\" style=\"max-width: 200px;\" />
             </td>
           </tr>
           <tr>
-            <td style="background-color: #F25849; padding: 10px 20px; color: #ffffff; font-size: 18px; font-weight: bold; text-align: center;">
+            <td style=\"background-color: #F25849; padding: 10px 20px; color: #ffffff; font-size: 18px; font-weight: bold; text-align: center;\">
               New Expression of Interest Submission
             </td>
           </tr>
           <tr>
-            <td style="background-color: #f9f9f9; padding: 20px;">
-              <p style="margin: 0 0 10px; font-size: 16px;"><strong>Name:</strong> ${submission.name}</p>
-              <p style="margin: 0 0 10px; font-size: 16px;"><strong>Email:</strong> ${submission.email}</p>
-              <p style="margin: 0 0 10px; font-size: 16px;"><strong>Agency Name:</strong> ${submission.agency_name}</p>
-              <p style="margin: 0 0 10px; font-size: 16px;"><strong>Country:</strong> ${submission.country}</p>
-              <p style="margin: 0 0 10px; font-size: 16px;"><strong>Selected Opportunities:</strong> ${(submission.opportunities || []).join(', ')}</p>
-              <p style="margin: 0 0 10px; font-size: 16px;"><strong>Credentials:</strong></p>
-              <p style="margin: 0 0 10px; font-size: 16px; white-space: pre-wrap;">${submission.credentials}</p>
-              <p style="margin: 20px 0 10px; font-size: 16px;"><strong>Uploaded Files (Google Drive Links):</strong></p>
+            <td style=\"background-color: #f9f9f9; padding: 20px;\">
+              <p style=\"margin: 0 0 10px; font-size: 16px;\"><strong>Name:</strong> ${submission.name}</p>
+              <p style=\"margin: 0 0 10px; font-size: 16px;\"><strong>Email:</strong> ${submission.email}</p>
+              <p style=\"margin: 0 0 10px; font-size: 16px;\"><strong>Agency Name:</strong> ${submission.agency_name}</p>
+              <p style=\"margin: 0 0 10px; font-size: 16px;\"><strong>Country:</strong> ${submission.country}</p>
+              <p style=\"margin: 0 0 10px; font-size: 16px;\"><strong>Selected Opportunities:</strong> ${(submission.opportunities || []).join(', ')}</p>
+              <p style=\"margin: 0 0 10px; font-size: 16px;\"><strong>Credentials:</strong></p>
+              <p style=\"margin: 0 0 10px; font-size: 16px; white-space: pre-wrap;\">${submission.credentials}</p>
+              <p style=\"margin: 20px 0 10px; font-size: 16px;\"><strong>Uploaded Files (Google Drive Links):</strong></p>
               ${driveLinksHtml}
             </td>
           </tr>
           <tr>
-            <td style="background-color: #172840; padding: 10px 20px; color: #ffffff; text-align: center;">
-              <p style="margin: 0; font-size: 14px;">Pan-African Agency Network (PAAN)</p>
-              <p style="margin: 5px 0 0; font-size: 12px;">© ${new Date().getFullYear()} PAAN. All rights reserved.</p>
+            <td style=\"background-color: #172840; padding: 10px 20px; color: #ffffff; text-align: center;\">
+              <p style=\"margin: 0; font-size: 14px;\">Pan-African Agency Network (PAAN)</p>
+              <p style=\"margin: 5px 0 0; font-size: 12px;\">© ${new Date().getFullYear()} PAAN. All rights reserved.</p>
             </td>
           </tr>
         </table>
       `;
       console.log('Email content prepared:', (Date.now() - functionStart) / 1000, 'seconds');
-      // Send the email
       const transporter = nodemailer.createTransport({
         host: process.env.SMTP_HOST,
         port: parseInt(process.env.SMTP_PORT, 10),
@@ -162,30 +166,24 @@ export default async function handler(req, res) {
         html: emailContent,
       });
       console.log('Email sent:', (Date.now() - functionStart) / 1000, 'seconds');
-      // Mark as done and clear base64 fields
       await supabase.from('eoi_submissions').update({
         status: 'done',
         processed_at: new Date().toISOString(),
         error_message: null,
         credentials_files_base64: null,
         experience_files_base64: null,
-        drive_files: driveFiles
+        drive_files: driveFiles,
+        email_sent: true
       }).eq('id', submission.id);
       console.log('Final DB update completed:', (Date.now() - functionStart) / 1000, 'seconds');
       console.log('Function completed in', (Date.now() - functionStart) / 1000, 'seconds');
       return res.status(200).json({ message: 'All files processed, email sent.' });
-    } else {
-      // Not done yet, update the arrays and keep status as processing
-      await supabase.from('eoi_submissions').update({
-        credentials_files_base64: credentialsFiles,
-        experience_files_base64: experienceFiles,
-        drive_files: driveFiles,
-        status: 'processing',
-        error_message: null
-      }).eq('id', submission.id);
-      console.log('DB update for partial completion:', (Date.now() - functionStart) / 1000, 'seconds');
-      console.log('Function completed in', (Date.now() - functionStart) / 1000, 'seconds');
-      return res.status(200).json({ message: 'Processed one file, more to go.' });
+    }
+
+    // If all files are uploaded and email already sent, do nothing
+    if (credentialsFiles.length === 0 && experienceFiles.length === 0 && emailSent) {
+      console.log('All files processed and email already sent:', (Date.now() - functionStart) / 1000, 'seconds');
+      return res.status(200).json({ message: 'All files processed and email already sent.' });
     }
   } catch (error) {
     // Mark as failed
