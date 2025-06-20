@@ -111,10 +111,11 @@ export default function ReadyToApplySection() {
           </p>
           <button
             type="submit"
-            onClick={() =>
-              (window.location.href =
-                "https://membership.paan.africa/freelancers")
-            }
+            onClick={() => {
+              if (window.fbq) window.fbq('track', 'ApplyNowClick');
+              window.location.href =
+                "https://membership.paan.africa/freelancers"
+            }}
             className="bg-slate-900 text-white py-3 px-8 sm:py-2 sm:px-14 rounded-full hover:bg-orange-600 transition duration-300 font-medium text-base sm:text-lg w-full sm:w-auto"
           >
             Apply Now
