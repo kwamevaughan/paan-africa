@@ -62,7 +62,9 @@ const FreelancerHero = () => {
               </div>
             </div>
 
-            <button className="bg-[#F25849] text-white py-2 md:py-3 px-6 md:px-10 rounded-full hover:bg-orange-600 transition-all duration-300 transform ease-in-out hover:translate-y-[-5px] font-medium text-xs md:text-sm w-full md:w-auto">
+            <button className="bg-[#F25849] text-white py-2 md:py-3 px-6 md:px-10 rounded-full hover:bg-orange-600 transition-all duration-300 transform ease-in-out hover:translate-y-[-5px] font-medium text-xs md:text-sm w-full md:w-auto"
+              onClick={() => { if (window.fbq) window.fbq('track', 'BecomeCertifiedClick'); }}
+            >
               <Link href="https://membership.paan.africa/freelancers" passHref>
                 Become a Certified PAAN Freelancer
               </Link>
