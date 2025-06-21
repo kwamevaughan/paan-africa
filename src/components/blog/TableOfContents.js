@@ -103,12 +103,12 @@ const TableOfContents = ({ content }) => {
       ref={tocRef}
     >
       <div className="bg-[#F8FBFD] rounded-2xl p-6 relative">
-        <h2 className="text-xl font-semibold text-[#172840] mb-6">Table of Contents</h2>
+        <h2 className="text-xl font-semibold text-paan-dark-blue mb-6">Table of Contents</h2>
         {/* Progress vertical line */}
         <div className="absolute left-4 top-10 bottom-6 w-1 bg-[#E3EEF7] rounded-full z-0" style={{}} />
         {/* Progress fill */}
         <div
-          className="absolute left-4 w-1 bg-[#7EC3F3] rounded-full z-10 transition-all duration-300"
+          className="absolute left-4 w-1 bg-paan-blue rounded-full z-10 transition-all duration-300"
           style={{
             top: '2.5rem', // matches top-10
             bottom: `calc(100% - ${(progress * 100).toFixed(2)}%)`,
@@ -137,7 +137,7 @@ const TableOfContents = ({ content }) => {
                   ref={isActive ? activeHeadingRef : null}
                   onClick={() => scrollToHeading(heading.id)}
                   className={`pr-2 py-1 w-full text-left rounded-lg transition-all duration-200
-                    ${isActive ? 'font-semibold text-[#172840] bg-white shadow-sm' : 'text-gray-600 font-normal hover:bg-[#E3EEF7]'}
+                  ${isActive ? 'font-semibold text-paan-dark-blue bg-white shadow-sm' : 'text-gray-600 font-normal hover:bg-paan-blue/20'}
                     ${heading.level > 1 ? 'ml-3' : ''}
                   `}
                   style={{ fontSize: '0.98rem', lineHeight: '1.4' }}
