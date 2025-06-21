@@ -39,7 +39,7 @@ const SocialShare = ({ url, title }) => {
 
   return (
     <div className={`fixed left-4 top-1/2 transform -translate-y-1/2 z-50 transition-all duration-300 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'}`}>
-      <div className="flex flex-col gap-3 bg-white/90 rounded-full p-3 shadow-lg">
+      <div className="flex flex-col gap-3 bg-white/40 rounded-full p-3 shadow-lg">
         <a
           href={shareLinks.twitter}
           target="_blank"
@@ -411,12 +411,13 @@ export default function BlogPost({ blog: initialBlog, error: serverError }) {
             {/* Main Content */}
             <article className="flex-1 bg-white rounded-xl overflow-hidden">
               {blog?.article_image && (
-                <div className="relative w-full h-[400px]">
+                <div className="relative w-full h-[500px]">
                   <Image
                     src={blog.article_image}
                     alt={blog.article_name}
-                    fill
-                    className="object-cover"
+                    width={600}
+                    height={0}
+                    className="w-full h-full object-contain"
                     priority
                   />
                 </div>
