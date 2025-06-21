@@ -80,7 +80,18 @@ const TableOfContents = ({ content }) => {
   const scrollToHeading = (id) => {
     const element = document.getElementById(id);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      // Get the element's position relative to the viewport
+      const elementRect = element.getBoundingClientRect();
+      const elementTop = elementRect.top + window.pageYOffset;
+      
+      // Calculate offset for sticky header (adjust this value based on your header height)
+      const headerOffset = 100; // Adjust this value if needed
+      
+      // Scroll to the element with offset
+      window.scrollTo({
+        top: elementTop - headerOffset,
+        behavior: 'smooth'
+      });
     }
   };
 
