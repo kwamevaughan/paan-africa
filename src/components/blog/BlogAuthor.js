@@ -46,7 +46,7 @@ const BlogAuthor = ({ author }) => {
 
           {/* Author Info */}
           <div className="flex-1">
-            <h3 className="text-2xl font-bold text-[#172840] mb-2">{author}</h3>
+            <h3 className="text-2xl font-semibold text-[#172840] mb-2">{author}</h3>
             <p className="text-gray-600 mb-4">
               We're on a mission to transform fragmentation into unity and potential into global influence.
             </p>
