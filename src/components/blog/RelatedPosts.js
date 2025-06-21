@@ -100,12 +100,13 @@ const RelatedPosts = ({ posts, loading, authorRef }) => {
             handleClose();
           }}
         >
-          <div className="relative h-48">
+          <div className="relative h-[150px]">
             <Image
               src={post.image}
               alt={post.title}
-              fill
-              className="object-cover transition-transform duration-300 group-hover:scale-110"
+              width={400}
+              height={0}
+              className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-110"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
           </div>
