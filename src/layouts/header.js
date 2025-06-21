@@ -81,8 +81,8 @@ const Header = ({ navLinkColor }) => {
                   onClick={() => handleNavClick(item.label)}
                   className={`${
                     activeNav === item.label 
-                      ? "bg-[#F2B706] text-gray-900" 
-                      : `${currentTextColor} hover:text-gray-900 hover:bg-[#F2B706]`
+                      ? "bg-paan-yellow text-gray-900" 
+                      : `${currentTextColor} hover:text-gray-900 hover:bg-paan-yellow`
                   } px-4 py-2 rounded-full transition-all duration-300 cursor-pointer`}
                 >
                   {item.label}
@@ -93,7 +93,7 @@ const Header = ({ navLinkColor }) => {
               onClick={(e) => {
                 handleScroll(e, "#contact-us", isFixed);
               }}
-              className="bg-[#F25849] text-white px-4 py-3 rounded-full text-sm font-bold hover:bg-[#D6473C] transition duration-300 cursor-pointer"
+              className="bg-paan-red text-white px-4 py-3 rounded-full text-sm font-bold hover:bg-paan-red transition duration-300 cursor-pointer"
             >
               {ctaButton.label}
             </a>
@@ -110,8 +110,8 @@ const Header = ({ navLinkColor }) => {
                 onClick={() => handleNavClick(item.label)}
                 className={`${
                   activeNav === item.label 
-                    ? "bg-[#F2B706] text-gray-900" 
-                    : `${currentTextColor} hover:text-gray-900 hover:bg-[#F2B706]`
+                    ? "bg-paan-yellow text-gray-900" 
+                    : `${currentTextColor} hover:text-gray-900 hover:bg-paan-yellow`
                 } block px-4 py-2 rounded-full transition-all duration-300 cursor-pointer`}
               >
                 {item.label}
