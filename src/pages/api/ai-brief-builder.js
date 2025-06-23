@@ -36,7 +36,8 @@ export default async function handler(req, res) {
     });
 
     // Create a comprehensive prompt for the AI
-    const prompt = `As a senior creative strategist at PAAN (Pan-African Agency Network), create a comprehensive creative brief for a client project. 
+    const prompt = `
+As a client seeking to engage an agency through PAAN (Pan-African Agency Network), create a comprehensive project brief that will help match you with the ideal agency partner.
 
 PROJECT DETAILS:
 - Project Type: ${projectType}
@@ -47,40 +48,23 @@ PROJECT DETAILS:
 - Timeline: ${timeline || 'Not specified'}
 - Additional Details: ${additionalDetails || 'None provided'}
 
-Please create a professional creative brief that includes:
+First, provide a 3-4 sentence summary of your project needs for quick agency matching.
+Then, provide a detailed project brief with the following sections:
+1. PROJECT BACKGROUND & OBJECTIVES
+2. TARGET AUDIENCE INSIGHTS
+3. DESIRED OUTCOMES & DELIVERABLES
+4. TIMELINE & MILESTONES
+5. BUDGET ALLOCATION
+6. AGENCY REQUIREMENTS & PREFERENCES
+7. EVALUATION CRITERIA
 
-1. PROJECT OVERVIEW
-   - Clear project description
-   - Key objectives and success metrics
+Format your response as:
+SUMMARY:
+[summary here]
 
-2. TARGET AUDIENCE ANALYSIS
-   - Detailed audience personas
-   - Behavioral insights
-   - Pain points and motivations
-
-3. CREATIVE DIRECTION
-   - Brand voice and tone recommendations
-   - Visual style guidelines
-   - Key messaging pillars
-
-4. DELIVERABLES & TIMELINE
-   - Recommended deliverables
-   - Project phases
-   - Timeline considerations
-
-5. SUCCESS METRICS
-   - KPIs to measure success
-   - Performance indicators
-
-6. BUDGET CONSIDERATIONS
-   - Resource allocation recommendations
-   - Cost optimization suggestions
-
-7. RISK ASSESSMENT
-   - Potential challenges
-   - Mitigation strategies
-
-Format the response as a clean, professional brief that a creative team can immediately use to start working on the project. Focus on actionable insights and clear direction.`;
+BRIEF:
+[full brief here]
+`;
 
     const timeoutPromise = new Promise((_, reject) =>
       setTimeout(() => reject(new Error('OpenAI request timed out')), 55000)
@@ -88,49 +72,32 @@ Format the response as a clean, professional brief that a creative team can imme
 
     const completion = await Promise.race([
       openai.chat.completions.create({
-        model: "gpt-4",
+        model: "gpt-3.5-turbo",
         messages: [
           {
             role: "system",
-            content: "You are a senior creative strategist with 15+ years of experience in the African market. You specialize in creating comprehensive creative briefs that drive results for brands across Africa and the diaspora. Your briefs are known for being thorough, actionable, and culturally relevant."
+            content: "You are a business leader seeking agency services through PAAN. You understand your business needs well and can articulate project requirements clearly. Your goal is to create a comprehensive brief that will help PAAN match you with the most suitable agency partner from their network across Africa."
           },
           {
             role: "user",
             content: prompt
           }
         ],
-        max_tokens: 1000,
+        max_tokens: 900,
         temperature: 0.7,
       }),
       timeoutPromise
     ]);
 
-    const generatedBrief = completion.choices[0].message.content;
-
-    // Also generate a summary for quick reference
-    const summaryPrompt = `Create a concise 3-4 sentence summary of this creative brief for quick reference:
-
-${generatedBrief}
-
-Focus on the key objectives, target audience, and main deliverables.`;
-
-    const summaryCompletion = await openai.chat.completions.create({
-      model: "gpt-4",
-      messages: [
-        {
-          role: "user",
-          content: summaryPrompt
-        }
-      ],
-      max_tokens: 150,
-      temperature: 0.5,
-    });
-
-    const summary = summaryCompletion.choices[0].message.content;
+    const text = completion.choices[0].message.content;
+    // Split summary and brief
+    const summaryMatch = text.match(/SUMMARY:(.*)BRIEF:/s);
+    const summary = summaryMatch ? summaryMatch[1].trim() : '';
+    const brief = text.split('BRIEF:')[1]?.trim() || '';
 
     res.status(200).json({
       success: true,
-      brief: generatedBrief,
+      brief: brief,
       summary: summary,
       timestamp: new Date().toISOString(),
       projectDetails: {
