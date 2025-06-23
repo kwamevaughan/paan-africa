@@ -69,9 +69,9 @@ const FreelancersPage = () => {
         <Hero />
 
         <div className="mx-auto max-w-6xl mt-20 mb-20 relative">
-          <div className="absolute top-80 right-0 w-16 h-16 bg-[#F2B706] rounded-full z-0"></div>
-          <div className="absolute bottom-40 right-80 w-11 h-11 bg-[#84C1D9] rounded-full z-0"></div>
-          <div className="absolute -bottom-24 -right-40 w-14 h-14 bg-[#F25849] rounded-full z-10"></div>
+          <div className="absolute top-80 right-0 w-16 h-16 bg-paan-yellow rounded-full z-0"></div>
+          <div className="absolute bottom-40 right-80 w-11 h-11 bg-paan-blue rounded-full z-0"></div>
+          <div className="absolute -bottom-24 -right-40 w-14 h-14 bg-paan-red rounded-full z-10"></div>
           <section className="relative">            
             <div className="mb-10">
               <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
@@ -89,7 +89,7 @@ const FreelancersPage = () => {
                     Africa's most dynamic markets. Partner with us to connect with 200+ vetted 
                     communication, marketing, and tech agencies serving big brands, NGOs, and fast-growing enterprises across the continent.
                   </p>
-                  <button className="bg-[#F25849] text-white py-3 px-8 rounded-full hover:bg-orange-600 transition-all duration-300 transform ease-in-out hover:translate-y-[-5px] font-medium text-sm w-fit">
+                  <button className="bg-paan-red text-white py-3 px-8 rounded-full hover:bg-paan-red transition-all duration-300 transform ease-in-out hover:translate-y-[-5px] font-medium text-sm w-fit">
                     <Link href="https://membership.paan.africa/" passHref>
                       Become a member
                     </Link>
@@ -118,9 +118,9 @@ const FreelancersPage = () => {
         
         <div className="mx-auto max-w-6xl px-4 sm:px-6 mt-10 sm:mt-20 relative">
         {/* Yellow circle - adjusted for mobile */}
-        <div className="absolute -bottom-6 sm:-bottom-9 -left-3 sm:-left-6 w-12 h-12 sm:w-20 sm:h-20 bg-[#F2B706] rounded-full z-0"></div>
+        <div className="absolute -bottom-6 sm:-bottom-9 -left-3 sm:-left-6 w-12 h-12 sm:w-20 sm:h-20 bg-paan-yellow rounded-full z-0"></div>
         {/* Red circle - adjusted for mobile */}
-        <div className="absolute bottom-2 sm:bottom-4 left-20 sm:left-56 w-8 h-8 sm:w-11 sm:h-11 bg-[#F25849] rounded-full z-0"></div>
+        <div className="absolute bottom-2 sm:bottom-4 left-20 sm:left-56 w-8 h-8 sm:w-11 sm:h-11 bg-paan-red rounded-full z-0"></div>
         
         <section className="relative items-center mt-6 sm:mt-10">           
           <h2 className="text-sm font-bold mb-3 sm:mb-4 uppercase">Ready to Scale Across Africa?</h2>
@@ -193,7 +193,7 @@ const Hero = () => {
             <p className="text-white text-4xl mb-6">
                 Unlock Africa’s Potential<br/> with PAAN’s Agency Network
             </p>  
-            <button className="bg-[#F25849] text-white py-3 px-10 rounded-full hover:bg-orange-600 transition-all duration-300 transform ease-in-out hover:translate-y-[-5px] font-medium text-sm">
+            <button className="bg-paan-red text-white py-3 px-10 rounded-full hover:bg-paan-red transition-all duration-300 transform ease-in-out hover:translate-y-[-5px] font-medium text-sm">
               <Link href="https://membership.paan.africa/" passHref>
                 Become a member
               </Link>

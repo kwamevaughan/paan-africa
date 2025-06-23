@@ -87,7 +87,7 @@ const RelatedPosts = ({ posts, loading, authorRef }) => {
       <div className="relative">
         <button 
           onClick={handleClose}
-          className="absolute top-2 right-2 z-10 bg-white/80 rounded-full p-1 text-gray-500 hover:text-[#F25849] transition-colors"
+          className="absolute top-2 right-2 z-10 bg-white/80 rounded-full p-1 text-gray-500 hover:bg-paan-red hover:text-white transition-colors"
         >
           <Icon icon="heroicons:x-mark" className="w-5 h-5" />
         </button>
@@ -100,12 +100,13 @@ const RelatedPosts = ({ posts, loading, authorRef }) => {
             handleClose();
           }}
         >
-          <div className="relative h-48">
+          <div className="relative h-[150px]">
             <Image
               src={post.image}
               alt={post.title}
-              fill
-              className="object-cover transition-transform duration-300 group-hover:scale-110"
+              width={400}
+              height={0}
+              className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-110"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
           </div>
@@ -117,7 +118,7 @@ const RelatedPosts = ({ posts, loading, authorRef }) => {
               <span>{post.readTime}</span>
             </div>
             
-            <h4 className="text-lg font-semibold text-[#172840] mb-2 line-clamp-2 group-hover:text-[#F25849] transition-colors">
+            <h4 className="text-lg font-semibold text-paan-dark-blue mb-2 line-clamp-2 group-hover:text-paan-red transition-colors">
               {post.title}
             </h4>
             

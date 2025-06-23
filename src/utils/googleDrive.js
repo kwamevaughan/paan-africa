@@ -93,17 +93,8 @@ export async function uploadFileToDrive(
     });
     const drive = google.drive({ version: "v3", auth });
 
-    // Determine file extension based on MIME type
-    const mimeTypeMap = {
-      "application/pdf": ".pdf",
-      "application/vnd.openxmlformats-officedocument.wordprocessingml.document":
-        ".docx",
-      "application/octet-stream": ".pdf",
-    };
-    const extension = mimeTypeMap[mimeType] || ".pdf";
-
-    // Compose file name (no special case for 'company-registration')
-    const fileName = `${name} - ${agencyName} - ${formatDate()} - ${fileType}${extension}`;
+    // Compose file name using the original filename (fileType)
+    const fileName = `${name} - ${agencyName} - ${formatDate()} - ${fileType}`;
     const buffer = Buffer.from(base64String, "base64");
 
     console.log(`Decoded buffer for ${fileType}: ${buffer.length} bytes`);
