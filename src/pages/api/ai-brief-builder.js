@@ -138,21 +138,12 @@ Focus on the key objectives, target audience, and main deliverables.`;
 
   } catch (error) {
     console.error('OpenAI API error:', error);
-    
-    if (error.code === 'insufficient_quota') {
-      return res.status(503).json({ 
-        message: 'AI service is temporarily unavailable due to high demand. Please try again later.' 
-      });
-    }
-    
-    if (error.code === 'invalid_api_key') {
-      return res.status(500).json({ 
-        message: 'AI service configuration error. Please contact support.' 
-      });
-    }
 
+    // Always return JSON, and include error details in development
     return res.status(500).json({ 
-      message: 'An error occurred while generating your brief. Please try again.' 
+      message: 'An error occurred while generating your brief. Please try again.',
+      error: typeof error === 'string' ? error : error.message || error.toString(),
+      stack: process.env.NODE_ENV === 'development' ? error.stack : undefined,
     });
   }
 } 
