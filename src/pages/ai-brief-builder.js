@@ -7,6 +7,7 @@ import SEO from "@/components/SEO";
 import Header from "../layouts/header";
 import Footer from "@/layouts/footer";
 import ScrollToTop from "@/components/ScrollToTop";
+import jsPDF from 'jspdf';
 
 const AIBriefBuilderPage = () => {
   const [formData, setFormData] = useState({
@@ -166,6 +167,56 @@ ${generatedBrief.brief}`;
     const a = document.createElement('a');
     a.href = url;
     a.download = `PAAN_Creative_Brief_${new Date().toISOString().split('T')[0]}.txt`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  };
+
+  const exportAsPDF = () => {
+    if (!generatedBrief) return;
+    const doc = new jsPDF();
+    const lineHeight = 10;
+    let y = 10;
+
+    doc.setFontSize(16);
+    doc.text('PAAN AI Creative Brief', 10, y);
+    y += lineHeight * 2;
+
+    doc.setFontSize(12);
+    doc.text('Project Details:', 10, y);
+    y += lineHeight;
+    doc.text(`- Project Type: ${generatedBrief.projectDetails.projectType}`, 10, y);
+    y += lineHeight;
+    doc.text(`- Industry: ${generatedBrief.projectDetails.industry}`, 10, y);
+    y += lineHeight;
+    doc.text(`- Target Audience: ${generatedBrief.projectDetails.targetAudience}`, 10, y);
+    y += lineHeight;
+    doc.text(`- Project Goals: ${generatedBrief.projectDetails.projectGoals}`, 10, y);
+    y += lineHeight;
+    doc.text(`- Budget: ${generatedBrief.projectDetails.budget || 'Not specified'}`, 10, y);
+    y += lineHeight;
+    doc.text(`- Timeline: ${generatedBrief.projectDetails.timeline || 'Not specified'}`, 10, y);
+    y += lineHeight * 2;
+    doc.text(`Generated on: ${new Date(generatedBrief.timestamp).toLocaleDateString()}`, 10, y);
+    y += lineHeight * 2;
+
+    // Split the brief into lines that fit the page width
+    const briefLines = doc.splitTextToSize(generatedBrief.brief, 180);
+    doc.text(briefLines, 10, y);
+
+    doc.save(`PAAN_Creative_Brief_${new Date().toISOString().split('T')[0]}.pdf`);
+  };
+
+  const exportAsWord = () => {
+    if (!generatedBrief) return;
+    // Simple Word export using Blob
+    const content = `PAAN AI Creative Brief\n\nProject Details:\n- Project Type: ${generatedBrief.projectDetails.projectType}\n- Industry: ${generatedBrief.projectDetails.industry}\n- Target Audience: ${generatedBrief.projectDetails.targetAudience}\n- Project Goals: ${generatedBrief.projectDetails.projectGoals}\n- Budget: ${generatedBrief.projectDetails.budget || 'Not specified'}\n- Timeline: ${generatedBrief.projectDetails.timeline || 'Not specified'}\n\nGenerated on: ${new Date(generatedBrief.timestamp).toLocaleDateString()}\n\n${generatedBrief.brief}`;
+    const blob = new Blob([content], { type: 'application/msword' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `PAAN_Creative_Brief_${new Date().toISOString().split('T')[0]}.doc`;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
@@ -462,13 +513,38 @@ ${generatedBrief.brief}`;
                           <Icon icon="mdi:content-copy" className="w-5 h-5" />
                           Copy
                         </button>
-                        <button
-                          onClick={downloadBrief}
-                          className="px-4 py-2 bg-[#F2B706] hover:bg-[#E6A800] text-white rounded-lg transition-colors flex items-center gap-2"
-                        >
-                          <Icon icon="mdi:download" className="w-5 h-5" />
-                          Download
-                        </button>
+                        <div className="relative group">
+                          <button
+                            type="button"
+                            className="px-4 py-2 bg-[#F2B706] hover:bg-[#E6A800] text-white rounded-lg transition-colors flex items-center gap-2 focus:outline-none"
+                          >
+                            <Icon icon="mdi:download" className="w-5 h-5" />
+                            Export
+                          </button>
+                          <div className="absolute right-0 mt-2 w-44 bg-white border border-gray-200 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 group-hover:pointer-events-auto pointer-events-none transition-opacity duration-200 z-10">
+                            <button
+                              onClick={downloadBrief}
+                              className="w-full text-left px-4 py-2 hover:bg-gray-100 flex items-center gap-2 text-gray-800"
+                            >
+                              <Icon icon="mdi:file-document-outline" className="w-5 h-5" />
+                              Export as TXT
+                            </button>
+                            <button
+                              onClick={exportAsPDF}
+                              className="w-full text-left px-4 py-2 hover:bg-gray-100 flex items-center gap-2 text-gray-800"
+                            >
+                              <Icon icon="mdi:file-pdf-box" className="w-5 h-5 text-red-500" />
+                              Export as PDF
+                            </button>
+                            <button
+                              onClick={exportAsWord}
+                              className="w-full text-left px-4 py-2 hover:bg-gray-100 flex items-center gap-2 text-gray-800"
+                            >
+                              <Icon icon="mdi:file-word-box" className="w-5 h-5 text-blue-500" />
+                              Export as Word
+                            </button>
+                          </div>
+                        </div>
                       </div>
                     </div>
                     <div className="bg-gray-50 p-6 rounded-lg max-h-96 overflow-y-auto">
