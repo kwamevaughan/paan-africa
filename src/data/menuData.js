@@ -5,6 +5,7 @@ export const menuItems = [
     { href: '/partners', label: 'For Partners' },
     { href: '/freelancers', label: 'For freelancers' },   
     { href: '/summit', label: '2025 Summit' },
+    { href: 'https://member-portal.paan.africa/', label: 'Member Portal' },
     // { href: '/pricing', label: 'Pricing' },
     { href: '/blog', label: 'Blog' },
   ];
