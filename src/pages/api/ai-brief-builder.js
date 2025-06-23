@@ -82,21 +82,28 @@ Please create a professional creative brief that includes:
 
 Format the response as a clean, professional brief that a creative team can immediately use to start working on the project. Focus on actionable insights and clear direction.`;
 
-    const completion = await openai.chat.completions.create({
-      model: "gpt-4",
-      messages: [
-        {
-          role: "system",
-          content: "You are a senior creative strategist with 15+ years of experience in the African market. You specialize in creating comprehensive creative briefs that drive results for brands across Africa and the diaspora. Your briefs are known for being thorough, actionable, and culturally relevant."
-        },
-        {
-          role: "user",
-          content: prompt
-        }
-      ],
-      max_tokens: 1000,
-      temperature: 0.7,
-    });
+    const timeoutPromise = new Promise((_, reject) =>
+      setTimeout(() => reject(new Error('OpenAI request timed out')), 55000)
+    );
+
+    const completion = await Promise.race([
+      openai.chat.completions.create({
+        model: "gpt-4",
+        messages: [
+          {
+            role: "system",
+            content: "You are a senior creative strategist with 15+ years of experience in the African market. You specialize in creating comprehensive creative briefs that drive results for brands across Africa and the diaspora. Your briefs are known for being thorough, actionable, and culturally relevant."
+          },
+          {
+            role: "user",
+            content: prompt
+          }
+        ],
+        max_tokens: 1000,
+        temperature: 0.7,
+      }),
+      timeoutPromise
+    ]);
 
     const generatedBrief = completion.choices[0].message.content;
 
@@ -137,6 +144,11 @@ Focus on the key objectives, target audience, and main deliverables.`;
     });
 
   } catch (error) {
+    if (error.message && error.message.includes('timed out')) {
+      return res.status(504).json({
+        message: 'AI service timed out. Please try again or reduce your input size.',
+      });
+    }
     console.error('OpenAI API error:', error);
 
     // Always return JSON, and include error details in development
