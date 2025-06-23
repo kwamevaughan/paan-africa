@@ -32,7 +32,7 @@ const BlogAuthor = ({ author }) => {
 
   return (
     <div className="mt-12 pt-8 border-t border-gray-200">
-      <div className="bg-gradient-to-r from-[#172840]/5 to-[#243a52]/5 rounded-2xl p-8">
+      <div className="bg-gradient-to-r from-paan-dark-blue/5 to-paan-dark-blue/5 rounded-2xl p-8">
         <div className="flex flex-col md:flex-row gap-8 items-start">
           {/* Author Image */}
           <div className="relative w-24 h-24 rounded-2xl overflow-hidden bg-white shadow-lg">
@@ -46,7 +46,7 @@ const BlogAuthor = ({ author }) => {
 
           {/* Author Info */}
           <div className="flex-1">
-            <h3 className="text-2xl font-bold text-[#172840] mb-2">{author}</h3>
+            <h3 className="text-2xl font-semibold text-paan-dark-blue mb-2">{author}</h3>
             <p className="text-gray-600 mb-4">
               We're on a mission to transform fragmentation into unity and potential into global influence.
             </p>

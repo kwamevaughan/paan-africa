@@ -358,15 +358,15 @@ const Blogs = ({ initialBlogs }) => {
         {/* Hero Section */}
         <div className="bg-gradient-to-br from-[#172840] via-[#1e3147] to-[#243a52] relative py-24 pt-32 overflow-hidden">
           {/* Decorative Elements */}
-          <div className="absolute -top-4 left-8 w-8 h-8 bg-[#84C1D9] rounded-full opacity-80 animate-pulse"></div>
-          <div className="absolute -top-6 right-12 w-20 h-20 bg-[#F2B706] rounded-full opacity-70"></div>
-          <div className="absolute -bottom-10 right-8 w-32 h-32 bg-[#F25849] rounded-full opacity-60"></div>
-          <div className="absolute top-1/2 left-1/4 w-4 h-4 bg-[#84C1D9] rounded-full opacity-50"></div>
-          <div className="absolute bottom-1/4 right-1/3 w-6 h-6 bg-[#F2B706] rounded-full opacity-40"></div>
+          <div className="absolute -top-4 left-8 w-8 h-8 bg-paan-blue rounded-full opacity-80 animate-pulse"></div>
+            <div className="absolute -top-6 right-12 w-20 h-20 bg-paan-yellow rounded-full opacity-70"></div>
+          <div className="absolute -bottom-10 right-8 w-32 h-32 bg-paan-red rounded-full opacity-60"></div>
+          <div className="absolute top-1/2 left-1/4 w-4 h-4 bg-paan-blue rounded-full opacity-50"></div>
+          <div className="absolute bottom-1/4 right-1/3 w-6 h-6 bg-paan-yellow rounded-full opacity-40"></div>
           
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative text-center">
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 tracking-tight">
-              Our <span className="text-[#F2B706]">Blog</span>
+              Our <span className="text-paan-yellow">Blog</span>
             </h1>
             <p className="text-gray-300 text-xl md:text-lg max-w-3xl mx-auto leading-relaxedm mb-8">
               Insights, trends, and stories from Africa's creative and tech landscape
@@ -382,7 +382,7 @@ const Blogs = ({ initialBlogs }) => {
                   onFocus={() => setIsSearchFocused(true)}
                   onBlur={() => setIsSearchFocused(false)}
                   placeholder="Search articles..."
-                  className="w-full px-6 py-4 rounded-full bg-white/10 backdrop-blur-sm text-white placeholder-gray-300 border-2 border-white/20 focus:border-[#F2B706] focus:outline-none transition-all duration-300"
+                  className="w-full px-6 py-4 rounded-full bg-white/10 backdrop-blur-sm text-white placeholder-gray-300 border-2 border-white/20 focus:border-paan-yellow focus:outline-none transition-all duration-300"
                 />
                 <Icon
                   icon="heroicons:magnifying-glass"
@@ -403,7 +403,7 @@ const Blogs = ({ initialBlogs }) => {
                 onClick={() => setSelectedCategory('')}
                 className={`px-4 py-2 rounded-full text-sm font-medium capitalize transition-all duration-300 ${
                   !selectedCategory
-                    ? 'bg-[#F25849] text-white shadow-lg'
+                    ? 'bg-paan-red text-white shadow-lg'
                     : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                 }`}
               >
@@ -415,7 +415,7 @@ const Blogs = ({ initialBlogs }) => {
                   onClick={() => setSelectedCategory(cat)}
                   className={`px-4 py-2 rounded-full text-sm font-medium capitalize transition-all duration-300 ${
                     selectedCategory === cat
-                      ? 'bg-[#F25849] text-white shadow-lg'
+                      ? 'bg-paan-red text-white shadow-lg'
                       : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                   }`}
                 >
@@ -430,7 +430,7 @@ const Blogs = ({ initialBlogs }) => {
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value)}
-                className="px-3 py-2 rounded-lg bg-gray-100 text-gray-600 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#F25849]"
+                className="px-3 py-2 rounded-lg bg-gray-100 text-gray-600 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-paan-red"
               >
                 <option value="newest">Newest First</option>
                 <option value="oldest">Oldest First</option>
@@ -450,7 +450,7 @@ const Blogs = ({ initialBlogs }) => {
               {searchQuery && (
                 <button
                   onClick={() => setSearchQuery('')}
-                  className="mt-2 text-sm text-[#F25849] hover:text-[#D6473C] transition-colors"
+                  className="mt-2 text-sm text-paan-red hover:text-paan-red transition-colors"
                 >
                   Clear search
                 </button>
@@ -462,13 +462,13 @@ const Blogs = ({ initialBlogs }) => {
           {filteredFeaturedPost && (
             <div className="mb-20">
               <div className="flex items-center justify-between mb-8">
-                <div className="bg-[#F25849] text-white px-4 py-2 rounded-full text-sm font-semibold uppercase tracking-wide">
+                <div className="bg-paan-red text-white px-4 py-2 rounded-full text-sm font-semibold uppercase tracking-wide">
                   Featured Post
                 </div>
                 {filteredFeaturedPost.category && (
                   <button
                     onClick={() => setSelectedCategory(filteredFeaturedPost.category)}
-                    className="px-4 py-2 text-sm font-medium text-[#F25849] bg-[#F25849]/10 rounded-full hover:bg-[#F25849]/20 transition-colors"
+                    className="px-4 py-2 text-sm font-medium text-paan-red bg-paan-red/10 rounded-full hover:bg-paan-red/20 transition-colors"
                   >
                     {filteredFeaturedPost.category}
                   </button>
@@ -506,7 +506,7 @@ const Blogs = ({ initialBlogs }) => {
                     
                     <Link 
                       href={`/blogs/${filteredFeaturedPost.slug}`}
-                      className="inline-flex items-center bg-gradient-to-r from-[#F25849] to-[#D6473C] text-white px-8 py-4 rounded-full font-semibold hover:from-[#D6473C] hover:to-[#C13F32] transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl w-fit"
+                      className="inline-flex items-center bg-gradient-to-r from-paan-red to-paan-red text-white px-8 py-4 rounded-full font-semibold hover:from-paan-red hover:to-paan-red transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl w-fit"
                     >
                       Read Full Article
                       <svg className="ml-2 w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -541,8 +541,9 @@ const Blogs = ({ initialBlogs }) => {
                       <Image 
                         src={blog.image} 
                         alt={blog.title}
-                        fill
-                        className="object-cover transition-transform duration-500 group-hover:scale-110"
+                        width={400}
+                        height={0}
+                        className="object-cover h-[200px] w-full transition-transform duration-500 group-hover:scale-110"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     </div>
@@ -561,15 +562,15 @@ const Blogs = ({ initialBlogs }) => {
                               e.stopPropagation();
                               setSelectedCategory(blog.category);
                             }}
-                            className="px-3 py-1 text-xs font-medium capitalize text-[#F25849] bg-[#F25849]/10 rounded-full hover:bg-[#F25849]/20 transition-colors"
+                            className="px-3 py-1 text-xs font-medium capitalize text-paan-red bg-paan-red/10 rounded-full hover:bg-paan-red/20 transition-colors"
                           >
                             {blog.category}
                           </button>
                         )}
                       </div>
                       
-                      <h3 className="text-xl font-semibold text-[#172840] mb-3 leading-tight group-hover:text-[#F25849] transition-colors duration-300">
-                        <Link href={`/blog/${blog.slug}`} className="hover:text-[#F25849] transition-colors duration-300">
+                      <h3 className="text-xl font-semibold text-[#172840] mb-3 leading-tight group-hover:text-paan-red transition-colors duration-300">
+                        <Link href={`/blog/${blog.slug}`} className="hover:text-paan-red transition-colors duration-300">
                           {blog.title}
                         </Link>
                       </h3>
@@ -585,7 +586,7 @@ const Blogs = ({ initialBlogs }) => {
                         
                         <Link 
                           href={`/blog/${blog.slug}`}
-                          className="inline-flex items-center bg-[#84C1D9] text-[#172840] px-6 py-2 rounded-full text-sm font-semibold hover:bg-[#6FA1B7] hover:text-white transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-lg"
+                          className="inline-flex items-center bg-paan-blue text-[#172840] px-6 py-2 rounded-full text-sm font-semibold hover:bg-paan-blue hover:text-white transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-lg"
                         >
                           Read More
                           <svg className="ml-1 w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -623,7 +624,7 @@ const Blogs = ({ initialBlogs }) => {
                       setSearchQuery('');
                       setSelectedCategory('');
                     }}
-                    className="mt-4 inline-flex items-center px-4 py-2 text-sm font-medium text-[#F25849] bg-[#F25849]/10 rounded-full hover:bg-[#F25849]/20 transition-colors"
+                      className="mt-4 inline-flex items-center px-4 py-2 text-sm font-medium text-paan-red bg-paan-red/10 rounded-full hover:bg-paan-red/20 transition-colors"
                   >
                     View All Posts
                   </button>
@@ -646,7 +647,7 @@ const Blogs = ({ initialBlogs }) => {
                 value={subscribeForm.name}
                 onChange={(e) => setSubscribeForm(prev => ({ ...prev, name: e.target.value }))}
                 required
-                className="flex-1 px-6 py-3 rounded-full text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#F2B706]" 
+                className="flex-1 px-6 py-3 rounded-full text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-paan-yellow" 
               />
               <input 
                 type="email" 
@@ -659,10 +660,10 @@ const Blogs = ({ initialBlogs }) => {
               <button 
                 type="submit"
                 disabled={subscribeStatus.loading}
-                className={`bg-[#F25849] text-white px-8 py-3 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 whitespace-nowrap ${
+                className={`bg-paan-red text-white px-8 py-3 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 whitespace-nowrap ${
                   subscribeStatus.loading 
                     ? 'opacity-75 cursor-not-allowed' 
-                    : 'hover:bg-[#D6473C]'
+                    : 'hover:bg-paan-red'
                 }`}
               >
                 {subscribeStatus.loading ? (

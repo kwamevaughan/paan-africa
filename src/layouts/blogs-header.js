@@ -81,8 +81,8 @@ const Header = ({ navLinkColor }) => {
                   onClick={() => handleNavClick(item.label)}
                   className={`${
                     activeNav === item.label 
-                      ? "bg-[#F2B706] text-gray-900" 
-                      : `${currentTextColor} hover:text-gray-900 hover:bg-[#F2B706]`
+                      ? "bg-paan-yellow text-gray-900" 
+                      : `${currentTextColor} hover:text-gray-900 hover:bg-paan-yellow`
                   } px-4 py-2 rounded-full transition-all duration-300 cursor-pointer`}
                 >
                   {item.label}
@@ -108,8 +108,8 @@ const Header = ({ navLinkColor }) => {
                 onClick={() => handleNavClick(item.label)}
                 className={`${
                   activeNav === item.label 
-                    ? "bg-[#F2B706] text-gray-900" 
-                    : `${currentTextColor} hover:text-gray-900 hover:bg-[#F2B706]`
+                    ? "bg-paan-yellow text-gray-900" 
+                    : `${currentTextColor} hover:text-gray-900 hover:bg-paan-yellow`
                 } block px-4 py-2 rounded-full transition-all duration-300 cursor-pointer`}
               >
                 {item.label}

@@ -84,7 +84,7 @@ const Header = ({ navLinkColor }) => {
                     activeNav === item.label 
                       ? "bg-[#F2B706] text-gray-900" 
                       : `${currentTextColor} hover:text-gray-900 hover:bg-[#F2B706]`
-                  } px-4 py-2 rounded-full transition-all duration-300 cursor-pointer flex items-center gap-2`}
+                  } px-4 py-2 rounded-full transition-all duration-300 cursor-pointer`}
                 >
                   {item.icon && <Icon icon={item.icon} className="w-4 h-4" />}
                   {item.label}
@@ -95,7 +95,7 @@ const Header = ({ navLinkColor }) => {
               onClick={(e) => {
                 handleScroll(e, "#contact-us", isFixed);
               }}
-              className="bg-[#F25849] text-white px-4 py-3 rounded-full text-sm font-bold hover:bg-[#D6473C] transition duration-300 cursor-pointer"
+              className="bg-paan-red text-white px-4 py-3 rounded-full text-sm font-bold hover:bg-paan-red transition duration-300 cursor-pointer"
             >
               {ctaButton.label}
             </a>
@@ -114,7 +114,7 @@ const Header = ({ navLinkColor }) => {
                   activeNav === item.label 
                     ? "bg-[#F2B706] text-gray-900" 
                     : `${currentTextColor} hover:text-gray-900 hover:bg-[#F2B706]`
-                } block px-4 py-2 rounded-full transition-all duration-300 cursor-pointer flex items-center gap-2`}
+                } block px-4 py-2 rounded-full transition-all duration-300 cursor-pointer`}
               >
                 {item.icon && <Icon icon={item.icon} className="w-4 h-4" />}
                 {item.label}

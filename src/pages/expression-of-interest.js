@@ -115,7 +115,6 @@ const ExpressionOfInterest = () => {
   };
 
   const opportunityIcons = {
-    "Paid Advertising": "mdi:chart-line",
     SEO: "mdi:magnify",
     SAO: "mdi:cellphone",
   };
@@ -124,8 +123,8 @@ const ExpressionOfInterest = () => {
     <>
       <SEO
         title="Expression of Interest | PAAN"
-        description="Apply to become a partner agency with the Pan-African Agency Network (PAAN). Submit your Expression of Interest to join exclusive opportunities in Paid Advertising, SEO, and App Store Optimization across Africa."
-        keywords="Expression of Interest, PAAN, opportunities, submit, application, Africa, agency, advertising, SEO, ASO"
+        description="Apply to become a partner agency with the Pan-African Agency Network (PAAN). Submit your Expression of Interest to join exclusive opportunities in SEO, and App Store Optimization across Africa."
+        keywords="Expression of Interest, PAAN, opportunities, submit, application, Africa, agency, SEO, ASO"
         noindex={true}
       />
 
@@ -172,13 +171,13 @@ const ExpressionOfInterest = () => {
               </span>{" "}
               to support its expansion in Africa. The project focuses on{" "}
               <span className="font-semibold text-paan-yellow">
-                Paid Advertising, SEO, and App Store Optimization
+                SEO, and App Store Optimization
               </span>{" "}
               across Nigeria, Ghana, Ethiopia, South Africa, and Kenya.
             </p>
             <div className="mt-6 inline-flex items-center bg-paan-yellow rounded-full px-6 py-3 text-paan-dark-blue font-semibold">
               <Icon icon="mdi:clock-outline" className="w-4 h-4 mr-2" />
-              Deadline: June 30, 10:00 PM EAT
+              Deadline: June 20, 10:00 PM EAT
             </div>
           </div>
         </div>
@@ -378,7 +377,7 @@ const ExpressionOfInterest = () => {
                       <span className="text-paan-red ml-1">*</span>
                     </label>
                     <div className="grid grid-cols-1 gap-3">
-                      {["Paid Advertising", "SEO", "SAO"].map((opportunity) => (
+                      {["SEO", "SAO"].map((opportunity) => (
                         <label
                           key={opportunity}
                           className="group relative cursor-pointer"

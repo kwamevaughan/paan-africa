@@ -1,0 +1,14 @@
+name: Process EOI Submissions
+
+on:
+  schedule:
+    - cron: '*/5 * * * *'  # Every 5 minutes
+  workflow_dispatch:      # Allow manual trigger
+
+jobs:
+  process-eoi:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Call /api/process-eoi endpoint
+        run: |
+          curl -X POST https://paan.africa/api/process-eoi
