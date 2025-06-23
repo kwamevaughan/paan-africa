@@ -1,5 +1,5 @@
 import SEO from "@/components/SEO";
-import Header from "../layouts/partners-header"; 
+import Header from "../layouts/clients-header"; 
 import Footer from "@/layouts/footer";
 import { useEffect, useRef } from "react";
 import { useFixedHeader } from '../../utils/scrollUtils';
@@ -163,46 +163,35 @@ const FAQs = () => {
 };
 
 const Hero = () => {
-  return (
-    <div
-      className="relative h-screen w-full bg-gray-900 overflow-hidden" 
-      id="home"
-    >
-      {/* Background video positioned to cover full container */}
-      <video
-        className="absolute inset-0 w-full h-full object-cover"
-        autoPlay
-        muted
-        loop
-        playsInline
-      >
-        <source src="/assets/videos/partners-hero.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
+    return (
+      <div
+        className="relative min-h-[90vh] w-full bg-[#84C1D9] overflow-hidden flex items-center" 
+        id="home"
+      >  
+        <div className="relative w-full flex items-center justify-center mx-auto max-w-6xl px-6 md:px-8 py-12">
 
-      {/* Dark overlay */}
-      <div className="absolute inset-0 bg-black bg-opacity-50"></div>
-
-      <div className="relative h-full flex mx-auto max-w-6xl">
-        <div className="max-w-6xl px-6 md:px-8 pb-16 flex flex-col justify-end h-full">
-        
-          <div className="max-w-2xl text-left space-y-6">
-            <h1 className="text-white font-bold mb-2 relative uppercase">
-                Power Your Growth Across Africa
+          <div className="flex-1 max-w-xl text-left space-y-4 z-10">
+            <h1 className="text-dark font-bold mb-2 relative uppercase text-xl md:text-2xl lg:text-3xl">
+                Got Questions About PAAN? We've Got You Covered.
             </h1>
-            <p className="text-white text-4xl mb-6">
-                Unlock Africa’s Potential<br/> with PAAN’s Agency Network
-            </p>  
-            <button className="bg-paan-red text-white py-3 px-10 rounded-full hover:bg-paan-red transition-all duration-300 transform ease-in-out hover:translate-y-[-5px] font-medium text-sm">
-              <Link href="https://membership.paan.africa/" passHref>
-                Become a member
-              </Link>
-            </button>             
+            <p className="text-dark text-lg md:text-xl lg:text-2xl mb-4 leading-tight">
+                Find quick answers to common questions about PAAN membership, collaboration, tools, and growth.
+            </p>             
+          </div>
+  
+          {/* Right side - Image */}
+          <div className="flex-1 flex items-center justify-center relative">
+            <div className="relative w-full max-w-2xl">
+                <img 
+                    src="/assets/images/faqs-hero.png" 
+                    alt="Professional woman" 
+                    className="rounded-lg w-full h-auto object-cover" 
+                />
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  );
-};
+    );
+  };
 
 export default FAQs;

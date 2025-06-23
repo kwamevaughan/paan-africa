@@ -17,6 +17,7 @@ const AIBriefBuilder = () => {
   const [isGenerating, setIsGenerating] = useState(false);
   const [generatedBrief, setGeneratedBrief] = useState(null);
   const [activeTab, setActiveTab] = useState('form');
+  const [showExportDropdown, setShowExportDropdown] = useState(false);
 
   const projectTypes = [
     'Brand Identity & Logo Design',
@@ -165,6 +166,19 @@ ${generatedBrief.brief}`;
     a.click();
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
+  };
+
+  const handleExport = (type) => {
+    setShowExportDropdown(false);
+    if (type === 'pdf') {
+      // TODO: Implement PDF export
+      toast('Export to PDF coming soon!');
+    } else if (type === 'word') {
+      // TODO: Implement Word export
+      toast('Export to Word coming soon!');
+    } else if (type === 'txt') {
+      downloadBrief();
+    }
   };
 
   return (
@@ -378,7 +392,7 @@ ${generatedBrief.brief}`;
             <div>
               <div className="flex items-center justify-between mb-3">
                 <h3 className="font-semibold text-gray-800">Complete Creative Brief</h3>
-                <div className="flex gap-2">
+                <div className="flex gap-2 relative">
                   <button
                     onClick={() => copyToClipboard(generatedBrief.brief)}
                     className="px-3 py-1 text-sm bg-gray-100 hover:bg-gray-200 rounded-md transition-colors flex items-center gap-1"
@@ -386,13 +400,39 @@ ${generatedBrief.brief}`;
                     <Icon icon="mdi:content-copy" className="w-4 h-4" />
                     Copy
                   </button>
-                  <button
-                    onClick={downloadBrief}
-                    className="px-3 py-1 text-sm bg-[#F2B706] hover:bg-[#E6A800] text-white rounded-md transition-colors flex items-center gap-1"
-                  >
-                    <Icon icon="mdi:download" className="w-4 h-4" />
-                    Download
-                  </button>
+                  <div className="relative">
+                    <button
+                      type="button"
+                      onClick={() => setShowExportDropdown((prev) => !prev)}
+                      className="px-3 py-1 text-sm bg-[#F2B706] hover:bg-[#E6A800] text-white rounded-md transition-colors flex items-center gap-1"
+                    >
+                      <Icon icon="mdi:download" className="w-4 h-4" />
+                      Export
+                      <Icon icon="mdi:chevron-down" className="w-4 h-4 ml-1" />
+                    </button>
+                    {showExportDropdown && (
+                      <div className="absolute right-0 mt-2 w-32 bg-white border border-gray-200 rounded-md shadow-lg z-10">
+                        <button
+                          onClick={() => handleExport('pdf')}
+                          className="block w-full text-left px-4 py-2 text-sm hover:bg-gray-100"
+                        >
+                          PDF
+                        </button>
+                        <button
+                          onClick={() => handleExport('word')}
+                          className="block w-full text-left px-4 py-2 text-sm hover:bg-gray-100"
+                        >
+                          Word
+                        </button>
+                        <button
+                          onClick={() => handleExport('txt')}
+                          className="block w-full text-left px-4 py-2 text-sm hover:bg-gray-100"
+                        >
+                          TXT
+                        </button>
+                      </div>
+                    )}
+                  </div>
                 </div>
               </div>
               <div className="bg-gray-50 p-4 rounded-lg max-h-96 overflow-y-auto">
