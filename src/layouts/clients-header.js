@@ -39,9 +39,10 @@ const Header = ({ navLinkColor }) => {
               <Image
                 src="/assets/images/white-logo.png"
                 alt="Logo"
-                width={120}
-                height={42}
-                className="sm:w-[160px] sm:h-[56px] lg-custom:w-[200px] lg-custom:h-[70px]"
+                width={200}
+                height={70}
+                style={{ objectFit: 'contain', height: 'auto', width: 'auto', maxWidth: 200, maxHeight: 70 }}
+                priority
               />
             </Link>
           </div>
