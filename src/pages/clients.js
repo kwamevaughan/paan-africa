@@ -9,6 +9,7 @@ import Link from "next/link";
 import EnquiryModal from "@/components/EnquiryModal";
 import AgencyLogosGrid from "@/components/AgencyLogosGrid";
 import ScrollToTop from "@/components/ScrollToTop";
+import { Icon } from "@iconify/react";
 
 const AgenciesPage = () => {
   const sectionRefs = {
@@ -242,6 +243,212 @@ const AgenciesPage = () => {
             </div>
           </section>
         </div>
+        </div>
+
+        <div
+          className="mx-auto max-w-6xl mt-20"
+          id="ai-brief-builder"
+        >
+          <section className="text-center mb-12">
+            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-[#F25849]/10 to-[#F2B706]/10 px-4 py-2 rounded-full mb-4">
+              <Icon icon="fa-solid:magic" className="w-5 h-5 text-[#F25849]" />
+              <span className="text-sm font-semibold text-[#172840] uppercase tracking-wide">New Tool</span>
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold text-[#172840] mb-4">
+              PAAN AI Brief Builder
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+              Transform your creative vision into comprehensive, professional briefs in minutes. 
+              Our AI-powered tool helps you articulate project requirements, target audience insights, 
+              and success metrics with industry expertise.
+            </p>
+          </section>
+          
+          <section className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mt-16">
+            {/* Left side - Detailed Introduction */}
+            <div className="space-y-8">
+              <div className="space-y-6">
+                <h3 className="text-2xl font-bold text-[#172840] mb-4">
+                  Why Use AI Brief Builder?
+                </h3>
+                <p className="text-gray-700 leading-relaxed text-lg">
+                  Creating effective creative briefs is crucial for successful campaigns, but it's often time-consuming 
+                  and requires deep expertise. Our AI Brief Builder eliminates the guesswork and helps you create 
+                  professional briefs that clearly communicate your vision to agencies and freelancers.
+                </p>
+              </div>
+              
+              <div className="space-y-6">
+                <h4 className="text-xl font-semibold text-[#172840]">What You Get:</h4>
+                <div className="space-y-5">
+                  <div className="flex items-start gap-4 p-4 bg-white rounded-lg border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+                    <div className="flex-shrink-0 w-10 h-10 bg-[#F25849]/10 rounded-full flex items-center justify-center">
+                      <Icon icon="mdi:file-document-outline" className="w-5 h-5 text-[#F25849]" />
+                    </div>
+                    <div>
+                      <h5 className="font-semibold text-[#172840] mb-1">Comprehensive Project Briefs</h5>
+                      <p className="text-gray-600 text-sm leading-relaxed">
+                        Generate detailed briefs including project overview, objectives, target audience analysis, 
+                        creative direction, deliverables, timeline, and success metrics.
+                      </p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-start gap-4 p-4 bg-white rounded-lg border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+                    <div className="flex-shrink-0 w-10 h-10 bg-[#F2B706]/10 rounded-full flex items-center justify-center">
+                      <Icon icon="mdi:target" className="w-5 h-5 text-[#F2B706]" />
+                    </div>
+                    <div>
+                      <h5 className="font-semibold text-[#172840] mb-1">Industry-Specific Insights</h5>
+                      <p className="text-gray-600 text-sm leading-relaxed">
+                        Tailored recommendations based on your industry, market, and campaign type. 
+                        Get context-aware suggestions for African markets and cultural considerations.
+                      </p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-start gap-4 p-4 bg-white rounded-lg border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+                    <div className="flex-shrink-0 w-10 h-10 bg-[#84C1D9]/10 rounded-full flex items-center justify-center">
+                      <Icon icon="mdi:clock-outline" className="w-5 h-5 text-[#84C1D9]" />
+                    </div>
+                    <div>
+                      <h5 className="font-semibold text-[#172840] mb-1">Time-Saving Efficiency</h5>
+                      <p className="text-gray-600 text-sm leading-relaxed">
+                        Create professional briefs in minutes instead of hours. Focus on strategy while 
+                        our AI handles the structure and formatting.
+                      </p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-start gap-4 p-4 bg-white rounded-lg border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+                    <div className="flex-shrink-0 w-10 h-10 bg-[#F25849]/10 rounded-full flex items-center justify-center">
+                      <Icon icon="mdi:share-variant" className="w-5 h-5 text-[#F25849]" />
+                    </div>
+                    <div>
+                      <h5 className="font-semibold text-[#172840] mb-1">Easy Export & Collaboration</h5>
+                      <p className="text-gray-600 text-sm leading-relaxed">
+                        Download briefs as professional documents or copy to clipboard. 
+                        Share seamlessly with your team and PAAN partners.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="bg-gradient-to-r from-[#F25849]/5 to-[#F2B706]/5 p-6 rounded-xl border border-[#F25849]/20">
+                <h4 className="font-semibold text-[#172840] mb-3">Perfect For:</h4>
+                <ul className="space-y-2 text-sm text-gray-700">
+                  <li className="flex items-center gap-2">
+                    <Icon icon="mdi:check-circle" className="w-4 h-4 text-[#F25849]" />
+                    Marketing managers launching campaigns across African markets
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <Icon icon="mdi:check-circle" className="w-4 h-4 text-[#F25849]" />
+                    Brand managers needing consistent briefs for multiple projects
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <Icon icon="mdi:check-circle" className="w-4 h-4 text-[#F25849]" />
+                    Agencies looking to streamline client onboarding
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <Icon icon="mdi:check-circle" className="w-4 h-4 text-[#F25849]" />
+                    Teams working with PAAN's network of certified partners
+                  </li>
+                </ul>
+              </div>
+              
+              <div className="pt-6">
+                <Link
+                  href="/ai-brief-builder"
+                  className="inline-flex items-center gap-3 bg-gradient-to-r from-[#F25849] to-[#F2B706] text-white px-8 py-4 rounded-full font-semibold hover:from-[#D6473C] hover:to-[#E6A800] transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                >
+                  <Icon icon="fa-solid:magic" className="w-5 h-5" />
+                  Start Building Your Brief
+                </Link>
+                <p className="text-xs text-gray-500 mt-2">Free to use • No registration required</p>
+              </div>
+            </div>
+            
+            {/* Right side - Enhanced Visual */}
+            <div className="relative">
+              <div className="bg-gradient-to-br from-[#84C1D9]/10 to-[#F2B706]/10 p-8 rounded-2xl border border-[#84C1D9]/30">
+                <div className="bg-white rounded-xl p-6 shadow-lg">
+                  {/* Browser header */}
+                  <div className="flex items-center gap-3 mb-6">
+                    <div className="w-3 h-3 bg-[#F25849] rounded-full"></div>
+                    <div className="w-3 h-3 bg-[#F2B706] rounded-full"></div>
+                    <div className="w-3 h-3 bg-[#84C1D9] rounded-full"></div>
+                    <div className="ml-4 text-sm text-gray-500">PAAN AI Brief Builder</div>
+                  </div>
+                  
+                  {/* Form elements */}
+                  <div className="space-y-4">
+                    <div className="space-y-2">
+                      <label className="text-sm font-medium text-gray-700">Project Type</label>
+                      <div className="h-8 bg-gray-100 rounded border-l-4 border-[#F25849] px-3 flex items-center">
+                        <span className="text-sm text-gray-600">Digital Marketing Campaign</span>
+                      </div>
+                    </div>
+                    
+                    <div className="space-y-2">
+                      <label className="text-sm font-medium text-gray-700">Target Market</label>
+                      <div className="h-8 bg-gray-100 rounded border-l-4 border-[#F2B706] px-3 flex items-center">
+                        <span className="text-sm text-gray-600">East Africa (Kenya, Tanzania, Uganda)</span>
+                      </div>
+                    </div>
+                    
+                    <div className="space-y-2">
+                      <label className="text-sm font-medium text-gray-700">Campaign Objective</label>
+                      <div className="h-8 bg-gray-100 rounded border-l-4 border-[#84C1D9] px-3 flex items-center">
+                        <span className="text-sm text-gray-600">Brand Awareness & Lead Generation</span>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* AI Processing indicator */}
+                  <div className="mt-6 p-4 bg-gradient-to-r from-[#F25849]/10 to-[#F2B706]/10 rounded-lg border border-[#F25849]/20">
+                    <div className="flex items-center gap-3">
+                      <div className="animate-spin rounded-full h-5 w-5 border-2 border-[#F25849] border-t-transparent"></div>
+                      <div className="text-[#F25849] text-sm font-medium">AI is generating your professional brief...</div>
+                    </div>
+                  </div>
+                  
+                  {/* Generated brief preview */}
+                  <div className="mt-4 p-4 bg-[#84C1D9]/5 rounded-lg border border-[#84C1D9]/20">
+                    <div className="flex items-center gap-2 text-[#84C1D9] text-sm font-medium mb-2">
+                      <Icon icon="mdi:file-check" className="w-4 h-4" />
+                      Generated Brief Preview
+                    </div>
+                    <div className="space-y-2 text-xs text-gray-600">
+                      <div className="h-3 bg-gray-200 rounded w-full"></div>
+                      <div className="h-3 bg-gray-200 rounded w-3/4"></div>
+                      <div className="h-3 bg-gray-200 rounded w-5/6"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              {/* Floating elements */}
+              <div className="absolute -top-4 -right-4 w-8 h-8 bg-[#F25849] rounded-full opacity-20"></div>
+              <div className="absolute -bottom-4 -left-4 w-6 h-6 bg-[#F2B706] rounded-full opacity-20"></div>
+              <div className="absolute top-1/2 -right-2 w-4 h-4 bg-[#84C1D9] rounded-full opacity-30"></div>
+              
+              {/* Success metrics */}
+              <div className="absolute -bottom-8 -left-8 bg-white p-4 rounded-lg shadow-lg border border-gray-100">
+                <div className="text-center">
+                  <div className="text-2xl font-bold text-[#F25849]">95%</div>
+                  <div className="text-xs text-gray-600">Time Saved</div>
+                </div>
+              </div>
+              
+              <div className="absolute -top-8 -right-8 bg-white p-4 rounded-lg shadow-lg border border-gray-100">
+                <div className="text-center">
+                  <div className="text-2xl font-bold text-[#F2B706]">100%</div>
+                  <div className="text-xs text-gray-600">Professional Quality</div>
+                </div>
+              </div>
+            </div>
+          </section>
         </div>
 
         <AgencyLogosGrid />
