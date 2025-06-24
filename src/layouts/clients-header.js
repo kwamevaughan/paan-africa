@@ -16,41 +16,49 @@ const Header = ({ navLinkColor }) => {
 
   const handleNavClick = (label) => {
     setActiveNav(label);
+    setIsMenuOpen(false); // Close mobile menu when item is clicked
+  };
+
+  const handleMenuToggle = () => {
+    setIsMenuOpen(!isMenuOpen);
   };
 
   return (
     <nav
-      className={`w-full text-white z-20 transition-all duration-300 ${
+      className={`w-full text-white z-50 transition-all duration-300 ${
         isFixed
-          ? "fixed top-0 left-0 shadow-lg backdrop-blur-md text-white bg-[#172840]"
+          ? "fixed top-0 left-0 shadow-lg backdrop-blur-md text-white bg-[#172840]/95"
           : "absolute bg-transparent"
       }`}
     >
-      <div className="w-full px-4 lg-custom:px-8 text-white">
-        <div className="flex items-center justify-between py-2">
+      <div className="w-full px-4 sm:px-6 lg-custom:px-8 text-white">
+        <div className="flex items-center justify-between h-16 sm:h-18 lg-custom:h-20">
           {/* Logo - Left Side */}
-          <div className="flex-shrink-0">
+          <div className="flex-shrink-0 z-20">
             <Link href="/" passHref>
               <Image
                 src="/assets/images/white-logo.png"
                 alt="Logo"
-                width={200}
-                height={70}
+                width={120}
+                height={42}
+                className="sm:w-[160px] sm:h-[56px] lg-custom:w-[200px] lg-custom:h-[70px]"
               />
             </Link>
           </div>
 
           {/* Hamburger Menu Button (mobile only) */}
-          <div className="lg-custom:hidden flex items-center">
+          <div className="lg-custom:hidden flex items-center z-20">
             <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className={`p-2 rounded-md ${currentTextColor} focus:outline-none`}
+              onClick={handleMenuToggle}
+              className={`p-2 rounded-lg ${currentTextColor} hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-[#F2B706] transition-colors duration-200`}
+              aria-label="Toggle navigation menu"
             >
               <svg
-                className="h-6 w-6"
+                className="h-6 w-6 transition-transform duration-200"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
+                style={{ transform: isMenuOpen ? 'rotate(90deg)' : 'rotate(0deg)' }}
               >
                 {isMenuOpen ? (
                   <path
@@ -98,29 +106,79 @@ const Header = ({ navLinkColor }) => {
           </div>
         </div>
 
+        {/* Mobile Menu Overlay */}
+        {isMenuOpen && (
+          <div 
+            className="fixed inset-0 bg-black bg-opacity-60 z-10 lg-custom:hidden"
+            onClick={() => setIsMenuOpen(false)}
+          />
+        )}
+
         {/* Mobile Menu (shown when hamburger is clicked) */}
-        <div className={`${isMenuOpen ? "block" : "hidden"} lg-custom:hidden`}>
-          <div className="px-2 pt-2 pb-3 space-y-1 bg-white rounded-lg shadow-lg">
-            {freelancersMenu.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                onClick={() => handleNavClick(item.label)}
-                className={`${
-                  activeNav === item.label 
-                    ? "bg-[#F2B706] text-gray-900" 
-                    : `${currentTextColor} hover:text-gray-900 hover:bg-[#F2B706]`
-                } block px-4 py-2 rounded-full transition-all duration-300 cursor-pointer`}
-              >
-                {item.label}
-              </a>
-            ))}
-            <a
-              href="https://member-portal.paan.africa/"
-              className={ctaButton.mobileClassName}
+        <div 
+          className={`lg-custom:hidden fixed top-0 right-0 h-full w-80 max-w-[85vw] bg-[#172840] shadow-2xl transform transition-transform duration-300 ease-in-out z-20 ${
+            isMenuOpen ? 'translate-x-0' : 'translate-x-full'
+          }`}
+        >
+          {/* Mobile Menu Header */}
+          <div className="flex items-center justify-between p-4 border-b border-white/10">
+            <div className="flex items-center">
+              <Image
+                src="/assets/images/white-logo.png"
+                alt="Logo"
+                width={110}
+                height={39}
+              />
+            </div>
+            <button
+              onClick={() => setIsMenuOpen(false)}
+              className="p-2 rounded-lg text-white hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-[#F2B706]"
+              aria-label="Close navigation menu"
             >
-              {ctaButton.label}
-            </a>
+              <svg
+                className="h-6 w-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+          </div>
+
+          {/* Mobile Menu Content */}
+          <div className="flex flex-col h-full">
+            <div className="flex-1 px-4 py-6 space-y-3">
+              {freelancersMenu.map((item) => (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  onClick={() => handleNavClick(item.label)}
+                  className={`${
+                    activeNav === item.label 
+                      ? "bg-[#F2B706] text-gray-900 shadow-sm" 
+                      : "text-white hover:text-gray-900 hover:bg-[#F2B706]"
+                  } flex items-center px-4 py-3 rounded-xl transition-all duration-200 text-base font-medium`}
+                >
+                  <span>{item.label}</span>
+                </a>
+              ))}
+            </div>
+
+            {/* Mobile CTA Button */}
+            <div className="p-4 border-t border-white/10">
+              <a
+                href="https://member-portal.paan.africa/"
+                className="w-full bg-[#F2B706] text-gray-900 px-6 py-4 rounded-xl text-base font-bold hover:bg-[#F2B706]/90 transition duration-300 cursor-pointer flex items-center justify-center shadow-lg"
+              >
+                {ctaButton.label}
+              </a>
+            </div>
           </div>
         </div>
       </div>

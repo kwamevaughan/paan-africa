@@ -1,10 +1,7 @@
 // data/menuData.js
 export const menuItems = [
-    { href: '/', label: 'For Agencies' },
-    { href: '/clients', label: 'For Clients' },
-    { href: '/partners', label: 'For Partners' },
-    { href: '/freelancers', label: 'For freelancers' },   
-    { href: '/summit', label: '2025 Summit' },
+    { href: '/', label: 'Home' },  
+    { href: '/faqs', label: 'FAQs' },
     { href: 'https://member-portal.paan.africa/', label: 'Member Portal' },
     // { href: '/pricing', label: 'Pricing' },
     { href: '/blog', label: 'Blog' },
