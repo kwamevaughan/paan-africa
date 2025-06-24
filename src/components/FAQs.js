@@ -16,110 +16,142 @@ const FAQs = () => {
   const faqData = {
     "About PAAN": [
       {
-        question: "What is PAAN?",
-        answer: "PAAN connects you to cross-border deals, shared tools, mentorship, increased visibility, and revenue growth — while keeping your agency fully independent."
+        question: "What is the value of joining PAAN?",
+        answer: "Joining PAAN gives you access to cross-border deals, shared tools, mentorship, increased visibility, and revenue growth — all while keeping your agency fully independent."
       },
       {
-        question: "Who can join PAAN?",
-        answer: "PAAN is open to all African professionals, alumni from African institutions, and members of the African diaspora who are committed to contributing to Africa's development and growth."
+        question: "Will we lose our identity or clients?",
+        answer: "Not at all. You retain your brand and clients. PAAN supports collaboration, not competition, between member agencies."
       },
       {
-        question: "What are the main benefits of joining?",
-        answer: "Members gain access to a vast network of professionals, mentorship opportunities, business collaboration platforms, career development resources, and exclusive events across Africa and internationally."
+        question: "How are members selected?",
+        answer: "Based on track record, regional relevance, capacity, and integrity. Every agency undergoes a due diligence process."
       },
       {
-        question: "How do I become a member?",
-        answer: "You can join PAAN by completing our online application form, providing your professional background, and paying the annual membership fee. Applications are reviewed within 5-7 business days."
+        question: "Is there a trial period or non-paid membership option?",
+        answer: "Yes. Agencies can join as non-paying members to access key opportunities and tools before upgrading."
+      },
+      {
+        question: "What makes PAAN different from other networks?",
+        answer: "PAAN is built by agencies for agencies, focused on deal flow, innovation, and Pan-African impact — not just listings."
+      },
+      {
+        question: "How many agencies are currently part of PAAN?",
+        answer: "Over 100 agencies are already members. The goal is to reach 500 by end of 2025."
+      },
+      {
+        question: "When was PAAN founded, and by whom?",
+        answer: "Founded in 2024 by Duncan Njue in Kenya to unite and grow Africa's fragmented agency ecosystem."
       }
     ],
     "Collaboration": [
       {
-        question: "What types of collaboration opportunities are available?",
-        answer: "PAAN facilitates business partnerships, joint ventures, research collaborations, startup incubation programs, and cross-border investment opportunities among members."
+        question: "How does PAAN help us get new clients?",
+        answer: "PAAN sources briefs and RFPs, enables joint pitching, and increases agency visibility through network promotions."
       },
       {
-        question: "How do I find collaboration partners?",
-        answer: "Use our advanced member directory with filters for industry, location, expertise, and interests. You can also participate in sector-specific forums and attend networking events."
+        question: "What kinds of collaborations can we expect?",
+        answer: "You can co-deliver services, co-bid on projects, and share resources — all matched and facilitated by the PAAN Secretariat."
       },
       {
-        question: "Are there collaboration success stories?",
-        answer: "Yes! We've facilitated over 200 successful partnerships, including tech startups securing funding, agricultural ventures expanding across borders, and professional service firms establishing regional offices."
+        question: "How do collaborations within PAAN work?",
+        answer: "The Secretariat identifies opportunities and matches agencies based on skills, fit, and relevance."
       },
       {
-        question: "What support does PAAN provide for collaborations?",
-        answer: "We offer legal framework guidance, due diligence support, partnership agreement templates, and ongoing mediation services to ensure successful long-term collaborations."
+        question: "Can I contact other agencies directly?",
+        answer: "No. PAAN coordinates all matches to maintain focus and alignment."
+      },
+      {
+        question: "Can I see a list of member agencies?",
+        answer: "No. PAAN protects member privacy and only connects agencies when there's a purposeful opportunity."
+      },
+      {
+        question: "What revenue opportunities can we expect?",
+        answer: "You can earn via referrals, co-bidding, subcontracting, and grants for creative innovation."
+      },
+      {
+        question: "How does PAAN support regional expansion?",
+        answer: "Through regional hubs in Nairobi, Lagos, Johannesburg, and Cairo, offering space, insights, and credibility."
       }
     ],
     "Tools & Resources": [
       {
-        question: "What digital tools are available to members?",
-        answer: "Members have access to our proprietary networking platform, project management tools, document sharing systems, video conferencing facilities, and mobile app for on-the-go connectivity."
+        question: "What tools and resources are included?",
+        answer: "Access to a portal with hiring tools, tender trackers, legal templates, training, and marketing kits."
       },
       {
-        question: "Are there educational resources available?",
-        answer: "Yes! We provide access to online courses, webinar libraries, industry reports, market research, policy briefs, and expert-led masterclasses on various topics relevant to African business."
+        question: "What is PAAN Labs?",
+        answer: "An innovation platform that connects agencies with global tech firms to co-create in AI, AR/VR, and more."
       },
       {
-        question: "How can I access funding resources?",
-        answer: "Our platform includes a comprehensive database of funding opportunities, grant applications, investor networks, and crowdfunding platforms specifically curated for African entrepreneurs and businesses."
+        question: "Can we access global tech companies through PAAN?",
+        answer: "Yes. Members can resell, pilot, or co-develop tools from global tech partners."
       },
       {
-        question: "What technical support is available?",
-        answer: "We offer 24/7 technical support through our help desk, video tutorials, user guides, and regular training sessions to help members maximize their use of platform tools."
+        question: "How does PAAN help us stay ahead of trends?",
+        answer: "Through trend reports, research publications, and expert-led webinars with organizations like Kantar and Meta."
+      },
+      {
+        question: "What legal and compliance support is included?",
+        answer: "Access to cross-border legal templates, contract guides, and regional compliance advice."
+      },
+      {
+        question: "Are there tools for managing multi-agency projects?",
+        answer: "Yes. The PAAN Project Management Hub helps track timelines, deliverables, and collaboration workflows."
       }
     ],
     "Mentorship": [
       {
-        question: "How does the mentorship program work?",
-        answer: "Our structured mentorship program matches experienced professionals with emerging leaders based on industry, goals, and compatibility. Programs run for 6-12 months with regular check-ins."
+        question: "What is the mentorship program?",
+        answer: "Members receive 1:1 mentorship from Tier 1 Gold agencies on operations, growth, and creativity."
       },
       {
-        question: "Can I be both a mentor and mentee?",
-        answer: "Absolutely! Many members participate in both roles, mentoring in areas of their expertise while receiving guidance in new areas of interest or career development."
+        question: "Can we find talent through PAAN?",
+        answer: "Yes. PAAN offers access to vetted freelancers, interns, and top creative talent across Africa."
       },
       {
-        question: "What qualifications do I need to become a mentor?",
-        answer: "Mentors should have at least 5 years of professional experience, demonstrated leadership, and a commitment to supporting others. We provide mentor training and ongoing support."
+        question: "Does PAAN help during PR or operational crises?",
+        answer: "Yes. Strategic PR support and peer guidance is available within 24–48 hours."
       },
       {
-        question: "How are mentor-mentee matches made?",
-        answer: "Our algorithm considers professional background, industry expertise, career goals, personality assessments, and geographic preferences to create optimal matches for successful relationships."
+        question: "Are training programs available?",
+        answer: "Yes. Members get free/subsidized access to training on leadership, account management, and private coaching for Gold tier."
       }
     ],
     "Marketing": [
       {
-        question: "What marketing support does PAAN provide?",
-        answer: "We offer brand visibility through our newsletter, social media channels, website features, event speaking opportunities, and access to our member directory for business promotion."
+        question: "How does PAAN promote member agencies?",
+        answer: "Via campaigns, case studies, speaking slots, and global PR initiatives."
       },
       {
-        question: "Can I advertise my business to other members?",
-        answer: "Yes! Members can post business opportunities, job openings, and service offerings in our marketplace. Premium members get enhanced visibility and promotional features."
+        question: "Are there regional limitations to benefits?",
+        answer: "No. All members benefit equally across Africa's regions."
       },
       {
-        question: "Are there marketing collaboration opportunities?",
-        answer: "We facilitate joint marketing campaigns, co-branding opportunities, cross-promotional partnerships, and group participation in trade shows and conferences across Africa."
+        question: "How does PAAN attract global clients?",
+        answer: "PAAN promotes the full network and matches multinational briefs to capable member agencies."
       },
       {
-        question: "How can I improve my personal brand through PAAN?",
-        answer: "Participate in our thought leadership program, contribute to our blog, speak at events, engage in forums, and showcase your expertise through our member spotlight features."
+        question: "What is the PAAN Summit?",
+        answer: "An annual event featuring panels, showcases, and workshops — online and in-person — to build visibility and trust."
+      },
+      {
+        question: "Are media features or awards included?",
+        answer: "Yes. Members can be featured in regional media, summit interviews, and Pan-African creative awards."
       }
     ],
     "Governance": [
       {
         question: "How is PAAN governed?",
-        answer: "PAAN is governed by a Board of Directors elected by members, with representation from all African regions. We also have advisory committees for different sectors and functional areas."
+        answer: "It is member-led, with an advisory board and a central secretariat in Nairobi, supported by regional hubs."
       },
       {
-        question: "How can I get involved in PAAN's governance?",
-        answer: "Members can participate through committee memberships, board elections, policy working groups, and regional chapter leadership. Nominations are held annually with transparent voting processes."
+        question: "Can members influence policy?",
+        answer: "Yes. Members help shape policies around African digital trade, industry standards, and creative regulation."
       },
       {
-        question: "What is PAAN's accountability framework?",
-        answer: "We publish annual reports, conduct member surveys, hold regular town halls, maintain financial transparency, and have an independent audit committee to ensure accountability to our members."
-      },
-      {
-        question: "How are decisions made within PAAN?",
-        answer: "Major decisions go through member consultation, committee review, and board approval. We use a consensus-building approach that considers input from all stakeholder groups and regional perspectives."
+        question: "Do I need to attend in-person events?",
+        answer: "No. Most PAAN events are hybrid or virtual, so all members can participate from anywhere."
       }
     ]
   };
