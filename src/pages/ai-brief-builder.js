@@ -4,7 +4,7 @@ import toast from 'react-hot-toast';
 import Image from 'next/image';
 import Link from 'next/link';
 import SEO from "@/components/SEO";
-import Header from "../layouts/header";
+import Header from "../layouts/clients-header";
 import Footer from "@/layouts/footer";
 import ScrollToTop from "@/components/ScrollToTop";
 import jsPDF from 'jspdf';
@@ -231,75 +231,57 @@ ${generatedBrief.brief}`;
         keywords="AI brief builder, creative brief generator, marketing brief, project brief, PAAN AI tools"
       />
       
-      <Header />
+      <Header navLinkColor="text-white" />
       
       <main className="min-h-screen bg-gray-50 relative">
-        {/* Breadcrumb */}
-        <div className="bg-white border-b">
-          <div className="mx-auto max-w-6xl px-4 py-4">
-            <nav className="flex items-center space-x-2 text-sm text-gray-600">
-              <Link href="/" className="hover:text-[#F25849] transition-colors">
-                Home
-              </Link>
-              <Icon icon="mdi:chevron-right" className="w-4 h-4" />
-              <span className="text-[#F25849] font-medium">AI Brief Builder</span>
-            </nav>
-          </div>
-        </div>
-
-        {/* Hero Section */}
-        <div className="bg-gradient-to-r from-[#F25849] to-[#F2B706] text-white">
-          <div className="mx-auto max-w-6xl px-4 py-16">
+        {/* Hero Section - Moved to top for transparent header */}
+        <div className="relative bg-gradient-to-r from-[#F25849] to-[#F2B706] text-white pt-24 pb-16">
+          {/* Background Pattern Overlay */}
+          <div className="absolute inset-0 bg-black/10"></div>
+          
+          <div className="relative mx-auto max-w-6xl px-4 py-16">
             <div className="text-center">
               <div className="flex justify-center mb-6">
-                <div className="bg-white/20 p-4 rounded-full">
-                  <Icon icon="fa-solid:magic" className="w-12 h-12" />
+                <div className="bg-white/20 backdrop-blur-sm p-6 rounded-full border border-white/30">
+                  <Icon icon="fa-solid:magic" className="w-16 h-16" />
                 </div>
               </div>
-              <h1 className="text-4xl md:text-5xl font-bold mb-4">
+              <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
                 PAAN AI Brief Builder
               </h1>
-              <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto">
+              <p className="text-xl md:text-2xl text-white/95 max-w-4xl mx-auto leading-relaxed mb-8">
                 Generate comprehensive, professional creative briefs powered by AI. 
                 Get actionable insights and strategic direction in seconds.
               </p>
-              <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
-                <Link
-                  href="/"
-                  className="bg-white/20 hover:bg-white/30 text-white px-6 py-3 rounded-full font-medium transition-colors"
-                >
-                  ← Back to Home
-                </Link>
-              </div>
             </div>
           </div>
         </div>
 
         {/* Features Section */}
-        <div className="mx-auto max-w-6xl px-4 py-12">
+        <div className="mx-auto max-w-6xl px-4 py-16">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-            <div className="text-center">
-              <div className="bg-[#F25849]/10 p-4 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
-                <Icon icon="fa-solid:magic" className="w-8 h-8 text-[#F25849]" />
+            <div className="text-center group">
+              <div className="bg-[#F25849]/10 p-6 rounded-full w-20 h-20 mx-auto mb-6 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                <Icon icon="fa-solid:bolt" className="w-10 h-10 text-[#F25849]" />
               </div>
-              <h3 className="text-xl font-bold text-[#172840] mb-2">Lightning Fast</h3>
+              <h3 className="text-xl font-bold text-[#172840] mb-3">Lightning Fast</h3>
               <p className="text-gray-600">Generate professional briefs in seconds, not hours. Save time and accelerate your creative process.</p>
             </div>
             
-            <div className="text-center">
-              <div className="bg-[#F2B706]/10 p-4 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
-                <Icon icon="fa-solid:magic" className="w-8 h-8 text-[#F2B706]" />
+            <div className="text-center group">
+              <div className="bg-[#F2B706]/10 p-6 rounded-full w-20 h-20 mx-auto mb-6 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                <Icon icon="fa-solid:brain" className="w-10 h-10 text-[#F2B706]" />
               </div>
-              <h3 className="text-xl font-bold text-[#172840] mb-2">AI-Powered Intelligence</h3>
+              <h3 className="text-xl font-bold text-[#172840] mb-3">AI-Powered Intelligence</h3>
               <p className="text-gray-600">Leverage advanced AI to create comprehensive briefs with strategic insights and actionable direction.</p>
             </div>
             
-            <div className="text-center">
-              <div className="bg-[#84C1D9]/10 p-4 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
-                <Icon icon="fa-solid:magic" className="w-8 h-8 text-[#84C1D9]" />
+            <div className="text-center group">
+              <div className="bg-[#84C1D9]/10 p-6 rounded-full w-20 h-20 mx-auto mb-6 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                <Icon icon="fa-solid:download" className="w-10 h-10 text-[#84C1D9]" />
               </div>
-              <h3 className="text-xl font-bold text-[#172840] mb-2">Easy Export</h3>
-              <p className="text-gray-600">Download your briefs as text files or copy to clipboard for seamless sharing with your team.</p>
+              <h3 className="text-xl font-bold text-[#172840] mb-3">Easy Export</h3>
+              <p className="text-gray-600">Download your briefs as text files, PDFs, or Word documents for seamless sharing with your team.</p>
             </div>
           </div>
         </div>
@@ -465,7 +447,7 @@ ${generatedBrief.brief}`;
                   <button
                     type="submit"
                     disabled={isGenerating}
-                    className="w-full bg-gradient-to-r from-[#F25849] to-[#F2B706] text-white py-4 px-8 rounded-lg font-semibold text-lg hover:from-[#D6473C] hover:to-[#E6A800] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-3 shadow-lg"
+                    className="w-full bg-gradient-to-r from-[#F25849] to-[#F2B706] text-white py-4 px-8 rounded-lg font-semibold text-lg hover:from-[#D6473C] hover:to-[#E6A800] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-3 shadow-lg hover:scale-105"
                   >
                     {isGenerating ? (
                       <>

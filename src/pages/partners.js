@@ -1,16 +1,19 @@
 import SEO from "@/components/SEO";
 import Header from "../layouts/partners-header"; 
 import Footer from "@/layouts/footer";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useFixedHeader } from '../../utils/scrollUtils';
 import PartnerBenefits from "@/components/PartnersBenefits";
 import Steps from "@/components/steps";
 import Link from "next/link";
 import AgencyLogosGrid from "@/components/AgencyLogosGrid";
 import ScrollToTop from "@/components/ScrollToTop";
+import AgencyEnquiryModal from "@/components/AgencyEnquiryModal";
 
 
 const FreelancersPage = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  
   const sectionRefs = {
     home: useRef(null),
     aboutUs: useRef(null),
@@ -57,6 +60,9 @@ const FreelancersPage = () => {
     };
   }, []);
 
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
+
   return (
     <>
       <SEO
@@ -66,7 +72,7 @@ const FreelancersPage = () => {
       />
       <main className="px-3 pt-6 sm:px-0 sm:pt-0 relative">
         <Header />
-        <Hero />
+        <Hero openModal={openModal} />
 
         <div className="mx-auto max-w-6xl mt-20 mb-20 relative">
           <div className="absolute top-80 right-0 w-16 h-16 bg-paan-yellow rounded-full z-0"></div>
@@ -89,17 +95,18 @@ const FreelancersPage = () => {
                     Africa's most dynamic markets. Partner with us to connect with 200+ vetted 
                     communication, marketing, and tech agencies serving big brands, NGOs, and fast-growing enterprises across the continent.
                   </p>
-                  <button className="bg-paan-red text-white py-3 px-8 rounded-full hover:bg-paan-red transition-all duration-300 transform ease-in-out hover:translate-y-[-5px] font-medium text-sm w-fit">
-                    <Link href="https://membership.paan.africa/" passHref>
-                      Become a member
-                    </Link>
+                  <button 
+                    onClick={openModal}
+                    className="bg-paan-red text-white py-3 px-8 rounded-full hover:bg-paan-red transition-all duration-300 transform ease-in-out hover:translate-y-[-5px] font-medium text-sm w-fit"
+                  >
+                    Enquire
                   </button> 
                 </div>
               </div>
               <div className="mt-20">
                 <h2 className="text-2xl font-semibold">Why Partner with PAAN?</h2>
-                <p className="text-gray-700 leading-relaxed mt-4 font-normal text-2xl">Africa’s markets are diverse, complex, and ripe with opportunity—but navigating them alone is costly and time-consuming. 
-                  PAAN’s agency network acts as your local accelerator, providing:</p>
+                <p className="text-gray-700 leading-relaxed mt-4 font-normal text-2xl">Africa's markets are diverse, complex, and ripe with opportunity—but navigating them alone is costly and time-consuming. 
+                  PAAN's agency network acts as your local accelerator, providing:</p>
               </div>
             </div>
           </section>
@@ -157,12 +164,13 @@ const FreelancersPage = () => {
         <AgencyLogosGrid/>
         <Footer />
         <ScrollToTop />
+        <AgencyEnquiryModal isOpen={isModalOpen} onClose={closeModal} />
       </main>
     </>
   );
 };
 
-const Hero = () => {
+const Hero = ({ openModal }) => {
   return (
     <div
       className="relative h-screen w-full bg-gray-900 overflow-hidden" 
@@ -191,12 +199,13 @@ const Hero = () => {
                 Power Your Growth Across Africa
             </h1>
             <p className="text-white text-4xl mb-6">
-                Unlock Africa’s Potential<br/> with PAAN’s Agency Network
+                Unlock Africa's Potential<br/> with PAAN's Agency Network
             </p>  
-            <button className="bg-paan-red text-white py-3 px-10 rounded-full hover:bg-paan-red transition-all duration-300 transform ease-in-out hover:translate-y-[-5px] font-medium text-sm">
-              <Link href="https://membership.paan.africa/" passHref>
-                Become a member
-              </Link>
+            <button 
+              onClick={openModal}
+              className="bg-paan-red text-white py-3 px-10 rounded-full hover:bg-paan-red transition-all duration-300 transform ease-in-out hover:translate-y-[-5px] font-medium text-sm"
+            >
+              Enquire
             </button>             
           </div>
         </div>

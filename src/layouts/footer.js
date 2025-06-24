@@ -56,7 +56,7 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* Middle Section: Newsletter and Vertical Menu with Full-Width Background */}
+      {/* Middle Section: Newsletter, Tools, and Vertical Menu with Full-Width Background */}
       <div className="relative">
         {/* Background Image with Reduced Opacity */}
         <Image
@@ -68,8 +68,7 @@ const Footer = () => {
         />
         {/* Content Container */}
         <section
-          className="relative max-w-6xl mx-auto px-3 sm:px-0 grid grid-cols-1 sm:grid-cols-2 gap-8 mt-20 pb-10 justify-items-start
- md:justify-items-end"
+          className="relative max-w-6xl mx-auto px-3 sm:px-0 grid grid-cols-1 sm:grid-cols-3 gap-8 mt-20 pb-10"
         >
           {/* Left: Newsletter Signup */}
           <div className="flex flex-col gap-8">
@@ -148,8 +147,26 @@ const Footer = () => {
             </div>
           </div>
 
+          {/* Center: Tools Section */}
+          <div className="flex flex-col gap-4">
+            <h3 className="text-lg font-semibold text-white mb-2">Tools</h3>
+            <ul className="space-y-2">
+              <li>
+                <Link
+                  href="/ai-brief-builder"
+                  className="font-normal text-gray-200 hover:text-white hover:underline transition-all duration-300 cursor-pointer flex items-center gap-2"
+                >
+                  <Icon icon="fa-solid:magic" className="w-4 h-4" />
+                  AI Brief Builder
+                </Link>
+              </li>
+              {/* Add more tools here as they become available */}
+            </ul>
+          </div>
+
           {/* Right: Vertical Menu */}
           <div className="flex flex-col gap-4">
+            <h3 className="text-lg font-semibold text-white mb-2">Quick Links</h3>
             <ul className="space-y-2">
               {menuItems.map((item) => (
                 <li key={item.href}>

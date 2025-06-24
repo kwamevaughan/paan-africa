@@ -17,7 +17,6 @@ import AgencyEnquiryModal from "@/components/AgencyEnquiryModal";
 import AgenciesMarquee from "@/components/AgenciesMarquee";
 import AgencyLogosGrid from "@/components/AgencyLogosGrid";
 import ScrollToTop from "@/components/ScrollToTop";
-import AIBriefBuilder from "@/components/AIBriefBuilder";
 
 const HomePage = () => {
   const sectionRefs = {
@@ -462,107 +461,6 @@ const HomePage = () => {
             </div>
             <div className="col-span-1 sm:col-span-2 flex flex-col gap-4">
               <OfferingTab />
-            </div>
-          </section>
-        </div>
-
-        <div
-          className="mx-auto max-w-6xl mt-20"
-          id="ai-brief-builder"
-        >
-          <section>
-            <p className="uppercase font-semibold mb-4">5. PAAN AI Brief Builder</p>
-            <p className="text-2xl mb-6">
-              Meet your AI-powered creative strategist. Generate comprehensive, 
-              professional creative briefs in seconds.
-            </p>
-          </section>
-          
-          <section className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mt-12">
-            {/* Left side - Introduction */}
-            <div className="space-y-6">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="bg-gradient-to-r from-[#F25849] to-[#F2B706] p-3 rounded-full">
-                  <Icon icon="fa-solid:magic" className="w-8 h-8 text-white" />
-                </div>
-                <h3 className="text-2xl font-bold text-[#172840]">AI-Powered Creative Intelligence</h3>
-              </div>
-              
-              <div className="space-y-4">
-                <div className="flex items-start gap-3">
-                  <Icon icon="mdi:check-circle" className="w-6 h-6 text-[#F25849] mt-1 flex-shrink-0" />
-                  <div>
-                    <h4 className="font-semibold text-[#172840]">Comprehensive Briefs</h4>
-                    <p className="text-gray-600 text-sm">Generate detailed creative briefs with project overview, audience analysis, creative direction, and success metrics.</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start gap-3">
-                  <Icon icon="mdi:check-circle" className="w-6 h-6 text-[#F25849] mt-1 flex-shrink-0" />
-                  <div>
-                    <h4 className="font-semibold text-[#172840]">Industry Expertise</h4>
-                    <p className="text-gray-600 text-sm">Tailored insights for your specific industry, target audience, and project goals.</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start gap-3">
-                  <Icon icon="mdi:check-circle" className="w-6 h-6 text-[#F25849] mt-1 flex-shrink-0" />
-                  <div>
-                    <h4 className="font-semibold text-[#172840]">Instant Results</h4>
-                    <p className="text-gray-600 text-sm">Get professional briefs in seconds, not hours. Save time and accelerate your creative process.</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start gap-3">
-                  <Icon icon="mdi:check-circle" className="w-6 h-6 text-[#F25849] mt-1 flex-shrink-0" />
-                  <div>
-                    <h4 className="font-semibold text-[#172840]">Export & Share</h4>
-                    <p className="text-gray-600 text-sm">Download briefs as text files or copy to clipboard for easy sharing with your team.</p>
-                  </div>
-                </div>
-              </div>
-              
-              <div className="pt-4">
-                <Link
-                  href="/ai-brief-builder"
-                  className="inline-flex items-center gap-2 bg-gradient-to-r from-[#F25849] to-[#F2B706] text-white px-8 py-4 rounded-full font-semibold hover:from-[#D6473C] hover:to-[#E6A800] transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
-                >
-                  <Icon icon="fa-solid:magic" className="w-5 h-5" />
-                  Get Started
-                </Link>
-              </div>
-            </div>
-            
-            {/* Right side - Visual */}
-            <div className="relative">
-              <div className="bg-gradient-to-br from-[#84C1D9]/20 to-[#F2B706]/20 p-8 rounded-2xl border border-[#84C1D9]/30">
-                <div className="bg-white rounded-xl p-6 shadow-lg">
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="w-3 h-3 bg-[#F25849] rounded-full"></div>
-                    <div className="w-3 h-3 bg-[#F2B706] rounded-full"></div>
-                    <div className="w-3 h-3 bg-[#84C1D9] rounded-full"></div>
-                  </div>
-                  
-                  <div className="space-y-3">
-                    <div className="h-4 bg-gray-200 rounded w-3/4"></div>
-                    <div className="h-4 bg-gray-200 rounded w-1/2"></div>
-                    <div className="h-4 bg-gray-200 rounded w-5/6"></div>
-                    <div className="h-4 bg-gray-200 rounded w-2/3"></div>
-                  </div>
-                  
-                  <div className="mt-6 p-3 bg-[#F25849]/10 rounded-lg border-l-4 border-[#F25849]">
-                    <div className="flex items-center gap-2 text-[#F25849] text-sm font-medium">
-                      <Icon icon="fa-solid:magic" className="w-4 h-4" />
-                      AI Generated Brief
-                    </div>
-                  </div>
-                </div>
-              </div>
-              
-              {/* Floating elements */}
-              <div className="absolute -top-4 -right-4 w-8 h-8 bg-[#F25849] rounded-full opacity-20"></div>
-              <div className="absolute -bottom-4 -left-4 w-6 h-6 bg-[#F2B706] rounded-full opacity-20"></div>
-              <div className="absolute top-1/2 -right-2 w-4 h-4 bg-[#84C1D9] rounded-full opacity-30"></div>
             </div>
           </section>
         </div>
