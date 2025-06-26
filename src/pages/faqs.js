@@ -129,17 +129,26 @@ const Hero = () => {
         {/* Right side - Image */}
         <div className="flex-1 flex items-center justify-center relative order-1 lg:order-2 w-full">
           <div className="relative w-full max-w-sm sm:max-w-md lg:max-w-2xl">
-            <img 
-              src="/assets/images/faqs-hero.png" 
-              alt="Professional woman" 
-              className="rounded-lg w-full h-auto object-cover" 
-            />
+            <video
+              className="w-full h-auto rounded-3xl"
+              style={{
+                clipPath: 'polygon(0% 0%, calc(100% - 80px) 0%, 100% 80px, 100% 100%, 80px 100%, 0% calc(100% - 80px))'
+              }}
+              autoPlay
+              muted
+              loop
+              playsInline
+            >
+              <source src="/assets/videos/faqs-video.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
           </div>
         </div>
       </div>
     </div>
   );
 };
+
 
 
 export default FAQsPage;
