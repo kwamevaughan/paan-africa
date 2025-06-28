@@ -230,207 +230,301 @@ ${generatedBrief.brief}`;
         description="Use PAAN's AI-powered brief builder to generate comprehensive, professional creative briefs in seconds. Streamline your creative process with our intelligent brief generator."
         keywords="AI brief builder, creative brief generator, marketing brief, project brief, PAAN AI tools"
       />
-      
+
       <Header navLinkColor="text-white" />
-      
-      <main className="min-h-screen bg-gray-50 relative">
+
+      <main className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-100 relative">
         {/* Hero Section - Moved to top for transparent header */}
-        <div className="relative bg-gradient-to-r from-[#F25849] to-[#F2B706] text-white pt-24 pb-16">
+        <div className="relative bg-gradient-to-r from-[#F25849] to-[#F2B706] text-white pt-24 pb-16 overflow-hidden">
           {/* Background Pattern Overlay */}
           <div className="absolute inset-0 bg-black/10"></div>
-          
+
+          {/* Animated Background Elements */}
+          <div className="absolute inset-0 overflow-hidden">
+            <div className="absolute -top-40 -right-40 w-80 h-80 bg-white/10 rounded-full blur-3xl animate-pulse"></div>
+            <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-white/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+          </div>
+
           <div className="relative mx-auto max-w-6xl px-4 py-16">
             <div className="text-center">
-              <div className="flex justify-center mb-6">
-                <div className="bg-white/20 backdrop-blur-sm p-6 rounded-full border border-white/30">
+              <div className="flex justify-center mb-8">
+                <div className="bg-white/20 backdrop-blur-sm p-6 rounded-full border border-white/30 shadow-2xl transform hover:scale-105 transition-all duration-300">
                   <Icon icon="fa-solid:magic" className="w-16 h-16" />
                 </div>
               </div>
-              <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+              <h1 className="text-4xl md:text-6xl font-bold mb-8 leading-tight bg-gradient-to-r from-white to-white/90 bg-clip-text text-transparent">
                 PAAN AI Brief Builder
               </h1>
-              <p className="text-xl md:text-2xl text-white/95 max-w-4xl mx-auto leading-relaxed mb-8">
-                Generate comprehensive, professional creative briefs powered by AI. 
-                Get actionable insights and strategic direction in seconds.
+              <p className="text-xl md:text-2xl text-white/95 max-w-4xl mx-auto leading-relaxed mb-8 font-light">
+                Generate comprehensive, professional creative briefs powered by
+                AI. Get actionable insights and strategic direction in seconds.
               </p>
             </div>
           </div>
         </div>
 
         {/* Features Section */}
-        <div className="mx-auto max-w-6xl px-4 py-16">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+        <div className="mx-auto max-w-6xl px-4 pt-20 pb-10 ">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
             <div className="text-center group">
-              <div className="bg-[#F25849]/10 p-6 rounded-full w-20 h-20 mx-auto mb-6 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                <Icon icon="fa-solid:bolt" className="w-10 h-10 text-[#F25849]" />
+              <div className="bg-gradient-to-br from-[#F25849]/20 to-[#F25849]/10 p-6 rounded-full w-20 h-20 mx-auto mb-8 flex items-center justify-center group-hover:scale-110 transition-all duration-500 shadow-lg">
+                <Icon
+                  icon="fa-solid:bolt"
+                  className="w-10 h-10 text-[#F25849]"
+                />
               </div>
-              <h3 className="text-xl font-bold text-[#172840] mb-3">Lightning Fast</h3>
-              <p className="text-gray-600">Generate professional briefs in seconds, not hours. Save time and accelerate your creative process.</p>
+              <h3 className="text-2xl font-bold text-[#172840] mb-4">
+                Lightning Fast
+              </h3>
+              <p className="text-gray-600 text-lg leading-relaxed">
+                Generate professional briefs in seconds, not hours. Save time
+                and accelerate your creative process.
+              </p>
             </div>
-            
+
             <div className="text-center group">
-              <div className="bg-[#F2B706]/10 p-6 rounded-full w-20 h-20 mx-auto mb-6 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                <Icon icon="fa-solid:brain" className="w-10 h-10 text-[#F2B706]" />
+              <div className="bg-gradient-to-br from-[#F2B706]/20 to-[#F2B706]/10 p-6 rounded-full w-20 h-20 mx-auto mb-8 flex items-center justify-center group-hover:scale-110 transition-all duration-500 shadow-lg">
+                <Icon
+                  icon="fa-solid:brain"
+                  className="w-10 h-10 text-[#F2B706]"
+                />
               </div>
-              <h3 className="text-xl font-bold text-[#172840] mb-3">AI-Powered Intelligence</h3>
-              <p className="text-gray-600">Leverage advanced AI to create comprehensive briefs with strategic insights and actionable direction.</p>
+              <h3 className="text-2xl font-bold text-[#172840] mb-4">
+                AI-Powered Intelligence
+              </h3>
+              <p className="text-gray-600 text-lg leading-relaxed">
+                Leverage advanced AI to create comprehensive briefs with
+                strategic insights and actionable direction.
+              </p>
             </div>
-            
+
             <div className="text-center group">
-              <div className="bg-[#84C1D9]/10 p-6 rounded-full w-20 h-20 mx-auto mb-6 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                <Icon icon="fa-solid:download" className="w-10 h-10 text-[#84C1D9]" />
+              <div className="bg-gradient-to-br from-[#84C1D9]/20 to-[#84C1D9]/10 p-6 rounded-full w-20 h-20 mx-auto mb-8 flex items-center justify-center group-hover:scale-110 transition-all duration-500 shadow-lg">
+                <Icon
+                  icon="fa-solid:download"
+                  className="w-10 h-10 text-[#84C1D9]"
+                />
               </div>
-              <h3 className="text-xl font-bold text-[#172840] mb-3">Easy Export</h3>
-              <p className="text-gray-600">Download your briefs as text files, PDFs, or Word documents for seamless sharing with your team.</p>
+              <h3 className="text-2xl font-bold text-[#172840] mb-4">
+                Easy Export
+              </h3>
+              <p className="text-gray-600 text-lg leading-relaxed">
+                Download your briefs as text files, PDFs, or Word documents for
+                seamless sharing with your team.
+              </p>
             </div>
           </div>
         </div>
 
         {/* Main Content */}
-        <div className="mx-auto max-w-4xl px-4 py-12">
-          <div className="bg-white rounded-xl shadow-lg overflow-hidden">
+        <div className="mx-auto max-w-5xl px-4 mb-20">
+          <div className="bg-white rounded-3xl shadow-2xl overflow-hidden border border-gray-100">
             {/* Tabs */}
-            <div className="flex border-b">
+            <div className="flex border-b border-gray-100">
               <button
-                onClick={() => setActiveTab('form')}
-                className={`flex-1 py-4 px-6 text-center font-medium transition-colors ${
-                  activeTab === 'form'
-                    ? 'bg-[#F25849] text-white'
-                    : 'bg-gray-50 text-gray-600 hover:bg-gray-100'
+                onClick={() => setActiveTab("form")}
+                className={`flex-1 py-6 px-8 text-center font-semibold text-lg transition-all duration-300 cursor-default ${
+                  activeTab === "form"
+                    ? "bg-paan-red text-white shadow-lg"
+                    : "bg-gray-50 text-gray-600 hover:bg-gray-100 hover:text-gray-800"
                 }`}
               >
-                <Icon icon="fa-solid:magic" className="w-5 h-5 inline mr-2" />
+                <Icon icon="fa-solid:magic" className="w-6 h-6 inline mr-3" />
                 Project Details
               </button>
               {generatedBrief && (
                 <button
-                  onClick={() => setActiveTab('brief')}
-                  className={`flex-1 py-4 px-6 text-center font-medium transition-colors ${
-                    activeTab === 'brief'
-                      ? 'bg-[#F25849] text-white'
-                      : 'bg-gray-50 text-gray-600 hover:bg-gray-100'
+                  onClick={() => setActiveTab("brief")}
+                  className={`flex-1 py-6 px-8 text-center font-semibold text-lg transition-all duration-300 ${
+                    activeTab === "brief"
+                      ? "bg-gradient-to-r from-paan-red to-paan-yellow text-white shadow-lg"
+                      : "bg-gray-50 text-gray-600 hover:bg-gray-100 hover:text-gray-800"
                   }`}
                 >
-                  <Icon icon="fa-solid:magic" className="w-5 h-5 inline mr-2" />
+                  <Icon
+                    icon="fa-solid:file-alt"
+                    className="w-6 h-6 inline mr-3"
+                  />
                   Generated Brief
                 </button>
               )}
             </div>
 
             {/* Content */}
-            <div className="p-8">
-              {activeTab === 'form' && (
-                <form onSubmit={handleSubmit} className="space-y-8">
+            <div className="p-12">
+              {activeTab === "form" && (
+                <form onSubmit={handleSubmit} className="space-y-10">
                   {/* Project Type */}
-                  <div>
-                    <label className="block text-lg font-semibold text-gray-800 mb-3">
-                      Project Type <span className="text-red-500">*</span>
+                  <div className="relative group">
+                    <label className="block text-xl font-semibold text-gray-800 mb-4 flex items-center">
+                      <Icon
+                        icon="fa-solid:project-diagram"
+                        className="w-6 h-6 mr-3 text-[#F25849] group-hover:scale-110 transition-transform duration-300"
+                      />
+                      Project Type <span className="text-red-500 ml-1">*</span>
                     </label>
-                    <select
-                      name="projectType"
-                      value={formData.projectType}
-                      onChange={handleInputChange}
-                      className="w-full px-4 py-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#F25849] focus:border-transparent text-lg"
-                      required
-                    >
-                      <option value="">Select project type</option>
-                      {projectTypes.map((type) => (
-                        <option key={type} value={type}>{type}</option>
-                      ))}
-                    </select>
+                    <div className="relative">
+                      <select
+                        name="projectType"
+                        value={formData.projectType}
+                        onChange={handleInputChange}
+                        className="w-full px-6 py-5 border-2 border-gray-200 rounded-2xl focus:ring-4 focus:ring-[#F25849]/20 focus:border-[#F25849] focus:outline-none text-md bg-white transition-all duration-300 appearance-none  hover:border-gray-300 hover:shadow-lg group-hover:shadow-xl"
+                        required
+                      >
+                        <option value="">Choose your project type</option>
+                        {projectTypes.map((type) => (
+                          <option key={type} value={type}>
+                            {type}
+                          </option>
+                        ))}
+                      </select>
+                      <Icon
+                        icon="fa-solid:chevron-down"
+                        className="absolute right-6 top-1/2 transform -translate-y-1/2 text-gray-400 pointer-events-none w-5 h-5 transition-transform duration-300 group-hover:scale-110"
+                      />
+                    </div>
                   </div>
 
                   {/* Industry */}
-                  <div>
-                    <label className="block text-lg font-semibold text-gray-800 mb-3">
-                      Industry <span className="text-red-500">*</span>
+                  <div className="relative group">
+                    <label className="block text-xl font-semibold text-gray-800 mb-4 flex items-center">
+                      <Icon
+                        icon="fa-solid:industry"
+                        className="w-6 h-6 mr-3 text-[#F2B706] group-hover:scale-110 transition-transform duration-300"
+                      />
+                      Industry <span className="text-red-500 ml-1">*</span>
                     </label>
-                    <select
-                      name="industry"
-                      value={formData.industry}
-                      onChange={handleInputChange}
-                      className="w-full px-4 py-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#F25849] focus:border-transparent text-lg"
-                      required
-                    >
-                      <option value="">Select industry</option>
-                      {industries.map((industry) => (
-                        <option key={industry} value={industry}>{industry}</option>
-                      ))}
-                    </select>
+                    <div className="relative">
+                      <select
+                        name="industry"
+                        value={formData.industry}
+                        onChange={handleInputChange}
+                        className="w-full px-6 py-5 border-2 border-gray-200 rounded-2xl focus:ring-4 focus:ring-[#F2B706]/20 focus:border-[#F2B706] focus:outline-none text-md bg-white transition-all duration-300 appearance-none hover:border-gray-300 hover:shadow-lg group-hover:shadow-xl"
+                        required
+                      >
+                        <option value="">Select your industry</option>
+                        {industries.map((industry) => (
+                          <option key={industry} value={industry}>
+                            {industry}
+                          </option>
+                        ))}
+                      </select>
+                      <Icon
+                        icon="fa-solid:chevron-down"
+                        className="absolute right-6 top-1/2 transform -translate-y-1/2 text-gray-400 pointer-events-none w-5 h-5 transition-transform duration-300 group-hover:scale-110"
+                      />
+                    </div>
                   </div>
 
                   {/* Target Audience */}
-                  <div>
-                    <label className="block text-lg font-semibold text-gray-800 mb-3">
-                      Target Audience <span className="text-red-500">*</span>
+                  <div className="relative group">
+                    <label className="block text-xl font-semibold text-gray-800 mb-4 flex items-center">
+                      <Icon
+                        icon="fa-solid:users"
+                        className="w-6 h-6 mr-3 text-[#84C1D9] group-hover:scale-110 transition-transform duration-300"
+                      />
+                      Target Audience{" "}
+                      <span className="text-red-500 ml-1">*</span>
                     </label>
                     <textarea
                       name="targetAudience"
                       value={formData.targetAudience}
                       onChange={handleInputChange}
                       placeholder="Describe your target audience (demographics, behaviors, interests, etc.)"
-                      className="w-full px-4 py-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#F25849] focus:border-transparent resize-none text-lg"
+                      className="w-full px-6 py-5 border-2 border-gray-200 rounded-2xl focus:ring-4 focus:ring-[#84C1D9]/20 focus:border-[#84C1D9] focus:outline-none resize-none text-md bg-white transition-all duration-300 hover:border-gray-300 hover:shadow-lg group-hover:shadow-xl min-h-[120px]"
                       rows="4"
                       required
                     />
                   </div>
 
                   {/* Project Goals */}
-                  <div>
-                    <label className="block text-lg font-semibold text-gray-800 mb-3">
-                      Project Goals <span className="text-red-500">*</span>
+                  <div className="relative group">
+                    <label className="block text-xl font-semibold text-gray-800 mb-4 flex items-center">
+                      <Icon
+                        icon="fa-solid:target"
+                        className="w-6 h-6 mr-3 text-[#F25849] group-hover:scale-110 transition-transform duration-300"
+                      />
+                      Project Goals <span className="text-red-500 ml-1">*</span>
                     </label>
                     <textarea
                       name="projectGoals"
                       value={formData.projectGoals}
                       onChange={handleInputChange}
                       placeholder="What do you want to achieve with this project? (increase brand awareness, drive sales, etc.)"
-                      className="w-full px-4 py-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#F25849] focus:border-transparent resize-none text-lg"
+                      className="w-full px-6 py-5 border-2 border-gray-200 rounded-2xl focus:ring-4 focus:ring-[#F25849]/20 focus:border-[#F25849] focus:outline-none resize-none text-md bg-white transition-all duration-300 hover:border-gray-300 hover:shadow-lg group-hover:shadow-xl min-h-[120px]"
                       rows="4"
                       required
                     />
                   </div>
 
                   {/* Budget and Timeline */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                      <label className="block text-lg font-semibold text-gray-800 mb-3">
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <div className="relative group">
+                      <label className="block text-xl font-semibold text-gray-800 mb-4 flex items-center">
+                        <Icon
+                          icon="fa-solid:dollar-sign"
+                          className="w-6 h-6 mr-3 text-[#F2B706] group-hover:scale-110 transition-transform duration-300"
+                        />
                         Budget Range
                       </label>
-                      <select
-                        name="budget"
-                        value={formData.budget}
-                        onChange={handleInputChange}
-                        className="w-full px-4 py-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#F25849] focus:border-transparent text-lg"
-                      >
-                        <option value="">Select budget range</option>
-                        {budgetRanges.map((range) => (
-                          <option key={range} value={range}>{range}</option>
-                        ))}
-                      </select>
+                      <div className="relative">
+                        <select
+                          name="budget"
+                          value={formData.budget}
+                          onChange={handleInputChange}
+                          className="w-full px-6 py-5 border-2 border-gray-200 rounded-2xl focus:ring-4 focus:ring-[#F2B706]/20 focus:border-[#F2B706] focus:outline-none text-md bg-white transition-all duration-300 appearance-none hover:border-gray-300 hover:shadow-lg group-hover:shadow-xl"
+                        >
+                          <option value="">Select budget range</option>
+                          {budgetRanges.map((range) => (
+                            <option key={range} value={range}>
+                              {range}
+                            </option>
+                          ))}
+                        </select>
+                        <Icon
+                          icon="fa-solid:chevron-down"
+                          className="absolute right-6 top-1/2 transform -translate-y-1/2 text-gray-400 pointer-events-none w-5 h-5 transition-transform duration-300 group-hover:scale-110"
+                        />
+                      </div>
                     </div>
 
-                    <div>
-                      <label className="block text-lg font-semibold text-gray-800 mb-3">
+                    <div className="relative group">
+                      <label className="block text-xl font-semibold text-gray-800 mb-4 flex items-center">
+                        <Icon
+                          icon="fa-solid:clock"
+                          className="w-6 h-6 mr-3 text-[#84C1D9] group-hover:scale-110 transition-transform duration-300"
+                        />
                         Timeline
                       </label>
-                      <select
-                        name="timeline"
-                        value={formData.timeline}
-                        onChange={handleInputChange}
-                        className="w-full px-4 py-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#F25849] focus:border-transparent text-lg"
-                      >
-                        <option value="">Select timeline</option>
-                        {timelineOptions.map((option) => (
-                          <option key={option} value={option}>{option}</option>
-                        ))}
-                      </select>
+                      <div className="relative">
+                        <select
+                          name="timeline"
+                          value={formData.timeline}
+                          onChange={handleInputChange}
+                          className="w-full px-6 py-5 border-2 border-gray-200 rounded-2xl focus:ring-4 focus:ring-[#84C1D9]/20 focus:border-[#84C1D9] focus:outline-none text-md bg-white transition-all duration-300 appearance-none hover:border-gray-300 hover:shadow-lg group-hover:shadow-xl"
+                        >
+                          <option value="">Select timeline</option>
+                          {timelineOptions.map((option) => (
+                            <option key={option} value={option}>
+                              {option}
+                            </option>
+                          ))}
+                        </select>
+                        <Icon
+                          icon="fa-solid:chevron-down"
+                          className="absolute right-6 top-1/2 transform -translate-y-1/2 text-gray-400 pointer-events-none w-5 h-5 transition-transform duration-300 group-hover:scale-110"
+                        />
+                      </div>
                     </div>
                   </div>
 
                   {/* Additional Details */}
-                  <div>
-                    <label className="block text-lg font-semibold text-gray-800 mb-3">
+                  <div className="relative group">
+                    <label className="block text-xl font-semibold text-gray-800 mb-4 flex items-center">
+                      <Icon
+                        icon="fa-solid:plus-circle"
+                        className="w-6 h-6 mr-3 text-[#F25849] group-hover:scale-110 transition-transform duration-300"
+                      />
                       Additional Details
                     </label>
                     <textarea
@@ -438,59 +532,138 @@ ${generatedBrief.brief}`;
                       value={formData.additionalDetails}
                       onChange={handleInputChange}
                       placeholder="Any additional context, requirements, or specific details about your project"
-                      className="w-full px-4 py-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#F25849] focus:border-transparent resize-none text-lg"
+                      className="w-full px-6 py-5 border-2 border-gray-200 rounded-2xl focus:ring-4 focus:ring-[#F25849]/20 focus:border-[#F25849] focus:outline-none resize-none text-md bg-white transition-all duration-300 hover:border-gray-300 hover:shadow-lg group-hover:shadow-xl min-h-[120px]"
                       rows="4"
                     />
                   </div>
 
                   {/* Submit Button */}
-                  <button
-                    type="submit"
-                    disabled={isGenerating}
-                    className="w-full bg-gradient-to-r from-[#F25849] to-[#F2B706] text-white py-4 px-8 rounded-lg font-semibold text-lg hover:from-[#D6473C] hover:to-[#E6A800] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-3 shadow-lg hover:scale-105"
-                  >
-                    {isGenerating ? (
-                      <>
-                        <Icon icon="mdi:loading" className="w-6 h-6 animate-spin" />
-                        Generating Brief...
-                      </>
-                    ) : (
-                      <>
-                        <Icon icon="fa-solid:magic" className="w-6 h-6" />
-                        Generate Creative Brief
-                      </>
-                    )}
-                  </button>
+                  <div className="pt-8 flex justify-center">
+                    <button
+                      type="submit"
+                      disabled={isGenerating}
+                      className=" bg-paan-red text-white py-4 px-6 rounded-2xl font-semibold hover:from-[#D6473C] hover:via-[#E6A800] hover:to-[#6BA8C4] transition-all duration-500 disabled:opacity-50 disabled:cursor-not-allowed flex items-center  justify-center gap-4 shadow-2xl hover:shadow-3xl hover:scale-[1.02] transform active:scale-[0.98]"
+                    >
+                      {isGenerating ? (
+                        <>
+                          <div className="w-8 h-8 border-4 border-white/30 border-t-white rounded-full animate-spin"></div>
+                          Generating Brief...
+                        </>
+                      ) : (
+                        <>
+                          <Icon
+                            icon="fa-solid:magic"
+                            className="w-8 h-8 animate-pulse"
+                          />
+                          Generate Creative Brief
+                        </>
+                      )}
+                    </button>
+                  </div>
                 </form>
               )}
 
-              {activeTab === 'brief' && generatedBrief && (
-                <div className="space-y-8">
+              {activeTab === "brief" && generatedBrief && (
+                <div className="space-y-10">
                   {/* Summary */}
-                  <div className="bg-[#84C1D9]/10 p-6 rounded-lg border-l-4 border-[#84C1D9]">
-                    <h3 className="font-bold text-[#172840] text-xl mb-3">Brief Summary</h3>
-                    <p className="text-gray-700 text-lg">{generatedBrief.summary}</p>
+                  <div className="bg-gradient-to-r from-[#84C1D9]/10 to-[#84C1D9]/5 p-8 rounded-2xl border-l-4 border-[#84C1D9] shadow-lg">
+                    <h3 className="font-bold text-[#172840] text-2xl mb-4 flex items-center">
+                      <Icon
+                        icon="fa-solid:lightbulb"
+                        className="w-7 h-7 mr-3 text-[#84C1D9]"
+                      />
+                      Brief Summary
+                    </h3>
+                    <p className="text-gray-700 text-xl leading-relaxed">
+                      {generatedBrief.summary}
+                    </p>
                   </div>
 
                   {/* Project Details */}
-                  <div className="bg-gray-50 p-6 rounded-lg">
-                    <h3 className="font-bold text-gray-800 text-xl mb-4">Project Details</h3>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-lg">
-                      <div><strong>Project Type:</strong> {generatedBrief.projectDetails.projectType}</div>
-                      <div><strong>Industry:</strong> {generatedBrief.projectDetails.industry}</div>
-                      <div><strong>Budget:</strong> {generatedBrief.projectDetails.budget || 'Not specified'}</div>
-                      <div><strong>Timeline:</strong> {generatedBrief.projectDetails.timeline || 'Not specified'}</div>
+                  <div className="bg-gradient-to-br from-gray-50 to-white p-8 rounded-2xl shadow-lg border border-gray-100">
+                    <h3 className="font-bold text-gray-800 text-2xl mb-6 flex items-center">
+                      <Icon
+                        icon="fa-solid:clipboard-list"
+                        className="w-7 h-7 mr-3 text-[#F25849]"
+                      />
+                      Project Details
+                    </h3>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-xl">
+                      <div className="flex items-center p-4 bg-white rounded-xl shadow-sm">
+                        <Icon
+                          icon="fa-solid:project-diagram"
+                          className="w-6 h-6 mr-3 text-[#F25849]"
+                        />
+                        <div>
+                          <div className="font-semibold text-gray-800">
+                            Project Type
+                          </div>
+                          <div className="text-gray-600">
+                            {generatedBrief.projectDetails.projectType}
+                          </div>
+                        </div>
+                      </div>
+                      <div className="flex items-center p-4 bg-white rounded-xl shadow-sm">
+                        <Icon
+                          icon="fa-solid:industry"
+                          className="w-6 h-6 mr-3 text-[#F2B706]"
+                        />
+                        <div>
+                          <div className="font-semibold text-gray-800">
+                            Industry
+                          </div>
+                          <div className="text-gray-600">
+                            {generatedBrief.projectDetails.industry}
+                          </div>
+                        </div>
+                      </div>
+                      <div className="flex items-center p-4 bg-white rounded-xl shadow-sm">
+                        <Icon
+                          icon="fa-solid:dollar-sign"
+                          className="w-6 h-6 mr-3 text-[#F2B706]"
+                        />
+                        <div>
+                          <div className="font-semibold text-gray-800">
+                            Budget
+                          </div>
+                          <div className="text-gray-600">
+                            {generatedBrief.projectDetails.budget ||
+                              "Not specified"}
+                          </div>
+                        </div>
+                      </div>
+                      <div className="flex items-center p-4 bg-white rounded-xl shadow-sm">
+                        <Icon
+                          icon="fa-solid:clock"
+                          className="w-6 h-6 mr-3 text-[#84C1D9]"
+                        />
+                        <div>
+                          <div className="font-semibold text-gray-800">
+                            Timeline
+                          </div>
+                          <div className="text-gray-600">
+                            {generatedBrief.projectDetails.timeline ||
+                              "Not specified"}
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
 
                   {/* Generated Brief */}
                   <div>
-                    <div className="flex items-center justify-between mb-4">
-                      <h3 className="font-bold text-gray-800 text-xl">Complete Creative Brief</h3>
-                      <div className="flex gap-3">
+                    <div className="flex items-center justify-between mb-6">
+                      <h3 className="font-bold text-gray-800 text-2xl flex items-center">
+                        <Icon
+                          icon="fa-solid:file-alt"
+                          className="w-7 h-7 mr-3 text-[#F25849]"
+                        />
+                        Complete Creative Brief
+                      </h3>
+                      <div className="flex gap-4">
                         <button
                           onClick={() => copyToClipboard(generatedBrief.brief)}
-                          className="px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors flex items-center gap-2"
+                          className="px-6 py-3 bg-gray-100 hover:bg-gray-200 rounded-xl transition-all duration-300 flex items-center gap-3 shadow-lg hover:shadow-xl"
                         >
                           <Icon icon="mdi:content-copy" className="w-5 h-5" />
                           Copy
@@ -498,55 +671,64 @@ ${generatedBrief.brief}`;
                         <div className="relative group">
                           <button
                             type="button"
-                            className="px-4 py-2 bg-[#F2B706] hover:bg-[#E6A800] text-white rounded-lg transition-colors flex items-center gap-2 focus:outline-none"
+                            className="px-6 py-3 bg-gradient-to-r from-[#F2B706] to-[#E6A800] hover:from-[#E6A800] hover:to-[#D99A00] text-white rounded-xl transition-all duration-300 flex items-center gap-3 shadow-lg hover:shadow-xl"
                           >
                             <Icon icon="mdi:download" className="w-5 h-5" />
                             Export
                           </button>
-                          <div className="absolute right-0 mt-2 w-44 bg-white border border-gray-200 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 group-hover:pointer-events-auto pointer-events-none transition-opacity duration-200 z-10">
+                          <div className="absolute right-0 mt-3 w-48 bg-white border border-gray-200 rounded-xl shadow-2xl opacity-0 group-hover:opacity-100 group-hover:pointer-events-auto pointer-events-none transition-all duration-300 z-10 transform scale-95 group-hover:scale-100">
                             <button
                               onClick={downloadBrief}
-                              className="w-full text-left px-4 py-2 hover:bg-gray-100 flex items-center gap-2 text-gray-800"
+                              className="w-full text-left px-6 py-4 hover:bg-gray-50 flex items-center gap-3 text-gray-800 transition-colors duration-200 rounded-t-xl"
                             >
-                              <Icon icon="mdi:file-document-outline" className="w-5 h-5" />
+                              <Icon
+                                icon="mdi:file-document-outline"
+                                className="w-5 h-5"
+                              />
                               Export as TXT
                             </button>
                             <button
                               onClick={exportAsPDF}
-                              className="w-full text-left px-4 py-2 hover:bg-gray-100 flex items-center gap-2 text-gray-800"
+                              className="w-full text-left px-6 py-4 hover:bg-gray-50 flex items-center gap-3 text-gray-800 transition-colors duration-200"
                             >
-                              <Icon icon="mdi:file-pdf-box" className="w-5 h-5 text-red-500" />
+                              <Icon
+                                icon="mdi:file-pdf-box"
+                                className="w-5 h-5 text-red-500"
+                              />
                               Export as PDF
                             </button>
                             <button
                               onClick={exportAsWord}
-                              className="w-full text-left px-4 py-2 hover:bg-gray-100 flex items-center gap-2 text-gray-800"
+                              className="w-full text-left px-6 py-4 hover:bg-gray-50 flex items-center gap-3 text-gray-800 transition-colors duration-200 rounded-b-xl"
                             >
-                              <Icon icon="mdi:file-word-box" className="w-5 h-5 text-blue-500" />
+                              <Icon
+                                icon="mdi:file-word-box"
+                                className="w-5 h-5 text-blue-500"
+                              />
                               Export as Word
                             </button>
                           </div>
                         </div>
                       </div>
                     </div>
-                    <div className="bg-gray-50 p-6 rounded-lg max-h-96 overflow-y-auto">
-                      <pre className="whitespace-pre-wrap text-lg text-gray-800 font-sans leading-relaxed">
+                    <div className="bg-gradient-to-br from-gray-50 to-white p-8 rounded-2xl max-h-96 overflow-y-auto shadow-lg border border-gray-100">
+                      <pre className="whitespace-pre-wrap text-xl text-gray-800 font-sans leading-relaxed">
                         {generatedBrief.brief}
                       </pre>
                     </div>
                   </div>
 
                   {/* Action Buttons */}
-                  <div className="flex gap-4">
+                  <div className="flex gap-6 pt-8">
                     <button
                       onClick={handleReset}
-                      className="flex-1 bg-gray-100 text-gray-700 py-3 px-6 rounded-lg hover:bg-gray-200 transition-colors text-lg font-medium"
+                      className="flex-1 bg-gradient-to-r from-gray-100 to-gray-200 text-gray-700 py-4 px-8 rounded-2xl hover:from-gray-200 hover:to-gray-300 transition-all duration-300 text-xl font-semibold shadow-lg hover:shadow-xl"
                     >
                       Create New Brief
                     </button>
                     <button
-                      onClick={() => setActiveTab('form')}
-                      className="flex-1 bg-[#172840] text-white py-3 px-6 rounded-lg hover:bg-[#0F1A2A] transition-colors text-lg font-medium"
+                      onClick={() => setActiveTab("form")}
+                      className="flex-1 bg-gradient-to-r from-[#172840] to-[#0F1A2A] text-white py-4 px-8 rounded-2xl hover:from-[#0F1A2A] hover:to-[#172840] transition-all duration-300 text-xl font-semibold shadow-lg hover:shadow-xl"
                     >
                       Edit Details
                     </button>
