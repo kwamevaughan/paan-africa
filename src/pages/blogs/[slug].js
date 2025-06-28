@@ -267,7 +267,7 @@ export default function BlogPost({ blog: initialBlog, error: serverError }) {
             </p>
             <div className="mt-6">
               <Link
-                href="/blog"
+                href="/blogs"
                 className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-full shadow-sm text-white bg-paan-red hover:bg-paan-red transition-all duration-300"
               >
                 <Icon icon="heroicons:arrow-left" className="mr-2 h-4 w-4" />
@@ -330,7 +330,7 @@ export default function BlogPost({ blog: initialBlog, error: serverError }) {
             'Read the latest insights and trends from Africa\'s creative and tech landscape on the PAAN blog.')} 
         />
         <meta property="og:type" content="article" />
-        <meta property="og:url" content={`https://paan.africa/blog/${slug}`} />
+        <meta property="og:url" content={`https://paan.africa/blogs/${slug}`} />
         <meta property="og:image" content={blog.article_image || 'https://paan.africa/assets/images/opengraph.png'} />
         <meta property="og:image:secure_url" content={blog.article_image || 'https://paan.africa/assets/images/opengraph.png'} />
         <meta property="og:image:width" content="1200" />
@@ -350,7 +350,7 @@ export default function BlogPost({ blog: initialBlog, error: serverError }) {
         <meta name="twitter:creator" content="@paan_network" />
         
         {/* Canonical URL */}
-        <link rel="canonical" href={`https://paan.africa/blog/${slug}`} />
+        <link rel="canonical" href={`https://paan.africa/blogs/${slug}`} />
       </Head>
 
       <Header />
@@ -532,7 +532,7 @@ export default function BlogPost({ blog: initialBlog, error: serverError }) {
           {/* Back to Blogs Button */}
           <div className="mt-8 sm:mt-12 flex justify-center">
             <Link
-              href="/blog"
+              href="/blogs"
               className="inline-flex items-center bg-gradient-to-r from-paan-red to-paan-red text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full text-sm sm:text-base font-semibold hover:from-paan-red hover:to-paan-red transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
             >
               <Icon

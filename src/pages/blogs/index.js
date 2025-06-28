@@ -75,7 +75,7 @@ export async function getServerSideProps() {
         slug: blog.slug || '',
         title: blog.article_name || 'Untitled',
         excerpt: contentSnippet || 'No content available',
-        image: blog.article_image || '/images/blog-placeholder.jpg',
+        image: blog.article_image || '/assets/images/opengraph.png',
         date: blog.created_at ? new Date(blog.created_at).toLocaleDateString("en-US", {
           year: "numeric",
           month: "long",
@@ -90,7 +90,7 @@ export async function getServerSideProps() {
         meta_description: blog.meta_description || '',
         article_category: blog.category?.name || 'Uncategorized',
         article_tags: blog.tags?.map((t) => t.tag.name) || [],
-        article_image: blog.article_image || '/images/blog-placeholder.jpg',
+        article_image: blog.article_image || '/assets/images/opengraph.png',
         created_at: blog.created_at,
         updated_at: blog.updated_at
       };
@@ -170,7 +170,7 @@ const Blogs = ({ initialBlogs }) => {
     if (sortBy !== 'newest') query.sort = sortBy;
 
     router.push({
-      pathname: '/blog',
+      pathname: '/blogs',
       query: Object.keys(query).length > 0 ? query : {}
     }, undefined, { shallow: true });
   }, [selectedCategory, searchQuery, sortBy]);
@@ -349,7 +349,7 @@ const Blogs = ({ initialBlogs }) => {
         twitterTitle="PAAN Blog | Africa's Creative & Tech Insights"
         twitterDescription="Discover the latest insights and trends from Africa's creative and tech landscape. Expert analysis, industry news, and thought leadership from PAAN."
         twitterImage="/assets/images/opengraph.png"
-        canonicalUrl="https://paan.africa/blog"
+        canonicalUrl="https://paan.africa/blogs"
       />
       
       <Header />
@@ -570,7 +570,7 @@ const Blogs = ({ initialBlogs }) => {
                       </div>
                       
                       <h3 className="text-xl font-semibold text-[#172840] mb-3 leading-tight group-hover:text-paan-red transition-colors duration-300">
-                        <Link href={`/blog/${blog.slug}`} className="hover:text-paan-red transition-colors duration-300">
+                        <Link href={`/blogs/${blog.slug}`} className="hover:text-paan-red transition-colors duration-300">
                           {blog.title}
                         </Link>
                       </h3>
@@ -585,7 +585,7 @@ const Blogs = ({ initialBlogs }) => {
                         </span>
                         
                         <Link 
-                          href={`/blog/${blog.slug}`}
+                          href={`/blogs/${blog.slug}`}
                           className="inline-flex items-center bg-paan-blue text-[#172840] px-6 py-2 rounded-full text-sm font-semibold hover:bg-paan-blue hover:text-white transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-lg"
                         >
                           Read More
