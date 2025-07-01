@@ -24,7 +24,7 @@ const PAANSummit = () => {
           <div className='flex flex-col justify-center p-4 lg:p-6 space-y-4'>
             <div>
               <h2 className='text-2xl lg:text-3xl font-bold text-[#172840] mb-3'>
-              AI for Client Retention & Growth
+                PAAN Summit 2025
               </h2>
               
               <div className='flex flex-col sm:flex-row gap-4 mb-4'>
