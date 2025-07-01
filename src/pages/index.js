@@ -480,10 +480,24 @@ const HomePage = () => {
               creative future.
             </p>
           </section>
-          {/* <div className="mt-10">
-            <PAANSummit />
-            <PAANWebinar />
-          </div> */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 items-center mt-10">
+            
+            <div className="col-span-1 pattern-bg-2 rounded-lg transform transition-transform duration-300 hover:translate-y-[-5px]">
+              <Link
+                href="/summit"
+                target="_blank" // Opens in new tab
+                rel="noopener noreferrer" // Security best practice for external links
+              >
+                <Image
+                  src="/assets/images/oct-summit.jpg"
+                  width={900}
+                  height={0}
+                  alt="Webinar"
+                  className="rounded-lg object-cover w-full h-full"
+                />
+              </Link>
+            </div>
+          </div>
         </div>
 
         <div className="network-bg relative" id="join-network">
