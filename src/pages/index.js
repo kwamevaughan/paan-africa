@@ -480,10 +480,10 @@ const HomePage = () => {
               creative future.
             </p>
           </section>
-          <div className="mt-10">
+          {/* <div className="mt-10">
             <PAANSummit />
             <PAANWebinar />
-          </div>
+          </div> */}
         </div>
 
         <div className="network-bg relative" id="join-network">
