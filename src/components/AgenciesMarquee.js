@@ -3,20 +3,34 @@
 
 import styles from "./Marquee.module.css";
 
-const AgenciesMarquee = () => {
+const Marquee = () => {
   const words = [
-    "Advertising",
-    "Research",
-    "Marketing",
-    "Tech & IT services agencies",
-    "Digital Agencies",
+    "Motion Designers",
+    "Copywriters",
+    "Frontend Developers",
+    "Brand Strategists",
+    "UX/UI Designers",
+  ];
+
+  // Define an array of colors for the dots
+  const dotColors = [
+    "#172840", // Motion Designers
+    "#FFFFFF", // Copywriters
+    "#F2B706", // Frontend Developers
+    "#F25849", // Brand Strategists
+    "#84C1D9", // UX/UI Designers
   ];
 
   // Create a single array with dots for rendering
   const renderItems = words.map((word, index) => (
     <span key={index} className={styles.item}>
       <span className={styles.word}>{word}</span>
-      <span className={styles.dot}>•</span>
+      <span
+        className={styles.dot}
+        style={{ color: dotColors[index % dotColors.length] }}
+      >
+        •
+      </span>
     </span>
   ));
 
@@ -30,4 +44,4 @@ const AgenciesMarquee = () => {
   );
 };
 
-export default AgenciesMarquee;
+export default Marquee;

@@ -132,9 +132,9 @@ const HomePage = () => {
           id="about-us"
           ref={sectionRefs.aboutUs}
         >
-          <div className="absolute -top-36 -left-36 w-28 h-28 bg-[#F2B706] rounded-full z-0"></div>
+          <div className="absolute -top-36 -left-36 w-28 h-28 bg-[#F2B706] rounded-full z-30"></div>
           {/* <div className="absolute -top-10 -right-20 w-16 h-16 bg-[#F25849] rounded-full z-0"></div> */}
-          <div className="absolute bottom-60 -left-20 w-11 h-11 bg-[#D1D3D4] rounded-full z-0"></div>
+          <div className="absolute bottom-60 -left-20 w-11 h-11 bg-[#D1D3D4] rounded-full z-30"></div>
           {/* <div className="absolute bottom-0 -right-10 w-11 h-11 bg-[#172840] rounded-full z-0"></div> */}
           <section className="relative z-10">
             <p className="uppercase font-semibold mb-4">2. Who We Are</p>
@@ -172,12 +172,12 @@ const HomePage = () => {
                 alt="Team collaboration"
                 className="rounded-lg object-cover w-full h-auto"
               />
-              <div className="absolute top-100 bottom-0 bg-white flex flex-col gap-4 rounded-tr-[30px] rounded-br-[30px] pl-0 pt-4 pb-4 pr-4">
+              <div className="">
                 <button
                   onClick={(e) => {
                     handleScroll(e, "#our-mission", isFixed);
                   }}
-                  className="bg-[#F25849] text-white px-6 py-2 rounded-full font-medium text-sm hover:bg-[#D6473C] transition duration-300"
+                  className="absolute -bottom-1 bg-[#F25849] text-white px-4 py-2 sm:px-10 sm:py-4 rounded-full font-bold text-xs sm:text-lg hover:bg-[#D6473C] transition duration-300 shadow-lg"
                 >
                   Discover More
                 </button>
@@ -250,10 +250,10 @@ const HomePage = () => {
               </div>
 
               {/* Vision & Mission Text */}
-              <div className="flex flex-col gap-10">
+              <div className="flex flex-col gap-10 h-full">
                 {/* Vision */}
-                <div className="bg-[#84C1D9] p-6 rounded-lg flex flex-row items-start gap-4 transform transition-transform duration-300 hover:-translate-y-1">
-                  <div className="flex flex-col items-left">
+                <div className="bg-[#84C1D9] p-6 rounded-lg flex flex-row items-center gap-4 transform transition-transform duration-300 hover:-translate-y-1 flex-1">
+                  <div className="flex flex-col items-start">
                     <Image
                       src="/assets/images/icons/vision.png"
                       width={60}
@@ -274,13 +274,13 @@ const HomePage = () => {
                 </div>
 
                 {/* Mission */}
-                <div className="bg-[#F2B706] p-6 rounded-lg flex flex-row items-start gap-4 transform transition-transform duration-300 hover:-translate-y-1">
-                  <div className="flex flex-col items-left">
+                <div className="bg-[#F2B706] p-6 rounded-lg flex flex-row items-center gap-4 transform transition-transform duration-300 hover:-translate-y-1 flex-1">
+                  <div className="flex flex-col items-start">
                     <Image
                       src="/assets/images/icons/mission.png"
                       width={60}
                       height={60}
-                      alt="Vision Statement"
+                      alt="Mission Statement"
                       className="mb-2"
                     />
                     <div className="text-left">
@@ -294,7 +294,6 @@ const HomePage = () => {
                     </div>
                   </div>
                 </div>
-
               </div>
             </div>
           </section>
@@ -302,14 +301,13 @@ const HomePage = () => {
 
 
         <div
-          className="mx-auto max-w-6xl mt-20 mb-20 relative section"
+          className="mx-auto max-w-6xl mt-20 mb-20 relative"
           id="why-join-us"
           ref={sectionRefs.whyJoinUs}
         >
-          <div className="absolute -top-24 -left-10 w-14 h-14 bg-yellow-400 rounded-full z-0"></div>
-          <div className="hidden md:block absolute -top-14 right-52 w-16 h-16 bg-[#84C1D9] rounded-full z-0"></div>
-          <div className="absolute -bottom-28 left-4 w-20 h-20 bg-[#F25849] rounded-full z-0"></div>
-          <div className="absolute -bottom-14 right-4 w-11 h-11 bg-[#172840] rounded-full z-0"></div>
+          <div className="absolute -top-24 -left-10 w-14 h-14 bg-yellow-400 rounded-full z-30"></div>
+          <div className="hidden md:block absolute -top-14 right-52 w-16 h-16 bg-[#84C1D9] rounded-full z-30"></div>
+          <div className="absolute -bottom-14 right-4 w-11 h-11 bg-[#172840] rounded-full z-30"></div>
           <section className="relative z-10">
             <p className="uppercase font-semibold mb-4">3. Why Join PAAN?</p>
           </section>
@@ -403,12 +401,13 @@ const HomePage = () => {
         </div>
 
         <div
-          className="bg-[#D1D3D4] relative section"
+          className="bg-[#D1D3D4]"
           id="membership"
           ref={sectionRefs.membership}
         >
           <div className="absolute -bottom-8 right-32 w-16 h-16 bg-[#84C1D9] rounded-full z-0"></div>
-          <section className="relative mx-auto max-w-6xl py-12 sm:py-20 px-4 sm:px-6">
+          <div className="absolute -top-8 left-32 w-20 h-20 bg-[#F25849] rounded-full z-30"></div>
+          <section className="mx-auto max-w-6xl py-12 sm:py-20 px-4 sm:px-6">
             <div className="flex flex-col mb-8 sm:mb-10 mx-auto w-full sm:w-3/4">
               <h2 className="text-xl sm:text-2xl text-center mb-3 sm:mb-4">
                 Our Structure & Tiers
@@ -427,7 +426,7 @@ const HomePage = () => {
             <div className="flex justify-center">
               <button 
                 onClick={() => window.location.href = 'https://calendly.com/antony-paan/45min'} 
-                className="bg-[#F26522] hover:bg-[#D6473C] text-white font-semibold py-2 sm:py-3 px-6 sm:px-8 rounded-full transition-all duration-300 shadow-md hover:shadow-lg flex items-center gap-2 group text-sm sm:text-base whitespace-nowrap"
+                className="bg-[#F26522] hover:bg-[#D6473C] text-white font-semibold py-2 sm:py-3 px-4 sm:px-8 rounded-full transition-all duration-300 shadow-md hover:shadow-lg flex items-center gap-2 group text-sm sm:text-base whitespace-nowrap w-full sm:w-auto text-center"
               >
                 <Icon icon="mdi:calendar-clock" className="w-4 h-4 sm:w-5 sm:h-5 group-hover:scale-110 transition-transform duration-300" />
                 Schedule a call to explore full benefits
