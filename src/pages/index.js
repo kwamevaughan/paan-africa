@@ -527,17 +527,18 @@ const HomePage = () => {
                 </span>
                 <h2 className="text-2xl sm:text-3xl font-bold text-[#172840]">AI For Client Retension & Growth</h2>
               </div>
-              <p className="text-[#F25849] text-base font-semibold">Upcoming Webinar • July 2 2025</p>
+              <p className="text-[#F25849] text-base font-semibold">Last Webinar • July 2 2025</p>
+              <p className="text-[#172840] text-base font-semibold">Use Passcode: K4W#LECp</p>
               <p className="text-gray-700 text-base sm:text-lg">
                 Join our exclusive webinar to discover how agency account managers can use AI to strengthen client relationships, save time and unlock new opportunities.
               </p>
               <a
-                href="https://us06web.zoom.us/webinar/register/WN_pcXn_bVhQx2V0f00u0guwA#/"
+                href="https://us06web.zoom.us/rec/component-page?eagerLoadZvaPages=&accessLevel=meeting&action=viewdetailpage&sharelevel=meeting&useWhichPasswd=meeting&requestFrom=pwdCheck&clusterId=us06&componentName=need-password&meetingId=l0P--osw9rSwrswdJBo466Zg9oVCTk5d8kwZyAqnU1vkI29lzM_k9j9VPkTdstYE.Zu0TfEYAXBD1nLfv&originRequestUrl=https%3A%2F%2Fus06web.zoom.us%2Frec%2Fshare%2F-DKvx6Q2eX5lo42ukQ6ogCI-RZHRJ-57c-E2lXUZ5hvGMMzowrNY7jt5-utRbtAd.4hWokDGBJTjLD-55%3FstartTime%3D1751446311000"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-[#F25849] hover:bg-[#D6473C] text-white font-bold py-3 px-8 rounded-full transition-all duration-300 shadow-lg text-base sm:text-lg mt-2"
               >
-                Register Now
+                Access Recording
               </a>
             </div>
           </section>
