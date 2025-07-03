@@ -253,7 +253,7 @@ const Hero = ({ openModal }) => {
       <div className="absolute inset-0 bg-black bg-opacity-50"></div>
 
       <div className="relative h-full flex mx-auto max-w-6xl">
-        <div className="max-w-6xl px-6 md:px-8 pb-16 flex flex-col justify-end h-full">
+        <div className="max-w-6xl px-6 md:px-8 pb-28 flex flex-col justify-end h-full">
         
           <div className="max-w-2xl text-left space-y-6">
             <h1 className="text-white font-bold mb-2 relative uppercase">
