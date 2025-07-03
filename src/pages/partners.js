@@ -10,6 +10,28 @@ import AgencyLogosGrid from "@/components/AgencyLogosGrid";
 import ScrollToTop from "@/components/ScrollToTop";
 import AgencyEnquiryModal from "@/components/AgencyEnquiryModal";
 
+const CountUp = ({ end = 200, duration = 1500 }) => {
+  const [count, setCount] = useState(0);
+  const startTimestamp = useRef(null);
+
+  useEffect(() => {
+    let animationFrame;
+    const step = (timestamp) => {
+      if (!startTimestamp.current) startTimestamp.current = timestamp;
+      const progress = Math.min((timestamp - startTimestamp.current) / duration, 1);
+      setCount(Math.floor(progress * end));
+      if (progress < 1) {
+        animationFrame = requestAnimationFrame(step);
+      } else {
+        setCount(end);
+      }
+    };
+    animationFrame = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(animationFrame);
+  }, [end, duration]);
+
+  return <span>{count}+</span>;
+};
 
 const FreelancersPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -65,11 +87,12 @@ const FreelancersPage = () => {
 
   return (
     <>
-      <SEO
+    <SEO
         title="Partner with PAAN | Unlock Growth Across Africa's Creative & Tech Markets"
         description="Join PAAN's Partnership Program to connect with 200+ vetted agencies across Africa. Accelerate your market entry, build trust, and scale with local expertise."
         keywords="PAAN partnerships, Africa agency network, tech partnerships Africa, creative agency Africa, expand in Africa, African market entry, local tech partners Africa, scale in African markets"
       />
+    <div className="relative">      
       <main className="px-3 pt-6 sm:px-0 sm:pt-0 relative">
         <Header />
         <Hero openModal={openModal} />
@@ -77,16 +100,24 @@ const FreelancersPage = () => {
         <div className="mx-auto max-w-6xl mt-20 mb-20 relative">
           <div className="absolute top-80 right-0 w-16 h-16 bg-paan-yellow rounded-full z-0"></div>
           <div className="absolute bottom-40 right-80 w-11 h-11 bg-paan-blue rounded-full z-0"></div>
-          <div className="absolute -bottom-24 -right-40 w-14 h-14 bg-paan-red rounded-full z-10"></div>
+          <div className="absolute -bottom-24 sm:-right-40 -right-0  w-14 h-14 bg-paan-red rounded-full z-10"></div>
           <section className="relative">            
             <div className="mb-10">
               <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-                <div className="mx-auto md:mx-0 flex justify-center">
-                  <img 
-                    src="/assets/images/black-girl.png" 
-                    alt="Professional woman" 
-                    className="rounded-lg shadow-md w-full max-w-md h-auto object-cover" 
-                  />
+              <div className="mx-auto md:mx-0 flex justify-center">
+              <div className="mx-auto md:mx-0 flex justify-center">
+                    <div className="relative">
+                      <img 
+                        src="/assets/images/black-girl.png" 
+                        alt="Professional woman" 
+                        className="rounded-lg shadow-md w-full max-w-md h-auto object-cover" 
+                      />
+                      <div className="absolute bottom-0 right-0 bg-[#F2B706] border-8 border-white rounded-lg shadow-lg p-3 min-w-[120px] h-auto">
+                        <h4 className="font-bold text-[#172840] text-lg leading-none"><CountUp end={200} duration={1500} /></h4>
+                        <p className="text-[10px] font-medium text-[#172840] mt-1 leading-tight">VETTED AGENCIES</p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
                 <div className="flex flex-col space-y-6 max-w-lg">
                   <h3 className="text-xl font-semibold">For Technology Companies, Platforms, and Innovators</h3>
@@ -162,10 +193,11 @@ const FreelancersPage = () => {
         </section>
         </div>
         <AgencyLogosGrid/>
-        <Footer />
-        <ScrollToTop />
-        <AgencyEnquiryModal isOpen={isModalOpen} onClose={closeModal} />
       </main>
+      <Footer />
+      <ScrollToTop />
+      <AgencyEnquiryModal isOpen={isModalOpen} onClose={closeModal} />
+      </div>
     </>
   );
 };
