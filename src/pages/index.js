@@ -104,11 +104,14 @@ const HomePage = () => {
                 >
                   Join The Network
                 </button>
-                <Link href="https://calendly.com/antony-paan/45min" 
+                <button
                   className="bg-[#84C1D9] text-[#172840] px-6 sm:px-8 py-2.5 sm:py-3 rounded-full font-medium text-sm transition duration-300 hover:bg-[#6FA1B7] text-center w-full sm:w-auto"
+                  onClick={() => {
+                    gtag_report_conversion('https://calendly.com/antony-paan/45min');
+                  }}
                 >
                   Book a Demo
-                </Link>
+                </button>
               </div>
             </div>
             <div className="mt-8 sm:mt-0">
@@ -425,7 +428,7 @@ const HomePage = () => {
             </div>
             <div className="flex justify-center">
               <button 
-                onClick={() => window.location.href = 'https://calendly.com/antony-paan/45min'} 
+                onClick={() => gtag_report_conversion('https://calendly.com/antony-paan/45min')} 
                 className="bg-[#F26522] hover:bg-[#D6473C] text-white font-semibold py-2 sm:py-3 px-4 sm:px-8 rounded-full transition-all duration-300 shadow-md hover:shadow-lg flex items-center gap-2 group text-sm sm:text-base whitespace-nowrap w-full sm:w-auto text-center"
               >
                 <Icon icon="mdi:calendar-clock" className="w-4 h-4 sm:w-5 sm:h-5 group-hover:scale-110 transition-transform duration-300" />

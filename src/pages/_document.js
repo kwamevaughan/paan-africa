@@ -68,6 +68,26 @@ class MyDocument extends Document {
           <noscript>
             <img height="1" width="1" style={{display: 'none'}} src="https://www.facebook.com/tr?id=706159915533812&ev=PageView&noscript=1" />
           </noscript>
+          {/* Google Ads Conversion Event Function */}
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+                function gtag_report_conversion(url) {
+                  var callback = function () {
+                    if (typeof(url) != 'undefined') {
+                      window.location = url;
+                    }
+                  };
+                  gtag('event', 'conversion', {
+                      'send_to': 'AW-437483343/25GQCIKkwPIBEM_uzdAB',
+                      'transaction_id': '',
+                      'event_callback': callback
+                  });
+                  return false;
+                }
+              `,
+            }}
+          />
         </Head>
         <body>
           <Main />
