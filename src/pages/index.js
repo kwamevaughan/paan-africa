@@ -305,9 +305,9 @@ const HomePage = () => {
           id="why-join-us"
           ref={sectionRefs.whyJoinUs}
         >
-          <div className="absolute -top-24 -left-10 w-14 h-14 bg-yellow-400 rounded-full z-30"></div>
-          <div className="hidden md:block absolute -top-14 right-52 w-16 h-16 bg-[#84C1D9] rounded-full z-30"></div>
-          <div className="absolute -bottom-14 right-4 w-11 h-11 bg-[#172840] rounded-full z-30"></div>
+          <div className="absolute -top-24 -left-10 w-14 h-14 bg-yellow-400 rounded-full z-10"></div>
+          <div className="hidden md:block absolute -top-14 right-52 w-16 h-16 bg-[#84C1D9] rounded-full z-0"></div>
+          <div className="absolute -bottom-14 right-4 w-11 h-11 bg-[#172840] rounded-full z-0"></div>
           <section className="relative z-10">
             <p className="uppercase font-semibold mb-4">3. Why Join PAAN?</p>
           </section>
@@ -406,7 +406,7 @@ const HomePage = () => {
           ref={sectionRefs.membership}
         >
           <div className="absolute -bottom-8 right-32 w-16 h-16 bg-[#84C1D9] rounded-full z-0"></div>
-          <div className="absolute -top-8 left-32 w-20 h-20 bg-[#F25849] rounded-full z-30"></div>
+          <div className="absolute -top-8 left-32 w-20 h-20 bg-[#F25849] rounded-full z-0"></div>
           <section className="mx-auto max-w-6xl py-12 sm:py-20 px-4 sm:px-6">
             <div className="flex flex-col mb-8 sm:mb-10 mx-auto w-full sm:w-3/4">
               <h2 className="text-xl sm:text-2xl text-center mb-3 sm:mb-4">
