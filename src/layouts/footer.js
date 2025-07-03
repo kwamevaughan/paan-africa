@@ -195,7 +195,7 @@ const Footer = () => {
           </Link>
         </p>
       </div>
-      <div className="absolute bottom-0 left-0 w-[calc(100%-32px)] mx-4 sm:mx-0 sm:w-full h-[20px] sm:h-[30px] md:h-[40px] z-0">
+      <div className="absolute bottom-0 left-0 w-full h-[20px] sm:h-[30px] md:h-[40px] z-0">
         <Image
           src="/assets/images/footer-banner.png"
           fill
