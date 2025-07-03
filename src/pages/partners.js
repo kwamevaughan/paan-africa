@@ -10,12 +10,21 @@ import AgencyLogosGrid from "@/components/AgencyLogosGrid";
 import ScrollToTop from "@/components/ScrollToTop";
 import AgencyEnquiryModal from "@/components/AgencyEnquiryModal";
 
-const CountUp = ({ end = 200, duration = 1500 }) => {
+const CountUp = ({ end = 200, duration = 3000, start = false }) => {
   const [count, setCount] = useState(0);
   const startTimestamp = useRef(null);
+  const started = useRef(false);
 
   useEffect(() => {
     let animationFrame;
+    if (!start) {
+      setCount(0);
+      startTimestamp.current = null;
+      started.current = false;
+      return;
+    }
+    if (started.current) return;
+    started.current = true;
     const step = (timestamp) => {
       if (!startTimestamp.current) startTimestamp.current = timestamp;
       const progress = Math.min((timestamp - startTimestamp.current) / duration, 1);
@@ -28,13 +37,15 @@ const CountUp = ({ end = 200, duration = 1500 }) => {
     };
     animationFrame = requestAnimationFrame(step);
     return () => cancelAnimationFrame(animationFrame);
-  }, [end, duration]);
+  }, [end, duration, start]);
 
   return <span>{count}+</span>;
 };
 
 const FreelancersPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [counterVisible, setCounterVisible] = useState(false);
+  const counterRef = useRef(null);
   
   const sectionRefs = {
     home: useRef(null),
@@ -82,6 +93,26 @@ const FreelancersPage = () => {
     };
   }, []);
 
+  useEffect(() => {
+    // Counter observer
+    let counterObserver;
+    if (counterRef.current) {
+      counterObserver = new window.IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            setCounterVisible(true);
+            counterObserver.disconnect(); // Only trigger once
+          }
+        },
+        { threshold: 0.3 }
+      );
+      counterObserver.observe(counterRef.current);
+    }
+    return () => {
+      if (counterObserver && counterRef.current) counterObserver.disconnect();
+    };
+  }, []);
+
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
 
@@ -105,20 +136,18 @@ const FreelancersPage = () => {
             <div className="mb-10">
               <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
               <div className="mx-auto md:mx-0 flex justify-center">
-              <div className="mx-auto md:mx-0 flex justify-center">
-                    <div className="relative">
-                      <img 
-                        src="/assets/images/black-girl.png" 
-                        alt="Professional woman" 
-                        className="rounded-lg shadow-md w-full max-w-md h-auto object-cover" 
-                      />
-                      <div className="absolute bottom-0 right-0 bg-[#F2B706] border-8 border-white rounded-lg shadow-lg p-3 min-w-[120px] h-auto">
-                        <h4 className="font-bold text-[#172840] text-lg leading-none"><CountUp end={200} duration={1500} /></h4>
-                        <p className="text-[10px] font-medium text-[#172840] mt-1 leading-tight">VETTED AGENCIES</p>
-                      </div>
-                    </div>
+                <div className="relative" ref={counterRef}>
+                  <img 
+                    src="/assets/images/black-girl.png" 
+                    alt="Professional woman" 
+                    className="rounded-lg shadow-md w-full max-w-md h-auto object-cover" 
+                  />
+                  <div className="absolute bottom-0 right-0 bg-[#F2B706] border-8 border-white rounded-lg shadow-lg p-3 min-w-[120px] h-auto">
+                    <h4 className="font-bold text-[#172840] text-lg leading-none"><CountUp end={200} duration={3000} start={counterVisible} /></h4>
+                    <p className="text-[10px] font-medium text-[#172840] mt-1 leading-tight">VETTED AGENCIES</p>
                   </div>
                 </div>
+              </div>
                 <div className="flex flex-col space-y-6 max-w-lg">
                   <h3 className="text-xl font-semibold">For Technology Companies, Platforms, and Innovators</h3>
                   <p className="text-gray-700 leading-relaxed">
