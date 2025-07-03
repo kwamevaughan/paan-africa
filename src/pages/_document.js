@@ -40,6 +40,18 @@ class MyDocument extends Document {
               `,
             }}
           />
+          {/* Google tag (gtag.js) - From another account requested by Duncan*/}
+          <script async src="https://www.googletagmanager.com/gtag/js?id=AW-437483343"></script>
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', 'AW-437483343');
+              `,
+            }}
+          />
           {/* Meta Pixel Code */}
           <script dangerouslySetInnerHTML={{
             __html: `!function(f,b,e,v,n,t,s)

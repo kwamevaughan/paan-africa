@@ -69,106 +69,106 @@ const AgenciesPage = () => {
         description="Connect with certified agencies and freelancers across 20+ African countries to launch campaigns with cultural fluency and regional expertise. Find your delivery partner today."
         keywords="African marketing, certified agencies Africa, freelancers Africa, campaign execution, PAAN Summit, brand growth Africa, vetted creators, regional campaigns, Africa marketing, African marketing agencies, African freelancers, African marketing network, African marketing solutions, African marketing experts, African marketing professionals, African marketing services, African marketing consultants, African marketing agencies, African marketing freelancers, African marketing network, African marketing solutions, African marketing experts, African marketing professionals, African marketing services, African marketing consultants"
       />
-      <main className="px-3 pt-6 sm:px-0 sm:pt-0 relative">
+      <main className="sm:px-0 sm:pt-0 relative">
         <Header />
         <Hero openModal={openModal} />
         <div className="bg-white relative overflow-hidden">
-  {/* Decorative circles - adjusted for mobile */}
-  <div className="absolute top-20 sm:top-50 right-4 sm:right-10 w-12 h-12 sm:w-16 sm:h-16 bg-[#F25849] rounded-full z-0"></div>
-  <div className="absolute top-32 sm:top-40 left-8 sm:left-40 w-6 h-6 sm:w-8 sm:h-8 bg-[#F25849] rounded-full z-0"></div>
-  <div className="absolute top-8 sm:top-10 right-20 sm:right-40 w-6 h-6 sm:w-8 sm:h-8 bg-[#F2B706] rounded-full z-0"></div>
-  <div className="absolute bottom-16 sm:bottom-20 right-8 sm:right-16 w-8 h-8 sm:w-11 sm:h-11 bg-[#84C1D9] rounded-full z-0"></div>
-  
-  {/* Pattern positioned on left middle edge - hidden on mobile */}
-  <div className="hidden sm:block absolute left-0 top-1/2 transform -translate-y-1/2 z-10">
-    <Image 
-      src="/assets/images/paan-patterns.png" 
-      width={80} 
-      height={80} 
-      alt="PAAN Summit" 
-      className="opacity-80" 
-    />
-  </div>
-
-  <section className="relative mx-auto max-w-6xl mt-16 sm:mt-24 md:mt-40 px-4 sm:px-6 pb-16 sm:pb-20">
-    <div className="space-y-3 sm:space-y-4 text-center md:text-left">
-      <h3 className="text-lg sm:text-xl text-dark uppercase font-semibold">WHY JOIN?</h3>
-      <h2 className="text-2xl sm:text-3xl md:text-4xl text-dark font-normal leading-tight">
-        Africa is a mosaic of markets. You need <br className="hidden sm:block" />
-        more than reach; you need readiness.
-      </h2>
-    </div>
-    
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center mt-8 sm:mt-10">
-      <div className="flex flex-col gap-4 order-2 md:order-1">
-        <Image 
-          src="/assets/images/africa2.png" 
-          width={400} 
-          height={300} 
-          alt="PAAN Summit" 
-          className="w-full h-auto object-cover rounded-lg" 
-        />
-      </div>
-      
-      <div className="flex flex-col order-1 md:order-2">
-        <div className="space-y-4 sm:space-y-6">
-          <p className="text-gray-700 leading-relaxed text-base sm:text-lg">
-            PAAN connects your brand to a trusted network of vetted agencies and freelancers across 20+ African countries.
-            <br /><br />
-            Whether you're rolling out across multiple regions or localizing a single campaign, our ecosystem gives you the agility and confidence to deliver at scale.
-          </p>
+          {/* Decorative circles - adjusted for mobile */}
+          <div className="absolute top-20 sm:top-50 right-4 sm:right-10 w-12 h-12 sm:w-16 sm:h-16 bg-[#F25849] rounded-full z-0"></div>
+          <div className="absolute top-32 sm:top-40 left-8 sm:left-40 w-6 h-6 sm:w-8 sm:h-8 bg-[#F25849] rounded-full z-0"></div>
+          <div className="absolute top-8 sm:top-10 right-20 sm:right-40 w-6 h-6 sm:w-8 sm:h-8 bg-[#F2B706] rounded-full z-0"></div>
+          <div className="absolute bottom-16 sm:bottom-20 right-8 sm:right-16 w-8 h-8 sm:w-11 sm:h-11 bg-[#84C1D9] rounded-full z-0"></div>
           
-          <div className="mt-6 sm:mt-8">
-            <h3 className="font-bold text-lg sm:text-xl mb-3 sm:mb-4 text-dark">We help you:</h3>
-            <ul className="space-y-3 sm:space-y-4">
-              <li className="flex items-start">
-                <span className="mr-3 mt-1 flex-shrink-0">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" className="sm:w-5 sm:h-5 text-[#F25849]" viewBox="0 0 256 256">
-                    <path fill="currentColor" d="M225.86 102.82c-3.77-3.94-7.67-8-9.14-11.57c-1.36-3.27-1.44-8.69-1.52-13.94c-.15-9.76-.31-20.82-8-28.51s-18.75-7.85-28.51-8c-5.25-.08-10.67-.16-13.94-1.52c-3.56-1.47-7.63-5.37-11.57-9.14C146.28 23.51 138.44 16 128 16s-18.27 7.51-25.18 14.14c-3.94 3.77-8 7.67-11.57 9.14c-3.25 1.36-8.69 1.44-13.94 1.52c-9.76.15-20.82.31-28.51 8s-7.8 18.75-8 28.51c-.08 5.25-.16 10.67-1.52 13.94c-1.47 3.56-5.37 7.63-9.14 11.57C23.51 109.72 16 117.56 16 128s7.51 18.27 14.14 25.18c3.77 3.94 7.67 8 9.14 11.57c1.36 3.27 1.44 8.69 1.52 13.94c.15 9.76.31 20.82 8 28.51s18.75 7.85 28.51 8c5.25.08 10.67.16 13.94 1.52c3.56 1.47 7.63 5.37 11.57 9.14c6.9 6.63 14.74 14.14 25.18 14.14s18.27-7.51 25.18-14.14c3.94-3.77 8-7.67 11.57-9.14c3.27-1.36 8.69-1.44 13.94-1.52c9.76-.15 20.82-.31 28.51-8s7.85-18.75 8-28.51c.08-5.25.16-10.67 1.52-13.94c1.47-3.56 5.37-7.63 9.14-11.57c6.63-6.9 14.14-14.74 14.14-25.18s-7.51-18.27-14.14-25.18m-52.2 6.84l-56 56a8 8 0 0 1-11.32 0l-24-24a8 8 0 0 1 11.32-11.32L112 148.69l50.34-50.35a8 8 0 0 1 11.32 11.32"/>
-                  </svg>              
-                </span>
-                <span className="text-gray-700 leading-relaxed text-sm sm:text-base">Launch campaigns across regions with fewer unknowns</span>
-              </li>
-              <li className="flex items-start">
-                <span className="mr-3 mt-1 flex-shrink-0">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" className="sm:w-5 sm:h-5 text-[#F25849]" viewBox="0 0 256 256">
-                    <path fill="currentColor" d="M225.86 102.82c-3.77-3.94-7.67-8-9.14-11.57c-1.36-3.27-1.44-8.69-1.52-13.94c-.15-9.76-.31-20.82-8-28.51s-18.75-7.85-28.51-8c-5.25-.08-10.67-.16-13.94-1.52c-3.56-1.47-7.63-5.37-11.57-9.14C146.28 23.51 138.44 16 128 16s-18.27 7.51-25.18 14.14c-3.94 3.77-8 7.67-11.57 9.14c-3.25 1.36-8.69 1.44-13.94 1.52c-9.76.15-20.82.31-28.51 8s-7.8 18.75-8 28.51c-.08 5.25-.16 10.67-1.52 13.94c-1.47 3.56-5.37 7.63-9.14 11.57C23.51 109.72 16 117.56 16 128s7.51 18.27 14.14 25.18c3.77 3.94 7.67 8 9.14 11.57c1.36 3.27 1.44 8.69 1.52 13.94c.15 9.76.31 20.82 8 28.51s18.75 7.85 28.51 8c5.25.08 10.67.16 13.94 1.52c3.56 1.47 7.63 5.37 11.57 9.14c6.9 6.63 14.74 14.14 25.18 14.14s18.27-7.51 25.18-14.14c3.94-3.77 8-7.67 11.57-9.14c3.27-1.36 8.69-1.44 13.94-1.52c9.76-.15 20.82-.31 28.51-8s7.85-18.75 8-28.51c.08-5.25.16-10.67 1.52-13.94c1.47-3.56 5.37-7.63 9.14-11.57c6.63-6.9 14.14-14.74 14.14-25.18s-7.51-18.27-14.14-25.18m-52.2 6.84l-56 56a8 8 0 0 1-11.32 0l-24-24a8 8 0 0 1 11.32-11.32L112 148.69l50.34-50.35a8 8 0 0 1 11.32 11.32"/>
-                  </svg>   
-                </span>
-                <span className="text-gray-700 leading-relaxed text-sm sm:text-base">Localize with insight, not guesswork</span>
-              </li>
-              <li className="flex items-start">
-                <span className="mr-3 mt-1 flex-shrink-0">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" className="sm:w-5 sm:h-5 text-[#F25849]" viewBox="0 0 256 256">
-                    <path fill="currentColor" d="M225.86 102.82c-3.77-3.94-7.67-8-9.14-11.57c-1.36-3.27-1.44-8.69-1.52-13.94c-.15-9.76-.31-20.82-8-28.51s-18.75-7.85-28.51-8c-5.25-.08-10.67-.16-13.94-1.52c-3.56-1.47-7.63-5.37-11.57-9.14C146.28 23.51 138.44 16 128 16s-18.27 7.51-25.18 14.14c-3.94 3.77-8 7.67-11.57 9.14c-3.25 1.36-8.69 1.44-13.94 1.52c-9.76.15-20.82.31-28.51 8s-7.8 18.75-8 28.51c-.08 5.25-.16 10.67-1.52 13.94c-1.47 3.56-5.37 7.63-9.14 11.57C23.51 109.72 16 117.56 16 128s7.51 18.27 14.14 25.18c3.77 3.94 7.67 8 9.14 11.57c1.36 3.27 1.44 8.69 1.52 13.94c.15 9.76.31 20.82 8 28.51s18.75 7.85 28.51 8c5.25.08 10.67.16 13.94 1.52c3.56 1.47 7.63 5.37 11.57 9.14c6.9 6.63 14.74 14.14 25.18 14.14s18.27-7.51 25.18-14.14c3.94-3.77 8-7.67 11.57-9.14c3.27-1.36 8.69-1.44 13.94-1.52c9.76-.15 20.82-.31 28.51-8s7.85-18.75 8-28.51c.08-5.25.16-10.67 1.52-13.94c1.47-3.56 5.37-7.63 9.14-11.57c6.63-6.9 14.14-14.74 14.14-25.18s-7.51-18.27-14.14-25.18m-52.2 6.84l-56 56a8 8 0 0 1-11.32 0l-24-24a8 8 0 0 1 11.32-11.32L112 148.69l50.34-50.35a8 8 0 0 1 11.32 11.32"/>
-                  </svg>   
-                </span>
-                <span className="text-gray-700 leading-relaxed text-sm sm:text-base">Work with delivery partners already trusted in their markets</span>
-              </li>
-            </ul>
+          {/* Pattern positioned on left middle edge - hidden on mobile */}
+          <div className="hidden sm:block absolute left-0 top-1/2 transform -translate-y-1/2 z-10">
+            <Image 
+              src="/assets/images/paan-patterns.png" 
+              width={80} 
+              height={80} 
+              alt="PAAN Summit" 
+              className="opacity-80" 
+            />
           </div>
-        </div>
-      </div>
-    </div>
-  </section>
+
+          <section className="relative mx-auto max-w-6xl mt-16 sm:mt-24 md:mt-40 px-4 sm:px-6 pb-16 sm:pb-20">
+            <div className="space-y-3 sm:space-y-4 text-center md:text-left">
+              <h3 className="text-lg sm:text-xl text-dark uppercase font-semibold">WHY JOIN?</h3>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl text-dark font-normal leading-tight">
+                Africa is a mosaic of markets. You need <br className="hidden sm:block" />
+                more than reach; you need readiness.
+              </h2>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center mt-8 sm:mt-10">
+              <div className="flex flex-col gap-4 order-2 md:order-1">
+                <Image 
+                  src="/assets/images/africa2.png" 
+                  width={400} 
+                  height={300} 
+                  alt="PAAN Summit" 
+                  className="w-full h-auto object-cover rounded-lg" 
+                />
+              </div>
+              
+              <div className="flex flex-col order-1 md:order-2">
+                <div className="space-y-4 sm:space-y-6">
+                  <p className="text-gray-700 leading-relaxed text-base sm:text-lg">
+                    PAAN connects your brand to a trusted network of vetted agencies and freelancers across 20+ African countries.
+                    <br /><br />
+                    Whether you're rolling out across multiple regions or localizing a single campaign, our ecosystem gives you the agility and confidence to deliver at scale.
+                  </p>
+                  
+                  <div className="mt-6 sm:mt-8">
+                    <h3 className="font-bold text-lg sm:text-xl mb-3 sm:mb-4 text-dark">We help you:</h3>
+                    <ul className="space-y-3 sm:space-y-4">
+                      <li className="flex items-start">
+                        <span className="mr-3 mt-1 flex-shrink-0">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" className="sm:w-5 sm:h-5 text-[#F25849]" viewBox="0 0 256 256">
+                            <path fill="currentColor" d="M225.86 102.82c-3.77-3.94-7.67-8-9.14-11.57c-1.36-3.27-1.44-8.69-1.52-13.94c-.15-9.76-.31-20.82-8-28.51s-18.75-7.85-28.51-8c-5.25-.08-10.67-.16-13.94-1.52c-3.56-1.47-7.63-5.37-11.57-9.14C146.28 23.51 138.44 16 128 16s-18.27 7.51-25.18 14.14c-3.94 3.77-8 7.67-11.57 9.14c-3.25 1.36-8.69 1.44-13.94 1.52c-9.76.15-20.82.31-28.51 8s-7.8 18.75-8 28.51c-.08 5.25-.16 10.67-1.52 13.94c-1.47 3.56-5.37 7.63-9.14 11.57C23.51 109.72 16 117.56 16 128s7.51 18.27 14.14 25.18c3.77 3.94 7.67 8 9.14 11.57c1.36 3.27 1.44 8.69 1.52 13.94c.15 9.76.31 20.82 8 28.51s18.75 7.85 28.51 8c5.25.08 10.67.16 13.94 1.52c3.56 1.47 7.63 5.37 11.57 9.14c6.9 6.63 14.74 14.14 25.18 14.14s18.27-7.51 25.18-14.14c3.94-3.77 8-7.67 11.57-9.14c3.27-1.36 8.69-1.44 13.94-1.52c9.76-.15 20.82-.31 28.51-8s7.85-18.75 8-28.51c.08-5.25.16-10.67 1.52-13.94c1.47-3.56 5.37-7.63 9.14-11.57c6.63-6.9 14.14-14.74 14.14-25.18s-7.51-18.27-14.14-25.18m-52.2 6.84l-56 56a8 8 0 0 1-11.32 0l-24-24a8 8 0 0 1 11.32-11.32L112 148.69l50.34-50.35a8 8 0 0 1 11.32 11.32"/>
+                          </svg>              
+                        </span>
+                        <span className="text-gray-700 leading-relaxed text-sm sm:text-base">Launch campaigns across regions with fewer unknowns</span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="mr-3 mt-1 flex-shrink-0">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" className="sm:w-5 sm:h-5 text-[#F25849]" viewBox="0 0 256 256">
+                            <path fill="currentColor" d="M225.86 102.82c-3.77-3.94-7.67-8-9.14-11.57c-1.36-3.27-1.44-8.69-1.52-13.94c-.15-9.76-.31-20.82-8-28.51s-18.75-7.85-28.51-8c-5.25-.08-10.67-.16-13.94-1.52c-3.56-1.47-7.63-5.37-11.57-9.14C146.28 23.51 138.44 16 128 16s-18.27 7.51-25.18 14.14c-3.94 3.77-8 7.67-11.57 9.14c-3.25 1.36-8.69 1.44-13.94 1.52c-9.76.15-20.82.31-28.51 8s-7.8 18.75-8 28.51c-.08 5.25-.16 10.67-1.52 13.94c-1.47 3.56-5.37 7.63-9.14 11.57C23.51 109.72 16 117.56 16 128s7.51 18.27 14.14 25.18c3.77 3.94 7.67 8 9.14 11.57c1.36 3.27 1.44 8.69 1.52 13.94c.15 9.76.31 20.82 8 28.51s18.75 7.85 28.51 8c5.25.08 10.67.16 13.94 1.52c3.56 1.47 7.63 5.37 11.57 9.14c6.9 6.63 14.74 14.14 25.18 14.14s18.27-7.51 25.18-14.14c3.94-3.77 8-7.67 11.57-9.14c3.27-1.36 8.69-1.44 13.94-1.52c9.76-.15 20.82-.31 28.51-8s7.85-18.75 8-28.51c.08-5.25.16-10.67 1.52-13.94c1.47-3.56 5.37-7.63 9.14-11.57c6.63-6.9 14.14-14.74 14.14-25.18s-7.51-18.27-14.14-25.18m-52.2 6.84l-56 56a8 8 0 0 1-11.32 0l-24-24a8 8 0 0 1 11.32-11.32L112 148.69l50.34-50.35a8 8 0 0 1 11.32 11.32"/>
+                          </svg>   
+                        </span>
+                        <span className="text-gray-700 leading-relaxed text-sm sm:text-base">Localize with insight, not guesswork</span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="mr-3 mt-1 flex-shrink-0">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" className="sm:w-5 sm:h-5 text-[#F25849]" viewBox="0 0 256 256">
+                            <path fill="currentColor" d="M225.86 102.82c-3.77-3.94-7.67-8-9.14-11.57c-1.36-3.27-1.44-8.69-1.52-13.94c-.15-9.76-.31-20.82-8-28.51s-18.75-7.85-28.51-8c-5.25-.08-10.67-.16-13.94-1.52c-3.56-1.47-7.63-5.37-11.57-9.14C146.28 23.51 138.44 16 128 16s-18.27 7.51-25.18 14.14c-3.94 3.77-8 7.67-11.57 9.14c-3.25 1.36-8.69 1.44-13.94 1.52c-9.76.15-20.82.31-28.51 8s-7.8 18.75-8 28.51c-.08 5.25-.16 10.67-1.52 13.94c-1.47 3.56-5.37 7.63-9.14 11.57C23.51 109.72 16 117.56 16 128s7.51 18.27 14.14 25.18c3.77 3.94 7.67 8 9.14 11.57c1.36 3.27 1.44 8.69 1.52 13.94c.15 9.76.31 20.82 8 28.51s18.75 7.85 28.51 8c5.25.08 10.67.16 13.94 1.52c3.56 1.47 7.63 5.37 11.57 9.14c6.9 6.63 14.74 14.14 25.18 14.14s18.27-7.51 25.18-14.14c3.94-3.77 8-7.67 11.57-9.14c3.27-1.36 8.69-1.44 13.94-1.52c9.76-.15 20.82-.31 28.51-8s7.85-18.75 8-28.51c.08-5.25.16-10.67 1.52-13.94c1.47-3.56 5.37-7.63 9.14-11.57c6.63-6.9 14.14-14.74 14.14-25.18s-7.51-18.27-14.14-25.18m-52.2 6.84l-56 56a8 8 0 0 1-11.32 0l-24-24a8 8 0 0 1 11.32-11.32L112 148.69l50.34-50.35a8 8 0 0 1 11.32 11.32"/>
+                          </svg>   
+                        </span>
+                        <span className="text-gray-700 leading-relaxed text-sm sm:text-base">Work with delivery partners already trusted in their markets</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
         </div>     
         <div className="relative mt-10 sm:mt-20 bg-[#84C1D9] py-6 sm:py-10">
-  <section className="relative mx-auto max-w-6xl px-4 sm:px-6 space-y-2 sm:space-y-4" style={{ zIndex: 2 }}>
-    <h2 className="text-base sm:text-lg uppercase font-bold text-left mb-2 sm:mb-4">What you Get</h2>
-    <h3 className="text-xl sm:text-2xl font-semibold">Certified Talent. Regional Execution. Real Results</h3>
-    <p className="text-xs sm:text-sm">Working with PAAN gives you access to:</p>
-    <ClientsSlider openModal={openModal} />
-  </section>
-  {/* Background Pattern */}
-  <Image
-    src="/assets/images/bg-pattern.svg"
-    width={0}
-    height={0}
-    alt="Background Pattern"
-    className="absolute bottom-0 left-0 w-full h-1/4 sm:h-1/3 object-cover opacity-1 pointer-events-none"
-    style={{ zIndex: 1, width: '100%' }}
-  />
-</div>
+            <section className="relative mx-auto max-w-6xl px-4 sm:px-6 space-y-2 sm:space-y-4" style={{ zIndex: 2 }}>
+              <h2 className="text-base sm:text-lg uppercase font-bold text-left mb-2 sm:mb-4">What you Get</h2>
+              <h3 className="text-xl sm:text-2xl font-semibold">Certified Talent. Regional Execution. Real Results</h3>
+              <p className="text-xs sm:text-sm">Working with PAAN gives you access to:</p>
+              <ClientsSlider openModal={openModal} />
+            </section>
+            {/* Background Pattern */}
+            <Image
+              src="/assets/images/bg-pattern.svg"
+              width={0}
+              height={0}
+              alt="Background Pattern"
+              className="absolute bottom-0 left-0 w-full h-1/4 sm:h-1/3 object-cover opacity-1 pointer-events-none"
+              style={{ zIndex: 1, width: '100%' }}
+            />
+          </div>
 
         <div className="relative">
             {/* Background Pattern */}
@@ -219,29 +219,23 @@ const AgenciesPage = () => {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-10 sm:pt-16 lg:pt-20 relative">
           <section className="relative">
             <div className="mb-0">
-              <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 items-center">
-                <div className="text-white flex flex-col space-y-4 sm:space-y-6 max-w-lg pb-8 sm:pb-10 mx-auto md:mx-0 text-center md:text-left">
-                  <h2 className="text-white text-lg sm:text-xl font-normal uppercase tracking-wide">How it works</h2>
-                  <h3 className="text-white text-2xl sm:text-3xl font-normal">It's easy to get started.</h3>
+              <div>
+                <h2 className="text-white text-lg sm:text-xl font-normal uppercase tracking-wide">How it works</h2>
+                <h3 className="text-white text-2xl sm:text-3xl font-normal">It's easy to get started.</h3>
+              </div>
+              <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 items-center pb-10">
+                <div className="text-white flex flex-col justify-center items-center md:items-start space-y-4 sm:space-y-6 pb-8 sm:pb-10 text-center md:text-left h-full">
                   <div className="flex justify-center md:justify-start">
                     <Image
                       src="/assets/images/how-it-works.png"
-                      width={250}
-                      height={250}
+                      width={600}
+                      height={600}
                       alt="How it works"
-                      className="w-full max-w-[200px] sm:max-w-[250px] h-auto"
+                      className="w-full max-w-[250px] sm:max-w-full h-auto"
                     />
-                  </div>
-                  <div className="pt-4">
-                    <button
-                      onClick={openModal}
-                      className="bg-[#F25849] text-[#172840] py-2.5 sm:py-3 px-6 sm:px-8 rounded-full hover:bg-orange-600 transition-all duration-300 transform ease-in-out hover:translate-y-[-2px] hover:shadow-lg font-medium text-sm tracking-wider w-full sm:w-auto"
-                    >
-                      Submit Your Brief
-                    </button>
-                  </div>
+                  </div>                 
                 </div>
-                <div className="mx-auto md:mx-0 flex justify-center mt-6 md:mt-0">
+                <div className="flex justify-center items-center mt-6 md:mt-0 h-full">
                   <VerticalSteps />
                 </div>
               </div>
@@ -615,26 +609,33 @@ const VerticalSteps = () => {
   const steps = [
     {
       number: 1,
-      title: "Tell us where you want to activate and what you need."
+      title:"Share Your Brief",
+      desc: "Tell us where you want to activate and what you need."
     },
     {
       number: 2,
-      title: "Get paired with certified partners across Africa."
+      title:"We Match You",
+      desc: "Get paired with certified partners across Africa."
     },
     {
       number: 3,
-      title: "Work directly or with PAAN's support team for oversight."
+      title:"Collaborate Your Way",
+      desc: "Work directly or with PAAN's support team for oversight."
     },
     {
       number: 4,
-      title: "Execute with partners who understand your markets."
+      title:"Launch Your Confidence",
+      desc: "Execute with partners who understand your markets."
     }
   ];
   
   return (
     <div className="relative flex flex-col max-w-lg mx-auto">
-      {/* Continuous vertical line through circles */}
-      <div className="absolute left-6 top-0 bottom-0">
+      {/* Vertical line that starts from center of first circle to center of last circle */}
+      <div className="absolute left-6 z-0" style={{
+        top: '24px', // Half of circle height (48px / 2 = 24px)
+        height: `calc(100% - 48px)` // Full height minus one full circle height
+      }}>
         <div className="w-0.5 bg-[#F2B706] h-full" />
       </div>
       
@@ -648,19 +649,21 @@ const VerticalSteps = () => {
         >
           {/* Circle */}
           <div 
-            className={`flex items-center justify-center w-12 h-12 rounded-full bg-[#F2B706] text-white text-lg font-bold shadow-lg transition-transform duration-300 flex-shrink-0 ${hoveredStep === step.number ? 'transform scale-110' : ''}`}
+            className={`flex items-center justify-center w-12 h-12 rounded-full bg-[#F2B706] text-[#172840] text-lg font-bold shadow-lg transition-transform duration-300 flex-shrink-0 ${hoveredStep === step.number ? 'transform scale-110' : ''}`}
           >
             {step.number}
           </div>
           
           {/* Title on the right */}
           <div className="ml-6">
-            <h4 className="text-white text-base font-medium">{step.title}</h4>
+            <h4 className="text-[#84C1D9] text-base font-medium">{step.title}</h4>
+            <p className="text-white font-light">{step.desc}</p>
           </div>
         </div>
       ))}
     </div>
   );
 };
+
 
 export default AgenciesPage;
