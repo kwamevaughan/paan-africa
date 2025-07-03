@@ -13,27 +13,27 @@ export default function PartnerBenefits() {
       ]
     },
     {
-      title: "Exclusive Discounts",
+      title: "Accelerate Adoption",
       description: [
-        "Up to 30% off on additional services",
-        "Preferred pricing on renewals",
-        "Special rates for bulk purchases"
+        "Bulk Licensing Opportunities: Offer discounted rates to PAAN agencies, incentivizing adoption while scaling your user base.",
+        "Tailored Workshops: Train agencies on your product's value through annual hands-on sessions.",
+        "Product Surveys: Gather feedback from 100+ agencies and their clients annually to refine your Africa strategy."
       ]
     },
     {
-      title: "Advanced Analytics",
+      title: "Drive Revenue",
       description: [
-        "Real-time performance dashboards",
-        "Custom reporting solutions",
-        "Data-driven insights and recommendations"
+        "Priority Access to High-Value Agencies: Connect with top-tier agencies serving multinational clients.",
+        "Joint Ventures: Co-create Africa-focused product bundles with PAAN (e.g., AI tools for local storytelling).",
+        "Quarterly Strategy Sessions: Align with PAAN's leadership to identify trends, gaps, and opportunities."
       ]
     },
     {
-      title: "Marketing Resources",
+      title: "Exclusive Privileges",
       description: [
-        "Co-branded marketing materials",
-        "Access to partner marketing fund",
-        "Joint promotional opportunities"
+        "VIP Summit Access: Secure a speaking slot at the annual PAAN Summit + 20% off regional workshops.",
+        "Private Networking: Attend invite-only dinners with agency leaders and global brand executives.",
+        "Market Insights: Receive quarterly reports on emerging tech demands across Africa."
       ]
     }
   ];
