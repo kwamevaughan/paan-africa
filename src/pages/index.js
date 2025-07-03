@@ -73,11 +73,12 @@ const HomePage = () => {
 
   return (
     <>
-      <SEO
+    <SEO
         title="Pan-African Agency Network (PAAN) | Redefining Africa's Creative & Tech Footprint"
         description="Discover the Pan-African Agency Network (PAAN), a dynamic alliance of creative and tech agencies across Africa and the diaspora. Join us to unlock global opportunities, access exclusive resources, and collaborate with top talent to redefine Africa's creative and technological footprint. Explore our membership tiers, services, and upcoming events today!"
         keywords="Pan-African Agency Network, PAAN, African agencies, creative network, tech network, collaboration, innovation, global influence"
       />
+    <div className="relative">
       <main className="px-3 pt-6 sm:px-0 sm:pt-0 relative">
         <Header/>
 
@@ -682,10 +683,11 @@ const HomePage = () => {
           
           <ContactSection />
         </div>
-        <Footer />
         <AgencyEnquiryModal isOpen={isModalOpen} onClose={closeModal} />
         <ScrollToTop />
       </main>
+      <Footer />
+      </div>
     </>
   );
 };
