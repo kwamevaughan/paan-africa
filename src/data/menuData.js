@@ -4,7 +4,7 @@ export const menuItems = [
     { href: '/faqs', label: 'FAQs' },
     { href: 'https://member-portal.paan.africa/', label: 'Member Portal' },
     // { href: '/pricing', label: 'Pricing' },
-    { href: '/blog', label: 'Blog' },
+    { href: '/blogs', label: 'Blog' },
   ];
 
   export const freelancersMenu = [

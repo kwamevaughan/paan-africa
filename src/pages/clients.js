@@ -180,25 +180,30 @@ const AgenciesPage = () => {
             className="absolute top-0 left-0 w-full h-1/3 object-cover opacity-[.6] pointer-events-none"
             style={{ width: '100%' }}
           />
-          <div className="mx-auto max-w-6xl pt-20 mb-20 relative">  
+          <div className="mx-auto max-w-6xl pt-12 md:pt-20 mb-12 md:mb-20 px-4 md:px-6 relative">  
             <section className="relative">            
               <div className="mb-10">
-                <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-                  <div className="flex flex-col space-y-6 max-w-lg">
-                    <h2 className="text-xl font-normal uppercase">Who We Work With</h2>
-                    <h3 className="text-3xl font-normal">Trusted by <span className="font-semibold text-[#F25849]">brands</span>,<br/> <span className="font-semibold text-[#F2B706]">NGOs</span>, and <span className="font-semibold text-[#84C1D9]">institutions</span><br/> building across Africa</h3>
-                    <p className="text-gray-700 leading-relaxed">
+                <div className="mt-6 md:mt-10 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 items-center">
+                  <div className="flex flex-col space-y-4 md:space-y-6 max-w-lg mx-auto md:mx-0">
+                    <h2 className="text-lg md:text-xl font-normal uppercase text-center md:text-left">Who We Work With</h2>
+                    <h3 className="text-2xl md:text-3xl font-normal text-center md:text-left leading-tight md:leading-normal">
+                      Trusted by <span className="font-semibold text-[#F25849]">brands</span>,<br className="hidden md:block"/> 
+                      <span className="md:hidden"> </span><span className="font-semibold text-[#F2B706]">NGOs</span>, and <span className="font-semibold text-[#84C1D9]">institutions</span><br className="hidden md:block"/> 
+                      <span className="md:hidden"> </span>building across Africa
+                    </h3>
+                    <p className="text-gray-700 leading-relaxed text-center md:text-left text-sm md:text-base">
                       Our network supports global brands, regional NGOs, 
-                      and mission-driven organizations expanding into African markets.<br/><br/> 
+                      and mission-driven organizations expanding into African markets.
+                      <br/><br/> 
                       Whether you're launching a digital campaign, activating in new regions, 
                       or building long-term brand presence, we help you find the right creative and strategic partners.
                     </p> 
                   </div>
-                  <div className="mx-auto md:mx-0 flex justify-center">
+                  <div className="order-first md:order-last flex justify-center">
                     <img 
                       src="/assets/images/who-we-work-with.png" 
                       alt="Professional woman" 
-                      className="rounded-lg w-full max-w-md h-auto object-cover" 
+                      className="rounded-lg w-full max-w-sm md:max-w-md h-auto object-cover" 
                     />
                   </div>
                 </div>

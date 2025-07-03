@@ -25,11 +25,9 @@ const Header = ({ navLinkColor }) => {
 
   return (
     <nav
-      className={`w-full text-white z-50 transition-all duration-300 ${
-        isFixed
-          ? "fixed top-0 left-0 shadow-lg backdrop-blur-md text-white bg-[#172840]/95"
-          : "absolute bg-transparent"
-      }`}
+      className={`w-full text-white z-50 transition-all duration-300 fixed top-0 left-0
+        ${isFixed ? "shadow-lg backdrop-blur-md text-white bg-[#172840]/95" : "bg-transparent"}
+      `}
     >
       <div className="w-full px-4 sm:px-6 lg-custom:px-8 text-white">
         <div className="flex items-center justify-between h-16 sm:h-18 lg-custom:h-20">
@@ -160,11 +158,12 @@ const Header = ({ navLinkColor }) => {
                   key={item.href}
                   href={item.href}
                   onClick={() => handleNavClick(item.label)}
-                  className={`$${
-                    activeNav === item.label 
+                  className={`
+                    ${activeNav === item.label 
                       ? "bg-[#F2B706] text-gray-900 shadow-sm" 
-                      : "text-white hover:text-gray-900 hover:bg-[#F2B706]"
-                  } flex items-center space-x-3 px-4 py-3 rounded-xl transition-all duration-200 text-base font-medium`}
+                      : "text-white hover:text-gray-900 hover:bg-[#F2B706]"}
+                    flex items-center space-x-3 px-4 py-3 rounded-xl transition-all duration-200 text-base font-medium
+                  `}
                 >
                   <span>{item.label}</span>
                 </a>
