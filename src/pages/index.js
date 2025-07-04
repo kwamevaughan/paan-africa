@@ -598,50 +598,52 @@ const HomePage = () => {
                   <div className="absolute -inset-4 rounded-2xl blur-lg"></div>
                   <div className="relative">
                     <Image
-                      src="/assets/images/portal.png"
-                      width={600}
-                      height={600}
+                      src="/assets/images/portal.svg"
+                      width={800}
+                      height={800}
                       alt="PAAN Portal Dashboard"
-                      className="rounded-lg"
+                      className="rounded-lg object-contain"
+                      priority
+                      quality={100}
                     />
                     {/* Sub image positioned at top-right */}
                     <Image
-                      src="/assets/images/sub-p-1.png"
-                      width={200}
-                      height={200}
+                      src="/assets/images/sub-p-1.svg"
+                      width={320}
+                      height={320}
                       alt="PAAN Portal Feature"
-                      className="absolute top-28 -right-20"
+                      className="absolute top-36 -right-40"
                     />
                     <Image
                       src="/assets/images/arrow-1.png"
-                      width={60}
-                      height={60}
+                      width={80}
+                      height={80}
                       alt="PAAN Portal Feature"
-                      className="absolute top-12 -right-1"
+                      className="absolute top-10 -right-4"
                     />
                     {/* Sub images positioned at left in flex column */}
-                    <div className="absolute top-2 -left-28 flex flex-col space-y-10">
+                    <div className="absolute top-4 -left-56 flex flex-col space-y-12">
                       <Image
-                        src="/assets/images/sub-p-3.png"
-                        width={200}
-                        height={200}
+                        src="/assets/images/sub-p-3.svg"
+                        width={300}
+                        height={300}
                         alt="PAAN Portal Feature"
                         className=""
                       />
                       <Image
-                        src="/assets/images/sub-p-2.png"
-                        width={200}
-                        height={200}
+                        src="/assets/images/sub-p-2.svg"
+                        width={300}
+                        height={300}
                         alt="PAAN Portal Feature"
                         className=""
                       />
                     </div>
                     <Image
                       src="/assets/images/arrow-2.png"
-                      width={50}
-                      height={50}
+                      width={70}
+                      height={70}
                       alt="PAAN Portal Feature"
-                      className="absolute -bottom-4 left-28"
+                      className="absolute -bottom-12 left-36"
                     />
                   </div>
                 </div>
