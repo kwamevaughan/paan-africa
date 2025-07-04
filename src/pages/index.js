@@ -101,7 +101,9 @@ const HomePage = () => {
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center sm:justify-start">
                 <button                  
                   className="bg-[#F25849] text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-full font-medium text-sm hover:bg-[#D6473C] transition duration-300 w-full sm:w-auto"
-                  onClick={() => window.location.href ='https://membership.paan.africa/'}
+                  onClick={(e) => {
+                    handleScroll(e, "#contact-us", isFixed);
+                  }}
                 >
                   Join The Network
                 </button>
