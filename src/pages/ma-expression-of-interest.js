@@ -110,7 +110,7 @@ const ConfidentialMAEOI = () => {
               Confidential Expression Of Interest
             </h1>
             <p className="text-slate-200 text-lg max-w-3xl mx-auto leading-relaxed">
-              For PAAN Members exploring <span className="font-semibold text-paan-yellow">Mergers & Acquisitions</span> opportunities. Submit this confidential form to connect with Agency Futures and explore your options.
+              For PAAN Members exploring <span className="font-semibold text-paan-yellow">Mergers & Acquisitions</span> opportunities. Submit this confidential form to connect with the PAAN legal team & Agency Futures and explore your options.
             </p>
           </div>
         </div>
