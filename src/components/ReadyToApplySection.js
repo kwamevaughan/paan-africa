@@ -11,7 +11,7 @@ export default function ReadyToApplySection() {
           <Image
             src="/assets/images/user-1.png"
             alt="Decorative"
-            className="rounded-full object-cover shadow-lg border-2 border-white"
+            className="rounded-full object-cover shadow-lg border-2 border-white animate-float1"
             width={56}
             height={56}
           />
@@ -20,7 +20,7 @@ export default function ReadyToApplySection() {
           <Image
             src="/assets/images/user-2.png"
             alt="Decorative"
-            className="rounded-full object-cover shadow-lg border-2 border-white"
+            className="rounded-full object-cover shadow-lg border-2 border-white animate-float2"
             width={48}
             height={48}
           />
@@ -29,7 +29,7 @@ export default function ReadyToApplySection() {
           <Image
             src="/assets/images/user-3.png"
             alt="Decorative"
-            className="rounded-full object-cover shadow-lg border-2 border-white"
+            className="rounded-full object-cover shadow-lg border-2 border-white animate-float3"
             width={64}
             height={64}
           />
@@ -38,7 +38,7 @@ export default function ReadyToApplySection() {
           <Image
             src="/assets/images/user-4.png"
             alt="Decorative"
-            className="rounded-full object-cover shadow-lg border-2 border-white"
+            className="rounded-full object-cover shadow-lg border-2 border-white animate-float4"
             width={48}
             height={48}
           />
@@ -47,7 +47,7 @@ export default function ReadyToApplySection() {
           <Image
             src="/assets/images/user-5.png"
             alt="Decorative"
-            className="rounded-full object-cover shadow-lg border-2 border-white"
+            className="rounded-full object-cover shadow-lg border-2 border-white animate-float5"
             width={56}
             height={56}
           />
@@ -58,7 +58,7 @@ export default function ReadyToApplySection() {
           <Image
             src="/assets/images/user-6.png"
             alt="Decorative"
-            className="rounded-full object-cover shadow-lg border-2 border-white"
+            className="rounded-full object-cover shadow-lg border-2 border-white animate-float1-delay"
             width={56}
             height={56}
           />
@@ -67,7 +67,7 @@ export default function ReadyToApplySection() {
           <Image
             src="/assets/images/user-7.png"
             alt="Decorative"
-            className="rounded-full object-cover shadow-lg border-2 border-white"
+            className="rounded-full object-cover shadow-lg border-2 border-white animate-float2-delay"
             width={48}
             height={48}
           />
@@ -76,7 +76,7 @@ export default function ReadyToApplySection() {
           <Image
             src="/assets/images/user-8.png"
             alt="Decorative"
-            className="rounded-full object-cover shadow-lg border-2 border-white"
+            className="rounded-full object-cover shadow-lg border-2 border-white animate-float3-delay"
             width={64}
             height={64}
           />
@@ -85,7 +85,7 @@ export default function ReadyToApplySection() {
           <Image
             src="/assets/images/user-9.png"
             alt="Decorative"
-            className="rounded-full object-cover shadow-lg border-2 border-white"
+            className="rounded-full object-cover shadow-lg border-2 border-white animate-float4-delay"
             width={48}
             height={48}
           />
@@ -94,7 +94,7 @@ export default function ReadyToApplySection() {
           <Image
             src="/assets/images/user-10.png"
             alt="Decorative"
-            className="rounded-full object-cover shadow-lg border-2 border-white"
+            className="rounded-full object-cover shadow-lg border-2 border-white animate-float5-delay"
             width={56}
             height={56}
           />
