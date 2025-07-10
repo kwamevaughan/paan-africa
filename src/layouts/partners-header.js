@@ -36,7 +36,7 @@ const Header = ({ navLinkColor }) => {
           {/* Header Pattern - Left Side with perfect alignment */}
           <div className="hidden lg-custom:flex absolute left-0 lg-custom:left-0 top-0 bottom-0 items-center pr-4 z-0">
             <Image
-              src="/assets/images/header-pattern.png"
+              src="/assets/images/header-pattern.svg"
               alt="Header Pattern"
               width={70}
               height={70}
@@ -48,7 +48,7 @@ const Header = ({ navLinkColor }) => {
           <div className="flex-shrink-0 ml-0 lg-custom:ml-20 relative z-10">
             <Link href="/" passHref>
               <Image
-                src="/assets/images/partners-page-logo.png"
+                src="/assets/images/partners-logo.svg"
                 alt="Logo"
                 width={160}
                 height={56}

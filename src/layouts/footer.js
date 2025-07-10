@@ -197,7 +197,7 @@ const Footer = () => {
       </div>
       <div className="absolute bottom-0 left-0 w-full h-[20px] sm:h-[30px] md:h-[40px] z-0">
         <Image
-          src="/assets/images/footer-banner.png"
+          src="/assets/images/footer-pattern.svg"
           fill
           alt="Footer Pattern"
           className="object-cover"
