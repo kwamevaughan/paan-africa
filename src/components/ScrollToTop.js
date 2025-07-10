@@ -8,25 +8,31 @@ const ScrollToTop = () => {
   // Handle scroll events
   useEffect(() => {
     const toggleVisibility = () => {
-      const scrolled = window.scrollY;
-      const totalHeight =
-        document.documentElement.scrollHeight - window.innerHeight;
-      const progress = totalHeight > 0 ? (scrolled / totalHeight) * 100 : 0;
+      if (typeof window !== "undefined" && typeof document !== "undefined") {
+        const scrolled = window.scrollY;
+        const totalHeight =
+          document.documentElement.scrollHeight - window.innerHeight;
+        const progress = totalHeight > 0 ? (scrolled / totalHeight) * 100 : 0;
 
-      setScrollProgress(progress);
-      setIsVisible(scrolled > 300); // Show button after 300px
+        setScrollProgress(progress);
+        setIsVisible(scrolled > 300); // Show button after 300px
+      }
     };
 
-    window.addEventListener("scroll", toggleVisibility);
-    return () => window.removeEventListener("scroll", toggleVisibility);
+    if (typeof window !== "undefined") {
+      window.addEventListener("scroll", toggleVisibility);
+      return () => window.removeEventListener("scroll", toggleVisibility);
+    }
   }, []);
 
   // Scroll to top function
   const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
+    if (typeof window !== "undefined") {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    }
   };
 
   return (

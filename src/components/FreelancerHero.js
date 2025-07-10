@@ -32,7 +32,7 @@ const CustomNavButton = ({ direction, onClick }) => {
       <Icon
         icon={direction === "left" ? "mdi:chevron-left" : "mdi:chevron-right"}
         className="transition-colors duration-200"
-        style={{ color: hover ? "#fff" : "#F25849", fontSize: window.innerWidth < 768 ? 28 : 38 }}
+        style={{ color: hover ? "#fff" : "#F25849", fontSize: typeof window !== "undefined" ? (window.innerWidth < 768 ? 28 : 38) : 38 }}
       />
     </button>
   );
