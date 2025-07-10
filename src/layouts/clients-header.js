@@ -35,7 +35,7 @@ const Header = ({ navLinkColor }) => {
           <div className="flex-shrink-0 z-20">
             <Link href="/" passHref>
               <Image
-                src="/assets/images/white-logo.png"
+                src="/assets/images/clients-logo.svg"
                 alt="Logo"
                 width={200}
                 height={70}
