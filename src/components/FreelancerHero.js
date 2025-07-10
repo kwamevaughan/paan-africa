@@ -4,33 +4,36 @@ import Image from "next/image";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { useState, useRef } from "react";
 
-const ArrowLeft = (props) => {
-  const { className, style, onClick } = props;
+// Custom navigation buttons
+const CustomNavButton = ({ direction, onClick }) => {
+  const [hover, setHover] = useState(false);
   return (
     <button
       type="button"
-      aria-label="Previous"
+      aria-label={direction === "left" ? "Previous" : "Next"}
       onClick={onClick}
-      className="slick-arrow slick-prev z-50 left-2 md:left-4 absolute top-1/2 -translate-y-1/2 w-12 h-12 flex items-center justify-center rounded-full border border-gray-200 bg-white shadow-xl transition-all duration-200 hover:bg-paan-red group focus:outline-none focus:ring-2 focus:ring-paan-red hover:scale-110 hover:-translate-y-1 hover:shadow-2xl"
-      style={{ ...style, display: "flex" }}
+      onMouseEnter={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}
+      className={`z-50 absolute top-1/2 -translate-y-1/2 ${direction === "left" ? "left-2 md:left-6" : "right-2 md:right-6"} w-10 h-10 md:w-14 md:h-14 flex items-center justify-center rounded-full border border-gray-200 bg-white/70 backdrop-blur-md shadow-lg transition-all duration-200 focus:outline-none focus:ring-4 focus:ring-paan-red/30 hover:scale-110 hover:shadow-2xl`}
+      style={{
+        background: hover
+          ? "linear-gradient(135deg, #F25849 60%, #f58a49 100%)"
+          : "rgba(255,255,255,0.7)",
+        border: hover ? "1.5px solid #F25849" : "1.5px solid #e5e7eb",
+        boxShadow: hover
+          ? "0 8px 32px 0 rgba(242,88,73,0.25)"
+          : "0 4px 16px 0 rgba(24,24,27,0.10)",
+        backdropFilter: "blur(8px)",
+        WebkitBackdropFilter: "blur(8px)",
+      }}
     >
-      <Icon icon="mdi:chevron-left" className="text-paan-red group-hover:text-white text-3xl transition-colors duration-200" />
-    </button>
-  );
-};
-
-const ArrowRight = (props) => {
-  const { className, style, onClick } = props;
-  return (
-    <button
-      type="button"
-      aria-label="Next"
-      onClick={onClick}
-      className="slick-arrow slick-next z-50 right-2 md:right-4 absolute top-1/2 -translate-y-1/2 w-12 h-12 flex items-center justify-center rounded-full border border-gray-200 bg-white shadow-xl transition-all duration-200 hover:bg-paan-red group focus:outline-none focus:ring-2 focus:ring-paan-red hover:scale-110 hover:-translate-y-1 hover:shadow-2xl"
-      style={{ ...style, display: "flex" }}
-    >
-      <Icon icon="mdi:chevron-right" className="text-paan-red group-hover:text-white text-3xl transition-colors duration-200" />
+      <Icon
+        icon={direction === "left" ? "mdi:chevron-left" : "mdi:chevron-right"}
+        className="transition-colors duration-200"
+        style={{ color: hover ? "#fff" : "#F25849", fontSize: window.innerWidth < 768 ? 28 : 38 }}
+      />
     </button>
   );
 };
@@ -87,7 +90,130 @@ const FreelancerHero = () => {
       infoBg: "#F25849",
       infoTextColor: "#fff",
     },
+    {
+      image: "/assets/images/freelancers/6.png",
+      badge: "/assets/images/freelancers/freelancer-badge.svg",
+      rating: 3.4,
+      name: "Purity .M",
+      role: "Creative Director",
+      ratingBg: "#F25849",
+      infoBg: "#F25849",
+      infoTextColor: "#fff",
+    },
+    {
+      image: "/assets/images/freelancers/7.png",
+      badge: "/assets/images/freelancers/freelancer-badge.svg",
+      rating: 4.2,
+      name: "Obinna K.",
+      role: "UX Designer",
+      ratingBg: "#84C1D9",
+      infoBg: "#84C1D9",
+      infoTextColor: "#172840",
+    },
+    {
+      image: "/assets/images/freelancers/8.png",
+      badge: "/assets/images/freelancers/freelancer-badge.svg",
+      rating: 3.6,
+      name: "Makonnen G.",
+      role: "Web Developer",
+      ratingBg: "#F2B706",
+      infoBg: "#F2B706",
+      infoTextColor: "#172840",
+    },
+    {
+      image: "/assets/images/freelancers/9.png",
+      badge: "/assets/images/freelancers/freelancer-badge.svg",
+      rating: 4.1,
+      name: "Baraka O.",
+      role: "Copywriter",
+      ratingBg: "#172840",
+      infoBg: "#172840",
+      infoTextColor: "#fff",
+    },
+    {
+      image: "/assets/images/freelancers/11.png",
+      badge: "/assets/images/freelancers/freelancer-badge.svg",
+      rating: 4.4,
+      name: "Lemuel .M",
+      role: "Videographer",
+      ratingBg: "#84C1D9",
+      infoBg: "#84C1D9",
+      infoTextColor: "#fff",
+    },
+    {
+      image: "/assets/images/freelancers/12.png",
+      badge: "/assets/images/freelancers/freelancer-badge.svg",
+      rating: 4.6,
+      name: "Kendi .M",
+      role: "Creative Director",
+      ratingBg: "#F25849",
+      infoBg: "#F25849",
+      infoTextColor: "#fff",
+    },
+    {
+      image: "/assets/images/freelancers/13.png",
+      badge: "/assets/images/freelancers/freelancer-badge.svg",
+      rating: 4.2,
+      name: "Chike M.",
+      role: "UX Designer",
+      ratingBg: "#84C1D9",
+      infoBg: "#84C1D9",
+      infoTextColor: "#172840",
+    },
+    {
+      image: "/assets/images/freelancers/14.png",
+      badge: "/assets/images/freelancers/freelancer-badge.svg",
+      rating: 3.6,
+      name: "Adowa O.",
+      role: "Web Developer",
+      ratingBg: "#F2B706",
+      infoBg: "#F2B706",
+      infoTextColor: "#172840",
+    },
+    {
+      image: "/assets/images/freelancers/15.png",
+      badge: "/assets/images/freelancers/freelancer-badge.svg",
+      rating: 4.1,
+      name: "Ifra A.",
+      role: "Copywriter",
+      ratingBg: "#172840",
+      infoBg: "#172840",
+      infoTextColor: "#fff",
+    },
+    {
+      image: "/assets/images/freelancers/16.png",
+      badge: "/assets/images/freelancers/freelancer-badge.svg",
+      rating: 4.4,
+      name: "Anita .M",
+      role: "Graphics Designer",
+      ratingBg: "#84C1D9",
+      infoBg: "#84C1D9",
+      infoTextColor: "#fff",
+    },
+    {
+      image: "/assets/images/freelancers/17.png",
+      badge: "/assets/images/freelancers/freelancer-badge.svg",
+      rating: 4.6,
+      name: "Amara .G",
+      role: "Creative Director",
+      ratingBg: "#F25849",
+      infoBg: "#F25849",
+      infoTextColor: "#fff",
+    },
+    {
+      image: "/assets/images/freelancers/18.png",
+      badge: "/assets/images/freelancers/freelancer-badge.svg",
+      rating: 3.6,
+      name: "Tunde .J",
+      role: "Creative Director",
+      ratingBg: "#84C1D9",
+      infoBg: "#84C1D9",
+      infoTextColor: "#fff",
+    },
+    
   ];
+
+  const sliderRef = useRef(null);
 
   return (
     <div
@@ -152,16 +278,18 @@ const FreelancerHero = () => {
           </div>
 
           {/* Freelancer images - Single responsive Slider */}
-          <div className="mt-auto flex justify-center items-center mx-auto pt-20 w-full">
+          <div className="mt-auto flex justify-center items-center mx-auto pt-20 w-full relative">
+            {/* Custom Navigation Buttons */}
+            <CustomNavButton direction="left" onClick={() => sliderRef.current?.slickPrev()} />
+            <CustomNavButton direction="right" onClick={() => sliderRef.current?.slickNext()} />
             <Slider
               dots={false}
               infinite={true}
               speed={500}
               slidesToShow={5}
               slidesToScroll={1}
-              arrows={true}
-              prevArrow={<ArrowLeft />}
-              nextArrow={<ArrowRight />}
+              arrows={false}
+              ref={sliderRef}
               className="w-full h-[300px] "
               responsive={[
                 {
@@ -181,16 +309,20 @@ const FreelancerHero = () => {
               {freelancers.map((freelancer, idx) => (
                 <div key={idx} className="inline-flex items-center justify-center mx-3">
                   <div className="h-[300px] w-[280px] relative rounded-md overflow-hidden">
-                    <Image
-                      src={freelancer.image}
-                      width={280}
-                      height={300}
-                      alt={`Hero image ${idx + 1}`}
-                      className="w-full h-full object-cover rounded-md transition-transform transform ease-in-out duration-300 hover:translate-y-[-10px]"
-                      style={{ objectFit: 'cover', objectPosition: 'center' }}
-                    />
+                    {/* Dark background behind image */}
+                    <div className="absolute inset-0 bg-[#27272a] rounded-md opacity-80 z-0" />
+                    <div className="relative z-10 w-full h-full flex items-center justify-center">
+                      <Image
+                        src={freelancer.image}
+                        width={280}
+                        height={300}
+                        alt={`Hero image ${idx + 1}`}
+                        className="w-full h-full object-cover rounded-md transition-transform transform ease-in-out duration-300 hover:translate-y-[-10px]"
+                        style={{ objectFit: 'cover', objectPosition: 'center' }}
+                      />
+                    </div>
                     {/* Freelancer badge */}
-                    <div className="absolute top-3 right-3 z-5">
+                    <div className="absolute top-3 right-3 z-20">
                       <Image
                         src={freelancer.badge}
                         width={30}
@@ -201,7 +333,7 @@ const FreelancerHero = () => {
                     </div>
                     {/* Rating card */}
                     <div
-                      className="absolute top-3 left-3 z-5 rounded-lg p-2 text-white text-center min-w-[48px] h-[48px] flex flex-col items-center justify-center shadow-lg"
+                      className="absolute top-3 left-3 z-20 rounded-lg p-2 text-white text-center min-w-[48px] h-[48px] flex flex-col items-center justify-center shadow-lg"
                       style={{ background: freelancer.ratingBg }}
                     >
                       <div className="font-bold text-sm leading-tight">{freelancer.rating}</div>
@@ -213,7 +345,7 @@ const FreelancerHero = () => {
                     </div>
                     {/* Info box overlay */}
                     <div
-                      className="absolute bottom-4 left-0 right-0 mx-2 rounded-lg bg-opacity-90 p-3"
+                      className="absolute bottom-4 left-0 right-0 mx-2 rounded-lg bg-opacity-90 p-3 z-20"
                       style={{ background: freelancer.infoBg }}
                     >
                       <h3 className="font-semibold text-sm" style={{ color: freelancer.infoTextColor }}>{freelancer.name}</h3>

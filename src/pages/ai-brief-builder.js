@@ -235,7 +235,7 @@ ${generatedBrief.brief}`;
 
       <main className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-100 relative">
         {/* Hero Section - Moved to top for transparent header */}
-        <div className="relative bg-gradient-to-r from-[#F25849] to-[#F2B706] text-white pt-24 pb-16 overflow-hidden">
+        <div className="relative bg-paan-dark-blue text-white pt-24 pb-16 overflow-hidden z-10">
           {/* Background Pattern Overlay */}
           <div className="absolute inset-0 bg-black/10"></div>
 
@@ -248,94 +248,48 @@ ${generatedBrief.brief}`;
           <div className="relative mx-auto max-w-6xl px-4 py-16">
             <div className="text-center">
               <div className="flex justify-center mb-8">
-                <div className="bg-white/20 backdrop-blur-sm p-6 rounded-full border border-white/30 shadow-2xl transform hover:scale-105 transition-all duration-300">
-                  <Icon icon="fa-solid:magic" className="w-16 h-16" />
-                </div>
               </div>
-              <h1 className="text-4xl md:text-6xl font-bold mb-8 leading-tight bg-gradient-to-r from-white to-white/90 bg-clip-text text-transparent">
-                PAAN AI Brief Builder
+              <h1 className="text-3xl md:text-5xl font-bold mb-8 leading-tight bg-gradient-to-r from-white to-white/90 bg-clip-text text-transparent">
+                  Create Your <span className='text-paan-red'>Project Brief</span> in <span className='text-paan-yellow'>Minutes</span>
               </h1>
-              <p className="text-xl md:text-2xl text-white/95 max-w-4xl mx-auto leading-relaxed mb-8 font-light">
-                Generate comprehensive, professional creative briefs powered by
-                AI. Get actionable insights and strategic direction in seconds.
+              <p className="text-md md:text-xl text-white/95 max-w-4xl mx-auto leading-relaxed mb-8 font-light">
+                Just answer a few quick questions and get a professional brief you<br/> can download and share instantly.
               </p>
             </div>
           </div>
         </div>
 
-        {/* Features Section */}
-        <div className="mx-auto max-w-6xl px-4 pt-20 pb-10 ">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
-            <div className="text-center group">
-              <div className="bg-gradient-to-br from-[#F25849]/20 to-[#F25849]/10 p-6 rounded-full w-20 h-20 mx-auto mb-8 flex items-center justify-center group-hover:scale-110 transition-all duration-500 shadow-lg">
-                <Icon
-                  icon="fa-solid:bolt"
-                  className="w-10 h-10 text-[#F25849]"
-                />
-              </div>
-              <h3 className="text-2xl font-bold text-[#172840] mb-4">
-                Lightning Fast
-              </h3>
-              <p className="text-gray-600 text-lg leading-relaxed">
-                Generate professional briefs in seconds, not hours. Save time
-                and accelerate your creative process.
-              </p>
-            </div>
-
-            <div className="text-center group">
-              <div className="bg-gradient-to-br from-[#F2B706]/20 to-[#F2B706]/10 p-6 rounded-full w-20 h-20 mx-auto mb-8 flex items-center justify-center group-hover:scale-110 transition-all duration-500 shadow-lg">
-                <Icon
-                  icon="fa-solid:brain"
-                  className="w-10 h-10 text-[#F2B706]"
-                />
-              </div>
-              <h3 className="text-2xl font-bold text-[#172840] mb-4">
-                AI-Powered Intelligence
-              </h3>
-              <p className="text-gray-600 text-lg leading-relaxed">
-                Leverage advanced AI to create comprehensive briefs with
-                strategic insights and actionable direction.
-              </p>
-            </div>
-
-            <div className="text-center group">
-              <div className="bg-gradient-to-br from-[#84C1D9]/20 to-[#84C1D9]/10 p-6 rounded-full w-20 h-20 mx-auto mb-8 flex items-center justify-center group-hover:scale-110 transition-all duration-500 shadow-lg">
-                <Icon
-                  icon="fa-solid:download"
-                  className="w-10 h-10 text-[#84C1D9]"
-                />
-              </div>
-              <h3 className="text-2xl font-bold text-[#172840] mb-4">
-                Easy Export
-              </h3>
-              <p className="text-gray-600 text-lg leading-relaxed">
-                Download your briefs as text files, PDFs, or Word documents for
-                seamless sharing with your team.
-              </p>
-            </div>
-          </div>
+        {/* AI Bot Image between hero and main content */}
+        <div className="mx-auto max-w-full md:max-w-5xl flex justify-start md:justify-left -mt-24 md:-mt-40 relative z-20 px-4 md:px-0">
+          <Image
+            src="/assets/images/ai-bot.svg"
+            width={220}
+            height={220}
+            alt="PAAN AI Bot"
+            className="drop-shadow-xl w-[120px] h-[120px] md:w-[220px] md:h-[220px]"
+          />
         </div>
 
         {/* Main Content */}
-        <div className="mx-auto max-w-5xl px-4 mb-20">
-          <div className="bg-white rounded-3xl shadow-2xl overflow-hidden border border-gray-100">
+        <div className="mx-auto max-w-full md:max-w-5xl px-2 md:px-4 mb-10 md:mb-20 mt-2 md:mt-4">
+          <div className="bg-white rounded-lg shadow-2xl overflow-hidden border border-gray-100">
             {/* Tabs */}
-            <div className="flex border-b border-gray-100">
+            <div className="flex flex-col md:flex-row border-b border-gray-100">
               <button
                 onClick={() => setActiveTab("form")}
-                className={`flex-1 py-6 px-8 text-center font-semibold text-lg transition-all duration-300 cursor-default ${
+                className={`flex-1 py-4 md:py-6 px-4 md:px-8 text-left transition-all duration-300 cursor-default ${
                   activeTab === "form"
-                    ? "bg-paan-red text-white shadow-lg"
+                    ? "bg-paan-blue text-paan-dark-blue shadow-lg"
                     : "bg-gray-50 text-gray-600 hover:bg-gray-100 hover:text-gray-800"
                 }`}
               >
-                <Icon icon="fa-solid:magic" className="w-6 h-6 inline mr-3" />
-                Project Details
+                <h4 className='font-semibold'>Let's Start With the Basics</h4>
+                <p className='font-light text-sm'>Tell us a little about your project so we can guide the rest.</p>
               </button>
               {generatedBrief && (
                 <button
                   onClick={() => setActiveTab("brief")}
-                  className={`flex-1 py-6 px-8 text-center font-semibold text-lg transition-all duration-300 ${
+                  className={`flex-1 py-4 md:py-6 px-4 md:px-8 text-center font-semibold text-base md:text-lg transition-all duration-300 ${
                     activeTab === "brief"
                       ? "bg-gradient-to-r from-paan-red to-paan-yellow text-white shadow-lg"
                       : "bg-gray-50 text-gray-600 hover:bg-gray-100 hover:text-gray-800"
@@ -343,7 +297,7 @@ ${generatedBrief.brief}`;
                 >
                   <Icon
                     icon="fa-solid:file-alt"
-                    className="w-6 h-6 inline mr-3"
+                    className="w-5 h-5 md:w-6 md:h-6 inline mr-3"
                   />
                   Generated Brief
                 </button>
@@ -351,16 +305,12 @@ ${generatedBrief.brief}`;
             </div>
 
             {/* Content */}
-            <div className="p-12">
+            <div className="p-4 md:p-12">
               {activeTab === "form" && (
-                <form onSubmit={handleSubmit} className="space-y-10">
+                <form onSubmit={handleSubmit} className="space-y-6 md:space-y-10">
                   {/* Project Type */}
                   <div className="relative group">
-                    <label className="block text-xl font-semibold text-gray-800 mb-4 flex items-center">
-                      <Icon
-                        icon="fa-solid:project-diagram"
-                        className="w-6 h-6 mr-3 text-[#F25849] group-hover:scale-110 transition-transform duration-300"
-                      />
+                    <label className="block text-lg md:text-xl font-semibold text-gray-800 mb-2 md:mb-4 flex items-center">
                       Project Type <span className="text-red-500 ml-1">*</span>
                     </label>
                     <div className="relative">
@@ -368,7 +318,7 @@ ${generatedBrief.brief}`;
                         name="projectType"
                         value={formData.projectType}
                         onChange={handleInputChange}
-                        className="w-full px-6 py-5 border-2 border-gray-200 rounded-2xl focus:ring-4 focus:ring-[#F25849]/20 focus:border-[#F25849] focus:outline-none text-md bg-white transition-all duration-300 appearance-none  hover:border-gray-300 hover:shadow-lg group-hover:shadow-xl"
+                        className="w-full px-4 md:px-6 py-3 md:py-5 border-2 border-gray-200 rounded-2xl focus:ring-4 focus:ring-[#F25849]/20 focus:border-[#F25849] focus:outline-none text-base md:text-md bg-white transition-all duration-300 appearance-none  hover:border-gray-300 hover:shadow-lg group-hover:shadow-xl"
                         required
                       >
                         <option value="">Choose your project type</option>
@@ -380,18 +330,14 @@ ${generatedBrief.brief}`;
                       </select>
                       <Icon
                         icon="fa-solid:chevron-down"
-                        className="absolute right-6 top-1/2 transform -translate-y-1/2 text-gray-400 pointer-events-none w-5 h-5 transition-transform duration-300 group-hover:scale-110"
+                        className="absolute right-4 md:right-6 top-1/2 transform -translate-y-1/2 text-gray-400 pointer-events-none w-5 h-5 transition-transform duration-300 group-hover:scale-110"
                       />
                     </div>
                   </div>
 
                   {/* Industry */}
                   <div className="relative group">
-                    <label className="block text-xl font-semibold text-gray-800 mb-4 flex items-center">
-                      <Icon
-                        icon="fa-solid:industry"
-                        className="w-6 h-6 mr-3 text-[#F2B706] group-hover:scale-110 transition-transform duration-300"
-                      />
+                    <label className="block text-lg md:text-xl font-semibold text-gray-800 mb-2 md:mb-4 flex items-center">
                       Industry <span className="text-red-500 ml-1">*</span>
                     </label>
                     <div className="relative">
@@ -399,7 +345,7 @@ ${generatedBrief.brief}`;
                         name="industry"
                         value={formData.industry}
                         onChange={handleInputChange}
-                        className="w-full px-6 py-5 border-2 border-gray-200 rounded-2xl focus:ring-4 focus:ring-[#F2B706]/20 focus:border-[#F2B706] focus:outline-none text-md bg-white transition-all duration-300 appearance-none hover:border-gray-300 hover:shadow-lg group-hover:shadow-xl"
+                        className="w-full px-4 md:px-6 py-3 md:py-5 border-2 border-gray-200 rounded-2xl focus:ring-4 focus:ring-[#F2B706]/20 focus:border-[#F2B706] focus:outline-none text-base md:text-md bg-white transition-all duration-300 appearance-none hover:border-gray-300 hover:shadow-lg group-hover:shadow-xl"
                         required
                       >
                         <option value="">Select your industry</option>
@@ -411,18 +357,14 @@ ${generatedBrief.brief}`;
                       </select>
                       <Icon
                         icon="fa-solid:chevron-down"
-                        className="absolute right-6 top-1/2 transform -translate-y-1/2 text-gray-400 pointer-events-none w-5 h-5 transition-transform duration-300 group-hover:scale-110"
+                        className="absolute right-4 md:right-6 top-1/2 transform -translate-y-1/2 text-gray-400 pointer-events-none w-5 h-5 transition-transform duration-300 group-hover:scale-110"
                       />
                     </div>
                   </div>
 
                   {/* Target Audience */}
                   <div className="relative group">
-                    <label className="block text-xl font-semibold text-gray-800 mb-4 flex items-center">
-                      <Icon
-                        icon="fa-solid:users"
-                        className="w-6 h-6 mr-3 text-[#84C1D9] group-hover:scale-110 transition-transform duration-300"
-                      />
+                    <label className="block text-lg md:text-xl font-semibold text-gray-800 mb-2 md:mb-4 flex items-center">
                       Target Audience{" "}
                       <span className="text-red-500 ml-1">*</span>
                     </label>
@@ -431,7 +373,7 @@ ${generatedBrief.brief}`;
                       value={formData.targetAudience}
                       onChange={handleInputChange}
                       placeholder="Describe your target audience (demographics, behaviors, interests, etc.)"
-                      className="w-full px-6 py-5 border-2 border-gray-200 rounded-2xl focus:ring-4 focus:ring-[#84C1D9]/20 focus:border-[#84C1D9] focus:outline-none resize-none text-md bg-white transition-all duration-300 hover:border-gray-300 hover:shadow-lg group-hover:shadow-xl min-h-[120px]"
+                      className="w-full px-4 md:px-6 py-3 md:py-5 border-2 border-gray-200 rounded-2xl focus:ring-4 focus:ring-[#84C1D9]/20 focus:border-[#84C1D9] focus:outline-none resize-none text-base md:text-md bg-white transition-all duration-300 hover:border-gray-300 hover:shadow-lg group-hover:shadow-xl min-h-[120px]"
                       rows="4"
                       required
                     />
@@ -439,11 +381,7 @@ ${generatedBrief.brief}`;
 
                   {/* Project Goals */}
                   <div className="relative group">
-                    <label className="block text-xl font-semibold text-gray-800 mb-4 flex items-center">
-                      <Icon
-                        icon="fa-solid:target"
-                        className="w-6 h-6 mr-3 text-[#F25849] group-hover:scale-110 transition-transform duration-300"
-                      />
+                    <label className="block text-lg md:text-xl font-semibold text-gray-800 mb-2 md:mb-4 flex items-center">
                       Project Goals <span className="text-red-500 ml-1">*</span>
                     </label>
                     <textarea
@@ -451,20 +389,16 @@ ${generatedBrief.brief}`;
                       value={formData.projectGoals}
                       onChange={handleInputChange}
                       placeholder="What do you want to achieve with this project? (increase brand awareness, drive sales, etc.)"
-                      className="w-full px-6 py-5 border-2 border-gray-200 rounded-2xl focus:ring-4 focus:ring-[#F25849]/20 focus:border-[#F25849] focus:outline-none resize-none text-md bg-white transition-all duration-300 hover:border-gray-300 hover:shadow-lg group-hover:shadow-xl min-h-[120px]"
+                      className="w-full px-4 md:px-6 py-3 md:py-5 border-2 border-gray-200 rounded-2xl focus:ring-4 focus:ring-[#F25849]/20 focus:border-[#F25849] focus:outline-none resize-none text-base md:text-md bg-white transition-all duration-300 hover:border-gray-300 hover:shadow-lg group-hover:shadow-xl min-h-[120px]"
                       rows="4"
                       required
                     />
                   </div>
 
                   {/* Budget and Timeline */}
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
                     <div className="relative group">
-                      <label className="block text-xl font-semibold text-gray-800 mb-4 flex items-center">
-                        <Icon
-                          icon="fa-solid:dollar-sign"
-                          className="w-6 h-6 mr-3 text-[#F2B706] group-hover:scale-110 transition-transform duration-300"
-                        />
+                      <label className="block text-lg md:text-xl font-semibold text-gray-800 mb-2 md:mb-4 flex items-center">
                         Budget Range
                       </label>
                       <div className="relative">
@@ -472,7 +406,7 @@ ${generatedBrief.brief}`;
                           name="budget"
                           value={formData.budget}
                           onChange={handleInputChange}
-                          className="w-full px-6 py-5 border-2 border-gray-200 rounded-2xl focus:ring-4 focus:ring-[#F2B706]/20 focus:border-[#F2B706] focus:outline-none text-md bg-white transition-all duration-300 appearance-none hover:border-gray-300 hover:shadow-lg group-hover:shadow-xl"
+                          className="w-full px-4 md:px-6 py-3 md:py-5 border-2 border-gray-200 rounded-2xl focus:ring-4 focus:ring-[#F2B706]/20 focus:border-[#F2B706] focus:outline-none text-base md:text-md bg-white transition-all duration-300 appearance-none hover:border-gray-300 hover:shadow-lg group-hover:shadow-xl"
                         >
                           <option value="">Select budget range</option>
                           {budgetRanges.map((range) => (
@@ -483,17 +417,13 @@ ${generatedBrief.brief}`;
                         </select>
                         <Icon
                           icon="fa-solid:chevron-down"
-                          className="absolute right-6 top-1/2 transform -translate-y-1/2 text-gray-400 pointer-events-none w-5 h-5 transition-transform duration-300 group-hover:scale-110"
+                          className="absolute right-4 md:right-6 top-1/2 transform -translate-y-1/2 text-gray-400 pointer-events-none w-5 h-5 transition-transform duration-300 group-hover:scale-110"
                         />
                       </div>
                     </div>
 
                     <div className="relative group">
-                      <label className="block text-xl font-semibold text-gray-800 mb-4 flex items-center">
-                        <Icon
-                          icon="fa-solid:clock"
-                          className="w-6 h-6 mr-3 text-[#84C1D9] group-hover:scale-110 transition-transform duration-300"
-                        />
+                      <label className="block text-lg md:text-xl font-semibold text-gray-800 mb-2 md:mb-4 flex items-center">
                         Timeline
                       </label>
                       <div className="relative">
@@ -501,7 +431,7 @@ ${generatedBrief.brief}`;
                           name="timeline"
                           value={formData.timeline}
                           onChange={handleInputChange}
-                          className="w-full px-6 py-5 border-2 border-gray-200 rounded-2xl focus:ring-4 focus:ring-[#84C1D9]/20 focus:border-[#84C1D9] focus:outline-none text-md bg-white transition-all duration-300 appearance-none hover:border-gray-300 hover:shadow-lg group-hover:shadow-xl"
+                          className="w-full px-4 md:px-6 py-3 md:py-5 border-2 border-gray-200 rounded-2xl focus:ring-4 focus:ring-[#84C1D9]/20 focus:border-[#84C1D9] focus:outline-none text-base md:text-md bg-white transition-all duration-300 appearance-none hover:border-gray-300 hover:shadow-lg group-hover:shadow-xl"
                         >
                           <option value="">Select timeline</option>
                           {timelineOptions.map((option) => (
@@ -512,7 +442,7 @@ ${generatedBrief.brief}`;
                         </select>
                         <Icon
                           icon="fa-solid:chevron-down"
-                          className="absolute right-6 top-1/2 transform -translate-y-1/2 text-gray-400 pointer-events-none w-5 h-5 transition-transform duration-300 group-hover:scale-110"
+                          className="absolute right-4 md:right-6 top-1/2 transform -translate-y-1/2 text-gray-400 pointer-events-none w-5 h-5 transition-transform duration-300 group-hover:scale-110"
                         />
                       </div>
                     </div>
@@ -520,11 +450,7 @@ ${generatedBrief.brief}`;
 
                   {/* Additional Details */}
                   <div className="relative group">
-                    <label className="block text-xl font-semibold text-gray-800 mb-4 flex items-center">
-                      <Icon
-                        icon="fa-solid:plus-circle"
-                        className="w-6 h-6 mr-3 text-[#F25849] group-hover:scale-110 transition-transform duration-300"
-                      />
+                    <label className="block text-lg md:text-xl font-semibold text-gray-800 mb-2 md:mb-4 flex items-center">
                       Additional Details
                     </label>
                     <textarea
@@ -532,17 +458,17 @@ ${generatedBrief.brief}`;
                       value={formData.additionalDetails}
                       onChange={handleInputChange}
                       placeholder="Any additional context, requirements, or specific details about your project"
-                      className="w-full px-6 py-5 border-2 border-gray-200 rounded-2xl focus:ring-4 focus:ring-[#F25849]/20 focus:border-[#F25849] focus:outline-none resize-none text-md bg-white transition-all duration-300 hover:border-gray-300 hover:shadow-lg group-hover:shadow-xl min-h-[120px]"
+                      className="w-full px-4 md:px-6 py-3 md:py-5 border-2 border-gray-200 rounded-2xl focus:ring-4 focus:ring-[#F25849]/20 focus:border-[#F25849] focus:outline-none resize-none text-base md:text-md bg-white transition-all duration-300 hover:border-gray-300 hover:shadow-lg group-hover:shadow-xl min-h-[120px]"
                       rows="4"
                     />
                   </div>
 
                   {/* Submit Button */}
-                  <div className="pt-8 flex justify-center">
+                  <div className="pt-6 md:pt-8 flex flex-col md:flex-row gap-4 md:gap-6 justify-start">
                     <button
                       type="submit"
                       disabled={isGenerating}
-                      className=" bg-paan-red text-white py-4 px-6 rounded-2xl font-semibold hover:from-[#D6473C] hover:via-[#E6A800] hover:to-[#6BA8C4] transition-all duration-500 disabled:opacity-50 disabled:cursor-not-allowed flex items-center  justify-center gap-4 shadow-2xl hover:shadow-3xl hover:scale-[1.02] transform active:scale-[0.98]"
+                      className="w-full md:w-auto bg-paan-red text-white py-3 md:py-4 px-6 rounded-full font-semibold hover:from-[#D6473C] hover:via-[#E6A800] hover:to-[#6BA8C4] transition-all duration-500 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-4 shadow-2xl hover:shadow-3xl hover:scale-[1.02] transform active:scale-[0.98]"
                     >
                       {isGenerating ? (
                         <>
@@ -552,7 +478,7 @@ ${generatedBrief.brief}`;
                       ) : (
                         <>
                           <Icon
-                            icon="fa-solid:magic"
+                            icon="mingcute:ai-fill"
                             className="w-8 h-8 animate-pulse"
                           />
                           Generate Creative Brief
@@ -711,24 +637,24 @@ ${generatedBrief.brief}`;
                         </div>
                       </div>
                     </div>
-                    <div className="bg-gradient-to-br from-gray-50 to-white p-8 rounded-2xl max-h-96 overflow-y-auto shadow-lg border border-gray-100">
-                      <pre className="whitespace-pre-wrap text-xl text-gray-800 font-sans leading-relaxed">
+                    <div className="bg-gradient-to-br from-gray-50 to-white p-4 md:p-8 rounded-2xl max-h-96 overflow-y-auto overflow-x-auto shadow-lg border border-gray-100">
+                      <pre className="whitespace-pre-wrap text-base md:text-xl text-gray-800 font-sans leading-relaxed">
                         {generatedBrief.brief}
                       </pre>
                     </div>
                   </div>
 
                   {/* Action Buttons */}
-                  <div className="flex gap-6 pt-8">
+                  <div className="flex flex-col md:flex-row gap-4 md:gap-6 pt-6 md:pt-8">
                     <button
                       onClick={handleReset}
-                      className="flex-1 bg-gradient-to-r from-gray-100 to-gray-200 text-gray-700 py-4 px-8 rounded-2xl hover:from-gray-200 hover:to-gray-300 transition-all duration-300 text-xl font-semibold shadow-lg hover:shadow-xl"
+                      className="flex-1 bg-gradient-to-r from-gray-100 to-gray-200 text-gray-700 py-3 md:py-4 px-6 rounded-2xl hover:from-gray-200 hover:to-gray-300 transition-all duration-300 text-base md:text-xl font-semibold shadow-lg hover:shadow-xl"
                     >
                       Create New Brief
                     </button>
                     <button
                       onClick={() => setActiveTab("form")}
-                      className="flex-1 bg-gradient-to-r from-[#172840] to-[#0F1A2A] text-white py-4 px-8 rounded-2xl hover:from-[#0F1A2A] hover:to-[#172840] transition-all duration-300 text-xl font-semibold shadow-lg hover:shadow-xl"
+                      className="flex-1 bg-gradient-to-r from-[#172840] to-[#0F1A2A] text-white py-3 md:py-4 px-6 rounded-2xl hover:from-[#0F1A2A] hover:to-[#172840] transition-all duration-300 text-base md:text-xl font-semibold shadow-lg hover:shadow-xl"
                     >
                       Edit Details
                     </button>
