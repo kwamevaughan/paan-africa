@@ -16,7 +16,7 @@ const CustomNavButton = ({ direction, onClick }) => {
       onClick={onClick}
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
-      className={`z-50 absolute top-1/2 -translate-y-1/2 ${direction === "left" ? "left-2 md:left-6" : "right-2 md:right-6"} w-10 h-10 md:w-14 md:h-14 flex items-center justify-center rounded-full border border-gray-200 bg-white/70 backdrop-blur-md shadow-lg transition-all duration-200 focus:outline-none focus:ring-4 focus:ring-paan-red/30 hover:scale-110 hover:shadow-2xl`}
+      className={`z-10 absolute top-1/2 -translate-y-1/2 ${direction === "left" ? "left-2 md:left-6" : "right-2 md:right-6"} w-10 h-10 md:w-14 md:h-14 flex items-center justify-center rounded-full border border-gray-200 bg-white/70 backdrop-blur-md shadow-lg transition-all duration-200 focus:outline-none focus:ring-4 focus:ring-paan-red/30 hover:scale-110 hover:shadow-2xl`}
       style={{
         background: hover
           ? "linear-gradient(135deg, #F25849 60%, #f58a49 100%)"
