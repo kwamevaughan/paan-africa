@@ -289,6 +289,9 @@ const FreelancerHero = () => {
               slidesToShow={5}
               slidesToScroll={1}
               arrows={false}
+              autoplay={true}
+              autoplaySpeed={3000}
+              pauseOnHover={true}
               ref={sliderRef}
               className="w-full h-[300px] "
               responsive={[
@@ -310,7 +313,7 @@ const FreelancerHero = () => {
                 <div key={idx} className="inline-flex items-center justify-center mx-3">
                   <div className="h-[300px] w-[280px] relative rounded-md overflow-hidden">
                     {/* Dark background behind image */}
-                    <div className="absolute inset-0 bg-[#27272a] rounded-md opacity-80 z-0" />
+                    <div className="absolute inset-0 bg-[#D1D3D4] rounded-md opacity-80 z-0" />
                     <div className="relative z-10 w-full h-full flex items-center justify-center">
                       <Image
                         src={freelancer.image}
