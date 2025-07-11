@@ -545,7 +545,82 @@ const HomePage = () => {
             </div>
           </section>
         </div>
-
+        <div>
+  <section className="bg-paan-dark-blue py-12 sm:py-16 lg:py-24 relative overflow-hidden">
+    <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+      <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 items-center">
+        {/* Left Column - Header */}
+        <div className="space-y-4 sm:space-y-6 text-center lg:text-left">
+          <h3 className="text-xs sm:text-sm font-semibold text-white uppercase tracking-wide">
+            What Our Members Are Saying
+          </h3>
+          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-white font-light leading-tight">
+            Discover how PAAN is transforming agency growth across Africa.
+          </h2>
+        </div>
+        
+        {/* Right Column - Testimonial */}
+        <div className="relative mt-8 lg:mt-0">
+          <div className="bg-paan-blue p-6 sm:p-8 lg:p-10 rounded-2xl shadow-2xl relative z-10">
+            {/* Quote Icon - Responsive positioning */}
+            <div className="absolute -top-8 sm:-top-12 lg:-top-16 left-2 sm:left-4 z-20">
+              <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" className="text-paan-yellow sm:w-20 sm:h-20 lg:w-[120px] lg:h-[120px]">
+                <path fill="currentColor" d="M11.192 15.757q0-1.32-.69-2.217q-.489-.618-1.327-.812c-.55-.128-1.07-.137-1.54-.028c-.16-.95.1-1.956.76-3.022q.992-1.598 2.558-2.403L9.372 5c-.8.396-1.56.898-2.26 1.505c-.71.607-1.34 1.305-1.9 2.094s-.98 1.68-1.25 2.69s-.345 2.04-.216 3.1c.168 1.4.62 2.52 1.356 3.35Q6.205 19 7.85 19c.965 0 1.766-.29 2.4-.878q.941-.864.94-2.368zm9.124 0q0-1.32-.69-2.217q-.49-.63-1.327-.817q-.84-.185-1.54-.022c-.16-.94.09-1.95.752-3.02q.99-1.59 2.556-2.4L18.49 5q-1.201.594-2.26 1.505a11.3 11.3 0 0 0-1.894 2.094c-.556.79-.97 1.68-1.24 2.69a8 8 0 0 0-.217 3.1c.166 1.4.616 2.52 1.35 3.35q1.1 1.252 2.743 1.252q1.45.002 2.402-.877q.941-.864.942-2.368z"/>
+              </svg>
+            </div>
+            
+            {/* Circle - Bottom Right */}
+            <div className="absolute -bottom-2 sm:-bottom-8 lg:-bottom-10 -right-1 w-6 h-6 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-paan-red rounded-full z-20"></div>
+            
+            <div className="space-y-4 sm:space-y-6 py-6 sm:py-8 lg:py-10">
+              {/* Quote Text */}
+              <p className="text-paan-dark-blue text-base sm:text-lg leading-relaxed">
+                PAAN has enabled us to access new business opportunities across Africa and has also played a pivotal role in upskilling our teams through training programs & webinars tailored to agencies
+              </p>
+              
+              {/* Author Info */}
+              <div className="flex items-center space-x-3 sm:space-x-4 pt-2 sm:pt-4">
+                <div className="flex-shrink-0">
+                  <Image
+                    src="/assets/images/kester-muhanji.png"
+                    width={48}
+                    height={48}
+                    alt="Kester Muhanji"
+                    className="rounded-full ring-2 sm:ring-4 ring-white/20 sm:w-16 sm:h-16"
+                  />
+                </div>
+                <div>
+                  <h4 className="font-bold text-paan-dark-blue text-base sm:text-lg">Kester Muhanji</h4>
+                  <p className="text-paan-dark-blue text-xs sm:text-sm">CEO, Aquila East Africa</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          {/* Decorative Elements */}
+          <div className="absolute -top-2 sm:-top-4 -right-2 sm:-right-4 w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 bg-white/10 rounded-full blur-xl"></div>
+          <div className="absolute -bottom-4 sm:-bottom-6 -left-4 sm:-left-6 w-24 h-24 sm:w-28 sm:h-28 lg:w-32 lg:h-32 bg-paan-blue/30 rounded-full blur-2xl"></div>
+        </div>
+      </div>
+    </div>
+    
+    {/* Background Pattern */}
+    <div className="absolute bottom-0 left-0 opacity-6 z-0">
+      <Image
+        src="/assets/images/testimonial-section-pattern.svg"
+        width={250}
+        height={250}
+        alt=""
+        className="object-contain sm:w-[300px] sm:h-[300px] lg:w-[400px] lg:h-[400px]"
+      />
+    </div>
+    
+    {/* Additional Decorative Elements */}
+    <div className="absolute top-12 sm:top-16 lg:top-20 left-6 sm:left-8 lg:left-10 w-1.5 h-1.5 sm:w-2 sm:h-2 bg-paan-blue rounded-full opacity-40"></div>
+    <div className="absolute top-24 sm:top-32 lg:top-40 left-12 sm:left-16 lg:left-20 w-0.5 h-0.5 sm:w-1 sm:h-1 bg-white rounded-full opacity-60"></div>
+    <div className="absolute bottom-20 sm:bottom-24 lg:bottom-32 left-1/4 w-2 h-2 sm:w-2.5 sm:h-2.5 lg:w-3 lg:h-3 bg-paan-blue/50 rounded-full"></div>
+  </section>
+</div>
         <div className="network-bg relative" id="join-network">
           <div className="absolute -top-3 left-4 w-6 h-6 bg-[#84C1D9] rounded-full z-0"></div>
           <div className="absolute -top-8 right-4 w-16 h-16 bg-yellow-400 rounded-full z-0"></div>
