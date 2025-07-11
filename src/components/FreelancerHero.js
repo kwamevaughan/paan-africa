@@ -6,38 +6,6 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { useState, useRef } from "react";
 
-// Custom navigation buttons
-const CustomNavButton = ({ direction, onClick }) => {
-  const [hover, setHover] = useState(false);
-  return (
-    <button
-      type="button"
-      aria-label={direction === "left" ? "Previous" : "Next"}
-      onClick={onClick}
-      onMouseEnter={() => setHover(true)}
-      onMouseLeave={() => setHover(false)}
-      className={`z-10 absolute top-1/2 -translate-y-1/2 ${direction === "left" ? "left-2 md:left-6" : "right-2 md:right-6"} w-10 h-10 md:w-14 md:h-14 flex items-center justify-center rounded-full border border-gray-200 bg-white/70 backdrop-blur-md shadow-lg transition-all duration-200 focus:outline-none focus:ring-4 focus:ring-paan-red/30 hover:scale-110 hover:shadow-2xl`}
-      style={{
-        background: hover
-          ? "linear-gradient(135deg, #F25849 60%, #f58a49 100%)"
-          : "rgba(255,255,255,0.7)",
-        border: hover ? "1.5px solid #F25849" : "1.5px solid #e5e7eb",
-        boxShadow: hover
-          ? "0 8px 32px 0 rgba(242,88,73,0.25)"
-          : "0 4px 16px 0 rgba(24,24,27,0.10)",
-        backdropFilter: "blur(8px)",
-        WebkitBackdropFilter: "blur(8px)",
-      }}
-    >
-      <Icon
-        icon={direction === "left" ? "mdi:chevron-left" : "mdi:chevron-right"}
-        className="transition-colors duration-200"
-        style={{ color: hover ? "#fff" : "#F25849", fontSize: typeof window !== "undefined" ? (window.innerWidth < 768 ? 28 : 38) : 38 }}
-      />
-    </button>
-  );
-};
-
 const FreelancerHero = () => {
   const freelancers = [
     {
@@ -278,14 +246,7 @@ const FreelancerHero = () => {
           </div>
 
           {/* Freelancer images - Single responsive Slider */}
-          <div className="mt-auto flex justify-center items-center mx-auto pt-20 w-full relative">
-            {/* Custom Navigation Buttons */}
-            <div className="hidden md:block">
-              <CustomNavButton direction="left" onClick={() => sliderRef.current?.slickPrev()} />
-            </div>
-            <div className="hidden md:block">
-              <CustomNavButton direction="right" onClick={() => sliderRef.current?.slickNext()} />
-            </div>
+          <div className="mt-auto justify-center items-center mx-auto pt-20 w-full relative hidden md:flex">
             <Slider
               dots={false}
               infinite={true}
@@ -297,7 +258,7 @@ const FreelancerHero = () => {
               autoplaySpeed={3000}
               pauseOnHover={true}
               ref={sliderRef}
-              className="w-full h-[300px]"
+              className="w-full h-[350px] md:h-[300px]"
               responsive={[
                 {
                   breakpoint: 1536, // 2xl
@@ -314,11 +275,11 @@ const FreelancerHero = () => {
                 {
                   breakpoint: 1024, // lg
                   settings: {
-                    slidesToShow: 2,
+                    slidesToShow: 3,
                   },
                 },
                 {
-                  breakpoint: 720, // md
+                  breakpoint: 845, // md
                   settings: {
                     slidesToShow: 2,
                   },
@@ -332,8 +293,8 @@ const FreelancerHero = () => {
               ]}
             >
               {freelancers.map((freelancer, idx) => (
-                <div key={idx} className="inline-flex items-center justify-center mx-0 sm:mx-2 md:mx-3">
-                  <div className="w-full h-[220px] sm:h-[260px] sm:w-[220px] md:h-[300px] md:w-[260px] lg:h-[300px] lg:w-[280px] relative rounded-md overflow-hidden group transition-all duration-300">
+                <div key={idx} className="inline-flex items-center justify-center mx-0 sm:mx-2 md:mx-3 h-full">
+                  <div className="w-full h-full sm:h-[260px] sm:w-[220px] md:h-[300px] md:w-[260px] lg:h-[300px] lg:w-[280px] relative rounded-md overflow-hidden group transition-all duration-300 pb-8 sm:pb-0">
                     {/* Dark background behind image */}
                     <div className="absolute inset-0 bg-[#D1D3D4] rounded-md opacity-80 z-0" />
                     <div className="relative z-10 w-full h-full flex items-center justify-center">
@@ -361,8 +322,8 @@ const FreelancerHero = () => {
                       className="absolute top-2 left-2 sm:top-3 sm:left-3 z-20 rounded-lg p-1.5 sm:p-2 text-white text-center min-w-[38px] sm:min-w-[48px] h-[38px] sm:h-[48px] flex flex-col items-center justify-center shadow-lg"
                       style={{ background: freelancer.ratingBg }}
                     >
-                      <div className="font-bold text-xs sm:text-sm leading-tight">{freelancer.rating}</div>
-                      <div className="text-[10px] sm:text-xs leading-none">
+                      <div className="font-bold text-sm sm:text-sm leading-tight">{freelancer.rating}</div>
+                      <div className="text-[11px] sm:text-xs leading-none">
                         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24">
                           <path fill="currentColor" d="m12 17.275l-4.15 2.5q-.275.175-.575.15t-.525-.2t-.35-.437t-.05-.588l1.1-4.725L3.775 10.8q-.25-.225-.312-.513t.037-.562t.3-.45t.55-.225l4.85-.425l1.875-4.45q.125-.3.388-.45t.537-.15t.537.15t.388.45l1.875 4.45l4.85.425q.35.05.55.225t.3.45t.038.563t-.313.512l-3.675 3.175l1.1 4.725q.075.325-.05.588t-.35.437t-.525.2t-.575-.15z"/>
                         </svg>
@@ -373,8 +334,8 @@ const FreelancerHero = () => {
                       className="absolute bottom-2 sm:bottom-4 left-0 right-0 mx-1 sm:mx-2 rounded-lg bg-opacity-90 p-2 sm:p-3 z-20"
                       style={{ background: freelancer.infoBg }}
                     >
-                      <h3 className="font-semibold text-xs sm:text-sm" style={{ color: freelancer.infoTextColor }}>{freelancer.name}</h3>
-                      <p className="text-[10px] sm:text-xs opacity-90" style={{ color: freelancer.infoTextColor }}>{freelancer.role}</p>
+                      <h3 className="font-semibold text-sm sm:text-sm" style={{ color: freelancer.infoTextColor }}>{freelancer.name}</h3>
+                      <p className="text-[11px] sm:text-xs opacity-90" style={{ color: freelancer.infoTextColor }}>{freelancer.role}</p>
                     </div>
                   </div>
                 </div>
