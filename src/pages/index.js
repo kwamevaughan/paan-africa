@@ -20,6 +20,34 @@ import ScrollToTop from "@/components/ScrollToTop";
 import PAANSummit from "@/components/PAANSummit";
 import PAANWebinar from "@/components/PAANWebinar";
 
+// Add PasscodeCopy component definition before HomePage
+function PasscodeCopy({ passcode }) {
+  const [copied, setCopied] = useState(false);
+  const handleCopy = () => {
+    navigator.clipboard.writeText(passcode);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 1500);
+  };
+  return (
+    <div className="flex items-center gap-2 bg-white border border-gray-200 rounded px-3 py-1 text-[#172840] text-sm font-medium select-none">
+      <span className="font-semibold">Passcode:</span>
+      <span className="font-mono bg-gray-100 px-2 py-0.5 rounded text-base">{passcode}</span>
+      <button
+        onClick={handleCopy}
+        className="ml-1 px-2 py-0.5 rounded hover:bg-gray-200 transition text-[#F25849] font-bold flex items-center gap-1 focus:outline-none"
+        title="Copy passcode"
+        type="button"
+      >
+        <Icon icon="mdi:content-copy" className="w-4 h-4" />
+        <span className="sr-only">Copy</span>
+      </button>
+      {copied && (
+        <span className="text-green-600 text-xs ml-2 transition-opacity duration-200">Copied!</span>
+      )}
+    </div>
+  );
+}
+
 const HomePage = () => {
   const sectionRefs = {
     home: useRef(null),
@@ -504,33 +532,110 @@ const HomePage = () => {
             </div>
           </div>
         </div>
+        {/* Upcoming Webinar */}
         <div className="mx-auto max-w-6xl mt-20" id="webinar-banner">
-          <section className="relative bg-gradient-to-r from-[#F2B706]/20 via-[#84C1D9]/10 to-white rounded-xl shadow-xl overflow-hidden flex flex-col md:flex-row items-center gap-8 p-6 md:p-12 mb-16 border border-[#F2B706]/30">
+          <section className="relative bg-gradient-to-r from-[#F2B706]/40 via-[#84C1D9]/20 to-white rounded-xl shadow-2xl overflow-hidden flex flex-col md:flex-row items-center gap-8 p-6 md:p-12 mb-16 border-2 border-[#F2B706]/60">
             {/* Accent bar */}
             <div className="absolute left-0 top-0 h-full w-2 bg-[#F25849] rounded-l-xl" />
             {/* Badge */}
-            <div className="absolute top-6 left-8 z-10">
-              <span className="inline-block bg-[#F25849] text-white text-xs font-bold px-4 py-1 rounded-full shadow-md tracking-widest uppercase">Live Webinar</span>
+            <div className="absolute top-6 left-8 z-10 flex items-center gap-2">
+              {/* Live animation dot */}
+              <span className="relative flex h-3 w-3">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-3 w-3 bg-red-600"></span>
+              </span>
+              <span className="inline-block bg-[#F25849] text-white text-xs font-bold px-4 py-1 rounded-full shadow-md tracking-widest uppercase flex items-center gap-1">
+                <span className="hidden sm:inline">Upcoming Webinar</span>
+                <span className="inline sm:hidden">Webinar</span>
+              </span>
             </div>
             <div className="w-full md:w-1/2 flex justify-center relative z-0">
-              <Image
-                src="/assets/images/webinar-banner.png"
-                width={600}
-                height={340}
-                alt="Webinar Banner"
-                className="rounded-lg object-cover w-full h-auto max-h-80 shadow-md border border-gray-200"
-                priority
-              />
+              <div className="aspect-square w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg flex items-center justify-center">
+                <Image
+                  src="/assets/images/webinar-2.png"
+                  width={600}
+                  height={600}
+                  alt="Upcoming Webinar Banner"
+                  className="rounded-lg object-cover w-full h-full shadow-lg border border-gray-200"
+                  priority
+                />
+              </div>
             </div>
             <div className="w-full md:w-1/2 flex flex-col gap-6 items-start">
               <div className="flex items-center gap-3">
                 <span className="inline-flex items-center justify-center bg-[#84C1D9] text-[#172840] rounded-full p-2">
                   <Icon icon="mdi:calendar-clock" className="w-6 h-6" />
                 </span>
+                <h2 className="text-2xl sm:text-3xl font-bold text-[#172840]">Voice AI for Consumer Engagement at Scale</h2>
+              </div>
+              {/* Date and Time */}
+              <div className="flex items-center gap-3 bg-[#F2B706]/10 px-4 py-2 rounded-lg mt-1">
+                <span className="inline-flex items-center justify-center bg-[#F2B706] text-[#172840] rounded-full p-2">
+                  <Icon icon="mdi:calendar" className="w-5 h-5" />
+                </span>
+                <span className="text-base sm:text-lg font-semibold text-[#172840]">12pm EAT &bull; 16th July</span>
+              </div>
+              <p className="text-[#F25849] text-base font-semibold">Join us for a powerful webinar hosted by PAAN and led by Céline Duros of Viamo.</p>
+              <ul className="space-y-3 mt-2">
+                <li className="flex items-start gap-2 text-[#172840] text-base sm:text-lg">
+                  <span className="inline-block text-green-600 mt-1">
+                    <Icon icon="mdi:check-circle" className="w-5 h-5" />
+                  </span>
+                  Real-world use cases from African markets
+                </li>
+                <li className="flex items-start gap-2 text-[#172840] text-base sm:text-lg">
+                  <span className="inline-block text-green-600 mt-1">
+                    <Icon icon="mdi:check-circle" className="w-5 h-5" />
+                  </span>
+                  Practical steps to integrate Voice AI into your campaigns
+                </li>
+                <li className="flex items-start gap-2 text-[#172840] text-base sm:text-lg">
+                  <span className="inline-block text-green-600 mt-1">
+                    <Icon icon="mdi:check-circle" className="w-5 h-5" />
+                  </span>
+                  A better way to reach hard-to-reach communities
+                </li>
+              </ul>
+              <a
+                href="https://us06web.zoom.us/webinar/register/WN_8UWjIjgKSoahq6OJroI3TQ#/registration"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-[#F25849] hover:bg-[#D6473C] text-white font-bold py-3 px-8 rounded-full transition-all duration-300 shadow-lg text-base sm:text-lg mt-2"
+              >
+                Register Now
+              </a>
+            </div>
+          </section>
+        </div>
+        {/* Past Webinar */}
+        <div className="mx-auto max-w-6xl mt-20" id="past-webinar-banner">
+          <section className="relative bg-gray-100 rounded-xl shadow-md overflow-hidden flex flex-col md:flex-row items-center gap-8 p-6 md:p-12 mb-16 border border-gray-200">
+            {/* Accent bar */}
+            <div className="absolute left-0 top-0 h-full w-2 bg-[#84C1D9] rounded-l-xl" />
+            {/* Badge */}
+            <div className="absolute top-6 left-8 z-10">
+              <span className="inline-block bg-[#84C1D9] text-[#172840] text-xs font-bold px-4 py-1 rounded-full shadow tracking-widest uppercase">Past Webinar</span>
+            </div>
+            <div className="w-full md:w-1/2 flex justify-center relative z-0">
+              <Image
+                src="/assets/images/webinar-banner.png"
+                width={600}
+                height={340}
+                alt="Past Webinar Banner"
+                className="rounded-lg object-cover w-full h-auto max-h-80 shadow border border-gray-300"
+                priority
+              />
+            </div>
+            <div className="w-full md:w-1/2 flex flex-col gap-6 items-start">
+              <div className="flex items-center gap-3">
+                <span className="inline-flex items-center justify-center bg-[#F2B706] text-[#172840] rounded-full p-2">
+                  <Icon icon="mdi:calendar" className="w-6 h-6" />
+                </span>
                 <h2 className="text-2xl sm:text-3xl font-bold text-[#172840]">AI For Client Retension & Growth</h2>
               </div>
               <p className="text-[#F25849] text-base font-semibold">Last Webinar • July 2 2025</p>
-              <p className="text-[#172840] text-base font-semibold">Use Passcode: K4W#LECp</p>
+              {/* Passcode with copy-to-clipboard */}
+              <PasscodeCopy passcode="K4W#LECp" />
               <p className="text-gray-700 text-base sm:text-lg">
                 Join our exclusive webinar to discover how agency account managers can use AI to strengthen client relationships, save time and unlock new opportunities.
               </p>
@@ -538,13 +643,15 @@ const HomePage = () => {
                 href="https://us06web.zoom.us/rec/component-page?eagerLoadZvaPages=&accessLevel=meeting&action=viewdetailpage&sharelevel=meeting&useWhichPasswd=meeting&requestFrom=pwdCheck&clusterId=us06&componentName=need-password&meetingId=l0P--osw9rSwrswdJBo466Zg9oVCTk5d8kwZyAqnU1vkI29lzM_k9j9VPkTdstYE.Zu0TfEYAXBD1nLfv&originRequestUrl=https%3A%2F%2Fus06web.zoom.us%2Frec%2Fshare%2F-DKvx6Q2eX5lo42ukQ6ogCI-RZHRJ-57c-E2lXUZ5hvGMMzowrNY7jt5-utRbtAd.4hWokDGBJTjLD-55%3FstartTime%3D1751446311000"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-[#F25849] hover:bg-[#D6473C] text-white font-bold py-3 px-8 rounded-full transition-all duration-300 shadow-lg text-base sm:text-lg mt-2"
+                className="border-2 border-[#F25849] text-[#F25849] hover:bg-[#F25849] hover:text-white font-bold py-3 px-8 rounded-full transition-all duration-300 shadow text-base sm:text-lg mt-2 flex items-center gap-2"
               >
+                <Icon icon="mdi:play-circle" className="w-6 h-6" />
                 Access Recording
               </a>
             </div>
           </section>
         </div>
+        {/* Past Webinar */}
         <div>
   <section className="bg-paan-dark-blue py-12 sm:py-16 lg:py-24 relative overflow-hidden">
     <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
@@ -605,7 +712,7 @@ const HomePage = () => {
     </div>
     
     {/* Background Pattern */}
-    <div className="absolute bottom-0 left-0 opacity-6 z-0">
+            <div className="absolute bottom-0 left-0 opacity-60 z-0 pointer-events-none">
       <Image
         src="/assets/images/testimonial-section-pattern.svg"
         width={250}
