@@ -5,11 +5,11 @@ import styles from "./Marquee.module.css";
 
 const Marquee = () => {
   const words = [
-    "Motion Designers",
-    "Copywriters",
-    "Frontend Developers",
-    "Brand Strategists",
-    "UX/UI Designers",
+    "Advertising",
+    "Research",
+    "Marketing",
+    "Tech & IT Services Agencies",
+    "Digital Agencies",
   ];
 
   // Define an array of colors for the dots
