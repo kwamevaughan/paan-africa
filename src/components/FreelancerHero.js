@@ -41,7 +41,7 @@ const CustomNavButton = ({ direction, onClick }) => {
 const FreelancerHero = () => {
   const freelancers = [
     {
-      image: "/assets/images/freelancers/1.png",
+      image: "/assets/images/freelancers/1.webp",
       badge: "/assets/images/freelancers/freelancer-badge.svg",
       rating: 4.4,
       name: "Jules .M",
@@ -51,7 +51,7 @@ const FreelancerHero = () => {
       infoTextColor: "#fff",
     },
     {
-      image: "/assets/images/freelancers/2.png",
+      image: "/assets/images/freelancers/2.webp",
       badge: "/assets/images/freelancers/freelancer-badge.svg",
       rating: 4.8,
       name: "Aisha K.",
@@ -61,7 +61,7 @@ const FreelancerHero = () => {
       infoTextColor: "#172840",
     },
     {
-      image: "/assets/images/freelancers/3.png",
+      image: "/assets/images/freelancers/3.webp",
       badge: "/assets/images/freelancers/freelancer-badge.svg",
       rating: 4.6,
       name: "Maxine T.",
@@ -71,7 +71,7 @@ const FreelancerHero = () => {
       infoTextColor: "#172840",
     },
     {
-      image: "/assets/images/freelancers/4.png",
+      image: "/assets/images/freelancers/4.webp",
       badge: "/assets/images/freelancers/freelancer-badge.svg",
       rating: 4.9,
       name: "Jacob O.",
@@ -81,7 +81,7 @@ const FreelancerHero = () => {
       infoTextColor: "#fff",
     },
     {
-      image: "/assets/images/freelancers/5.png",
+      image: "/assets/images/freelancers/5.webp",
       badge: "/assets/images/freelancers/freelancer-badge.svg",
       rating: 4.4,
       name: "James .M",
@@ -91,7 +91,7 @@ const FreelancerHero = () => {
       infoTextColor: "#fff",
     },
     {
-      image: "/assets/images/freelancers/6.png",
+      image: "/assets/images/freelancers/6.webp",
       badge: "/assets/images/freelancers/freelancer-badge.svg",
       rating: 3.4,
       name: "Purity .M",
@@ -101,7 +101,7 @@ const FreelancerHero = () => {
       infoTextColor: "#fff",
     },
     {
-      image: "/assets/images/freelancers/7.png",
+      image: "/assets/images/freelancers/7.webp",
       badge: "/assets/images/freelancers/freelancer-badge.svg",
       rating: 4.2,
       name: "Obinna K.",
@@ -111,7 +111,7 @@ const FreelancerHero = () => {
       infoTextColor: "#172840",
     },
     {
-      image: "/assets/images/freelancers/8.png",
+      image: "/assets/images/freelancers/8.webp",
       badge: "/assets/images/freelancers/freelancer-badge.svg",
       rating: 3.6,
       name: "Makonnen G.",
