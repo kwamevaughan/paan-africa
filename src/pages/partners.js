@@ -9,6 +9,8 @@ import Link from "next/link";
 import AgencyLogosGrid from "@/components/AgencyLogosGrid";
 import ScrollToTop from "@/components/ScrollToTop";
 import AgencyEnquiryModal from "@/components/AgencyEnquiryModal";
+import Image from "next/image";
+import StatsSection from "@/components/StatsSection";
 
 const CountUp = ({ end = 200, duration = 3000, start = false }) => {
   const [count, setCount] = useState(0);
@@ -128,10 +130,9 @@ const FreelancersPage = () => {
         <Header />
         <Hero openModal={openModal} />
 
-        <div className="mx-auto max-w-6xl mt-20 mb-20 relative">
+        <div className="mx-auto max-w-6xl mt-20 relative">
           <div className="absolute top-80 right-0 w-16 h-16 bg-paan-yellow rounded-full z-0"></div>
           <div className="absolute bottom-40 right-80 w-11 h-11 bg-paan-blue rounded-full z-0"></div>
-          <div className="absolute -bottom-24 sm:-right-40 -right-0  w-14 h-14 bg-paan-red rounded-full z-10"></div>
           <section className="relative">            
             <div className="mb-10">
               <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
@@ -166,15 +167,25 @@ const FreelancersPage = () => {
               <div className="mt-20">
                 <h2 className="text-2xl font-semibold">Why Partner with PAAN?</h2>
                 <p className="text-gray-700 leading-relaxed mt-4 font-normal text-2xl">Africa's markets are diverse, complex, and ripe with opportunity—but navigating them alone is costly and time-consuming. 
-                  PAAN's agency network acts as your local accelerator, providing:</p>
+                  PAAN's agency network acts as your<br/> local accelerator, providing:</p>
+              </div>
+              <div className="flex justify-end w-full mt-4">
+                <Image
+                  src="/assets/images/arrow-dwn.svg"
+                  width={80}
+                  height={80}
+                  alt="PAAN Portal Feature"
+                />
               </div>
             </div>
           </section>
         </div>
+        {/* Stats Section */}
+        <StatsSection/>
 
         <div className="bg-[#172840] relative w-full">
         <section className="relative mx-auto max-w-6xl px-4 md:px-6 py-8 md:py-16">
-          <h2 className="text-base md:text-lg text-white uppercase text-left font-semibold">Partner Benefits</h2>
+          <h2 className="text-base md:text-lg text-paan-yellow uppercase text-left font-semibold">Partner Benefits</h2>
           <h3 className="text-xl md:text-2xl py-2 md:py-4 text-white text-left font-normal">Tailored to Drive Your Africa Growth Strategy</h3>
           <PartnerBenefits />
         </section>
