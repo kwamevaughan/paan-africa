@@ -573,7 +573,7 @@ const HomePage = () => {
                 <span className="inline-flex items-center justify-center bg-[#F2B706] text-[#172840] rounded-full p-2">
                   <Icon icon="mdi:calendar" className="w-5 h-5" />
                 </span>
-                <span className="text-base sm:text-lg font-semibold text-[#172840]">12pm EAT &bull; 16th July</span>
+                <span className="text-base sm:text-lg font-semibold text-[#172840]">12pm EAT &bull; 23rd July</span>
               </div>
               <p className="text-[#F25849] text-base font-semibold">Join us for a powerful webinar hosted by PAAN and led by Céline Duros of Viamo.</p>
               <ul className="space-y-3 mt-2">
