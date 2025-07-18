@@ -62,6 +62,7 @@ const HomePage = () => {
 
   const isFixed = useFixedHeader();
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const canvasRef = useRef(null);
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
@@ -99,6 +100,132 @@ const HomePage = () => {
     };
   }, []);
 
+  useEffect(() => {
+    const cnvs = canvasRef.current;
+    if (!cnvs) return;
+    let animationId;
+    let running = true;
+    let mx = 0;
+    let my = 0;
+    let dots = [];
+    let c;
+    let width = 0;
+    let height = 0;
+    let dpr = window.devicePixelRatio || 1;
+
+    // Responsive parameters
+    function getParams() {
+      const isMobile = width < 640;
+      return {
+        dots_num: isMobile ? 30 : 70,
+        r: 1,
+        mouse_ol: isMobile ? 80 : 150,
+        dots_ol: isMobile ? 80 : 150,
+        max_speed: 1,
+        max_ms_opac: 1,
+        max_dots_opac: 1,
+        uni_divs: isMobile ? 10 : 30,
+      };
+    }
+
+    function resizeCanvas() {
+      // Use parent container's size
+      const parent = cnvs.parentElement;
+      width = parent ? parent.offsetWidth : window.innerWidth;
+      height = parent ? parent.offsetHeight : window.innerHeight;
+      dpr = window.devicePixelRatio || 1;
+      cnvs.width = width * dpr;
+      cnvs.height = height * dpr;
+      cnvs.style.width = width + 'px';
+      cnvs.style.height = height + 'px';
+      c = cnvs.getContext('2d');
+      c.setTransform(1, 0, 0, 1, 0, 0); // reset transform
+      c.scale(dpr, dpr);
+    }
+
+    function updtMouse(e) {
+      // Get mouse position relative to canvas
+      const rect = cnvs.getBoundingClientRect();
+      mx = (e.touches ? e.touches[0].clientX : e.clientX) - rect.left;
+      my = (e.touches ? e.touches[0].clientY : e.clientY) - rect.top;
+    }
+
+    function init() {
+      dots = [];
+      const { dots_num, uni_divs } = getParams();
+      for(let i=0; i<dots_num; i++) {
+        let x = Math.floor((Math.random()*width/uni_divs)+(parseInt(i/(dots_num/uni_divs))*(width/uni_divs)));
+        let y = Math.floor(Math.random()*height);
+        let dx = Math.random()*1+0.1;
+        let dy = Math.random()*1+0.1;
+        if(i%2==0) {
+          dx*=-1;
+          dy*=-1;
+        }
+        dots.push({x, y, dx, dy});
+      }
+    }
+
+    function update() {
+      if (!running) return;
+      c.clearRect(0, 0, width, height);
+      const { dots_num, mouse_ol, dots_ol, max_ms_opac, max_dots_opac } = getParams();
+      for(let i=0; i<dots_num; i++) {
+        let dot = dots[i];
+        dot.x += dot.dx;
+        dot.y += dot.dy;
+        if(dot.x>width || dot.x<0) dot.dx *= -1;
+        if(dot.y>height || dot.y<0) dot.dy *= -1;
+        let x = dot.x;
+        let y = dot.y;
+        let d = Math.sqrt((x-mx)*(x-mx)+(y-my)*(y-my));
+        if(d<mouse_ol) {
+          c.strokeStyle = `rgba(100, 180, 255, ${max_ms_opac*(mouse_ol-d)/mouse_ol})`;
+          c.lineWidth = 2;
+          c.beginPath();
+          c.moveTo(x, y);
+          c.lineTo(mx, my);
+          c.stroke();
+        }
+        for(let j=i+1; j<dots_num; j++) {
+          let x1 = dots[j].x;
+          let y1 = dots[j].y;
+          let d2 = Math.sqrt((x1-x)*(x1-x)+(y1-y)*(y1-y));
+          if(d2<dots_ol) {
+            c.strokeStyle = `rgba(157, 210, 255, ${max_dots_opac*(dots_ol-d2)/dots_ol})`;
+            c.lineWidth = 1;
+            c.beginPath();
+            c.moveTo(x1, y1);
+            c.lineTo(x, y);
+            c.stroke();
+          }
+        }
+      }
+      animationId = requestAnimationFrame(update);
+    }
+
+    function handleResize() {
+      resizeCanvas();
+      init();
+    }
+
+    resizeCanvas();
+    init();
+    update();
+    window.addEventListener('mousemove', updtMouse);
+    window.addEventListener('touchmove', updtMouse, { passive: false });
+    window.addEventListener('resize', handleResize);
+    window.addEventListener('orientationchange', handleResize);
+    return () => {
+      running = false;
+      window.removeEventListener('mousemove', updtMouse);
+      window.removeEventListener('touchmove', updtMouse);
+      window.removeEventListener('resize', handleResize);
+      window.removeEventListener('orientationchange', handleResize);
+      if (animationId) cancelAnimationFrame(animationId);
+    };
+  }, []);
+
   return (
     <>
     <SEO
@@ -110,12 +237,23 @@ const HomePage = () => {
       <main className="px-3 pt-6 sm:px-0 sm:pt-0 relative">
         <Header/>
 
-        <div
-          className="mx-auto max-w-6xl section pt-0 mt-0 sm:mt-0"
-          id="home"
-          ref={sectionRefs.home}
-        >
-          <section className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 items-center px-4 sm:px-0 pt-40 sm:pt-0">
+        <div className="relative mx-auto max-w-6xl section pt-0 mt-0 sm:mt-0" id="home" ref={sectionRefs.home}>
+          {/* Canvas covers top 50% of hero section */}
+          <canvas
+            ref={canvasRef}
+            style={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              width: '100%',
+              height: '50%',
+              display: 'block',
+              zIndex: 0,
+              pointerEvents: 'none',
+            }}
+            aria-hidden="true"
+          />
+          <section className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 items-center px-4 sm:px-0 pt-40 sm:pt-0 relative z-10">
             <div className="flex flex-col gap-4 sm:gap-8 text-center sm:text-left">
               <h2 className="text-2xl sm:text-3xl md:text-5xl font-semibold uppercase text-[#172840] leading-tight">
                 Redefining Africa's Global Creative & Tech Footprint
@@ -149,16 +287,6 @@ const HomePage = () => {
               <CustomSlider />
             </div>
           </section>
-        </div>
-
-        <div className="relative h-48 sm:h-64 mt-[-5em] sm:mt-[-10em] top-10 z-[-1]">
-          <Image
-            src="/assets/images/bg-pattern.svg"
-            width={0}
-            height={0}
-            alt="bg-pattern"
-            className="absolute top-0 left-0 w-screen h-full object-cover z-[-1]"
-          />
         </div>
 
         <div
