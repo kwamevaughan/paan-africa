@@ -1,25 +1,25 @@
 // data/menuData.js
 export const menuItems = [
     { href: '/', label: 'Home' },  
+    { href: '/blogs', label: 'Blog' },
     { href: '/faqs', label: 'FAQs' },
     { href: 'https://member-portal.paan.africa/', label: 'Member Portal' },
-    // { href: '/pricing', label: 'Pricing' },
-    { href: '/blogs', label: 'Blog' },
+    { href: '/pricing', label: 'Full Member Benefits & Tiers' },
   ];
 
   export const freelancersMenu = [
     { href: '/', label: 'For Agencies' },
+    { href: '/freelancers', label: 'For Freelancers' },
     { href: '/clients', label: 'For Clients' },
     { href: '/partners', label: 'For Partners' },
-    { href: '/freelancers', label: 'For Freelancers' },
     { href: '/summit', label: '2025 Summit' },
   ];
 
   export const PartnersPageMenu = [
     { href: '/', label: 'For Agencies' },
+    { href: '/freelancers', label: 'For Freelancers' },
     { href: '/clients', label: 'For Clients' },
     { href: '/partners', label: 'For Partners' },
-    { href: '/freelancers', label: 'For Freelancers' },
     { href: '/summit', label: '2025 Summit' },
   ];
   

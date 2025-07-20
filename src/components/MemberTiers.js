@@ -25,13 +25,31 @@ const MemberTiers = () => {
                 Free
               </th>
               <th className="p-4 text-center font-semibold text-lg text-white bg-[#A1A1A1] m-2 w-[200px] h-[100px]">
-                Associate<br/>($1,000/Year)
+                Associate<br/>
+                <button
+                  className="mt-2 px-4 py-2 bg-paan-red text-white rounded-md shadow hover:bg-paan-blue transition-colors text-sm font-medium"
+                  onClick={() => window.open('https://calendly.com/antony-paan/45min', '_blank')}
+                >
+                  Book a call for pricing
+                </button>
               </th>
               <th className="p-4 text-center font-semibold text-lg text-white bg-[#C0614D] m-2 w-[200px] h-[100px]">
-                Full<br/> ($2,000/Year)
+                Full<br/>
+                <button
+                  className="mt-2 px-4 py-2 bg-paan-dark-blue text-white rounded-md shadow hover:bg-paan-blue transition-colors text-sm font-medium"
+                  onClick={() => window.open('https://calendly.com/antony-paan/45min', '_blank')}
+                >
+                  Book a call for pricing
+                </button>
               </th>
               <th className="p-4 text-center font-semibold text-lg text-white bg-[#F2B706] border border-[#F2B706] m-2 w-[200px] h-[100px]">
-                Gold<br/> ($3,000/Year)
+                Gold<br/>
+                <button
+                  className="mt-2 px-4 py-2 bg-paan-blue text-white rounded-md shadow hover:bg-paan-red transition-colors text-sm font-medium"
+                  onClick={() => window.open('https://calendly.com/antony-paan/45min', '_blank')}
+                >
+                  Book a call for pricing
+                </button>
               </th>
             </tr>
           </thead>
