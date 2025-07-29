@@ -82,6 +82,10 @@ const AgencyEnquiryModal = ({ isOpen, onClose }) => {
 
       if (response.ok) {
         toast.success('Enquiry sent successfully!', { id: toastId });
+        // Google Ads conversion tracking
+        if (typeof window !== 'undefined' && typeof gtag_report_conversion === 'function') {
+          gtag_report_conversion();
+        }
         // Reset form
         setFormData({
           name: '',

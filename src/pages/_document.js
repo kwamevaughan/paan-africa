@@ -40,6 +40,18 @@ class MyDocument extends Document {
               `,
             }}
           />
+          {/* Google tag (gtag.js) - From another account requested by Duncan*/}
+          <script async src="https://www.googletagmanager.com/gtag/js?id=AW-437483343"></script>
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', 'AW-437483343');
+              `,
+            }}
+          />
           {/* Meta Pixel Code */}
           <script dangerouslySetInnerHTML={{
             __html: `!function(f,b,e,v,n,t,s)
@@ -56,6 +68,26 @@ class MyDocument extends Document {
           <noscript>
             <img height="1" width="1" style={{display: 'none'}} src="https://www.facebook.com/tr?id=706159915533812&ev=PageView&noscript=1" />
           </noscript>
+          {/* Google Ads Conversion Event Function */}
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+                function gtag_report_conversion(url) {
+                  var callback = function () {
+                    if (typeof(url) != 'undefined') {
+                      window.location = url;
+                    }
+                  };
+                  gtag('event', 'conversion', {
+                      'send_to': 'AW-437483343/25GQCIKkwPIBEM_uzdAB',
+                      'transaction_id': '',
+                      'event_callback': callback
+                  });
+                  return false;
+                }
+              `,
+            }}
+          />
         </Head>
         <body>
           <Main />

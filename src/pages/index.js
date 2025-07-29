@@ -17,7 +17,40 @@ import AgencyEnquiryModal from "@/components/AgencyEnquiryModal";
 import AgenciesMarquee from "@/components/AgenciesMarquee";
 import AgencyLogosGrid from "@/components/AgencyLogosGrid";
 import ScrollToTop from "@/components/ScrollToTop";
+<<<<<<< HEAD
 import ConnectingDots from "@/components/ConnectingDots";
+=======
+import PAANSummit from "@/components/PAANSummit";
+import PAANWebinar from "@/components/PAANWebinar";
+
+// Add PasscodeCopy component definition before HomePage
+function PasscodeCopy({ passcode }) {
+  const [copied, setCopied] = useState(false);
+  const handleCopy = () => {
+    navigator.clipboard.writeText(passcode);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 1500);
+  };
+  return (
+    <div className="flex items-center gap-2 bg-white border border-gray-200 rounded px-3 py-1 text-[#172840] text-sm font-medium select-none">
+      <span className="font-semibold">Passcode:</span>
+      <span className="font-mono bg-gray-100 px-2 py-0.5 rounded text-base">{passcode}</span>
+      <button
+        onClick={handleCopy}
+        className="ml-1 px-2 py-0.5 rounded hover:bg-gray-200 transition text-[#F25849] font-bold flex items-center gap-1 focus:outline-none"
+        title="Copy passcode"
+        type="button"
+      >
+        <Icon icon="mdi:content-copy" className="w-4 h-4" />
+        <span className="sr-only">Copy</span>
+      </button>
+      {copied && (
+        <span className="text-green-600 text-xs ml-2 transition-opacity duration-200">Copied!</span>
+      )}
+    </div>
+  );
+}
+>>>>>>> 2c34c8de342e18c47c7506635f3649611d54e91a
 
 const HomePage = () => {
   const sectionRefs = {
@@ -33,6 +66,7 @@ const HomePage = () => {
 
   const isFixed = useFixedHeader();
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const canvasRef = useRef(null);
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
@@ -70,13 +104,140 @@ const HomePage = () => {
     };
   }, []);
 
+  useEffect(() => {
+    const cnvs = canvasRef.current;
+    if (!cnvs) return;
+    let animationId;
+    let running = true;
+    let mx = 0;
+    let my = 0;
+    let dots = [];
+    let c;
+    let width = 0;
+    let height = 0;
+    let dpr = window.devicePixelRatio || 1;
+
+    // Responsive parameters
+    function getParams() {
+      const isMobile = width < 640;
+      return {
+        dots_num: isMobile ? 30 : 70,
+        r: 1,
+        mouse_ol: isMobile ? 80 : 150,
+        dots_ol: isMobile ? 80 : 150,
+        max_speed: 1,
+        max_ms_opac: 1,
+        max_dots_opac: 1,
+        uni_divs: isMobile ? 10 : 30,
+      };
+    }
+
+    function resizeCanvas() {
+      // Use parent container's size
+      const parent = cnvs.parentElement;
+      width = parent ? parent.offsetWidth : window.innerWidth;
+      height = parent ? parent.offsetHeight : window.innerHeight;
+      dpr = window.devicePixelRatio || 1;
+      cnvs.width = width * dpr;
+      cnvs.height = height * dpr;
+      cnvs.style.width = width + 'px';
+      cnvs.style.height = height + 'px';
+      c = cnvs.getContext('2d');
+      c.setTransform(1, 0, 0, 1, 0, 0); // reset transform
+      c.scale(dpr, dpr);
+    }
+
+    function updtMouse(e) {
+      // Get mouse position relative to canvas
+      const rect = cnvs.getBoundingClientRect();
+      mx = (e.touches ? e.touches[0].clientX : e.clientX) - rect.left;
+      my = (e.touches ? e.touches[0].clientY : e.clientY) - rect.top;
+    }
+
+    function init() {
+      dots = [];
+      const { dots_num, uni_divs } = getParams();
+      for(let i=0; i<dots_num; i++) {
+        let x = Math.floor((Math.random()*width/uni_divs)+(parseInt(i/(dots_num/uni_divs))*(width/uni_divs)));
+        let y = Math.floor(Math.random()*height);
+        let dx = Math.random()*1+0.1;
+        let dy = Math.random()*1+0.1;
+        if(i%2==0) {
+          dx*=-1;
+          dy*=-1;
+        }
+        dots.push({x, y, dx, dy});
+      }
+    }
+
+    function update() {
+      if (!running) return;
+      c.clearRect(0, 0, width, height);
+      const { dots_num, mouse_ol, dots_ol, max_ms_opac, max_dots_opac } = getParams();
+      for(let i=0; i<dots_num; i++) {
+        let dot = dots[i];
+        dot.x += dot.dx;
+        dot.y += dot.dy;
+        if(dot.x>width || dot.x<0) dot.dx *= -1;
+        if(dot.y>height || dot.y<0) dot.dy *= -1;
+        let x = dot.x;
+        let y = dot.y;
+        let d = Math.sqrt((x-mx)*(x-mx)+(y-my)*(y-my));
+        if(d<mouse_ol) {
+          c.strokeStyle = `rgba(100, 180, 255, ${max_ms_opac*(mouse_ol-d)/mouse_ol})`;
+          c.lineWidth = 2;
+          c.beginPath();
+          c.moveTo(x, y);
+          c.lineTo(mx, my);
+          c.stroke();
+        }
+        for(let j=i+1; j<dots_num; j++) {
+          let x1 = dots[j].x;
+          let y1 = dots[j].y;
+          let d2 = Math.sqrt((x1-x)*(x1-x)+(y1-y)*(y1-y));
+          if(d2<dots_ol) {
+            c.strokeStyle = `rgba(157, 210, 255, ${max_dots_opac*(dots_ol-d2)/dots_ol})`;
+            c.lineWidth = 1;
+            c.beginPath();
+            c.moveTo(x1, y1);
+            c.lineTo(x, y);
+            c.stroke();
+          }
+        }
+      }
+      animationId = requestAnimationFrame(update);
+    }
+
+    function handleResize() {
+      resizeCanvas();
+      init();
+    }
+
+    resizeCanvas();
+    init();
+    update();
+    window.addEventListener('mousemove', updtMouse);
+    window.addEventListener('touchmove', updtMouse, { passive: false });
+    window.addEventListener('resize', handleResize);
+    window.addEventListener('orientationchange', handleResize);
+    return () => {
+      running = false;
+      window.removeEventListener('mousemove', updtMouse);
+      window.removeEventListener('touchmove', updtMouse);
+      window.removeEventListener('resize', handleResize);
+      window.removeEventListener('orientationchange', handleResize);
+      if (animationId) cancelAnimationFrame(animationId);
+    };
+  }, []);
+
   return (
     <>
-      <SEO
+    <SEO
         title="Pan-African Agency Network (PAAN) | Redefining Africa's Creative & Tech Footprint"
         description="Discover the Pan-African Agency Network (PAAN), a dynamic alliance of creative and tech agencies across Africa and the diaspora. Join us to unlock global opportunities, access exclusive resources, and collaborate with top talent to redefine Africa's creative and technological footprint. Explore our membership tiers, services, and upcoming events today!"
         keywords="Pan-African Agency Network, PAAN, African agencies, creative network, tech network, collaboration, innovation, global influence"
       />
+    <div className="relative">
       <main className="px-3 pt-6 sm:px-0 sm:pt-0 relative">
         <ConnectingDots 
           starCount={80}
@@ -87,12 +248,23 @@ const HomePage = () => {
         />
         <Header/>
 
-        <div
-          className="mx-auto max-w-6xl section pt-0 mt-0 sm:mt-0"
-          id="home"
-          ref={sectionRefs.home}
-        >
-          <section className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 items-center px-4 sm:px-0 pt-40 sm:pt-0">
+        <div className="relative mx-auto max-w-6xl section pt-0 mt-0 sm:mt-0" id="home" ref={sectionRefs.home}>
+          {/* Canvas covers top 50% of hero section */}
+          <canvas
+            ref={canvasRef}
+            style={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              width: '100%',
+              height: '50%',
+              display: 'block',
+              zIndex: 0,
+              pointerEvents: 'none',
+            }}
+            aria-hidden="true"
+          />
+          <section className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 items-center px-4 sm:px-0 pt-40 sm:pt-0 relative z-10">
             <div className="flex flex-col gap-4 sm:gap-8 text-center sm:text-left">
               <h2 className="text-2xl sm:text-3xl md:text-5xl font-semibold uppercase text-[#172840] leading-tight">
                 Redefining Africa's Global Creative & Tech Footprint
@@ -106,15 +278,20 @@ const HomePage = () => {
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center sm:justify-start">
                 <button                  
                   className="bg-[#F25849] text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-full font-medium text-sm hover:bg-[#D6473C] transition duration-300 w-full sm:w-auto"
-                  onClick={openModal}
+                  onClick={(e) => {
+                    handleScroll(e, "#contact-us", isFixed);
+                  }}
                 >
                   Join The Network
                 </button>
-                <Link href="https://calendly.com/antony-paan/45min"
+                <button
                   className="bg-[#84C1D9] text-[#172840] px-6 sm:px-8 py-2.5 sm:py-3 rounded-full font-medium text-sm transition duration-300 hover:bg-[#6FA1B7] text-center w-full sm:w-auto"
+                  onClick={() => {
+                    gtag_report_conversion('https://calendly.com/antony-paan/45min');
+                  }}
                 >
                   Book a Demo
-                </Link>
+                </button>
               </div>
             </div>
             <div className="mt-8 sm:mt-0">
@@ -123,6 +300,7 @@ const HomePage = () => {
           </section>
         </div>
 
+<<<<<<< HEAD
           <div className="absolute top-0 left-0 w-screen h-20 object-cover z-[-1]">
           <ConnectingDots 
             starCount={80}
@@ -133,14 +311,16 @@ const HomePage = () => {
           />
         </div>
 
+=======
+>>>>>>> 2c34c8de342e18c47c7506635f3649611d54e91a
         <div
           className="mx-auto max-w-6xl relative section mb-10"
           id="about-us"
           ref={sectionRefs.aboutUs}
         >
-          <div className="absolute -top-36 -left-36 w-28 h-28 bg-[#F2B706] rounded-full z-0"></div>
+          <div className="absolute -top-36 -left-36 w-28 h-28 bg-[#F2B706] rounded-full z-30"></div>
           {/* <div className="absolute -top-10 -right-20 w-16 h-16 bg-[#F25849] rounded-full z-0"></div> */}
-          <div className="absolute bottom-60 -left-20 w-11 h-11 bg-[#D1D3D4] rounded-full z-0"></div>
+          <div className="absolute bottom-60 -left-20 w-11 h-11 bg-[#D1D3D4] rounded-full z-30"></div>
           {/* <div className="absolute bottom-0 -right-10 w-11 h-11 bg-[#172840] rounded-full z-0"></div> */}
           <section className="relative z-10">
             <p className="uppercase font-semibold mb-4">2. Who We Are</p>
@@ -179,12 +359,12 @@ const HomePage = () => {
                 alt="Team collaboration"
                 className="rounded-lg object-cover w-full h-auto"
               />
-              <div className="absolute top-100 bottom-0 bg-white flex flex-col gap-4 rounded-tr-[30px] rounded-br-[30px] pl-0 pt-4 pb-4 pr-4">
+              <div className="">
                 <button
                   onClick={(e) => {
                     handleScroll(e, "#our-mission", isFixed);
                   }}
-                  className="bg-[#F25849] text-white px-6 py-2 rounded-full font-medium text-sm hover:bg-[#D6473C] transition duration-300"
+                  className="absolute -bottom-1 bg-[#F25849] text-white px-4 py-2 sm:px-10 sm:py-4 rounded-full font-bold text-xs sm:text-lg hover:bg-[#D6473C] transition duration-300 shadow-lg"
                 >
                   Discover More
                 </button>
@@ -257,10 +437,10 @@ const HomePage = () => {
               </div>
 
               {/* Vision & Mission Text */}
-              <div className="flex flex-col gap-10">
+              <div className="flex flex-col gap-10 h-full">
                 {/* Vision */}
-                <div className="bg-[#84C1D9] p-6 rounded-lg flex flex-row items-start gap-4 transform transition-transform duration-300 hover:-translate-y-1">
-                  <div className="flex flex-col items-left">
+                <div className="bg-[#84C1D9] p-6 rounded-lg flex flex-row items-center gap-4 transform transition-transform duration-300 hover:-translate-y-1 flex-1">
+                  <div className="flex flex-col items-start">
                     <Image
                       src="/assets/images/icons/vision.png"
                       width={60}
@@ -281,13 +461,13 @@ const HomePage = () => {
                 </div>
 
                 {/* Mission */}
-                <div className="bg-[#F2B706] p-6 rounded-lg flex flex-row items-start gap-4 transform transition-transform duration-300 hover:-translate-y-1">
-                  <div className="flex flex-col items-left">
+                <div className="bg-[#F2B706] p-6 rounded-lg flex flex-row items-center gap-4 transform transition-transform duration-300 hover:-translate-y-1 flex-1">
+                  <div className="flex flex-col items-start">
                     <Image
                       src="/assets/images/icons/mission.png"
                       width={60}
                       height={60}
-                      alt="Vision Statement"
+                      alt="Mission Statement"
                       className="mb-2"
                     />
                     <div className="text-left">
@@ -301,7 +481,6 @@ const HomePage = () => {
                     </div>
                   </div>
                 </div>
-
               </div>
             </div>
           </section>
@@ -309,13 +488,12 @@ const HomePage = () => {
 
 
         <div
-          className="mx-auto max-w-6xl mt-20 mb-20 relative section"
+          className="mx-auto max-w-6xl mt-20 mb-20 relative"
           id="why-join-us"
           ref={sectionRefs.whyJoinUs}
         >
-          <div className="absolute -top-24 -left-10 w-14 h-14 bg-yellow-400 rounded-full z-0"></div>
+          <div className="absolute -top-24 -left-10 w-14 h-14 bg-yellow-400 rounded-full z-10"></div>
           <div className="hidden md:block absolute -top-14 right-52 w-16 h-16 bg-[#84C1D9] rounded-full z-0"></div>
-          <div className="absolute -bottom-28 left-4 w-20 h-20 bg-[#F25849] rounded-full z-0"></div>
           <div className="absolute -bottom-14 right-4 w-11 h-11 bg-[#172840] rounded-full z-0"></div>
           <section className="relative z-10">
             <p className="uppercase font-semibold mb-4">3. Why Join PAAN?</p>
@@ -410,12 +588,13 @@ const HomePage = () => {
         </div>
 
         <div
-          className="bg-[#D1D3D4] relative section"
+          className="bg-[#D1D3D4]"
           id="membership"
           ref={sectionRefs.membership}
         >
           <div className="absolute -bottom-8 right-32 w-16 h-16 bg-[#84C1D9] rounded-full z-0"></div>
-          <section className="relative mx-auto max-w-6xl py-12 sm:py-20 px-4 sm:px-6">
+          <div className="absolute -top-8 left-32 w-20 h-20 bg-[#F25849] rounded-full z-0"></div>
+          <section className="mx-auto max-w-6xl py-12 sm:py-20 px-4 sm:px-6">
             <div className="flex flex-col mb-8 sm:mb-10 mx-auto w-full sm:w-3/4">
               <h2 className="text-xl sm:text-2xl text-center mb-3 sm:mb-4">
                 Our Structure & Tiers
@@ -433,8 +612,8 @@ const HomePage = () => {
             </div>
             <div className="flex justify-center">
               <button 
-                onClick={() => window.location.href = 'https://calendly.com/antony-paan/45min'} 
-                className="bg-[#F26522] hover:bg-[#D6473C] text-white font-semibold py-2 sm:py-3 px-6 sm:px-8 rounded-full transition-all duration-300 shadow-md hover:shadow-lg flex items-center gap-2 group text-sm sm:text-base whitespace-nowrap"
+                onClick={() => gtag_report_conversion('https://calendly.com/antony-paan/45min')} 
+                className="bg-[#F26522] hover:bg-[#D6473C] text-white font-semibold py-2 sm:py-3 px-4 sm:px-8 rounded-full transition-all duration-300 shadow-md hover:shadow-lg flex items-center gap-2 group text-sm sm:text-base whitespace-nowrap w-full sm:w-auto text-center"
               >
                 <Icon icon="mdi:calendar-clock" className="w-4 h-4 sm:w-5 sm:h-5 group-hover:scale-110 transition-transform duration-300" />
                 Schedule a call to explore full benefits
@@ -506,52 +685,192 @@ const HomePage = () => {
             </div>
           </div>
         </div>
-
-        <div className="mx-auto max-w-6xl mt-20" id="webinar-banner">
-          <section className="relative bg-gradient-to-r from-[#F2B706]/20 via-[#84C1D9]/10 to-white rounded-xl shadow-xl overflow-hidden flex flex-col md:flex-row items-center gap-8 p-6 md:p-12 mb-16 border border-[#F2B706]/30">
+        {/* Past Webinars */}
+        <div className="mx-auto max-w-6xl mt-20" id="past-webinar-banner">
+          <section className="relative bg-gray-100 rounded-xl shadow-md overflow-hidden flex flex-col md:flex-row items-center gap-8 p-6 md:p-12 mb-16 border border-gray-200">
             {/* Accent bar */}
-            <div className="absolute left-0 top-0 h-full w-2 bg-[#F25849] rounded-l-xl" />
+            <div className="absolute left-0 top-0 h-full w-2 bg-[#84C1D9] rounded-l-xl" />
             {/* Badge */}
             <div className="absolute top-6 left-8 z-10">
-              <span className="inline-block bg-[#F25849] text-white text-xs font-bold px-4 py-1 rounded-full shadow-md tracking-widest uppercase">Live Webinar</span>
+              <span className="inline-block bg-[#84C1D9] text-[#172840] text-xs font-bold px-4 py-1 rounded-full shadow tracking-widest uppercase">Past Webinar</span>
             </div>
             <div className="w-full md:w-1/2 flex justify-center relative z-0">
               <Image
                 src="/assets/images/webinar-banner.png"
                 width={600}
                 height={340}
-                alt="Webinar Banner"
-                className="rounded-lg object-cover w-full h-auto max-h-80 shadow-md border border-gray-200"
+                alt="Past Webinar Banner"
+                className="rounded-lg object-cover w-full h-auto max-h-80 shadow border border-gray-300"
                 priority
               />
+            </div>
+            <div className="w-full md:w-1/2 flex flex-col gap-6 items-start">
+              <div className="flex items-center gap-3">
+                <span className="inline-flex items-center justify-center bg-[#F2B706] text-[#172840] rounded-full p-2">
+                  <Icon icon="mdi:calendar" className="w-6 h-6" />
+                </span>
+                <h2 className="text-2xl sm:text-3xl font-bold text-[#172840]">AI For Client Retension & Growth</h2>
+              </div>
+              <p className="text-[#F25849] text-base font-semibold">Last Webinar • July 2 2025</p>
+              {/* Passcode with copy-to-clipboard */}
+              <PasscodeCopy passcode="K4W#LECp" />
+              <p className="text-gray-700 text-base sm:text-lg">
+                Join our exclusive webinar to discover how agency account managers can use AI to strengthen client relationships, save time and unlock new opportunities.
+              </p>
+              <a
+                href="https://us06web.zoom.us/rec/component-page?eagerLoadZvaPages=&accessLevel=meeting&action=viewdetailpage&sharelevel=meeting&useWhichPasswd=meeting&requestFrom=pwdCheck&clusterId=us06&componentName=need-password&meetingId=l0P--osw9rSwrswdJBo466Zg9oVCTk5d8kwZyAqnU1vkI29lzM_k9j9VPkTdstYE.Zu0TfEYAXBD1nLfv&originRequestUrl=https%3A%2F%2Fus06web.zoom.us%2Frec%2Fshare%2F-DKvx6Q2eX5lo42ukQ6ogCI-RZHRJ-57c-E2lXUZ5hvGMMzowrNY7jt5-utRbtAd.4hWokDGBJTjLD-55%3FstartTime%3D1751446311000"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="border-2 border-[#F25849] text-[#F25849] hover:bg-[#F25849] hover:text-white font-bold py-3 px-8 rounded-full transition-all duration-300 shadow text-base sm:text-lg mt-2 flex items-center gap-2"
+              >
+                <Icon icon="mdi:play-circle" className="w-6 h-6" />
+                Access Recording
+              </a>
+            </div>
+          </section>
+
+          {/* Second Past Webinar (previously Upcoming) */}
+          <section className="relative bg-gray-100 rounded-xl shadow-md overflow-hidden flex flex-col md:flex-row items-center gap-8 p-6 md:p-12 mb-16 border border-gray-200">
+            {/* Accent bar */}
+            <div className="absolute left-0 top-0 h-full w-2 bg-[#84C1D9] rounded-l-xl" />
+            {/* Badge */}
+            <div className="absolute top-6 left-8 z-10">
+              <span className="inline-block bg-[#84C1D9] text-[#172840] text-xs font-bold px-4 py-1 rounded-full shadow tracking-widest uppercase">Past Webinar</span>
+            </div>
+            <div className="w-full md:w-1/2 flex justify-center relative z-0">
+              <div className="aspect-square w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg flex items-center justify-center">
+                <Image
+                  src="/assets/images/webinar-2.png"
+                  width={600}
+                  height={600}
+                  alt="Voice AI for Consumer Engagement at Scale"
+                  className="rounded-lg object-cover w-full h-full shadow-lg border border-gray-200"
+                  priority
+                />
+              </div>
             </div>
             <div className="w-full md:w-1/2 flex flex-col gap-6 items-start">
               <div className="flex items-center gap-3">
                 <span className="inline-flex items-center justify-center bg-[#84C1D9] text-[#172840] rounded-full p-2">
                   <Icon icon="mdi:calendar-clock" className="w-6 h-6" />
                 </span>
-                <h2 className="text-2xl sm:text-3xl font-bold text-[#172840]">AI For Client Retension & Growth</h2>
+                <h2 className="text-2xl sm:text-3xl font-bold text-[#172840]">Voice AI for Consumer Engagement at Scale</h2>
               </div>
-              <p className="text-[#F25849] text-base font-semibold">Upcoming Webinar • July 2 2025</p>
-              <p className="text-gray-700 text-base sm:text-lg">
-                Join our exclusive webinar to discover how agency account managers can use AI to strengthen client relationships, save time and unlock new opportunities.
-              </p>
+              <p className="text-[#F25849] text-base font-semibold">Webinar hosted by PAAN and led by Céline Duros of Viamo.</p>
+              <PasscodeCopy passcode="p$7j%9P9" />
+              <ul className="space-y-3 mt-2">
+                <li className="flex items-start gap-2 text-[#172840] text-base sm:text-lg">
+                  <span className="inline-block text-green-600 mt-1">
+                    <Icon icon="mdi:check-circle" className="w-5 h-5" />
+                  </span>
+                  Real-world use cases from African markets
+                </li>
+                <li className="flex items-start gap-2 text-[#172840] text-base sm:text-lg">
+                  <span className="inline-block text-green-600 mt-1">
+                    <Icon icon="mdi:check-circle" className="w-5 h-5" />
+                  </span>
+                  Practical steps to integrate Voice AI into your campaigns
+                </li>
+                <li className="flex items-start gap-2 text-[#172840] text-base sm:text-lg">
+                  <span className="inline-block text-green-600 mt-1">
+                    <Icon icon="mdi:check-circle" className="w-5 h-5" />
+                  </span>
+                  A better way to reach hard-to-reach communities
+                </li>
+              </ul>             
               <a
-                href="https://us06web.zoom.us/webinar/register/WN_pcXn_bVhQx2V0f00u0guwA#/"
+                href="https://us06web.zoom.us/rec/share/0GImiumaha-RtlQTN0Dncglvgi7Rf8BV4HLcBqcch0ZvFLEBs2V712fuXGutq3HO.BTEtNZA4KFhxfIWt"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-[#F25849] hover:bg-[#D6473C] text-white font-bold py-3 px-8 rounded-full transition-all duration-300 shadow-lg text-base sm:text-lg mt-2"
+                className="border-2 border-[#F25849] text-[#F25849] hover:bg-[#F25849] hover:text-white font-bold py-3 px-8 rounded-full transition-all duration-300 shadow text-base sm:text-lg mt-2 flex items-center gap-2"
               >
-                Register Now
+                <Icon icon="mdi:play-circle" className="w-6 h-6" />
+                Access Recording
               </a>
             </div>
           </section>
         </div>
-
+        {/* Past Webinar */}
+        <div>
+        <section className="bg-paan-dark-blue py-8 sm:py-12 lg:py-16 relative overflow-hidden">
+          <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+            <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 items-center">
+              {/* Left Column - Header */}
+              <div className="space-y-3 sm:space-y-4 text-center lg:text-left">
+                <h3 className="text-xs sm:text-sm font-semibold text-white uppercase tracking-wide">
+                  What Our Members Are Saying
+                </h3>
+                <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-white font-light leading-tight">
+                  Discover how PAAN is transforming agency growth across Africa.
+                </h2>
+              </div>
+              
+              {/* Right Column - Testimonial */}
+              <div className="relative mt-6 lg:mt-0">
+                <div className="bg-paan-blue p-4 sm:p-6 lg:p-8 rounded-xl shadow-xl relative z-10">
+                  {/* Quote Icon - Smaller size */}
+                  <div className="absolute -top-4 sm:-top-6 lg:-top-8 left-2 sm:left-3 z-20">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" className="text-paan-yellow sm:w-12 sm:h-12 lg:w-16 lg:h-16">
+                      <path fill="currentColor" d="M11.192 15.757q0-1.32-.69-2.217q-.489-.618-1.327-.812c-.55-.128-1.07-.137-1.54-.028c-.16-.95.1-1.956.76-3.022q.992-1.598 2.558-2.403L9.372 5c-.8.396-1.56.898-2.26 1.505c-.71.607-1.34 1.305-1.9 2.094s-.98 1.68-1.25 2.69s-.345 2.04-.216 3.1c.168 1.4.62 2.52 1.356 3.35Q6.205 19 7.85 19c.965 0 1.766-.29 2.4-.878q.941-.864.94-2.368zm9.124 0q0-1.32-.69-2.217q-.49-.63-1.327-.817q-.84-.185-1.54-.022c-.16-.94.09-1.95.752-3.02q.99-1.59 2.556-2.4L18.49 5q-1.201.594-2.26 1.505a11.3 11.3 0 0 0-1.894 2.094c-.556.79-.97 1.68-1.24 2.69a8 8 0 0 0-.217 3.1c.166 1.4.616 2.52 1.35 3.35q1.1 1.252 2.743 1.252q1.45.002 2.402-.877q.941-.864.942-2.368z"/>
+                    </svg>
+                  </div>
+                  
+                  {/* Circle - Bottom Right - Smaller */}
+                  <div className="absolute -bottom-1 sm:-bottom-2 lg:-bottom-3 -right-1 w-4 h-4 sm:w-6 sm:h-6 lg:w-8 lg:h-8 bg-paan-red rounded-full z-20"></div>
+                  
+                  <div className="space-y-3 sm:space-y-4 py-4 sm:py-6 lg:py-8">
+                    {/* Quote Text - Smaller font */}
+                    <p className="text-paan-dark-blue text-sm sm:text-base leading-relaxed">
+                      PAAN has enabled us to access new business opportunities across Africa and has also played a pivotal role in upskilling our teams through training programs & webinars tailored to agencies
+                    </p>
+                    
+                    {/* Author Info - Smaller spacing */}
+                    <div className="flex items-center space-x-3 pt-2 sm:pt-3">
+                      <div className="flex-shrink-0">
+                        <Image
+                          src="/assets/images/kester-muhanji.png"
+                          width={40}
+                          height={40}
+                          alt="Kester Muhanji"
+                          className="rounded-full ring-2 ring-white/20 sm:w-12 sm:h-12"
+                        />
+                      </div>
+                      <div>
+                        <h4 className="font-bold text-paan-dark-blue text-sm sm:text-base">Kester Muhanji</h4>
+                        <p className="text-paan-dark-blue text-xs sm:text-sm">CEO, Aquila East Africa</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Decorative Elements - Smaller */}
+                <div className="absolute -top-2 -right-2 w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 bg-white/10 rounded-full blur-xl"></div>
+                <div className="absolute -bottom-3 -left-3 w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 bg-paan-blue/30 rounded-full blur-2xl"></div>
+              </div>
+            </div>
+          </div>
+          
+          {/* Background Pattern - Smaller */}
+          <div className="absolute bottom-0 left-0 opacity-40 z-0 pointer-events-none">
+            <Image
+              src="/assets/images/testimonial-section-pattern.svg"
+              width={200}
+              height={200}
+              alt=""
+              className="object-contain sm:w-[250px] sm:h-[250px] lg:w-[300px] lg:h-[300px]"
+            />
+          </div>
+          
+          {/* Additional Decorative Elements - Smaller */}
+          <div className="absolute top-8 sm:top-12 lg:top-16 left-4 sm:left-6 lg:left-8 w-1 h-1 sm:w-1.5 sm:h-1.5 bg-paan-blue rounded-full opacity-40"></div>
+          <div className="absolute top-16 sm:top-20 lg:top-24 left-8 sm:left-12 lg:left-16 w-0.5 h-0.5 bg-white rounded-full opacity-60"></div>
+          <div className="absolute bottom-12 sm:bottom-16 lg:bottom-20 left-1/4 w-1.5 h-1.5 sm:w-2 sm:h-2 bg-paan-blue/50 rounded-full"></div>
+        </section>
+        </div>
         <div className="network-bg relative" id="join-network">
           <div className="absolute -top-3 left-4 w-6 h-6 bg-[#84C1D9] rounded-full z-0"></div>
           <div className="absolute -top-8 right-4 w-16 h-16 bg-yellow-400 rounded-full z-0"></div>
-          <div className="absolute -bottom-12 right-4 w-28 h-28 bg-red-500 rounded-full z-0"></div>
+          <div className="absolute bottom-6 right-4 w-20 h-20 bg-red-500 rounded-full z-0"></div>
           <section className="relative mx-auto max-w-6xl py-28 px-6">
             <div className="flex flex-col mb-10 w-full md:w-3/4">
               <h2 className="text-3xl font-medium mb-4 text-[#F2B706]">
@@ -574,16 +893,110 @@ const HomePage = () => {
                 Join us Today
               </button>
               <button
-                onClick={(e) => {
-                  handleScroll(e, "#events", isFixed);
-                }}
+                onClick={() => window.location.href = 'https://member-portal.paan.africa/'} 
                 className="bg-white px-8 py-3 rounded-full font-medium text-sm transition duration-300 hover:bg-[#6FA1B7]"
               >
-                Register for Summit
+                Member Portal
               </button>
             </div>
           </section>
         </div>
+        <section className="bg-[#D1D3D4] py-10">
+          <div className="mx-auto max-w-6xl px-6 lg:px-8">
+            <div className="text-center space-y-4">
+              <div className="space-y-4">
+                <h3 className="text-md font-semibold text-[#172840] uppercase tracking-wide">
+                  Everything Your Agency Needs to Grow
+                </h3>
+                <h2 className="text-2xl sm:text-3xl text-[#172840] font-light max-w-4xl mx-auto">
+                  Access exclusive opportunities, co-bid with trusted<br className="hidden sm:block"/> agencies all through your PAAN portal.
+                </h2>
+              </div>
+              
+              {/* Image Container - Desktop Layout */}
+              <div className="hidden lg:flex justify-center pt-8">
+                <div className="relative">
+                  <div className="absolute -inset-4 rounded-2xl blur-lg"></div>
+                  <div className="relative">
+                    <Image
+                      src="/assets/images/portal.svg"
+                      width={800}
+                      height={800}
+                      alt="PAAN Portal Dashboard"
+                      className="rounded-lg object-contain"
+                      priority
+                      quality={100}
+                    />
+                    {/* Sub image positioned at top-right */}
+                    <Image
+                      src="/assets/images/sub-p-1.svg"
+                      width={320}
+                      height={320}
+                      alt="PAAN Portal Feature"
+                      className="absolute top-36 -right-40"
+                    />
+                    <Image
+                      src="/assets/images/arrow-1.png"
+                      width={80}
+                      height={80}
+                      alt="PAAN Portal Feature"
+                      className="absolute top-10 -right-4"
+                    />
+                    {/* Sub images positioned at left in flex column */}
+                    <div className="absolute top-4 -left-56 flex flex-col space-y-12">
+                      <Image
+                        src="/assets/images/sub-p-3.svg"
+                        width={300}
+                        height={300}
+                        alt="PAAN Portal Feature"
+                        className=""
+                      />
+                      <Image
+                        src="/assets/images/sub-p-2.svg"
+                        width={300}
+                        height={300}
+                        alt="PAAN Portal Feature"
+                        className=""
+                      />
+                    </div>
+                    <Image
+                      src="/assets/images/arrow-2.png"
+                      width={70}
+                      height={70}
+                      alt="PAAN Portal Feature"
+                      className="absolute -bottom-12 left-36"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              {/* Image Container - Mobile/Tablet Layout (only main portal image) */}
+              <div className="flex lg:hidden justify-center pt-8">
+                <div className="relative">
+                  <div className="absolute -inset-4 rounded-2xl blur-lg"></div>
+                  <div className="relative">
+                    <Image
+                      src="/assets/images/portal.png"
+                      width={400}
+                      height={400}
+                      alt="PAAN Portal Dashboard"
+                      className="rounded-lg w-full max-w-sm sm:max-w-md"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex justify-center pt-6">
+                <button 
+                  onClick={() => window.location.href = 'https://member-portal.paan.africa/'} 
+                  className="bg-[#F25849] hover:bg-[#D6473C] text-white font-normal py-2 sm:py-3 px-6 sm:px-8 rounded-full transition-all duration-300 shadow-md hover:shadow-lg flex items-center gap-2 group text-sm sm:text-base whitespace-nowrap"
+                >               
+                  Access Your Dashboard
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
 
         <div
           className="mx-auto max-w-6xl mt-20 relative section"
@@ -596,10 +1009,11 @@ const HomePage = () => {
           
           <ContactSection />
         </div>
-        <Footer />
         <AgencyEnquiryModal isOpen={isModalOpen} onClose={closeModal} />
         <ScrollToTop />
       </main>
+      <Footer />
+      </div>
     </>
   );
 };
