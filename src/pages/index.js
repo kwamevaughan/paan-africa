@@ -17,6 +17,7 @@ import AgencyEnquiryModal from "@/components/AgencyEnquiryModal";
 import AgenciesMarquee from "@/components/AgenciesMarquee";
 import AgencyLogosGrid from "@/components/AgencyLogosGrid";
 import ScrollToTop from "@/components/ScrollToTop";
+import ConnectingDots from "@/components/ConnectingDots";
 
 const HomePage = () => {
   const sectionRefs = {
@@ -77,6 +78,13 @@ const HomePage = () => {
         keywords="Pan-African Agency Network, PAAN, African agencies, creative network, tech network, collaboration, innovation, global influence"
       />
       <main className="px-3 pt-6 sm:px-0 sm:pt-0 relative">
+        <ConnectingDots 
+          starCount={80}
+          connectionDistance={120}
+          dotColor="#84C1D9"
+          lineColor="#84C1D9"
+          lineWidth={0.5}
+        />
         <Header/>
 
         <div
@@ -115,13 +123,13 @@ const HomePage = () => {
           </section>
         </div>
 
-        <div className="relative h-48 sm:h-64 mt-[-5em] sm:mt-[-10em] top-10 z-[-1]">
-          <Image
-            src="/assets/images/bg-pattern.svg"
-            width={0}
-            height={0}
-            alt="bg-pattern"
-            className="absolute top-0 left-0 w-screen h-full object-cover z-[-1]"
+          <div className="absolute top-0 left-0 w-screen h-20 object-cover z-[-1]">
+          <ConnectingDots 
+            starCount={80}
+            connectionDistance={120}
+            dotColor="#84C1D9"
+            lineColor="#84C1D9"
+            lineWidth={0.5}
           />
         </div>
 
@@ -140,6 +148,7 @@ const HomePage = () => {
               The Pan-African Agency Network (PAAN) is a bold alliance of
               <span className="relative inline-block">
                 <span className="text-[#F25849] font-semibold relative ml-2 z-0">independent</span>
+                
                 <Image
                                   src="/assets/images/sketch-1.png"
                   width={400}
