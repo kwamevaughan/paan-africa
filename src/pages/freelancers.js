@@ -4,7 +4,7 @@ import Image from "next/image";
 import Footer from "@/layouts/footer";
 import { useEffect, useRef, useState } from "react";
 import { useFixedHeader } from '../../utils/scrollUtils';
-import FreelanceBenefitsSlider from "@/components/FreelanceBenefitsSlider";
+import FreelanceBenefits from "@/components/FreelanceBenefits";
 import ReadyToApplySection from "@/components/ReadyToApplySection";
 import Marquee from "@/components/Marquee";
 import ContactSection from "@/components/ContactSection";
@@ -78,11 +78,12 @@ const FreelancersPage = () => {
 
   return (
     <>
-      <SEO
+    <SEO
         title="Join Africa's Top Network for Freelancers | Pan-African Agency Network (PAAN)"
         description="Become a PAAN Certified Freelancer and gain access to top-tier briefs, professional structure, and visibility. Join Africa's most trusted network for creative, technical, and strategic freelance talent."
         keywords="African freelancers, freelance network Africa, PAAN certified freelancer, join freelancer platform, vetted freelancers Africa, Pan-African creative network"
       />
+    <div className="relative">
       <main className="px-3 pt-6 sm:px-0 sm:pt-0 relative">
         <Header />
         <FreelancerHero />
@@ -196,11 +197,14 @@ const FreelancersPage = () => {
           />
         </div>
 
-        <div className="mx-auto max-w-6xl mt-20 mb-20 relative">
-          <section className="relative">
-            <h2 className="text-lg uppercase font-bold text-left mb-4">What you Get</h2>
-            <h3 className="text-2xl">You Bring the Talent. We Unlock the Opportunity.</h3>
-            <FreelanceBenefitsSlider/ >
+        <div className="py-20 mb-20 bg-[#E6F3F7] relative">
+          <div className="absolute bottom-80 right-0 w-20 h-20 bg-paan-blue rounded-full z-0"></div>
+          <div className="absolute -bottom-8 left-32 w-16 h-16 bg-paan-yellow rounded-full z-0"></div>
+           <div className="absolute -top-10 left-12 w-24 h-24 bg-paan-red rounded-full z-0"></div>
+          <section className="relative mx-auto max-w-6xl ">
+            <h2 className="text-lg uppercase font-bold text-center mb-4">What you Get</h2>
+            <h3 className="text-2xl text-center">You Bring the Talent. We Unlock the Opportunity.</h3>
+            <FreelanceBenefits/ >
           </section>
         </div>
         <AgencyLogosGrid />
@@ -209,9 +213,10 @@ const FreelancersPage = () => {
         <Marquee />
         <ContactSection />
         
-        <Footer />
         <ScrollToTop />
       </main>
+      <Footer />
+      </div>
     </>
   );
 };

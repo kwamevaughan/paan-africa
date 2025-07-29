@@ -30,23 +30,6 @@ const CustomSlider = () => {
           priority
         />
       </div>
-
-      <div className="absolute bottom-[-0.5rem] sm:bottom-[-1rem] right-2 sm:right-4 flex gap-1 sm:gap-2">
-        <button
-          onClick={prevSlide}
-          className="bg-[#F25849] p-1.5 sm:p-2 rounded-full shadow-md hover:bg-[#F25849]/80 transition-all duration-300 cursor-pointer"
-          aria-label="Previous slide"
-        >
-          <Icon icon="charm:arrow-left" width="20" height="20" className="text-white sm:w-6 sm:h-6" />
-        </button>
-        <button
-          onClick={nextSlide}
-          className="bg-[#F25849] p-1.5 sm:p-2 rounded-full shadow-md hover:bg-[#F25849]/80 transition-all duration-300 cursor-pointer"
-          aria-label="Next slide"
-        >
-          <Icon icon="charm:arrow-right" width="20" height="20" className="text-white sm:w-6 sm:h-6" />
-        </button>
-      </div>
     </div>
   );
 };

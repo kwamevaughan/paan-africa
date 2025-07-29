@@ -25,18 +25,18 @@ const Header = ({ navLinkColor }) => {
 
   return (
     <nav
-      className={`w-full z-50 transition-all duration-300 overflow-hidden ${
+      className={`w-full pb-4 sm:pb-0 z-50 transition-all duration-300 overflow-hidden top-0 left-0 fixed$${
         isFixed
-          ? "fixed top-0 left-0 shadow-lg backdrop-blur-md bg-white/95"
-          : "absolute bg-white"
+          ? " top-0 left-0 shadow-lg backdrop-blur-md bg-white/95"
+          : " top-0 left-0 bg-white"
       }`}
     >
       <div className="w-full px-4 lg-custom:px-8 relative">
-        <div className="flex items-center justify-between py-2 relative">
+        <div className="flex items-center justify-between py-2 relative lg-custom:py-2 py-0">
           {/* Header Pattern - Left Side with perfect alignment */}
-          <div className="absolute left-0 lg-custom:left-0 top-0 bottom-0 flex items-center pr-4 z-0">
+          <div className="hidden lg-custom:flex absolute left-0 lg-custom:left-0 top-0 bottom-0 items-center pr-4 z-0">
             <Image
-              src="/assets/images/header-pattern.png"
+              src="/assets/images/header-pattern.svg"
               alt="Header Pattern"
               width={70}
               height={70}
@@ -45,14 +45,15 @@ const Header = ({ navLinkColor }) => {
           </div>
 
           {/* Logo - Left Side (with margin to account for pattern) */}
-          <div className="flex-shrink-0 ml-20 relative z-10">
+          <div className="flex-shrink-0 ml-0 lg-custom:ml-20 relative z-10">
             <Link href="/" passHref>
               <Image
-                src="/assets/images/partners-page-logo.png"
+                src="/assets/images/partners-logo.svg"
                 alt="Logo"
-                width={200}
-                height={70}
-                className="sm:w-[160px] sm:h-[56px] lg-custom:w-[200px] lg-custom:h-[70px]"
+                width={160}
+                height={56}
+                className="w-auto h-10 lg-custom:w-[200px] lg-custom:h-[70px] object-contain"
+                priority
               />
             </Link>
           </div>
@@ -132,13 +133,14 @@ const Header = ({ navLinkColor }) => {
           }`}
         >
           {/* Mobile Menu Header */}
-          <div className="flex items-center justify-between p-4 border-b border-gray-200 bg-white">
+          <div className="flex items-center justify-between p-4 bg-white">
             <div className="flex items-center">
               <Image
                 src="/assets/images/partners-page-logo.png"
                 alt="Logo"
                 width={110}
                 height={39}
+                className="w-auto h-8 object-contain"
               />
             </div>
             <button
@@ -182,7 +184,7 @@ const Header = ({ navLinkColor }) => {
             </div>
 
             {/* Mobile CTA Button */}
-            <div className="p-4 border-t border-gray-200 bg-white">
+            <div className="p-4 bg-white">
               <a
                 href="https://membership.paan.africa/"
                 className="w-full bg-paan-red text-white px-6 py-4 rounded-xl text-base font-bold hover:bg-paan-red transition duration-300 cursor-pointer flex items-center justify-center shadow-lg"

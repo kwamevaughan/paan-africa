@@ -16,41 +16,47 @@ const Header = ({ navLinkColor }) => {
 
   const handleNavClick = (label) => {
     setActiveNav(label);
+    setIsMenuOpen(false); // Close mobile menu when item is clicked
+  };
+
+  const handleMenuToggle = () => {
+    setIsMenuOpen(!isMenuOpen);
   };
 
   return (
     <nav
-      className={`w-full z-10 transition-all duration-300 ${
-        isFixed
-          ? "fixed top-0 left-0 shadow-lg backdrop-blur-md bg-white/80"
-          : "absolute bg-white"
-      }`}
+      className={`w-full z-50 transition-all duration-300 fixed top-0 left-0
+        lg-custom:${isFixed ? "fixed top-0 left-0 shadow-lg backdrop-blur-md bg-white/95" : "absolute bg-white"}
+      `}
     >
-      <div className="w-full px-4 lg-custom:px-8">
-        <div className="flex items-center justify-between py-2">
+      <div className="w-full px-4 sm:px-6 lg-custom:px-8">
+        <div className="flex items-center justify-between h-16 sm:h-18 lg-custom:h-20">
           {/* Logo - Left Side */}
-          <div className="flex-shrink-0">
+          <div className="flex-shrink-0 z-20">
             <Link href="/" passHref>
               <Image
                 src="/assets/images/logo.svg"
                 alt="Logo"
-                width={200}
-                height={70}
+                width={120}
+                height={42}
+                className="sm:w-[160px] sm:h-[56px] lg-custom:w-[200px] lg-custom:h-[70px]"
               />
             </Link>
           </div>
 
           {/* Hamburger Menu Button (mobile only) */}
-          <div className="lg-custom:hidden flex items-center">
+          <div className="lg-custom:hidden flex items-center z-20">
             <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className={`p-2 rounded-md ${currentTextColor} focus:outline-none`}
+              onClick={handleMenuToggle}
+              className={`p-2 rounded-lg ${currentTextColor} hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-[#F2B706] transition-colors duration-200`}
+              aria-label="Toggle navigation menu"
             >
               <svg
-                className="h-6 w-6"
+                className="h-6 w-6 transition-transform duration-200"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
+                style={{ transform: isMenuOpen ? 'rotate(90deg)' : 'rotate(0deg)' }}
               >
                 {isMenuOpen ? (
                   <path
@@ -79,11 +85,11 @@ const Header = ({ navLinkColor }) => {
                   key={item.href}
                   href={item.href}
                   onClick={() => handleNavClick(item.label)}
-                  className={`${
-                    activeNav === item.label 
-                      ? "bg-[#F2B706] text-gray-900" 
-                      : `${currentTextColor} hover:text-gray-900 hover:bg-[#F2B706]`
-                  } px-4 py-2 rounded-full transition-all duration-300 cursor-pointer`}
+                  className={
+                    activeNav === item.label
+                      ? "bg-[#F2B706] text-gray-900 px-4 py-2 rounded-full transition-all duration-300 cursor-pointer"
+                      : `${currentTextColor} hover:text-gray-900 hover:bg-[#F2B706] px-4 py-2 rounded-full transition-all duration-300 cursor-pointer`
+                  }
                 >
                   {item.label}
                 </a>
@@ -98,29 +104,80 @@ const Header = ({ navLinkColor }) => {
           </div>
         </div>
 
+        {/* Mobile Menu Overlay */}
+        {isMenuOpen && (
+          <div 
+            className="fixed inset-0 bg-black bg-opacity-50 z-10 lg-custom:hidden"
+            onClick={() => setIsMenuOpen(false)}
+          />
+        )}
+
         {/* Mobile Menu (shown when hamburger is clicked) */}
-        <div className={`${isMenuOpen ? "block" : "hidden"} lg-custom:hidden`}>
-          <div className="px-2 pt-2 pb-3 space-y-1 bg-white rounded-lg shadow-lg">
-            {freelancersMenu.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                onClick={() => handleNavClick(item.label)}
-                className={`${
-                  activeNav === item.label 
-                    ? "bg-[#F2B706] text-gray-900" 
-                    : `${currentTextColor} hover:text-gray-900 hover:bg-[#F2B706]`
-                } block px-4 py-2 rounded-full transition-all duration-300 cursor-pointer`}
-              >
-                {item.label}
-              </a>
-            ))}
-            <a
-              href="https://membership.paan.africa/"
-              className={ctaButton.mobileClassName}
+        <div 
+          className={`lg-custom:hidden fixed top-0 right-0 h-screen w-80 max-w-[85vw] bg-white shadow-2xl transform transition-transform duration-300 ease-in-out z-20 ${
+            isMenuOpen ? 'translate-x-0' : 'translate-x-full'
+          }`}
+        >
+          {/* Mobile Menu Header */}
+          <div className="flex items-center justify-between p-4 border-b border-gray-200 bg-white">
+            <div className="flex items-center">
+              <Image
+                src="/assets/images/logo.svg"
+                alt="Logo"
+                width={110}
+                height={39}
+              />
+            </div>
+            <button
+              onClick={() => setIsMenuOpen(false)}
+              className="p-2 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-[#F2B706]"
+              aria-label="Close navigation menu"
             >
-              {ctaButton.label}
-            </a>
+              <svg
+                className="h-6 w-6 text-gray-600"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+          </div>
+
+          {/* Mobile Menu Content */}
+          <div className="flex flex-col h-screen bg-white">
+            <div className="flex-1 px-4 py-6 space-y-3 bg-white overflow-y-auto">
+              {freelancersMenu.map((item) => (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  onClick={() => handleNavClick(item.label)}
+                  className={
+                    activeNav === item.label
+                      ? "bg-[#F2B706] text-gray-900 shadow-sm flex items-center space-x-3 px-4 py-3 rounded-xl transition-all duration-200 text-base font-medium"
+                      : "text-gray-700 hover:text-gray-900 hover:bg-[#F2B706] flex items-center space-x-3 px-4 py-3 rounded-xl transition-all duration-200 text-base font-medium"
+                  }
+                >
+                  <span>{item.label}</span>
+                </a>
+              ))}
+            </div>
+
+            {/* Mobile CTA Button */}
+            <div className="p-4 bg-white">
+              <a
+                href="https://membership.paan.africa/"
+                className="w-full bg-paan-red text-white px-6 py-4 rounded-xl text-base font-bold hover:bg-paan-red transition duration-300 cursor-pointer flex items-center justify-center shadow-lg"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                {ctaButton.label}
+              </a>
+            </div>
           </div>
         </div>
       </div>
