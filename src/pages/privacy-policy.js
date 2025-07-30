@@ -13,7 +13,7 @@ const PrivacyPolicy = () => {
         description="Learn how the Pan-African Agency Network (PAAN) collects, uses, and protects your personal information. Read our Privacy Policy for more details."
         keywords="PAAN, privacy policy, data protection, Pan-African Agency Network"
       />
-      <main className="min-h-screen flex flex-col">
+      <main className="min-h-screen flex flex-col relative">
         <Header />
         <div className="flex-grow px-4 py-28 max-w-6xl mx-auto">
           <h1 className="text-4xl font-semibold text-[#172840] mb-6 text-center">
