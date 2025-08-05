@@ -129,7 +129,52 @@ const PAANAmbassador = () => {
                 </div>
             </section>
         </div>   
-       
+        <div className="relative py-6 sm:py-10">
+            <section className="relative mx-auto max-w-6xl px-4 sm:px-6 space-y-2 sm:space-y-4" style={{ zIndex: 2 }}>
+                <div className="grid grid-cols-1 sm:grid-cols-2 mt-6">
+                    <div>
+                        <h2 className="text-base sm:text-lg uppercase font-bold text-left mb-2 sm:mb-4">What is PAAN?</h2>
+                        <h3 className="text-xl sm:text-2xl font-normal">Uniting Africa's most forward-thinking agencies under one powerful vision.</h3>
+                    </div>
+                    <div>
+                        <p>The Pan-African Agency Network (PAAN) brings together the most forward-thinking, vetted creative, digital, communication, advertising, research, and marketing agencies across the continent. It's more than a network — it's a movement toward collective growth, cross-border collaboration, and global-level opportunity for African agencies.</p>
+                    </div>
+                </div>
+                <div className="relative w-full pt-10">
+                    <div className="relative w-full aspect-video bg-[#D9D9D9] rounded-lg overflow-hidden">
+                        {/* Video element - replace src with your actual video URL */}
+                        <video 
+                            ref={videoRef}
+                            className="w-full h-full object-cover"
+                            // poster="/path-to-your-video-thumbnail.jpg"
+                            preload="metadata"
+                            onEnded={handleVideoEnded}
+                        >
+                            <source src="/assets/videos/1.mp4" type="video/mp4" />
+                            Your browser does not support the video tag.
+                        </video>
+                        
+                        {/* Play button overlay */}
+                        <div 
+                            className={`absolute inset-0 flex items-center justify-center transition-all duration-300 cursor-pointer group ${
+                                isVideoPlaying ? 'opacity-0 pointer-events-none' : 'bg-opacity-30 hover:bg-opacity-20'
+                            }`}
+                            onClick={handleVideoPlay}
+                        >
+                            <div className="w-16 h-16 sm:w-20 sm:h-20 bg-paan-dark-blue bg-opacity-90 rounded-full flex items-center justify-center group-hover:bg-opacity-100 group-hover:scale-110 transition-all duration-300 shadow-lg">
+                                <svg 
+                                    className="w-6 h-6 sm:w-8 sm:h-8 text-[#D9D9D9] ml-1" 
+                                    fill="currentColor" 
+                                    viewBox="0 0 24 24"
+                                >
+                                    <path d="M8 5v14l11-7z"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>          
+            </section>         
+        </div>
 
         <div className="relative bg-[#172840]">
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-12 sm:pt-16 lg:pt-20 pb-12 sm:pb-16 lg:pb-20">
