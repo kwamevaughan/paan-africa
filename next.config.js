@@ -165,7 +165,7 @@ const nextConfig = {
   output: "standalone", // Keeps the build output as standalone (recommended for deployment)
   devIndicators: false, // Disables the development indicators, including the Next.js logo
   images: {
-    domains: ['ik.imagekit.io'],
+    domains: ['ik.imagekit.io', 'flagcdn.com'],
   },
   reactStrictMode: true,
 

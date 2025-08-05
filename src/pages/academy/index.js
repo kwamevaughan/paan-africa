@@ -599,7 +599,7 @@ const HomePage = () => {
                     <div className="bg-paan-green text-paan-dark-blue px-8 py-1 rounded-full text-sm font-semibold shadow-sm">
                     <span className="uppercase tracking-wider flex items-center gap-2">
                         <span className="text-paan-yellow text-2xl">&bull;</span>
-                        Training Formats
+                        Pan-African Creatives + Freelancers
                     </span>
                     </div>
                 </div>
