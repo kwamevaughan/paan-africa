@@ -381,52 +381,14 @@ const HomePage = () => {
         <div className="relative group">
           {/* Video Container */}
           <div className="relative overflow-hidden rounded-2xl shadow-2xl bg-black/20 backdrop-blur-sm border border-white/10">
-            <video 
-              ref={videoRef}
+            <iframe
               className="w-full h-auto aspect-video object-cover"
-              controls={isPlaying}
-              preload="metadata"
-              tabIndex={0}
-              poster="/assets/images/certified-members/about-img.png"
-              onClick={() => {
-                if (!isPlaying) {
-                  setIsPlaying(true);
-                  videoRef.current.play();
-                }
-              }}
-            >
-              <source src="/assets/images/certified-members/aquila.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-            
-            {/* Animated Play Button Overlay */}
-            {!isPlaying && (
-              <button
-                className="absolute inset-0 flex items-center justify-center bg-black/30 group-hover:bg-black/20 transition-all duration-300 cursor-pointer w-full h-full focus:outline-none"
-                aria-label="Play video"
-                onClick={() => {
-                  setIsPlaying(true);
-                  videoRef.current.play();
-                }}
-                tabIndex={0}
-              >
-                <div className="relative">
-                  {/* Ripple Animation */}
-                  <div className="absolute inset-0 rounded-full bg-white/20 animate-ping"></div>
-                  <div className="absolute inset-0 rounded-full bg-white/10 animate-pulse animation-delay-300"></div>
-                  {/* Play Button */}
-                  <div className="relative w-20 h-20 bg-white rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-xl">
-                    <svg 
-                      className="w-8 h-8 text-paan-blue ml-1" 
-                      fill="currentColor" 
-                      viewBox="0 0 24 24"
-                    >
-                      <path d="M8 5v14l11-7z"/>
-                    </svg>
-                  </div>
-                </div>
-              </button>
-            )}
+              src="https://www.youtube.com/embed/zJd1akSivAw"
+              title="Aquila East Africa"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            ></iframe>
           </div>
 
           {/* Decorative Elements */}
