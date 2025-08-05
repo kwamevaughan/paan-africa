@@ -521,7 +521,7 @@ const HomePage = () => {
                     {/* Training Topics */}
                     <div className="space-y-6">
                         <h3 className="text-2xl font-bold text-gray-900 mb-6">
-                        Core Training Modules
+                            Our Core Training Formats
                         </h3>
                         
                         <ul className="space-y-5">
@@ -532,7 +532,7 @@ const HomePage = () => {
                             </svg>            
                             </span>
                             <div>
-                            <h4 className="font-normal text-lg text-gray-900 mb-1">Strategic Brand Thinking</h4>
+                            <h4 className="font-normal text-lg text-gray-900 mb-1">Onsite or Virtual Team Workshops</h4>
                             </div>
                         </li>
                         
@@ -543,7 +543,7 @@ const HomePage = () => {
                             </svg> 
                             </span>
                             <div>
-                            <h4 className="font-normal text-lg text-gray-900 mb-1">Mastering the Marketing Brief</h4>
+                            <h4 className="font-normal text-lg text-gray-900 mb-1">Half-Day, Full-Day or 3-Week Sprints</h4>
                             </div>
                         </li>
                         
@@ -554,7 +554,7 @@ const HomePage = () => {
                             </svg>  
                             </span>
                             <div>
-                            <h4 className="font-normal text-lg text-gray-900 mb-1">AI in Content & Creative Production</h4>
+                            <h4 className="font-normal text-lg text-gray-900 mb-1">Executive Bootcamps for CMOs and Marketing Leads</h4>
                             </div>
                         </li>
                         
@@ -565,7 +565,7 @@ const HomePage = () => {
                             </svg>  
                             </span>
                             <div>
-                            <h4 className="font-normal text-lg text-gray-900 mb-1">Performance Marketing</h4>
+                            <h4 className="font-normal text-lg text-gray-900 mb-1">Ongoing Learning Subscriptions</h4>
                             </div>
                         </li>
                         </ul>
