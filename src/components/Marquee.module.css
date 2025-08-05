@@ -15,14 +15,16 @@
 
 .marquee {
   display: inline-flex; /* Use flex for precise alignment */
-  animation: marquee 40s linear infinite;
+  animation: marquee 30s linear infinite; /* Reduced from 40s to 30s for faster flow */
   will-change: transform; /* Optimize performance */
+  white-space: nowrap; /* Ensure no wrapping */
 }
 
 .item {
   display: inline-flex;
   align-items: center;
   flex-shrink: 0; /* Prevent items from shrinking */
+  white-space: nowrap; /* Prevent text wrapping */
 }
 
 .word {
@@ -30,6 +32,7 @@
   font-size: 1.25rem; /* Smaller font size for mobile */
   font-weight: 600;
   color: #2A2B5F;
+  white-space: nowrap; /* Prevent text wrapping */
 }
 
 @media (min-width: 640px) {
@@ -51,13 +54,13 @@
   }
 }
 
-/* Animation */
+/* Animation - optimized for smoother continuous flow */
 @keyframes marquee {
   0% {
     transform: translateX(0);
   }
   100% {
-    transform: translateX(-50%);
+    transform: translateX(-25%); /* Adjusted to account for 4 duplicates */
   }
 }
 
