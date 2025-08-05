@@ -1,0 +1,70 @@
+/* components/Marquee.module.css */
+.marqueeContainer {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 20px 0; /* Reduced padding for mobile */
+    background-color: #ffffff;
+  }
+  
+  @media (min-width: 640px) {
+    .marqueeContainer {
+      padding: 40px 0; /* Restore original padding for larger screens */
+    }
+  }
+  
+  .marquee {
+    display: inline-flex; /* Use flex for precise alignment */
+    animation: marquee 30s linear infinite; /* Reduced from 40s to 30s for faster flow */
+    will-change: transform; /* Optimize performance */
+    white-space: nowrap; /* Ensure no wrapping */
+  }
+  
+  .item {
+    display: inline-flex;
+    align-items: center;
+    flex-shrink: 0; /* Prevent items from shrinking */
+    white-space: nowrap; /* Prevent text wrapping */
+  }
+  
+  .word {
+    margin: 0 0.5rem; /* Reduced margin for mobile */
+    font-size: 1.25rem; /* Smaller font size for mobile */
+    font-weight: 600;
+    color: #2A2B5F;
+    white-space: nowrap; /* Prevent text wrapping */
+  }
+  
+  @media (min-width: 640px) {
+    .word {
+      margin: 0 1rem; /* Restore original margin for larger screens */
+      font-size: 2rem; /* Restore original font size for larger screens */
+    }
+  }
+  
+  .dot {
+    font-size: 2rem; /* Increased font size for mobile */
+    margin: 0 0.5rem;
+  }
+  
+  @media (min-width: 640px) {
+    .dot {
+      font-size: 3rem; /* Increased font size for larger screens */
+      margin: 0 1rem;
+    }
+  }
+  
+  /* Animation - optimized for smoother continuous flow */
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-25%); /* Adjusted to account for 4 duplicates */
+    }
+  }
+  
+  /* Optional: Pause animation on hover */
+  /* .marqueeContainer:hover .marquee {
+    animation-play-state: paused;
+  } */

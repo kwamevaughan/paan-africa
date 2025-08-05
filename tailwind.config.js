@@ -15,6 +15,9 @@ export default {
         "paan-blue": "#84C1D9",
         "paan-dark-blue": "#172840",
         "paan-red": "#F25849",
+        "paan-green": "#34B6A7",
+        "paan-maroon": "#EC5B88",
+        "paan-purple": "#6A4C93",
       },
       screens: {
         "lg-custom": "1200px", // Custom breakpoint at 1210px

@@ -15,6 +15,15 @@ export const menuItems = [
     { href: '/summit', label: '2025 Summit' },
   ];
 
+  export const paanAcademyMenu = [
+    { href: '/academy', label: 'Home' },
+    { href: '/academy/programs', label: 'Why PAAN' },
+    { href: '/academy/training', label: 'Training' },
+    { href: '/academy/workshops', label: 'Formats' },
+    { href: '/academy/certifications', label: 'Freelancers' },
+    { href: '/academy/mentorship', label: 'Agencies' },
+  ];
+
   export const PartnersPageMenu = [
     { href: '/', label: 'For Agencies' },
     { href: '/freelancers', label: 'For Freelancers' },
