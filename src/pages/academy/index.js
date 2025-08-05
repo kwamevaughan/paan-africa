@@ -291,7 +291,7 @@ const HomePage = () => {
                         <div className="flex flex-col">
                             <h3 className="font-bold">Pan-African Expertise</h3>
                             <span className="text-gray-700 leading-relaxed text-sm sm:text-base">
-                                Learn from elite talent across 200+ agencies in 20+ African countries.
+                                Led by top-tier strategists, creatives, and media specialists from 200+ agencies across 20+ countries
                             </span>
                         </div>
                       </li>
@@ -302,7 +302,7 @@ const HomePage = () => {
                         <div className="flex flex-col">
                             <h3 className="font-bold">Custom Curriculum</h3>
                             <span className="text-gray-700 leading-relaxed text-sm sm:text-base">
-                                Learn from elite talent across 200+ agencies in 20+ African countries.
+                                 Tailored training modules for your brand’s goals — from campaign development to media execution
                             </span>
                         </div>
                         </li>
@@ -313,7 +313,7 @@ const HomePage = () => {
                         <div className="flex flex-col">
                             <h3 className="font-bold">Real-World Learning</h3>
                             <span className="text-gray-700 leading-relaxed text-sm sm:text-base">
-                                Hands-on workshops, toolkits, and case studies for immediate impact.
+                                Hands-on workshops, case studies, and toolkits your team can apply immediately
                             </span>
                         </div>
                         </li>
@@ -324,7 +324,7 @@ const HomePage = () => {
                         <div className="flex flex-col">
                             <h3 className="font-bold">Stronger Results</h3>
                             <span className="text-gray-700 leading-relaxed text-sm sm:text-base">
-                                Empower your team to brief better, manage agencies, and drive ROI.
+                                Boost ROI from your marketing spend by empowering internal teams to brief better, manage agencies, and build strategic campaigns
                             </span>
                         </div>
                         </li>
