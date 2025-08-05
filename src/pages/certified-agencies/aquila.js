@@ -321,85 +321,85 @@ const HomePage = () => {
         </div>
         
         <div className="bg-paan-blue relative">
-  <section className="relative mx-auto max-w-6xl px-4 sm:px-6 py-16 sm:py-20">
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 items-center">
-      
-      {/* Content Column */}
-      <div className="order-2 md:order-1">
-        <div className="space-y-8">
-          {/* Main Heading */}
-          <div className="space-y-4">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-paan-dark-blue leading-tight">
-              About Aquila East Africa
-            </h2>
-            <div className="w-16 h-1 bg-gradient-to-r from-paan-dark-blue to-paan-dark-blue/60"></div>
-          </div>
-          {/* Member Since Badge */}
-          <div className="inline-flex items-center bg-paan-dark-blue/10 backdrop-blur-sm rounded-lg px-4 py-2 border border-paan-dark-blue/20">
-            <span className="text-sm font-medium text-paan-dark-blue/90">
-              Member Since 2025
-            </span>
-          </div>
+          <section className="relative mx-auto max-w-6xl px-4 sm:px-6 py-16 sm:py-20">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 items-center">
+              
+              {/* Content Column */}
+              <div className="order-2 md:order-1">
+                <div className="space-y-8">
+                  {/* Main Heading */}
+                  <div className="space-y-4">
+                    <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-paan-dark-blue leading-tight">
+                      About Aquila East Africa
+                    </h2>
+                    <div className="w-16 h-1 bg-gradient-to-r from-paan-dark-blue to-paan-dark-blue/60"></div>
+                  </div>
+                  {/* Member Since Badge */}
+                  <div className="inline-flex items-center bg-paan-dark-blue/10 backdrop-blur-sm rounded-lg px-4 py-2 border border-paan-dark-blue/20">
+                    <span className="text-sm font-medium text-paan-dark-blue/90">
+                      Member Since 2025
+                    </span>
+                  </div>
 
-          {/* Description */}
-          <p className="text-lg sm:text-xl leading-relaxed text-paan-dark-blue/90 font-light">
-            Aquila East Africa is a creative agency based in Nairobi, Kenya, specializing in 
-            pan-African digital campaigns, media planning, and market localization. As a certified 
-            PAAN Partner, they bring cultural fluency, regional insight, and consistent results 
-            to brands expanding across the continent.
-          </p>
+                  {/* Description */}
+                  <p className="text-lg sm:text-xl leading-relaxed text-paan-dark-blue/90 font-light">
+                    Aquila East Africa is a creative agency based in Nairobi, Kenya, specializing in 
+                    pan-African digital campaigns, media planning, and market localization. As a certified 
+                    PAAN Partner, they bring cultural fluency, regional insight, and consistent results 
+                    to brands expanding across the continent.
+                  </p>
 
-          {/* Areas of Specialization */}
-          <div className="space-y-4">
-            <h3 className="text-xl sm:text-2xl font-semibold text-paan-dark-blue mb-4">
-              Areas of Specialization
-            </h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              <div className="flex items-center space-x-3">
-                <div className="w-2 h-2 bg-paan-dark-blue rounded-full"></div>
-                <span className="text-paan-dark-blue/90">Creative Marketing</span>
+                  {/* Areas of Specialization */}
+                  <div className="space-y-4">
+                    <h3 className="text-xl sm:text-2xl font-semibold text-paan-dark-blue mb-4">
+                      Areas of Specialization
+                    </h3>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                      <div className="flex items-center space-x-3">
+                        <div className="w-2 h-2 bg-paan-dark-blue rounded-full"></div>
+                        <span className="text-paan-dark-blue/90">Creative Marketing</span>
+                      </div>
+                      <div className="flex items-center space-x-3">
+                        <div className="w-2 h-2 bg-paan-dark-blue rounded-full"></div>
+                        <span className="text-paan-dark-blue/90">Advertising Solutions</span>
+                      </div>
+                      <div className="flex items-center space-x-3">
+                        <div className="w-2 h-2 bg-paan-dark-blue rounded-full"></div>
+                        <span className="text-paan-dark-blue/90">Brand Activation</span>
+                      </div>
+                      <div className="flex items-center space-x-3">
+                        <div className="w-2 h-2 bg-paan-dark-blue rounded-full"></div>
+                        <span className="text-paan-dark-blue/90">PR</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div className="flex items-center space-x-3">
-                <div className="w-2 h-2 bg-paan-dark-blue rounded-full"></div>
-                <span className="text-paan-dark-blue/90">Advertising Solutions</span>
+
+              {/* Video Column */}
+              <div className="order-1 md:order-2">
+                <div className="relative group">
+                  {/* Video Container */}
+                  <div className="relative overflow-hidden rounded-2xl shadow-2xl bg-black/20 backdrop-blur-sm border border-white/10">
+                    <iframe
+                      className="w-full h-auto aspect-video object-cover"
+                      src="https://www.youtube.com/embed/zJd1akSivAw"
+                      title="Aquila East Africa"
+                      frameBorder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                    ></iframe>
+                  </div>
+
+                  {/* Decorative Elements */}
+                  <div className="absolute -top-4 -right-4 w-24 h-24 bg-gradient-to-br from-white/10 to-transparent rounded-full blur-xl"></div>
+                  <div className="absolute -bottom-8 -left-8 w-32 h-32 bg-gradient-to-tr from-white/5 to-transparent rounded-full blur-2xl"></div>
+                </div>
               </div>
-              <div className="flex items-center space-x-3">
-                <div className="w-2 h-2 bg-paan-dark-blue rounded-full"></div>
-                <span className="text-paan-dark-blue/90">Brand Activation</span>
-              </div>
-              <div className="flex items-center space-x-3">
-                <div className="w-2 h-2 bg-paan-dark-blue rounded-full"></div>
-                <span className="text-paan-dark-blue/90">PR</span>
-              </div>
+              
             </div>
-          </div>
+          </section>
         </div>
-      </div>
-
-      {/* Video Column */}
-      <div className="order-1 md:order-2">
-        <div className="relative group">
-          {/* Video Container */}
-          <div className="relative overflow-hidden rounded-2xl shadow-2xl bg-black/20 backdrop-blur-sm border border-white/10">
-            <iframe
-              className="w-full h-auto aspect-video object-cover"
-              src="https://www.youtube.com/embed/zJd1akSivAw"
-              title="Aquila East Africa"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            ></iframe>
-          </div>
-
-          {/* Decorative Elements */}
-          <div className="absolute -top-4 -right-4 w-24 h-24 bg-gradient-to-br from-white/10 to-transparent rounded-full blur-xl"></div>
-          <div className="absolute -bottom-8 -left-8 w-32 h-32 bg-gradient-to-tr from-white/5 to-transparent rounded-full blur-2xl"></div>
-        </div>
-      </div>
-      
-    </div>
-  </section>
-</div>
         
         <div className="bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
             {/* Background decoration */}
