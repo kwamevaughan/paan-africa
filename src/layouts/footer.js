@@ -68,7 +68,7 @@ const Footer = () => {
         />
         {/* Content Container */}
         <section
-          className="relative max-w-6xl mx-auto px-3 sm:px-0 grid grid-cols-1 sm:grid-cols-3 gap-8 mt-20 pb-10"
+          className="relative max-w-6xl mx-auto px-3 sm:px-0 grid grid-cols-1 sm:grid-cols-4 gap-8 mt-20 pb-10"
         >
           {/* Left: Newsletter Signup */}
           <div className="flex flex-col gap-8">
@@ -162,6 +162,20 @@ const Footer = () => {
               </li>
               {/* Add more tools here as they become available */}
             </ul>
+          </div>
+
+          {/* PAAN Academy Professional Section */}
+          <div className="flex flex-col items-center gap-4">
+            <Link href="/academy" className="flex flex-col items-center">
+              <Image
+                src="/assets/images/paan-academy/logo.svg"
+                width={150}
+                height={150}
+                alt="PAAN Academy Logo"
+                className="mb-2 object-contain w-24 h-24 sm:w-32 sm:h-32 md:w-36 md:h-36"
+                priority
+              />
+            </Link>
           </div>
 
           {/* Right: Vertical Menu */}

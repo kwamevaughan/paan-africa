@@ -20,6 +20,7 @@
     "@supabase/supabase-js": "^2.50.0",
     "busboy": "^1.6.0",
     "formidable": "^3.5.4",
+    "framer-motion": "^12.23.12",
     "glob": "^11.0.3",
     "globby": "^14.1.0",
     "googleapis": "^150.0.1",

@@ -3,6 +3,7 @@ export const menuItems = [
     { href: '/blogs', label: 'Blog' },
     { href: '/faqs', label: 'FAQs' },
     { href: 'https://member-portal.paan.africa/', label: 'Member Portal' },
+    { href: '/academy', label: 'PAAN Academy' },
     { href: '/paan-ambassador', label: 'Ambassador Program' },
     { href: '/pricing', label: 'Full Member Benefits & Tiers' },
   ];
