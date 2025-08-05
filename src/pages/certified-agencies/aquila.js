@@ -8,6 +8,8 @@ import ScrollToTop from "@/components/ScrollToTop";
 import ConnectingDots from "@/components/ConnectingDots";
 import { motion } from "framer-motion";
 import { Icon } from '@iconify/react';
+import toast from 'react-hot-toast';
+import ReCAPTCHA from 'react-google-recaptcha';
 
 
 const HomePage = () => {
@@ -28,9 +30,19 @@ const HomePage = () => {
   const videoRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
-  const [contactForm, setContactForm] = useState({ name: '', email: '', company: '', message: '', recaptchaToken: '' });
-  const [contactStatus, setContactStatus] = useState(null); // 'success' | 'error' | null
+  const [contactForm, setContactForm] = useState({ name: '', email: '', company: '', message: '' });
+  const [contactErrors, setContactErrors] = useState({});
   const [isSending, setIsSending] = useState(false);
+  const [recaptchaToken, setRecaptchaToken] = useState(null);
+  const recaptchaRef = useRef(null);
+
+  // Check if reCAPTCHA site key is available
+  const recaptchaSiteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
+  if (!recaptchaSiteKey) {
+    console.error(
+      "reCAPTCHA site key is missing. Please set NEXT_PUBLIC_RECAPTCHA_SITE_KEY in .env.local"
+    );
+  }
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
@@ -204,30 +216,85 @@ const HomePage = () => {
   }, []);
 
   const handleContactChange = (e) => {
-    setContactForm({ ...contactForm, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setContactForm(prev => ({
+      ...prev,
+      [name]: value
+    }));
+    // Clear error when user starts typing
+    if (contactErrors[name]) {
+      setContactErrors(prev => ({
+        ...prev,
+        [name]: ''
+      }));
+    }
+  };
+
+  // Handle reCAPTCHA change
+  const handleRecaptchaChange = (token) => {
+    setRecaptchaToken(token);
+    setContactErrors(prev => ({
+      ...prev,
+      recaptcha: ''
+    }));
+  };
+
+  const validateContactForm = () => {
+    const newErrors = {};
+    if (!contactForm.name.trim()) newErrors.name = 'Name is required';
+    if (!contactForm.email.trim()) {
+      newErrors.email = 'Email is required';
+    } else if (!/\S+@\S+\.\S+/.test(contactForm.email)) {
+      newErrors.email = 'Invalid email address';
+    }
+    if (!contactForm.company.trim()) newErrors.company = 'Company name is required';
+    if (!contactForm.message.trim()) newErrors.message = 'Message is required';
+    if (!recaptchaToken) newErrors.recaptcha = 'Please complete the reCAPTCHA';
+    return newErrors;
   };
 
   const handleContactSubmit = async (e) => {
     e.preventDefault();
+
+    // Validate form
+    const validationErrors = validateContactForm();
+    if (Object.keys(validationErrors).length > 0) {
+      setContactErrors(validationErrors);
+      toast.error('Please fill in all required fields correctly.');
+      return;
+    }
+
     setIsSending(true);
-    setContactStatus(null);
-    // TODO: Integrate reCAPTCHA and set recaptchaToken in contactForm
+    const toastId = toast.loading('Sending your message...');
+
     try {
-      const res = await fetch('/api/send-agency-enquiry', {
+      const res = await fetch('/api/send-agency-contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...contactForm, agency: 'Aquila East Africa' }),
+        body: JSON.stringify({ 
+          ...contactForm, 
+          recaptchaToken,
+          agency: 'Aquila East Africa' 
+        }),
       });
+
+      const data = await res.json();
+
       if (res.ok) {
-        setContactStatus('success');
-        setContactForm({ name: '', email: '', company: '', message: '', recaptchaToken: '' });
+        toast.success('Message sent successfully!', { id: toastId });
+        // Reset form and reCAPTCHA
+        setContactForm({ name: '', email: '', company: '', message: '' });
+        setRecaptchaToken(null);
+        recaptchaRef.current.reset();
+        setIsContactModalOpen(false);
       } else {
-        setContactStatus('error');
+        toast.error(data.message || 'Failed to send message.', { id: toastId });
       }
-    } catch {
-      setContactStatus('error');
+    } catch (error) {
+      toast.error('An error occurred. Please try again.', { id: toastId });
+    } finally {
+      setIsSending(false);
     }
-    setIsSending(false);
   };
 
   return (
@@ -474,53 +541,235 @@ const HomePage = () => {
         </div>
 
         {/* Contact Agency Button Section */}
-      <section className="relative mx-auto max-w-2xl px-4 sm:px-6 py-10 sm:py-14">
-        <div className="text-center">
-          <button
-            className="bg-paan-blue text-white font-semibold px-8 py-3 rounded-full shadow-lg hover:bg-paan-dark-blue transition-colors duration-200 text-lg"
-            onClick={() => setIsContactModalOpen(true)}
-          >
-            Contact Agency
-          </button>
+      <section className="relative mx-auto max-w-4xl px-4 sm:px-6 py-10 sm:py-14">
+        <div className="text-center space-y-8">
+          {/* Main Contact Button */}
+          <div>
+            <button
+              className="bg-paan-blue text-white font-semibold px-8 py-3 rounded-full shadow-lg hover:bg-paan-dark-blue transition-colors duration-200 text-lg"
+              onClick={() => setIsContactModalOpen(true)}
+            >
+              Contact Agency
+            </button>
+          </div>
+
+          {/* Social Media Links */}
+          <div className="space-y-4">
+            <p className="text-gray-600 text-sm">Follow Aquila East Africa on social media</p>
+            <div className="flex justify-center items-center gap-6">
+              {/* LinkedIn */}
+              <a
+                href="https://www.linkedin.com/company/aquilaeastafrica/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group transition-all duration-300 hover:scale-110"
+                aria-label="LinkedIn"
+              >
+                <Icon
+                  icon="mdi:linkedin"
+                  width="28"
+                  height="28"
+                  className="text-gray-400 group-hover:text-[#0077B5] transition-colors duration-300"
+                />
+              </a>
+
+              {/* Instagram */}
+              <a
+                href="https://www.instagram.com/aquilaeastafrica/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group transition-all duration-300 hover:scale-110"
+                aria-label="Instagram"
+              >
+                <Icon
+                  icon="mingcute:instagram-fill"
+                  width="28"
+                  height="28"
+                  className="text-gray-400 group-hover:text-[#E4405F] transition-colors duration-300"
+                />
+              </a>
+
+              {/* Facebook */}
+              <a
+                href="https://www.facebook.com/AquilaEastAfricaLtd"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group transition-all duration-300 hover:scale-110"
+                aria-label="Facebook"
+              >
+                <Icon
+                  icon="ic:baseline-facebook"
+                  width="28"
+                  height="28"
+                  className="text-gray-400 group-hover:text-[#1877F2] transition-colors duration-300"
+                />
+              </a>
+
+              {/* X (Twitter) */}
+              <a
+                href="https://x.com/AquilaEA"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group transition-all duration-300 hover:scale-110"
+                aria-label="X"
+              >
+                <Icon
+                  icon="iconoir:x"
+                  width="28"
+                  height="28"
+                  className="text-gray-400 group-hover:text-black transition-colors duration-300"
+                />
+              </a>
+
+              {/* Website */}
+              <a
+                href="https://www.aquilaeastafrica.co.ke"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group transition-all duration-300 hover:scale-110"
+                aria-label="Website"
+              >
+                <Icon
+                  icon="mdi:web"
+                  width="28"
+                  height="28"
+                  className="text-gray-400 group-hover:text-paan-blue transition-colors duration-300"
+                />
+              </a>
+            </div>
+          </div>
         </div>
       </section>
       {/* Contact Modal */}
       {isContactModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
-          <div className="bg-white rounded-2xl shadow-2xl p-6 sm:p-10 w-full max-w-md relative animate-fadeIn">
+        <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+          <div className="bg-white rounded-lg max-w-2xl w-full relative overflow-hidden shadow-xl">
+            {/* Close button */}
             <button
-              className="absolute top-3 right-3 text-gray-400 hover:text-paan-blue text-2xl"
-              onClick={() => { setIsContactModalOpen(false); setContactStatus(null); }}
-              aria-label="Close"
+              onClick={() => { 
+                setIsContactModalOpen(false); 
+                setContactErrors({});
+                setRecaptchaToken(null);
+              }}
+              className="absolute top-4 right-4 text-[#172840] hover:text-[#F25849] transition-colors duration-300"
             >
-              &times;
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
             </button>
-            <h2 className="text-xl font-bold text-paan-dark-blue mb-4 text-center">Contact Aquila East Africa</h2>
-            <form className="space-y-5" onSubmit={handleContactSubmit}>
-              <div>
-                <label htmlFor="contact-name" className="block text-sm font-medium text-gray-700 mb-1">Name</label>
-                <input type="text" id="contact-name" name="name" required value={contactForm.name} onChange={handleContactChange} className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-paan-blue focus:border-paan-blue" />
+
+            {/* Modal content */}
+            <div className="p-8">
+              <div className="text-center mb-8">
+                <h2 className="text-2xl font-semibold text-[#172840] mb-2">Contact Aquila East Africa</h2>
+                <p className="text-gray-600">Get in touch with our team for your creative marketing needs</p>
               </div>
-              <div>
-                <label htmlFor="contact-email" className="block text-sm font-medium text-gray-700 mb-1">Email</label>
-                <input type="email" id="contact-email" name="email" required value={contactForm.email} onChange={handleContactChange} className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-paan-blue focus:border-paan-blue" />
-              </div>
-              <div>
-                <label htmlFor="contact-company" className="block text-sm font-medium text-gray-700 mb-1">Company</label>
-                <input type="text" id="contact-company" name="company" required value={contactForm.company} onChange={handleContactChange} className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-paan-blue focus:border-paan-blue" />
-              </div>
-              <div>
-                <label htmlFor="contact-message" className="block text-sm font-medium text-gray-700 mb-1">Message</label>
-                <textarea id="contact-message" name="message" rows={4} required value={contactForm.message} onChange={handleContactChange} className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-paan-blue focus:border-paan-blue"></textarea>
-              </div>
-              {/* Placeholder for reCAPTCHA integration */}
-              <input type="hidden" name="recaptchaToken" value={contactForm.recaptchaToken} />
-              <button type="submit" className="w-full bg-paan-blue text-white font-semibold py-3 rounded-lg hover:bg-paan-dark-blue transition-colors duration-200 shadow-md disabled:opacity-60" disabled={isSending}>
-                {isSending ? 'Sending...' : 'Send Message'}
-              </button>
-              {contactStatus === 'success' && <div className="text-green-600 text-center font-medium mt-2">Message sent successfully!</div>}
-              {contactStatus === 'error' && <div className="text-red-600 text-center font-medium mt-2">Failed to send. Please try again.</div>}
-            </form>
+
+              <form onSubmit={handleContactSubmit} className="space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <label htmlFor="contact-name" className="block text-sm font-medium text-[#172840] mb-1">
+                      Full Name <span className="text-[#F25849]">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      id="contact-name"
+                      name="name"
+                      required
+                      value={contactForm.name}
+                      onChange={handleContactChange}
+                      disabled={isSending}
+                      className={`w-full px-4 py-2 border-b border-gray-300 bg-transparent focus:outline-none focus:border-[#F25849] transition-colors duration-300 ${
+                        contactErrors.name ? 'border-red-500' : ''
+                      } ${isSending ? 'opacity-50' : ''}`}
+                    />
+                    {contactErrors.name && <p className="text-red-500 text-sm mt-1">{contactErrors.name}</p>}
+                  </div>
+
+                  <div>
+                    <label htmlFor="contact-email" className="block text-sm font-medium text-[#172840] mb-1">
+                      Email Address <span className="text-[#F25849]">*</span>
+                    </label>
+                    <input
+                      type="email"
+                      id="contact-email"
+                      name="email"
+                      required
+                      value={contactForm.email}
+                      onChange={handleContactChange}
+                      disabled={isSending}
+                      className={`w-full px-4 py-2 border-b border-gray-300 bg-transparent focus:outline-none focus:border-[#F25849] transition-colors duration-300 ${
+                        contactErrors.email ? 'border-red-500' : ''
+                      } ${isSending ? 'opacity-50' : ''}`}
+                    />
+                    {contactErrors.email && <p className="text-red-500 text-sm mt-1">{contactErrors.email}</p>}
+                  </div>
+
+                  <div className="md:col-span-2">
+                    <label htmlFor="contact-company" className="block text-sm font-medium text-[#172840] mb-1">
+                      Company Name <span className="text-[#F25849]">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      id="contact-company"
+                      name="company"
+                      required
+                      value={contactForm.company}
+                      onChange={handleContactChange}
+                      disabled={isSending}
+                      className={`w-full px-4 py-2 border-b border-gray-300 bg-transparent focus:outline-none focus:border-[#F25849] transition-colors duration-300 ${
+                        contactErrors.company ? 'border-red-500' : ''
+                      } ${isSending ? 'opacity-50' : ''}`}
+                    />
+                    {contactErrors.company && <p className="text-red-500 text-sm mt-1">{contactErrors.company}</p>}
+                  </div>
+                </div>
+
+                <div>
+                  <label htmlFor="contact-message" className="block text-sm font-medium text-[#172840] mb-1">
+                    Message <span className="text-[#F25849]">*</span>
+                  </label>
+                  <textarea
+                    id="contact-message"
+                    name="message"
+                    required
+                    value={contactForm.message}
+                    onChange={handleContactChange}
+                    disabled={isSending}
+                    rows="4"
+                    className={`w-full px-4 py-2 border-b border-gray-300 bg-transparent focus:outline-none focus:border-[#F25849] transition-colors duration-300 resize-none ${
+                      contactErrors.message ? 'border-red-500' : ''
+                    } ${isSending ? 'opacity-50' : ''}`}
+                    placeholder="Tell us about your project, goals, and requirements..."
+                  ></textarea>
+                  {contactErrors.message && <p className="text-red-500 text-sm mt-1">{contactErrors.message}</p>}
+                </div>
+
+                {/* reCAPTCHA */}
+                <div>
+                  <ReCAPTCHA
+                    ref={recaptchaRef}
+                    sitekey={recaptchaSiteKey}
+                    onChange={handleRecaptchaChange}
+                  />
+                  {contactErrors.recaptcha && (
+                    <p className="text-red-500 text-sm mt-1">{contactErrors.recaptcha}</p>
+                  )}
+                </div>
+
+                <div className="flex justify-center">
+                  <button
+                    type="submit"
+                    disabled={isSending}
+                    className={`bg-[#F25849] text-white py-3 px-8 rounded-full hover:bg-orange-600 transition-all duration-300 transform ease-in-out hover:translate-y-[-2px] hover:shadow-lg font-medium text-sm ${
+                      isSending ? 'opacity-50 cursor-not-allowed' : ''
+                    }`}
+                  >
+                    {isSending ? 'Sending...' : 'Send Message'}
+                  </button>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
       )}

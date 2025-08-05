@@ -606,7 +606,7 @@ const HomePage = () => {
                 
                 {/* Main Heading */}
                 <h2 className="text-3xl sm:text-4xl md:text-5xl text-gray-900 font-normal leading-tight mb-6 max-w-4xl mx-auto">
-                    Flexible Formats for Any Team
+                    Learn the Skills. Get Certified. Get Hired.
                 </h2>
                 
                 </div>
