@@ -259,7 +259,9 @@ const HomePage = () => {
         <PAAacademyMarquee/>
         </div>
         
-        <div className="bg-[#F3F9FB] relative" id="why-join-us">
+        <div className="bg-[#F3F9FB]" id="why-join-us">
+          <section className="relative mx-auto max-w-6xl px-4 sm:px-6 py-16 sm:pb-20">
+            {/* Decorative element */}
             <div 
                 className="absolute top-4 right-80 w-5 h-16 bg-paan-blue z-0"
                 style={{
@@ -268,7 +270,6 @@ const HomePage = () => {
                 }}
             >
             </div>
-          <section className="relative mx-auto max-w-6xl px-4 sm:px-6 py-16 sm:pb-20">
           <div className="inline-flex items-center justify-center mb-6">
             {/* Badge */}
           <div className="bg-paan-purple text-white px-6 py-1 rounded-full text-sm font-medium">
@@ -333,7 +334,7 @@ const HomePage = () => {
               </div>
               <div className="flex flex-col gap-4">
                 <Image 
-                  src="/assets/images/paan-academy/img-1.png" 
+                  src="/assets/images/paan-academy/img-1.svg" 
                   width={300} 
                   height={200} 
                   alt="PAAN Summit" 
