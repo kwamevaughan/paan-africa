@@ -68,8 +68,8 @@ const Footer = () => {
             <h3 className="text-lg font-semibold text-paan-dark-blue mb-2">Contact Us</h3>
             <div className="space-y-2 text-paan-dark-blue">
               <p className="text-sm">Email: secretariat@paan.africa</p>
-              {/* <p className="text-sm">Phone: +254 700 000 000</p> */}
-              <p className="text-sm">Address: Nairobi, Kenya</p>
+              <p className="text-sm">Phone: +254701 850 850</p>
+              <p className="text-sm">Address: 7th Floor, Mitsumi Business Park, Westlands, Nairobi, Kenya</p>
             </div>
           </div>
           
