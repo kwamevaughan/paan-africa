@@ -9,6 +9,8 @@ import { useFixedHeader, handleScroll } from '../../utils/scrollUtils';
 import SeminarRegistration from "@/components/SeminarRegistration";
 import { ctaButton } from "../data/summitMenu";
 import ScrollToTop from "@/components/ScrollToTop";
+import Head from "next/head";
+
 
 const SummitPage = () => {
   const sectionRefs = {
@@ -64,6 +66,7 @@ const SummitPage = () => {
       });
     };
   }, []);
+  
 
   return (
     <>
@@ -72,6 +75,47 @@ const SummitPage = () => {
         description="Join the inaugural PAAN Summit in Nairobi, Kenya — a groundbreaking event uniting Africa's top creative and tech leaders for three days of innovation, collaboration, and growth."
         keywords="PAAN Summit 2025, African creative summit, tech conference Africa, Nairobi summit, Pan-African events, African innovation, creative tech Africa, agency summit Africa"
       />
+      <Head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Event",
+              "name": "PAAN Inaugural Summit 2025",
+              "startDate": "2025-10-22T09:00:00+03:00",
+              "endDate": "2025-10-24T17:00:00+03:00",
+              "eventAttendanceMode": "https://schema.org/MixedEventAttendanceMode",
+              "eventStatus": "https://schema.org/EventScheduled",
+              "location": {
+                "@type": "Place",
+                "name": "PAAN Africa Conference Center",
+                "address": {
+                  "@type": "PostalAddress",
+                  "streetAddress": "Nairobi Business Hub",
+                  "addressLocality": "Nairobi",
+                  "addressRegion": "Nairobi County",
+                  "postalCode": "00100",
+                  "addressCountry": "KE"
+                }
+              },
+              "image": ["https://paan.africa/assets/images/hero.png"],
+              "description": "Join the PAAN Africa Summit 2025 to connect with freelancers, businesses, and innovators shaping the African digital economy. Engage in workshops, panels, and networking sessions with industry leaders.",
+              "offers": {
+                "@type": "Offer",
+                "url": "https://paan.africa/summit",
+                "price": "0",
+                "priceCurrency": "USD",
+                "availability": "https://schema.org/InStock",
+                "validFrom": "2025-09-01T00:00:00+03:00"
+              },
+              "performer": { "@type": "Organization", "name": "PAAN Africa" },
+              "organizer": { "@type": "Organization", "name": "PAAN Africa", "url": "https://paan.africa" }
+            }),
+          }}
+        />
+      </Head>
+
       <main className="px-3 pt-6 sm:px-0 sm:pt-0 relative">
         <Header navLinkColor='text-white' />
 
