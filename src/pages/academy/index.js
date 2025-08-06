@@ -7,6 +7,7 @@ import { useFixedHeader, handleScroll } from '../../../utils/scrollUtils';
 import PAAacademyMarquee from "@/components/PAAacademyMarquee";
 import ScrollToTop from "@/components/ScrollToTop";
 import ConnectingDots from "@/components/ConnectingDots";
+import AcademyEnquiryModal from "@/components/AcademyEnquiryModal";
 
 
 const HomePage = () => {
@@ -23,6 +24,9 @@ const HomePage = () => {
 
   const isFixed = useFixedHeader();
   const canvasRef = useRef(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
 
   // Restore IntersectionObserver for section transitions
   useEffect(() => {
@@ -192,14 +196,16 @@ const HomePage = () => {
       />
     <div className="relative">
       <main className="sm:px-0 sm:pt-0 relative">
-        <ConnectingDots 
-          starCount={80}
-          connectionDistance={120}
-          dotColor="#84C1D9"
-          lineColor="#84C1D9"
-          lineWidth={0.5}
-        />
-        <Header/>
+        <div className="hidden sm:block">
+          <ConnectingDots 
+            starCount={80}
+            connectionDistance={120}
+            dotColor="#84C1D9"
+            lineColor="#84C1D9"
+            lineWidth={0.5}
+          />
+        </div>
+        <Header openModal={openModal}/>
 
         <div className="relative w-full min-h-screen bg-[#172840]" id="home" ref={sectionRefs.home}>
             {/* Canvas covers full hero section */}
@@ -228,9 +234,7 @@ const HomePage = () => {
                 <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center sm:justify-start">
                     <button                  
                     className="bg-[#F25849] text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-full font-medium text-sm hover:bg-[#D6473C] transition duration-300 w-full sm:w-auto"
-                    onClick={(e) => {
-                        handleScroll(e, "#courses", isFixed);
-                    }}
+                    onClick={openModal}
                     >
                     Explore Programs
                     </button>
@@ -255,18 +259,27 @@ const HomePage = () => {
                 </div>
             </section>
         </div>
+        <AcademyEnquiryModal isOpen={isModalOpen} onClose={closeModal} />
         <div className="relative">
         <PAAacademyMarquee/>
         </div>
         
         <div className="bg-[#F3F9FB]" id="why-join-us">
-          <section className="relative mx-auto max-w-6xl px-4 sm:px-6 py-16 sm:pb-20">
+          <section className="relative mx-auto max-w-6xl px-4 sm:px-6 py-16 sm:pb-28">
             {/* Decorative element */}
             <div 
-                className="absolute top-4 right-80 w-5 h-16 bg-paan-blue z-0"
+                className="hidden sm:block absolute top-4 right-80 w-5 h-16 bg-paan-blue z-0"
                 style={{
                     borderRadius: '50% 50% 50% 50% / 60% 60% 40% 40%',
                     transform: 'rotate(15deg)'
+                }}
+            >
+            </div>
+            <div 
+                className="hidden sm:block absolute bottom-0 right-80 w-5 h-16 bg-paan-yellow z-0"
+                style={{
+                    borderRadius: '50% 50% 50% 50% / 60% 60% 40% 40%',
+                    transform: 'rotate(60deg)'
                 }}
             >
             </div>
@@ -345,8 +358,16 @@ const HomePage = () => {
           </section>
         </div>
         
-        <div className="bg-paan-purple relative rounded-xl mx-4 lg:mx-10" id="training">
+        <div className="bg-paan-purple rounded-xl mx-4 lg:mx-10" id="training">
             <section className="relative mx-auto max-w-6xl px-6 sm:px-8 py-12 sm:py-16 lg:py-20">
+            <div 
+                className="hidden sm:block absolute top-5 right-0 w-5 h-16 bg-paan-blue z-0"
+                style={{
+                    borderRadius: '50% 50% 50% 50% / 60% 60% 40% 40%',
+                    transform: 'rotate(20deg)'
+                }}
+            >
+            </div>
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-stretch">              
                 {/* Images Column */}
                 <div className="flex flex-col gap-6 order-2 lg:order-1 h-full">
@@ -477,8 +498,31 @@ const HomePage = () => {
             </section>
         </div>
         
-        <div className="bg-white relative" id="formats">
+        <div className="bg-white" id="formats">
             <section className="relative mx-auto max-w-6xl px-4 sm:px-6 py-20 sm:py-24">
+                <div 
+                    className="hidden sm:block absolute top-5 right-0 w-5 h-16 bg-paan-purple z-0"
+                    style={{
+                        borderRadius: '50% 50% 50% 50% / 60% 60% 40% 40%',
+                        transform: 'rotate(-50deg)'
+                    }}
+                >
+                </div>
+                <div 
+                    className="hidden sm:block absolute top-5 left-0 w-5 h-16 bg-paan-red z-0"
+                    style={{
+                        borderRadius: '50% 50% 50% 50% / 60% 60% 40% 40%',
+                        transform: 'rotate(90deg)'
+                    }}
+                >
+                </div>
+                <div 
+                    className="hidden sm:block absolute bottom-5 right-0 w-5 h-16 bg-paan-green z-0"
+                    style={{
+                        borderRadius: '50% 50% 50% 50% / 60% 60% 40% 40%',
+                    }}
+                >
+                </div>
                 <div className="text-center mb-16">
                 {/* Badge */}
                 <div className="inline-flex items-center justify-center mb-8">
@@ -592,7 +636,15 @@ const HomePage = () => {
         </div>
 
         <div className="bg-[#F3F9FB] relative" id="freelancers">
-            <section className="relative mx-auto max-w-6xl px-4 sm:px-6 py-20 sm:py-24">
+            <div 
+                className="hidden sm:block absolute -top-5 left-60 w-5 h-16 bg-paan-maroon z-0"
+                style={{
+                    borderRadius: '50% 50% 50% 50% / 60% 60% 40% 40%',
+                    transform: 'rotate(15deg)'
+                }}
+            >
+            </div>
+            <section className="mx-auto max-w-6xl px-4 sm:px-6 py-20 sm:py-24">
                 <div className="text-center mb-16">
                 {/* Badge */}
                 <div className="inline-flex items-center justify-center mb-8">
@@ -695,7 +747,7 @@ const HomePage = () => {
                             <div className="pt-4 border-t border-gray-100">
                                 <button
                                     className="w-full bg-gradient-to-r from-paan-red to-paan-red/90 hover:from-paan-red/90 hover:to-paan-red text-white px-8 py-3.5 rounded-full font-semibold text-sm transition-all duration-300 hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-paan-red/50 focus:ring-offset-2"
-                                    onClick="https://paan.africa"
+                                    onClick={openModal}
                                 >
                                     <span className="flex items-center justify-center gap-2">
                                         Explore Mini Courses

@@ -6,7 +6,7 @@ import { Icon } from "@iconify/react";
 import { paanAcademyMenu } from "../data/menuData";
 import { handleScroll, useFixedHeader } from "../../utils/scrollUtils";
 
-const Header = ({ navLinkColor }) => {
+const Header = ({ navLinkColor, openModal }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeNav, setActiveNav] = useState("Home"); 
   const isFixed = useFixedHeader();
@@ -133,14 +133,12 @@ const Header = ({ navLinkColor }) => {
               ))}
             </div>
             <div className="flex-1 flex justify-end">
-              <a
-                onClick={(e) => {
-                  handleScroll(e, "#training", isFixed);
-                }}
+              <button
+                onClick={openModal}
                 className="bg-paan-maroon text-white px-6 py-3 rounded-full text-sm font-normal hover:bg-paan-red transition duration-300 cursor-pointer"
               >
                 Get Started
-              </a>
+              </button>
             </div>
           </div>
         </div>

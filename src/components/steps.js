@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import Image from 'next/image';
 
 const steps = [
@@ -37,8 +37,44 @@ const steps = [
 ];
 
 const Steps = () => {
+  const dividerRef = useRef(null);
+  const sectionRef = useRef(null);
+  const [fillHeight, setFillHeight] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!dividerRef.current || !sectionRef.current) return;
+      const sectionRect = sectionRef.current.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+      // Section visible area
+      const sectionTop = sectionRect.top;
+      const sectionHeight = sectionRect.height;
+      // Only animate when section is in viewport
+      if (sectionTop > windowHeight || sectionTop + sectionHeight < 0) {
+        setFillHeight(0);
+        return;
+      }
+      // Calculate scroll progress (0 to 1)
+      const progress = Math.min(
+        1,
+        Math.max(0, (windowHeight - sectionTop) / (windowHeight + sectionHeight))
+      );
+      // Divider height
+      const dividerHeight = dividerRef.current.offsetHeight;
+      // Fill height (min 0, max dividerHeight)
+      setFillHeight(progress * dividerHeight);
+    };
+    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('resize', handleScroll);
+    handleScroll();
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleScroll);
+    };
+  }, []);
+
   return (
-    <div className="mb-20 relative py-16">
+    <div className="mb-20 relative py-16" ref={sectionRef}>
       <section className="relative">
         <h2 className="text-xl text-center font-medium uppercase text-paan-yellow mb-2">How it Works</h2>
         <h3 className='text-2xl text-center font-light text-paan-dark-blue mb-8'>A Simple 4-Step Path to Unlocking Growth Across Africa</h3>
@@ -97,12 +133,22 @@ const Steps = () => {
             {/* Vertical divider: single continuous line, only on desktop */}
             <div className="relative hidden md:flex flex-col items-center justify-center px-0" style={{ minHeight: `${steps.length * 140}px` }}>
               {/* Main gray divider */}
-              <div className="w-1 bg-gray-200 opacity-80 h-full absolute left-1/2 -translate-x-1/2 top-0" style={{ minHeight: `${steps.length * 140}px` }} />
-              {/* Filled section for Step 1 */}
-              <div className="absolute left-1/2 -translate-x-1/2 top-0 w-1 bg-paan-dark-blue" style={{ height: '170px' }} />
-              {/* Droplet circle at the end of Step 1 fill */}
-              <div className="absolute left-1/2 -translate-x-1/2" style={{ top: '170px' }}>
-                <div className="w-4 h-4 bg-paan-dark-blue rounded-full shadow-md" />
+              <div
+                ref={dividerRef}
+                className="w-1 bg-gray-200 opacity-80 h-full absolute left-1/2 -translate-x-1/2 top-0 overflow-visible"
+                style={{ minHeight: `${steps.length * 140}px` }}
+              />
+              {/* Filled section (animated) */}
+              <div
+                className="absolute left-1/2 -translate-x-1/2 top-0 w-1 bg-paan-dark-blue transition-all duration-300"
+                style={{ height: `${fillHeight}px` }}
+              />
+              {/* Droplet circle at the end of fill */}
+              <div
+                className="absolute left-1/2 -translate-x-1/2 transition-all duration-300"
+                style={{ top: `${fillHeight - 8}px` }}
+              >
+                <div className="w-4 h-4 bg-paan-dark-blue rounded-full shadow-md droplet-effect" />
               </div>
             </div>
             {/* Right column: text or image depending on step (desktop only) */}

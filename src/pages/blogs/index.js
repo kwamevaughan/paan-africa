@@ -537,13 +537,13 @@ const Blogs = ({ initialBlogs }) => {
                     className="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 group"
                     style={{ animationDelay: `${index * 0.1}s` }}
                   >
-                    <div className="relative h-56 overflow-hidden">
+                    <div className="relative h-56 bg-white flex items-center justify-center overflow-hidden">
                       <Image 
                         src={blog.image} 
                         alt={blog.title}
                         width={400}
-                        height={0}
-                        className="object-cover h-[200px] w-full transition-transform duration-500 group-hover:scale-110"
+                        height={224} // 16:9 aspect ratio for 400px width
+                        className="object-contain h-[224px] w-full transition-transform duration-500 group-hover:scale-105 bg-white"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     </div>
