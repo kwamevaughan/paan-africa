@@ -194,7 +194,7 @@ const HomePage = () => {
         description="Join PAAN Academy - the premier learning platform for Africa's creative and tech professionals. Access exclusive courses, industry insights, mentorship programs, and certification tracks designed to accelerate your career and agency growth."
         keywords="PAAN Academy, creative education, tech training, African talent development, agency skills, professional certification, mentorship programs"
       />
-    <div className="relative">
+    <div className="relative paan-academy-page">
       <main className="sm:px-0 sm:pt-0 relative">
         <div className="hidden sm:block">
           <ConnectingDots 

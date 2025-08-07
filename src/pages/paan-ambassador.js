@@ -119,7 +119,7 @@ const PAANAmbassador = () => {
                 <div className="flex justify-center lg:justify-end">
                     <div className="w-full max-w-md lg:max-w-lg">
                     <Image
-                        src="/assets/images/leadership-img.svg"
+                        src="/assets/images/leadership-img.png"
                         width={400}
                         height={400}
                         alt="Leadership illustration"
@@ -241,7 +241,7 @@ const PAANAmbassador = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center mt-8 sm:mt-10">
               <div className="flex flex-col gap-4 order-2 md:order-1">
                 <Image 
-                  src="/assets/images/influence-in-action.svg" 
+                  src="/assets/images/influence-in-action.png" 
                   width={300} 
                   height={200} 
                   alt="PAAN Summit" 
@@ -346,17 +346,17 @@ const PAANAmbassador = () => {
             <div className="grid gap-6 md:gap-8 max-w-4xl mx-auto">
               {/* Step 1 */}
               <div className="group relative bg-white border-2 border-paan-dark-blue rounded-xl p-6 sm:p-8 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-50 to-indigo-50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <div className="absolute -top-1 -left-1 w-0 h-0 bg-gradient-to-br from-paan-dark-blue/10 to-transparent group-hover:w-32 group-hover:h-32 transition-all duration-700 ease-out rounded-br-full"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-paan-red/10 to-paan-yellow/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="absolute -top-1 -left-1 w-0 h-0 bg-gradient-to-br from-paan-red/20 to-transparent group-hover:w-32 group-hover:h-32 transition-all duration-700 ease-out rounded-br-full"></div>
                 <div className="relative z-10">
                   <div className="absolute top-4 right-4 bg-paan-dark-blue text-white text-xs font-bold px-3 py-1 rounded-full group-hover:scale-110 transition-transform duration-300">
                     01
                   </div>
                   <div className="pr-12">
-                    <h3 className="text-paan-dark-blue text-lg sm:text-xl font-bold uppercase mb-3 tracking-wide group-hover:text-blue-700 transition-colors duration-300">
+                    <h3 className="text-paan-dark-blue text-lg sm:text-xl font-bold uppercase mb-3 tracking-wide group-hover:text-paan-red transition-colors duration-300">
                       Step 1
                     </h3>
-                    <p className="text-paan-dark-blue text-base sm:text-lg leading-relaxed group-hover:text-blue-700 transition-colors duration-300">
+                    <p className="text-paan-dark-blue text-base sm:text-lg leading-relaxed group-hover:text-paan-red transition-colors duration-300">
                       Share your details with us →{' '}
                       <a 
                         href="mailto:secretariat@paan.africa" 
@@ -371,17 +371,17 @@ const PAANAmbassador = () => {
 
               {/* Step 2 */}
               <div className="group relative bg-white border-2 border-paan-dark-blue rounded-xl p-6 sm:p-8 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-l from-purple-50 to-pink-50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <div className="absolute -top-1 -right-1 w-0 h-0 bg-gradient-to-bl from-paan-dark-blue/10 to-transparent group-hover:w-32 group-hover:h-32 transition-all duration-700 ease-out rounded-bl-full"></div>
+                <div className="absolute inset-0 bg-gradient-to-l from-paan-yellow/10 to-paan-blue/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="absolute -top-1 -right-1 w-0 h-0 bg-gradient-to-bl from-paan-yellow/20 to-transparent group-hover:w-32 group-hover:h-32 transition-all duration-700 ease-out rounded-bl-full"></div>
                 <div className="relative z-10">
                   <div className="absolute top-4 right-4 bg-paan-dark-blue text-white text-xs font-bold px-3 py-1 rounded-full group-hover:scale-110 transition-transform duration-300">
                     02
                   </div>
                   <div className="pr-12">
-                    <h3 className="text-paan-dark-blue text-lg sm:text-xl font-bold uppercase mb-3 tracking-wide group-hover:text-purple-700 transition-colors duration-300">
+                    <h3 className="text-paan-dark-blue text-lg sm:text-xl font-bold uppercase mb-3 tracking-wide group-hover:text-paan-yellow transition-colors duration-300">
                       Step 2
                     </h3>
-                    <p className="text-paan-dark-blue text-base sm:text-lg leading-relaxed group-hover:text-purple-700 transition-colors duration-300">
+                    <p className="text-paan-dark-blue text-base sm:text-lg leading-relaxed group-hover:text-paan-yellow transition-colors duration-300">
                       Receive your Welcome Kit & attend the onboarding call
                     </p>
                   </div>
@@ -390,18 +390,18 @@ const PAANAmbassador = () => {
 
               {/* Step 3 */}
               <div className="group relative bg-white border-2 border-paan-dark-blue rounded-xl p-6 sm:p-8 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-r from-green-50 to-emerald-50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <div className="absolute -bottom-1 -left-1 w-0 h-0 bg-gradient-to-tr from-paan-dark-blue/10 to-transparent group-hover:w-32 group-hover:h-32 transition-all duration-700 ease-out rounded-tr-full"></div>
-                <div className="absolute -bottom-1 -right-1 w-0 h-0 bg-gradient-to-tl from-paan-dark-blue/5 to-transparent group-hover:w-24 group-hover:h-24 transition-all duration-500 ease-out rounded-tl-full"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-paan-blue/10 to-paan-dark-blue/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="absolute -bottom-1 -left-1 w-0 h-0 bg-gradient-to-tr from-paan-blue/20 to-transparent group-hover:w-32 group-hover:h-32 transition-all duration-700 ease-out rounded-tr-full"></div>
+                <div className="absolute -bottom-1 -right-1 w-0 h-0 bg-gradient-to-tl from-paan-dark-blue/10 to-transparent group-hover:w-24 group-hover:h-24 transition-all duration-500 ease-out rounded-tl-full"></div>
                 <div className="relative z-10">
                   <div className="absolute top-4 right-4 bg-paan-dark-blue text-white text-xs font-bold px-3 py-1 rounded-full group-hover:scale-110 transition-transform duration-300">
                     03
                   </div>
                   <div className="pr-12">
-                    <h3 className="text-paan-dark-blue text-lg sm:text-xl font-bold uppercase mb-3 tracking-wide group-hover:text-green-700 transition-colors duration-300">
+                    <h3 className="text-paan-dark-blue text-lg sm:text-xl font-bold uppercase mb-3 tracking-wide group-hover:text-paan-blue transition-colors duration-300">
                       Step 3
                     </h3>
-                    <p className="text-paan-dark-blue text-base sm:text-lg leading-relaxed group-hover:text-green-700 transition-colors duration-300">
+                    <p className="text-paan-dark-blue text-base sm:text-lg leading-relaxed group-hover:text-paan-blue transition-colors duration-300">
                       Start activating your network with PAAN HQ behind you
                     </p>
                   </div>
@@ -429,7 +429,7 @@ const Hero = ({ openModal }) => {
       <div 
         className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: "url('/assets/images/ambassador-hero.svg')"
+          backgroundImage: "url('/assets/images/ambassador-hero.png')"
         }}
       />
 

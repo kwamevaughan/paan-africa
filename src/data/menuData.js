@@ -21,8 +21,8 @@ export const menuItems = [
     { href: '/academy/programs', label: 'Why PAAN' },
     { href: '/academy/training', label: 'Training' },
     { href: '/academy/workshops', label: 'Formats' },
-    { href: '/academy/certifications', label: 'Freelancers' },
-    { href: '/academy/mentorship', label: 'Agencies' },
+    { href: '/academy/freelancers', label: 'Individual' },
+    { href: '/academy/freelancers', label: 'Teams' },
   ];
 
   export const PartnersPageMenu = [

@@ -256,7 +256,7 @@ const Hero = ({ openModal }) => {
         loop
         playsInline
       >
-        <source src="/assets/videos/partners-hero.mp4" type="video/mp4" />
+        <source src="/assets/videos/Partners-Hero.webm" type="video/webm" />
         Your browser does not support the video tag.
       </video>
 
