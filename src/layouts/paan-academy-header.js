@@ -6,14 +6,16 @@ import { Icon } from "@iconify/react";
 import { paanAcademyMenu } from "../data/menuData";
 import { handleScroll, useFixedHeader } from "../../utils/scrollUtils";
 
-const Header = ({ navLinkColor, openModal }) => {
+const Header = ({  openModal }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeNav, setActiveNav] = useState("Home"); 
   const isFixed = useFixedHeader();
   
   // Determine the current text color and logo based on scroll position
-  const currentTextColor = isFixed ? "text-gray-800" : "text-white";
-  const currentLogo = isFixed ? "/assets/images/paan-academy/dark-logo.svg" : "/assets/images/paan-academy/logo.svg";
+  const currentTextColor = isFixed ? "text-white" : "text-white";
+  const logoSrc = isFixed
+    ? "/assets/images/paan-academy/dark-logo.svg"
+    : "/assets/images/paan-academy/logo.svg";
 
   const handleNavClick = (label) => {
     setActiveNav(label);
@@ -48,8 +50,8 @@ const Header = ({ navLinkColor, openModal }) => {
     <nav
       className={`w-full z-50 transition-all duration-300 ${
         isFixed
-          ? "fixed top-0 left-0 shadow-lg backdrop-blur-md bg-white/90"
-          : "absolute bg-transparent"
+          ? "fixed top-0 left-0 bg-transparent"
+          : "absolute bg-[#172840]"
       }`}
     >
       <div className="w-full px-4 sm:px-6 lg-custom:px-8">
@@ -58,7 +60,7 @@ const Header = ({ navLinkColor, openModal }) => {
           <div className="flex-1 flex justify-start z-20">
             <Link href="/" passHref>
               <Image
-                src={currentLogo}
+                src={logoSrc}
                 alt="Logo"
                 width={120}
                 height={42}
@@ -71,7 +73,7 @@ const Header = ({ navLinkColor, openModal }) => {
           <div className="lg-custom:hidden flex items-center z-20">
             <button
               onClick={handleMenuToggle}
-              className={`p-2 rounded-lg ${currentTextColor} hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-[#F2B706] transition-colors duration-200`}
+              className={`p-2 rounded-lg ${currentTextColor} hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-[#F2B706] transition-colors duration-200`}
               aria-label="Toggle navigation menu"
             >
               <svg
@@ -105,7 +107,7 @@ const Header = ({ navLinkColor, openModal }) => {
             <div className="flex-1 flex justify-start z-20">
               <Link href="/" passHref>
                 <Image
-                  src={currentLogo}
+                  src={logoSrc}
                   alt="Logo"
                   width={120}
                   height={42}
@@ -113,9 +115,7 @@ const Header = ({ navLinkColor, openModal }) => {
                 />
               </Link>
             </div>
-            <div className={`flex space-x-0 justify-center rounded-full py-1 px-8 ${
-              isFixed ? "bg-gray-100" : "bg-paan-blue"
-            }`}>
+            <div className="flex space-x-0 justify-center bg-paan-blue rounded-full py-1 px-8">
               {paanAcademyMenu.map((item) => (
                 <a
                   key={item.href}
@@ -127,7 +127,7 @@ const Header = ({ navLinkColor, openModal }) => {
                   className={`${
                     activeNav === item.label 
                       ? "bg-[#F2B706]" 
-                      : `${currentTextColor} hover:bg-gray-200`
+                      : `${currentTextColor} hover:bg-paan-dark-blue`
                   } px-4 py-2 rounded-full transition-all duration-300 cursor-pointer`}
                 >
                   {item.icon && <Icon icon={item.icon} className="w-4 h-4" />}

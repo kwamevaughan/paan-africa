@@ -3,7 +3,7 @@ import Header from "../../layouts/paan-academy-header";
 import Image from "next/image";
 import Footer from "./footer";
 import { useEffect, useRef, useState } from "react";
-import { useFixedHeader, handleScroll } from '../../../utils/scrollUtils';
+import { useFixedHeader } from '../../../utils/scrollUtils';
 import PAAacademyMarquee from "@/components/PAAacademyMarquee";
 import ScrollToTop from "@/components/ScrollToTop";
 import ConnectingDots from "@/components/ConnectingDots";
@@ -188,13 +188,13 @@ const HomePage = () => {
   }, []);
 
   return (
-    <>
+    <div className="paan-academy-font">
     <SEO
         title="PAAN Academy | Empowering Africa's Creative & Tech Talent"
         description="Join PAAN Academy - the premier learning platform for Africa's creative and tech professionals. Access exclusive courses, industry insights, mentorship programs, and certification tracks designed to accelerate your career and agency growth."
         keywords="PAAN Academy, creative education, tech training, African talent development, agency skills, professional certification, mentorship programs"
       />
-    <div className="relative paan-academy-page">
+    <div className="relative paan-academy-font">
       <main className="sm:px-0 sm:pt-0 relative">
         <div className="hidden sm:block">
           <ConnectingDots 
@@ -867,7 +867,7 @@ const HomePage = () => {
       </main>
       <Footer />
       </div>
-    </>
+    </div>
   );
 };
 

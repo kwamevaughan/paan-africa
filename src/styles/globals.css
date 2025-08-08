@@ -1,6 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700;800;900&display=swap');
 
-/* src/app/globals.css */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
 
 /* Importing Tailwind's default layers */
 @tailwind base;
@@ -9,12 +8,14 @@
 
 /* Global font settings */
 body {
-    font-family: 'Poppins', sans-serif;
     color: #172840;
 }
 
-/* PAAN Academy specific font override */
-.paan-academy-page, .paan-academy-page * {
+.global-font {
+    font-family: 'Poppins', sans-serif;
+}
+
+.paan-academy-font {
     font-family: 'Nunito', sans-serif !important;
 }
 

@@ -148,10 +148,10 @@ const AcademyEnquiryModal = ({ isOpen, onClose }) => {
             <div className="flex items-center justify-center mb-3 sm:mb-4">
               <Image
                 src="/assets/images/paan-academy/dark-logo.svg"
-                width={100}
-                height={100}
+                width={140}
+                height={140}
                 alt="PAAN Academy"
-                className="mr-2 sm:mr-3 sm:w-[100px] sm:h-[100px]"
+                className="mr-2 sm:mr-3 sm:w-[140px] sm:h-[140px]"
               />
             </div>
             <p className="text-gray-600 text-sm sm:text-base px-2 sm:px-0">Tell us about your training needs and we'll help you get started</p>
