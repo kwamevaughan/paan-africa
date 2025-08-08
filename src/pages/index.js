@@ -18,6 +18,7 @@ import AgenciesMarquee from "@/components/AgenciesMarquee";
 import AgencyLogosGrid from "@/components/AgencyLogosGrid";
 import ScrollToTop from "@/components/ScrollToTop";
 import ConnectingDots from "@/components/ConnectingDots";
+import AcademyConsultationModal from "@/components/AcademyConsultationModal";
 
 // Add PasscodeCopy component definition before HomePage
 function PasscodeCopy({ passcode }) {
@@ -62,6 +63,7 @@ const HomePage = () => {
   const isFixed = useFixedHeader();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const canvasRef = useRef(null);
+  const [showConsultModal, setShowConsultModal] = useState(true);
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
@@ -994,6 +996,7 @@ const HomePage = () => {
         </div>
         <AgencyEnquiryModal isOpen={isModalOpen} onClose={closeModal} />
         <ScrollToTop />
+        <AcademyConsultationModal isOpen={showConsultModal} onClose={() => setShowConsultModal(false)} />
       </main>
       <Footer />
       </div>
