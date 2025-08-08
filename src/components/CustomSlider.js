@@ -4,8 +4,8 @@ import { Icon } from "@iconify/react";
 
 const CustomSlider = () => {
   const slides = [
-    '/assets/images/slides/home-hero.png',
-    '/assets/images/slides/home-hero.png',
+    '/assets/images/slides/home-hero.webp',
+    '/assets/images/slides/home-hero.webp',
   ];
 
   const [currentSlide, setCurrentSlide] = useState(0);

@@ -152,14 +152,14 @@ const SummitPage = () => {
             <div className="flex flex-col gap-4">
               <div className="w-full relative overflow-hidden rounded-lg">
                 <img 
-                  src="/assets/images/about-paan-1.png" 
+                  src="/assets/images/about-paan-1.webp" 
                   alt="Breakout session 1" 
                   className="object-cover w-full h-64"
                 />
               </div>
               <div className="w-full relative overflow-hidden rounded-lg">
                 <img 
-                  src="/assets/images/about-paan-2.png" 
+                  src="/assets/images/about-paan-2.webp" 
                   alt="Breakout session 2" 
                   className="object-cover w-full h-64"
                 />
@@ -232,12 +232,12 @@ const SummitPage = () => {
             </div>
             <div className="relative flex flex-col gap-6 h-full">
               <img 
-                src="/assets/images/breakout-session-1.png" 
+                src="/assets/images/breakout-session-1.webp" 
                 alt="Breakout session 1" 
                 className="rounded-lg object-cover w-full h-64 sm:h-1/2"
               />
               <img 
-                src="/assets/images/breakout-session-2.png" 
+                src="/assets/images/breakout-session-2.webp" 
                 alt="Breakout session 2" 
                 className="rounded-lg object-cover w-full h-64 sm:h-1/2"
               />
@@ -310,7 +310,7 @@ const Hero = ({ sectionRefs, handleScroll, isFixed }) => {
         <div 
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: "url('/assets/images/hero.png')",
+            backgroundImage: "url('/assets/images/hero.webp')",
             filter: "brightness(0.5)" // Darkening the image
           }}
         />

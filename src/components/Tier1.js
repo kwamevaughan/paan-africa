@@ -8,7 +8,7 @@ const Tier1 = () => {
       {/* Badge */}
       <div className="absolute -top-3 sm:-top-4 left-4 w-12 h-12 sm:w-14 sm:h-14 bg-white rounded-full shadow-md flex items-center justify-center">
         <Image
-          src="/assets/images/gold-member.png"
+          src="/assets/images/gold-member.webp"
           width={24}
           height={24}
           alt="badge"

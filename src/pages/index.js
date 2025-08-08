@@ -66,38 +66,34 @@ const HomePage = () => {
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
 
-  // Restore IntersectionObserver for section transitions
-  useEffect(() => {
-    const observerOptions = {
-      root: null,
-      rootMargin: "0px",
-      threshold: 0.1,
-    };
-
-    const observerCallback = (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("section-visible");
-        }
-      });
-    };
-
-    const observer = new IntersectionObserver(observerCallback, observerOptions);
-
-    Object.values(sectionRefs).forEach((ref) => {
-      if (ref.current) {
-        observer.observe(ref.current);
-      }
-    });
-
-    return () => {
-      Object.values(sectionRefs).forEach((ref) => {
-        if (ref.current) {
-          observer.unobserve(ref.current);
-        }
-      });
-    };
-  }, []);
+  // Remove IntersectionObserver effect (lines 70-100)
+  // useEffect(() => {
+  //   const observerOptions = {
+  //     root: null,
+  //     rootMargin: "0px",
+  //     threshold: 0.1,
+  //   };
+  //   const observerCallback = (entries) => {
+  //     entries.forEach((entry) => {
+  //       if (entry.isIntersecting) {
+  //         entry.target.classList.add("section-visible");
+  //       }
+  //     });
+  //   };
+  //   const observer = new IntersectionObserver(observerCallback, observerOptions);
+  //   Object.values(sectionRefs).forEach((ref) => {
+  //     if (ref.current) {
+  //       observer.observe(ref.current);
+  //     }
+  //   });
+  //   return () => {
+  //     Object.values(sectionRefs).forEach((ref) => {
+  //       if (ref.current) {
+  //         observer.unobserve(ref.current);
+  //       }
+  //     });
+  //   };
+  // }, []);
 
   useEffect(() => {
     const cnvs = canvasRef.current;
@@ -228,10 +224,10 @@ const HomePage = () => {
   return (
     <>
     <SEO
-        title="Pan-African Agency Network (PAAN) | Redefining Africa's Creative & Tech Footprint"
-        description="Discover the Pan-African Agency Network (PAAN), a dynamic alliance of creative and tech agencies across Africa and the diaspora. Join us to unlock global opportunities, access exclusive resources, and collaborate with top talent to redefine Africa's creative and technological footprint. Explore our membership tiers, services, and upcoming events today!"
-        keywords="Pan-African Agency Network, PAAN, African agencies, creative network, tech network, collaboration, innovation, global influence"
-      />
+      title="Pan-African Agency Network (PAAN) | Africa's Leading Network of Creative & Tech Agencies"
+      description="Join the Pan-African Agency Network (PAAN), uniting top creative, digital marketing, and tech agencies across Africa and the diaspora. Discover new business opportunities, expand your network, and access premium resources tailored for African creatives, marketers, and innovative tech leaders. Ideal for agencies and clients seeking to thrive across the African continent."
+      keywords="Pan-African creative agencies, African tech agencies, African digital marketing network, join African agency network, creative agencies in Africa, African digital innovation, pan-African collaboration, agency network Africa, African creatives, tech partnerships Africa"
+    />
     <div className="relative">
       <main className="px-3 pt-6 sm:px-0 sm:pt-0 relative">
         <ConnectingDots 
@@ -261,9 +257,9 @@ const HomePage = () => {
           />
           <section className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 items-center px-4 sm:px-0 pt-40 sm:pt-0 relative z-10">
             <div className="flex flex-col gap-4 sm:gap-8 text-center sm:text-left">
-              <h2 className="text-2xl sm:text-3xl md:text-5xl font-semibold uppercase text-[#172840] leading-tight">
+              <h1 className="text-2xl sm:text-3xl md:text-5xl font-semibold uppercase text-[#172840] leading-tight">
                 Redefining Africa's Global Creative & Tech Footprint
-              </h2>
+              </h1>
               <p className="text-gray-500 font-normal text-sm sm:text-base">
                 The Pan-African Agency Network (PAAN) is a bold alliance of
                 independent agencies across Africa and the diaspora. We're on a
@@ -312,7 +308,7 @@ const HomePage = () => {
                 <span className="text-[#F25849] font-semibold relative ml-2 z-0">independent</span>
                 
                 <Image
-                                  src="/assets/images/sketch-1.png"
+                                  src="/assets/images/sketch-1.webp"
                   width={400}
                   height={0}
                   alt=""
@@ -322,7 +318,7 @@ const HomePage = () => {
               mission to <span className="relative inline-block">
                 <span className="text-[#F2B706] font-semibold relative z-0">transform</span>
                 <Image
-                                  src="/assets/images/sketch-3.png"
+                                  src="/assets/images/sketch-3.webp"
                   width={400}
                   height={0}
                   alt=""
@@ -335,11 +331,12 @@ const HomePage = () => {
           <section className="relative z-10 grid grid-cols-1 sm:grid-cols-2 gap-8 items-center mt-20">
             <div className="relative">
               <Image
-                src="/assets/images/team.png"
+                src="/assets/images/team.webp"
                 width={500}
                 height={300}
                 alt="Team collaboration"
                 className="rounded-lg object-cover w-full h-auto"
+                priority
               />
               <div className="">
                 <button
@@ -410,11 +407,12 @@ const HomePage = () => {
               {/* Image */}
               <div className="relative">
                 <Image
-                  src="/assets/images/mission.png"
+                  src="/assets/images/mission.webp"
                   width={500}
                   height={300}
                   alt="Team collaboration"
                   className="rounded-lg object-cover w-full h-auto"
+                  priority
                 />
               </div>
 
@@ -424,7 +422,7 @@ const HomePage = () => {
                 <div className="bg-[#84C1D9] p-6 rounded-lg flex flex-row items-center gap-4 transform transition-transform duration-300 hover:-translate-y-1 flex-1">
                   <div className="flex flex-col items-start">
                     <Image
-                      src="/assets/images/icons/vision.png"
+                      src="/assets/images/icons/vision.svg"
                       width={60}
                       height={60}
                       alt="Vision Statement"
@@ -446,7 +444,7 @@ const HomePage = () => {
                 <div className="bg-[#F2B706] p-6 rounded-lg flex flex-row items-center gap-4 transform transition-transform duration-300 hover:-translate-y-1 flex-1">
                   <div className="flex flex-col items-start">
                     <Image
-                      src="/assets/images/icons/mission.png"
+                      src="/assets/images/icons/mission.svg"
                       width={60}
                       height={60}
                       alt="Mission Statement"
@@ -488,11 +486,12 @@ const HomePage = () => {
                 tech minds.
               </p>
               <Image
-                  src="/assets/images/recently-added.png"
+                  src="/assets/images/recently-added.webp"
                   width={400}
                   height={400}
                   alt="Pan-African Reach"
                   className="shadow-lg shadow-gray-400/50 rounded-lg"
+                  priority
                 />
             </div>
             <div className="flex flex-col gap-4">
@@ -622,11 +621,12 @@ const HomePage = () => {
           <section className="grid grid-cols-1 sm:grid-cols-3 gap-8 items-center mt-10">
             <div className="relative col-span-1 sm:col-span-1">
               <Image
-                src="/assets/images/offer.png"
+                src="/assets/images/offer.webp"
                 width={500}
                 height={300}
                 alt="Team collaboration"
                 className="rounded-lg object-cover w-full h-auto"
+                priority
               />
             </div>
             <div className="col-span-1 sm:col-span-2 flex flex-col gap-4">
@@ -678,7 +678,7 @@ const HomePage = () => {
             </div>
             <div className="w-full md:w-1/2 flex justify-center relative z-0">
               <Image
-                src="/assets/images/webinar-banner.png"
+                src="/assets/images/webinar-banner.webp"
                 width={600}
                 height={340}
                 alt="Past Webinar Banner"
@@ -722,7 +722,7 @@ const HomePage = () => {
             <div className="w-full md:w-1/2 flex justify-center relative z-0">
               <div className="aspect-square w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg flex items-center justify-center">
                 <Image
-                  src="/assets/images/webinar-2.png"
+                  src="/assets/images/webinar-2.webp"
                   width={600}
                   height={600}
                   alt="Voice AI for Consumer Engagement at Scale"
@@ -810,7 +810,7 @@ const HomePage = () => {
                     <div className="flex items-center space-x-3 pt-2 sm:pt-3">
                       <div className="flex-shrink-0">
                         <Image
-                          src="/assets/images/kester-muhanji.png"
+                          src="/assets/images/kester-muhanji.webp"
                           width={40}
                           height={40}
                           alt="Kester Muhanji"
@@ -918,7 +918,7 @@ const HomePage = () => {
                       className="absolute top-36 -right-40"
                     />
                     <Image
-                      src="/assets/images/arrow-1.png"
+                      src="/assets/images/arrow-1.webp"
                       width={80}
                       height={80}
                       alt="PAAN Portal Feature"
@@ -942,7 +942,7 @@ const HomePage = () => {
                       />
                     </div>
                     <Image
-                      src="/assets/images/arrow-2.png"
+                      src="/assets/images/arrow-2.webp"
                       width={70}
                       height={70}
                       alt="PAAN Portal Feature"
@@ -958,11 +958,12 @@ const HomePage = () => {
                   <div className="absolute -inset-4 rounded-2xl blur-lg"></div>
                   <div className="relative">
                     <Image
-                      src="/assets/images/portal.png"
+                      src="/assets/images/portal.webp"
                       width={400}
                       height={400}
                       alt="PAAN Portal Dashboard"
                       className="rounded-lg w-full max-w-sm sm:max-w-md"
+                      priority
                     />
                   </div>
                 </div>

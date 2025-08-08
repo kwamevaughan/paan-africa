@@ -11,6 +11,10 @@ class MyDocument extends Document {
             href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap"
             rel="stylesheet"
           />
+
+          {/* Nonito Google Fonts */}
+          <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet" />
+
           {/* Favicon Links */}
           <link rel="icon" href="/favicon.png" />
           <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />

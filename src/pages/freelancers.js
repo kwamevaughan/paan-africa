@@ -98,7 +98,7 @@ const FreelancersPage = () => {
                   You&apos;re <span className="relative inline-block">
                     <span className="relative z-10">great</span>
                     <Image
-                      src="/assets/images/red-vector.png"
+                      src="/assets/images/red-vector.webp"
                       width={100}
                       height={0}
                       alt=""
@@ -118,7 +118,7 @@ const FreelancersPage = () => {
                       muted
                       loop
                       playsInline
-                      src="/assets/videos/1.mp4"
+                      src="/assets/videos/1.webm"
                       style={{
                         width: '100%',
                         height: '100%',
@@ -134,7 +134,7 @@ const FreelancersPage = () => {
                   <span className="relative">
                     <span className="relative z-10"> access to briefs</span>
                     <Image
-                      src="/assets/images/yellow-vector.png"
+                      src="/assets/images/yellow-vector.webp"
                       width={100}
                       height={0}
                       alt=""
@@ -154,7 +154,7 @@ const FreelancersPage = () => {
                       muted
                       loop
                       playsInline
-                      src="/assets/videos/2.mp4"
+                      src="/assets/videos/2.webm"
                       style={{
                         width: '100%',
                         height: '100%',
@@ -168,7 +168,7 @@ const FreelancersPage = () => {
                   <span className="relative">
                     <span className="relative z-10"> serious professional.</span>
                     <Image
-                      src="/assets/images/blue-vector.png"
+                      src="/assets/images/blue-vector.webp"
                       width={100}
                       height={0}
                       alt=""
@@ -179,7 +179,7 @@ const FreelancersPage = () => {
               </div>
               <div className="flex justify-center lg:justify-end mt-6 lg:mt-0">
                 <Image 
-                  src="/assets/images/africa-map.png" 
+                  src="/assets/images/africa-map.webp" 
                   width={600} 
                   height={0} 
                   alt="PAAN Summit" 

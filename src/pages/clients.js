@@ -9,7 +9,6 @@ import Link from "next/link";
 import EnquiryModal from "@/components/EnquiryModal";
 import AgencyLogosGrid from "@/components/AgencyLogosGrid";
 import ScrollToTop from "@/components/ScrollToTop";
-import { Icon } from "@iconify/react";
 
 const AgenciesPage = () => {
   const sectionRefs = {
@@ -82,7 +81,7 @@ const AgenciesPage = () => {
           {/* Pattern positioned on left middle edge - hidden on mobile */}
           <div className="hidden sm:block absolute left-0 top-1/2 transform -translate-y-1/2 z-10">
             <Image 
-              src="/assets/images/paan-patterns.png" 
+              src="/assets/images/paan-patterns.webp" 
               width={80} 
               height={80} 
               alt="PAAN Summit" 
@@ -102,7 +101,7 @@ const AgenciesPage = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center mt-8 sm:mt-10">
               <div className="flex flex-col gap-4 order-2 md:order-1">
                 <Image 
-                  src="/assets/images/africa2.png" 
+                  src="/assets/images/africa2.webp" 
                   width={400} 
                   height={300} 
                   alt="PAAN Summit" 
@@ -201,7 +200,7 @@ const AgenciesPage = () => {
                   </div>
                   <div className="order-first md:order-last flex justify-center">
                     <img 
-                      src="/assets/images/who-we-work-with.png" 
+                      src="/assets/images/who-we-work-with.webp" 
                       alt="Professional woman" 
                       className="rounded-lg w-full max-w-sm md:max-w-md h-auto object-cover" 
                     />
@@ -214,7 +213,7 @@ const AgenciesPage = () => {
         <div className="relative bg-[#172840]">
         <div className="absolute right-0 top-1/8 transform -translate-y-1/2 z-10">
             <Image 
-              src="/assets/images/right-pattern.png" 
+              src="/assets/images/right-pattern.webp" 
               width={80} 
               height={80} 
               alt="PAAN Summit" 
@@ -232,7 +231,7 @@ const AgenciesPage = () => {
                 <div className="text-white flex flex-col justify-center items-center md:items-start space-y-4 sm:space-y-6 pb-8 sm:pb-10 text-center md:text-left h-full">
                   <div className="flex justify-center md:justify-start">
                     <Image
-                      src="/assets/images/how-it-works.png"
+                      src="/assets/images/how-it-works.webp"
                       width={600}
                       height={600}
                       alt="How it works"
@@ -450,7 +449,7 @@ const AgenciesPage = () => {
           {/* Background image positioned to cover full container */}
           <div className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat"
             style={{
-              backgroundImage: "url('/assets/images/build-with-confidence.png')"
+              backgroundImage: "url('/assets/images/build-with-confidence.webp')"
             }}
           />
           <div className="relative h-full flex mx-auto max-w-6xl">
@@ -493,7 +492,7 @@ const Hero = ({ openModal }) => {
       <div 
         className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: "url('/assets/images/agency-hero-bg.png')"
+          backgroundImage: "url('/assets/images/agency-hero-bg.webp')"
         }}
       />
 

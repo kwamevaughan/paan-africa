@@ -9,7 +9,7 @@ export default function ReadyToApplySection() {
         {/* Left side images - hidden on mobile, visible on tablet+ */}
         <div className="hidden md:block absolute left-1/4 -translate-x-20 top-16">
           <Image
-            src="/assets/images/user-1.png"
+            src="/assets/images/user-1.webp"
             alt="Decorative"
             className="rounded-full object-cover shadow-lg border-2 border-white animate-float1"
             width={56}
@@ -18,7 +18,7 @@ export default function ReadyToApplySection() {
         </div>
         <div className="hidden md:block absolute left-1/4 -translate-x-32 top-1/3 -translate-y-6">
           <Image
-            src="/assets/images/user-2.png"
+            src="/assets/images/user-2.webp"
             alt="Decorative"
             className="rounded-full object-cover shadow-lg border-2 border-white animate-float2"
             width={48}
@@ -27,7 +27,7 @@ export default function ReadyToApplySection() {
         </div>
         <div className="hidden lg:block absolute left-1/4 -translate-x-24 top-1/2">
           <Image
-            src="/assets/images/user-3.png"
+            src="/assets/images/user-3.webp"
             alt="Decorative"
             className="rounded-full object-cover shadow-lg border-2 border-white animate-float3"
             width={64}
@@ -36,7 +36,7 @@ export default function ReadyToApplySection() {
         </div>
         <div className="hidden md:block absolute left-1/4 -translate-x-40 bottom-1/3 translate-y-10">
           <Image
-            src="/assets/images/user-4.png"
+            src="/assets/images/user-4.webp"
             alt="Decorative"
             className="rounded-full object-cover shadow-lg border-2 border-white animate-float4"
             width={48}
@@ -45,7 +45,7 @@ export default function ReadyToApplySection() {
         </div>
         <div className="hidden md:block absolute left-1/4 -translate-x-20 bottom-8">
           <Image
-            src="/assets/images/user-5.png"
+            src="/assets/images/user-5.webp"
             alt="Decorative"
             className="rounded-full object-cover shadow-lg border-2 border-white animate-float5"
             width={56}
@@ -56,7 +56,7 @@ export default function ReadyToApplySection() {
         {/* Right side images - hidden on mobile, visible on tablet+ */}
         <div className="hidden md:block absolute right-1/4 translate-x-20 top-16">
           <Image
-            src="/assets/images/user-6.png"
+            src="/assets/images/user-6.webp"
             alt="Decorative"
             className="rounded-full object-cover shadow-lg border-2 border-white animate-float1-delay"
             width={56}
@@ -65,7 +65,7 @@ export default function ReadyToApplySection() {
         </div>
         <div className="hidden md:block absolute right-1/4 translate-x-32 top-1/3 -translate-y-6">
           <Image
-            src="/assets/images/user-7.png"
+            src="/assets/images/user-7.webp"
             alt="Decorative"
             className="rounded-full object-cover shadow-lg border-2 border-white animate-float2-delay"
             width={48}
@@ -74,7 +74,7 @@ export default function ReadyToApplySection() {
         </div>
         <div className="hidden lg:block absolute right-1/4 translate-x-24 top-1/2">
           <Image
-            src="/assets/images/user-8.png"
+            src="/assets/images/user-8.webp"
             alt="Decorative"
             className="rounded-full object-cover shadow-lg border-2 border-white animate-float3-delay"
             width={64}
@@ -83,7 +83,7 @@ export default function ReadyToApplySection() {
         </div>
         <div className="hidden md:block absolute right-1/4 translate-x-40 bottom-1/3 translate-y-6">
           <Image
-            src="/assets/images/user-9.png"
+            src="/assets/images/user-9.webp"
             alt="Decorative"
             className="rounded-full object-cover shadow-lg border-2 border-white animate-float4-delay"
             width={48}
@@ -92,7 +92,7 @@ export default function ReadyToApplySection() {
         </div>
         <div className="hidden md:block absolute right-1/4 translate-x-20 bottom-8">
           <Image
-            src="/assets/images/user-10.png"
+            src="/assets/images/user-10.webp"
             alt="Decorative"
             className="rounded-full object-cover shadow-lg border-2 border-white animate-float5-delay"
             width={56}

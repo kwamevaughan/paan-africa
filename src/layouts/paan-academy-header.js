@@ -14,8 +14,8 @@ const Header = ({  openModal }) => {
   // Determine the current text color and logo based on scroll position
   const currentTextColor = isFixed ? "text-white" : "text-white";
   const logoSrc = isFixed
-    ? "/assets/images/paan-academy/dark-logo.svg"
-    : "/assets/images/paan-academy/logo.svg";
+    ? "/assets/images/paan-academy/dark-logo.webp"
+    : "/assets/images/paan-academy/logo.webp";
 
   const handleNavClick = (label) => {
     setActiveNav(label);

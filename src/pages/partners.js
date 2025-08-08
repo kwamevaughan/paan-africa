@@ -139,7 +139,7 @@ const FreelancersPage = () => {
               <div className="mx-auto md:mx-0 flex justify-center">
                 <div className="relative" ref={counterRef}>
                   <img 
-                    src="/assets/images/black-girl.png" 
+                    src="/assets/images/black-girl.webp" 
                     alt="Professional woman" 
                     className="rounded-lg shadow-md w-full max-w-md h-auto object-cover" 
                   />

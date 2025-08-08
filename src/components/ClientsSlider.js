@@ -16,22 +16,22 @@ export default function ClientsSlider({ openModal }) {
     {
       description:
         "Certified agencies and vetted freelancers",
-      image: "/assets/images/client-slider-img-1.png",
+      image: "/assets/images/client-slider-img-1.webp",
     },
     {
       description:
         "Strategic coordination across borders",
-      image: "/assets/images/client-slider-img-2.png",
+      image: "/assets/images/client-slider-img-2.webp",
     },
     {
       description:
         "A centralized support team to manage rollout",
-      image: "/assets/images/client-slider-img-3.png",
+      image: "/assets/images/client-slider-img-3.webp",
     },
     {
       description:
         "Local insight from creatives on the ground",
-      image: "/assets/images/client-slider-img-4.png",
+      image: "/assets/images/client-slider-img-4.webp",
     },
   ];
 

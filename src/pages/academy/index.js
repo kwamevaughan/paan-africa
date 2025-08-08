@@ -8,6 +8,7 @@ import PAAacademyMarquee from "@/components/PAAacademyMarquee";
 import ScrollToTop from "@/components/ScrollToTop";
 import ConnectingDots from "@/components/ConnectingDots";
 import AcademyEnquiryModal from "@/components/AcademyEnquiryModal";
+import Head from "next/head";
 
 
 const HomePage = () => {
@@ -188,13 +189,20 @@ const HomePage = () => {
   }, []);
 
   return (
-    <div className="paan-academy-font">
+    <>
+    <Head>
+      <link rel="preload" as="image" href="/assets/images/paan-academy/hero-image.webp" />
+      <link rel="preload" as="image" href="/assets/images/paan-academy/img-1.webp" />
+      <link rel="preload" as="image" href="/assets/images/paan-academy/img-2.webp" />
+      <link rel="preload" as="image" href="/assets/images/paan-academy/img-3.webp" />
+      <link rel="preload" as="image" href="/assets/images/paan-academy/img-4.webp" />
+    </Head>
     <SEO
-        title="PAAN Academy | Empowering Africa's Creative & Tech Talent"
-        description="Join PAAN Academy - the premier learning platform for Africa's creative and tech professionals. Access exclusive courses, industry insights, mentorship programs, and certification tracks designed to accelerate your career and agency growth."
-        keywords="PAAN Academy, creative education, tech training, African talent development, agency skills, professional certification, mentorship programs"
-      />
-    <div className="relative paan-academy-font">
+        title="PAAN Academy | Africa’s Online Creative Education Platform"
+        description="Learn digital marketing, creative strategy, design, and tech skills with PAAN Academy — Africa’s premier online learning hub for creative professionals and agencies. Get certified with industry-relevant courses, mentorship, and exclusive content built for African talent. Start your journey in digital education tailored for Africa’s creative and tech future."
+        keywords="Africa digital education, learn digital marketing Africa, creative education platform, online learning for African creatives, PAAN Academy, African tech training, Skillshare alternative Africa, marketing agency training, digital skills for creatives, African online courses, creative certification Africa"
+    />
+    <div className="relative nunito-light">
       <main className="sm:px-0 sm:pt-0 relative">
         <div className="hidden sm:block">
           <ConnectingDots 
@@ -225,21 +233,21 @@ const HomePage = () => {
             />
             <section className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 items-center px-4 sm:px-8 lg:px-16 pt-0 relative z-10 max-w-6xl mx-auto min-h-screen flex items-center">
                 <div className="flex flex-col gap-4 sm:gap-8 text-center sm:text-left w-full">
-                <h1 className="text-2xl sm:text-3xl md:text-5xl font-semibold text-white leading-tight">
+                <h1 className="text-2xl sm:text-3xl md:text-5xl nunito-bold text-white leading-tight nunito-bold">
                     Upskill Your Marketing & Comms Teams with Africa's Top Creative Minds
                 </h1>
-                <p className="text-gray-300 font-normal text-sm sm:text-base">
-                    PAAN Academy offers practical, African-context training for brand teams — helping your in-house talent sharpen their skills, stay ahead of trends, and deliver breakthrough campaigns.
+                <p className="text-gray-300 font-normal text-sm sm:text-base nunito-regular nunito-regular">
+                    PAAN Academy offers practical, African-context training for brand teams, helping your in-house talent sharpen their skills, stay ahead of trends, and deliver breakthrough campaigns.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center sm:justify-start">
                     <button                  
-                    className="bg-[#F25849] text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-full font-medium text-sm hover:bg-[#D6473C] transition duration-300 w-full sm:w-auto"
+                    className="bg-[#F25849] text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-full font-medium text-sm hover:bg-[#D6473C] transition duration-300 w-full sm:w-auto nunito-regular"
                     onClick={openModal}
                     >
                     Explore Programs
                     </button>
                     <button
-                    className="bg-paan-green text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-full font-medium text-sm transition duration-300 hover:bg-[#6FA1B7] text-center w-full sm:w-auto"
+                    className="bg-paan-green text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-full font-medium text-sm transition duration-300 hover:bg-[#6FA1B7] text-center w-full sm:w-auto nunito-regular"
                     onClick={() => {
                         gtag_report_conversion('https://calendly.com/njue-duncan-growthpad/paan-partners-introduction');
                     }}
@@ -250,9 +258,9 @@ const HomePage = () => {
                 </div>
                 <div className="hidden sm:block">
                 <Image
-                    src="/assets/images/paan-academy/hero-image.png"
-                    width={400}
-                    height={300}
+                    src="/assets/images/paan-academy/hero-image.webp"
+                    width={360}
+                    height={200}
                     alt="Hero Image"
                     className="absolute right-0 rounded-lg object-cover w-full h-auto max-w-sm mx-auto bottom-0"
                 />
@@ -285,16 +293,16 @@ const HomePage = () => {
             </div>
           <div className="inline-flex items-center justify-center mb-6">
             {/* Badge */}
-          <div className="bg-paan-purple text-white px-6 py-1 rounded-full text-sm font-medium">
-            <span className="uppercase tracking-wide flex items-center gap-1"><span className="text-paan-blue text-4xl animate-pulse">&bull;</span>Why Train with PAAN Academy</span>
+          <div className="bg-paan-purple text-white px-6 py-1 rounded-full text-sm font-medium nunito-bold">
+            <span className="uppercase tracking-wide flex items-center gap-1 nunito-bold"><span className="text-paan-blue text-4xl animate-pulse">&bull;</span>Why Train with PAAN Academy</span>
           </div>
         </div>
-        <h2 className="text-2xl sm:text-3xl md:text-4xl text-gray-900 font-normal leading-tight mb-8 sm:mb-10 max-w-4xl">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl text-gray-900 font-normal leading-tight mb-8 sm:mb-10 max-w-4xl nunito-regular">
           Practical, results-driven training led by Africa's most experienced creative professionals.
         </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center mt-8 sm:mt-10">              
               <div className="flex flex-col">
-                <div className="space-y-4 sm:space-y-6">              
+                <div className="space-y-4 sm:space-y-6 nunito-regular">              
                   <div className="mt-6 sm:mt-8">
                     <ul className="space-y-3 sm:space-y-4">
                       <li className="flex items-start">
@@ -302,8 +310,8 @@ const HomePage = () => {
                         <svg xmlns="http://www.w3.org/2000/svg" className="text-paan-red" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="m10.6 13.8l-2.15-2.15q-.275-.275-.7-.275t-.7.275t-.275.7t.275.7L9.9 15.9q.3.3.7.3t.7-.3l5.65-5.65q.275-.275.275-.7t-.275-.7t-.7-.275t-.7.275zM12 22q-2.075 0-3.9-.788t-3.175-2.137T2.788 15.9T2 12t.788-3.9t2.137-3.175T8.1 2.788T12 2t3.9.788t3.175 2.137T21.213 8.1T22 12t-.788 3.9t-2.137 3.175t-3.175 2.138T12 22"/></svg>            
                         </span>
                         <div className="flex flex-col">
-                            <h3 className="font-bold">Pan-African Expertise</h3>
-                            <span className="text-gray-700 leading-relaxed text-sm sm:text-base">
+                            <h3 className="font-bold nunito-bold">Pan-African Expertise</h3>
+                            <span className="text-gray-700 leading-relaxed text-sm sm:text-base nunito-regular">
                                 Led by top-tier strategists, creatives, and media specialists from 200+ agencies across 20+ countries
                             </span>
                         </div>
@@ -313,8 +321,8 @@ const HomePage = () => {
                         <svg xmlns="http://www.w3.org/2000/svg" className="text-paan-red" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="m10.6 13.8l-2.15-2.15q-.275-.275-.7-.275t-.7.275t-.275.7t.275.7L9.9 15.9q.3.3.7.3t.7-.3l5.65-5.65q.275-.275.275-.7t-.275-.7t-.7-.275t-.7.275zM12 22q-2.075 0-3.9-.788t-3.175-2.137T2.788 15.9T2 12t.788-3.9t2.137-3.175T8.1 2.788T12 2t3.9.788t3.175 2.137T21.213 8.1T22 12t-.788 3.9t-2.137 3.175t-3.175 2.138T12 22"/></svg> 
                         </span>
                         <div className="flex flex-col">
-                            <h3 className="font-bold">Custom Curriculum</h3>
-                            <span className="text-gray-700 leading-relaxed text-sm sm:text-base">
+                            <h3 className="font-bold nunito-bold">Custom Curriculum</h3>
+                            <span className="text-gray-700 leading-relaxed text-sm sm:text-base nunito-regular">
                                  Tailored training modules for your brand’s goals — from campaign development to media execution
                             </span>
                         </div>
@@ -324,8 +332,8 @@ const HomePage = () => {
                         <svg xmlns="http://www.w3.org/2000/svg" className="text-paan-red" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="m10.6 13.8l-2.15-2.15q-.275-.275-.7-.275t-.7.275t-.275.7t.275.7L9.9 15.9q.3.3.7.3t.7-.3l5.65-5.65q.275-.275.275-.7t-.275-.7t-.7-.275t-.7.275zM12 22q-2.075 0-3.9-.788t-3.175-2.137T2.788 15.9T2 12t.788-3.9t2.137-3.175T8.1 2.788T12 2t3.9.788t3.175 2.137T21.213 8.1T22 12t-.788 3.9t-2.137 3.175t-3.175 2.138T12 22"/></svg>  
                         </span>
                         <div className="flex flex-col">
-                            <h3 className="font-bold">Real-World Learning</h3>
-                            <span className="text-gray-700 leading-relaxed text-sm sm:text-base">
+                            <h3 className="font-bold nunito-bold">Real-World Learning</h3>
+                            <span className="text-gray-700 leading-relaxed text-sm sm:text-base nunito-regular">
                                 Hands-on workshops, case studies, and toolkits your team can apply immediately
                             </span>
                         </div>
@@ -335,8 +343,8 @@ const HomePage = () => {
                         <svg xmlns="http://www.w3.org/2000/svg" className="text-paan-red" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="m10.6 13.8l-2.15-2.15q-.275-.275-.7-.275t-.7.275t-.275.7t.275.7L9.9 15.9q.3.3.7.3t.7-.3l5.65-5.65q.275-.275.275-.7t-.275-.7t-.7-.275t-.7.275zM12 22q-2.075 0-3.9-.788t-3.175-2.137T2.788 15.9T2 12t.788-3.9t2.137-3.175T8.1 2.788T12 2t3.9.788t3.175 2.137T21.213 8.1T22 12t-.788 3.9t-2.137 3.175t-3.175 2.138T12 22"/></svg>  
                         </span>
                         <div className="flex flex-col">
-                            <h3 className="font-bold">Stronger Results</h3>
-                            <span className="text-gray-700 leading-relaxed text-sm sm:text-base">
+                            <h3 className="font-bold nunito-bold">Stronger Results</h3>
+                            <span className="text-gray-700 leading-relaxed text-sm sm:text-base nunito-regular">
                                 Boost ROI from your marketing spend by empowering internal teams to brief better, manage agencies, and build strategic campaigns
                             </span>
                         </div>
@@ -347,7 +355,7 @@ const HomePage = () => {
               </div>
               <div className="flex flex-col gap-4">
                 <Image 
-                  src="/assets/images/paan-academy/img-1.svg" 
+                  src="/assets/images/paan-academy/img-1.webp" 
                   width={300} 
                   height={200} 
                   alt="PAAN Summit" 
@@ -373,7 +381,7 @@ const HomePage = () => {
                 <div className="flex flex-col gap-6 order-2 lg:order-1 h-full">
                     <div className="flex-1">
                     <Image 
-                        src="/assets/images/paan-academy/img-2.png" 
+                        src="/assets/images/paan-academy/img-2.webp" 
                         width={400} 
                         height={280} 
                         alt="PAAN Summit" 
@@ -382,7 +390,7 @@ const HomePage = () => {
                     </div>
                     <div className="flex-1">
                     <Image 
-                        src="/assets/images/paan-academy/img-3.png" 
+                        src="/assets/images/paan-academy/img-3.webp" 
                         width={400} 
                         height={280} 
                         alt="PAAN Summit" 
@@ -396,8 +404,8 @@ const HomePage = () => {
                     <div className="space-y-6 lg:space-y-8">              
                     {/* Badge */}
                     <div className="flex justify-center lg:justify-start">
-                        <div className="bg-paan-yellow text-paan-dark-blue px-6 rounded-full">
-                        <span className="text-xs font-semibold uppercase flex items-center gap-2">
+                        <div className="bg-paan-yellow text-paan-dark-blue px-6 rounded-full nunito-bold">
+                        <span className="text-xs font-semibold uppercase flex items-center gap-2 nunito-bold">
                             <span className="text-paan-purple text-3xl">&bull;</span>Focus Area                          
                         </span>
                         </div>
@@ -405,23 +413,23 @@ const HomePage = () => {
 
                     {/* Headings */}
                     <div className="space-y-4 text-center lg:text-left">
-                        <h2 className="text-white text-3xl lg:text-4xl font-bold leading-tight">
+                        <h2 className="text-white text-3xl lg:text-4xl font-bold leading-tight nunito-bold">
                         Built for Africa's Marketing Landscape
                         </h2>
-                        <h3 className="text-white text-lg lg:text-xl font-normal opacity-90">
+                        <h3 className="text-white text-lg lg:text-xl font-normal opacity-90 nunito-regular">
                             Your team gains strategic, technical, and creative skills across:
                         </h3>
                     </div>
 
                     {/* Skills List */}
-                    <ul className="space-y-4 lg:space-y-5 text-white mt-8">
+                    <ul className="space-y-4 lg:space-y-5 text-white mt-8 nunito-regular">
                         <li className="flex items-start gap-4">
                         <span className="flex-shrink-0 mt-1">
                             <svg xmlns="http://www.w3.org/2000/svg" className="text-white" width="20" height="20" viewBox="0 0 24 24">
                             <path fill="currentColor" d="m10.6 13.8l-2.15-2.15q-.275-.275-.7-.275t-.7.275t-.275.7t.275.7L9.9 15.9q.3.3.7.3t.7-.3l5.65-5.65q.275-.275.275-.7t-.275-.7t-.7-.275t-.7.275zM12 22q-2.075 0-3.9-.788t-3.175-2.137T2.788 15.9T2 12t.788-3.9t2.137-3.175T8.1 2.788T12 2t3.9.788t3.175 2.137T21.213 8.1T22 12t-.788 3.9t-2.137 3.175t-3.175 2.138T12 22"/>
                             </svg>            
                         </span>
-                        <h4 className="text-base lg:text-lg font-medium leading-relaxed">
+                        <h4 className="text-base lg:text-lg font-medium leading-relaxed nunito-regular">
                             Strategic Brand Thinking
                         </h4>
                         </li>
@@ -432,7 +440,7 @@ const HomePage = () => {
                             <path fill="currentColor" d="m10.6 13.8l-2.15-2.15q-.275-.275-.7-.275t-.7.275t-.275.7t.275.7L9.9 15.9q.3.3.7.3t.7-.3l5.65-5.65q.275-.275.275-.7t-.275-.7t-.7-.275t-.7.275zM12 22q-2.075 0-3.9-.788t-3.175-2.137T2.788 15.9T2 12t.788-3.9t2.137-3.175T8.1 2.788T12 2t3.9.788t3.175 2.137T21.213 8.1T22 12t-.788 3.9t-2.137 3.175t-3.175 2.138T12 22"/>
                             </svg>            
                         </span>
-                        <h4 className="text-base lg:text-lg font-medium leading-relaxed">
+                        <h4 className="text-base lg:text-lg font-medium leading-relaxed nunito-regular">
                             Mastering the Marketing Brief
                         </h4>
                         </li>
@@ -443,7 +451,7 @@ const HomePage = () => {
                             <path fill="currentColor" d="m10.6 13.8l-2.15-2.15q-.275-.275-.7-.275t-.7.275t-.275.7t.275.7L9.9 15.9q.3.3.7.3t.7-.3l5.65-5.65q.275-.275.275-.7t-.275-.7t-.7-.275t-.7.275zM12 22q-2.075 0-3.9-.788t-3.175-2.137T2.788 15.9T2 12t.788-3.9t2.137-3.175T8.1 2.788T12 2t3.9.788t3.175 2.137T21.213 8.1T22 12t-.788 3.9t-2.137 3.175t-3.175 2.138T12 22"/>
                             </svg>            
                         </span>
-                        <h4 className="text-base lg:text-lg font-medium leading-relaxed">
+                        <h4 className="text-base lg:text-lg font-medium leading-relaxed nunito-regular">
                             AI in Content & Creative Production
                         </h4>
                         </li>
@@ -454,7 +462,7 @@ const HomePage = () => {
                             <path fill="currentColor" d="m10.6 13.8l-2.15-2.15q-.275-.275-.7-.275t-.7.275t-.275.7t.275.7L9.9 15.9q.3.3.7.3t.7-.3l5.65-5.65q.275-.275.275-.7t-.275-.7t-.7-.275t-.7.275zM12 22q-2.075 0-3.9-.788t-3.175-2.137T2.788 15.9T2 12t.788-3.9t2.137-3.175T8.1 2.788T12 2t3.9.788t3.175 2.137T21.213 8.1T22 12t-.788 3.9t-2.137 3.175t-3.175 2.138T12 22"/>
                             </svg>            
                         </span>
-                        <h4 className="text-base lg:text-lg font-medium leading-relaxed">
+                        <h4 className="text-base lg:text-lg font-medium leading-relaxed nunito-regular">
                             Performance Marketing
                         </h4>
                         </li>
@@ -465,7 +473,7 @@ const HomePage = () => {
                             <path fill="currentColor" d="m10.6 13.8l-2.15-2.15q-.275-.275-.7-.275t-.7.275t-.275.7t.275.7L9.9 15.9q.3.3.7.3t.7-.3l5.65-5.65q.275-.275.275-.7t-.275-.7t-.7-.275t-.7.275zM12 22q-2.075 0-3.9-.788t-3.175-2.137T2.788 15.9T2 12t.788-3.9t2.137-3.175T8.1 2.788T12 2t3.9.788t3.175 2.137T21.213 8.1T22 12t-.788 3.9t-2.137 3.175t-3.175 2.138T12 22"/>
                             </svg>            
                         </span>
-                        <h4 className="text-base lg:text-lg font-medium leading-relaxed">
+                        <h4 className="text-base lg:text-lg font-medium leading-relaxed nunito-regular">
                             Cross-Channel Campaign Management
                         </h4>
                         </li>
@@ -476,7 +484,7 @@ const HomePage = () => {
                             <path fill="currentColor" d="m10.6 13.8l-2.15-2.15q-.275-.275-.7-.275t-.7.275t-.275.7t.275.7L9.9 15.9q.3.3.7.3t.7-.3l5.65-5.65q.275-.275.275-.7t-.275-.7t-.7-.275t-.7.275zM12 22q-2.075 0-3.9-.788t-3.175-2.137T2.788 15.9T2 12t.788-3.9t2.137-3.175T8.1 2.788T12 2t3.9.788t3.175 2.137T21.213 8.1T22 12t-.788 3.9t-2.137 3.175t-3.175 2.138T12 22"/>
                             </svg>            
                         </span>
-                        <h4 className="text-base lg:text-lg font-medium leading-relaxed">
+                        <h4 className="text-base lg:text-lg font-medium leading-relaxed nunito-regular">
                             Internal Creative Capacity Building
                         </h4>
                         </li>
@@ -487,7 +495,7 @@ const HomePage = () => {
                             <path fill="currentColor" d="m10.6 13.8l-2.15-2.15q-.275-.275-.7-.275t-.7.275t-.275.7t.275.7L9.9 15.9q.3.3.7.3t.7-.3l5.65-5.65q.275-.275.275-.7t-.275-.7t-.7-.275t-.7.275zM12 22q-2.075 0-3.9-.788t-3.175-2.137T2.788 15.9T2 12t.788-3.9t2.137-3.175T8.1 2.788T12 2t3.9.788t3.175 2.137T21.213 8.1T22 12t-.788 3.9t-2.137 3.175t-3.175 2.138T12 22"/>
                             </svg>            
                         </span>
-                        <h4 className="text-base lg:text-lg font-medium leading-relaxed">
+                        <h4 className="text-base lg:text-lg font-medium leading-relaxed nunito-regular">
                             Collaborating with Agencies & Freelancers
                         </h4>
                         </li>
@@ -526,8 +534,8 @@ const HomePage = () => {
                 <div className="text-center mb-16">
                 {/* Badge */}
                 <div className="inline-flex items-center justify-center mb-8">
-                    <div className="bg-paan-green text-paan-dark-blue px-8 py-1 rounded-full text-sm font-semibold shadow-sm">
-                    <span className="uppercase tracking-wider flex items-center gap-2">
+                    <div className="bg-paan-green text-paan-dark-blue px-8 py-1 rounded-full text-sm font-semibold shadow-sm nunito-bold">
+                    <span className="uppercase tracking-wider flex items-center gap-2 nunito-bold">
                         <span className="text-paan-yellow text-2xl">&bull;</span>
                         Training Formats
                     </span>
@@ -535,12 +543,12 @@ const HomePage = () => {
                 </div>
                 
                 {/* Main Heading */}
-                <h2 className="text-3xl sm:text-4xl md:text-5xl text-gray-900 font-bold leading-tight mb-6 max-w-4xl mx-auto">
+                <h2 className="text-3xl sm:text-4xl md:text-5xl text-gray-900 font-bold leading-tight mb-6 max-w-4xl mx-auto nunito-bold">
                     Flexible Formats for Any Team
                 </h2>
                 
                 {/* Subheading */}
-                <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
+                <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed nunito-regular">
                     Train your team your way, virtually or on-site with expert-led sessions tailored to your needs.
                 </p>
                 </div>
@@ -550,7 +558,7 @@ const HomePage = () => {
                 <div className="order-2 lg:order-1">
                     <div className="relative">
                     <Image 
-                        src="/assets/images/paan-academy/img-4.png" 
+                        src="/assets/images/paan-academy/img-4.webp" 
                         width={600} 
                         height={400} 
                         alt="PAAN Academy Training Session" 
@@ -564,11 +572,11 @@ const HomePage = () => {
                     <div className="space-y-8">
                     {/* Training Topics */}
                     <div className="space-y-6">
-                        <h3 className="text-2xl font-bold text-gray-900 mb-6">
+                        <h3 className="text-2xl font-bold text-gray-900 mb-6 nunito-bold">
                             Our Core Training Formats
                         </h3>
                         
-                        <ul className="space-y-5">
+                        <ul className="space-y-5 nunito-regular">
                         <li className="flex items-start group">
                             <span className="mr-4 mt-1 flex-shrink-0">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
@@ -576,7 +584,7 @@ const HomePage = () => {
                             </svg>            
                             </span>
                             <div>
-                            <h4 className="font-normal text-lg text-gray-900 mb-1">Onsite or Virtual Team Workshops</h4>
+                            <h4 className="font-normal text-lg text-gray-900 mb-1 nunito-regular">Onsite or Virtual Team Workshops</h4>
                             </div>
                         </li>
                         
@@ -587,7 +595,7 @@ const HomePage = () => {
                             </svg> 
                             </span>
                             <div>
-                            <h4 className="font-normal text-lg text-gray-900 mb-1">Half-Day, Full-Day or 3-Week Sprints</h4>
+                            <h4 className="font-normal text-lg text-gray-900 mb-1 nunito-regular">Half-Day, Full-Day or 3-Week Sprints</h4>
                             </div>
                         </li>
                         
@@ -598,7 +606,7 @@ const HomePage = () => {
                             </svg>  
                             </span>
                             <div>
-                            <h4 className="font-normal text-lg text-gray-900 mb-1">Executive Bootcamps for CMOs and Marketing Leads</h4>
+                            <h4 className="font-normal text-lg text-gray-900 mb-1 nunito-regular">Executive Bootcamps for CMOs and Marketing Leads</h4>
                             </div>
                         </li>
                         
@@ -609,7 +617,7 @@ const HomePage = () => {
                             </svg>  
                             </span>
                             <div>
-                            <h4 className="font-normal text-lg text-gray-900 mb-1">Ongoing Learning Subscriptions</h4>
+                            <h4 className="font-normal text-lg text-gray-900 mb-1 nunito-regular">Ongoing Learning Subscriptions</h4>
                             </div>
                         </li>
                         </ul>
@@ -617,11 +625,11 @@ const HomePage = () => {
                     
                     {/* Call to Action */}
                     <div className="pt-8 border-t border-gray-200">
-                        <p className="text-gray-700 font-medium mb-6 text-lg">
+                        <p className="text-gray-700 font-medium mb-6 text-lg nunito-regular">
                         Ready to empower your team with Africa-specific, industry-relevant skills?
                         </p>
                         <button
-                        className="bg-paan-red hover:bg-red-700 text-white px-8 py-4 rounded-full font-semibold text-base transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 w-full sm:w-auto"
+                        className="bg-paan-red hover:bg-red-700 text-white px-8 py-4 rounded-full font-semibold text-base transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 w-full sm:w-auto nunito-bold"
                         onClick={() => {
                             gtag_report_conversion('https://calendly.com/njue-duncan-growthpad/paan-partners-introduction');
                         }}
@@ -648,8 +656,8 @@ const HomePage = () => {
                 <div className="text-center mb-16">
                 {/* Badge */}
                 <div className="inline-flex items-center justify-center mb-8">
-                    <div className="bg-paan-green text-paan-dark-blue px-8 py-1 rounded-full text-sm font-semibold shadow-sm">
-                    <span className="uppercase tracking-wider flex items-center gap-2">
+                    <div className="bg-paan-green text-paan-dark-blue px-8 py-1 rounded-full text-sm font-semibold shadow-sm nunito-bold">
+                    <span className="uppercase tracking-wider flex items-center gap-2 nunito-bold">
                         <span className="text-paan-yellow text-2xl">&bull;</span>
                         Pan-African Creatives + Freelancers
                     </span>
@@ -657,7 +665,7 @@ const HomePage = () => {
                 </div>
                 
                 {/* Main Heading */}
-                <h2 className="text-3xl sm:text-4xl md:text-5xl text-gray-900 font-normal leading-tight mb-6 max-w-4xl mx-auto">
+                <h2 className="text-3xl sm:text-4xl md:text-5xl text-gray-900 font-normal leading-tight mb-6 max-w-4xl mx-auto nunito-regular">
                     Learn the Skills. Get Certified. Get Hired.
                 </h2>
                 
@@ -675,20 +683,20 @@ const HomePage = () => {
                             </div>
                         </div>
 
-                        <h3 className="text-center text-xl">Grow Your Skills. Get Hired.</h3>
+                        <h3 className="text-center text-xl nunito-bold">Grow Your Skills. Get Hired.</h3>
                         
                         {/* Content */}
                         <div className="p-6 pt-4">
                             {/* Description */}
                             <div className="mb-8">
-                                <p className="text-gray-700 leading-relaxed text-base">
+                                <p className="text-gray-700 leading-relaxed text-base nunito-regular">
                                     Join PAAN Academy — the official training arm of the Pan African Agency Network — built to upskill African creatives, marketers, and freelancers with real-world skills, tools, and certifications.
                                 </p>
                             </div>
                             
                             {/* Features List */}
                             <div className="mb-8">
-                                <ul className="space-y-4">
+                                <ul className="space-y-4 nunito-regular">
                                     <li className="flex items-start group cursor-pointer">
                                         <span className="mr-4 mt-0.5 flex-shrink-0 text-paan-maroon">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
@@ -696,7 +704,7 @@ const HomePage = () => {
                                             </svg>            
                                         </span>
                                         <div className="flex-1">
-                                            <h4 className="font-semibold text-gray-900 text-base group-hover:text-paan-maroon transition-colors duration-200">
+                                            <h4 className="font-semibold text-gray-900 text-base group-hover:text-paan-maroon transition-colors duration-200 nunito-bold">
                                                 Courses starting from $29
                                             </h4>
                                         </div>
@@ -709,7 +717,7 @@ const HomePage = () => {
                                             </svg> 
                                         </span>
                                         <div className="flex-1">
-                                            <h4 className="font-semibold text-gray-900 text-base group-hover:text-paan-maroon transition-colors duration-200">
+                                            <h4 className="font-semibold text-gray-900 text-base group-hover:text-paan-maroon transition-colors duration-200 nunito-bold">
                                                  Learn AI tools, digital media, branding
                                             </h4>
                                         </div>
@@ -722,7 +730,7 @@ const HomePage = () => {
                                             </svg>  
                                         </span>
                                         <div className="flex-1">
-                                            <h4 className="font-semibold text-gray-900 text-base group-hover:text-paan-maroon transition-colors duration-200">
+                                            <h4 className="font-semibold text-gray-900 text-base group-hover:text-paan-maroon transition-colors duration-200 nunito-bold">
                                                 PAAN Certification recognized continent-wide
                                             </h4>
                                         </div>
@@ -735,7 +743,7 @@ const HomePage = () => {
                                             </svg>  
                                         </span>
                                         <div className="flex-1">
-                                            <h4 className="font-semibold text-gray-900 text-base group-hover:text-paan-maroon transition-colors duration-200">
+                                            <h4 className="font-semibold text-gray-900 text-base group-hover:text-paan-maroon transition-colors duration-200 nunito-bold">
                                                 Join our Africa-wide freelance hiring network
                                             </h4>
                                         </div>
@@ -746,7 +754,7 @@ const HomePage = () => {
                             {/* CTA Button */}
                             <div className="pt-4 border-t border-gray-100">
                                 <button
-                                    className="w-full bg-gradient-to-r from-paan-red to-paan-red/90 hover:from-paan-red/90 hover:to-paan-red text-white px-8 py-3.5 rounded-full font-semibold text-sm transition-all duration-300 hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-paan-red/50 focus:ring-offset-2"
+                                    className="w-full bg-gradient-to-r from-paan-red to-paan-red/90 hover:from-paan-red/90 hover:to-paan-red text-white px-8 py-3.5 rounded-full font-semibold text-sm transition-all duration-300 hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-paan-red/50 focus:ring-offset-2 nunito-bold"
                                     onClick={openModal}
                                 >
                                     <span className="flex items-center justify-center gap-2">
@@ -770,20 +778,20 @@ const HomePage = () => {
                                 </span>
                             </div>
                         </div>
-                        <h3 className="text-center text-xl">Upskill Your Team. Win More Work.</h3>
+                        <h3 className="text-center text-xl nunito-bold">Upskill Your Team. Win More Work.</h3>
                         
                         {/* Content */}
                         <div className="p-6 pt-4">
                             {/* Description */}
                             <div className="mb-8">
-                                <p className="leading-relaxed text-base">
+                                <p className="leading-relaxed text-base nunito-regular">
                                 PAAN Academy helps your agency stay sharp and competitive with tailored training programs for African agency teams — from creatives and strategists to account managers and new hires.
                                 </p>
                             </div>
                             
                             {/* Features List */}
                             <div className="mb-8">
-                                <ul className="space-y-4">
+                                <ul className="space-y-4 nunito-regular">
                                     <li className="flex items-start group cursor-pointer">
                                         <span className="mr-4 mt-0.5 flex-shrink-0 text-paan-yellow">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
@@ -791,7 +799,7 @@ const HomePage = () => {
                                             </svg>            
                                         </span>
                                         <div className="flex-1">
-                                            <h4 className="font-semibold text-base group-hover:text-paan-blue transition-colors duration-200">
+                                            <h4 className="font-semibold text-base group-hover:text-paan-blue transition-colors duration-200 nunito-bold">
                                                 Custom training for agency staff
                                             </h4>
                                         </div>
@@ -804,7 +812,7 @@ const HomePage = () => {
                                             </svg> 
                                         </span>
                                         <div className="flex-1">
-                                            <h4 className="font-semibold text-base group-hover:text-paan-blue transition-colors duration-200">
+                                            <h4 className="font-semibold text-base group-hover:text-paan-blue transition-colors duration-200 nunito-bold">
                                                 Improve client service, pitching, execution
                                             </h4>
                                         </div>
@@ -817,7 +825,7 @@ const HomePage = () => {
                                             </svg>  
                                         </span>
                                         <div className="flex-1">
-                                            <h4 className="font-semibold text-base group-hover:text-paan-blue transition-colors duration-200">
+                                            <h4 className="font-semibold text-base group-hover:text-paan-blue transition-colors duration-200 nunito-bold">
                                                 Get prioritized for cross-border campaigns
                                             </h4>
                                         </div>
@@ -830,7 +838,7 @@ const HomePage = () => {
                                             </svg>  
                                         </span>
                                         <div className="flex-1">
-                                            <h4 className="font-semibold text-base group-hover:text-paan-blue transition-colors duration-200">
+                                            <h4 className="font-semibold text-base group-hover:text-paan-blue transition-colors duration-200 nunito-bold">
                                                 Learn from Africa's top independent agencies
                                             </h4>
                                         </div>
@@ -841,7 +849,7 @@ const HomePage = () => {
                             {/* CTA Button */}
                             <div className="pt-4 border-t border-gray-100">
                                 <button
-                                    className="w-full bg-paan-yellow text-paan-dark-blue px-8 py-3.5 rounded-full font-semibold text-sm transition-all duration-300 hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-blue-600/50 focus:ring-offset-2"
+                                    className="w-full bg-paan-yellow text-paan-dark-blue px-8 py-3.5 rounded-full font-semibold text-sm transition-all duration-300 hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-blue-600/50 focus:ring-offset-2 nunito-bold"
                                     onClick={() => {
                                         gtag_report_conversion('https://calendly.com/njue-duncan-growthpad/paan-partners-introduction');
                                     }}
@@ -867,7 +875,7 @@ const HomePage = () => {
       </main>
       <Footer />
       </div>
-    </div>
+    </>
   );
 };
 

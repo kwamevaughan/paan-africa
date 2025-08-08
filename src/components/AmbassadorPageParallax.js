@@ -27,7 +27,7 @@ export default function ParallaxSection({ openModal }) {
         <div 
           className="absolute inset-0 w-full h-[120%] bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage: `url('/assets/images/ambassador-parallax-image.png')`,
+            backgroundImage: `url('/assets/images/ambassador-parallax-image.webp')`,
           }}
         />
         
@@ -70,7 +70,7 @@ export default function ParallaxSection({ openModal }) {
           <div 
             className="w-full h-full bg-cover bg-center bg-no-repeat"
             style={{
-              backgroundImage: `url('/assets/images/ambassador-parallax-image.png')`,
+              backgroundImage: `url('/assets/images/ambassador-parallax-image.webp')`,
             }}
           />
         </Parallax>
