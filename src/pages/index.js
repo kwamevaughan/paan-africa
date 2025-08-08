@@ -722,7 +722,7 @@ const HomePage = () => {
             <div className="w-full md:w-1/2 flex justify-center relative z-0">
               <div className="aspect-square w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg flex items-center justify-center">
                 <Image
-                  src="/assets/images/webinar-2.webp"
+                  src="/assets/images/Webinar-2.webp"
                   width={600}
                   height={600}
                   alt="Voice AI for Consumer Engagement at Scale"
