@@ -63,10 +63,36 @@ const HomePage = () => {
   const isFixed = useFixedHeader();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const canvasRef = useRef(null);
-  const [showConsultModal, setShowConsultModal] = useState(true);
+  const [showConsultModal, setShowConsultModal] = useState(false);
+  const [hasShownModal, setHasShownModal] = useState(false); // Track if modal has been shown
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
+
+  // Add scroll event listener to detect when user reaches bottom
+  useEffect(() => {
+    const handleScrollToBottom = () => {
+      // Calculate if user has scrolled to bottom (with some tolerance)
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      const windowHeight = window.innerHeight;
+      const documentHeight = document.documentElement.scrollHeight;
+      
+      // Trigger when user is within 100px of the bottom
+      const isNearBottom = scrollTop + windowHeight >= documentHeight - 100;
+      
+      if (isNearBottom && !hasShownModal) {
+        setShowConsultModal(true);
+        setHasShownModal(true); // Prevent showing again
+      }
+    };
+
+    window.addEventListener('scroll', handleScrollToBottom);
+    
+    // Cleanup
+    return () => {
+      window.removeEventListener('scroll', handleScrollToBottom);
+    };
+  }, [hasShownModal]);
 
   // Remove IntersectionObserver effect (lines 70-100)
   // useEffect(() => {

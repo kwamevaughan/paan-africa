@@ -6,41 +6,95 @@ import Image from "next/image";
 import { Icon } from "@iconify/react";
 import Link from "next/link";
 import { menuItems } from "../data/menuData";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 
 const Footer = () => {
-  const currentYear = new Date().getFullYear();
+  const currentYear = useMemo(() => new Date().getFullYear(), []);
   const [isHeaderFixed, setIsHeaderFixed] = useState(false);
 
-  // Check scroll position to determine if header is fixed
+  // Optimized scroll handler with throttling
   useEffect(() => {
+    let ticking = false;
+    
     const handleScrollEvent = () => {
-      if (window.scrollY > 50) {
-        setIsHeaderFixed(true);
-      } else {
-        setIsHeaderFixed(false);
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          const scrolled = window.scrollY > 50;
+          if (scrolled !== isHeaderFixed) {
+            setIsHeaderFixed(scrolled);
+          }
+          ticking = false;
+        });
+        ticking = true;
       }
     };
 
-    window.addEventListener("scroll", handleScrollEvent);
+    window.addEventListener("scroll", handleScrollEvent, { passive: true });
     return () => window.removeEventListener("scroll", handleScrollEvent);
+  }, [isHeaderFixed]);
+
+  // Preload critical images
+  useEffect(() => {
+    const preloadImages = [
+      "/assets/images/bg-pattern.webp",
+      "/assets/images/footer-pattern.svg",
+      "/assets/images/paan-academy/logo.webp"
+    ];
+
+    preloadImages.forEach(src => {
+      const link = document.createElement("link");
+      link.rel = "preload";
+      link.as = "image";
+      link.href = src;
+      document.head.appendChild(link);
+    });
   }, []);
 
-  // Function to handle smooth scrolling with offset for fixed header
+  // Optimized smooth scroll function
   const handleScroll = (e, href) => {
     e.preventDefault();
     const targetId = href.replace("#", "");
     const element = document.getElementById(targetId);
+    
     if (element) {
-      const headerHeight = document.querySelector("nav").offsetHeight;
-      const elementPosition =
-        element.getBoundingClientRect().top + window.scrollY;
+      const headerElement = document.querySelector("nav");
+      const headerHeight = headerElement?.offsetHeight || 0;
+      const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+      
       window.scrollTo({
         top: elementPosition - (isHeaderFixed ? headerHeight : 0),
         behavior: "smooth",
       });
     }
   };
+
+  // Social media links with lazy loading consideration
+  const socialLinks = useMemo(() => [
+    {
+      href: "https://www.facebook.com/panafricanagencynetwork",
+      icon: "ic:baseline-facebook",
+      label: "Facebook",
+      hoverColor: "#1877F2"
+    },
+    {
+      href: "https://www.linkedin.com/company/pan-african-agency-network",
+      icon: "mdi:linkedin",
+      label: "LinkedIn",
+      hoverColor: "#0077B5"
+    },
+    {
+      href: "https://instagram.com/pan_african_agency_network",
+      icon: "mingcute:instagram-fill",
+      label: "Instagram",
+      hoverColor: "#E4405F"
+    },
+    {
+      href: "https://x.com/paan_network",
+      icon: "iconoir:x",
+      label: "X",
+      hoverColor: "#000000"
+    }
+  ], []);
 
   return (
     <section className="bg-[#172840] pt-28 pb-8 text-white">
@@ -58,91 +112,57 @@ const Footer = () => {
 
       {/* Middle Section: Newsletter, Tools, and Vertical Menu with Full-Width Background */}
       <div className="relative">
-        {/* Background Image with Reduced Opacity */}
-        <Image
-          src="/assets/images/bg-pattern.svg"
-          width={0}
-          height={0}
-          alt="Background Pattern"
-          className="absolute top-0 left-0 w-full h-full object-cover z-0 opacity-10"
-        />
+        {/* Background Image with Reduced Opacity - Optimized loading */}
+        <div className="absolute top-0 left-0 w-full h-full z-0 opacity-10">
+          <Image
+            src="/assets/images/bg-pattern.svg"
+            fill
+            alt=""
+            className="object-cover"
+            priority={false}
+            loading="lazy"
+            sizes="100vw"
+          />
+        </div>
+        
         {/* Content Container */}
-        <section
-          className="relative max-w-6xl mx-auto px-3 sm:px-0 grid grid-cols-1 sm:grid-cols-4 gap-8 mt-20 pb-10"
-        >
+        <section className="relative max-w-6xl mx-auto px-3 sm:px-0 grid grid-cols-1 sm:grid-cols-4 gap-8 mt-20 pb-10 z-10">
           {/* Left: Newsletter Signup */}
           <div className="flex flex-col gap-8">
             <NewsletterSignup />
 
             <div>
               <ul className="flex gap-2">
-                {/* Facebook */}
-                <li className="group pb-4 hover:translate-y-[-4px] transition-transform duration-300">
-                  <Link
-                    href="https://www.facebook.com/panafricanagencynetwork"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Facebook"
+                {socialLinks.map(({ href, icon, label, hoverColor }) => (
+                  <li 
+                    key={label}
+                    className="group pb-4 hover:translate-y-[-4px] transition-transform duration-300"
                   >
-                    <Icon
-                      icon="ic:baseline-facebook"
-                      width="32"
-                      height="32"
-                      className="text-gray-400 group-hover:text-[#1877F2]"
-                    />
-                  </Link>
-                </li>
-
-                {/* LinkedIn */}
-                <li className="group pb-4 hover:translate-y-[-4px] transition-transform duration-300">
-                  <Link
-                    href="https://www.linkedin.com/company/pan-african-agency-network"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="LinkedIn"
-                  >
-                    <Icon
-                      icon="mdi:linkedin"
-                      width="32"
-                      height="32"
-                      className="text-gray-400 group-hover:text-[#0077B5]"
-                    />
-                  </Link>
-                </li>
-
-                {/* Instagram */}
-                <li className="group pb-4 hover:translate-y-[-4px] transition-transform duration-300">
-                  <Link
-                    href="https://instagram.com/pan_african_agency_network"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Instagram"
-                  >
-                    <Icon
-                      icon="mingcute:instagram-fill"
-                      width="32"
-                      height="32"
-                      className="text-gray-400 group-hover:text-[#E4405F]"
-                    />
-                  </Link>
-                </li>
-
-                {/* X (formerly Twitter) */}
-                <li className="group pb-4 hover:translate-y-[-4px] transition-transform duration-300">
-                  <Link
-                    href="https://x.com/paan_network"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="X"
-                  >
-                    <Icon
-                      icon="iconoir:x"
-                      width="32"
-                      height="32"
-                      className="text-gray-400 group-hover:text-black"
-                    />
-                  </Link>
-                </li>
+                    <Link
+                      href={href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={label}
+                    >
+                      <Icon
+                        icon={icon}
+                        width="32"
+                        height="32"
+                        className="text-gray-400"
+                        style={{
+                          '--hover-color': hoverColor,
+                          transition: 'color 0.3s ease'
+                        }}
+                        onMouseEnter={(e) => {
+                          e.target.style.color = hoverColor;
+                        }}
+                        onMouseLeave={(e) => {
+                          e.target.style.color = '';
+                        }}
+                      />
+                    </Link>
+                  </li>
+                ))}
               </ul>
             </div>
           </div>
@@ -169,11 +189,12 @@ const Footer = () => {
             <Link href="/academy" className="flex flex-col items-center">
               <Image
                 src="/assets/images/paan-academy/logo.svg"
-                width={150}
-                height={150}
+                width={144}
+                height={144}
                 alt="PAAN Academy Logo"
                 className="mb-2 object-contain w-24 h-24 sm:w-32 sm:h-32 md:w-36 md:h-36"
-                priority
+                loading="lazy"
+                sizes="(max-width: 640px) 96px, (max-width: 768px) 128px, 144px"
               />
             </Link>
           </div>
@@ -184,12 +205,12 @@ const Footer = () => {
             <ul className="space-y-2">
               {menuItems.map((item) => (
                 <li key={item.href}>
-                  <a
+                  <Link
                     href={item.href}
                     className="font-normal text-gray-200 hover:text-white hover:underline transition-all duration-300 cursor-pointer"
                   >
                     {item.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -203,18 +224,22 @@ const Footer = () => {
           © {currentYear} PAAN. All rights reserved. |
           <Link
             href="/privacy-policy"
-            className="ml-2 text-white hover:text-[#84c1d9]"
+            className="ml-2 text-white hover:text-[#84c1d9] transition-colors duration-300"
           >
             Privacy Policy
           </Link>
         </p>
       </div>
+
+      {/* Footer Pattern - Optimized */}
       <div className="absolute bottom-0 left-0 w-full h-[20px] sm:h-[30px] md:h-[40px] z-0">
         <Image
           src="/assets/images/footer-pattern.svg"
           fill
-          alt="Footer Pattern"
+          alt=""
           className="object-cover"
+          loading="lazy"
+          sizes="100vw"
         />
       </div>
     </section>
