@@ -69,7 +69,7 @@ html {
 
   .pattern-bg-1 {
     background-image: 
-      url('/assets/images/pattern-bg-1.png'), 
+      url('/assets/images/pattern-bg-1.webp'), 
       linear-gradient(rgba(132, 193, 217, 1), rgba(132, 193, 217, 1));
     background-size: cover;
     background-position: center;
@@ -79,7 +79,7 @@ html {
 
   .pattern-bg-2 {
     background-image: 
-      url('/assets/images/pattern-bg-1.png'), 
+      url('/assets/images/pattern-bg-1.webp'), 
       linear-gradient(rgb(242 88 73 / 1), rgb(242 88 73 / 1));
     background-size: cover;
     background-position: center;
