@@ -1,7 +1,7 @@
 // footer.js
 "use client";
 
-import { menuItems } from "../../data/menuData";
+import { menuItems } from "../data/menuData";
 import { useState, useEffect } from "react";
 import Image from "next/image";
 

@@ -1,7 +1,7 @@
 import SEO from "@/components/SEO";
 import Header from "../../layouts/paan-academy-header";
 import Image from "next/image";
-import Footer from "./footer";
+import Footer from "../../layouts/paan-academy-footer";
 import { useEffect, useRef, useState } from "react";
 import { useFixedHeader } from '../../../utils/scrollUtils';
 import PAAacademyMarquee from "@/components/PAAacademyMarquee";
