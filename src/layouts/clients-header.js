@@ -39,7 +39,7 @@ const Header = ({ navLinkColor }) => {
                 alt="Logo"
                 width={200}
                 height={70}
-                style={{ objectFit: 'contain', height: 'auto', width: 'auto', maxWidth: 200, maxHeight: 70 }}
+                style={{ objectFit: 'contain', height: 'auto', width: 'auto', maxWidth: 120, maxHeight: 70 }}
                 priority
               />
             </Link>
