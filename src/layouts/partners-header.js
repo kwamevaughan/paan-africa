@@ -136,7 +136,7 @@ const Header = ({ navLinkColor }) => {
           <div className="flex items-center justify-between p-4 bg-white">
             <div className="flex items-center">
               <Image
-                src="/assets/images/partners-page-logo.png"
+                src="/assets/images/partners-logo.svg"
                 alt="Logo"
                 width={110}
                 height={39}
