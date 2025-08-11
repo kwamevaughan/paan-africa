@@ -33,7 +33,7 @@ const Header = ({ navLinkColor }) => {
                 alt="Logo"
                 width={200}
                 height={70}
-                style={{ objectFit: 'contain', height: 'auto', width: 'auto', maxWidth: 200, maxHeight: 70 }}
+                style={{ objectFit: 'contain', height: 'auto', width: 'auto', maxWidth: 120, maxHeight: 70 }}
                 priority
               />
             </Link>
@@ -112,7 +112,7 @@ const Header = ({ navLinkColor }) => {
           <div className="flex items-center justify-between p-4 border-b border-white/10 bg-[#172840]">
             <div className="flex items-center">
               <Image
-                src="/assets/images/white-logo.png"
+                src="/assets/images/paan-ambassador-logo.svg"
                 alt="Logo"
                 width={110}
                 height={39}

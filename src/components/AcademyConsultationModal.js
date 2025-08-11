@@ -62,12 +62,12 @@ const AcademyConsultationModal = ({ isOpen, onClose }) => {
             
             {/* Mobile CTA Button */}
             <a
-              href="https://calendly.com/njue-duncan-growthpad/paan-partners-introduction"
+              href="./academy"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-paan-green text-white px-4 py-2 rounded-full font-semibold text-xs shadow-lg hover:bg-[#D6473C] transition-all duration-300 inline-block w-full text-center"
             >
-              Schedule consultation
+              Become a Trainer
             </a>
           </div>
         </div>
@@ -104,12 +104,12 @@ const AcademyConsultationModal = ({ isOpen, onClose }) => {
             {/* CTA Button */}
             <div className="mt-auto">
               <a
-                href="https://calendly.com/njue-duncan-growthpad/paan-partners-introduction"
+                href="./academy"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-paan-green text-white px-6 py-3 md:px-8 md:py-4 rounded-full font-semibold text-base shadow-lg hover:bg-[#D6473C] transition-all duration-300 inline-block w-auto text-center"
+                className="bg-paan-green text-white px-6 py-2 md:px-8 md:py-4 rounded-full font-semibold text-base shadow-lg hover:bg-[#D6473C] transition-all duration-300 inline-block w-auto text-center"
               >
-                Schedule a free consultation
+                Become a Trainer
               </a>
             </div>
           </div>

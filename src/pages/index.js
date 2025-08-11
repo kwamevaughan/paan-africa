@@ -19,6 +19,7 @@ import AgencyLogosGrid from "@/components/AgencyLogosGrid";
 import ScrollToTop from "@/components/ScrollToTop";
 import ConnectingDots from "@/components/ConnectingDots";
 import AcademyConsultationModal from "@/components/AcademyConsultationModal";
+import PaanAmbassadorProgramModal from "@/components/PaanAmbassadorProgramModal";
 
 // Add PasscodeCopy component definition before HomePage
 function PasscodeCopy({ passcode }) {
@@ -65,6 +66,8 @@ const HomePage = () => {
   const canvasRef = useRef(null);
   const [showConsultModal, setShowConsultModal] = useState(false);
   const [hasShownModal, setHasShownModal] = useState(false); // Track if modal has been shown
+  const [showAmbassadorModal, setShowAmbassadorModal] = useState(false);
+  const [hasShownAmbassadorModal, setHasShownAmbassadorModal] = useState(false);
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
@@ -93,6 +96,64 @@ const HomePage = () => {
       window.removeEventListener('scroll', handleScrollToBottom);
     };
   }, [hasShownModal]);
+
+  // Add exit-intent detection for Ambassador Program Modal
+  useEffect(() => {
+    let exitIntentTimeout;
+
+    const handleExitIntent = (e) => {
+      // Only trigger if user hasn't seen the modal yet
+      if (hasShownAmbassadorModal) return;
+
+      // Check if mouse is leaving from the top of the page (exit intent)
+      if (e.clientY <= 0) {
+        // Add a small delay to avoid false triggers
+        exitIntentTimeout = setTimeout(() => {
+          setShowAmbassadorModal(true);
+          setHasShownAmbassadorModal(true);
+        }, 100);
+      }
+    };
+
+    const handleMouseEnter = () => {
+      // Clear timeout if user moves mouse back into the page quickly
+      if (exitIntentTimeout) {
+        clearTimeout(exitIntentTimeout);
+      }
+    };
+
+    // Only add event listeners on desktop (avoid mobile false triggers)
+    const isDesktop = window.innerWidth >= 1024;
+    
+    if (isDesktop) {
+      document.addEventListener('mouseleave', handleExitIntent);
+      document.addEventListener('mouseenter', handleMouseEnter);
+    }
+
+    // Alternative: beforeunload event for mobile/tablet
+    const handleBeforeUnload = (e) => {
+      if (!hasShownAmbassadorModal && !isDesktop) {
+        setShowAmbassadorModal(true);
+        setHasShownAmbassadorModal(true);
+        // Note: Modern browsers ignore custom messages in beforeunload
+        e.preventDefault();
+        e.returnValue = '';
+      }
+    };
+
+    if (!isDesktop) {
+      window.addEventListener('beforeunload', handleBeforeUnload);
+    }
+
+    return () => {
+      if (exitIntentTimeout) {
+        clearTimeout(exitIntentTimeout);
+      }
+      document.removeEventListener('mouseleave', handleExitIntent);
+      document.removeEventListener('mouseenter', handleMouseEnter);
+      window.removeEventListener('beforeunload', handleBeforeUnload);
+    };
+  }, [hasShownAmbassadorModal]);
 
   // Remove IntersectionObserver effect (lines 70-100)
   // useEffect(() => {
@@ -1023,6 +1084,7 @@ const HomePage = () => {
         <AgencyEnquiryModal isOpen={isModalOpen} onClose={closeModal} />
         <ScrollToTop />
         <AcademyConsultationModal isOpen={showConsultModal} onClose={() => setShowConsultModal(false)} />
+        <PaanAmbassadorProgramModal isOpen={showAmbassadorModal} onClose={() => setShowAmbassadorModal(false)} />
       </main>
       <Footer />
       </div>
