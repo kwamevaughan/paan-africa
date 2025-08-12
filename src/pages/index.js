@@ -20,6 +20,7 @@ import ScrollToTop from "@/components/ScrollToTop";
 import ConnectingDots from "@/components/ConnectingDots";
 import AcademyConsultationModal from "@/components/AcademyConsultationModal";
 import PaanAmbassadorProgramModal from "@/components/PaanAmbassadorProgramModal";
+import ProgramCard from "@/components/ProgramCard"
 
 // Add PasscodeCopy component definition before HomePage
 function PasscodeCopy({ passcode }) {
@@ -691,6 +692,9 @@ const HomePage = () => {
             </div>
           </section>
         </div>
+
+        <ProgramCard />
+       
 
         <AgencyLogosGrid />
 

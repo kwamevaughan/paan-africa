@@ -340,7 +340,7 @@ const HomePage = () => {
                   transition={{ duration: 1, type: "spring" }}
                 >
                   <Image 
-                    src="/assets/images/certified-members/aquila-logo.svg" 
+                    src="/assets/images/certified-members/aquila/aquila-logo.svg" 
                     width={400} 
                     height={280} 
                     alt="AQCILLA Logo" 
@@ -493,7 +493,7 @@ const HomePage = () => {
               {[1,2,3,4,5,6,7,8].map((num) => (
                 <div key={num} className="flex items-center justify-center p-4 bg-gray-50 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-200">
                   <Image
-                    src={`/assets/images/certified-members/aquilaclients/${num}.png`}
+                    src={`/assets/images/certified-members/aquila/${num}.png`}
                     alt={`Client logo ${num}`}
                     width={120}
                     height={60}
