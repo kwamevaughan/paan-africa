@@ -333,34 +333,46 @@ const HomePage = () => {
           />
           <section className="flex flex-col items-center justify-center min-h-screen relative z-10 px-4 sm:px-8 lg:px-16">
             <div className="text-center max-w-4xl mx-auto w-full">
-              <div className="mb-8 flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-8 w-full">
-                <motion.div
-                  initial={{ x: 150, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  transition={{ duration: 1, type: "spring" }}
-                >
-                  <Image 
-                    src="/assets/images/certified-members/lyftup/logo.png" 
-                    width={400} 
-                    height={280} 
-                    alt="AQCILLA Logo" 
-                    className="mx-auto w-40 sm:w-64 h-auto object-contain" 
-                  />
-                </motion.div>
-                <motion.div
-                  initial={{ x: -150, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  transition={{ duration: 1, type: "spring" }}
-                >
-                  <Image 
-                    src="/assets/images/certified-members/badge.svg" 
-                    width={110} 
-                    height={70} 
-                    alt="AQuiLLA DIGITAL Badge" 
-                    className="mx-auto w-16 sm:w-20 h-auto object-contain" 
-                  />
-                </motion.div>
-              </div>
+            <div className="mb-8 flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-8 w-full">
+              <motion.div
+                initial={{ x: 150, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{ duration: 1, type: "spring" }}
+              >
+                <Image 
+                  src="/assets/images/certified-members/lyftup/logo.png" 
+                  width={400} 
+                  height={280} 
+                  alt="LiftUp Logo" 
+                  className="mx-auto w-40 sm:w-64 h-auto object-contain" 
+                />
+              </motion.div>
+              
+              {/* Badge Container with both certification and membership level */}
+              <motion.div
+                initial={{ x: -150, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{ duration: 1, type: "spring" }}
+                className="flex flex-col items-center gap-3"
+              >
+                <Image 
+                  src="/assets/images/certified-members/badge.svg" 
+                  width={110} 
+                  height={70} 
+                  alt="PAAN Certified Member Badge" 
+                  className="mx-auto w-16 sm:w-20 h-auto object-contain" 
+                />
+                
+                {/* New Membership Level Badge */}
+                <div className="bg-paan-blue rounded-full px-4 py-2 shadow-lg">
+                  <div className="flex items-center gap-2">
+                    <Icon icon="mdi:star" className="w-4 h-4 text-white" />
+                    <span className="text-white text-sm font-semibold">Full Member</span>
+                    <Icon icon="mdi:star" className="w-4 h-4 text-white" />
+                  </div>
+                </div>
+              </motion.div>
+            </div>
               <h1 className="text-2xl sm:text-4xl lg:text-6xl uppercase font-bold text-gray-900 mb-2 sm:mb-4">
                   LiftUp Agency 
               </h1>

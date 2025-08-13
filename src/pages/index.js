@@ -314,9 +314,9 @@ const HomePage = () => {
   return (
     <>
     <SEO
-      title="Pan-African Agency Network (PAAN) | Africa's Leading Network of Creative & Tech Agencies"
-      description="Join the Pan-African Agency Network (PAAN), uniting top creative, digital marketing, and tech agencies across Africa and the diaspora. Discover new business opportunities, expand your network, and access premium resources tailored for African creatives, marketers, and innovative tech leaders. Ideal for agencies and clients seeking to thrive across the African continent."
-      keywords="Pan-African creative agencies, African tech agencies, African digital marketing network, join African agency network, creative agencies in Africa, African digital innovation, pan-African collaboration, agency network Africa, African creatives, tech partnerships Africa"
+      title="Pan-African Agency Network (PAAN) | Leading Digital Marketing & Tech Agencies Across Pan Africa"
+      description="Join the Pan-African Agency Network (PAAN), uniting top digital marketing agencies, tech agencies, and creative strategy partners across Pan Africa. Accelerate your business development with exclusive opportunities, strategic partnerships, and premium resources designed for Africa’s most innovative agencies and marketers."
+      keywords="Pan-African creative agencies, top African tech agencies, African digital marketing network, join African agency network, creative agencies in Africa, leading African digital innovation, pan-African collaboration platform, agency network in Africa, African creatives community, tech partnerships Africa, Africa digital marketing agencies, pan-African tech innovation, African creative strategy partners, African digital agency network, pan-African business development, Africa’s creative agency network, digital marketing agencies in Africa, tech agency partnerships Africa"
     />
     <div className="relative">
       <main className="px-3 pt-6 sm:px-0 sm:pt-0 relative">
