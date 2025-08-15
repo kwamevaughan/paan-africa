@@ -400,7 +400,7 @@ const HomePage = () => {
                 <Image
                                   src="/assets/images/sketch-1.webp"
                   width={400}
-                  height={0}
+                  height={200}
                   alt=""
                   className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-auto h-auto z-[-2]"
                 />
@@ -410,7 +410,7 @@ const HomePage = () => {
                 <Image
                                   src="/assets/images/sketch-3.webp"
                   width={400}
-                  height={0}
+                  height={200}
                   alt=""
                   className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-auto h-auto z-[-2]"
                 />
@@ -426,7 +426,6 @@ const HomePage = () => {
                 height={300}
                 alt="Team collaboration"
                 className="rounded-lg object-cover w-full h-auto"
-                priority
               />
               <div className="">
                 <button
@@ -502,7 +501,6 @@ const HomePage = () => {
                   height={300}
                   alt="Team collaboration"
                   className="rounded-lg object-cover w-full h-auto"
-                  priority
                 />
               </div>
 
@@ -581,7 +579,6 @@ const HomePage = () => {
                   height={400}
                   alt="Pan-African Reach"
                   className="shadow-lg shadow-gray-400/50 rounded-lg"
-                  priority
                 />
             </div>
             <div className="flex flex-col gap-4">
@@ -719,7 +716,6 @@ const HomePage = () => {
                 height={300}
                 alt="Team collaboration"
                 className="rounded-lg object-cover w-full h-auto"
-                priority
               />
             </div>
             <div className="col-span-1 sm:col-span-2 flex flex-col gap-4">
@@ -776,7 +772,6 @@ const HomePage = () => {
                 height={340}
                 alt="Past Webinar Banner"
                 className="rounded-lg object-cover w-full h-auto max-h-80 shadow border border-gray-300"
-                priority
               />
             </div>
             <div className="w-full md:w-1/2 flex flex-col gap-6 items-start">
@@ -820,7 +815,6 @@ const HomePage = () => {
                   height={600}
                   alt="Voice AI for Consumer Engagement at Scale"
                   className="rounded-lg object-cover w-full h-full shadow-lg border border-gray-200"
-                  priority
                 />
               </div>
             </div>

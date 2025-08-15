@@ -458,12 +458,6 @@ const HomePage = () => {
                     </h2>
                     <div className="w-16 h-1 bg-gradient-to-r from-paan-dark-blue to-paan-dark-blue/60"></div>
                   </div>
-                  {/* Member Since Badge */}
-                  <div className="inline-flex items-center bg-paan-dark-blue/10 backdrop-blur-sm rounded-lg px-4 py-2 border border-paan-dark-blue/20">
-                    <span className="text-sm font-medium text-paan-dark-blue/90">
-                      Member Since 2025
-                    </span>
-                  </div>
 
                   {/* Description */}
                   <p className="text-lg sm:text-xl leading-relaxed text-paan-dark-blue/90 font-light">
