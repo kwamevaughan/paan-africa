@@ -362,15 +362,6 @@ const HomePage = () => {
                   alt="PAAN Certified Member Badge" 
                   className="mx-auto w-16 sm:w-20 h-auto object-contain" 
                 />
-                
-                {/* New Membership Level Badge */}
-                <div className="bg-paan-blue rounded-full px-4 py-2 shadow-lg">
-                  <div className="flex items-center gap-2">
-                    <Icon icon="mdi:star" className="w-4 h-4 text-white" />
-                    <span className="text-white text-sm font-semibold">Full Member</span>
-                    <Icon icon="mdi:star" className="w-4 h-4 text-white" />
-                  </div>
-                </div>
               </motion.div>
             </div>
               <h1 className="text-2xl sm:text-4xl lg:text-6xl uppercase font-bold text-gray-900 mb-2 sm:mb-4">
@@ -540,6 +531,51 @@ const HomePage = () => {
               </div>
 
               
+            </div>
+          </section>
+        </div>
+        <div className="bg-gradient-to-r from-paan-blue/5 to-paan-dark-blue/5 py-8 relative z-10">
+          <section className="relative mx-auto max-w-6xl px-4 sm:px-6">
+            <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12">
+              
+              {/* Certification Status */}
+              <div className="text-center">
+                <div className="inline-flex items-center bg-white rounded-2xl px-6 py-4 shadow-lg border border-paan-blue/20">
+                  <Image 
+                    src="/assets/images/certified-members/badge.svg" 
+                    width={40} 
+                    height={40} 
+                    alt="PAAN Badge" 
+                    className="mr-3" 
+                  />
+                  <div className="text-left">
+                    <div className="text-sm text-gray-600">Certification Status</div>
+                    <div className="font-semibold text-paan-dark-blue">PAAN Certified</div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Membership Level */}
+              <div className="text-center">
+                <div className="inline-flex items-center bg-gradient-to-r from-amber-400 to-amber-500 rounded-2xl px-6 py-4 shadow-lg">
+                  <Icon icon="mdi:crown" className="w-10 h-10 text-white mr-3" />
+                  <div className="text-left">
+                    <div className="text-sm text-amber-100">Membership Level</div>
+                    <div className="font-bold text-white">Full Member</div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Years of Service */}
+              <div className="text-center">
+                <div className="inline-flex items-center bg-white rounded-2xl px-6 py-4 shadow-lg border border-paan-blue/20">
+                  <Icon icon="mdi:calendar-check" className="w-10 h-10 text-paan-blue mr-3" />
+                  <div className="text-left">
+                    <div className="text-sm text-gray-600">Member Since</div>
+                    <div className="font-semibold text-paan-dark-blue">2025</div>
+                  </div>
+                </div>
+              </div>
             </div>
           </section>
         </div>
