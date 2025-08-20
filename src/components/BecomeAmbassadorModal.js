@@ -1,7 +1,21 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Icon } from '@iconify/react';
 
 export default function BecomeAmbassadorModal({ isOpen, onClose }) {
+  // Load gtag script if not already loaded
+  useEffect(() => {
+    if (typeof window !== 'undefined' && !window.gtag) {
+      const script = document.createElement('script');
+      script.src = 'https://www.googletagmanager.com/gtag/js?id=AW-17477138010';
+      script.async = true;
+      document.head.appendChild(script);
+      
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-17477138010');
+    }
+  }, []);
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -30,6 +44,23 @@ export default function BecomeAmbassadorModal({ isOpen, onClose }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
+    // Track form submission with Google Ads
+    if (typeof gtag !== 'undefined') {
+      gtag('event', 'conversion', {
+        'send_to': 'AW-17477138010/bV6RCIXv4YgbENrs341B',
+        'event_callback': async () => {
+          // This callback will be triggered after the conversion is tracked
+          await submitForm();
+        }
+      });
+    } else {
+      // Fallback in case gtag is not loaded
+      await submitForm();
+    }
+  };
+
+  const submitForm = async () => {
     setIsSubmitting(true);
 
     try {
