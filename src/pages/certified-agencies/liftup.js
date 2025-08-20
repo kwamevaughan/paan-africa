@@ -578,8 +578,8 @@ const HomePage = () => {
           <section className="relative mx-auto max-w-6xl px-4 sm:px-6">
             <h2 className="text-3xl sm:text-4xl font-bold text-paan-dark-blue text-center mb-10">Clients LiftUp Has Worked With</h2>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 md:gap-10 items-center justify-center">
-              {[1,2,3,4,5,].map((num) => (
-                <div key={num} className="flex items-center justify-center p-4 bg-gray-50 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-200">
+              {[1,2,3,4,5,7,8,9,10,11,12,13,].map((num) => (
+                <div key={num} className="flex items-center justify-center p-4 bg-gray-300 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-200">
                   <Image
                     src={`/assets/images/certified-members/lyftup/${num}.png`}
                     alt={`Client logo ${num}`}

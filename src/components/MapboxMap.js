@@ -240,13 +240,13 @@ const MapboxMap = () => {
       // Simple SVG icons
       if (isAgency) {
         icon.innerHTML = `
-          <svg width="${iconSize}" height="${iconSize}" fill="white" viewBox="0 0 24 24">
+          <svg width="${iconSize}" height="${iconSize}" fill="#172840" viewBox="0 0 24 24">
             <path d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9V7L15 1H5C3.89 1 3 1.89 3 3V21C3 22.11 3.89 23 5 23H19C20.11 23 21 22.11 21 21V9ZM19 9H14V4H5V21H19V9Z"/>
           </svg>
         `;
       } else {
         icon.innerHTML = `
-          <svg width="${iconSize}" height="${iconSize}" fill="white" viewBox="0 0 24 24">
+          <svg width="${iconSize}" height="${iconSize}" fill="#172840" viewBox="0 0 24 24">
             <path d="M12 12C14.21 12 16 10.21 16 8C16 5.79 14.21 4 12 4C9.79 4 8 5.79 8 8C8 10.21 9.79 12 12 12ZM12 14C9.33 14 4 15.34 4 18V20H20V18C20 15.34 14.67 14 12 14Z"/>
           </svg>
         `;
@@ -299,14 +299,14 @@ const MapboxMap = () => {
         markerEl.appendChild(featuredBadge);
       }
 
-      // Create simple popup with minimal content
+      // simple popup with minimal content
       const popup = new mapboxgl.Popup({
         offset: 30,
         closeButton: true,
         className: 'custom-popup',
         maxWidth: '300px'
       }).setHTML(`
-        <div class="p-4">
+        <div class="p-4 z-20">
           <div class="flex items-center space-x-3 mb-3">
             <img src="${profile.avatar_url}" alt="${profile.full_name}" class="w-12 h-12 rounded-full object-cover" />
             <div class="flex-1">
