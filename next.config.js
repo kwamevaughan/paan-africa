@@ -163,7 +163,10 @@ const withBundleAnalyzer = initializeBundleAnalyzer({
 // The base Next.js configuration
 const nextConfig = {
   output: "standalone", // Keeps the build output as standalone (recommended for deployment)
-  devIndicators: false, // Disables the development indicators, including the Next.js logo
+  devIndicators: {
+    buildActivity: false,
+    buildActivityPosition: 'bottom-right',
+  }, // Disables the development indicators, including the Next.js logo
   images: {
     domains: ['ik.imagekit.io', 'flagcdn.com'],
   },

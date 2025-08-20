@@ -253,7 +253,7 @@ const MemberTiers = () => {
               <td className="p-4 border border-gray-200 w-[200px] h-[100px] text-center">
                 <div className="flex justify-center items-center h-full">
                     <Image
-                    src="/assets/images/free-badge.png"
+                    src="/assets/images/free-badge.webp"
                     width={50}
                     height={50}
                     alt="Strategic Collaboration"
@@ -263,7 +263,7 @@ const MemberTiers = () => {
               <td className="p-4 border border-gray-200 w-[200px] h-[100px] text-center">
                 <div className="flex justify-center items-center h-full">
                     <Image
-                    src="/assets/images/full-badge.png"
+                    src="/assets/images/full-badge.webp"
                     width={50}
                     height={50}
                     alt="Strategic Collaboration"
@@ -273,7 +273,7 @@ const MemberTiers = () => {
               <td className="p-4 border border-gray-200 w-[200px] h-[100px] text-center">
                 <div className="flex justify-center items-center h-full">
                         <Image
-                        src="/assets/images/associate-badge.png"
+                        src="/assets/images/associate-badge.webp"
                         width={50}
                         height={50}
                         alt="Strategic Collaboration"
@@ -283,7 +283,7 @@ const MemberTiers = () => {
               <td className="p-4 border border-gray-200 w-[200px] h-[100px] text-center">
                     <div className="flex justify-center items-center h-full">
                         <Image
-                        src="/assets/images/gold-badge.png"
+                        src="/assets/images/gold-badge.webp"
                         width={50}
                         height={50}
                         alt="Strategic Collaboration"
@@ -574,6 +574,28 @@ const MemberTiers = () => {
               <td className="p-4 border border-gray-200 w-[200px] h-[100px] text-center">Available</td>
               <td className="p-4 border border-gray-200 w-[200px] h-[100px] text-center">Available</td>
               <td className="p-4 border border-gray-200 w-[200px] h-[100px] text-center">Available</td>
+            </tr>
+          </tbody>
+          <tbody>
+            <tr className="bg-gray-50">
+              <td colSpan="5" className="p-4 font-bold text-lg text-[#172840] bg-gray-100">
+                PAAN Academy
+              </td>
+            </tr>
+            <tr>
+              <td className="p-4 border border-gray-200 w-[200px] h-[100px] bg-[#D1D3D4] font-semibold text-center">PAAN Academy</td>
+              <td className="p-4 border border-gray-200 w-[200px] h-[100px] text-center">
+                <div className="flex justify-center items-center h-full">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><path fill="currentColor" d="M16 2C8.2 2 2 8.2 2 16s6.2 14 14 14s14-6.2 14-14S23.8 2 16 2m5.4 21L16 17.6L10.6 23L9 21.4l5.4-5.4L9 10.6L10.6 9l5.4 5.4L21.4 9l1.6 1.6l-5.4 5.4l5.4 5.4z"/></svg>
+                 </div>
+              </td>
+              <td className="p-4 border border-gray-200 w-[200px] h-[100px] text-center">
+                <div className="flex justify-center items-center h-full">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><path fill="currentColor" d="M16 2C8.2 2 2 8.2 2 16s6.2 14 14 14s14-6.2 14-14S23.8 2 16 2m5.4 21L16 17.6L10.6 23L9 21.4l5.4-5.4L9 10.6L10.6 9l5.4 5.4L21.4 9l1.6 1.6l-5.4 5.4l5.4 5.4z"/></svg>
+                 </div>
+              </td>
+              <td className="p-4 border border-gray-200 w-[200px] h-[100px] text-center">Create Courses & new revenue</td>
+              <td className="p-4 border border-gray-200 w-[200px] h-[100px] text-center">Create Courses & new revenue</td>
             </tr>
           </tbody>
         </table>

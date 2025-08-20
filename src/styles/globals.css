@@ -3,6 +3,47 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Mapbox GL JS Styles */
+.mapboxgl-map {
+  font-family: 'Poppins', sans-serif !important;
+}
+
+.mapboxgl-popup {
+  font-family: 'Poppins', sans-serif !important;
+}
+
+.mapboxgl-popup-content {
+  border-radius: 12px !important;
+  padding: 0 !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15) !important;
+}
+
+.mapboxgl-popup-tip {
+  background-color: white !important;
+}
+
+.mapboxgl-ctrl-group {
+  border: none !important;
+  border-radius: 8px !important;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+}
+
+.mapboxgl-ctrl-group button {
+  background-color: white !important;
+  color: #374151 !important;
+  border: none !important;
+  width: 36px !important;
+  height: 36px !important;
+  line-height: 34px !important;
+  font-size: 18px !important;
+  font-weight: bold !important;
+}
+
+.mapboxgl-ctrl-group button:hover {
+  background-color: #f3f4f6 !important;
+}
+
 /* Global font settings */
 body {
     font-family: 'Poppins', sans-serif;
@@ -95,7 +136,42 @@ html {
     position: relative;
   }
 
-    /* Ensure react-hot-toast appears above fixed header */
+    /* Line clamp utilities */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Event card hover effects */
+.event-card-hover {
+  transition: all 0.3s ease;
+}
+
+.event-card-hover:hover {
+  transform: translateY(-4px);
+}
+
+/* Smooth transitions for filters */
+.filter-transition {
+  transition: all 0.2s ease-in-out;
+}
+
+/* Sticky positioning for event details sidebar */
+.sticky-sidebar {
+  position: sticky;
+  top: 6rem;
+}
+
+/* Ensure react-hot-toast appears above fixed header */
     .react-hot-toast-container {
       position: fixed !important;
       top: 20px !important;

@@ -180,7 +180,16 @@ const Footer = () => {
                   AI Brief Builder
                 </Link>
               </li>
-              {/* Add more tools here as they become available */}
+              {/* <li>
+                <Link
+                  href="/talent-discovery"
+                  className="font-normal text-gray-200 hover:text-white hover:underline transition-all duration-300 cursor-pointer flex items-center gap-2"
+                >
+                  <Icon icon="lucide:map-pin" className="w-4 h-4" />
+                  Talent Discovery
+                </Link>
+              </li> */}
+              {/* More tools here as they become available */}
             </ul>
           </div>
 
