@@ -5,6 +5,7 @@ import Footer from "@/layouts/footer";
 import { useEffect, useRef, useState } from "react";
 import { useFixedHeader } from '../../utils/scrollUtils';
 import EnquiryModal from "@/components/EnquiryModal";
+import MaConsultationModal from "@/components/MaConsultationModal";
 import ScrollToTop from "@/components/ScrollToTop";
 import Accordion from "@/components/Accordion";
 import { motion } from "framer-motion";
@@ -23,6 +24,7 @@ const PaanMaPage = () => {
 
   const isFixed = useFixedHeader();
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isMaModalOpen, setIsMaModalOpen] = useState(false);
 
   // Restore IntersectionObserver for section transitions
   useEffect(() => {
@@ -59,6 +61,8 @@ const PaanMaPage = () => {
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
+  const openMaModal = () => setIsMaModalOpen(true);
+  const closeMaModal = () => setIsMaModalOpen(false);
 
   return (
     <>
@@ -68,8 +72,8 @@ const PaanMaPage = () => {
         keywords="African marketing, certified agencies Africa, freelancers Africa, campaign execution, PAAN Summit, brand growth Africa, vetted creators, regional campaigns, Africa marketing, African marketing agencies, African freelancers, African marketing network, African marketing solutions, African marketing experts, African marketing professionals, African marketing services, African marketing consultants, African marketing agencies, African marketing freelancers, African marketing network, African marketing solutions, African marketing experts, African marketing professionals, African marketing services, African marketing consultants"
       />
       <main className="relative">
-        <PaanMaHeader />
-        <Hero openModal={openModal} />
+        <PaanMaHeader openModal={openMaModal} />
+        <Hero openModal={openMaModal} />
         {/* Lead the way */}
         <div id="vision" className="bg-[#E6F3F7] relative overflow-hidden">       
           <section className="relative mx-auto max-w-6xl py-12 sm:py-16 lg:py-20 px-4 sm:px-6">
@@ -112,7 +116,7 @@ const PaanMaPage = () => {
                   <motion.button 
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    onClick={() => window.open('https://calendly.com/antony-paan/45min', '_blank', 'noopener,noreferrer')}
+                    onClick={openMaModal}
                     className="bg-paan-red text-white px-6 py-3 sm:px-8 rounded-full hover:bg-orange-600 transition-all duration-300 font-medium text-sm sm:text-base shadow-lg flex items-center gap-2 w-auto"
                   >
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -264,9 +268,11 @@ const PaanMaPage = () => {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="bg-[#E6F3F7] p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
                     <div className="flex flex-col items-left text-left space-y-2">
-                      <img 
+                      <Image 
                         src="/assets/images/ma-program/paan-logo.svg" 
                         alt="PAAN Logo" 
+                        width={80}
+                        height={80}
                         className="w-20 h-20 object-contain" 
                       />
               <div>
@@ -277,15 +283,17 @@ const PaanMaPage = () => {
                     </div>
                   </div>
                   
-                  <div className="bg-[#E6F3F7] p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
+                  <div className="bg-paan-dark-blue p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
                     <div className="flex flex-col items-left text-left space-y-2">
-                      <img 
-                        src="/assets/images/ma-program/cactus-logo.png" 
-                        alt="Cactus Logo" 
+                      <Image 
+                        src="/assets/images/ma-program/agency-futures-logo.avif" 
+                        alt="Future Agencies Logo" 
+                        width={80}
+                        height={80}
                         className="w-20 h-20 object-contain" 
                       />
                     <div>
-                        <p className="text-gray-700 text-xs leading-relaxed"><span className="font-semibold">Cactus: </span>
+                        <p className="text-white text-xs leading-relaxed"><span className="font-semibold">Future Agencies: </span>
                           Decades of global deal‑making experience in creative, marketing, and professional services.
                       </p>
                     </div>
@@ -473,7 +481,7 @@ const PaanMaPage = () => {
                 <motion.button 
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  onClick={() => window.open('https://calendly.com/antony-paan/45min', '_blank', 'noopener,noreferrer')}
+                  onClick={openMaModal}
                   className="bg-paan-red text-white px-8 py-3 rounded-full hover:bg-orange-600 transition-all duration-300 font-medium text-base shadow-lg flex items-center gap-2 mx-auto"
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -578,7 +586,7 @@ const PaanMaPage = () => {
               
                 <div>
                 <button 
-                    onClick={() => window.open('https://calendly.com/antony-paan/45min', '_blank', 'noopener,noreferrer')}
+                    onClick={openMaModal}
                     className="bg-paan-red text-white px-8 py-3 rounded-full hover:bg-orange-600 transition-all duration-300 transform hover:scale-105 font-medium text-base shadow-lg flex items-center gap-2 mx-auto"
                 >
                     Book Your Confidential Consultation
@@ -590,6 +598,7 @@ const PaanMaPage = () => {
         </div>
         <Footer />
         <EnquiryModal isOpen={isModalOpen} onClose={closeModal} />
+        <MaConsultationModal isOpen={isMaModalOpen} onClose={closeMaModal} />
         <ScrollToTop />
       </main>
     </>
@@ -643,7 +652,7 @@ const Hero = ({ openModal }) => {
               <motion.button 
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                onClick={() => window.open('https://calendly.com/antony-paan/45min', '_blank', 'noopener,noreferrer')}
+                onClick={openModal}
                 className="bg-paan-red text-white py-3 px-6 sm:px-8 rounded-full hover:bg-orange-600 transition-all duration-300 font-semibold text-sm sm:text-base w-auto shadow-lg flex items-center justify-center gap-2"
               >
                 Book Your Confidential Consultation

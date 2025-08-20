@@ -179,3 +179,6 @@ NEXT_PUBLIC_MAPBOX_TOKEN=your_mapbox_access_token
 
 The investment in Mapbox will pay dividends through better user experience, professional appearance, and scalability for PAAN's growing platform.
 
+
+
+

@@ -6,7 +6,7 @@ export const menuItems = [
     { href: '/academy', label: 'PAAN Academy' },
     { href: '/paan-ambassador', label: 'Ambassador Program' },
     { href: '/pricing', label: 'Full Member Benefits & Tiers' },
-    { href: '/paan-ma-program', label: 'Margers & Acquisition Program' },
+    { href: '/paan-ma-program', label: 'Mergers & Acquisition Program' },
   ];
 
   export const freelancersMenu = [

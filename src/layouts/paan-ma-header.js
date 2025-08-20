@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import { useFixedHeader } from "../../utils/scrollUtils";
 
-const PaanMaHeader = () => {
+const PaanMaHeader = ({ openModal }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("vision");
   const isFixed = useFixedHeader();
@@ -89,7 +89,7 @@ const PaanMaHeader = () => {
           {/* CTA Button */}
           <div className="hidden md:block">
             <button
-              onClick={() => window.open('https://calendly.com/antony-paan/45min', '_blank', 'noopener,noreferrer')}
+              onClick={openModal}
               className="bg-paan-dark-blue text-white px-6 py-3 rounded-full text-sm font-medium hover:bg-orange-600 transition-colors duration-200 flex items-center gap-2"
             >
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F2B706" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -175,7 +175,7 @@ const PaanMaHeader = () => {
                 <div className="mt-6 pt-4 border-t border-gray-200">
                   <button
                     onClick={() => {
-                      window.open('https://calendly.com/antony-paan/45min', '_blank', 'noopener,noreferrer');
+                      openModal();
                       setIsMenuOpen(false);
                     }}
                     className="w-full bg-paan-dark-blue text-white px-4 py-3 rounded-full text-sm font-medium hover:bg-orange-600 transition-colors duration-200 flex items-center justify-center gap-2"
