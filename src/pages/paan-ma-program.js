@@ -293,7 +293,7 @@ const PaanMaPage = () => {
                         className="w-20 h-20 object-contain" 
                       />
                     <div>
-                        <p className="text-white text-xs leading-relaxed"><span className="font-semibold">Future Agencies: </span>
+                        <p className="text-white text-xs leading-relaxed"><span className="font-semibold">Agency Futures: </span>
                           Decades of global deal‑making experience in creative, marketing, and professional services.
                       </p>
                     </div>
@@ -639,7 +639,7 @@ const Hero = ({ openModal }) => {
               transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
               className="text-white text-base sm:text-lg lg:text-xl font-light leading-relaxed"
             >
-              Through the PAAN Mergers & Acquisitions Program, powered by Cactus, 
+              Through the PAAN Mergers & Acquisitions Program, powered by Agency Futures, 
               we connect Africa's most ambitious agencies with strategic opportunities to grow, scale, 
               or exit, backed by world-class M&A expertise and a trusted Pan-African network.
             </motion.p>  
