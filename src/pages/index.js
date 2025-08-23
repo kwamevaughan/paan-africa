@@ -756,6 +756,69 @@ const HomePage = () => {
             </div>
           </div>
         </div>
+        
+        {/* Upcoming Webinar */}
+        <div className="mx-auto max-w-6xl mt-20" id="upcoming-webinar-banner">
+          <section className="relative bg-gray-100 rounded-xl shadow-md overflow-hidden flex flex-col md:flex-row items-center gap-8 p-6 md:p-12 mb-16 border border-gray-200">
+            {/* Accent bar */}
+            <div className="absolute left-0 top-0 h-full w-2 bg-[#84C1D9] rounded-l-xl" />
+            {/* Badge */}
+            <div className="absolute top-6 left-8 z-10">
+              <span className="inline-block bg-paan-yellow text-white text-xs font-bold px-4 py-1 rounded-full shadow tracking-widest uppercase">Upcoming Webinar</span>
+            </div>
+            <div className="w-full md:w-1/2 flex justify-center relative z-0">
+              <Image
+                src="/assets/images/agencynomics.webp"
+                width={600}
+                height={600}
+                alt="Upcoming Webinar Banner"
+                className="rounded-lg object-cover w-full h-full shadow border border-gray-300"
+              />
+            </div>
+            <div className="w-full md:w-1/2 flex flex-col gap-6 items-start">
+              <div className="flex items-center gap-3">
+                <span className="inline-flex items-center justify-center bg-[#F2B706] text-[#172840] rounded-full p-2">
+                  <Icon icon="mdi:calendar-clock" className="w-6 h-6" />
+                </span>
+                <h2 className="text-2xl sm:text-3xl font-bold text-[#172840]">Hard-Won Lessons for the Next Generation of Agency Founders</h2>
+              </div>
+              <p className="text-[#F25849] text-base font-semibold">August 27, 2025 • 12:00 PM (EAT)</p>
+              <p className="text-gray-700 text-base sm:text-lg">
+                Join us for an exclusive webinar featuring insights from successful agency founders who have navigated the challenges of building and scaling creative agencies in Africa. Learn from their experiences, mistakes, and strategies for success.
+              </p>
+              <ul className="space-y-3 mt-2">
+                <li className="flex items-start gap-2 text-[#172840] text-base sm:text-lg">
+                  <span className="inline-block text-green-600 mt-1">
+                    <Icon icon="mdi:check-circle" className="w-5 h-5" />
+                  </span>
+                  Real stories from successful agency founders
+                </li>
+                <li className="flex items-start gap-2 text-[#172840] text-base sm:text-lg">
+                  <span className="inline-block text-green-600 mt-1">
+                    <Icon icon="mdi:check-circle" className="w-5 h-5" />
+                  </span>
+                  Practical strategies for scaling your agency
+                </li>
+                <li className="flex items-start gap-2 text-[#172840] text-base sm:text-lg">
+                  <span className="inline-block text-green-600 mt-1">
+                    <Icon icon="mdi:check-circle" className="w-5 h-5" />
+                  </span>
+                  Q&A session with industry experts
+                </li>
+              </ul>
+              <a
+                href="https://us06web.zoom.us/webinar/register/WN_Y5nr_QuWRniBqtBpxi7vBw#/registration"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="border-2 border-[#F25849] text-[#F25849] hover:bg-[#F25849] hover:text-white font-bold py-3 px-8 rounded-full transition-all duration-300 shadow text-base sm:text-lg mt-2 flex items-center gap-2"
+              >
+                <Icon icon="mdi:calendar-plus" className="w-6 h-6" />
+                Register Now
+              </a>
+            </div>
+          </section>
+        </div>
+        
         {/* Past Webinars */}
         <div className="mx-auto max-w-6xl mt-20" id="past-webinar-banner">
           <section className="relative bg-gray-100 rounded-xl shadow-md overflow-hidden flex flex-col md:flex-row items-center gap-8 p-6 md:p-12 mb-16 border border-gray-200">

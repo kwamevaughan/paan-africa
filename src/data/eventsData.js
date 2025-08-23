@@ -3,6 +3,21 @@ export const eventsData = {
   upcoming: [
     {
       id: 1,
+      title: "Hard-Won Lessons for the Next Generation of Agency Founders",
+      date: "2025-08-27",
+      time: "02:00 PM - 04:00 PM",
+      location: "Virtual Event",
+      venue: "Online",
+      description: "Join us for an exclusive webinar featuring insights from successful agency founders who have navigated the challenges of building and scaling creative agencies in Africa. Learn from their experiences, mistakes, and strategies for success.",
+      image: "/assets/images/agencynomics.webp",
+      category: "Webinar",
+      price: "Free",
+      registrationUrl: "https://us06web.zoom.us/webinar/register/WN_Y5nr_QuWRniBqtBpxi7vBw#/registration",
+      status: "upcoming",
+      featured: true
+    },
+    {
+      id: 2,
       title: "PAAN Creative Summit 2025",
       date: "2025-03-15",
       time: "09:00 AM - 06:00 PM",
@@ -17,7 +32,7 @@ export const eventsData = {
       featured: true
     },
     {
-      id: 2,
+      id: 3,
       title: "Digital Marketing Masterclass",
       date: "2025-02-20",
       time: "02:00 PM - 05:00 PM",
@@ -32,7 +47,7 @@ export const eventsData = {
       featured: false
     },
     {
-      id: 3,
+      id: 4,
       title: "Freelancer Success Workshop",
       date: "2025-02-28",
       time: "10:00 AM - 04:00 PM",
@@ -47,7 +62,7 @@ export const eventsData = {
       featured: false
     },
     {
-      id: 4,
+      id: 5,
       title: "Agency Growth Strategies",
       date: "2025-03-05",
       time: "01:00 PM - 06:00 PM",
