@@ -611,7 +611,10 @@ const HomePage = () => {
                   <div className="flex-1">
                     {/* Testimonial text */}
                     <blockquote className="text-xl sm:text-2xl font-medium text-gray-800 leading-relaxed mb-8 italic">
-                      "Everything should be as simple as possible, but not simpler."
+                      "Inspired by Albert Einstein’s words, “Everything should be as simple as possible, but not simpler,” 
+                      Islam built his agency on the principle of simplifying processes without compromising quality. 
+                      This approach drives the agency’s work delivering clear,
+                       efficient, and effective solutions that maintain depth and impact while avoiding unnecessary complexity."
                     </blockquote>
                     
                     {/* Attribution */}
