@@ -1,8 +1,18 @@
 import Image from 'next/image';
 import { Icon } from '@iconify/react';
 import Link from 'next/link';
+import { useState } from 'react';
 
 const EventCard = ({ event, isPast = false }) => {
+  const [copied, setCopied] = useState(false);
+
+  const handleCopyPasscode = () => {
+    if (event.zoomPasscode) {
+      navigator.clipboard.writeText(event.zoomPasscode);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1500);
+    }
+  };
   const formatDate = (dateString) => {
     const date = new Date(dateString);
     return date.toLocaleDateString('en-US', {
@@ -110,17 +120,66 @@ const EventCard = ({ event, isPast = false }) => {
           <div className="text-paan-dark-blue font-semibold">
             {event.price}
           </div>
-          <Link
-            href={`/events/${event.id}`}
-            className={`px-6 py-2 rounded-full font-semibold text-sm transition-all duration-300 ${
-              isPast
-                ? 'bg-gray-200 text-gray-600 hover:bg-gray-300'
-                : 'bg-paan-red text-white hover:bg-paan-red/90 hover:scale-105'
-            }`}
-          >
-            {isPast ? 'View Details' : 'Register Now'}
-          </Link>
+          {isPast ? (
+            <div className="flex gap-2">
+              {event.registrationUrl && (
+                <a
+                  href={event.registrationUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-4 py-2 rounded-full font-semibold text-sm transition-all duration-300 bg-paan-red text-white hover:bg-paan-red/90 hover:scale-105 flex items-center gap-1"
+                >
+                  {event.registrationUrl.includes('youtube.com') ? (
+                    <>
+                      <Icon icon="mdi:youtube" className="w-4 h-4" />
+                      Watch
+                    </>
+                  ) : (
+                    <>
+                      <Icon icon="mdi:play-circle" className="w-4 h-4" />
+                      Watch Recording
+                    </>
+                  )}
+                </a>
+              )}
+              <Link
+                href={`/events/${event.id}`}
+                className="px-4 py-2 rounded-full font-semibold text-sm transition-all duration-300 bg-gray-200 text-gray-600 hover:bg-gray-300"
+              >
+                Details
+              </Link>
+            </div>
+          ) : (
+            <Link
+              href={event.registrationUrl || `/events/${event.id}`}
+              target={event.registrationUrl && event.registrationUrl.startsWith('http') ? '_blank' : '_self'}
+              rel={event.registrationUrl && event.registrationUrl.startsWith('http') ? 'noopener noreferrer' : ''}
+              className="px-6 py-2 rounded-full font-semibold text-sm transition-all duration-300 bg-paan-red text-white hover:bg-paan-red/90 hover:scale-105"
+            >
+              Register Now
+            </Link>
+          )}
         </div>
+
+        {/* Zoom Passcode for Past Events */}
+        {isPast && event.zoomPasscode && (
+          <div className="mt-4 flex items-center gap-2 bg-white border border-gray-200 rounded-lg px-3 py-2">
+            <span className="font-semibold text-[#172840] text-sm">Passcode:</span>
+            <span className="font-mono bg-gray-100 px-2 py-1 rounded text-sm">{event.zoomPasscode}</span>
+            <button
+              onClick={handleCopyPasscode}
+              className="ml-1 px-2 py-1 rounded hover:bg-gray-200 transition text-[#F25849] font-bold flex items-center gap-1 focus:outline-none"
+              title="Copy passcode"
+              type="button"
+            >
+              <Icon icon="mdi:content-copy" className="w-4 h-4" />
+              <span className="sr-only">Copy</span>
+            </button>
+            {copied && (
+              <span className="text-green-600 text-xs ml-2 transition-opacity duration-200">Copied!</span>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );

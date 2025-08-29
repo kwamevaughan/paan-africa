@@ -729,198 +729,122 @@ const HomePage = () => {
           id="events"
           ref={sectionRefs.events}
         >
-          <section>
-            <p className="uppercase font-semibold mb-4">6. Summit & Events</p>
-            <p className="text-2xl">
-              Experience collaboration in action. Our signature events bring
-              together brands, agencies, and thought leaders to shape Africa's
-              creative future.
+          <section className="text-center mb-16">
+            <p className="uppercase font-semibold mb-4 text-[#F25849] tracking-wider">6. Summit & Events</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-[#172840] mb-6">
+              Experience Collaboration in Action
+            </h2>
+            <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+              Our signature events bring together brands, agencies, and thought leaders 
+              to shape Africa's creative future through knowledge sharing and strategic partnerships.
             </p>
           </section>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 items-center mt-10">
+          
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
+            <div className="relative group">
+              <div className="absolute inset-0 bg-gradient-to-r from-[#F25849] to-[#F2B706] rounded-2xl transform rotate-1 group-hover:rotate-0 transition-transform duration-300"></div>
+              <div className="relative bg-white rounded-2xl p-8 shadow-2xl transform -rotate-1 group-hover:rotate-0 transition-transform duration-300">
+                <div className="mb-6">
+                  <span className="inline-block bg-[#F25849] text-white text-xs font-bold px-4 py-2 rounded-full tracking-wider uppercase mb-4">
+                    Featured Event
+                  </span>
+                  <h3 className="text-2xl md:text-3xl font-bold text-[#172840] mb-4">
+                    PAAN Creative Summit 2025
+                  </h3>
+                  <p className="text-gray-600 text-lg leading-relaxed">
+                    Join us for the biggest creative industry gathering in Africa. Network with top agencies, 
+                    freelancers, and clients in an environment designed for meaningful connections and growth.
+                  </p>
+                </div>
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="flex items-center gap-2 text-[#F25849]">
+                    <Icon icon="mdi:calendar" className="w-5 h-5" />
+                    <span className="font-semibold">October 22, 2025</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-[#172840]">
+                    <Icon icon="mdi:map-marker" className="w-5 h-5" />
+                    <span className="font-semibold">Nairobi, Kenya</span>
+                  </div>
+                </div>
+                <Link
+                  href="/summit"
+                  className="inline-flex items-center gap-2 bg-[#172840] text-white px-8 py-3 rounded-full font-semibold hover:bg-[#F25849] transition-all duration-300 shadow-lg hover:shadow-xl"
+                >
+                  <span>Learn More</span>
+                  <Icon icon="mdi:arrow-right" className="w-5 h-5" />
+                </Link>
+              </div>
+            </div>
             
-            <div className="col-span-1 pattern-bg-2 rounded-lg transform transition-transform duration-300 hover:translate-y-[-5px]">
+            <div className="space-y-8">
+              <div className="bg-gradient-to-br from-gray-50 to-white rounded-xl p-8 border border-gray-100 shadow-lg">
+                <div className="flex items-start gap-4">
+                  <div className="flex-shrink-0">
+                    <div className="w-12 h-12 bg-[#84C1D9] rounded-full flex items-center justify-center">
+                      <Icon icon="mdi:presentation" className="w-6 h-6 text-white" />
+                    </div>
+                  </div>
+                  <div>
+                    <h4 className="text-xl font-bold text-[#172840] mb-2">Expert Webinars</h4>
+                    <p className="text-gray-600 leading-relaxed">
+                      Webinars featuring industry experts sharing insights on the latest trends, 
+                      technologies, and strategies shaping the creative industry.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="bg-gradient-to-br from-gray-50 to-white rounded-xl p-8 border border-gray-100 shadow-lg">
+                <div className="flex items-start gap-4">
+                  <div className="flex-shrink-0">
+                    <div className="w-12 h-12 bg-[#F2B706] rounded-full flex items-center justify-center">
+                      <Icon icon="mdi:account-group" className="w-6 h-6 text-white" />
+                    </div>
+                  </div>
+                  <div>
+                    <h4 className="text-xl font-bold text-[#172840] mb-2">Networking Events</h4>
+                    <p className="text-gray-600 leading-relaxed">
+                      Exclusive networking opportunities with fellow agency leaders, potential clients, 
+                      and industry partners across Africa and beyond.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="bg-gradient-to-br from-gray-50 to-white rounded-xl p-8 border border-gray-100 shadow-lg">
+                <div className="flex items-start gap-4">
+                  <div className="flex-shrink-0">
+                    <div className="w-12 h-12 bg-[#F25849] rounded-full flex items-center justify-center">
+                      <Icon icon="mdi:lightbulb" className="w-6 h-6 text-white" />
+                    </div>
+                  </div>
+                  <div>
+                    <h4 className="text-xl font-bold text-[#172840] mb-2">Workshops & Training</h4>
+                    <p className="text-gray-600 leading-relaxed">
+                      Hands-on workshops and training sessions designed to enhance your team's skills 
+                      and keep you ahead of industry trends.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div className="text-center">
+            <div className="bg-gradient-to-r from-[#172840] to-[#84C1D9] rounded-2xl p-12 text-white">
+              <h3 className="text-3xl font-bold mb-4">Ready to Join Our Events?</h3>
+              <p className="text-xl mb-8 opacity-90">
+                Discover upcoming events, register for webinars, and connect with the PAAN community.
+              </p>
               <Link
-                href="/summit"
-                target="_blank" // Opens in new tab
-                rel="noopener noreferrer" // Security best practice for external links
+                href="/events"
+                className="inline-flex items-center gap-3 bg-white text-[#172840] px-10 py-4 rounded-full font-bold text-lg hover:bg-gray-100 transition-all duration-300 shadow-lg hover:shadow-xl"
               >
-                <Image
-                  src="/assets/images/oct-summit.jpg"
-                  width={900}
-                  height={0}
-                  alt="Webinar"
-                  className="rounded-lg object-cover w-full h-full"
-                />
+                <Icon icon="mdi:calendar-multiple" className="w-6 h-6" />
+                <span>View All Events</span>
               </Link>
             </div>
           </div>
-        </div>
-        
-        {/* Upcoming Webinar */}
-        <div className="mx-auto max-w-6xl mt-20" id="upcoming-webinar-banner">
-          <section className="relative bg-gray-100 rounded-xl shadow-md overflow-hidden flex flex-col md:flex-row items-center gap-8 p-6 md:p-12 mb-16 border border-gray-200">
-            {/* Accent bar */}
-            <div className="absolute left-0 top-0 h-full w-2 bg-[#84C1D9] rounded-l-xl" />
-            {/* Badge */}
-            <div className="absolute top-6 left-8 z-10">
-              <span className="inline-block bg-paan-yellow text-white text-xs font-bold px-4 py-1 rounded-full shadow tracking-widest uppercase">Upcoming Webinar</span>
-            </div>
-            <div className="w-full md:w-1/2 flex justify-center relative z-0">
-              <Image
-                src="/assets/images/agencynomics.webp"
-                width={600}
-                height={600}
-                alt="Upcoming Webinar Banner"
-                className="rounded-lg object-cover w-full h-full shadow border border-gray-300"
-              />
-            </div>
-            <div className="w-full md:w-1/2 flex flex-col gap-6 items-start">
-              <div className="flex items-center gap-3">
-                <span className="inline-flex items-center justify-center bg-[#F2B706] text-[#172840] rounded-full p-2">
-                  <Icon icon="mdi:calendar-clock" className="w-6 h-6" />
-                </span>
-                <h2 className="text-2xl sm:text-3xl font-bold text-[#172840]">Hard-Won Lessons for the Next Generation of Agency Founders</h2>
-              </div>
-              <p className="text-[#F25849] text-base font-semibold">August 27, 2025 • 12:00 PM (EAT)</p>
-              <p className="text-gray-700 text-base sm:text-lg">
-                Join us for an exclusive webinar featuring insights from successful agency founders who have navigated the challenges of building and scaling creative agencies in Africa. Learn from their experiences, mistakes, and strategies for success.
-              </p>
-              <ul className="space-y-3 mt-2">
-                <li className="flex items-start gap-2 text-[#172840] text-base sm:text-lg">
-                  <span className="inline-block text-green-600 mt-1">
-                    <Icon icon="mdi:check-circle" className="w-5 h-5" />
-                  </span>
-                  Real stories from successful agency founders
-                </li>
-                <li className="flex items-start gap-2 text-[#172840] text-base sm:text-lg">
-                  <span className="inline-block text-green-600 mt-1">
-                    <Icon icon="mdi:check-circle" className="w-5 h-5" />
-                  </span>
-                  Practical strategies for scaling your agency
-                </li>
-                <li className="flex items-start gap-2 text-[#172840] text-base sm:text-lg">
-                  <span className="inline-block text-green-600 mt-1">
-                    <Icon icon="mdi:check-circle" className="w-5 h-5" />
-                  </span>
-                  Q&A session with industry experts
-                </li>
-              </ul>
-              <a
-                href="https://us06web.zoom.us/webinar/register/WN_Y5nr_QuWRniBqtBpxi7vBw#/registration"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="border-2 border-[#F25849] text-[#F25849] hover:bg-[#F25849] hover:text-white font-bold py-3 px-8 rounded-full transition-all duration-300 shadow text-base sm:text-lg mt-2 flex items-center gap-2"
-              >
-                <Icon icon="mdi:calendar-plus" className="w-6 h-6" />
-                Register Now
-              </a>
-            </div>
-          </section>
-        </div>
-        
-        {/* Past Webinars */}
-        <div className="mx-auto max-w-6xl mt-20" id="past-webinar-banner">
-          <section className="relative bg-gray-100 rounded-xl shadow-md overflow-hidden flex flex-col md:flex-row items-center gap-8 p-6 md:p-12 mb-16 border border-gray-200">
-            {/* Accent bar */}
-            <div className="absolute left-0 top-0 h-full w-2 bg-[#84C1D9] rounded-l-xl" />
-            {/* Badge */}
-            <div className="absolute top-6 left-8 z-10">
-              <span className="inline-block bg-[#84C1D9] text-[#172840] text-xs font-bold px-4 py-1 rounded-full shadow tracking-widest uppercase">Past Webinar</span>
-            </div>
-            <div className="w-full md:w-1/2 flex justify-center relative z-0">
-              <Image
-                src="/assets/images/webinar-banner.webp"
-                width={600}
-                height={340}
-                alt="Past Webinar Banner"
-                className="rounded-lg object-cover w-full h-auto max-h-80 shadow border border-gray-300"
-              />
-            </div>
-            <div className="w-full md:w-1/2 flex flex-col gap-6 items-start">
-              <div className="flex items-center gap-3">
-                <span className="inline-flex items-center justify-center bg-[#F2B706] text-[#172840] rounded-full p-2">
-                  <Icon icon="mdi:calendar" className="w-6 h-6" />
-                </span>
-                <h2 className="text-2xl sm:text-3xl font-bold text-[#172840]">AI For Client Retension & Growth</h2>
-              </div>
-              <p className="text-[#F25849] text-base font-semibold">Last Webinar • July 2 2025</p>
-              {/* Passcode with copy-to-clipboard */}
-              <PasscodeCopy passcode="K4W#LECp" />
-              <p className="text-gray-700 text-base sm:text-lg">
-                Join our exclusive webinar to discover how agency account managers can use AI to strengthen client relationships, save time and unlock new opportunities.
-              </p>
-              <a
-                href="https://us06web.zoom.us/rec/component-page?eagerLoadZvaPages=&accessLevel=meeting&action=viewdetailpage&sharelevel=meeting&useWhichPasswd=meeting&requestFrom=pwdCheck&clusterId=us06&componentName=need-password&meetingId=l0P--osw9rSwrswdJBo466Zg9oVCTk5d8kwZyAqnU1vkI29lzM_k9j9VPkTdstYE.Zu0TfEYAXBD1nLfv&originRequestUrl=https%3A%2F%2Fus06web.zoom.us%2Frec%2Fshare%2F-DKvx6Q2eX5lo42ukQ6ogCI-RZHRJ-57c-E2lXUZ5hvGMMzowrNY7jt5-utRbtAd.4hWokDGBJTjLD-55%3FstartTime%3D1751446311000"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="border-2 border-[#F25849] text-[#F25849] hover:bg-[#F25849] hover:text-white font-bold py-3 px-8 rounded-full transition-all duration-300 shadow text-base sm:text-lg mt-2 flex items-center gap-2"
-              >
-                <Icon icon="mdi:play-circle" className="w-6 h-6" />
-                Access Recording
-              </a>
-            </div>
-          </section>
-
-          {/* Second Past Webinar (previously Upcoming) */}
-          <section className="relative bg-gray-100 rounded-xl shadow-md overflow-hidden flex flex-col md:flex-row items-center gap-8 p-6 md:p-12 mb-16 border border-gray-200">
-            {/* Accent bar */}
-            <div className="absolute left-0 top-0 h-full w-2 bg-[#84C1D9] rounded-l-xl" />
-            {/* Badge */}
-            <div className="absolute top-6 left-8 z-10">
-              <span className="inline-block bg-[#84C1D9] text-[#172840] text-xs font-bold px-4 py-1 rounded-full shadow tracking-widest uppercase">Past Webinar</span>
-            </div>
-            <div className="w-full md:w-1/2 flex justify-center relative z-0">
-              <div className="aspect-square w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg flex items-center justify-center">
-                <Image
-                  src="/assets/images/Webinar-2.webp"
-                  width={600}
-                  height={600}
-                  alt="Voice AI for Consumer Engagement at Scale"
-                  className="rounded-lg object-cover w-full h-full shadow-lg border border-gray-200"
-                />
-              </div>
-            </div>
-            <div className="w-full md:w-1/2 flex flex-col gap-6 items-start">
-              <div className="flex items-center gap-3">
-                <span className="inline-flex items-center justify-center bg-[#84C1D9] text-[#172840] rounded-full p-2">
-                  <Icon icon="mdi:calendar-clock" className="w-6 h-6" />
-                </span>
-                <h2 className="text-2xl sm:text-3xl font-bold text-[#172840]">Voice AI for Consumer Engagement at Scale</h2>
-              </div>
-              <p className="text-[#F25849] text-base font-semibold">Webinar hosted by PAAN and led by Céline Duros of Viamo.</p>
-              <PasscodeCopy passcode="p$7j%9P9" />
-              <ul className="space-y-3 mt-2">
-                <li className="flex items-start gap-2 text-[#172840] text-base sm:text-lg">
-                  <span className="inline-block text-green-600 mt-1">
-                    <Icon icon="mdi:check-circle" className="w-5 h-5" />
-                  </span>
-                  Real-world use cases from African markets
-                </li>
-                <li className="flex items-start gap-2 text-[#172840] text-base sm:text-lg">
-                  <span className="inline-block text-green-600 mt-1">
-                    <Icon icon="mdi:check-circle" className="w-5 h-5" />
-                  </span>
-                  Practical steps to integrate Voice AI into your campaigns
-                </li>
-                <li className="flex items-start gap-2 text-[#172840] text-base sm:text-lg">
-                  <span className="inline-block text-green-600 mt-1">
-                    <Icon icon="mdi:check-circle" className="w-5 h-5" />
-                  </span>
-                  A better way to reach hard-to-reach communities
-                </li>
-              </ul>             
-              <a
-                href="https://us06web.zoom.us/rec/share/0GImiumaha-RtlQTN0Dncglvgi7Rf8BV4HLcBqcch0ZvFLEBs2V712fuXGutq3HO.BTEtNZA4KFhxfIWt"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="border-2 border-[#F25849] text-[#F25849] hover:bg-[#F25849] hover:text-white font-bold py-3 px-8 rounded-full transition-all duration-300 shadow text-base sm:text-lg mt-2 flex items-center gap-2"
-              >
-                <Icon icon="mdi:play-circle" className="w-6 h-6" />
-                Access Recording
-              </a>
-            </div>
-          </section>
         </div>
         {/* Past Webinar */}
         <div>
