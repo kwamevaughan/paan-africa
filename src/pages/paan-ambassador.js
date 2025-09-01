@@ -8,6 +8,7 @@ import AmbassadorPageParallax from "@/components/AmbassadorPageParallax";
 import BecomeAmbassadorModal from "@/components/BecomeAmbassadorModal";
 import ContactSection from "@/components/ContactSection";
 import ScrollToTop from "@/components/ScrollToTop";
+import { motion } from "framer-motion";
 
 const PAANAmbassador = () => {
   const sectionRefs = {
@@ -87,11 +88,13 @@ const PAANAmbassador = () => {
       />
       <main className="sm:px-0 sm:pt-0 relative">
         <Header />
-        <Hero openModal={openModal} />
-        <div className="bg-paan-blue relative overflow-hidden">
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6, ease: "easeOut" }}>
+          <Hero openModal={openModal} />
+        </motion.div>
+        <motion.div className="bg-paan-blue relative overflow-hidden" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: 0.6, ease: "easeOut" }}>
             <section className="relative mx-auto max-w-6xl mt-8 sm:mt-12 md:mt-20 px-4 sm:px-6 pb-16 sm:pb-20">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-                <div className="space-y-6">
+                <motion.div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center" initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }} variants={{ hidden: {}, show: { transition: { staggerChildren: 0.12 } } }}>
+                <motion.div className="space-y-6" variants={{ hidden: { opacity: 0 }, show: { opacity: 1 } }}>
                     <div className="space-y-4">
                     <h2 className="text-l sm:text-xl lg:text-2xl font-bold text-paan-dark-blue uppercase">
                         Leadership with Purpose
@@ -114,9 +117,9 @@ const PAANAmbassador = () => {
                     >
                         Become an Ambassador
                     </button>
-                </div>
+                </motion.div>
                 
-                <div className="flex justify-center lg:justify-end">
+                <motion.div className="flex justify-center lg:justify-end" variants={{ hidden: { opacity: 0 }, show: { opacity: 1 } }}>
                     <div className="w-full max-w-md lg:max-w-lg">
                     <Image
                         src="https://ik.imagekit.io/nkmvdjnna/PAAN/ambassador%20page/leadership-img.webp"
@@ -125,35 +128,35 @@ const PAANAmbassador = () => {
                         alt="Leadership illustration"
                     />
                     </div>
-                </div>
-                </div>
+                </motion.div>
+                </motion.div>
             </section>
-        </div>   
+        </motion.div>   
        
 
-        <div className="relative bg-[#172840]">
+        <motion.div className="relative bg-[#172840]" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: 0.6, ease: "easeOut" }}>
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-12 sm:pt-16 lg:pt-20 pb-12 sm:pb-16 lg:pb-20">
                 <section className="relative">
                 {/* Header Section */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 mb-12 lg:mb-16">
-                    <div className="space-y-4">
+                <motion.div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 mb-12 lg:mb-16" initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }} variants={{ hidden: {}, show: { transition: { staggerChildren: 0.12 } } }}>
+                    <motion.div className="space-y-4" variants={{ hidden: { opacity: 0 }, show: { opacity: 1 } }}>
                     <h2 className="text-paan-yellow uppercase text-sm font-semibold tracking-wider">
                         Why This Matters — And Why You Were Chosen
                     </h2>
                     <h3 className="text-white text-2xl sm:text-3xl lg:text-4xl font-light leading-tight">
                         Your voice, credibility, and leadership are essential to Africa's growth story.
                     </h3>
-                    </div>
-                    <div className="flex items-center">
+                    </motion.div>
+                    <motion.div className="flex items-center" variants={{ hidden: { opacity: 0 }, show: { opacity: 1 } }}>
                     <p className="text-white text-lg leading-relaxed">
                         Africa's creative economy is on the rise — but remains fragmented. PAAN exists to bridge that gap, and you are a key part of that bridge. As a PAAN Ambassador, you:
                     </p>
-                    </div>
-                </div>
+                    </motion.div>
+                </motion.div>
 
                 {/* Feature Cards */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-12 lg:mb-16">
-                    <div className="bg-white rounded-xl px-4 py-8 flex flex-col items-center text-center hover:shadow-lg transition-shadow duration-300 min-h-[280px]">
+                <motion.div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-12 lg:mb-16" initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }} variants={{ hidden: {}, show: { transition: { staggerChildren: 0.08 } } }}>
+                    <motion.div className="bg-white rounded-xl px-4 py-8 flex flex-col items-center text-center hover:shadow-lg transition-shadow duration-300 min-h:[280px]" variants={{ hidden: { opacity: 0 }, show: { opacity: 1 } }}>
                     <div className="mb-6">
                         <img
                         src="/assets/images/icons/open-doors.svg"
@@ -166,9 +169,9 @@ const PAANAmbassador = () => {
                     <p className="text-paan-dark-blue text-lg font-medium leading-relaxed">
                         Open doors for local agencies to access opportunities across Africa.
                     </p>
-                    </div>
+                    </motion.div>
 
-                    <div className="bg-white rounded-xl px-4 py-8 flex flex-col items-center text-center hover:shadow-lg transition-shadow duration-300 min-h-[280px]">
+                    <motion.div className="bg-white rounded-xl px-4 py-8 flex flex-col items-center text-center hover:shadow-lg transition-shadow duration-300 min-h-[280px]" variants={{ hidden: { opacity: 0 }, show: { opacity: 1 } }}>
                     <div className="mb-6">
                         <img
                         src="/assets/images/icons/collaborate.svg"
@@ -181,9 +184,9 @@ const PAANAmbassador = () => {
                     <p className="text-paan-dark-blue text-lg font-medium leading-relaxed">
                         Represent a trusted brand committed to collaboration, quality, and integrity.
                     </p>
-                    </div>
+                    </motion.div>
 
-                    <div className="bg-white rounded-xl px-4 py-8 flex flex-col items-center text-center hover:shadow-lg transition-shadow duration-300 min-h-[280px]">
+                    <motion.div className="bg-white rounded-xl px-4 py-8 flex flex-col items-center text-center hover:shadow-lg transition-shadow duration-300 min-h-[280px]" variants={{ hidden: { opacity: 0 }, show: { opacity: 1 } }}>
                     <div className="mb-6">
                         <img
                         src="/assets/images/icons/insights.svg"
@@ -196,9 +199,9 @@ const PAANAmbassador = () => {
                     <p className="text-paan-dark-blue text-lg font-medium leading-relaxed">
                         Gather insights that shape how we grow continent-wide.
                     </p>
-                    </div>
+                    </motion.div>
 
-                    <div className="bg-white rounded-xl px-4 py-8 flex flex-col items-center text-center hover:shadow-lg transition-shadow duration-300 min-h-[280px]">
+                    <motion.div className="bg-white rounded-xl px-4 py-8 flex flex-col items-center text-center hover:shadow-lg transition-shadow duration-300 min-h-[280px]" variants={{ hidden: { opacity: 0 }, show: { opacity: 1 } }}>
                     <div className="mb-6">
                         <img
                         src="/assets/images/icons/ecosystem.svg"
@@ -211,28 +214,28 @@ const PAANAmbassador = () => {
                     <p className="text-paan-dark-blue text-lg font-medium leading-relaxed">
                         Champion your local ecosystem, while being part of a larger vision.
                     </p>
-                    </div>
-                </div>
+                    </motion.div>
+                </motion.div>
 
                 {/* Call to Action */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-                    <div>
+                <motion.div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center" initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }} variants={{ hidden: {}, show: { transition: { staggerChildren: 0.1 } } }}>
+                    <motion.div variants={{ hidden: { opacity: 0 }, show: { opacity: 1 } }}>
                     <p className="text-white text-2xl sm:text-3xl font-light leading-tight">
                         This is more than a role. It's a platform for leaders. And that leader is you.
                     </p>
-                    </div>
-                    <div className="flex justify-start lg:justify-end">
+                    </motion.div>
+                    <motion.div className="flex justify-start lg:justify-end" variants={{ hidden: { opacity: 0 }, show: { opacity: 1 } }}>
                     <button 
                         onClick={openModal}
                         className="bg-paan-red border border-paan-red text-white py-4 px-8 sm:px-12 rounded-full hover:bg-red-600 hover:border-red-600 transition-all duration-300 transform hover:translate-y-[-2px] hover:shadow-lg font-medium text-base"
                     >
                         Become an Ambassador
                     </button>  
-                    </div>
-                </div>
+                    </motion.div>
+                </motion.div>
                 </section>
             </div>
-        </div>
+        </motion.div>
         <div className="bg-white relative overflow-hidden">
           <section className="relative mx-auto max-w-6xl mt-16 sm:mt-24 md:mt-40 px-4 sm:px-6 pb-16 sm:pb-20">
             <div className="space-y-3 sm:space-y-4 text-center md:text-left">
@@ -333,7 +336,7 @@ const PAANAmbassador = () => {
 
         <AmbassadorPageParallax openModal={openModal} />
         {/* Ambassadors Profiles */}
-        <div className="relative bg-gradient-to-b from-gray-50 to-white">
+        <motion.div className="relative bg-gradient-to-b from-gray-50 to-white" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: 0.6, ease: "easeOut" }}>
           <section id="ambassadors" className="relative mx-auto max-w-6xl px-4 sm:px-6 py-20 sm:py-24">
             <div className="text-center mb-16">
               <p className="text-paan-dark-blue/70 text-xs sm:text-sm font-semibold uppercase tracking-widest mb-3">Leadership Excellence</p>
@@ -345,7 +348,7 @@ const PAANAmbassador = () => {
             </div>
 
             {/* Mahlodi Legodi */}
-            <div className="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden hover:shadow-xl transition-shadow duration-300">
+            <motion.div className="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden hover:shadow-xl transition-shadow duration-300" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: 0.5, ease: "easeOut" }}>
               <div className="grid grid-cols-1 lg:grid-cols-2">
                 <div className="relative lg:order-1">
                   <div className="aspect-square lg:aspect-auto lg:h-full relative">
@@ -359,7 +362,7 @@ const PAANAmbassador = () => {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
                   </div>
                 </div>
-                <div className="lg:order-2 p-8 lg:p-12 flex flex-col justify-center">
+                <motion.div className="lg:order-2 p-8 lg:p-12 flex flex-col justify-center" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true, amount: 0.3 }} transition={{ duration: 0.5, ease: "easeOut" }}>
                   <div className="mb-6">
                     <span className="inline-flex items-center gap-2 bg-paan-dark-blue/10 text-paan-dark-blue text-xs font-semibold px-4 py-2 rounded-full uppercase tracking-wide">
                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="w-4 h-4 fill-current">
@@ -389,11 +392,11 @@ const PAANAmbassador = () => {
                       <span className="font-medium">Leading strategic communications across Africa and globally</span>
                     </div>
                   </div>
-                </div>
+                </motion.div>
               </div>
-            </div>
+            </motion.div>
           </section>
-        </div>
+        </motion.div>
         <div className="relative bg-gradient-to-b from-white to-gray-50">
           <section className="relative mx-auto max-w-6xl px-4 sm:px-6 py-16 sm:py-20">
             <div className="text-center mb-12">
