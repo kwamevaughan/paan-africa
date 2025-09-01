@@ -710,8 +710,8 @@ const HomePage = () => {
 
         <AgencyLogosGrid />
 
-        {/* PAAN Certified Videos */}
-        <div className="mt-20 section" id="certified-videos">
+        {/* PAAN Certified Videos - COMMENTED OUT */}
+        {/* <div className="mt-20 section" id="certified-videos">
           <section className="relative py-16 sm:py-20 bg-gradient-to-b from-gray-50 to-white">
             <div className="mx-auto max-w-6xl px-4 sm:px-6">
               <div className="text-center mb-12">
@@ -794,7 +794,7 @@ const HomePage = () => {
               </div>
             </div>
           </section>
-        </div>
+        </div> */}
 
         <div
           className="mx-auto max-w-6xl mt-20 section"
@@ -831,7 +831,7 @@ const HomePage = () => {
           ref={sectionRefs.events}
         >
           <section className="text-center mb-16">
-            <p className="uppercase font-semibold mb-4 text-[#F25849] tracking-wider">6. Summit & Events</p>
+            <p className="uppercase font-semibold mb-4 text-[#F25849] tracking-wider">5. Summit & Events</p>
             <h2 className="text-3xl md:text-4xl font-bold text-[#172840] mb-6">
               Experience Collaboration in Action
             </h2>
