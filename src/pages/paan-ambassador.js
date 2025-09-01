@@ -332,6 +332,68 @@ const PAANAmbassador = () => {
         </div>
 
         <AmbassadorPageParallax openModal={openModal} />
+        {/* Ambassadors Profiles */}
+        <div className="relative bg-gradient-to-b from-gray-50 to-white">
+          <section id="ambassadors" className="relative mx-auto max-w-6xl px-4 sm:px-6 py-20 sm:py-24">
+            <div className="text-center mb-16">
+              <p className="text-paan-dark-blue/70 text-xs sm:text-sm font-semibold uppercase tracking-widest mb-3">Leadership Excellence</p>
+              <h2 className="text-gray-900 text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">PAAN Ambassadors</h2>
+              <div className="w-24 h-1 bg-gradient-to-r from-paan-red to-paan-yellow mx-auto mb-6"></div>
+              <p className="text-gray-600 text-lg sm:text-xl leading-relaxed max-w-3xl mx-auto">
+                Distinguished leaders driving innovation and excellence across Africa's creative and strategic landscape
+              </p>
+            </div>
+
+            {/* Mahlodi Legodi */}
+            <div className="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden hover:shadow-xl transition-shadow duration-300">
+              <div className="grid grid-cols-1 lg:grid-cols-2">
+                <div className="relative lg:order-1">
+                  <div className="aspect-square lg:aspect-auto lg:h-full relative">
+                    <Image
+                      src="https://ik.imagekit.io/nkmvdjnna/PAAN/Mahlodi%20Legodi%20-%20image%201.png?updatedAt=1756715640453"
+                      width={600}
+                      height={600}
+                      alt="Mahlodi Legodi"
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
+                  </div>
+                </div>
+                <div className="lg:order-2 p-8 lg:p-12 flex flex-col justify-center">
+                  <div className="mb-6">
+                    <span className="inline-flex items-center gap-2 bg-paan-dark-blue/10 text-paan-dark-blue text-xs font-semibold px-4 py-2 rounded-full uppercase tracking-wide">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="w-4 h-4 fill-current">
+                        <path d="M12 2l2.39 4.84L20 8.27l-3.9 3.8.92 5.36L12 15.9l-5.02 2.63.92-5.36L4 8.27l5.61-1.43L12 2z"/>
+                      </svg>
+                      PAAN Ambassador
+                    </span>
+                  </div>
+                  <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-2">Mahlodi Legodi</h3>
+                  <p className="text-paan-red font-semibold text-lg mb-6">Founder & Strategic Director, FR Communications</p>
+                  <div className="prose prose-gray max-w-none">
+                    <p className="text-gray-700 text-base leading-relaxed mb-4">
+                      An award-winning Public Relations professional with over a decade of experience leading strategic communications across Africa and globally.
+                    </p>
+                    <p className="text-gray-700 text-base leading-relaxed mb-4">
+                      She has worked with world-class brands including <strong>Netflix</strong>, <strong>Marriott International</strong>, <strong>Nando's</strong>, <strong>Radisson Hotel Group</strong>, <strong>bpSA</strong>, and <strong>Glencore</strong>, specializing in brand positioning, reputation management, and stakeholder engagement.
+                    </p>
+                    <p className="text-gray-700 text-base leading-relaxed">
+                      As Founder and Strategic Director of FR Communications, Mahlodi partners with clients and agencies to deliver purpose-driven, integrated campaigns that combine storytelling, collaboration, and social responsibility.
+                    </p>
+                  </div>
+                  <div className="mt-8 pt-6 border-t border-gray-200">
+                    <div className="flex items-center text-sm text-gray-600">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="w-5 h-5 mr-2 fill-current text-paan-blue">
+                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                      </svg>
+                      <span className="font-medium">Leading strategic communications across Africa and globally</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
         <div className="relative bg-gradient-to-b from-white to-gray-50">
           <section className="relative mx-auto max-w-6xl px-4 sm:px-6 py-16 sm:py-20">
             <div className="text-center mb-12">

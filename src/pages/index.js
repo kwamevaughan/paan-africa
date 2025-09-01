@@ -70,6 +70,21 @@ const HomePage = () => {
   const [showAmbassadorModal, setShowAmbassadorModal] = useState(false);
   const [hasShownAmbassadorModal, setHasShownAmbassadorModal] = useState(false);
 
+  // Video controls: refs and playing state
+  const videoRefs = useRef([]);
+  const [isPlayingByIndex, setIsPlayingByIndex] = useState({});
+  const togglePlay = (index) => {
+    const el = videoRefs.current[index];
+    if (!el) return;
+    if (el.paused) {
+      el.play();
+      setIsPlayingByIndex((prev) => ({ ...prev, [index]: true }));
+    } else {
+      el.pause();
+      setIsPlayingByIndex((prev) => ({ ...prev, [index]: false }));
+    }
+  };
+
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
 
@@ -694,6 +709,92 @@ const HomePage = () => {
        
 
         <AgencyLogosGrid />
+
+        {/* PAAN Certified Videos */}
+        <div className="mt-20 section" id="certified-videos">
+          <section className="relative py-16 sm:py-20 bg-gradient-to-b from-gray-50 to-white">
+            <div className="mx-auto max-w-6xl px-4 sm:px-6">
+              <div className="text-center mb-12">
+                <p className="uppercase text-xs sm:text-sm font-semibold mb-3 text-paan-dark-blue/80 tracking-widest">5. PAAN Certified Agencies</p>
+                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Insights From Certified Leaders</h2>
+                <p className="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                  Curated videos recognized by PAAN for excellence, relevance, and impact across the creative and tech landscape.
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
+                {[
+                  { src: 'https://ik.imagekit.io/nkmvdjnna/PAAN/lyftup.webm/ik-video.mp4?updatedAt=1756713902496', type: 'video/mp4', title: 'LYFTUP Agency', href: '/certified-agencies/liftup' },
+                  { src: 'https://ik.imagekit.io/nkmvdjnna/PAAN/aquila.mp4', type: 'video/mp4', title: 'Aquila East Africa', href: '/certified-agencies/aquila' },
+                ].map((v, i) => (
+                  <div key={i} className="group bg-white rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden">
+                    <div className="relative aspect-video bg-black overflow-hidden">
+                      <video 
+                        className="w-full h-full object-cover" 
+                        controls 
+                        preload={i === 0 ? "auto" : "metadata"} 
+                        autoPlay
+                        preload="auto"
+                        playsInline
+                        muted
+                        crossOrigin="anonymous"
+                        onLoadStart={() => console.log('Video load started:', v.src)}
+                        onError={(e) => console.log('Video error:', e.target.error, v.src)}
+                        onCanPlay={() => console.log('Video can play:', v.src)}
+                        ref={(el) => { videoRefs.current[i] = el; }}
+                        onPlay={() => {
+                          setIsPlayingByIndex((prev) => ({ ...prev, [i]: true }));
+                        }}
+                        onPause={() => {
+                          setIsPlayingByIndex((prev) => ({ ...prev, [i]: false }));
+                        }}
+                      >
+                        <source src={v.src} type={v.type} />
+                        <source src={`/assets/videos/faqs-video.mp4`} type="video/mp4" />
+                        Your browser does not support the video tag.
+                      </video>
+                      <div className="absolute top-3 right-3">
+                         <span className="inline-flex items-center gap-1 text-xs font-semibold bg-white/90 text-paan-dark-blue px-2.5 py-1 rounded-full">
+                           <span className="inline-flex"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' className='w-4 h-4'><path d='M12 2l2.39 4.84L20 8.27l-3.9 3.8.92 5.36L12 15.9l-5.02 2.63.92-5.36L4 8.27l5.61-1.43L12 2z' fill='currentColor' /></svg></span>
+                           Certified
+                         </span>
+                       </div>
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                      <div 
+                        className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 cursor-pointer"
+                        onClick={() => togglePlay(i)}
+                        role="button"
+                        aria-label={isPlayingByIndex[i] ? 'Pause video' : 'Play video'}
+                      >
+                        <div className="w-16 h-16 rounded-full bg-white/95 flex items-center justify-center shadow-lg transform scale-90 group-hover:scale-100 transition-transform duration-300">
+                          {isPlayingByIndex[i] ? (
+                            <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' className='w-7 h-7 text-paan-red fill-current'>
+                              <path d='M6 5h4v14H6zM14 5h4v14h-4z'/>
+                            </svg>
+                          ) : (
+                            <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' className='w-8 h-8 text-paan-red fill-current'>
+                              <path d='M8 5v14l11-7z'/>
+                            </svg>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                    <div className="p-5">
+                      <h3 className="text-base font-semibold text-gray-900">{v.title}</h3>
+                      <p className="text-sm text-gray-500 mt-1">Reviewed and endorsed by PAAN for quality and relevance.</p>
+                      <div className="mt-3">
+                        <Link href={v.href} className="inline-flex items-center text-sm font-semibold text-paan-dark-blue hover:text-paan-red transition-colors">
+                          View Certified Profile
+                          <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' className='w-4 h-4 ml-1 fill-current'><path d='M13.172 7l-1.414 1.414L14.343 11H6v2h8.343l-2.585 2.586L13.172 17 18 12z'/></svg>
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        </div>
 
         <div
           className="mx-auto max-w-6xl mt-20 section"

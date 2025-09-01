@@ -8,13 +8,23 @@ import { Icon } from '@iconify/react';
 import Image from 'next/image';
 
 const EventsPage = () => {
-  const [activeTab, setActiveTab] = useState('upcoming');
+  const [activeTab, setActiveTab] = useState('all');
   const [selectedCategory, setSelectedCategory] = useState('All Events');
   const [selectedLocation, setSelectedLocation] = useState('All Locations');
-  const [filteredEvents, setFilteredEvents] = useState(eventsData.upcoming);
+  const [filteredEvents, setFilteredEvents] = useState([
+    ...eventsData.upcoming,
+    ...eventsData.past
+  ]);
 
   useEffect(() => {
-    let events = activeTab === 'upcoming' ? eventsData.upcoming : eventsData.past;
+    let events;
+    if (activeTab === 'upcoming') {
+      events = eventsData.upcoming;
+    } else if (activeTab === 'past') {
+      events = eventsData.past;
+    } else {
+      events = [...eventsData.upcoming, ...eventsData.past];
+    }
     
     if (selectedCategory !== 'All Events') {
       events = events.filter(event => event.category === selectedCategory);
@@ -75,13 +85,13 @@ const EventsPage = () => {
               </div>
               <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
                 <div className="text-3xl font-bold text-paan-yellow mb-2">
-                  {eventsData.past.length}
+                  10+
                 </div>
                 <div className="text-white/90">Past Events</div>
               </div>
               <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
                 <div className="text-3xl font-bold text-paan-yellow mb-2">
-                  5+
+                  20+
                 </div>
                 <div className="text-white/90">Cities Across Africa</div>
               </div>
@@ -96,6 +106,17 @@ const EventsPage = () => {
           {/* Tab Navigation */}
           <div className="flex flex-col sm:flex-row items-center justify-between mb-12">
             <div className="flex bg-white rounded-full p-2 shadow-lg mb-6 sm:mb-0">
+              <button
+                onClick={() => handleTabChange('all')}
+                className={`px-8 py-3 rounded-full font-semibold transition-all duration-300 ${
+                  activeTab === 'all'
+                    ? 'bg-paan-red text-white shadow-md'
+                    : 'text-gray-600 hover:text-paan-red'
+                }`}
+              >
+                <Icon icon="mdi:calendar-month" className="w-5 h-5 inline mr-2" />
+                All Events
+              </button>
               <button
                 onClick={() => handleTabChange('upcoming')}
                 className={`px-8 py-3 rounded-full font-semibold transition-all duration-300 ${
@@ -155,7 +176,7 @@ const EventsPage = () => {
                 <EventCard
                   key={event.id}
                   event={event}
-                  isPast={activeTab === 'past'}
+                  isPast={activeTab === 'past' ? true : activeTab === 'upcoming' ? false : event.status === 'past'}
                 />
               ))}
             </div>
@@ -174,12 +195,12 @@ const EventsPage = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-paan-dark-blue">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+      <section className="py-16 bg-paan-blue text-paan-dark-blue">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center pb-16">
+          <h2 className="text-3xl md:text-4xl font-bold text-paan-dark-blue mb-6">
             Stay Updated with PAAN Events
           </h2>
-          <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
+          <p className="text-xl text-paan-dark-blue/90 mb-8 max-w-2xl mx-auto">
             Never miss an opportunity to connect with Africa's creative community. Subscribe to our newsletter for event updates and industry insights.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -191,7 +212,7 @@ const EventsPage = () => {
             </a>
             <a
               href="/summit"
-              className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-paan-dark-blue px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300"
+              className="bg-transparent border-2 border-paan-dark-blue text-paan-dark-blue hover:border-white hover:text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300"
             >
               Learn About Summit 2025
             </a>
