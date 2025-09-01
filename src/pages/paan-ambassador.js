@@ -119,7 +119,7 @@ const PAANAmbassador = () => {
                 <div className="flex justify-center lg:justify-end">
                     <div className="w-full max-w-md lg:max-w-lg">
                     <Image
-                        src="/assets/images/leadership-img.webp"
+                        src="https://ik.imagekit.io/nkmvdjnna/PAAN/ambassador%20page/leadership-img.webp"
                         width={400}
                         height={400}
                         alt="Leadership illustration"
@@ -241,7 +241,7 @@ const PAANAmbassador = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center mt-8 sm:mt-10">
               <div className="flex flex-col gap-4 order-2 md:order-1">
                 <Image 
-                  src="/assets/images/influence-in-action.webp" 
+                  src="https://ik.imagekit.io/nkmvdjnna/PAAN/ambassador%20page/influence-in-action.webp" 
                   width={300} 
                   height={200} 
                   alt="PAAN Summit" 
@@ -491,7 +491,7 @@ const Hero = ({ openModal }) => {
       <div 
         className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: "url('/assets/images/ambassador-hero.webp')"
+          backgroundImage: "url('https://ik.imagekit.io/nkmvdjnna/PAAN/ambassador%20page/ambassador-hero.webp')"
         }}
       />
 
