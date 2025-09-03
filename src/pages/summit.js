@@ -100,7 +100,7 @@ const SummitPage = () => {
                   "addressCountry": "KE"
                 }
               },
-              "image": ["https://paan.africa/assets/images/hero.png"],
+              "image": ["https://paan.africa/assets/images/hero.webp"],
               "description": "Join the PAAN Africa Summit 2025 to connect with freelancers, businesses, and innovators shaping the African digital economy. Engage in workshops, panels, and networking sessions with industry leaders.",
               "offers": {
                 "@type": "Offer",
@@ -134,7 +134,7 @@ const SummitPage = () => {
               </h3>
             </div>
             <div className="flex justify-end">
-              <img src="/assets/images/about-summit.png" alt="PAAN Summit" className="h-[30rem] object-cover rounded shadow-lg" />
+              <img src="/assets/images/about-summit.webp" alt="PAAN Summit" className="h-[30rem] object-cover rounded shadow-lg" />
             </div>
           </div>
         </section>
@@ -175,7 +175,7 @@ const SummitPage = () => {
               <h4 className="font-normal">Summit Highlights</h4>
               <div className="flex items-center gap-3 border-b border-gray-200 pb-4 transform transition-transform duration-300 hover:translate-y-[-5px]">
                 <Image
-                  src="/assets/images/icon-1.png"
+                  src="/assets/images/icon-1.webp"
                   width={60}
                   height={60}
                   alt="Keynotes & Showcases"
@@ -189,7 +189,7 @@ const SummitPage = () => {
               </div>
               <div className="flex items-center gap-3 border-b border-gray-200 pb-4 transform transition-transform duration-300 hover:translate-y-[-5px]">
                 <Image
-                  src="/assets/images/icon-2.png"
+                  src="/assets/images/icon-2.webp"
                   width={60}
                   height={60}
                   alt="Networking Opportunities"
@@ -203,7 +203,7 @@ const SummitPage = () => {
               </div>
               <div className="flex items-center gap-3 border-b border-gray-200 pb-4 transform transition-transform duration-300 hover:translate-y-[-5px]">
                 <Image
-                  src="/assets/images/icon-3.png"
+                  src="/assets/images/icon-3.webp"
                   width={60}
                   height={60}
                   alt="Workshops & Panels"
@@ -414,7 +414,7 @@ const  KeynotePanels =()=> {
       title: "Africa's Creative Future",
       description: "Where Brands, Tech & Talent Collide- Opening keynote setting the tone for collaboration and innovation.",
       icon: <Image
-      src="/assets/images/icons/brain-icon.png"
+      src="/assets/images/icons/brain-icon.webp"
       width={100}
       height={100}
       alt="Pan-African Reach"
@@ -424,7 +424,7 @@ const  KeynotePanels =()=> {
       title: "The Power of Partnership",
       description: "How African agencies and brands are building together — real stories co-presented by agency and client leaders.",
       icon: <Image
-      src="/assets/images/icons/hands-icon.png"
+      src="/assets/images/icons/hands-icon.webp"
       width={120}
       height={120}
       alt="Pan-African Reach"
@@ -434,7 +434,7 @@ const  KeynotePanels =()=> {
       title: "Tech Meets Creativity",
       description: "Driving results through innovation with Africa's top tech and martech partners.",
       icon: <Image
-      src="/assets/images/icons/tech-icon.png"
+      src="/assets/images/icons/tech-icon.webp"
       width={100}
       height={100}
       alt="Pan-African Reach"
@@ -444,7 +444,7 @@ const  KeynotePanels =()=> {
       title: "The World Of Data",
       description: "How data is transforming strategy and innovation across African markets and industries.",
       icon: <Image
-      src="/assets/images/icons/graph-icon.png"
+      src="/assets/images/icons/graph-icon.webp"
       width={100}
       height={100}
       alt="Pan-African Reach"
