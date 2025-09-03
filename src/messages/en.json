@@ -800,6 +800,170 @@
       "bookCallButton": "Book a Call"
     }
   },
+  "certifiedAgencies": {
+    "common": {
+      "hero": {
+        "memberDescription": "An official member of the PAAN Network, delivering with insight, speed, and local expertise",
+        "videoFallback": "Your browser does not support the video tag."
+      },
+      "certification": {
+        "status": "Certification Status",
+        "paanCertified": "PAAN Certified",
+        "membershipLevel": "Membership Level",
+        "fullMember": "Full Member",
+        "associateMember": "Associate Member",
+        "memberSince": "Member Since"
+      },
+      "cta": {
+        "joinNetworkTitle": "Want to Join the PAAN Network?",
+        "joinNetworkDescription": "Become part of our professional community and unlock exclusive opportunities for growth and collaboration.",
+        "becomeMemberButton": "Become a Certified Member"
+      },
+      "contact": {
+        "contactAgency": "Contact Agency",
+        "followSocialMedia": "Follow us on social media",
+        "contactInfo": {
+          "email": "Email",
+          "location": "Location"
+        }
+      },
+      "toast": {
+        "fillRequiredFields": "Please fill in all required fields correctly.",
+        "sendingMessage": "Sending your message...",
+        "messageSent": "Message sent successfully!",
+        "messageFailed": "Failed to send message.",
+        "errorOccurred": "An error occurred. Please try again."
+      }
+    },
+    "liftup": {
+      "seo": {
+        "title": "LiftUp Agency | Certified PAAN Creative Marketing Agency | Egypt, Kuwait, UAE, Saudi Arabia",
+        "description": "LiftUp Agency is a certified member of the Pan-African Agency Network (PAAN), specializing in strategic marketing, advertising, creative services, and event management across Egypt, Kuwait, Oman, Saudi Arabia, UAE, and United States.",
+        "keywords": "LiftUp Agency, PAAN, certified agency, Egypt, Kuwait, UAE, Saudi Arabia, creative marketing, advertising, strategic marketing, event management, communication, research, Cairo, creative services"
+      },
+      "hero": {
+        "title": "LiftUp Agency",
+        "locations": {
+          "egypt": "Egypt",
+          "kuwait": "Kuwait",
+          "oman": "Oman",
+          "saudiArabia": "Saudi Arabia",
+          "uae": "UAE",
+          "unitedStates": "United States"
+        }
+      },
+      "about": {
+        "title": "About LiftUp Agency",
+        "description": "Liftup is a creative agency based in Egypt, focusing on strategic marketing, advertising and planning. From the story you want to tell, the results you want to achieve, Liftup is here to encourage imaginative thinking. They advise, plan, and execute. LiftUp is your partner in building your brand from A to Z, offering comprehensive 360 solutions",
+        "specializationTitle": "Areas of Specialization",
+        "specializations": {
+          "marketing": "Marketing",
+          "advertising": "Advertising",
+          "creativeServices": "Creative Services",
+          "eventManagement": "Event management",
+          "research": "Research",
+          "communication": "Communication"
+        }
+      },
+      "clients": {
+        "title": "Clients LiftUp Has Worked With"
+      },
+      "testimonial": {
+        "quote": "Inspired by Albert Einstein's words, \"Everything should be as simple as possible, but not simpler,\" Islam built his agency on the principle of simplifying processes without compromising quality. This approach drives the agency's work delivering clear, efficient, and effective solutions that maintain depth and impact while avoiding unnecessary complexity.",
+        "attribution": {
+          "name": "Islam Ismail",
+          "title": "LiftUp, Founder and MD"
+        }
+      },
+      "contactModal": {
+        "title": "Contact LyftUp",
+        "description": "Get in touch with our team for your creative marketing needs",
+        "form": {
+          "fullName": "Full Name",
+          "emailAddress": "Email Address",
+          "companyName": "Company Name",
+          "message": "Message",
+          "required": "*",
+          "placeholder": "Tell us about your project, goals, and requirements...",
+          "sendMessage": "Send Message",
+          "sending": "Sending..."
+        },
+        "errors": {
+          "nameRequired": "Name is required",
+          "emailRequired": "Email is required",
+          "invalidEmail": "Invalid email address",
+          "companyRequired": "Company name is required",
+          "messageRequired": "Message is required",
+          "recaptchaRequired": "Please complete the reCAPTCHA"
+        }
+      },
+      "contactInfo": {
+        "email": "admin@liftupim.com",
+        "location": "Cairo, Egypt"
+      }
+    },
+    "aquila": {
+      "seo": {
+        "title": "Aquila East Africa | Certified PAAN Agency in Nairobi, Kenya",
+        "description": "Aquila East Africa is a certified member of the Pan-African Agency Network (PAAN), specializing in digital campaigns, media planning, and market localization across Africa. Connect with us for creative marketing, advertising, and brand activation.",
+        "keywords": "Aquila East Africa, PAAN, certified agency, Nairobi, Kenya, digital campaigns, media planning, market localization, creative marketing, advertising, brand activation, Africa"
+      },
+      "hero": {
+        "title": "Aquila East Africa",
+        "locations": {
+          "kenya": "Kenya",
+          "uganda": "Uganda",
+          "rwanda": "Rwanda"
+        }
+      },
+      "about": {
+        "title": "About Aquila East Africa",
+        "description": "Aquila East Africa is a creative agency based in Nairobi, Kenya, specializing in pan-African digital campaigns, media planning, and market localization. As a certified PAAN Partner, they bring cultural fluency, regional insight, and consistent results to brands expanding across the continent.",
+        "specializationTitle": "Areas of Specialization",
+        "specializations": {
+          "creativeMarketing": "Creative Marketing",
+          "advertisingSolutions": "Advertising Solutions",
+          "brandActivation": "Brand Activation",
+          "pr": "PR"
+        }
+      },
+      "clients": {
+        "title": "Clients Aquila Has Worked With"
+      },
+      "testimonial": {
+        "quote": "PAAN has enabled us to access new business opportunities across Africa and has also played a pivotal role in upskilling our teams through training programs & webinars tailored to agencies.",
+        "attribution": {
+          "name": "Kester Muhanji",
+          "title": "CEO, Aquila East Africa"
+        }
+      },
+      "contactModal": {
+        "title": "Contact Aquila East Africa",
+        "description": "Get in touch with our team for your creative marketing needs",
+        "form": {
+          "fullName": "Full Name",
+          "emailAddress": "Email Address",
+          "companyName": "Company Name",
+          "message": "Message",
+          "required": "*",
+          "placeholder": "Tell us about your project, goals, and requirements...",
+          "sendMessage": "Send Message",
+          "sending": "Sending..."
+        },
+        "errors": {
+          "nameRequired": "Name is required",
+          "emailRequired": "Email is required",
+          "invalidEmail": "Invalid email address",
+          "companyRequired": "Company name is required",
+          "messageRequired": "Message is required",
+          "recaptchaRequired": "Please complete the reCAPTCHA"
+        }
+      },
+      "socialMedia": {
+        "followUs": "Follow Aquila East Africa on social media"
+      }
+    }
+  },
   "language": {
     "switchLanguage": "Switch Language",
     "currentLanguage": "Current Language"

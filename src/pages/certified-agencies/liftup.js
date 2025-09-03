@@ -10,9 +10,11 @@ import { motion } from "framer-motion";
 import { Icon } from '@iconify/react';
 import toast from 'react-hot-toast';
 import ReCAPTCHA from 'react-google-recaptcha';
+import { useAppTranslations } from '../../hooks/useTranslations';
 
 
 const HomePage = () => {
+  const { t } = useAppTranslations();
   const sectionRefs = {
     home: useRef(null),
     aboutUs: useRef(null),
@@ -241,15 +243,15 @@ const HomePage = () => {
 
   const validateContactForm = () => {
     const newErrors = {};
-    if (!contactForm.name.trim()) newErrors.name = 'Name is required';
+    if (!contactForm.name.trim()) newErrors.name = t('certifiedAgencies.liftup.contactModal.errors.nameRequired');
     if (!contactForm.email.trim()) {
-      newErrors.email = 'Email is required';
+      newErrors.email = t('certifiedAgencies.liftup.contactModal.errors.emailRequired');
     } else if (!/\S+@\S+\.\S+/.test(contactForm.email)) {
-      newErrors.email = 'Invalid email address';
+      newErrors.email = t('certifiedAgencies.liftup.contactModal.errors.invalidEmail');
     }
-    if (!contactForm.company.trim()) newErrors.company = 'Company name is required';
-    if (!contactForm.message.trim()) newErrors.message = 'Message is required';
-    if (!recaptchaToken) newErrors.recaptcha = 'Please complete the reCAPTCHA';
+    if (!contactForm.company.trim()) newErrors.company = t('certifiedAgencies.liftup.contactModal.errors.companyRequired');
+    if (!contactForm.message.trim()) newErrors.message = t('certifiedAgencies.liftup.contactModal.errors.messageRequired');
+    if (!recaptchaToken) newErrors.recaptcha = t('certifiedAgencies.liftup.contactModal.errors.recaptchaRequired');
     return newErrors;
   };
 
@@ -260,12 +262,12 @@ const HomePage = () => {
     const validationErrors = validateContactForm();
     if (Object.keys(validationErrors).length > 0) {
       setContactErrors(validationErrors);
-      toast.error('Please fill in all required fields correctly.');
+      toast.error(t('certifiedAgencies.common.toast.fillRequiredFields'));
       return;
     }
 
     setIsSending(true);
-    const toastId = toast.loading('Sending your message...');
+    const toastId = toast.loading(t('certifiedAgencies.common.toast.sendingMessage'));
 
     try {
       const res = await fetch('/api/send-agency-contact', {
@@ -281,17 +283,17 @@ const HomePage = () => {
       const data = await res.json();
 
       if (res.ok) {
-        toast.success('Message sent successfully!', { id: toastId });
+        toast.success(t('certifiedAgencies.common.toast.messageSent'), { id: toastId });
         // Reset form and reCAPTCHA
         setContactForm({ name: '', email: '', company: '', message: '' });
         setRecaptchaToken(null);
         recaptchaRef.current.reset();
         setIsContactModalOpen(false);
       } else {
-        toast.error(data.message || 'Failed to send message.', { id: toastId });
+        toast.error(data.message || t('certifiedAgencies.common.toast.messageFailed'), { id: toastId });
       }
     } catch (error) {
-      toast.error('An error occurred. Please try again.', { id: toastId });
+      toast.error(t('certifiedAgencies.common.toast.errorOccurred'), { id: toastId });
     } finally {
       setIsSending(false);
     }
@@ -300,9 +302,9 @@ const HomePage = () => {
   return (
     <>
     <SEO
-        title="LiftUp Agency | Certified PAAN Creative Marketing Agency | Egypt, Kuwait, UAE, Saudi Arabia"
-        description="LiftUp Agency is a certified member of the Pan-African Agency Network (PAAN), specializing in strategic marketing, advertising, creative services, and event management across Egypt, Kuwait, Oman, Saudi Arabia, UAE, and United States."
-        keywords="LiftUp Agency, PAAN, certified agency, Egypt, Kuwait, UAE, Saudi Arabia, creative marketing, advertising, strategic marketing, event management, communication, research, Cairo, creative services"
+        title={t('certifiedAgencies.liftup.seo.title')}
+        description={t('certifiedAgencies.liftup.seo.description')}
+        keywords={t('certifiedAgencies.liftup.seo.keywords')}
       />
     <div className="relative">
       <main className="px-3 pt-6 sm:px-0 sm:pt-0 relative">
@@ -365,17 +367,17 @@ const HomePage = () => {
               </motion.div>
             </div>
               <h1 className="text-2xl sm:text-4xl lg:text-6xl uppercase font-bold text-gray-900 mb-2 sm:mb-4">
-                  LiftUp Agency 
+                  {t('certifiedAgencies.liftup.hero.title')}
               </h1>
               <p className="text-sm sm:text-md lg:text-lg text-gray-600 max-w-2xl mx-auto mb-2 sm:mb-4">
-                An official member of the PAAN Network, delivering with insight, speed, and local expertise
+                {t('certifiedAgencies.common.hero.memberDescription')}
               </p>
             </div>
             {/* Location and Flags at the bottom of hero */}
             <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex flex-wrap justify-center items-center gap-2 sm:gap-3 bg-white/80 rounded-full px-2 sm:px-4 py-1.5 sm:py-2 shadow-md w-[95vw] max-w-3xl text-xs sm:text-base">
               <Icon icon="mdi:map-marker" className="w-4 h-4 sm:w-5 sm:h-5 text-paan-blue" />
               
-              <span className="font-medium text-gray-700">Egypt</span>
+              <span className="font-medium text-gray-700">{t('certifiedAgencies.liftup.hero.locations.egypt')}</span>
               <span title="Egypt">
                 <Image
                   src="https://flagcdn.com/w20/eg.png"
@@ -386,7 +388,7 @@ const HomePage = () => {
                 />
               </span>
               
-              <span className="font-medium text-gray-700">Kuwait</span>
+              <span className="font-medium text-gray-700">{t('certifiedAgencies.liftup.hero.locations.kuwait')}</span>
               <span title="Kuwait">
                 <Image
                   src="https://flagcdn.com/w20/kw.png"
@@ -397,7 +399,7 @@ const HomePage = () => {
                 />
               </span>
               
-              <span className="font-medium text-gray-700">Oman</span>
+              <span className="font-medium text-gray-700">{t('certifiedAgencies.liftup.hero.locations.oman')}</span>
               <span title="Oman">
                 <Image
                   src="https://flagcdn.com/w20/om.png"
@@ -408,7 +410,7 @@ const HomePage = () => {
                 />
               </span>
               
-              <span className="font-medium text-gray-700">Saudi Arabia</span>
+              <span className="font-medium text-gray-700">{t('certifiedAgencies.liftup.hero.locations.saudiArabia')}</span>
               <span title="Saudi Arabia">
                 <Image
                   src="https://flagcdn.com/w20/sa.png"
@@ -419,7 +421,7 @@ const HomePage = () => {
                 />
               </span>
               
-              <span className="font-medium text-gray-700">UAE</span>
+              <span className="font-medium text-gray-700">{t('certifiedAgencies.liftup.hero.locations.uae')}</span>
               <span title="United Arab Emirates">
                 <Image
                   src="https://flagcdn.com/w20/ae.png"
@@ -430,7 +432,7 @@ const HomePage = () => {
                 />
               </span>
               
-              <span className="font-medium text-gray-700">United States</span>
+              <span className="font-medium text-gray-700">{t('certifiedAgencies.liftup.hero.locations.unitedStates')}</span>
               <span title="United States">
                 <Image
                   src="https://flagcdn.com/w20/us.png"
@@ -454,50 +456,48 @@ const HomePage = () => {
                   {/* Main Heading */}
                   <div className="space-y-4">
                     <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-paan-dark-blue leading-tight">
-                      About LiftUp Agency
+                      {t('certifiedAgencies.liftup.about.title')}
                     </h2>
                     <div className="w-16 h-1 bg-gradient-to-r from-paan-dark-blue to-paan-dark-blue/60"></div>
                   </div>
 
                   {/* Description */}
                   <p className="text-lg sm:text-xl leading-relaxed text-paan-dark-blue/90 font-light">
-                    Liftup is a creative agency based in Egypt, focusing on strategic marketing, advertising and planning.
-                    From the story you want to tell, the results you want to achieve, Liftup is here to encourage imaginative thinking. 
-                    They advise, plan, and execute. LiftUp is your partner in building your brand from A to Z, offering comprehensive 360 solutions
+                    {t('certifiedAgencies.liftup.about.description')}
                   </p>
 
-                  {/* Areas of Specialization */}
-                  <div className="space-y-4">
-                    <h3 className="text-xl sm:text-2xl font-semibold text-paan-dark-blue mb-4">
-                      Areas of Specialization
-                    </h3>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                      <div className="flex items-center space-x-3">
-                        <div className="w-2 h-2 bg-paan-dark-blue rounded-full"></div>
-                        <span className="text-paan-dark-blue/90">Marketing</span>
-                      </div>
-                      <div className="flex items-center space-x-3">
-                        <div className="w-2 h-2 bg-paan-dark-blue rounded-full"></div>
-                        <span className="text-paan-dark-blue/90">Advertising</span>
-                      </div>
-                      <div className="flex items-center space-x-3">
-                        <div className="w-2 h-2 bg-paan-dark-blue rounded-full"></div>
-                        <span className="text-paan-dark-blue/90">Creative Services</span>
-                      </div>
-                      <div className="flex items-center space-x-3">
-                        <div className="w-2 h-2 bg-paan-dark-blue rounded-full"></div>
-                        <span className="text-paan-dark-blue/90">Event management</span>
-                      </div>
-                      <div className="flex items-center space-x-3">
-                        <div className="w-2 h-2 bg-paan-dark-blue rounded-full"></div>
-                        <span className="text-paan-dark-blue/90">Research</span>
-                      </div>
-                      <div className="flex items-center space-x-3">
-                        <div className="w-2 h-2 bg-paan-dark-blue rounded-full"></div>
-                        <span className="text-paan-dark-blue/90">Communication</span>
+                                      {/* Areas of Specialization */}
+                    <div className="space-y-4">
+                      <h3 className="text-xl sm:text-2xl font-semibold text-paan-dark-blue mb-4">
+                        {t('certifiedAgencies.liftup.about.specializationTitle')}
+                      </h3>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <div className="flex items-center space-x-3">
+                          <div className="w-2 h-2 bg-paan-dark-blue rounded-full"></div>
+                          <span className="text-paan-dark-blue/90">{t('certifiedAgencies.liftup.about.specializations.marketing')}</span>
+                        </div>
+                        <div className="flex items-center space-x-3">
+                          <div className="w-2 h-2 bg-paan-dark-blue rounded-full"></div>
+                          <span className="text-paan-dark-blue/90">{t('certifiedAgencies.liftup.about.specializations.advertising')}</span>
+                        </div>
+                        <div className="flex items-center space-x-3">
+                          <div className="w-2 h-2 bg-paan-dark-blue rounded-full"></div>
+                          <span className="text-paan-dark-blue/90">{t('certifiedAgencies.liftup.about.specializations.creativeServices')}</span>
+                        </div>
+                        <div className="flex items-center space-x-3">
+                          <div className="w-2 h-2 bg-paan-dark-blue rounded-full"></div>
+                          <span className="text-paan-dark-blue/90">{t('certifiedAgencies.liftup.about.specializations.eventManagement')}</span>
+                        </div>
+                        <div className="flex items-center space-x-3">
+                          <div className="w-2 h-2 bg-paan-dark-blue rounded-full"></div>
+                          <span className="text-paan-dark-blue/90">{t('certifiedAgencies.liftup.about.specializations.research')}</span>
+                        </div>
+                        <div className="flex items-center space-x-3">
+                          <div className="w-2 h-2 bg-paan-dark-blue rounded-full"></div>
+                          <span className="text-paan-dark-blue/90">{t('certifiedAgencies.liftup.about.specializations.communication')}</span>
+                        </div>
                       </div>
                     </div>
-                  </div>
                 </div>
               </div>
 
@@ -513,7 +513,7 @@ const HomePage = () => {
                       preload="metadata"
                     >
                       <source src="/assets/images/certified-members/lyftup/video.webm" type="video/webm" />
-                      Your browser does not support the video tag.
+                      {t('certifiedAgencies.common.hero.videoFallback')}
                     </video>
                   </div>
 
@@ -541,32 +541,32 @@ const HomePage = () => {
                     alt="PAAN Badge" 
                     className="mr-3" 
                   />
-                  <div className="text-left">
-                    <div className="text-sm text-gray-600">Certification Status</div>
-                    <div className="font-semibold text-paan-dark-blue">PAAN Certified</div>
-                  </div>
+                                      <div className="text-left">
+                      <div className="text-sm text-gray-600">{t('certifiedAgencies.common.certification.status')}</div>
+                      <div className="font-semibold text-paan-dark-blue">{t('certifiedAgencies.common.certification.paanCertified')}</div>
+                    </div>
                 </div>
               </div>
 
               {/* Membership Level */}
               <div className="text-center">
                 <div className="inline-flex items-center bg-gradient-to-r from-amber-400 to-amber-500 rounded-2xl px-6 py-4 shadow-lg">
-                  <Icon icon="mdi:crown" className="w-10 h-10 text-white mr-3" />
-                  <div className="text-left">
-                    <div className="text-sm text-amber-100">Membership Level</div>
-                    <div className="font-bold text-white">Full Member</div>
-                  </div>
+                                      <Icon icon="mdi:crown" className="w-10 h-10 text-white mr-3" />
+                    <div className="text-left">
+                      <div className="text-sm text-amber-100">{t('certifiedAgencies.common.certification.membershipLevel')}</div>
+                      <div className="font-bold text-white">{t('certifiedAgencies.common.certification.fullMember')}</div>
+                    </div>
                 </div>
               </div>
 
               {/* Years of Service */}
               <div className="text-center">
                 <div className="inline-flex items-center bg-white rounded-2xl px-6 py-4 shadow-lg border border-paan-blue/20">
-                  <Icon icon="mdi:calendar-check" className="w-10 h-10 text-paan-blue mr-3" />
-                  <div className="text-left">
-                    <div className="text-sm text-gray-600">Member Since</div>
-                    <div className="font-semibold text-paan-dark-blue">2025</div>
-                  </div>
+                                      <Icon icon="mdi:calendar-check" className="w-10 h-10 text-paan-blue mr-3" />
+                    <div className="text-left">
+                      <div className="text-sm text-gray-600">{t('certifiedAgencies.common.certification.memberSince')}</div>
+                      <div className="font-semibold text-paan-dark-blue">2025</div>
+                    </div>
                 </div>
               </div>
             </div>
@@ -575,7 +575,7 @@ const HomePage = () => {
         {/* Clients They Have Worked With Section */}
         <div className="bg-white py-16 sm:py-20 relative z-10">
           <section className="relative mx-auto max-w-6xl px-4 sm:px-6">
-            <h2 className="text-3xl sm:text-4xl font-bold text-paan-dark-blue text-center mb-10">Clients LiftUp Has Worked With</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold text-paan-dark-blue text-center mb-10">{t('certifiedAgencies.liftup.clients.title')}</h2>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 md:gap-10 items-center justify-center">
               {[1,2,3,4,5,6,7,8,9,10,11,12,13,14,].map((num) => (
                 <div key={num} className="flex items-center justify-center p-4 bg-gray-50 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-200">
@@ -610,18 +610,15 @@ const HomePage = () => {
                   <div className="flex-1">
                     {/* Testimonial text */}
                     <blockquote className="text-xl sm:text-2xl font-medium text-gray-800 leading-relaxed mb-8 italic">
-                      "Inspired by Albert Einstein’s words, “Everything should be as simple as possible, but not simpler,” 
-                      Islam built his agency on the principle of simplifying processes without compromising quality. 
-                      This approach drives the agency’s work delivering clear,
-                       efficient, and effective solutions that maintain depth and impact while avoiding unnecessary complexity."
+                      {t('certifiedAgencies.liftup.testimonial.quote')}
                     </blockquote>
                     
                     {/* Attribution */}
                     <div className="flex flex-col items-start space-y-2">
                       <div className="w-16 h-px bg-gradient-to-r from-paan-dark-blue to-paan-purple"></div>
                       <cite className="not-italic">
-                        <div className="font-semibold text-lg text-gray-900">Islam Ismail</div>
-                        <div className="text-gray-600 text-sm">LiftUp, Founder and MD</div>
+                        <div className="font-semibold text-lg text-gray-900">{t('certifiedAgencies.liftup.testimonial.attribution.name')}</div>
+                        <div className="text-gray-600 text-sm">{t('certifiedAgencies.liftup.testimonial.attribution.title')}</div>
                       </cite>
                     </div>
                   </div>
@@ -635,17 +632,17 @@ const HomePage = () => {
         <div className="text-center space-y-8">
           {/* Main Contact Button */}
           <div>
-            <button
-              className="bg-paan-blue text-white font-semibold px-8 py-3 rounded-full shadow-lg hover:bg-paan-dark-blue transition-colors duration-200 text-lg"
-              onClick={() => setIsContactModalOpen(true)}
-            >
-              Contact Agency
-            </button>
+                          <button
+                className="bg-paan-blue text-white font-semibold px-8 py-3 rounded-full shadow-lg hover:bg-paan-dark-blue transition-colors duration-200 text-lg"
+                onClick={() => setIsContactModalOpen(true)}
+              >
+                {t('certifiedAgencies.common.contact.contactAgency')}
+              </button>
           </div>
 
           {/* Social Media Links */}
-          <div className="space-y-4">
-            <p className="text-gray-600 text-sm">Follow us on social media</p>
+                      <div className="space-y-4">
+              <p className="text-gray-600 text-sm">{t('certifiedAgencies.common.contact.followSocialMedia')}</p>
             <div className="flex justify-center items-center gap-6">
               {/* LinkedIn */}
               <a
@@ -718,11 +715,11 @@ const HomePage = () => {
             <div className="flex flex-col sm:flex-row justify-center items-center gap-6 text-sm text-gray-600">
               <div className="flex items-center gap-2">
                 <Icon icon="mdi:email" className="w-4 h-4 text-paan-blue" />
-                <span>admin@liftupim.com</span>
+                <span>{t('certifiedAgencies.liftup.contactInfo.email')}</span>
               </div>
               <div className="flex items-center gap-2">
                 <Icon icon="mdi:map-marker" className="w-4 h-4 text-paan-blue" />
-                <span>Cairo, Egypt</span>
+                <span>{t('certifiedAgencies.liftup.contactInfo.location')}</span>
               </div>
             </div>
           </div>
@@ -749,15 +746,15 @@ const HomePage = () => {
             {/* Modal content */}
             <div className="p-8">
               <div className="text-center mb-8">
-                <h2 className="text-2xl font-semibold text-[#172840] mb-2">Contact LyftUp</h2>
-                <p className="text-gray-600">Get in touch with our team for your creative marketing needs</p>
+                <h2 className="text-2xl font-semibold text-[#172840] mb-2">{t('certifiedAgencies.liftup.contactModal.title')}</h2>
+                <p className="text-gray-600">{t('certifiedAgencies.liftup.contactModal.description')}</p>
               </div>
 
               <form onSubmit={handleContactSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label htmlFor="contact-name" className="block text-sm font-medium text-[#172840] mb-1">
-                      Full Name <span className="text-[#F25849]">*</span>
+                      {t('certifiedAgencies.liftup.contactModal.form.fullName')} <span className="text-[#F25849]">{t('certifiedAgencies.liftup.contactModal.form.required')}</span>
                     </label>
                     <input
                       type="text"
@@ -776,7 +773,7 @@ const HomePage = () => {
 
                   <div>
                     <label htmlFor="contact-email" className="block text-sm font-medium text-[#172840] mb-1">
-                      Email Address <span className="text-[#F25849]">*</span>
+                      {t('certifiedAgencies.liftup.contactModal.form.emailAddress')} <span className="text-[#F25849]">{t('certifiedAgencies.liftup.contactModal.form.required')}</span>
                     </label>
                     <input
                       type="email"
@@ -795,7 +792,7 @@ const HomePage = () => {
 
                   <div className="md:col-span-2">
                     <label htmlFor="contact-company" className="block text-sm font-medium text-[#172840] mb-1">
-                      Company Name <span className="text-[#F25849]">*</span>
+                      {t('certifiedAgencies.liftup.contactModal.form.companyName')} <span className="text-[#F25849]">{t('certifiedAgencies.liftup.contactModal.form.required')}</span>
                     </label>
                     <input
                       type="text"
@@ -815,7 +812,7 @@ const HomePage = () => {
 
                 <div>
                   <label htmlFor="contact-message" className="block text-sm font-medium text-[#172840] mb-1">
-                    Message <span className="text-[#F25849]">*</span>
+                    {t('certifiedAgencies.liftup.contactModal.form.message')} <span className="text-[#F25849]">{t('certifiedAgencies.liftup.contactModal.form.required')}</span>
                   </label>
                   <textarea
                     id="contact-message"
@@ -828,7 +825,7 @@ const HomePage = () => {
                     className={`w-full px-4 py-2 border-b border-gray-300 bg-transparent focus:outline-none focus:border-[#F25849] transition-colors duration-300 resize-none ${
                       contactErrors.message ? 'border-red-500' : ''
                     } ${isSending ? 'opacity-50' : ''}`}
-                    placeholder="Tell us about your project, goals, and requirements..."
+                    placeholder={t('certifiedAgencies.liftup.contactModal.form.placeholder')}
                   ></textarea>
                   {contactErrors.message && <p className="text-red-500 text-sm mt-1">{contactErrors.message}</p>}
                 </div>
@@ -853,7 +850,7 @@ const HomePage = () => {
                       isSending ? 'opacity-50 cursor-not-allowed' : ''
                     }`}
                   >
-                    {isSending ? 'Sending...' : 'Send Message'}
+                    {isSending ? t('certifiedAgencies.liftup.contactModal.form.sending') : t('certifiedAgencies.liftup.contactModal.form.sendMessage')}
                   </button>
                 </div>
               </form>
@@ -867,20 +864,20 @@ const HomePage = () => {
       <div className="bg-paan-red relative mb-10 sm:mb-0">
           <section className="relative mx-auto max-w-6xl px-4 sm:px-6 py-16 sm:py-20">
             <div className="text-center">
-              <h3 className="text-2xl sm:text-3xl lg:text-4xl font-normal text-paan-dark-blue mb-6 sm:mb-8">
-                Want to <span className="font-bold">Join</span> the <span className="font-bold">PAAN Network</span>?
-              </h3>
-              <p className="text-paan-dark-blue text-lg sm:text-xl mb-8 sm:mb-10 max-w-2xl mx-auto leading-relaxed">
-                Become part of our professional community and unlock exclusive opportunities for growth and collaboration.
-              </p>
-              <button                  
-                className="bg-paan-dark-blue text-white px-8 sm:px-10 py-3 sm:py-4 rounded-full font-normal text-base sm:text-lg hover:bg-[#D6473C] transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl w-full sm:w-auto min-w-[280px]"
-                onClick={(e) => {
-                  handleScroll(e, "https://membership.paan.africa/", isFixed);
-                }}
-              >
-                Become a Certified Member
-              </button>
+                              <h3 className="text-2xl sm:text-3xl lg:text-4xl font-normal text-paan-dark-blue mb-6 sm:mb-8">
+                  {t('certifiedAgencies.common.cta.joinNetworkTitle')}
+                </h3>
+                <p className="text-paan-dark-blue text-lg sm:text-xl mb-8 sm:mb-10 max-w-2xl mx-auto leading-relaxed">
+                  {t('certifiedAgencies.common.cta.joinNetworkDescription')}
+                </p>
+                <button                  
+                  className="bg-paan-dark-blue text-white px-8 sm:px-10 py-3 sm:py-4 rounded-full font-normal text-base sm:text-lg hover:bg-[#D6473C] transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl w-full sm:w-auto min-w-[280px]"
+                  onClick={(e) => {
+                    handleScroll(e, "https://membership.paan.africa/", isFixed);
+                  }}
+                >
+                  {t('certifiedAgencies.common.cta.becomeMemberButton')}
+                </button>
             </div>
           </section>
         </div>  

@@ -732,6 +732,170 @@
       "bookCallButton": "Réserver un Appel"
     }
   },
+  "certifiedAgencies": {
+    "common": {
+      "hero": {
+        "memberDescription": "Un membre officiel du Réseau PAAN, livrant avec perspicacité, rapidité et expertise locale",
+        "videoFallback": "Votre navigateur ne supporte pas la balise vidéo."
+      },
+      "certification": {
+        "status": "Statut de Certification",
+        "paanCertified": "PAAN Certifié",
+        "membershipLevel": "Niveau d'Adhésion",
+        "fullMember": "Membre Complet",
+        "associateMember": "Membre Associé",
+        "memberSince": "Membre Depuis"
+      },
+      "cta": {
+        "joinNetworkTitle": "Voulez-vous Rejoindre le Réseau PAAN?",
+        "joinNetworkDescription": "Devenez partie de notre communauté professionnelle et débloquez des opportunités exclusives de croissance et de collaboration.",
+        "becomeMemberButton": "Devenir un Membre Certifié"
+      },
+      "contact": {
+        "contactAgency": "Contacter l'Agence",
+        "followSocialMedia": "Suivez-nous sur les réseaux sociaux",
+        "contactInfo": {
+          "email": "Email",
+          "location": "Localisation"
+        }
+      },
+      "toast": {
+        "fillRequiredFields": "Veuillez remplir tous les champs requis correctement.",
+        "sendingMessage": "Envoi de votre message...",
+        "messageSent": "Message envoyé avec succès!",
+        "messageFailed": "Échec de l'envoi du message.",
+        "errorOccurred": "Une erreur s'est produite. Veuillez réessayer."
+      }
+    },
+    "liftup": {
+      "seo": {
+        "title": "Agence LiftUp | Agence de Marketing Créatif PAAN Certifiée | Égypte, Koweït, Émirats Arabes Unis, Arabie Saoudite",
+        "description": "LiftUp Agency est un membre certifié du Réseau d'Agences Pan-Africain (PAAN), spécialisé dans le marketing stratégique, la publicité, les services créatifs et la gestion d'événements à travers l'Égypte, le Koweït, Oman, l'Arabie Saoudite, les Émirats Arabes Unis et les États-Unis.",
+        "keywords": "Agence LiftUp, PAAN, agence certifiée, Égypte, Koweït, Émirats Arabes Unis, Arabie Saoudite, marketing créatif, publicité, marketing stratégique, gestion d'événements, communication, recherche, Le Caire, services créatifs"
+      },
+      "hero": {
+        "title": "Agence LiftUp",
+        "locations": {
+          "egypt": "Égypte",
+          "kuwait": "Koweït",
+          "oman": "Oman",
+          "saudiArabia": "Arabie Saoudite",
+          "uae": "Émirats Arabes Unis",
+          "unitedStates": "États-Unis"
+        }
+      },
+      "about": {
+        "title": "À Propos de l'Agence LiftUp",
+        "description": "Liftup est une agence créative basée en Égypte, se concentrant sur le marketing stratégique, la publicité et la planification. De l'histoire que vous voulez raconter, aux résultats que vous voulez atteindre, Liftup est là pour encourager la pensée imaginative. Ils conseillent, planifient et exécutent. LiftUp est votre partenaire dans la construction de votre marque de A à Z, offrant des solutions 360 complètes",
+        "specializationTitle": "Domaines de Spécialisation",
+        "specializations": {
+          "marketing": "Marketing",
+          "advertising": "Publicité",
+          "creativeServices": "Services Créatifs",
+          "eventManagement": "Gestion d'événements",
+          "research": "Recherche",
+          "communication": "Communication"
+        }
+      },
+      "clients": {
+        "title": "Clients avec Qui LiftUp a Travaillé"
+      },
+      "testimonial": {
+        "quote": "Inspiré par les mots d'Albert Einstein, \"Tout devrait être aussi simple que possible, mais pas plus simple,\" Islam a construit son agence sur le principe de simplifier les processus sans compromettre la qualité. Cette approche guide le travail de l'agence en livrant des solutions claires, efficaces et efficaces qui maintiennent la profondeur et l'impact tout en évitant la complexité inutile.",
+        "attribution": {
+          "name": "Islam Ismail",
+          "title": "LiftUp, Fondateur et DG"
+        }
+      },
+      "contactModal": {
+        "title": "Contacter LyftUp",
+        "description": "Contactez notre équipe pour vos besoins de marketing créatif",
+        "form": {
+          "fullName": "Nom Complet",
+          "emailAddress": "Adresse Email",
+          "companyName": "Nom de l'Entreprise",
+          "message": "Message",
+          "required": "*",
+          "placeholder": "Parlez-nous de votre projet, objectifs et exigences...",
+          "sendMessage": "Envoyer le Message",
+          "sending": "Envoi en cours..."
+        },
+        "errors": {
+          "nameRequired": "Le nom est requis",
+          "emailRequired": "L'email est requis",
+          "invalidEmail": "Adresse email invalide",
+          "companyRequired": "Le nom de l'entreprise est requis",
+          "messageRequired": "Le message est requis",
+          "recaptchaRequired": "Veuillez compléter le reCAPTCHA"
+        }
+      },
+      "contactInfo": {
+        "email": "admin@liftupim.com",
+        "location": "Le Caire, Égypte"
+      }
+    },
+    "aquila": {
+      "seo": {
+        "title": "Aquila Afrique de l'Est | Agence PAAN Certifiée à Nairobi, Kenya",
+        "description": "Aquila Afrique de l'Est est un membre certifié du Réseau d'Agences Pan-Africain (PAAN), spécialisé dans les campagnes numériques panafricaines, la planification média et la localisation de marché à travers l'Afrique. Contactez-nous pour le marketing créatif, la publicité et l'activation de marque.",
+        "keywords": "Aquila Afrique de l'Est, PAAN, agence certifiée, Nairobi, Kenya, campagnes numériques, planification média, localisation de marché, marketing créatif, publicité, activation de marque, Afrique"
+      },
+      "hero": {
+        "title": "Aquila Afrique de l'Est",
+        "locations": {
+          "kenya": "Kenya",
+          "uganda": "Ouganda",
+          "rwanda": "Rwanda"
+        }
+      },
+      "about": {
+        "title": "À Propos d'Aquila Afrique de l'Est",
+        "description": "Aquila Afrique de l'Est est une agence créative basée à Nairobi, Kenya, spécialisée dans les campagnes numériques panafricaines, la planification média et la localisation de marché. En tant que partenaire PAAN certifié, ils apportent la fluidité culturelle, l'aperçu régional et des résultats cohérents aux marques qui s'étendent à travers le continent.",
+        "specializationTitle": "Domaines de Spécialisation",
+        "specializations": {
+          "creativeMarketing": "Marketing Créatif",
+          "advertisingSolutions": "Solutions Publicitaires",
+          "brandActivation": "Activation de Marque",
+          "pr": "RP"
+        }
+      },
+      "clients": {
+        "title": "Clients avec Qui Aquila a Travaillé"
+      },
+      "testimonial": {
+        "quote": "PAAN nous a permis d'accéder à de nouvelles opportunités commerciales à travers l'Afrique et a également joué un rôle central dans la formation de nos équipes grâce à des programmes de formation et des webinaires adaptés aux agences.",
+        "attribution": {
+          "name": "Kester Muhanji",
+          "title": "PDG, Aquila Afrique de l'Est"
+        }
+      },
+      "contactModal": {
+        "title": "Contacter Aquila Afrique de l'Est",
+        "description": "Contactez notre équipe pour vos besoins de marketing créatif",
+        "form": {
+          "fullName": "Nom Complet",
+          "emailAddress": "Adresse Email",
+          "companyName": "Nom de l'Entreprise",
+          "message": "Message",
+          "required": "*",
+          "placeholder": "Parlez-nous de votre projet, objectifs et exigences...",
+          "sendMessage": "Envoyer le Message",
+          "sending": "Envoi en cours..."
+        },
+        "errors": {
+          "nameRequired": "Le nom est requis",
+          "emailRequired": "L'email est requis",
+          "invalidEmail": "Adresse email invalide",
+          "companyRequired": "Le nom de l'entreprise est requis",
+          "messageRequired": "Le message est requis",
+          "recaptchaRequired": "Veuillez compléter le reCAPTCHA"
+        }
+      },
+      "socialMedia": {
+        "followUs": "Suivez Aquila Afrique de l'Est sur les réseaux sociaux"
+      }
+    }
+  },
   "language": {
     "switchLanguage": "Changer de Langue",
     "currentLanguage": "Langue Actuelle"
