@@ -7,8 +7,10 @@ import { Icon } from "@iconify/react";
 import Link from "next/link";
 import { menuItems } from "../data/menuData";
 import { useState, useEffect, useMemo } from "react";
+import { useAppTranslations } from '../hooks/useTranslations';
 
 const Footer = () => {
+  const { t } = useAppTranslations();
   const currentYear = useMemo(() => new Date().getFullYear(), []);
   const [isHeaderFixed, setIsHeaderFixed] = useState(false);
 
@@ -101,11 +103,11 @@ const Footer = () => {
       <div className="max-w-6xl mx-auto px-3 sm:px-0">
         {/* Top Section: Collaborate, Innovate, Dominate */}
         <div className="grid grid-cols-1 md:grid-cols-6 justify-items-center gap-4 text-center md:text-left">
-          <p className="text-4xl font-medium">Collaborate</p>
+          <p className="text-4xl font-medium">{t('homepage.footer.motto.collaborate')}</p>
           <span className="flex bg-[#F2B706] rounded-full w-8 h-8"></span>
-          <p className="text-4xl font-medium">Innovate</p>
+          <p className="text-4xl font-medium">{t('homepage.footer.motto.innovate')}</p>
           <span className="flex bg-[#84C1D9] rounded-full w-8 h-8"></span>
-          <p className="text-4xl font-medium">Dominate</p>
+          <p className="text-4xl font-medium">{t('homepage.footer.motto.dominate')}</p>
           <span className="flex bg-[#F25849] rounded-full w-8 h-8"></span>
         </div>
       </div>
@@ -169,7 +171,7 @@ const Footer = () => {
 
           {/* Center: Tools Section */}
           <div className="flex flex-col gap-4">
-            <h3 className="text-lg font-semibold text-white mb-2">Tools</h3>
+            <h3 className="text-lg font-semibold text-white mb-2">{t('homepage.footer.tools')}</h3>
             <ul className="space-y-2">
               <li>
                 <Link
@@ -177,7 +179,7 @@ const Footer = () => {
                   className="font-normal text-gray-200 hover:text-white hover:underline transition-all duration-300 cursor-pointer flex items-center gap-2"
                 >
                   <Icon icon="fa-solid:magic" className="w-4 h-4" />
-                  AI Brief Builder
+                  {t('homepage.footer.aiBriefBuilder')}
                 </Link>
               </li>
               {/* <li>
@@ -210,7 +212,7 @@ const Footer = () => {
 
           {/* Right: Vertical Menu */}
           <div className="flex flex-col gap-4">
-            <h3 className="text-lg font-semibold text-white mb-2">Quick Links</h3>
+            <h3 className="text-lg font-semibold text-white mb-2">{t('homepage.footer.quickLinks')}</h3>
             <ul className="space-y-2">
               {menuItems.map((item) => (
                 <li key={item.href}>
@@ -230,12 +232,12 @@ const Footer = () => {
       {/* Footer Bottom Section */}
       <div className="max-w-6xl mx-auto px-3 sm:px-0">
         <p className="pt-10 pb-24 border-t border-gray-400 text-center text-gray-200 text-sm relative z-10">
-          © {currentYear} PAAN. All rights reserved. |
+          © {currentYear} PAAN. {t('homepage.footer.copyright')} |
           <Link
             href="/privacy-policy"
             className="ml-2 text-white hover:text-[#84c1d9] transition-colors duration-300"
           >
-            Privacy Policy
+            {t('homepage.footer.privacyPolicy')}
           </Link>
         </p>
       </div>

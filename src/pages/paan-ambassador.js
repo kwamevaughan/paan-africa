@@ -9,8 +9,11 @@ import BecomeAmbassadorModal from "@/components/BecomeAmbassadorModal";
 import ContactSection from "@/components/ContactSection";
 import ScrollToTop from "@/components/ScrollToTop";
 import { motion } from "framer-motion";
+import { useAppTranslations } from '../hooks/useTranslations';
 
 const PAANAmbassador = () => {
+  const { t } = useAppTranslations();
+  
   const sectionRefs = {
     home: useRef(null),
     aboutUs: useRef(null),
@@ -97,25 +100,25 @@ const PAANAmbassador = () => {
                 <motion.div className="space-y-6" variants={{ hidden: { opacity: 0 }, show: { opacity: 1 } }}>
                     <div className="space-y-4">
                     <h2 className="text-l sm:text-xl lg:text-2xl font-bold text-paan-dark-blue uppercase">
-                        Leadership with Purpose
+                        {t('homepage.ambassador.leadership.badge')}
                     </h2>
                     <h3 className="text-paan-dark-blue text-2xl sm:text-4xl font-normal leading-relaxed">
-                        This isn't a role for everyone.<br/> It's a role for changemakers.
+                        {t('homepage.ambassador.leadership.title')}
                     </h3>
                     </div>
                     
                     <p className="text-paan-dark-blue text-base sm:text-lg leading-relaxed">
-                    The PAAN Ambassador Program is not open to everyone. It is a carefully curated initiative for a select group of professionals across Africa who stand at the intersection of leadership, connection, and continental growth.
+                    {t('homepage.ambassador.leadership.description1')}
                     </p>
                     
                     <p className="text-paan-dark-blue text-base sm:text-lg leading-relaxed">
-                        As a PAAN Ambassador, you don't just represent a network — you represent the future of Africa's creative, digital, and strategic industries. You are a trusted connector, a voice of credibility, and a champion of excellence.
+                        {t('homepage.ambassador.leadership.description2')}
                     </p>
                     <button 
                     onClick={openModal}
                     className="bg-paan-red border border-paan-red mt-10 text-white py-3 px-8 sm:px-10 rounded-full hover:bg-orange-600 transition-all duration-300 transform ease-in-out hover:translate-y-[-5px] font-medium text-sm w-full sm:w-auto"
                     >
-                        Become an Ambassador
+                        {t('homepage.ambassador.leadership.ctaButton')}
                     </button>
                 </motion.div>
                 
@@ -141,15 +144,15 @@ const PAANAmbassador = () => {
                 <motion.div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 mb-12 lg:mb-16" initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }} variants={{ hidden: {}, show: { transition: { staggerChildren: 0.12 } } }}>
                     <motion.div className="space-y-4" variants={{ hidden: { opacity: 0 }, show: { opacity: 1 } }}>
                     <h2 className="text-paan-yellow uppercase text-sm font-semibold tracking-wider">
-                        Why This Matters — And Why You Were Chosen
+                        {t('homepage.ambassador.whyMatters.badge')}
                     </h2>
                     <h3 className="text-white text-2xl sm:text-3xl lg:text-4xl font-light leading-tight">
-                        Your voice, credibility, and leadership are essential to Africa's growth story.
+                        {t('homepage.ambassador.whyMatters.title')}
                     </h3>
                     </motion.div>
                     <motion.div className="flex items-center" variants={{ hidden: { opacity: 0 }, show: { opacity: 1 } }}>
                     <p className="text-white text-lg leading-relaxed">
-                        Africa's creative economy is on the rise — but remains fragmented. PAAN exists to bridge that gap, and you are a key part of that bridge. As a PAAN Ambassador, you:
+                        {t('homepage.ambassador.whyMatters.description')}
                     </p>
                     </motion.div>
                 </motion.div>
@@ -167,7 +170,7 @@ const PAANAmbassador = () => {
                         />
                     </div>
                     <p className="text-paan-dark-blue text-lg font-medium leading-relaxed">
-                        Open doors for local agencies to access opportunities across Africa.
+                        {t('homepage.ambassador.whyMatters.features.openDoors')}
                     </p>
                     </motion.div>
 
@@ -182,7 +185,7 @@ const PAANAmbassador = () => {
                         />
                     </div>
                     <p className="text-paan-dark-blue text-lg font-medium leading-relaxed">
-                        Represent a trusted brand committed to collaboration, quality, and integrity.
+                        {t('homepage.ambassador.whyMatters.features.represent')}
                     </p>
                     </motion.div>
 
@@ -197,7 +200,7 @@ const PAANAmbassador = () => {
                         />
                     </div>
                     <p className="text-paan-dark-blue text-lg font-medium leading-relaxed">
-                        Gather insights that shape how we grow continent-wide.
+                        {t('homepage.ambassador.whyMatters.features.insights')}
                     </p>
                     </motion.div>
 
@@ -212,7 +215,7 @@ const PAANAmbassador = () => {
                         />
                     </div>
                     <p className="text-paan-dark-blue text-lg font-medium leading-relaxed">
-                        Champion your local ecosystem, while being part of a larger vision.
+                        {t('homepage.ambassador.whyMatters.features.ecosystem')}
                     </p>
                     </motion.div>
                 </motion.div>
@@ -221,7 +224,7 @@ const PAANAmbassador = () => {
                 <motion.div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center" initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }} variants={{ hidden: {}, show: { transition: { staggerChildren: 0.1 } } }}>
                     <motion.div variants={{ hidden: { opacity: 0 }, show: { opacity: 1 } }}>
                     <p className="text-white text-2xl sm:text-3xl font-light leading-tight">
-                        This is more than a role. It's a platform for leaders. And that leader is you.
+                        {t('homepage.ambassador.whyMatters.cta')}
                     </p>
                     </motion.div>
                     <motion.div className="flex justify-start lg:justify-end" variants={{ hidden: { opacity: 0 }, show: { opacity: 1 } }}>
@@ -229,7 +232,7 @@ const PAANAmbassador = () => {
                         onClick={openModal}
                         className="bg-paan-red border border-paan-red text-white py-4 px-8 sm:px-12 rounded-full hover:bg-red-600 hover:border-red-600 transition-all duration-300 transform hover:translate-y-[-2px] hover:shadow-lg font-medium text-base"
                     >
-                        Become an Ambassador
+                        {t('homepage.ambassador.whyMatters.ctaButton')}
                     </button>  
                     </motion.div>
                 </motion.div>
@@ -254,12 +257,12 @@ const PAANAmbassador = () => {
               
               <div className="flex flex-col order-1 md:order-2">
                 <div className="space-y-4 sm:space-y-6">
-                <h3 className="text-lg sm:text-xl text-dark uppercase font-semibold">Your Influence, In Action</h3>
+                <h3 className="text-lg sm:text-xl text-dark uppercase font-semibold">{t('homepage.ambassador.influence.badge')}</h3>
               <h2 className="text-2xl sm:text-3xl md:text-4xl text-dark font-normal leading-tight">
-                PAAN Ambassadors don't observe - they activate, elevate, and shape.
+                {t('homepage.ambassador.influence.title')}
               </h2>
                   <p className="text-gray-700 leading-relaxed text-base sm:text-lg">
-                    As a PAAN Ambassador, your responsibilities are impactful and intentional. You are expected to:
+                    {t('homepage.ambassador.influence.description')}
                   </p>
                   
                   <div className="mt-6 sm:mt-8">
@@ -268,25 +271,25 @@ const PAANAmbassador = () => {
                         <span className="mr-3 mt-1 flex-shrink-0">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="m10.6 13.8l-2.15-2.15q-.275-.275-.7-.275t-.7.275t-.275.7t.275.7L9.9 15.9q.3.3.7.3t.7-.3l5.65-5.65q.275-.275.275-.7t-.275-.7t-.7-.275t-.7.275zM12 22q-2.075 0-3.9-.788t-3.175-2.137T2.788 15.9T2 12t.788-3.9t2.137-3.175T8.1 2.788T12 2t3.9.788t3.175 2.137T21.213 8.1T22 12t-.788 3.9t-2.137 3.175t-3.175 2.138T12 22"/></svg>            
                         </span>
-                        <span className="text-gray-700 leading-relaxed text-sm sm:text-base">Shared Resources & Tools PAAN<br/> Certification Credibility</span>
+                        <span className="text-gray-700 leading-relaxed text-sm sm:text-base">{t('homepage.ambassador.influence.responsibilities.resources')}</span>
                       </li>
                       <li className="flex items-start">
                         <span className="mr-3 mt-1 flex-shrink-0">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="m10.6 13.8l-2.15-2.15q-.275-.275-.7-.275t-.7.275t-.275.7t.275.7L9.9 15.9q.3.3.7.3t.7-.3l5.65-5.65q.275-.275.275-.7t-.275-.7t-.7-.275t-.7.275zM12 22q-2.075 0-3.9-.788t-3.175-2.137T2.788 15.9T2 12t.788-3.9t2.137-3.175T8.1 2.788T12 2t3.9.788t3.175 2.137T21.213 8.1T22 12t-.788 3.9t-2.137 3.175t-3.175 2.138T12 22"/></svg> 
                         </span>
-                        <span className="text-gray-700 leading-relaxed text-sm sm:text-base">Engage with communities, events, and<br/> industry forums</span>
+                        <span className="text-gray-700 leading-relaxed text-sm sm:text-base">{t('homepage.ambassador.influence.responsibilities.engage')}</span>
                       </li>
                       <li className="flex items-start">
                         <span className="mr-3 mt-1 flex-shrink-0">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="m10.6 13.8l-2.15-2.15q-.275-.275-.7-.275t-.7.275t-.275.7t.275.7L9.9 15.9q.3.3.7.3t.7-.3l5.65-5.65q.275-.275.275-.7t-.275-.7t-.7-.275t-.7.275zM12 22q-2.075 0-3.9-.788t-3.175-2.137T2.788 15.9T2 12t.788-3.9t2.137-3.175T8.1 2.788T12 2t3.9.788t3.175 2.137T21.213 8.1T22 12t-.788 3.9t-2.137 3.175t-3.175 2.138T12 22"/></svg>  
                         </span>
-                        <span className="text-gray-700 leading-relaxed text-sm sm:text-base">Share trends, barriers, and opportunities<br/> from your country</span>
+                        <span className="text-gray-700 leading-relaxed text-sm sm:text-base">{t('homepage.ambassador.influence.responsibilities.share')}</span>
                       </li>
                       <li className="flex items-start">
                         <span className="mr-3 mt-1 flex-shrink-0">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="m10.6 13.8l-2.15-2.15q-.275-.275-.7-.275t-.7.275t-.275.7t.275.7L9.9 15.9q.3.3.7.3t.7-.3l5.65-5.65q.275-.275.275-.7t-.275-.7t-.7-.275t-.7.275zM12 22q-2.075 0-3.9-.788t-3.175-2.137T2.788 15.9T2 12t.788-3.9t2.137-3.175T8.1 2.788T12 2t3.9.788t3.175 2.137T21.213 8.1T22 12t-.788 3.9t-2.137 3.175t-3.175 2.138T12 22"/></svg>  
                         </span>
-                        <span className="text-gray-700 leading-relaxed text-sm sm:text-base">Join internal PAAN conversations,<br/> strategy calls, and regional activations</span>
+                        <span className="text-gray-700 leading-relaxed text-sm sm:text-base">{t('homepage.ambassador.influence.responsibilities.join')}</span>
                       </li>
                     </ul>
                   </div>
@@ -298,36 +301,36 @@ const PAANAmbassador = () => {
         <div className="relative bg-paan-blue">
           <section className="relative mx-auto max-w-6xl mt-0 px-4 sm:px-6 pb-16 sm:pb-20">
             <div className="space-y-3 sm:space-y-4 text-center md:text-left pt-10">
-              <h2 className="text-paan-dark-blue text-sm sm:text-md md:text-xl font-bold uppercase">Rewards for Visionaries</h2>
-              <p className="text-paan-dark-blue text-xl sm:text-2xl mb-6 font-normal max-w-lg">With great responsibility comes exclusive recognition and support.</p>
+              <h2 className="text-paan-dark-blue text-sm sm:text-md md:text-xl font-bold uppercase">{t('homepage.ambassador.rewards.badge')}</h2>
+              <p className="text-paan-dark-blue text-xl sm:text-2xl mb-6 font-normal max-w-lg">{t('homepage.ambassador.rewards.subtitle')}</p>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                 <div className="bg-white rounded-xl px-4 py-8 flex flex-col items-left text-left hover:shadow-lg transition-shadow duration-300 min-h-[280px]">
                   <div className="mb-6">
                     <img src="/assets/images/icons/recognition.svg" width="80" height="80" className="w-20 h-20" alt="Open doors" />
                   </div>
-                  <h4 className="text-paan-dark-blue text-lg font-medium leading-relaxed text-left">Recognition</h4>
-                  <p className="text-paan-dark-blue text-md font-light leading-relaxed text-left">Featured across PAAN's digital platforms, magazine, and events.</p>
+                  <h4 className="text-paan-dark-blue text-lg font-medium leading-relaxed text-left">{t('homepage.ambassador.rewards.benefits.recognition.title')}</h4>
+                  <p className="text-paan-dark-blue text-md font-light leading-relaxed text-left">{t('homepage.ambassador.rewards.benefits.recognition.description')}</p>
                 </div>
                 <div className="bg-white rounded-xl px-4 py-8 flex flex-col items-left text-left hover:shadow-lg transition-shadow duration-300 min-h-[280px]">
                   <div className="mb-6">
                     <img src="/assets/images/icons/vip.svg" width="80" height="80" className="w-20 h-20" alt="Open doors" />
                   </div>
-                  <h4 className="text-paan-dark-blue text-lg font-medium leading-relaxed text-left">VIP Summit Access</h4>
-                  <p className="text-paan-dark-blue text-md font-light leading-relaxed text-left">Special access to attend and connect at exclusive ecosystem gatherings.</p>
+                  <h4 className="text-paan-dark-blue text-lg font-medium leading-relaxed text-left">{t('homepage.ambassador.rewards.benefits.vipAccess.title')}</h4>
+                  <p className="text-paan-dark-blue text-md font-light leading-relaxed text-left">{t('homepage.ambassador.rewards.benefits.vipAccess.description')}</p>
                 </div>
                 <div className="bg-white rounded-xl px-4 py-8 flex flex-col items-left text-left hover:shadow-lg transition-shadow duration-300 min-h-[280px]">
                   <div className="mb-6">
                     <img src="/assets/images/icons/leadership.svg" width="80" height="80" className="w-20 h-20" alt="Open doors" />
                   </div>
-                  <h4 className="text-paan-dark-blue text-lg font-medium leading-relaxed text-left">Thought Leadership</h4>
-                  <p className="text-paan-dark-blue text-md font-light leading-relaxed text-left">Opportunities to speak, publish, and join high-impact panels.</p>
+                  <h4 className="text-paan-dark-blue text-lg font-medium leading-relaxed text-left">{t('homepage.ambassador.rewards.benefits.thoughtLeadership.title')}</h4>
+                  <p className="text-paan-dark-blue text-md font-light leading-relaxed text-left">{t('homepage.ambassador.rewards.benefits.thoughtLeadership.description')}</p>
                 </div>
                 <div className="bg-white rounded-xl px-4 py-8 flex flex-col items-left text-left hover:shadow-lg transition-shadow duration-300 min-h-[280px]">
                   <div className="mb-6">
                     <img src="/assets/images/icons/finance.svg" width="80" height="80" className="w-20 h-20" alt="Open doors" />
                   </div>
-                  <h4 className="text-paan-dark-blue text-lg font-medium leading-relaxed text-left">Financial Benefits</h4>
-                  <p className="text-paan-dark-blue text-md font-light leading-relaxed text-left">Enjoy exclusive incentives based on your ambassador impact.</p>
+                  <h4 className="text-paan-dark-blue text-lg font-medium leading-relaxed text-left">{t('homepage.ambassador.rewards.benefits.financial.title')}</h4>
+                  <p className="text-paan-dark-blue text-md font-light leading-relaxed text-left">{t('homepage.ambassador.rewards.benefits.financial.description')}</p>
                 </div>
               </div>
             </div>            
@@ -339,11 +342,11 @@ const PAANAmbassador = () => {
         <motion.div className="relative bg-gradient-to-b from-gray-50 to-white" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: 0.6, ease: "easeOut" }}>
           <section id="ambassadors" className="relative mx-auto max-w-6xl px-4 sm:px-6 py-20 sm:py-24">
             <div className="text-center mb-16">
-              <p className="text-paan-dark-blue/70 text-xs sm:text-sm font-semibold uppercase tracking-widest mb-3">Leadership Excellence</p>
-              <h2 className="text-gray-900 text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">PAAN Ambassadors</h2>
+              <p className="text-paan-dark-blue/70 text-xs sm:text-sm font-semibold uppercase tracking-widest mb-3">{t('homepage.ambassador.ambassadors.badge')}</p>
+              <h2 className="text-gray-900 text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">{t('homepage.ambassador.ambassadors.title')}</h2>
               <div className="w-24 h-1 bg-gradient-to-r from-paan-red to-paan-yellow mx-auto mb-6"></div>
               <p className="text-gray-600 text-lg sm:text-xl leading-relaxed max-w-3xl mx-auto">
-                Distinguished leaders driving innovation and excellence across Africa's creative and strategic landscape
+                {t('homepage.ambassador.ambassadors.description')}
               </p>
             </div>
 
@@ -368,20 +371,20 @@ const PAANAmbassador = () => {
                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="w-4 h-4 fill-current">
                         <path d="M12 2l2.39 4.84L20 8.27l-3.9 3.8.92 5.36L12 15.9l-5.02 2.63.92-5.36L4 8.27l5.61-1.43L12 2z"/>
                       </svg>
-                      PAAN Ambassador
+                      {t('homepage.ambassador.ambassadors.profile.badge')}
                     </span>
                   </div>
                   <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-2">Mahlodi Legodi</h3>
-                  <p className="text-paan-red font-semibold text-lg mb-6">Founder & Strategic Director, FR Communications</p>
+                  <p className="text-paan-red font-semibold text-lg mb-6">{t('homepage.ambassador.ambassadors.profile.role')}</p>
                   <div className="prose prose-gray max-w-none">
                     <p className="text-gray-700 text-base leading-relaxed mb-4">
-                      An award-winning Public Relations professional with over a decade of experience leading strategic communications across Africa and globally.
+                      {t('homepage.ambassador.ambassadors.profile.bio1')}
                     </p>
                     <p className="text-gray-700 text-base leading-relaxed mb-4">
-                      She has worked with world-class brands including <strong>Netflix</strong>, <strong>Marriott International</strong>, <strong>Nando's</strong>, <strong>Radisson Hotel Group</strong>, <strong>bpSA</strong>, and <strong>Glencore</strong>, specializing in brand positioning, reputation management, and stakeholder engagement.
+                      {t('homepage.ambassador.ambassadors.profile.bio2')}
                     </p>
                     <p className="text-gray-700 text-base leading-relaxed">
-                      As Founder and Strategic Director of FR Communications, Mahlodi partners with clients and agencies to deliver purpose-driven, integrated campaigns that combine storytelling, collaboration, and social responsibility.
+                      {t('homepage.ambassador.ambassadors.profile.bio3')}
                     </p>
                   </div>
                   <div className="mt-8 pt-6 border-t border-gray-200">
@@ -389,7 +392,7 @@ const PAANAmbassador = () => {
                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="w-5 h-5 mr-2 fill-current text-paan-blue">
                         <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
                       </svg>
-                      <span className="font-medium">Leading strategic communications across Africa and globally</span>
+                      <span className="font-medium">{t('homepage.ambassador.ambassadors.profile.location')}</span>
                     </div>
                   </div>
                 </motion.div>
@@ -401,10 +404,10 @@ const PAANAmbassador = () => {
           <section className="relative mx-auto max-w-6xl px-4 sm:px-6 py-16 sm:py-20">
             <div className="text-center mb-12">
               <h2 className="text-paan-dark-blue text-sm sm:text-base md:text-lg font-bold uppercase tracking-wide mb-4">
-                Let's Get You Started
+                {t('homepage.ambassador.getStarted.badge')}
               </h2>
               <p className="text-paan-dark-blue text-2xl sm:text-3xl md:text-4xl font-light leading-tight">
-                Three simple steps to activate your influence.
+                {t('homepage.ambassador.getStarted.title')}
               </p>
             </div>
             
@@ -419,16 +422,10 @@ const PAANAmbassador = () => {
                   </div>
                   <div className="pr-12">
                     <h3 className="text-paan-dark-blue text-lg sm:text-xl font-bold uppercase mb-3 tracking-wide group-hover:text-paan-red transition-colors duration-300">
-                      Step 1
+                      {t('homepage.ambassador.getStarted.steps.step1.title')}
                     </h3>
                     <p className="text-paan-dark-blue text-base sm:text-lg leading-relaxed group-hover:text-paan-red transition-colors duration-300">
-                      Share your details with us →{' '}
-                      <a 
-                        href="mailto:secretariat@paan.africa" 
-                        className="font-semibold underline decoration-2 underline-offset-2 hover:decoration-4 transition-all"
-                      >
-                        secretariat@paan.africa
-                      </a>
+                      {t('homepage.ambassador.getStarted.steps.step1.description')}
                     </p>
                   </div>
                 </div>
@@ -444,10 +441,10 @@ const PAANAmbassador = () => {
                   </div>
                   <div className="pr-12">
                     <h3 className="text-paan-dark-blue text-lg sm:text-xl font-bold uppercase mb-3 tracking-wide group-hover:text-paan-yellow transition-colors duration-300">
-                      Step 2
+                      {t('homepage.ambassador.getStarted.steps.step2.title')}
                     </h3>
                     <p className="text-paan-dark-blue text-base sm:text-lg leading-relaxed group-hover:text-paan-yellow transition-colors duration-300">
-                      Receive your Welcome Kit & attend the onboarding call
+                      {t('homepage.ambassador.getStarted.steps.step2.description')}
                     </p>
                   </div>
                 </div>
@@ -464,10 +461,10 @@ const PAANAmbassador = () => {
                   </div>
                   <div className="pr-12">
                     <h3 className="text-paan-dark-blue text-lg sm:text-xl font-bold uppercase mb-3 tracking-wide group-hover:text-paan-blue transition-colors duration-300">
-                      Step 3
+                      {t('homepage.ambassador.getStarted.steps.step3.title')}
                     </h3>
                     <p className="text-paan-dark-blue text-base sm:text-lg leading-relaxed group-hover:text-paan-blue transition-colors duration-300">
-                      Start activating your network with PAAN HQ behind you
+                      {t('homepage.ambassador.getStarted.steps.step3.description')}
                     </p>
                   </div>
                 </div>
@@ -485,6 +482,8 @@ const PAANAmbassador = () => {
 };
 
 const Hero = ({ openModal }) => {
+  const { t } = useAppTranslations();
+  
   return (
     <div
       className="relative h-screen w-full bg-gray-900 overflow-visible" 
@@ -505,16 +504,16 @@ const Hero = ({ openModal }) => {
         <div className="w-full px-4 sm:px-6 md:px-8 pb-0 sm:pb-24 flex flex-col justify-center sm:justify-end h-full">
           <div className="max-w-2xl text-left space-y-4 sm:space-y-6">
             <h1 className="text-4xl text-white font-bold uppercase">
-                The PAAN<br/> Ambassador Program
+                {t('homepage.ambassador.hero.title')}
             </h1>
             <p className="text-white text-base sm:text-lg mb-6 font-light w-full leading-relaxed">
-                Powering Africa's Creative Future — One Leader at a Time
+                {t('homepage.ambassador.hero.subtitle')}
             </p>  
             <button 
               onClick={openModal}
               className="bg-paan-red border border-paan-red text-white py-3 px-8 sm:px-10 rounded-full hover:bg-orange-600 transition-all duration-300 transform ease-in-out hover:translate-y-[-5px] font-medium text-sm w-full sm:w-auto"
             >
-                Become an Ambassador
+                {t('homepage.ambassador.hero.ctaButton')}
             </button>             
           </div>
         </div>

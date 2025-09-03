@@ -1,7 +1,10 @@
 import { Icon } from "@iconify/react";
 import Image from "next/image";
+import { useAppTranslations } from '../hooks/useTranslations';
 
 const Tier2 = () => {
+  const { t } = useAppTranslations();
+  
   return (
     <div className="relative bg-white rounded-lg shadow-md hover:shadow-none hover:translate-y-[-5px] transition-all duration-300 ease-in-out">
       
@@ -18,13 +21,13 @@ const Tier2 = () => {
       
       {/* Header */}
       <div className="bg-[#A1A1A1] text-white text-center py-4 sm:py-6 rounded-t-lg">
-        <h3 className="text-lg sm:text-xl font-semibold">Full Members</h3>
+        <h3 className="text-lg sm:text-xl font-semibold">{t('homepage.membershipTiers.tier2.title')}</h3>
       </div>
 
       {/* Content */}
       <div className="p-4 sm:p-6">
         <p className="font-normal mb-4 sm:mb-6 text-sm sm:text-base">
-          Perfect for established agencies seeking collaborative growth
+          {t('homepage.membershipTiers.tier2.subtitle')}
         </p>
 
         {/* List of Benefits */}
@@ -37,7 +40,7 @@ const Tier2 = () => {
               className="text-[#A1A1A1] flex-shrink-0 mt-0.5"
             />
             <p className="text-xs sm:text-sm leading-tight">
-              Access to co-bidding opportunities
+              {t('homepage.membershipTiers.tier2.benefits.coBidding')}
             </p>
           </li>
           <li className="flex items-start gap-2 sm:gap-3 border-b border-dashed border-gray-300 pb-3 sm:pb-4">
@@ -48,7 +51,7 @@ const Tier2 = () => {
               className="text-[#A1A1A1] flex-shrink-0 mt-0.5"
             />
             <p className="text-xs sm:text-sm leading-tight">
-              Participate in PAAN training programs
+              {t('homepage.membershipTiers.tier2.benefits.training')}
             </p>
           </li>
           <li className="flex items-start gap-2 sm:gap-3 border-b border-dashed border-gray-300 pb-3 sm:pb-4">
@@ -59,7 +62,7 @@ const Tier2 = () => {
               className="text-[#A1A1A1] flex-shrink-0 mt-0.5"
             />
             <p className="text-xs sm:text-sm leading-tight">
-              Eligible for PAAN certification
+              {t('homepage.membershipTiers.tier2.benefits.certification')}
             </p>
           </li>
           <li className="flex items-start gap-2 sm:gap-3 border-b border-dashed border-gray-300 pb-3 sm:pb-4">
@@ -70,7 +73,7 @@ const Tier2 = () => {
               className="text-[#A1A1A1] flex-shrink-0 mt-0.5"
             />
             <p className="text-xs sm:text-sm leading-tight">
-              Collaborate on regional and global projects
+              {t('homepage.membershipTiers.tier2.benefits.collaboration')}
             </p>
           </li>
           <li className="flex items-start gap-2 sm:gap-3">
@@ -81,7 +84,7 @@ const Tier2 = () => {
               className="text-[#A1A1A1] flex-shrink-0 mt-0.5"
             />
             <p className="text-xs sm:text-sm leading-tight">
-              Connect with partner agencies and clients
+              {t('homepage.membershipTiers.tier2.benefits.networking')}
             </p>
           </li>
         </ul>

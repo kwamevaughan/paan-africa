@@ -511,7 +511,6 @@ const HomePage = () => {
                       className="w-full h-auto aspect-video object-cover"
                       controls
                       preload="metadata"
-                      poster="/assets/images/certified-members/about-img.png"
                     >
                       <source src="/assets/images/certified-members/lyftup/video.webm" type="video/webm" />
                       Your browser does not support the video tag.

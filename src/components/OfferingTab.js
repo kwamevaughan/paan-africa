@@ -1,8 +1,11 @@
 // OfferingTab.js
 import { useState } from 'react';
 import { Icon } from "@iconify/react";
+import { useAppTranslations } from '../hooks/useTranslations';
 
 const OfferingTab = () => {
+  const { t } = useAppTranslations();
+  
   // State to manage which section is expanded
   const [expandedSection, setExpandedSection] = useState('business-development');
 
@@ -20,7 +23,7 @@ const OfferingTab = () => {
           onClick={() => toggleSection('business-development')}
         >
           <h3 className="text-2xl">
-            Business Development
+            {t('homepage.offerings.businessDevelopment.title')}
           </h3>
           <Icon
             icon={expandedSection === 'business-development' ? 'mdi:minus' : 'mdi:plus'}
@@ -35,7 +38,7 @@ const OfferingTab = () => {
           }`}
         >
           <p className="text-gray-500 mt-2">
-            Unlock new growth through co-bidding opportunities, a client referral system, and collaborative access to multinational campaigns.
+            {t('homepage.offerings.businessDevelopment.description')}
           </p>
         </div>
       </div>
@@ -47,7 +50,7 @@ const OfferingTab = () => {
           onClick={() => toggleSection('knowledge-hub')}
         >
           <h3 className="text-2xl">
-            Knowledge Hub
+            {t('homepage.offerings.knowledgeHub.title')}
           </h3>
           <Icon
             icon={expandedSection === 'knowledge-hub' ? 'mdi:minus' : 'mdi:plus'}
@@ -62,7 +65,7 @@ const OfferingTab = () => {
           }`}
         >
           <p className="text-gray-500 mt-2">
-            Access a centralized platform for sharing insights, best practices, and resources to drive innovation and growth.
+            {t('homepage.offerings.knowledgeHub.description')}
           </p>
         </div>
       </div>
@@ -74,7 +77,7 @@ const OfferingTab = () => {
           onClick={() => toggleSection('capacity-building')}
         >
           <h3 className="text-2xl">
-            Capacity Building
+            {t('homepage.offerings.capacityBuilding.title')}
           </h3>
           <Icon
             icon={expandedSection === 'capacity-building' ? 'mdi:minus' : 'mdi:plus'}
@@ -89,7 +92,7 @@ const OfferingTab = () => {
           }`}
         >
           <p className="text-gray-500 mt-2">
-            Participate in training programs, workshops, and mentorship to enhance skills and operational excellence.
+            {t('homepage.offerings.capacityBuilding.description')}
           </p>
         </div>
       </div>
@@ -101,7 +104,7 @@ const OfferingTab = () => {
           onClick={() => toggleSection('advocacy-visibility')}
         >
           <h3 className="text-2xl">
-            Advocacy & Visibility
+            {t('homepage.offerings.advocacyVisibility.title')}
           </h3>
           <Icon
             icon={expandedSection === 'advocacy-visibility' ? 'mdi:minus' : 'mdi:plus'}
@@ -116,7 +119,7 @@ const OfferingTab = () => {
           }`}
         >
           <p className="text-gray-500 mt-2">
-            Gain increased visibility through collective advocacy efforts and representation on a global stage.
+            {t('homepage.offerings.advocacyVisibility.description')}
           </p>
         </div>
       </div>

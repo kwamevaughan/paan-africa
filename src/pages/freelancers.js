@@ -11,8 +11,10 @@ import ContactSection from "@/components/ContactSection";
 import FreelancerHero from "@/components/FreelancerHero";
 import AgencyLogosGrid from "@/components/AgencyLogosGrid";
 import ScrollToTop from "@/components/ScrollToTop";
+import { useAppTranslations } from '../hooks/useTranslations';
 
 const FreelancersPage = () => {
+  const { t } = useAppTranslations();
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -93,7 +95,7 @@ const FreelancersPage = () => {
           <section className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
             <div className="grid lg:grid-cols-2 grid-cols-1 gap-6 sm:gap-8 lg:gap-12 py-8 sm:py-10 lg:py-12 items-center">
               <div className="flex flex-col gap-3 sm:gap-4 z-0 lg:pr-6">
-                <h2 className="text-lg sm:text-xl text-yellow-400 uppercase font-semibold">WHY JOIN?</h2>
+                <h2 className="text-lg sm:text-xl text-yellow-400 uppercase font-semibold">{t('freelancers.whyJoin.badge')}</h2>
                 <h3 className="text-white text-xl sm:text-2xl lg:text-3xl text-left font-normal leading-relaxed">
                   You&apos;re <span className="relative inline-block">
                     <span className="relative z-10">great</span>
@@ -166,7 +168,7 @@ const FreelancersPage = () => {
                   </span>
                   They get structure,<br/> visibility, and opportunities built<br className="hidden sm:block"/> for 
                   <span className="relative">
-                    <span className="relative z-10"> serious professional.</span>
+                    <span className="relative z-10"> serious professionals.</span>
                     <Image
                       src="/assets/images/blue-vector.webp"
                       width={100}
@@ -202,8 +204,8 @@ const FreelancersPage = () => {
           <div className="absolute -bottom-8 left-32 w-16 h-16 bg-paan-yellow rounded-full z-0"></div>
            <div className="absolute -top-10 left-12 w-24 h-24 bg-paan-red rounded-full z-0"></div>
           <section className="relative mx-auto max-w-6xl ">
-            <h2 className="text-lg uppercase font-bold text-center mb-4">What you Get</h2>
-            <h3 className="text-2xl text-center">You Bring the Talent. We Unlock the Opportunity.</h3>
+            <h2 className="text-lg uppercase font-bold text-center mb-4">{t('freelancers.whatYouGet.badge')}</h2>
+            <h3 className="text-2xl text-center">{t('freelancers.whatYouGet.title')}</h3>
             <FreelanceBenefits/ >
           </section>
         </div>

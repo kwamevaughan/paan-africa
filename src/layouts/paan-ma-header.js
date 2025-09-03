@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { useFixedHeader } from "../../utils/scrollUtils";
+import LanguageSwitcher from "../components/LanguageSwitcher";
 
 const PaanMaHeader = ({ openModal }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -86,8 +87,12 @@ const PaanMaHeader = ({ openModal }) => {
             ))}
           </nav>
 
-          {/* CTA Button */}
-          <div className="hidden md:block">
+          {/* Language Switcher and CTA Button */}
+          <div className="hidden md:flex items-center space-x-4">
+            {/* Language Switcher */}
+            <LanguageSwitcher />
+            
+            {/* CTA Button */}
             <button
               onClick={openModal}
               className="bg-paan-dark-blue text-white px-6 py-3 rounded-full text-sm font-medium hover:bg-orange-600 transition-colors duration-200 flex items-center gap-2"
@@ -155,6 +160,11 @@ const PaanMaHeader = ({ openModal }) => {
               
               {/* Navigation items */}
               <div className="flex-1 px-4 pb-4">
+                {/* Language Switcher for Mobile */}
+                <div className="px-4 py-3 border-b border-gray-200 mb-4">
+                  <LanguageSwitcher />
+                </div>
+                
                 <div className="space-y-2">
                   {navigationItems.map((item) => (
                     <button

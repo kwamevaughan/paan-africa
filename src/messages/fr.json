@@ -1,0 +1,739 @@
+{
+  "navigation": {
+    "home": "Accueil",
+    "about": "À propos",
+    "services": "Services",
+    "contact": "Contact",
+    "blog": "Blog",
+    "events": "Événements",
+    "summit": "Sommet",
+    "academy": "Académie",
+    "partners": "Partenaires",
+    "freelancers": "Freelances",
+    "clients": "Clients",
+    "talentDiscovery": "Découverte de Talents",
+    "trendsDashboard": "Tableau de Bord des Tendances",
+    "pricing": "Tarifs",
+    "faqs": "FAQ",
+    "privacyPolicy": "Politique de Confidentialité"
+  },
+  "common": {
+    "getStarted": "Commencer",
+    "learnMore": "En Savoir Plus",
+    "contactUs": "Contactez-nous",
+    "viewAll": "Voir Tout",
+    "readMore": "Lire Plus",
+    "submit": "Soumettre",
+    "cancel": "Annuler",
+    "save": "Sauvegarder",
+    "edit": "Modifier",
+    "delete": "Supprimer",
+    "search": "Rechercher",
+    "filter": "Filtrer",
+    "sort": "Trier",
+    "loading": "Chargement...",
+    "error": "Erreur",
+    "success": "Succès",
+    "welcome": "Bienvenue",
+    "hello": "Bonjour",
+    "goodbye": "Au revoir",
+    "copy": "Copier",
+    "copied": "Copié !",
+    "passcode": "Code d'accès :"
+  },
+  "homepage": {
+    "hero": {
+      "title": "Autonomiser les Talents Créatifs Africains",
+      "subtitle": "Connectez-vous avec les meilleurs professionnels créatifs d'Afrique",
+      "description": "Rejoignez notre plateforme pour découvrir, connecter et collaborer avec des créatifs talentueux de tout le continent."
+    },
+    "sections": {
+      "summitEvents": "Sommet et Événements",
+      "talentDiscovery": "Découverte de Talents",
+      "trendsDashboard": "Tableau de Bord des Tendances",
+      "paanAcademy": "Académie PAAN",
+      "partnersBenefits": "Avantages des Partenaires"
+    },
+    "heroSection": {
+      "title": "1. Bienvenue à PAAN",
+      "mainTitle": "Autonomiser les Talents Créatifs Africains",
+      "subtitle": "Connectez-vous avec les meilleurs professionnels créatifs d'Afrique",
+      "description": "Rejoignez notre plateforme pour découvrir, connecter et collaborer avec des créatifs talentueux de tout le continent.",
+      "ctaButton": "Commencer",
+      "scrollButton": "Faites défiler pour explorer"
+    },
+    "aboutUs": {
+      "title": "2. Qui Sommes-Nous",
+      "description": "Le Réseau d'Agences Pan-Africaines (PAAN) est une alliance audacieuse d'agences indépendantes à travers l'Afrique et la diaspora. Nous avons pour mission de transformer la fragmentation en unité et le potentiel en influence mondiale.",
+      "discoverMore": "Découvrir Plus",
+      "features": {
+        "panAfricanReach": "Portée Pan-Africaine",
+        "strategicCollaboration": "Collaboration Stratégique",
+        "innovationDriven": "Axé sur l'Innovation",
+        "sharedKnowledgeGrowth": "Connaissances Partagées et Croissance"
+      }
+    },
+    "ourMission": {
+      "vision": {
+        "title": "Énoncé de Vision",
+        "description": "Devenir le premier réseau collaboratif d'Afrique, façonnant les récits mondiaux par la créativité et la technologie."
+      },
+      "mission": {
+        "title": "Énoncé de Mission",
+        "description": "Autonomiser les agences africaines par des partenariats, des ressources partagées et un plaidoyer pour fournir des solutions de classe mondiale."
+      }
+    },
+    "whyJoinUs": {
+      "title": "3. Pourquoi Rejoindre PAAN ?",
+      "description": "L'adhésion à PAAN ouvre les portes aux opportunités mondiales, aux ressources exclusives et à un réseau florissant des meilleurs esprits créatifs et technologiques d'Afrique."
+    },
+    "services": {
+      "title": "4. Ce Que Nous Offrons",
+      "description": "Chez PAAN, nous allons au-delà du réseautage. Nos services de base sont conçus pour autonomiser, élever et connecter les agences à travers l'Afrique et la diaspora. Découvrez ce que nous offrons."
+    },
+    "events": {
+      "title": "5. Sommet et Événements",
+      "mainTitle": "Vivez la Collaboration en Action",
+      "description": "Nos événements signature réunissent marques, agences et leaders d'opinion pour façonner l'avenir créatif de l'Afrique par le partage de connaissances et les partenariats stratégiques.",
+      "featuredEvent": {
+        "badge": "Événement Vedette",
+        "title": "Sommet Créatif PAAN 2025",
+        "description": "Rejoignez-nous pour le plus grand rassemblement de l'industrie créative en Afrique. Réseautez avec les meilleures agences, freelances et clients dans un environnement conçu pour des connexions significatives et la croissance.",
+        "date": "22 Octobre 2025",
+        "location": "Nairobi, Kenya",
+        "cta": "En Savoir Plus"
+      },
+      "webinars": {
+        "title": "Webinaires d'Experts",
+        "description": "Webinaires avec des experts de l'industrie partageant des insights sur les dernières tendances, technologies et stratégies qui façonnent l'industrie créative."
+      }
+    },
+    "offerings": {
+      "businessDevelopment": {
+        "title": "Développement Commercial",
+        "description": "Débloquez une nouvelle croissance grâce aux opportunités de co-soumission, un système de recommandation de clients et un accès collaboratif aux campagnes multinationales."
+      },
+      "knowledgeHub": {
+        "title": "Centre de Connaissances",
+        "description": "Accédez à une plateforme centralisée pour partager des insights, des meilleures pratiques et des ressources pour stimuler l'innovation et la croissance."
+      },
+      "capacityBuilding": {
+        "title": "Renforcement des Capacités",
+        "description": "Participez à des programmes de formation, des ateliers et du mentorat pour améliorer les compétences et l'excellence opérationnelle."
+      },
+      "advocacyVisibility": {
+        "title": "Plaidoyer et Visibilité",
+        "description": "Gagnez en visibilité grâce aux efforts de plaidoyer collectifs et à la représentation sur la scène mondiale."
+      }
+    },
+    "membershipTiers": {
+      "tier1": {
+        "title": "Membres Or",
+        "subtitle": "Idéal pour les agences leaders avec un succès régional prouvé",
+        "benefits": {
+          "exclusiveRfps": "Accès aux RFPs/Appels d'offres/RFQs exclusifs",
+          "coBidding": "Opportunités de co-soumission",
+          "techReseller": "Programme de Revendeur Tech",
+          "crossBorder": "Correspondance Clients Transfrontaliers",
+          "marketInsights": "Insights de marché et données pour l'Afrique"
+        }
+      },
+      "tier2": {
+        "title": "Membres Complets",
+        "subtitle": "Parfait pour les agences établies cherchant une croissance collaborative",
+        "benefits": {
+          "coBidding": "Accès aux opportunités de co-soumission",
+          "training": "Participer aux programmes de formation PAAN",
+          "certification": "Éligible à la certification PAAN",
+          "collaboration": "Collaborer sur des projets régionaux et mondiaux",
+          "networking": "Se connecter avec des agences partenaires et clients"
+        }
+      },
+      "tier3": {
+        "title": "Membres Associés",
+        "subtitle": "Adapté aux petites et moyennes agences",
+        "benefits": {
+          "freelancers": "Accès aux freelances certifiés PAAN",
+          "mediaRates": "Tarifs Médias Pan-Africains",
+          "knowledgeTransfer": "Transfert de connaissances des agences partenaires plus grandes",
+          "subcontracting": "Sous-traiter sur des projets plus grands",
+          "networkGrowth": "Grandir avec un réseau de soutien et innovant"
+        }
+      }
+    },
+        "contact": {
+      "title": "Contactez-nous",
+      "description": "Vous avez des questions sur PAAN, l'adhésion ou les événements à venir ? Contactez-nous — nous sommes là pour vous connecter et soutenir votre parcours.",
+      "directContact": "Informations de Contact Direct",
+      "email": "secretariat@paan.africa",
+      "address": "7ème Étage, Mitsumi Business Park, Westlands, Nairobi, Kenya"
+    },
+    "footer": {
+      "motto": {
+        "collaborate": "Collaborer",
+        "innovate": "Innover",
+        "dominate": "Dominer"
+      },
+      "tools": "Outils",
+      "aiBriefBuilder": "Constructeur de Brief IA",
+      "quickLinks": "Liens Rapides",
+      "copyright": "Tous droits réservés.",
+      "privacyPolicy": "Politique de Confidentialité"
+    },
+    "ambassador": {
+      "hero": {
+        "title": "Le Programme d'Ambassadeur PAAN",
+        "subtitle": "Propulser l'Avenir Créatif de l'Afrique — Un Leader à la Fois",
+        "ctaButton": "Devenir Ambassadeur"
+      },
+      "leadership": {
+        "badge": "Leadership avec un Objectif",
+        "title": "Ce n'est pas un rôle pour tout le monde. C'est un rôle pour les agents de changement.",
+        "description1": "Le Programme d'Ambassadeur PAAN n'est pas ouvert à tous. C'est une initiative soigneusement organisée pour un groupe sélectionné de professionnels à travers l'Afrique qui se trouvent à l'intersection du leadership, de la connexion et de la croissance continentale.",
+        "description2": "En tant qu'Ambassadeur PAAN, vous ne représentez pas seulement un réseau — vous représentez l'avenir des industries créatives, numériques et stratégiques de l'Afrique. Vous êtes un connecteur de confiance, une voix de crédibilité et un champion de l'excellence.",
+        "ctaButton": "Devenir Ambassadeur"
+      },
+      "whyMatters": {
+        "badge": "Pourquoi C'est Important — Et Pourquoi Vous Avez Été Choisi",
+        "title": "Votre voix, votre crédibilité et votre leadership sont essentiels à l'histoire de croissance de l'Afrique.",
+        "description": "L'économie créative de l'Afrique est en hausse — mais reste fragmentée. PAAN existe pour combler cette lacune, et vous en êtes une partie clé. En tant qu'Ambassadeur PAAN, vous :",
+        "features": {
+          "openDoors": "Ouvrez des portes aux agences locales pour accéder aux opportunités à travers l'Afrique.",
+          "represent": "Représentez une marque de confiance engagée dans la collaboration, la qualité et l'intégrité.",
+          "insights": "Recueillez des insights qui façonnent notre croissance à travers le continent.",
+          "ecosystem": "Défendez votre écosystème local, tout en faisant partie d'une vision plus large."
+        },
+        "cta": "C'est plus qu'un rôle. C'est une plateforme pour les leaders. Et ce leader, c'est vous.",
+        "ctaButton": "Devenir Ambassadeur"
+      },
+      "influence": {
+        "badge": "Votre Influence, En Action",
+        "title": "Les Ambassadeurs PAAN n'observent pas - ils activent, élèvent et façonnent.",
+        "description": "En tant qu'Ambassadeur PAAN, vos responsabilités sont impactantes et intentionnelles. On s'attend à ce que vous :",
+        "responsibilities": {
+          "resources": "Ressources et Outils Partagés Crédibilité de Certification PAAN",
+          "engage": "Vous engagiez avec les communautés, événements et forums de l'industrie",
+          "share": "Partagiez les tendances, barrières et opportunités de votre pays",
+          "join": "Rejoigniez les conversations internes PAAN, appels stratégiques et activations régionales"
+        }
+      },
+      "rewards": {
+        "badge": "Récompenses pour les Visionnaires",
+        "subtitle": "Avec une grande responsabilité vient une reconnaissance et un soutien exclusifs.",
+        "benefits": {
+          "recognition": {
+            "title": "Reconnaissance",
+            "description": "Mis en avant sur les plateformes numériques, magazine et événements de PAAN."
+          },
+          "vipAccess": {
+            "title": "Accès VIP au Sommet",
+            "description": "Accès spécial pour assister et se connecter lors de rassemblements exclusifs de l'écosystème."
+          },
+          "thoughtLeadership": {
+            "title": "Leadership d'Opinion",
+            "description": "Opportunités de parler, publier et rejoindre des panels à fort impact."
+          },
+          "financial": {
+            "title": "Avantages Financiers",
+            "description": "Profitez d'incitations exclusives basées sur votre impact d'ambassadeur."
+          }
+        }
+      },
+      "ambassadors": {
+        "badge": "Excellence en Leadership",
+        "title": "Ambassadeurs PAAN",
+        "description": "Leaders distingués propulsant l'innovation et l'excellence à travers le paysage créatif et stratégique de l'Afrique",
+        "profile": {
+          "badge": "Ambassadeur PAAN",
+          "role": "Fondatrice et Directrice Stratégique, FR Communications",
+          "bio1": "Une professionnelle des Relations Publiques primée avec plus d'une décennie d'expérience dans la direction des communications stratégiques à travers l'Afrique et mondialement.",
+          "bio2": "Elle a travaillé avec des marques de classe mondiale incluant Netflix, Marriott International, Nando's, Radisson Hotel Group, bpSA et Glencore, se spécialisant dans le positionnement de marque, la gestion de réputation et l'engagement des parties prenantes.",
+          "bio3": "En tant que Fondatrice et Directrice Stratégique de FR Communications, Mahlodi s'associe avec des clients et des agences pour livrer des campagnes intégrées axées sur un objectif qui combinent narration, collaboration et responsabilité sociale.",
+          "location": "Diriger les communications stratégiques à travers l'Afrique et mondialement"
+        }
+      },
+      "getStarted": {
+        "badge": "Commençons",
+        "title": "Trois étapes simples pour activer votre influence.",
+        "steps": {
+          "step1": {
+            "title": "Étape 1",
+            "description": "Partagez vos détails avec nous → secretariat@paan.africa"
+          },
+          "step2": {
+            "title": "Étape 2",
+            "description": "Recevez votre Kit de Bienvenue et assistez à l'appel d'intégration"
+          },
+          "step3": {
+            "title": "Étape 3",
+            "description": "Commencez à activer votre réseau avec le QG PAAN derrière vous"
+          }
+        }
+      }
+    }
+  },
+  "freelancers": {
+    "whyJoin": {
+      "badge": "POURQUOI REJOINDRE?",
+      "title": "Vous êtes excellent dans ce que vous faites. Maintenant, rejoignez un réseau qui vous aide à le faire à grande échelle. Les Freelances Certifiés PAAN obtiennent plus que l'accès aux briefs. Ils obtiennent une structure, une visibilité et des opportunités construites pour de vrais professionnels."
+    },
+    "whatYouGet": {
+      "badge": "Ce que vous Obtenez",
+      "title": "Vous Apportez le Talent. Nous Débloquons l'Opportunité.",
+      "benefits": {
+        "liveClientBriefs": {
+          "title": "Briefs Clients en Direct",
+          "description": "Soyez mis en relation avec des briefs actifs des meilleures agences et marques d'Afrique."
+        },
+        "expertLedUpskilling": {
+          "title": "Perfectionnement Dirigé par des Experts",
+          "description": "Assistez à des masterclasses et ateliers dirigés par des légendes de l'industrie."
+        },
+        "businessGrowthSupport": {
+          "title": "Soutien Business & Croissance",
+          "description": "Construisez des systèmes pour la tarification, les propositions et la gestion des clients comme un pro."
+        },
+        "showcaseOpportunities": {
+          "title": "Opportunités de Mise en Avant",
+          "description": "Participez à des concours et gagnez en visibilité grâce aux mises en avant officielles PAAN."
+        },
+        "creativeGrants": {
+          "title": "Subventions Créatives",
+          "description": "Postulez pour des financements afin de poursuivre des idées audacieuses soutenues par de vrais partenaires."
+        },
+        "platformVisibility": {
+          "title": "Visibilité de Plateforme",
+          "description": "Soyez découvert par les clients grâce au réseau PAAN et aux répertoires."
+        }
+      },
+      "ctaButton": "Devenir un Freelance Certifié PAAN"
+    },
+    "readyToApply": {
+      "title": "Prêt à Postuler?",
+      "description": "Les meilleures agences africaines recrutent activement des freelances certifiés PAAN ce trimestre. Votre client parfait attend – ne les laissez pas trouver quelqu'un d'autre.",
+      "ctaButton": "Postuler Maintenant"
+    }
+  },
+  "clients": {
+    "hero": {
+      "badge": "Développez Votre Marque en Afrique",
+      "title": "Avec des Partenaires en Qui Vous Pouvez Avoir Confiance",
+      "description": "Travaillez avec des agences et freelances certifiés qui comprennent les marchés, agissent rapidement et livrent avec une fluidité culturelle.",
+      "ctaButton": "Trouver Votre Partenaire de Livraison",
+      "stats": {
+        "agencies": {
+          "title": "200+ Agences",
+          "description": "Certifiées et de confiance pour l'exécution de campagnes"
+        },
+        "freelancers": {
+          "title": "1000+ Freelances",
+          "description": "Talents créatifs locaux à travers l'Afrique"
+        }
+      }
+    },
+    "whyJoin": {
+      "badge": "POURQUOI REJOINDRE?",
+      "title": "L'Afrique est une mosaïque de marchés. Vous avez besoin de plus que de portée ; vous avez besoin de préparation.",
+      "description": "PAAN connecte votre marque à un réseau de confiance d'agences et de freelances vérifiés dans plus de 20 pays africains. Que vous déployiez sur plusieurs régions ou localisiez une seule campagne, notre écosystème vous donne l'agilité et la confiance pour livrer à grande échelle.",
+      "weHelpYou": "Nous vous aidons à :",
+      "benefits": {
+        "launchCampaigns": "Lancer des campagnes à travers les régions avec moins d'inconnues",
+        "localizeWithInsight": "Localiser avec perspicacité, pas avec des suppositions",
+        "workWithTrustedPartners": "Travailler avec des partenaires de livraison déjà de confiance dans leurs marchés"
+      }
+    },
+    "whatYouGet": {
+      "badge": "Ce que vous Obtenez",
+      "title": "Talent Certifié. Exécution Régionale. Résultats Réels",
+      "subtitle": "Travailler avec PAAN vous donne accès à :"
+    },
+    "whoWeWorkWith": {
+      "badge": "Avec Qui Nous Travaillons",
+      "title": "Approuvé par des marques, ONG et institutions construisant à travers l'Afrique",
+      "description": "Notre réseau soutient des marques mondiales, des ONG régionales et des organisations axées sur la mission qui s'étendent sur les marchés africains. Que vous lanciez une campagne numérique, activiez dans de nouvelles régions ou construisiez une présence de marque à long terme, nous vous aidons à trouver les bons partenaires créatifs et stratégiques."
+    },
+    "howItWorks": {
+      "badge": "Comment ça marche",
+      "title": "C'est facile de commencer.",
+      "steps": {
+        "step1": {
+          "title": "Partagez Votre Brief",
+          "description": "Dites-nous où vous voulez activer et ce dont vous avez besoin."
+        },
+        "step2": {
+          "title": "Nous Vous Assortissons",
+          "description": "Soyez jumelé avec des partenaires certifiés à travers l'Afrique."
+        },
+        "step3": {
+          "title": "Collaborez à Votre Façon",
+          "description": "Travaillez directement ou avec l'équipe de soutien PAAN pour la supervision."
+        },
+        "step4": {
+          "title": "Lancez Votre Confiance",
+          "description": "Exécutez avec des partenaires qui comprennent vos marchés."
+        }
+      }
+    },
+    "aiBriefBuilder": {
+      "strugglingTitle": "Vous Avez du Mal à Écrire des Briefs Clients?",
+      "mainTitle": "Laissez PAAN AI s'en Occuper.",
+      "description": "Créez des briefs de projet clairs et professionnels en minutes. Répondez simplement à quelques questions - nous nous occupons de la structure, du ton et du formatage pour vous.",
+      "features": {
+        "agencyReady": {
+          "title": "Sortie Prête pour Agence",
+          "description": "Obtenez un brief structuré et clair que les équipes créatives comprennent instantanément."
+        },
+        "fastEffortless": {
+          "title": "Rapide et Sans Effort",
+          "description": "Répondez simplement à quelques questions - notre IA gère le formatage, le ton et le flux."
+        },
+        "seamlessCollaboration": {
+          "title": "Collaboration Transparente",
+          "description": "Téléchargez, copiez ou partagez votre brief directement avec le réseau PAAN ou votre équipe interne."
+        }
+      },
+      "ctaButton": "Construire Mon Brief Maintenant",
+      "browserHeader": "Constructeur de Brief IA PAAN",
+      "formLabels": {
+        "projectType": "Type de Projet",
+        "targetMarket": "Marché Cible",
+        "campaignObjective": "Objectif de Campagne"
+      },
+      "formValues": {
+        "projectType": "Campagne de Marketing Numérique",
+        "targetMarket": "Afrique de l'Est (Kenya, Tanzanie, Ouganda)",
+        "campaignObjective": "Prise de Conscience de Marque et Génération de Prospects"
+      },
+      "aiProcessing": "L'IA génère votre brief professionnel...",
+      "generatedBrief": "Aperçu du Brief Généré"
+    },
+    "services": {
+      "fullyManagedCampaigns": {
+        "title": "Campagnes Entièrement Gérées+",
+        "description": "Du briefing au déploiement, nous vous couvrons"
+      },
+      "vettedCreators": {
+        "title": "Créateurs et Influenceurs Vérifiés",
+        "description": "Des voix authentiques qui font bouger les marchés"
+      }
+    }
+  },
+  "partners": {
+    "seo": {
+      "title": "Partenaire avec PAAN | Débloquez la Croissance à Travers les Marchés Créatifs et Technologiques d'Afrique",
+      "description": "Rejoignez le Programme de Partenariat PAAN pour vous connecter avec plus de 200 agences vérifiées à travers l'Afrique. Accélérez votre entrée sur le marché, construisez la confiance et évoluez avec l'expertise locale.",
+      "keywords": "Partenariats PAAN, réseau d'agences Afrique, partenariats technologiques Afrique, agence créative Afrique, s'étendre en Afrique, entrée sur le marché africain, partenaires technologiques locaux Afrique, évoluer sur les marchés africains"
+    },
+    "hero": {
+      "title": "Propulsez Votre Croissance à Travers l'Afrique",
+      "subtitle": "Débloquez le Potentiel de l'Afrique avec le Réseau d'Agences PAAN",
+      "ctaButton": "Demander"
+    },
+    "mainSection": {
+      "stats": {
+        "title": "AGENCES VÉRIFIÉES",
+        "count": "200+"
+      },
+      "audience": {
+        "title": "Pour les Entreprises Technologiques, Plateformes et Innovateurs",
+        "description": "Chez PAAN, nous comblons le fossé entre les solutions technologiques de pointe et les marchés les plus dynamiques d'Afrique. Partenaires avec nous pour vous connecter avec plus de 200 agences de communication, marketing et technologie vérifiées servant de grandes marques, ONG et entreprises à croissance rapide à travers le continent.",
+        "ctaButton": "Demander"
+      },
+      "whyPartner": {
+        "title": "Pourquoi Partenaires avec PAAN?",
+        "description": "Les marchés africains sont diversifiés, complexes et mûrs avec des opportunités—mais les naviguer seul est coûteux et chronophage. Le réseau d'agences PAAN agit comme votre accélérateur local, fournissant :"
+      }
+    },
+    "partnerBenefits": {
+      "badge": "Avantages des Partenaires",
+      "title": "Adaptés pour Propulser Votre Stratégie de Croissance en Afrique"
+    },
+    "readyToScale": {
+      "badge": "Prêt à Évoluer à Travers l'Afrique?",
+      "title": "Rejoignez les leaders de l'industrie en exploitant le réseau PAAN pour :",
+      "benefits": {
+        "localizeFaster": {
+          "title": "Localiser Plus Rapidement",
+          "description": "Traversez la complexité du marché avec l'expertise des agences."
+        },
+        "reduceRisk": {
+          "title": "Réduire les Risques",
+          "description": "Les agences certifiées PAAN assurent la conformité et la pertinence."
+        },
+        "maximizeROI": {
+          "title": "Maximiser le ROI",
+          "description": "Transformez les partenariats en revenus avec des résultats mesurables."
+        }
+      }
+    },
+    "howItWorks": {
+      "badge": "Comment ça Marche",
+      "title": "Un Chemin Simple en 4 Étapes pour Débloquer la Croissance à Travers l'Afrique",
+      "steps": {
+        "step1": {
+          "title": "Postuler",
+          "subtitle": "Faisons connaissance.",
+          "description": "Soumettez une courte demande de partenariat pour nous aider à comprendre votre solution, marchés cibles et objectifs de croissance à travers l'Afrique."
+        },
+        "step2": {
+          "title": "S'Alignir",
+          "subtitle": "Nous évaluons l'adéquation",
+          "description": "Notre équipe examine votre demande pour assurer une forte adéquation stratégique et une vision partagée pour la croissance à travers l'Afrique."
+        },
+        "step3": {
+          "title": "Activer",
+          "subtitle": "Lancer avec le Soutien PAAN",
+          "description": "Co-concevez et déployez des campagnes, sessions de formation ou offres de licence—équipant 200+ agences avec les outils pour promouvoir et implémenter votre solution."
+        },
+        "step4": {
+          "title": "Croître",
+          "subtitle": "Évoluer avec des insights basés sur les données.",
+          "description": "Suivez l'adoption, l'impact sur les revenus et les retours utilisateurs—tout en collaborant avec PAAN pour affiner votre stratégie et débloquer de nouvelles opportunités régionales."
+        }
+      }
+    },
+    "benefits": {
+      "amplifyVisibility": {
+        "title": "Amplifier la Visibilité",
+        "items": [
+          "Listage dans l'Annuaire des Partenaires : Présentez vos solutions aux agences dans notre annuaire en ligne exclusif.",
+          "Mise en Avant Mensuelle : Profil mensuel dans la newsletter PAAN.",
+          "Initiatives Co-Marquées : Collaborez trimestriellement sur des campagnes, études de cas ou webinaires pour mettre en avant votre impact."
+        ]
+      },
+      "accelerateAdoption": {
+        "title": "Accélérer l'Adoption",
+        "items": [
+          "Opportunités de Licence en Gros : Offrez des tarifs réduits aux agences PAAN, incitant l'adoption tout en évoluant votre base utilisateurs.",
+          "Ateliers Adaptés : Formez les agences sur la valeur de votre produit à travers des sessions pratiques annuelles.",
+          "Enquêtes Produit : Recueillez des retours de 100+ agences et leurs clients annuellement pour affiner votre stratégie Afrique."
+        ]
+      },
+      "driveRevenue": {
+        "title": "Générer des Revenus",
+        "items": [
+          "Accès Prioritaire aux Agences à Haute Valeur : Connectez-vous avec des agences de premier plan servant des clients multinationaux.",
+          "Coentreprises : Co-créez des bundles produits axés sur l'Afrique avec PAAN (ex: outils IA pour la narration locale).",
+          "Sessions Stratégiques Trimestrielles : Alignez-vous avec la direction PAAN pour identifier les tendances, lacunes et opportunités."
+        ]
+      },
+      "exclusivePrivileges": {
+        "title": "Privilèges Exclusifs",
+        "items": [
+          "Accès VIP au Sommet : Obtenez un créneau de prise de parole au Sommet PAAN annuel + 20% de réduction sur les ateliers régionaux.",
+          "Networking Privé : Assistez à des dîners sur invitation uniquement avec des leaders d'agences et des dirigeants de marques mondiales.",
+          "Insights de Marché : Recevez des rapports trimestriels sur les demandes technologiques émergentes à travers l'Afrique."
+        ]
+      }
+    },
+    "altText": {
+      "professionalWoman": "Femme professionnelle",
+      "paanPortalFeature": "Fonctionnalité du Portail PAAN",
+      "localizeFaster": "Localiser Plus Rapidement",
+      "reduceRisk": "Réduire les Risques",
+      "maximizeROI": "Maximiser le ROI",
+      "videoNotSupported": "Votre navigateur ne supporte pas la balise vidéo."
+    }
+  },
+  "paanMaProgram": {
+    "seo": {
+      "title": "Développez Votre Marque en Afrique avec des Partenaires de Confiance | Réseau d'Agences Pan-Africain (PAAN)",
+      "description": "Connectez-vous avec des agences et freelances certifiés dans plus de 20 pays africains pour lancer des campagnes avec une fluidité culturelle et une expertise régionale. Trouvez votre partenaire de livraison aujourd'hui.",
+      "keywords": "Marketing africain, agences certifiées Afrique, freelances Afrique, exécution de campagnes, Sommet PAAN, croissance de marque Afrique, créateurs vérifiés, campagnes régionales, marketing Afrique, agences de marketing africaines, freelances africains, réseau de marketing africain, solutions de marketing africaines, experts en marketing africains, professionnels du marketing africains, services de marketing africains, consultants en marketing africains, agences de marketing africaines, freelances de marketing africains, réseau de marketing africain, solutions de marketing africaines, experts en marketing africains, professionnels du marketing africains, services de marketing africains, consultants en marketing africains"
+    },
+    "hero": {
+      "title": "Croître, Fusionner ou Sortir avec Confiance dans l'Économie Créative Africaine",
+      "description": "Grâce au Programme de Fusions et Acquisitions PAAN, alimenté par Agency Futures, nous connectons les agences les plus ambitieuses d'Afrique avec des opportunités stratégiques pour croître, évoluer ou sortir, soutenues par une expertise M&A de classe mondiale et un réseau pan-africain de confiance.",
+      "ctaButton": "Réserver Votre Consultation Confidentielle",
+      "confidential": "Confidentiel • Sans engagement"
+    },
+    "vision": {
+      "badge": "Diriger avec la Vision",
+      "title": "Du Joueur Local au Leader Continental",
+      "description": "L'industrie créative et marketing africaine est à un point d'inflexion. Les frontières s'estompent et les plus grandes opportunités appartiennent aux agences assez audacieuses pour faire des mouvements stratégiques.\n\nLe Programme M&A PAAN vous donne la plateforme, les personnes et le processus pour le faire avec confiance.",
+      "ctaButton": "Réserver Consultation",
+      "strategies": {
+        "acquire": {
+          "title": "Acquérir à travers l'Afrique",
+          "description": "Entrez dans de nouveaux marchés en acquérant une agence prospère."
+        },
+        "merge": {
+          "title": "Fusionner pour gagner plus gros",
+          "description": "Débloquez l'échelle et la capacité pour obtenir des contrats plus importants."
+        },
+        "sell": {
+          "title": "Vendre pour une sortie forte",
+          "description": "Assurez une sortie rentable et bien structurée."
+        },
+        "expand": {
+          "title": "Étendre les capacités",
+          "description": "Ajoutez de nouveaux services et entrez dans de nouvelles industries."
+        }
+      }
+    },
+    "partnership": {
+      "badge": "Le Pouvoir du Partenariat",
+      "title": "Un Partenariat Construit pour les Plus Grands Mouvements d'Afrique",
+      "partners": {
+        "paan": {
+          "title": "PAAN :",
+          "description": "Accès inégalé au réseau d'agences le plus connecté d'Afrique."
+        },
+        "agencyFutures": {
+          "title": "Agency Futures :",
+          "description": "Des décennies d'expérience mondiale en matière de transactions dans les services créatifs, marketing et professionnels."
+        }
+      },
+      "faq": {
+        "exclusiveDealFlow": {
+          "title": "Flux de transactions exclusif",
+          "content": "Des opportunités que vous ne trouverez pas sur le marché libre — sourcées à travers le réseau de confiance PAAN."
+        },
+        "whoCanParticipate": {
+          "title": "Qui peut participer au programme?",
+          "content": "Le programme est ouvert aux agences de marketing et créatives établies à travers l'Afrique qui cherchent à étendre leur portée, fusionner avec des entreprises complémentaires ou se préparer pour une sortie stratégique. Nous travaillons avec des agences de toutes tailles, des studios boutique aux puissances régionales."
+        },
+        "whatServices": {
+          "title": "Quels services PAAN fournit-il?",
+          "content": "PAAN fournit un soutien M&A complet incluant le sourcing de transactions, la due diligence, les services d'évaluation, le soutien à la négociation et l'orientation d'intégration post-transaction. Nous offrons également du conseil stratégique pour aider les agences à se positionner pour des transactions réussies."
+        },
+        "howLong": {
+          "title": "Combien de temps le processus M&A prend-il typiquement?",
+          "content": "Le calendrier varie selon la complexité de la transaction, mais prend typiquement de 6 à 18 mois de la consultation initiale à la clôture de la transaction. Nous travaillons étroitement avec toutes les parties pour assurer un processus fluide et efficace."
+        },
+        "costs": {
+          "title": "Quels sont les coûts impliqués?",
+          "content": "Notre structure de frais est transparente et basée sur le succès. Nous offrons une consultation initiale sans coût, suivie d'un arrangement de frais structuré qui s'aligne avec vos objectifs de transaction. Contactez-nous pour une ventilation détaillée de nos services et tarifs."
+        }
+      }
+    },
+    "howItWorks": {
+      "badge": "Comment ça marche",
+      "title": "Votre Voyage vers la Croissance Stratégique",
+      "steps": {
+        "step1": {
+          "title": "Découvrir",
+          "description": "Consultation confidentielle pour comprendre vos objectifs et positionnement."
+        },
+        "step2": {
+          "title": "Assortir",
+          "description": "Accédez à une liste organisée d'acheteurs, vendeurs ou partenaires potentiels."
+        },
+        "step3": {
+          "title": "Stratégiser",
+          "description": "Structure de transaction, évaluation et orientation de négociation d'experts chevronnés."
+        },
+        "step4": {
+          "title": "Clôturer et Croître",
+          "description": "Nous gérons le travail lourd pour que vous puissiez vous concentrer sur l'avenir."
+        }
+      },
+      "ctaButton": "Réserver Consultation"
+    },
+    "whoShouldJoin": {
+      "badge": "Qui devrait Rejoindre",
+      "categories": {
+        "scalingAgencies": {
+          "title": "Agences en Évolution",
+          "description": "Prêtes à s'étendre régionalement ou globalement."
+        },
+        "exitReadyLeaders": {
+          "title": "Leaders Prêts à Sortir",
+          "description": "Planifiant une vente stratégique ou une succession."
+        },
+        "diversifiers": {
+          "title": "Diversificateurs",
+          "description": "Cherchant à ajouter des services via l'acquisition."
+        },
+        "investors": {
+          "title": "Investisseurs",
+          "description": "Ciblant le secteur créatif africain à forte croissance."
+        }
+      }
+    },
+    "africanCreativeEconomy": {
+      "title": "L'économie créative africaine se consolide — rapidement.",
+      "description": "Les agences qui agissent maintenant posséderont les relations clients, capacités et présence de marché que d'autres poursuivront dans cinq ans.",
+      "question": "Allez-vous diriger la vague ou regarder depuis la touche?"
+    },
+    "cta": {
+      "title": "Amenez Votre Agence au Niveau Suivant",
+      "description": "Assurez votre avantage concurrentiel avec la plateforme M&A la plus connectée d'Afrique pour les agences créatives.",
+      "button": "Réserver Votre Consultation Confidentielle"
+    },
+    "altText": {
+      "acquireAcrossAfrica": "Acquérir à travers l'Afrique",
+      "mergeToWinBigger": "Fusionner pour gagner plus gros",
+      "sellForStrongExit": "Vendre pour une sortie forte",
+      "expandCapabilities": "Étendre les capacités",
+      "paanLogo": "Logo PAAN",
+      "futureAgenciesLogo": "Logo Future Agencies",
+      "partnership": "Partenariat",
+      "whoShouldJoin": "Partenariat",
+      "africanMap": "Carte Africaine"
+    }
+  },
+  "events": {
+    "seo": {
+      "title": "Événements - PAAN Afrique",
+      "description": "Découvrez les événements à venir et passés de PAAN Afrique. Rejoignez nos rassemblements de l'industrie créative, ateliers et sessions de networking à travers l'Afrique.",
+      "keywords": "Événements PAAN, événements de l'industrie créative, événements Afrique, ateliers, sommets, networking"
+    },
+    "hero": {
+      "title": "PAAN",
+      "titleHighlight": "Événements",
+      "description": "Rejoignez la communauté créative africaine lors de nos événements de pointe de l'industrie, ateliers et sessions de networking",
+      "stats": {
+        "upcomingEvents": "Événements à Venir",
+        "pastEvents": "Événements Passés",
+        "citiesAcrossAfrica": "Villes à Travers l'Afrique"
+      }
+    },
+    "tabs": {
+      "allEvents": "Tous les Événements",
+      "upcomingEvents": "Événements à Venir",
+      "pastEvents": "Événements Passés"
+    },
+    "filters": {
+      "allEvents": "Tous les Événements",
+      "allLocations": "Tous les Lieux"
+    },
+    "noEventsFound": {
+      "title": "Aucun événement trouvé",
+      "description": "Essayez d'ajuster vos filtres ou revenez plus tard pour de nouveaux événements."
+    },
+    "cta": {
+      "title": "Restez Informé des Événements PAAN",
+      "description": "Ne manquez jamais une opportunité de vous connecter avec la communauté créative africaine. Abonnez-vous à notre newsletter pour les mises à jour d'événements et les insights de l'industrie.",
+      "joinNetwork": "Rejoindre le Réseau",
+      "learnAboutSummit": "En Savoir Plus sur le Sommet 2025"
+    },
+    "altText": {
+      "backgroundPattern": "Motif d'Arrière-plan"
+    }
+  },
+  "faqs": {
+    "seo": {
+      "title": "Questions Fréquemment Posées - PAAN Afrique",
+      "description": "Trouvez des réponses aux questions courantes sur l'adhésion PAAN, la collaboration, les outils et la croissance. Obtenez les informations dont vous avez besoin pour tirer le meilleur parti de votre expérience PAAN.",
+      "keywords": "FAQs PAAN, questions fréquemment posées, adhésion PAAN, collaboration PAAN, outils PAAN, croissance PAAN, support PAAN"
+    },
+    "hero": {
+      "title": "Des Questions sur PAAN? Nous Vous Couvrons.",
+      "description": "Trouvez des réponses rapides aux questions courantes sur l'adhésion PAAN, la collaboration, les outils et la croissance.",
+      "videoFallback": "Votre navigateur ne supporte pas la balise vidéo."
+    },
+    "contactSection": {
+      "title": "Encore des Questions? Parlons-en.",
+      "description": "Nous savons que chaque agence est unique — et parfois vous avez besoin de réponses qui ne sont pas dans les FAQs. Si vous n'êtes toujours pas sûr de l'adhésion, des avantages ou de la façon dont PAAN peut soutenir votre croissance, nous sommes là pour vous aider.",
+      "reachOutTitle": "Contactez-nous",
+      "email": "support@paan.africa",
+      "scheduleCall": "Planifier un appel",
+      "bookCallButton": "Réserver un Appel"
+    }
+  },
+  "language": {
+    "switchLanguage": "Changer de Langue",
+    "currentLanguage": "Langue Actuelle"
+  }
+}

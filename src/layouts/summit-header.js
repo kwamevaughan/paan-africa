@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { menuItems, ctaButton } from "../data/summitMenu";
 import { useFixedHeader, handleScroll } from "../../utils/scrollUtils";
+import LanguageSwitcher from "../components/LanguageSwitcher";
 
 const Header = ({ navLinkColor }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -80,6 +81,10 @@ const Header = ({ navLinkColor }) => {
                 </a>
               ))}
             </div>
+            
+            {/* Language Switcher */}
+            <LanguageSwitcher className="mr-3" />
+            
             <a
               href="https://membership.paan.africa/"              
               className={ctaButton.className}
@@ -92,6 +97,11 @@ const Header = ({ navLinkColor }) => {
         {/* Mobile Menu (shown when hamburger is clicked) */}
         <div className={`${isMenuOpen ? "block" : "hidden"} lg-custom:hidden`}>
           <div className="px-2 pt-2 pb-3 space-y-1 bg-[#172840] rounded-lg shadow-lg">
+            {/* Language Switcher for Mobile */}
+            <div className="px-4 py-3 border-b border-white/10">
+              <LanguageSwitcher />
+            </div>
+            
             {menuItems.map((item) => (
               <a
                 key={item.href}

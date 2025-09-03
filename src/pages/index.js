@@ -12,6 +12,7 @@ import OfferingTab from "@/components/OfferingTab";
 import Footer from "@/layouts/footer";
 import { useEffect, useRef, useState } from "react";
 import { useFixedHeader, handleScroll } from '../../utils/scrollUtils';
+import { useAppTranslations } from '../hooks/useTranslations';
 import ContactSection from "@/components/ContactSection";
 import AgencyEnquiryModal from "@/components/AgencyEnquiryModal";
 import AgenciesMarquee from "@/components/AgenciesMarquee";
@@ -25,6 +26,8 @@ import ProgramCard from "@/components/ProgramCard"
 // Add PasscodeCopy component definition before HomePage
 function PasscodeCopy({ passcode }) {
   const [copied, setCopied] = useState(false);
+  const { t } = useAppTranslations();
+  
   const handleCopy = () => {
     navigator.clipboard.writeText(passcode);
     setCopied(true);
@@ -32,25 +35,27 @@ function PasscodeCopy({ passcode }) {
   };
   return (
     <div className="flex items-center gap-2 bg-white border border-gray-200 rounded px-3 py-1 text-[#172840] text-sm font-medium select-none">
-      <span className="font-semibold">Passcode:</span>
+      <span className="font-semibold">{t('common.passcode')}</span>
       <span className="font-mono bg-gray-100 px-2 py-0.5 rounded text-base">{passcode}</span>
       <button
         onClick={handleCopy}
         className="ml-1 px-2 py-0.5 rounded hover:bg-gray-200 transition text-[#F25849] font-bold flex items-center gap-1 focus:outline-none"
-        title="Copy passcode"
+        title={t('common.copy')}
         type="button"
       >
         <Icon icon="mdi:content-copy" className="w-4 h-4" />
-        <span className="sr-only">Copy</span>
+        <span className="sr-only">{t('common.copy')}</span>
       </button>
       {copied && (
-        <span className="text-green-600 text-xs ml-2 transition-opacity duration-200">Copied!</span>
+        <span className="text-green-600 text-xs ml-2 transition-opacity duration-200">{t('common.copied')}</span>
       )}
     </div>
   );
 }
 
 const HomePage = () => {
+  const { t } = useAppTranslations();
+  
   const sectionRefs = {
     home: useRef(null),
     aboutUs: useRef(null),
@@ -363,13 +368,10 @@ const HomePage = () => {
           <section className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 items-center px-4 sm:px-0 pt-40 sm:pt-0 relative z-10">
             <div className="flex flex-col gap-4 sm:gap-8 text-center sm:text-left">
               <h1 className="text-2xl sm:text-3xl md:text-5xl font-semibold uppercase text-[#172840] leading-tight">
-                Redefining Africa's Global Creative & Tech Footprint
+                {t('homepage.heroSection.mainTitle')}
               </h1>
               <p className="text-gray-500 font-normal text-sm sm:text-base">
-                The Pan-African Agency Network (PAAN) is a bold alliance of
-                independent agencies across Africa and the diaspora. We're on a
-                mission to transform fragmentation into unity and potential into
-                global influence.
+                {t('homepage.heroSection.description')}
               </p>
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center sm:justify-start">
                 <button                  
@@ -378,7 +380,7 @@ const HomePage = () => {
                     handleScroll(e, "#contact-us", isFixed);
                   }}
                 >
-                  Join The Network
+                  {t('homepage.heroSection.ctaButton')}
                 </button>
                 <button
                   className="bg-[#84C1D9] text-[#172840] px-6 sm:px-8 py-2.5 sm:py-3 rounded-full font-medium text-sm transition duration-300 hover:bg-[#6FA1B7] text-center w-full sm:w-auto"
@@ -406,31 +408,9 @@ const HomePage = () => {
           <div className="absolute bottom-60 -left-20 w-11 h-11 bg-[#D1D3D4] rounded-full z-30"></div>
           {/* <div className="absolute bottom-0 -right-10 w-11 h-11 bg-[#172840] rounded-full z-0"></div> */}
           <section className="relative z-10">
-            <p className="uppercase font-semibold mb-4">2. Who We Are</p>
+            <p className="uppercase font-semibold mb-4">{t('homepage.aboutUs.title')}</p>
             <p className="text-2xl">
-              The Pan-African Agency Network (PAAN) is a bold alliance of
-              <span className="relative inline-block">
-                <span className="text-[#F25849] font-semibold relative ml-2 z-0">independent</span>
-                
-                <Image
-                                  src="/assets/images/sketch-1.webp"
-                  width={400}
-                  height={200}
-                  alt=""
-                  className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-auto h-auto z-[-2]"
-                />
-              </span>{" "} agencies across Africa and the diaspora. We're on a
-              mission to <span className="relative inline-block">
-                <span className="text-[#F2B706] font-semibold relative z-0">transform</span>
-                <Image
-                                  src="/assets/images/sketch-3.webp"
-                  width={400}
-                  height={200}
-                  alt=""
-                  className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-auto h-auto z-[-2]"
-                />
-              </span> fragmentation into unity and potential into
-              global influence.
+              {t('homepage.aboutUs.description')}
             </p>
           </section>
           <section className="relative z-10 grid grid-cols-1 sm:grid-cols-2 gap-8 items-center mt-20">
@@ -449,7 +429,7 @@ const HomePage = () => {
                   }}
                   className="absolute -bottom-1 bg-[#F25849] text-white px-4 py-2 sm:px-10 sm:py-4 rounded-full font-bold text-xs sm:text-lg hover:bg-[#D6473C] transition duration-300 shadow-lg"
                 >
-                  Discover More
+                  {t('homepage.aboutUs.discoverMore')}
                 </button>
               </div>
             </div>
@@ -459,36 +439,36 @@ const HomePage = () => {
                   src="/assets/images/icons/pan-african-reach.svg"
                   width={50}
                   height={50}
-                  alt="Pan-African Reach"
+                  alt={t('homepage.aboutUs.features.panAfricanReach')}
                 />
-                <p className="text-xl font-base">Pan-African Reach</p>
+                <p className="text-xl font-base">{t('homepage.aboutUs.features.panAfricanReach')}</p>
               </div>
               <div className="flex items-center gap-3 border-b border-gray-200 pb-4 transform transition-transform duration-300 hover:translate-y-[-5px]">
                 <Image
                   src="/assets/images/icons/strategic-collaboration.svg"
                   width={50}
                   height={50}
-                  alt="Strategic Collaboration"
+                  alt={t('homepage.aboutUs.features.strategicCollaboration')}
                 />
-                <p className="text-xl font-base">Strategic Collaboration</p>
+                <p className="text-xl font-base">{t('homepage.aboutUs.features.strategicCollaboration')}</p>
               </div>
               <div className="flex items-center gap-3 border-b border-gray-200 pb-4 transform transition-transform duration-300 hover:translate-y-[-5px]">
                 <Image
                   src="/assets/images/icons/innovation-driven.svg"
                   width={50}
                   height={50}
-                  alt="Innovation-Driven"
+                  alt={t('homepage.aboutUs.features.innovationDriven')}
                 />
-                <p className="text-xl font-base">Innovation-Driven</p>
+                <p className="text-xl font-base">{t('homepage.aboutUs.features.innovationDriven')}</p>
               </div>
               <div className="flex items-center gap-3 border-b border-gray-200 pb-4 transform transition-transform duration-300 hover:translate-y-[-5px]">
                 <Image
                   src="/assets/images/icons/shared-knowledge-growth.svg"
                   width={50}
                   height={50}
-                  alt="Shared Knowledge & Growth"
+                  alt={t('homepage.aboutUs.features.sharedKnowledgeGrowth')}
                 />
-                <p className="text-xl font-base">Shared Knowledge & Growth</p>
+                <p className="text-xl font-base">{t('homepage.aboutUs.features.sharedKnowledgeGrowth')}</p>
               </div>
             </div>
           </section>
@@ -533,11 +513,10 @@ const HomePage = () => {
                     />
                     <div className="text-left">
                       <p className="text-xl sm:text-2xl font-semibold text-[#172840] mb-2">
-                        Vision Statement
+                        {t('homepage.ourMission.vision.title')}
                       </p>
                       <span className="text-[#172840] font-light text-sm sm:text-base">
-                        To become Africa's foremost collaborative network, shaping
-                        global narratives through creativity and technology.
+                        {t('homepage.ourMission.vision.description')}
                       </span>
                     </div>
                   </div>
@@ -555,11 +534,10 @@ const HomePage = () => {
                     />
                     <div className="text-left">
                       <p className="text-xl sm:text-2xl font-semibold text-[#172840] mb-2">
-                        Mission Statement
+                        {t('homepage.ourMission.mission.title')}
                       </p>
                       <span className="text-[#172840] font-light text-sm sm:text-base">
-                        Empowering African agencies through partnerships, shared resources, 
-                        and advocacy to deliver world-class solutions.
+                        {t('homepage.ourMission.mission.description')}
                       </span>
                     </div>
                   </div>
@@ -579,14 +557,12 @@ const HomePage = () => {
           <div className="hidden md:block absolute -top-14 right-52 w-16 h-16 bg-[#84C1D9] rounded-full z-0"></div>
           <div className="absolute -bottom-14 right-4 w-11 h-11 bg-[#172840] rounded-full z-0"></div>
           <section className="relative z-10">
-            <p className="uppercase font-semibold mb-4">3. Why Join PAAN?</p>
+            <p className="uppercase font-semibold mb-4">{t('homepage.whyJoinUs.title')}</p>
           </section>
           <section className="relative z-10 grid grid-cols-1 sm:grid-cols-2 gap-8 items-center">
             <div className="flex flex-col gap-20">
               <p className="text-2xl">
-                PAAN membership opens doors to global opportunities, exclusive
-                resources, and a thriving network of Africa's top creative and
-                tech minds.
+                {t('homepage.whyJoinUs.description')}
               </p>
               <Image
                   src="/assets/images/recently-added.webp"
@@ -802,11 +778,9 @@ const HomePage = () => {
           ref={sectionRefs.services}
         >
           <section>
-            <p className="uppercase font-semibold mb-4">4. What We Offer</p>
+            <p className="uppercase font-semibold mb-4">{t('homepage.services.title')}</p>
             <p className="text-2xl">
-              At PAAN, we go beyond networking. Our core services are built to
-              empower, elevate, and connect agencies across Africa and the
-              diaspora. Explore what we offer.
+              {t('homepage.services.description')}
             </p>
           </section>
           <section className="grid grid-cols-1 sm:grid-cols-3 gap-8 items-center mt-10">
@@ -831,13 +805,12 @@ const HomePage = () => {
           ref={sectionRefs.events}
         >
           <section className="text-center mb-16">
-            <p className="uppercase font-semibold mb-4 text-[#F25849] tracking-wider">5. Summit & Events</p>
+            <p className="uppercase font-semibold mb-4 text-[#F25849] tracking-wider">{t('homepage.events.title')}</p>
             <h2 className="text-3xl md:text-4xl font-bold text-[#172840] mb-6">
-              Experience Collaboration in Action
+              {t('homepage.events.mainTitle')}
             </h2>
             <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-              Our signature events bring together brands, agencies, and thought leaders 
-              to shape Africa's creative future through knowledge sharing and strategic partnerships.
+              {t('homepage.events.description')}
             </p>
           </section>
           
@@ -847,31 +820,30 @@ const HomePage = () => {
               <div className="relative bg-white rounded-2xl p-8 shadow-2xl transform -rotate-1 group-hover:rotate-0 transition-transform duration-300">
                 <div className="mb-6">
                   <span className="inline-block bg-[#F25849] text-white text-xs font-bold px-4 py-2 rounded-full tracking-wider uppercase mb-4">
-                    Featured Event
+                    {t('homepage.events.featuredEvent.badge')}
                   </span>
                   <h3 className="text-2xl md:text-3xl font-bold text-[#172840] mb-4">
-                    PAAN Creative Summit 2025
+                    {t('homepage.events.featuredEvent.title')}
                   </h3>
                   <p className="text-gray-600 text-lg leading-relaxed">
-                    Join us for the biggest creative industry gathering in Africa. Network with top agencies, 
-                    freelancers, and clients in an environment designed for meaningful connections and growth.
+                    {t('homepage.events.featuredEvent.description')}
                   </p>
                 </div>
                 <div className="flex items-center gap-4 mb-6">
                   <div className="flex items-center gap-2 text-[#F25849]">
                     <Icon icon="mdi:calendar" className="w-5 h-5" />
-                    <span className="font-semibold">October 22, 2025</span>
+                    <span className="font-semibold">{t('homepage.events.featuredEvent.date')}</span>
                   </div>
                   <div className="flex items-center gap-2 text-[#172840]">
                     <Icon icon="mdi:map-marker" className="w-5 h-5" />
-                    <span className="font-semibold">Nairobi, Kenya</span>
+                    <span className="font-semibold">{t('homepage.events.featuredEvent.location')}</span>
                   </div>
                 </div>
                 <Link
                   href="/summit"
                   className="inline-flex items-center gap-2 bg-[#172840] text-white px-8 py-3 rounded-full font-semibold hover:bg-[#F25849] transition-all duration-300 shadow-lg hover:shadow-xl"
                 >
-                  <span>Learn More</span>
+                  <span>{t('homepage.events.featuredEvent.cta')}</span>
                   <Icon icon="mdi:arrow-right" className="w-5 h-5" />
                 </Link>
               </div>
@@ -886,10 +858,9 @@ const HomePage = () => {
                     </div>
                   </div>
                   <div>
-                    <h4 className="text-xl font-bold text-[#172840] mb-2">Expert Webinars</h4>
+                    <h4 className="text-xl font-bold text-[#172840] mb-2">{t('homepage.events.webinars.title')}</h4>
                     <p className="text-gray-600 leading-relaxed">
-                      Webinars featuring industry experts sharing insights on the latest trends, 
-                      technologies, and strategies shaping the creative industry.
+                      {t('homepage.events.webinars.description')}
                     </p>
                   </div>
                 </div>

@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { PartnersPageMenu, ctaButton } from "../data/menuData";
 import { useFixedHeader } from "../../utils/scrollUtils";
+import LanguageSwitcher from "../components/LanguageSwitcher";
 
 const Header = ({ navLinkColor }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -25,7 +26,7 @@ const Header = ({ navLinkColor }) => {
 
   return (
     <nav
-      className={`w-full pb-4 sm:pb-0 z-50 transition-all duration-300 overflow-hidden top-0 left-0 fixed$${
+      className={`w-full pb-4 sm:pb-0 z-[9998] transition-all duration-300 overflow-hidden top-0 left-0 fixed$${
         isFixed
           ? " top-0 left-0 shadow-lg backdrop-blur-md bg-white/95"
           : " top-0 left-0 bg-white"
@@ -109,6 +110,10 @@ const Header = ({ navLinkColor }) => {
                 </a>
               ))}
             </div>
+            
+            {/* Language Switcher */}
+            <LanguageSwitcher className="mr-3" />
+            
             <a
               href="https://membership.paan.africa/"
               className={ctaButton.className}
@@ -121,14 +126,14 @@ const Header = ({ navLinkColor }) => {
         {/* Mobile Menu Overlay */}
         {isMenuOpen && (
           <div 
-            className="fixed inset-0 bg-black bg-opacity-50 z-10 lg-custom:hidden"
+            className="fixed inset-0 bg-black bg-opacity-50 z-[9997] lg-custom:hidden"
             onClick={() => setIsMenuOpen(false)}
           />
         )}
 
         {/* Mobile Menu (shown when hamburger is clicked) */}
         <div 
-          className={`lg-custom:hidden fixed top-0 right-0 h-screen w-80 max-w-[85vw] bg-white shadow-2xl transform transition-transform duration-300 ease-in-out z-20 ${
+          className={`lg-custom:hidden fixed top-0 right-0 h-screen w-80 max-w-[85vw] bg-white shadow-2xl transform transition-transform duration-300 ease-in-out z-[9998] ${
             isMenuOpen ? 'translate-x-0' : 'translate-x-full'
           }`}
         >
@@ -167,6 +172,11 @@ const Header = ({ navLinkColor }) => {
           {/* Mobile Menu Content */}
           <div className="flex flex-col h-screen bg-white">
             <div className="flex-1 px-4 py-6 space-y-3 bg-white overflow-y-auto">
+              {/* Language Switcher for Mobile */}
+              <div className="px-4 py-3 border-b border-gray-200">
+                <LanguageSwitcher />
+              </div>
+              
               {PartnersPageMenu.map((item) => (
                 <a
                   key={item.href}
