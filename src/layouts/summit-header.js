@@ -28,7 +28,7 @@ const Header = ({ navLinkColor }) => {
           <div className="flex-shrink-0">
             <Link href="/" passHref>
               <Image
-                src="/assets/images/summit-logo.png"
+                src="/assets/images/summit-logo.webp"
                 alt="Logo"
                 width={200}
                 height={70}
