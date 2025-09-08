@@ -88,7 +88,13 @@ const CareerApplicationModal = ({ isOpen, onClose }) => {
         body: JSON.stringify(submitData),
       });
 
-      const result = await response.json();
+      let result;
+      try {
+        result = await response.json();
+      } catch (jsonError) {
+        console.error("Failed to parse response JSON:", jsonError);
+        throw new Error("Server returned invalid response. Please try again.");
+      }
 
       if (!response.ok) {
         throw new Error(result.message || "Failed to submit application");

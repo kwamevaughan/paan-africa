@@ -2,7 +2,10 @@ import nodemailer from "nodemailer";
 import { createClient } from "@supabase/supabase-js";
 
 export default async function handler(req, res) {
+  console.log("Career application API called with method:", req.method);
+  
   if (req.method !== "POST") {
+    console.log("Method not allowed:", req.method);
     return res.status(405).json({ message: "Method not allowed" });
   }
 
@@ -17,6 +20,8 @@ export default async function handler(req, res) {
     coverLetter,
     recaptchaToken,
   } = req.body;
+
+  console.log("Received application data:", { firstName, lastName, email, position });
 
   // Validate required fields
   if (!firstName || !lastName || !email || !position || !experience || !coverLetter || !recaptchaToken) {
@@ -52,7 +57,7 @@ export default async function handler(req, res) {
   }
 
   // Create a transporter using SMTP
-  const transporter = nodemailer.createTransporter({
+  const transporter = nodemailer.createTransport({
     host: process.env.SMTP_HOST,
     port: process.env.SMTP_PORT,
     secure: process.env.EMAIL_SECURE === "true",
