@@ -21,7 +21,8 @@ import ScrollToTop from "@/components/ScrollToTop";
 import ConnectingDots from "@/components/ConnectingDots";
 import AcademyConsultationModal from "@/components/AcademyConsultationModal";
 import PaanAmbassadorProgramModal from "@/components/PaanAmbassadorProgramModal";
-import ProgramCard from "@/components/ProgramCard"
+import ProgramCard from "@/components/ProgramCard";
+import StrategicPartners from "@/components/StrategicPartners";
 
 // Add PasscodeCopy component definition before HomePage
 function PasscodeCopy({ passcode }) {
@@ -547,6 +548,8 @@ const HomePage = () => {
           </section>
         </div>
 
+        {/* Strategic Partners Section */}
+        {/* <StrategicPartners /> */}
 
         <div
           className="mx-auto max-w-6xl mt-20 mb-20 relative"

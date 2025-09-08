@@ -57,7 +57,7 @@ const EventsPage = () => {
       <Header navLinkColor="text-gray-950" />
       
              {/* Hero Section */}
-       <section className="relative pt-32 pb-16 bg-gradient-to-br from-paan-dark-blue via-paan-blue to-paan-dark-blue overflow-hidden">
+       <section className="relative pt-24 sm:pt-32 pb-12 sm:pb-16 bg-gradient-to-br from-paan-dark-blue via-paan-blue to-paan-dark-blue overflow-hidden">
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-10">
           <Image
@@ -70,32 +70,32 @@ const EventsPage = () => {
         
         <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-4xl mx-auto">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6 leading-tight">
               {t('events.hero.title')} <span className="text-paan-yellow">{t('events.hero.titleHighlight')}</span>
             </h1>
-            <p className="text-xl md:text-2xl text-white/90 mb-8 leading-relaxed">
+            <p className="text-lg sm:text-xl md:text-2xl text-white/90 mb-6 sm:mb-8 leading-relaxed px-2">
               {t('events.hero.description')}
             </p>
             
             {/* Event Stats */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
-              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
-                <div className="text-3xl font-bold text-paan-yellow mb-2">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mt-8 sm:mt-12">
+              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 sm:p-6 border border-white/20">
+                <div className="text-2xl sm:text-3xl font-bold text-paan-yellow mb-2">
                   {eventsData.upcoming.length}
                 </div>
-                <div className="text-white/90">{t('events.hero.stats.upcomingEvents')}</div>
+                <div className="text-sm sm:text-base text-white/90">{t('events.hero.stats.upcomingEvents')}</div>
               </div>
-              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
-                <div className="text-3xl font-bold text-paan-yellow mb-2">
+              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 sm:p-6 border border-white/20">
+                <div className="text-2xl sm:text-3xl font-bold text-paan-yellow mb-2">
                   10+
                 </div>
-                <div className="text-white/90">{t('events.hero.stats.pastEvents')}</div>
+                <div className="text-sm sm:text-base text-white/90">{t('events.hero.stats.pastEvents')}</div>
               </div>
-              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
-                <div className="text-3xl font-bold text-paan-yellow mb-2">
+              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 sm:p-6 border border-white/20">
+                <div className="text-2xl sm:text-3xl font-bold text-paan-yellow mb-2">
                   20+
                 </div>
-                <div className="text-white/90">{t('events.hero.stats.citiesAcrossAfrica')}</div>
+                <div className="text-sm sm:text-base text-white/90">{t('events.hero.stats.citiesAcrossAfrica')}</div>
               </div>
             </div>
           </div>
@@ -106,49 +106,52 @@ const EventsPage = () => {
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           {/* Tab Navigation */}
-          <div className="flex flex-col sm:flex-row items-center justify-between mb-12">
-            <div className="flex bg-white rounded-full p-2 shadow-lg mb-6 sm:mb-0">
+          <div className="flex flex-col lg:flex-row items-center justify-between mb-8 sm:mb-12 gap-6">
+            <div className="flex flex-col sm:flex-row bg-white rounded-full p-1 sm:p-2 shadow-lg w-full sm:w-auto">
               <button
                 onClick={() => handleTabChange('all')}
-                className={`px-8 py-3 rounded-full font-semibold transition-all duration-300 ${
+                className={`px-4 sm:px-6 lg:px-8 py-2 sm:py-3 rounded-full font-semibold transition-all duration-300 text-sm sm:text-base ${
                   activeTab === 'all'
                     ? 'bg-paan-red text-white shadow-md'
                     : 'text-gray-600 hover:text-paan-red'
                 }`}
               >
-                <Icon icon="mdi:calendar-month" className="w-5 h-5 inline mr-2" />
-                {t('events.tabs.allEvents')}
+                <Icon icon="mdi:calendar-month" className="w-4 h-4 sm:w-5 sm:h-5 inline mr-1 sm:mr-2" />
+                <span className="hidden xs:inline">{t('events.tabs.allEvents')}</span>
+                <span className="xs:hidden">All</span>
               </button>
               <button
                 onClick={() => handleTabChange('upcoming')}
-                className={`px-8 py-3 rounded-full font-semibold transition-all duration-300 ${
+                className={`px-4 sm:px-6 lg:px-8 py-2 sm:py-3 rounded-full font-semibold transition-all duration-300 text-sm sm:text-base ${
                   activeTab === 'upcoming'
                     ? 'bg-paan-red text-white shadow-md'
                     : 'text-gray-600 hover:text-paan-red'
                 }`}
               >
-                <Icon icon="mdi:calendar-clock" className="w-5 h-5 inline mr-2" />
-                {t('events.tabs.upcomingEvents')}
+                <Icon icon="mdi:calendar-clock" className="w-4 h-4 sm:w-5 sm:h-5 inline mr-1 sm:mr-2" />
+                <span className="hidden xs:inline">{t('events.tabs.upcomingEvents')}</span>
+                <span className="xs:hidden">Upcoming</span>
               </button>
               <button
                 onClick={() => handleTabChange('past')}
-                className={`px-8 py-3 rounded-full font-semibold transition-all duration-300 ${
+                className={`px-4 sm:px-6 lg:px-8 py-2 sm:py-3 rounded-full font-semibold transition-all duration-300 text-sm sm:text-base ${
                   activeTab === 'past'
                     ? 'bg-paan-red text-white shadow-md'
                     : 'text-gray-600 hover:text-paan-red'
                 }`}
               >
-                <Icon icon="mdi:calendar-check" className="w-5 h-5 inline mr-2" />
-                {t('events.tabs.pastEvents')}
+                <Icon icon="mdi:calendar-check" className="w-4 h-4 sm:w-5 sm:h-5 inline mr-1 sm:mr-2" />
+                <span className="hidden xs:inline">{t('events.tabs.pastEvents')}</span>
+                <span className="xs:hidden">Past</span>
               </button>
             </div>
 
             {/* Filter Controls */}
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full sm:w-auto">
               <select
                 value={selectedCategory}
                 onChange={(e) => setSelectedCategory(e.target.value)}
-                className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-paan-red focus:border-transparent filter-transition"
+                className="px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-paan-red focus:border-transparent filter-transition text-sm sm:text-base w-full sm:w-auto"
               >
                 <option value="All Events">{t('events.filters.allEvents')}</option>
                 {eventCategories.filter(category => category !== 'All Events').map((category) => (
@@ -161,7 +164,7 @@ const EventsPage = () => {
               <select
                 value={selectedLocation}
                 onChange={(e) => setSelectedLocation(e.target.value)}
-                className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-paan-red focus:border-transparent filter-transition"
+                className="px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-paan-red focus:border-transparent filter-transition text-sm sm:text-base w-full sm:w-auto"
               >
                 <option value="All Locations">{t('events.filters.allLocations')}</option>
                 {eventLocations.filter(location => location !== 'All Locations').map((location) => (
@@ -175,7 +178,7 @@ const EventsPage = () => {
 
           {/* Events Grid */}
           {filteredEvents.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
               {filteredEvents.map((event) => (
                 <EventCard
                   key={event.id}
@@ -185,12 +188,12 @@ const EventsPage = () => {
               ))}
             </div>
           ) : (
-            <div className="text-center py-16">
-              <Icon icon="mdi:calendar-remove" className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-              <h3 className="text-xl font-semibold text-gray-600 mb-2">
+            <div className="text-center py-12 sm:py-16">
+              <Icon icon="mdi:calendar-remove" className="w-12 h-12 sm:w-16 sm:h-16 text-gray-400 mx-auto mb-4" />
+              <h3 className="text-lg sm:text-xl font-semibold text-gray-600 mb-2">
                 {t('events.noEventsFound.title')}
               </h3>
-              <p className="text-gray-500">
+              <p className="text-sm sm:text-base text-gray-500 px-4">
                 {t('events.noEventsFound.description')}
               </p>
             </div>
@@ -199,31 +202,31 @@ const EventsPage = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-paan-blue text-paan-dark-blue">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center pb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-paan-dark-blue mb-6">
+      <section className="py-12 sm:py-16 bg-paan-blue text-paan-dark-blue">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center pb-12 sm:pb-16">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-paan-dark-blue mb-4 sm:mb-6">
             {t('events.cta.title')}
           </h2>
-          <p className="text-xl text-paan-dark-blue/90 mb-8 max-w-2xl mx-auto">
+          <p className="text-lg sm:text-xl text-paan-dark-blue/90 mb-6 sm:mb-8 max-w-2xl mx-auto px-4">
             {t('events.cta.description')}
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center max-w-md sm:max-w-none mx-auto">
             <a
               href="https://membership.paan.africa/"
-              className="bg-paan-red hover:bg-paan-red/90 text-white px-8 py-4 rounded-full font-semibold text-lg shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
+              className="bg-paan-red hover:bg-paan-red/90 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-base sm:text-lg shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 w-full sm:w-auto text-center"
             >
-                             {t('events.cta.joinNetwork')}
+              {t('events.cta.joinNetwork')}
             </a>
             <a
               href="/summit"
-              className="bg-transparent border-2 border-paan-dark-blue text-paan-dark-blue hover:border-white hover:text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300"
+              className="bg-transparent border-2 border-paan-dark-blue text-paan-dark-blue hover:border-white hover:text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-base sm:text-lg transition-all duration-300 w-full sm:w-auto text-center"
             >
-                             {t('events.cta.learnAboutSummit')}
+              {t('events.cta.learnAboutSummit')}
             </a>
           </div>
         </div>
-        <Footer />
       </section>
+      <Footer />
       </div>
     </>
   );

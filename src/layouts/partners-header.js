@@ -26,7 +26,7 @@ const Header = ({ navLinkColor }) => {
 
   return (
     <nav
-      className={`w-full pb-4 sm:pb-0 z-[9998] transition-all duration-300 overflow-hidden top-0 left-0 fixed$${
+      className={`w-full pb-4 sm:pb-0 z-[9998] transition-all duration-300 top-0 left-0 fixed$${
         isFixed
           ? " top-0 left-0 shadow-lg backdrop-blur-md bg-white/95"
           : " top-0 left-0 bg-white"

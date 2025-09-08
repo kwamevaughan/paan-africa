@@ -83,6 +83,14 @@
         "description": "Autonomiser les agences africaines par des partenariats, des ressources partagées et un plaidoyer pour fournir des solutions de classe mondiale."
       }
     },
+    "strategicPartners": {
+      "title": "Approuvé par les Leaders Mondiaux",
+      "description": "Nous nous associons avec des entreprises technologiques et des plateformes leaders de l'industrie pour fournir à nos membres un accès exclusif aux outils, ressources et opportunités de pointe qui stimulent la croissance et l'innovation.",
+      "benefitsTitle": "Avantages des Partenariats",
+      "benefitsDescription": "Nos partenariats stratégiques débloquent des opportunités et des ressources exclusives pour les membres de PAAN, leur permettant de rivaliser à l'échelle mondiale.",
+      "ctaTitle": "Prêt à Partenariat avec Nous ?",
+      "ctaDescription": "Rejoignez notre réseau de partenaires stratégiques et aidez à façonner l'avenir du paysage créatif et technologique de l'Afrique."
+    },
     "whyJoinUs": {
       "title": "3. Pourquoi Rejoindre PAAN ?",
       "description": "L'adhésion à PAAN ouvre les portes aux opportunités mondiales, aux ressources exclusives et à un réseau florissant des meilleurs esprits créatifs et technologiques d'Afrique."
@@ -241,15 +249,37 @@
       },
       "ambassadors": {
         "badge": "Excellence en Leadership",
-        "title": "Ambassadeurs PAAN",
-        "description": "Leaders distingués propulsant l'innovation et l'excellence à travers le paysage créatif et stratégique de l'Afrique",
-        "profile": {
-          "badge": "Ambassadeur PAAN",
-          "role": "Fondatrice et Directrice Stratégique, FR Communications",
-          "bio1": "Une professionnelle des Relations Publiques primée avec plus d'une décennie d'expérience dans la direction des communications stratégiques à travers l'Afrique et mondialement.",
-          "bio2": "Elle a travaillé avec des marques de classe mondiale incluant Netflix, Marriott International, Nando's, Radisson Hotel Group, bpSA et Glencore, se spécialisant dans le positionnement de marque, la gestion de réputation et l'engagement des parties prenantes.",
-          "bio3": "En tant que Fondatrice et Directrice Stratégique de FR Communications, Mahlodi s'associe avec des clients et des agences pour livrer des campagnes intégrées axées sur un objectif qui combinent narration, collaboration et responsabilité sociale.",
-          "location": "Diriger les communications stratégiques à travers l'Afrique et mondialement"
+        "title": "Connecteurs Créatifs de l'Afrique",
+        "description": "Rencontrez les leaders visionnaires qui alimentent le Réseau d'Agences Pan-Africaines — amplifiant la collaboration, les insights et la croissance à travers le continent.",
+        "mahlodi": {
+          "name": "MAHLODI LEGODI",
+          "title": "Fondatrice et Directrice Stratégique",
+          "country": "Afrique du Sud",
+          "description": "Mahlodi est une professionnelle des Relations Publiques primée avec plus d'une décennie d'expérience dans la direction des communications stratégiques à travers l'Afrique et mondialement. Elle a travaillé avec des marques de classe mondiale incluant Netflix, Marriott International et Nando's.",
+          "fullDescription": "Mahlodi Legodi est une professionnelle des Relations Publiques primée avec plus d'une décennie d'expérience dans la direction des communications stratégiques à travers l'Afrique et mondialement. Elle a travaillé avec des marques de classe mondiale incluant Netflix, Marriott International, Nando's, Radisson Hotel Group, bpSA et Glencore, se spécialisant dans le positionnement de marque, la gestion de réputation et l'engagement des parties prenantes. En tant que Fondatrice et Directrice Stratégique de FR Communications, Mahlodi s'associe avec des clients et des agences pour livrer des campagnes intégrées axées sur un objectif qui combinent narration, collaboration et responsabilité sociale. Elle est passionnée par l'autonomisation des communautés à travers la communication et la création de connexions significatives entre les marques et leurs audiences.",
+          "achievements": [
+            "Professionnelle des Relations Publiques primée avec plus d'une décennie d'expérience",
+            "A travaillé avec des marques de classe mondiale incluant Netflix, Marriott International, Nando's",
+            "A dirigé les communications stratégiques à travers l'Afrique et mondialement",
+            "Fondatrice et Directrice Stratégique de FR Communications",
+            "Spécialiste en positionnement de marque et gestion de réputation"
+          ],
+          "expertise": ["Relations Publiques", "Positionnement de Marque", "Gestion de Réputation", "Engagement des Parties Prenantes", "Communications Stratégiques"]
+        },
+        "stephen": {
+          "name": "STEPHEN EKOMU",
+          "title": "Stratège en Croissance d'Entreprise et Marketing",
+          "country": "Ouganda",
+          "description": "Stephen est un leader visionnaire qui propulse la croissance stratégique à travers le paysage créatif de l'Afrique. Il se spécialise dans la construction de partenariats interculturels et le développement de solutions innovantes qui connectent les marques avec les marchés africains diversifiés.",
+          "fullDescription": "Stephen Ekomu est un stratège dynamique en croissance d'entreprise et expert en marketing avec plus de 12 ans d'expérience dans la conduite de la transformation numérique à travers l'Afrique de l'Est et Centrale. En tant que membre clé de l'équipe de direction PAAN, il a été instrumental dans le développement de stratégies marketing innovantes qui résonnent avec les marchés africains diversifiés. L'expertise de Stephen réside dans le développement d'entreprise, le marketing numérique et la création de modèles de croissance durables pour les agences créatives. Il détient un Bachelor en Administration des Affaires et a complété des certifications avancées en Marketing Numérique et Gestion Stratégique. Son approche innovante de la pénétration de marché et du positionnement de marque a aidé de nombreuses entreprises à atteindre une croissance remarquable à travers le continent africain. Stephen est passionné par l'utilisation de la technologie pour combler les écarts culturels et créer des connexions significatives entre les marques et leurs audiences cibles.",
+          "achievements": [
+            "Plus de 12 ans d'expérience en croissance d'entreprise et marketing",
+            "Expert des marchés d'Afrique de l'Est et Centrale",
+            "Bachelor en Administration des Affaires",
+            "Certifications avancées en Marketing Numérique",
+            "Spécialiste en positionnement de marque interculturel"
+          ],
+          "expertise": ["Développement d'Entreprise", "Marketing Numérique", "Gestion Stratégique", "Analyse de Marché", "Positionnement de Marque"]
         }
       },
       "getStarted": {

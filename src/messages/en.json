@@ -83,6 +83,14 @@
         "description": "Empowering African agencies through partnerships, shared resources, and advocacy to deliver world-class solutions."
       }
     },
+    "strategicPartners": {
+      "title": "Trusted by Global Leaders",
+      "description": "We partner with industry-leading technology companies and platforms to provide our members with exclusive access to cutting-edge tools, resources, and opportunities that drive growth and innovation.",
+      "benefitsTitle": "Partnership Benefits",
+      "benefitsDescription": "Our strategic partnerships unlock exclusive opportunities and resources for PAAN members, enabling them to compete on a global scale.",
+      "ctaTitle": "Ready to Partner with Us?",
+      "ctaDescription": "Join our network of strategic partners and help shape the future of Africa's creative and technology landscape."
+    },
     "whyJoinUs": {
       "title": "3. Why Join PAAN?",
       "description": "PAAN membership opens doors to global opportunities, exclusive resources, and a thriving network of Africa's top creative and tech minds."
@@ -241,15 +249,37 @@
       },
       "ambassadors": {
         "badge": "Leadership Excellence",
-        "title": "PAAN Ambassadors",
-        "description": "Distinguished leaders driving innovation and excellence across Africa's creative and strategic landscape",
-        "profile": {
-          "badge": "PAAN Ambassador",
-          "role": "Founder & Strategic Director, FR Communications",
-          "bio1": "An award-winning Public Relations professional with over a decade of experience leading strategic communications across Africa and globally.",
-          "bio2": "She has worked with world-class brands including Netflix, Marriott International, Nando's, Radisson Hotel Group, bpSA, and Glencore, specializing in brand positioning, reputation management, and stakeholder engagement.",
-          "bio3": "As Founder and Strategic Director of FR Communications, Mahlodi partners with clients and agencies to deliver purpose-driven, integrated campaigns that combine storytelling, collaboration, and social responsibility.",
-          "location": "Leading strategic communications across Africa and globally"
+        "title": "Africa's Creative Connectors",
+        "description": "Meet the visionary leaders powering the Pan-African Agency Network — amplifying collaboration, insight, and growth across the continent.",
+        "mahlodi": {
+          "name": "MAHLODI LEGODI",
+          "title": "Founder & Strategic Director",
+          "country": "South Africa",
+          "description": "Mahlodi is an award-winning PR professional with over a decade of experience leading strategic communications across Africa and globally. She has worked with world-class brands including Netflix, Marriott International, and Nando's.",
+          "fullDescription": "Mahlodi Legodi is an award-winning Public Relations professional with over a decade of experience leading strategic communications across Africa and globally. She has worked with world-class brands including Netflix, Marriott International, Nando's, Radisson Hotel Group, bpSA, and Glencore, specializing in brand positioning, reputation management, and stakeholder engagement. As Founder and Strategic Director of FR Communications, Mahlodi partners with clients and agencies to deliver purpose-driven, integrated campaigns that combine storytelling, collaboration, and social responsibility. She is passionate about empowering communities through communication and driving meaningful connections between brands and their audiences.",
+          "achievements": [
+            "Award-winning PR professional with over a decade of experience",
+            "Worked with world-class brands including Netflix, Marriott International, Nando's",
+            "Led strategic communications across Africa and globally",
+            "Founder and Strategic Director of FR Communications",
+            "Specialist in brand positioning and reputation management"
+          ],
+          "expertise": ["Public Relations", "Brand Positioning", "Reputation Management", "Stakeholder Engagement", "Strategic Communications"]
+        },
+        "stephen": {
+          "name": "STEPHEN EKOMU",
+          "title": "Business Growth & Marketing Strategist",
+          "country": "Uganda",
+          "description": "Stephen is a visionary leader driving strategic growth across Africa's creative landscape. He specializes in building cross-cultural partnerships and developing innovative solutions that connect brands with diverse African markets.",
+          "fullDescription": "Stephen Ekomu is a dynamic business growth strategist and marketing expert with over 12 years of experience in driving digital transformation across East and Central Africa. As a key member of the PAAN leadership team, he has been instrumental in developing innovative marketing strategies that resonate with diverse African markets. Stephen's expertise lies in business development, digital marketing, and creating sustainable growth models for creative agencies. He holds a Bachelor's degree in Business Administration and has completed advanced certifications in Digital Marketing and Strategic Management. His innovative approach to market penetration and brand positioning has helped numerous businesses achieve remarkable growth across the African continent. Stephen is passionate about leveraging technology to bridge cultural gaps and create meaningful connections between brands and their target audiences.",
+          "achievements": [
+            "12+ years of experience in business growth and marketing",
+            "Expert in East and Central African markets",
+            "Bachelor's degree in Business Administration",
+            "Advanced certifications in Digital Marketing",
+            "Specialist in cross-cultural brand positioning"
+          ],
+          "expertise": ["Business Development", "Digital Marketing", "Strategic Management", "Market Analysis", "Brand Positioning"]
         }
       },
       "getStarted": {

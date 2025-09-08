@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react';
 import { useRouter } from 'next/router';
+import { createPortal } from 'react-dom';
 import { locales, localeNames, localeFlags } from '../i18n';
 import { Icon } from '@iconify/react';
 
@@ -9,25 +10,51 @@ const LanguageSwitcher = ({ className = "" }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [currentLocale, setCurrentLocale] = useState('en');
   const [dropdownPosition, setDropdownPosition] = useState({ top: 0, right: 0 });
+  const [mounted, setMounted] = useState(false);
   const buttonRef = useRef(null);
   const dropdownRef = useRef(null);
   const router = useRouter();
   const { locale, pathname, asPath } = router;
 
   useEffect(() => {
+    setMounted(true);
     setCurrentLocale(locale);
   }, [locale]);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+      if (
+        dropdownRef.current && 
+        !dropdownRef.current.contains(event.target) &&
+        buttonRef.current &&
+        !buttonRef.current.contains(event.target)
+      ) {
         setIsOpen(false);
       }
     };
 
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, []);
+    const handleScroll = () => {
+      if (isOpen && buttonRef.current) {
+        const rect = buttonRef.current.getBoundingClientRect();
+        setDropdownPosition({
+          top: rect.bottom + window.scrollY + 8,
+          right: window.innerWidth - rect.right
+        });
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+      window.addEventListener('scroll', handleScroll);
+      window.addEventListener('resize', handleScroll);
+    }
+    
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleScroll);
+    };
+  }, [isOpen]);
 
   const handleToggle = () => {
     if (buttonRef.current) {
@@ -70,9 +97,10 @@ const LanguageSwitcher = ({ className = "" }) => {
         />
       </button>
 
-      {isOpen && (
+      {isOpen && mounted && createPortal(
         <div 
-          className="fixed z-[99999] bg-white rounded-lg shadow-lg border border-gray-200 py-1"
+          ref={dropdownRef}
+          className="fixed z-[999999] bg-white rounded-lg shadow-lg border border-gray-200 py-1"
           style={{
             top: dropdownPosition.top,
             right: dropdownPosition.right,
@@ -100,7 +128,8 @@ const LanguageSwitcher = ({ className = "" }) => {
               </button>
             );
           })}
-        </div>
+        </div>,
+        document.body
       )}
     </div>
   );

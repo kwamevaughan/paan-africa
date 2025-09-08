@@ -6,6 +6,7 @@ export const menuItems = [
     { href: '/paan-ma-program', label: 'Mergers & Acquisition Program' },
     { href: '/events', label: 'Events' },
     { href: '/blogs', label: 'Blog' },
+    { href: '/careers', label: 'Careers' },
     { href: '/faqs', label: 'FAQs' },
   ];
 
