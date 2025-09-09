@@ -13,6 +13,7 @@ import Footer from "@/layouts/footer";
 import { useEffect, useRef, useState } from "react";
 import { useFixedHeader, handleScroll } from '../../utils/scrollUtils';
 import { useAppTranslations } from '../hooks/useTranslations';
+import { usePopupBanner } from '../hooks/usePopupBanner';
 import ContactSection from "@/components/ContactSection";
 import AgencyEnquiryModal from "@/components/AgencyEnquiryModal";
 import AgenciesMarquee from "@/components/AgenciesMarquee";
@@ -71,10 +72,13 @@ const HomePage = () => {
   const isFixed = useFixedHeader();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const canvasRef = useRef(null);
+  
+  // Use popup banner hooks with 7-day cooldown
+  const { shouldShow: shouldShowConsultModal, markAsShown: markConsultModalAsShown } = usePopupBanner('consultation-modal', 7);
+  const { shouldShow: shouldShowAmbassadorModal, markAsShown: markAmbassadorModalAsShown } = usePopupBanner('ambassador-modal', 7);
+  
   const [showConsultModal, setShowConsultModal] = useState(false);
-  const [hasShownModal, setHasShownModal] = useState(false); // Track if modal has been shown
   const [showAmbassadorModal, setShowAmbassadorModal] = useState(false);
-  const [hasShownAmbassadorModal, setHasShownAmbassadorModal] = useState(false);
 
   // Video controls: refs and playing state
   const videoRefs = useRef([]);
@@ -105,9 +109,9 @@ const HomePage = () => {
       // Trigger when user is within 100px of the bottom
       const isNearBottom = scrollTop + windowHeight >= documentHeight - 100;
       
-      if (isNearBottom && !hasShownModal) {
+      if (isNearBottom && shouldShowConsultModal && !showConsultModal) {
         setShowConsultModal(true);
-        setHasShownModal(true); // Prevent showing again
+        markConsultModalAsShown(); // Mark as shown and start 7-day cooldown
       }
     };
 
@@ -117,22 +121,22 @@ const HomePage = () => {
     return () => {
       window.removeEventListener('scroll', handleScrollToBottom);
     };
-  }, [hasShownModal]);
+  }, [shouldShowConsultModal, showConsultModal, markConsultModalAsShown]);
 
   // Add exit-intent detection for Ambassador Program Modal
   useEffect(() => {
     let exitIntentTimeout;
 
     const handleExitIntent = (e) => {
-      // Only trigger if user hasn't seen the modal yet
-      if (hasShownAmbassadorModal) return;
+      // Only trigger if user hasn't seen the modal yet and it should be shown
+      if (!shouldShowAmbassadorModal || showAmbassadorModal) return;
 
       // Check if mouse is leaving from the top of the page (exit intent)
       if (e.clientY <= 0) {
         // Add a small delay to avoid false triggers
         exitIntentTimeout = setTimeout(() => {
           setShowAmbassadorModal(true);
-          setHasShownAmbassadorModal(true);
+          markAmbassadorModalAsShown(); // Mark as shown and start 7-day cooldown
         }, 100);
       }
     };
@@ -154,9 +158,9 @@ const HomePage = () => {
 
     // Alternative: beforeunload event for mobile/tablet
     const handleBeforeUnload = (e) => {
-      if (!hasShownAmbassadorModal && !isDesktop) {
+      if (shouldShowAmbassadorModal && !showAmbassadorModal && !isDesktop) {
         setShowAmbassadorModal(true);
-        setHasShownAmbassadorModal(true);
+        markAmbassadorModalAsShown(); // Mark as shown and start 7-day cooldown
         // Note: Modern browsers ignore custom messages in beforeunload
         e.preventDefault();
         e.returnValue = '';
@@ -175,7 +179,7 @@ const HomePage = () => {
       document.removeEventListener('mouseenter', handleMouseEnter);
       window.removeEventListener('beforeunload', handleBeforeUnload);
     };
-  }, [hasShownAmbassadorModal]);
+  }, [shouldShowAmbassadorModal, showAmbassadorModal, markAmbassadorModalAsShown]);
 
   // Remove IntersectionObserver effect (lines 70-100)
   // useEffect(() => {
