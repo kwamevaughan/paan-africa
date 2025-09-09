@@ -8,8 +8,11 @@ import ScrollToTop from "@/components/ScrollToTop";
 import { motion } from "framer-motion";
 import { Icon } from "@iconify/react";
 import CareerApplicationModal from "@/components/CareerApplicationModal";
+import { useAppTranslations } from "../hooks/useTranslations";
+import { useCountUp } from "../hooks/useCountUp";
 
 const CareersPage = () => {
+  const { t } = useAppTranslations();
   const [isClient, setIsClient] = useState(false);
   const sectionRefs = {
     home: useRef(null),
@@ -76,9 +79,13 @@ const CareersPage = () => {
 
   // Hero component
   const Hero = () => {
+    const { count: countriesCount, elementRef: countriesRef } = useCountUp(20, 0, 2000, 0);
+    const { count: agenciesCount, elementRef: agenciesRef } = useCountUp(200, 0, 2000, 200);
+    const { count: creatorsCount, elementRef: creatorsRef } = useCountUp(1000, 0, 2000, 400);
+
     return (
       <div
-        className="relative h-screen w-full bg-[#172840] overflow-visible pt-16 sm:pt-18 lg-custom:pt-20" 
+        className="relative min-h-screen w-full bg-[#172840] overflow-visible pt-16 sm:pt-18 lg-custom:pt-20" 
         id="home"
         ref={sectionRefs.home}
       >
@@ -89,21 +96,19 @@ const CareersPage = () => {
           }}
         />
 
-
-        <div className="relative h-full flex mx-auto max-w-6xl">
-          <div className="w-full px-4 sm:px-6 md:px-8 pb-8 sm:pb-44 flex flex-col justify-center h-full">
-            <div className="max-w-3xl text-left space-y-6 sm:space-y-8">
+        <div className="relative min-h-screen flex mx-auto max-w-7xl">
+          <div className="w-full px-4 sm:px-6 md:px-8 pb-8 sm:pb-44 flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-12">
+            {/* Text Content */}
+            <div className="flex-1 max-w-3xl text-left space-y-6 sm:space-y-8">
               <div className="space-y-4">
                 <h1 className="text-sm sm:text-md text-[#84C1D9] relative uppercase tracking-wide font-semibold">
-                  Join Our Team
+                  {t('careers.hero.subtitle')}
                 </h1>
                 <h2 className="text-3xl sm:text-4xl lg:text-5xl text-white relative font-bold leading-tight">
-                  Build the Future of <br />
-                  <span className="text-[#F2B706]">African Marketing</span>
+                  {t('careers.hero.title')}
                 </h2>
                 <p className="text-white text-lg sm:text-xl mb-8 font-light w-full leading-relaxed max-w-2xl">
-                  Be part of a dynamic team that's revolutionizing how brands connect with African markets. 
-                  Join PAAN and help shape the continent's creative landscape.
+                  {t('careers.hero.description')}
                 </p>  
               </div>
               
@@ -112,14 +117,29 @@ const CareersPage = () => {
                   onClick={() => document.getElementById('open-positions').scrollIntoView({ behavior: 'smooth' })}
                   className="bg-[#F25849] border border-[#F25849] text-white py-4 px-8 sm:px-10 rounded-full hover:bg-[#D6473C] transition-all duration-300 transform ease-in-out hover:translate-y-[-2px] font-semibold text-base w-full sm:w-auto"
                 >
-                  View Open Positions
+                  {t('careers.hero.viewPositions')}
                 </button>
                 <button 
                   onClick={() => document.getElementById('why-join-us').scrollIntoView({ behavior: 'smooth' })}
                   className="bg-transparent border border-white text-white py-4 px-8 sm:px-10 rounded-full hover:bg-white hover:text-[#172840] transition-all duration-300 transform ease-in-out hover:translate-y-[-2px] font-semibold text-base w-full sm:w-auto"
                 >
-                  Learn About Us
+                  {t('careers.hero.learnAboutUs')}
                 </button>
+              </div>
+            </div>
+
+            {/* Hero Image */}
+            <div className="flex-1 max-w-lg lg:max-w-xl">
+              <div className="relative">
+                <Image
+                  src="https://ik.imagekit.io/nkmvdjnna/PAAN/Careers/hero.jpg"
+                  alt="PAAN Team - Join Our Dynamic Team"
+                  width={600}
+                  height={400}
+                  className="w-full h-auto rounded-xl object-cover shadow-2xl"
+                  priority
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
+                />
               </div>
             </div>
           </div>
@@ -130,23 +150,29 @@ const CareersPage = () => {
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
             <div className="w-full h-40 sm:h-48 p-6 flex items-center justify-center bg-white rounded-lg shadow-lg hover:bg-[#F2B706] transition-colors duration-300 cursor-pointer">
               <div className="flex flex-col gap-2 text-center">
-                <div className="text-3xl font-bold text-[#172840]">40+</div>
-                <h3 className="font-semibold text-sm sm:text-base text-[#172840]">Countries</h3>
-                <p className="font-light text-xs sm:text-sm text-gray-600">Across Africa</p>
+                <div ref={countriesRef} className="text-3xl font-bold text-[#172840]">
+                  {countriesCount}+
+                </div>
+                <h3 className="font-semibold text-sm sm:text-base text-[#172840]">{t('careers.stats.countries')}</h3>
+                <p className="font-light text-xs sm:text-sm text-gray-600">{t('careers.stats.countriesSubtext')}</p>
               </div>
             </div>
             <div className="w-full h-40 sm:h-48 p-6 flex items-center justify-center bg-white rounded-lg shadow-lg hover:bg-[#84C1D9] transition-colors duration-300 cursor-pointer">
               <div className="flex flex-col gap-2 text-center">
-                <div className="text-3xl font-bold text-[#172840]">20+</div>
-                <h3 className="font-semibold text-sm sm:text-base text-[#172840]">Agencies</h3>
-                <p className="font-light text-xs sm:text-sm text-gray-600">In Our Network</p>
+                <div ref={agenciesRef} className="text-3xl font-bold text-[#172840]">
+                  {agenciesCount}+
+                </div>
+                <h3 className="font-semibold text-sm sm:text-base text-[#172840]">{t('careers.stats.agencies')}</h3>
+                <p className="font-light text-xs sm:text-sm text-gray-600">{t('careers.stats.agenciesSubtext')}</p>
               </div>
             </div>
             <div className="w-full h-40 sm:h-48 p-6 flex items-center justify-center bg-white rounded-lg shadow-lg hover:bg-[#F25849] transition-colors duration-300 cursor-pointer">
               <div className="flex flex-col gap-2 text-center">
-                <div className="text-3xl font-bold text-[#172840]">1000+</div>
-                <h3 className="font-semibold text-sm sm:text-base text-[#172840]">Creators</h3>
-                <p className="font-light text-xs sm:text-sm text-gray-600">Vetted Talent</p>
+                <div ref={creatorsRef} className="text-3xl font-bold text-[#172840]">
+                  {creatorsCount}+
+                </div>
+                <h3 className="font-semibold text-sm sm:text-base text-[#172840]">{t('careers.stats.creators')}</h3>
+                <p className="font-light text-xs sm:text-sm text-gray-600">{t('careers.stats.creatorsSubtext')}</p>
               </div>
             </div>
           </div>
@@ -161,7 +187,7 @@ const CareersPage = () => {
       {
         title: "Commercial Manager",
         location: "Accra, Ghana (Pan-African/International Scope)",
-        type: "Full-time",
+        type: t('careers.openPositions.fullTime'),
         department: "Commercial",
         description: "Spearhead the commercialization of PAAN across its verticals — from membership and partnerships to events, knowledge products, training, and new ventures.",
         requirements: [
@@ -294,11 +320,10 @@ const CareersPage = () => {
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-12">
             <h2 className="text-3xl sm:text-4xl font-bold text-[#172840] mb-4">
-              Open Positions
+              {t('careers.openPositions.title')}
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Join our mission to connect African talent with global opportunities. 
-              Find your perfect role and help us build the future.
+              {t('careers.openPositions.subtitle')}
             </p>
           </div>
 
@@ -415,7 +440,7 @@ const CareersPage = () => {
                       className="w-full bg-gradient-to-r from-[#172840] to-[#0F1A2E] text-white py-4 px-6 rounded-xl hover:from-[#F25849] hover:to-[#D6473C] transition-all duration-300 font-bold text-base shadow-lg hover:shadow-xl transform hover:-translate-y-1 flex items-center justify-center group"
                     >
                       <Icon icon="ic:baseline-send" className="w-5 h-5 mr-2 group-hover:translate-x-1 transition-transform duration-300" />
-                      Apply Now
+                      {t('careers.openPositions.applyNow')}
                     </button>
                   </div>
                 </div>
@@ -478,23 +503,23 @@ const CareersPage = () => {
     const reasons = [
       {
         icon: "ic:baseline-public",
-        title: "Global Impact",
-        description: "Work on projects that reach millions across Africa and beyond, making a real difference in how brands connect with diverse audiences."
+        title: t('careers.whyJoinUs.impact.title'),
+        description: t('careers.whyJoinUs.impact.description')
       },
       {
         icon: "ic:baseline-trending-up",
-        title: "Growth Opportunities",
-        description: "Join a fast-growing company with endless opportunities for career advancement and skill development."
+        title: t('careers.whyJoinUs.growth.title'),
+        description: t('careers.whyJoinUs.growth.description')
       },
       {
         icon: "ic:baseline-group",
-        title: "Collaborative Culture",
-        description: "Work with talented professionals from across Africa in an inclusive, supportive environment that values diverse perspectives."
+        title: t('careers.whyJoinUs.culture.title'),
+        description: t('careers.whyJoinUs.culture.description')
       },
       {
         icon: "ic:baseline-lightbulb",
-        title: "Innovation Focus",
-        description: "Be at the forefront of marketing innovation, working with cutting-edge tools and technologies to solve complex challenges."
+        title: t('careers.whyJoinUs.mission.title'),
+        description: t('careers.whyJoinUs.mission.description')
       }
     ];
 
@@ -503,10 +528,10 @@ const CareersPage = () => {
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-12">
             <h2 className="text-3xl sm:text-4xl font-bold text-[#172840] mb-4">
-              Why Join PAAN?
+              {t('careers.whyJoinUs.title')}
             </h2>
             <p className="text-lg text-[#172840] max-w-2xl mx-auto">
-              Be part of something bigger. Join a team that's transforming how the world sees African creativity and talent.
+              {t('careers.whyJoinUs.subtitle')}
             </p>
           </div>
 
@@ -638,10 +663,10 @@ const CareersPage = () => {
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-12">
             <h2 className="text-3xl sm:text-4xl font-bold text-[#172840] mb-4">
-              Application Process
+              {t('careers.application.title')}
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Our hiring process is designed to be transparent, efficient, and respectful of your time.
+              {t('careers.application.subtitle')}
             </p>
           </div>
 

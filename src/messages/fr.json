@@ -926,6 +926,127 @@
       }
     }
   },
+  "careers": {
+    "hero": {
+      "subtitle": "Rejoignez Notre Équipe",
+      "title": "Construisez l'Avenir de l'Économie Créative Africaine",
+      "description": "Faites partie d'une équipe dynamique qui révolutionne la façon dont les marques se connectent aux marchés africains. Rejoignez PAAN et aidez à façonner le paysage créatif du continent.",
+      "viewPositions": "Voir les Postes Ouverts",
+      "learnAboutUs": "En Savoir Plus sur Nous"
+    },
+    "stats": {
+      "countries": "Pays",
+      "countriesSubtext": "À Travers l'Afrique",
+      "agencies": "Agences",
+      "agenciesSubtext": "Dans Notre Réseau",
+      "creators": "Créateurs",
+      "creatorsSubtext": "Talents Vérifiés"
+    },
+    "openPositions": {
+      "title": "Postes Ouverts",
+      "subtitle": "Rejoignez notre mission pour transformer le paysage créatif de l'Afrique",
+      "applyNow": "Postuler Maintenant",
+      "viewDetails": "Voir les Détails",
+      "fullTime": "Temps Plein",
+      "partTime": "Temps Partiel",
+      "contract": "Contrat",
+      "remote": "Télétravail",
+      "hybrid": "Hybride",
+      "onSite": "Sur Site"
+    },
+    "whyJoinUs": {
+      "title": "Pourquoi Rejoindre PAAN ?",
+      "subtitle": "Faites partie de quelque chose de plus grand que vous",
+      "mission": {
+        "title": "Travail Orienté Mission",
+        "description": "Contribuez à construire l'économie créative de l'Afrique et à connecter les talents à travers le continent."
+      },
+      "growth": {
+        "title": "Croissance Professionnelle",
+        "description": "Accès à la formation, au mentorat et aux opportunités de travailler avec des marques et agences leaders."
+      },
+      "culture": {
+        "title": "Culture Inclusive",
+        "description": "Rejoignez une équipe diversifiée et collaborative qui valorise la créativité, l'innovation et la diversité culturelle."
+      },
+      "impact": {
+        "title": "Impact Mondial",
+        "description": "Votre travail atteindra des audiences à travers l'Afrique et aidera à façonner l'avenir créatif du continent."
+      }
+    },
+    "culture": {
+      "title": "Notre Culture",
+      "subtitle": "Ce qui fait de PAAN un excellent endroit pour travailler",
+      "values": {
+        "collaboration": {
+          "title": "Collaboration",
+          "description": "Nous croyons au pouvoir de travailler ensemble pour atteindre des résultats extraordinaires."
+        },
+        "innovation": {
+          "title": "Innovation",
+          "description": "Nous encourageons la pensée créative et embrassons les nouvelles idées qui repoussent les limites."
+        },
+        "diversity": {
+          "title": "Diversité",
+          "description": "Nous célébrons les différentes perspectives et origines qui enrichissent notre travail."
+        },
+        "excellence": {
+          "title": "Excellence",
+          "description": "Nous visons les plus hauts standards dans tout ce que nous faisons."
+        }
+      }
+    },
+    "application": {
+      "title": "Prêt à Postuler ?",
+      "subtitle": "Faites le premier pas vers notre équipe",
+      "description": "Nous recherchons toujours des individus talentueux qui partagent notre vision. Parcourez nos postes ouverts et postulez dès aujourd'hui.",
+      "browsePositions": "Parcourir les Postes Ouverts",
+      "contactUs": "Contactez-Nous"
+    },
+    "modal": {
+      "title": "Postuler pour le Poste",
+      "subtitle": "Parlez-nous de vous et pourquoi vous êtes intéressé par ce rôle",
+      "form": {
+        "personalInfo": "Informations Personnelles",
+        "fullName": "Nom Complet",
+        "email": "Adresse Email",
+        "phone": "Numéro de Téléphone",
+        "location": "Localisation",
+        "linkedin": "Profil LinkedIn",
+        "portfolio": "Portfolio/Site Web",
+        "experience": "Expérience Professionnelle",
+        "currentRole": "Rôle Actuel",
+        "company": "Entreprise Actuelle",
+        "yearsExperience": "Années d'Expérience",
+        "skills": "Compétences Clés",
+        "education": "Éducation",
+        "degree": "Diplôme/Qualification",
+        "institution": "Institution",
+        "additionalInfo": "Informations Supplémentaires",
+        "coverLetter": "Lettre de Motivation",
+        "resume": "CV",
+        "whyInterested": "Pourquoi êtes-vous intéressé par ce poste ?",
+        "availability": "Quand seriez-vous disponible pour commencer ?",
+        "salaryExpectation": "Attente Salariale (Optionnel)",
+        "submitApplication": "Soumettre la Candidature",
+        "submitting": "Soumission en cours...",
+        "required": "*"
+      },
+      "errors": {
+        "nameRequired": "Le nom complet est requis",
+        "emailRequired": "L'adresse email est requise",
+        "invalidEmail": "Veuillez entrer une adresse email valide",
+        "phoneRequired": "Le numéro de téléphone est requis",
+        "locationRequired": "La localisation est requise",
+        "resumeRequired": "Veuillez télécharger votre CV",
+        "coverLetterRequired": "La lettre de motivation est requise"
+      },
+      "success": {
+        "title": "Candidature Soumise !",
+        "message": "Merci pour votre intérêt à rejoindre PAAN. Nous examinerons votre candidature et vous recontacterons bientôt."
+      }
+    }
+  },
   "language": {
     "switchLanguage": "Changer de Langue",
     "currentLanguage": "Langue Actuelle"

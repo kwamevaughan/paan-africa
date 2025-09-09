@@ -218,9 +218,14 @@ const Footer = () => {
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="font-normal text-gray-200 hover:text-white hover:underline transition-all duration-300 cursor-pointer"
+                    className="font-normal text-gray-200 hover:text-white hover:underline transition-all duration-300 cursor-pointer flex items-center gap-2"
                   >
                     {item.label}
+                    {item.href === '/careers' && (
+                      <span className="bg-[#F25849] text-white text-xs font-semibold px-2 py-1 rounded-full uppercase tracking-wide animate-pulse hover:animate-bounce transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-[#F25849]/50">
+                        New
+                      </span>
+                    )}
                   </Link>
                 </li>
               ))}

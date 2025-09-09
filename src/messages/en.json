@@ -994,6 +994,127 @@
       }
     }
   },
+  "careers": {
+    "hero": {
+      "subtitle": "Join Our Team",
+      "title": "Build the Future of African Creative Economy",
+      "description": "Be part of a dynamic team that's revolutionizing how brands connect with African markets. Join PAAN and help shape the continent's creative landscape.",
+      "viewPositions": "View Open Positions",
+      "learnAboutUs": "Learn About Us"
+    },
+    "stats": {
+      "countries": "Countries",
+      "countriesSubtext": "Across Africa",
+      "agencies": "Agencies",
+      "agenciesSubtext": "In Our Network",
+      "creators": "Creators",
+      "creatorsSubtext": "Vetted Talent"
+    },
+    "openPositions": {
+      "title": "Open Positions",
+      "subtitle": "Join our mission to transform Africa's creative landscape",
+      "applyNow": "Apply Now",
+      "viewDetails": "View Details",
+      "fullTime": "Full-time",
+      "partTime": "Part-time",
+      "contract": "Contract",
+      "remote": "Remote",
+      "hybrid": "Hybrid",
+      "onSite": "On-site"
+    },
+    "whyJoinUs": {
+      "title": "Why Join PAAN?",
+      "subtitle": "Be part of something bigger than yourself",
+      "mission": {
+        "title": "Mission-Driven Work",
+        "description": "Contribute to building Africa's creative economy and connecting talent across the continent."
+      },
+      "growth": {
+        "title": "Professional Growth",
+        "description": "Access to training, mentorship, and opportunities to work with leading brands and agencies."
+      },
+      "culture": {
+        "title": "Inclusive Culture",
+        "description": "Join a diverse, collaborative team that values creativity, innovation, and cultural diversity."
+      },
+      "impact": {
+        "title": "Global Impact",
+        "description": "Your work will reach audiences across Africa and help shape the continent's creative future."
+      }
+    },
+    "culture": {
+      "title": "Our Culture",
+      "subtitle": "What makes PAAN a great place to work",
+      "values": {
+        "collaboration": {
+          "title": "Collaboration",
+          "description": "We believe in the power of working together to achieve extraordinary results."
+        },
+        "innovation": {
+          "title": "Innovation",
+          "description": "We encourage creative thinking and embrace new ideas that push boundaries."
+        },
+        "diversity": {
+          "title": "Diversity",
+          "description": "We celebrate different perspectives and backgrounds that enrich our work."
+        },
+        "excellence": {
+          "title": "Excellence",
+          "description": "We strive for the highest standards in everything we do."
+        }
+      }
+    },
+    "application": {
+      "title": "Ready to Apply?",
+      "subtitle": "Take the first step towards joining our team",
+      "description": "We're always looking for talented individuals who share our vision. Browse our open positions and apply today.",
+      "browsePositions": "Browse Open Positions",
+      "contactUs": "Contact Us"
+    },
+    "modal": {
+      "title": "Apply for Position",
+      "subtitle": "Tell us about yourself and why you're interested in this role",
+      "form": {
+        "personalInfo": "Personal Information",
+        "fullName": "Full Name",
+        "email": "Email Address",
+        "phone": "Phone Number",
+        "location": "Location",
+        "linkedin": "LinkedIn Profile",
+        "portfolio": "Portfolio/Website",
+        "experience": "Professional Experience",
+        "currentRole": "Current Role",
+        "company": "Current Company",
+        "yearsExperience": "Years of Experience",
+        "skills": "Key Skills",
+        "education": "Education",
+        "degree": "Degree/Qualification",
+        "institution": "Institution",
+        "additionalInfo": "Additional Information",
+        "coverLetter": "Cover Letter",
+        "resume": "Resume/CV",
+        "whyInterested": "Why are you interested in this position?",
+        "availability": "When would you be available to start?",
+        "salaryExpectation": "Salary Expectation (Optional)",
+        "submitApplication": "Submit Application",
+        "submitting": "Submitting...",
+        "required": "*"
+      },
+      "errors": {
+        "nameRequired": "Full name is required",
+        "emailRequired": "Email address is required",
+        "invalidEmail": "Please enter a valid email address",
+        "phoneRequired": "Phone number is required",
+        "locationRequired": "Location is required",
+        "resumeRequired": "Please upload your resume",
+        "coverLetterRequired": "Cover letter is required"
+      },
+      "success": {
+        "title": "Application Submitted!",
+        "message": "Thank you for your interest in joining PAAN. We'll review your application and get back to you soon."
+      }
+    }
+  },
   "language": {
     "switchLanguage": "Switch Language",
     "currentLanguage": "Current Language"
