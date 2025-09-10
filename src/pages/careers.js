@@ -97,31 +97,31 @@ const CareersPage = () => {
         />
 
         <div className="relative min-h-screen flex mx-auto max-w-7xl">
-          <div className="w-full px-4 sm:px-6 md:px-8 pb-8 sm:pb-44 flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-12">
+          <div className="w-full px-4 sm:px-6 md:px-8 pb-8 sm:pb-44 flex flex-col lg:flex-row items-center justify-center gap-6 sm:gap-8 lg:gap-12 py-8 sm:py-12 lg:py-16">
             {/* Text Content */}
-            <div className="flex-1 max-w-3xl text-left space-y-6 sm:space-y-8">
-              <div className="space-y-4">
-                <h1 className="text-sm sm:text-md text-[#84C1D9] relative uppercase tracking-wide font-semibold">
+            <div className="flex-1 max-w-3xl text-left space-y-4 sm:space-y-6 lg:space-y-8 w-full">
+              <div className="space-y-3 sm:space-y-4">
+                <h1 className="text-xs sm:text-sm text-[#84C1D9] relative uppercase tracking-wide font-semibold">
                   {t('careers.hero.subtitle')}
                 </h1>
-                <h2 className="text-3xl sm:text-4xl lg:text-5xl text-white relative font-bold leading-tight">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-white relative font-bold leading-tight">
                   {t('careers.hero.title')}
                 </h2>
-                <p className="text-white text-lg sm:text-xl mb-8 font-light w-full leading-relaxed max-w-2xl">
+                <p className="text-white text-sm sm:text-base md:text-lg lg:text-xl mb-4 sm:mb-6 lg:mb-8 font-light w-full leading-relaxed">
                   {t('careers.hero.description')}
                 </p>  
               </div>
               
-              <div className="flex flex-col sm:flex-row gap-4">
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full sm:w-auto">
                 <button 
                   onClick={() => document.getElementById('open-positions').scrollIntoView({ behavior: 'smooth' })}
-                  className="bg-[#F25849] border border-[#F25849] text-white py-4 px-8 sm:px-10 rounded-full hover:bg-[#D6473C] transition-all duration-300 transform ease-in-out hover:translate-y-[-2px] font-semibold text-base w-full sm:w-auto"
+                  className="bg-[#F25849] border border-[#F25849] text-white py-3 sm:py-4 px-4 sm:px-6 md:px-8 lg:px-10 rounded-full hover:bg-[#D6473C] transition-all duration-300 transform ease-in-out hover:translate-y-[-2px] font-semibold text-sm sm:text-base w-full sm:w-auto min-h-[44px]"
                 >
                   {t('careers.hero.viewPositions')}
                 </button>
                 <button 
                   onClick={() => document.getElementById('why-join-us').scrollIntoView({ behavior: 'smooth' })}
-                  className="bg-transparent border border-white text-white py-4 px-8 sm:px-10 rounded-full hover:bg-white hover:text-[#172840] transition-all duration-300 transform ease-in-out hover:translate-y-[-2px] font-semibold text-base w-full sm:w-auto"
+                  className="bg-transparent border border-white text-white py-3 sm:py-4 px-4 sm:px-6 md:px-8 lg:px-10 rounded-full hover:bg-white hover:text-[#172840] transition-all duration-300 transform ease-in-out hover:translate-y-[-2px] font-semibold text-sm sm:text-base w-full sm:w-auto min-h-[44px]"
                 >
                   {t('careers.hero.learnAboutUs')}
                 </button>
@@ -129,16 +129,16 @@ const CareersPage = () => {
             </div>
 
             {/* Hero Image */}
-            <div className="flex-1 max-w-lg lg:max-w-xl">
+            <div className="flex-1 max-w-sm sm:max-w-md lg:max-w-lg xl:max-w-xl mt-6 sm:mt-4 lg:mt-0 w-full">
               <div className="relative">
                 <Image
                   src="https://ik.imagekit.io/nkmvdjnna/PAAN/Careers/hero.jpg"
                   alt="PAAN Team - Join Our Dynamic Team"
                   width={600}
                   height={400}
-                  className="w-full h-auto rounded-xl object-cover shadow-2xl"
+                  className="w-full h-auto rounded-xl object-cover shadow-2xl max-h-[300px] sm:max-h-[400px] lg:max-h-none"
                   priority
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
+                  sizes="(max-width: 640px) 100vw, (max-width: 768px) 80vw, (max-width: 1024px) 50vw, 600px"
                 />
               </div>
             </div>

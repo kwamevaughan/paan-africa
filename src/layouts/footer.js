@@ -250,7 +250,7 @@ const Footer = () => {
       {/* Footer Pattern - Optimized */}
       <div className="absolute bottom-0 left-0 w-full h-[20px] sm:h-[30px] md:h-[40px] z-0">
         <Image
-          src="/assets/images/footer-pattern.svg"
+          src="https://ik.imagekit.io/nkmvdjnna/PAAN/footer-pattern.svg"
           fill
           alt=""
           className="object-cover"

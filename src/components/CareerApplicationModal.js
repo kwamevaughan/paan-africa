@@ -132,7 +132,7 @@ const CareerApplicationModal = ({ isOpen, onClose }) => {
 
   return (
     <AnimatePresence>
-      <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+      <div className="fixed inset-0 z-50 flex items-start sm:items-center justify-center p-1 sm:p-4 pt-4 sm:pt-4">
         {/* Backdrop */}
         <motion.div
           initial={{ opacity: 0 }}
@@ -144,26 +144,26 @@ const CareerApplicationModal = ({ isOpen, onClose }) => {
 
         {/* Modal */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.9, y: 20 }}
+          initial={{ opacity: 0, scale: 0.95, y: 10 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
-          exit={{ opacity: 0, scale: 0.9, y: 20 }}
-          className="relative bg-white rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto"
+          exit={{ opacity: 0, scale: 0.95, y: 10 }}
+          className="relative bg-white rounded-lg shadow-xl max-w-2xl w-full max-h-[98vh] sm:max-h-[90vh] overflow-y-auto mx-2 sm:mx-0"
         >
           {/* Header */}
-          <div className="flex items-center justify-between p-6 border-b border-gray-200">
-            <h2 className="text-2xl font-bold text-[#172840]">
+          <div className="flex items-center justify-between p-3 sm:p-4 lg:p-6 border-b border-gray-200 sticky top-0 bg-white z-10">
+            <h2 className="text-base sm:text-lg lg:text-2xl font-bold text-[#172840] pr-2">
               Apply for a Position
             </h2>
             <button
               onClick={onClose}
-              className="p-2 hover:bg-gray-100 rounded-lg transition-colors duration-200"
+              className="p-2 hover:bg-gray-100 rounded-lg transition-colors duration-200 flex-shrink-0"
             >
-              <Icon icon="ic:baseline-close" className="w-6 h-6 text-gray-600" />
+              <Icon icon="ic:baseline-close" className="w-5 h-5 sm:w-6 sm:h-6 text-gray-600" />
             </button>
           </div>
 
           {/* Content */}
-          <div className="p-6">
+          <div className="p-3 sm:p-4 lg:p-6">
             {submitStatus === 'success' ? (
               <div className="text-center py-8">
                 <div className="bg-[#34B6A7] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -177,19 +177,19 @@ const CareerApplicationModal = ({ isOpen, onClose }) => {
                 </p>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4 lg:space-y-6">
                 {error && (
-                  <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-6">
-                    <div className="flex items-center">
-                      <Icon icon="ic:baseline-error" className="w-5 h-5 text-red-500 mr-2" />
-                      <p className="text-red-700 text-sm">{error}</p>
+                  <div className="bg-red-50 border border-red-200 rounded-lg p-3 mb-3 sm:mb-4 lg:mb-6">
+                    <div className="flex items-start">
+                      <Icon icon="ic:baseline-error" className="w-4 h-4 sm:w-5 sm:h-5 text-red-500 mr-2 mt-0.5 flex-shrink-0" />
+                      <p className="text-red-700 text-xs sm:text-sm leading-relaxed">{error}</p>
                     </div>
                   </div>
                 )}
                 {/* Personal Information */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                   <div>
-                    <label className="block text-sm font-medium text-[#172840] mb-2">
+                    <label className="block text-xs sm:text-sm font-medium text-[#172840] mb-1 sm:mb-2">
                       First Name *
                     </label>
                     <input
@@ -198,11 +198,11 @@ const CareerApplicationModal = ({ isOpen, onClose }) => {
                       value={formData.firstName}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#84C1D9] focus:border-transparent transition-colors duration-200"
+                      className="w-full px-3 sm:px-4 py-3 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#84C1D9] focus:border-transparent transition-colors duration-200 text-sm sm:text-base min-h-[44px]"
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-[#172840] mb-2">
+                    <label className="block text-xs sm:text-sm font-medium text-[#172840] mb-1 sm:mb-2">
                       Last Name *
                     </label>
                     <input
@@ -211,14 +211,14 @@ const CareerApplicationModal = ({ isOpen, onClose }) => {
                       value={formData.lastName}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#84C1D9] focus:border-transparent transition-colors duration-200"
+                      className="w-full px-3 sm:px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#84C1D9] focus:border-transparent transition-colors duration-200 text-sm sm:text-base min-h-[44px]"
                     />
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                   <div>
-                    <label className="block text-sm font-medium text-[#172840] mb-2">
+                    <label className="block text-xs sm:text-sm font-medium text-[#172840] mb-1 sm:mb-2">
                       Email Address *
                     </label>
                     <input
@@ -227,11 +227,11 @@ const CareerApplicationModal = ({ isOpen, onClose }) => {
                       value={formData.email}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#84C1D9] focus:border-transparent transition-colors duration-200"
+                      className="w-full px-3 sm:px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#84C1D9] focus:border-transparent transition-colors duration-200 text-sm sm:text-base min-h-[44px]"
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-[#172840] mb-2">
+                    <label className="block text-xs sm:text-sm font-medium text-[#172840] mb-1 sm:mb-2">
                       Phone Number
                     </label>
                     <input
@@ -239,15 +239,15 @@ const CareerApplicationModal = ({ isOpen, onClose }) => {
                       name="phone"
                       value={formData.phone}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#84C1D9] focus:border-transparent transition-colors duration-200"
+                      className="w-full px-3 sm:px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#84C1D9] focus:border-transparent transition-colors duration-200 text-sm sm:text-base min-h-[44px]"
                     />
                   </div>
                 </div>
 
                 {/* Position Information */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                   <div>
-                    <label className="block text-sm font-medium text-[#172840] mb-2">
+                    <label className="block text-xs sm:text-sm font-medium text-[#172840] mb-1 sm:mb-2">
                       Position of Interest *
                     </label>
                     <select
@@ -255,7 +255,7 @@ const CareerApplicationModal = ({ isOpen, onClose }) => {
                       value={formData.position}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#84C1D9] focus:border-transparent transition-colors duration-200"
+                      className="w-full px-3 sm:px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#84C1D9] focus:border-transparent transition-colors duration-200 text-sm sm:text-base min-h-[44px]"
                     >
                       <option value="">Select a position</option>
                       <option value="commercial-manager">Commercial Manager (Accra, Ghana)</option>
@@ -264,7 +264,7 @@ const CareerApplicationModal = ({ isOpen, onClose }) => {
                     </select>
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-[#172840] mb-2">
+                    <label className="block text-xs sm:text-sm font-medium text-[#172840] mb-1 sm:mb-2">
                       Years of Experience *
                     </label>
                     <select
@@ -272,7 +272,7 @@ const CareerApplicationModal = ({ isOpen, onClose }) => {
                       value={formData.experience}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#84C1D9] focus:border-transparent transition-colors duration-200"
+                      className="w-full px-3 sm:px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#84C1D9] focus:border-transparent transition-colors duration-200 text-sm sm:text-base min-h-[44px]"
                     >
                       <option value="">Select experience level</option>
                       <option value="0-1">0-1 years</option>
@@ -285,7 +285,7 @@ const CareerApplicationModal = ({ isOpen, onClose }) => {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-[#172840] mb-2">
+                  <label className="block text-xs sm:text-sm font-medium text-[#172840] mb-1 sm:mb-2">
                     Preferred Location
                   </label>
                   <input
@@ -294,16 +294,16 @@ const CareerApplicationModal = ({ isOpen, onClose }) => {
                     value={formData.location}
                     onChange={handleInputChange}
                     placeholder="e.g., Lagos, Nigeria or Remote"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#84C1D9] focus:border-transparent transition-colors duration-200"
+                    className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#84C1D9] focus:border-transparent transition-colors duration-200 text-sm sm:text-base"
                   />
                 </div>
 
                 {/* Resume Upload */}
                 <div>
-                  <label className="block text-sm font-medium text-[#172840] mb-2">
+                  <label className="block text-xs sm:text-sm font-medium text-[#172840] mb-1 sm:mb-2">
                     Resume/CV *
                   </label>
-                  <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-[#84C1D9] transition-colors duration-200">
+                  <div className="border-2 border-dashed border-gray-300 rounded-lg p-4 sm:p-6 text-center hover:border-[#84C1D9] transition-colors duration-200">
                     <input
                       type="file"
                       accept=".pdf,.doc,.docx"
@@ -316,8 +316,8 @@ const CareerApplicationModal = ({ isOpen, onClose }) => {
                       htmlFor="resume-upload"
                       className="cursor-pointer flex flex-col items-center"
                     >
-                      <Icon icon="ic:baseline-cloud-upload" className="w-8 h-8 text-gray-400 mb-2" />
-                      <span className="text-sm text-gray-600">
+                      <Icon icon="ic:baseline-cloud-upload" className="w-6 h-6 sm:w-8 sm:h-8 text-gray-400 mb-2" />
+                      <span className="text-xs sm:text-sm text-gray-600">
                         {formData.resume ? formData.resume.name : "Click to upload your resume"}
                       </span>
                       <span className="text-xs text-gray-500 mt-1">
@@ -329,7 +329,7 @@ const CareerApplicationModal = ({ isOpen, onClose }) => {
 
                 {/* Cover Letter */}
                 <div>
-                  <label className="block text-sm font-medium text-[#172840] mb-2">
+                  <label className="block text-xs sm:text-sm font-medium text-[#172840] mb-1 sm:mb-2">
                     Cover Letter *
                   </label>
                   <textarea
@@ -339,7 +339,7 @@ const CareerApplicationModal = ({ isOpen, onClose }) => {
                     rows={4}
                     required
                     placeholder="Tell us why you're interested in joining PAAN and what you can bring to our team..."
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#84C1D9] focus:border-transparent transition-colors duration-200 resize-none"
+                    className="w-full px-3 sm:px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#84C1D9] focus:border-transparent transition-colors duration-200 resize-none text-sm sm:text-base min-h-[100px]"
                   />
                 </div>
 
@@ -357,18 +357,18 @@ const CareerApplicationModal = ({ isOpen, onClose }) => {
                 )}
 
                 {/* Submit Button */}
-                <div className="flex justify-end space-x-4 pt-4">
+                <div className="flex flex-col sm:flex-row justify-end gap-3 sm:gap-4 pt-4">
                   <button
                     type="button"
                     onClick={onClose}
-                    className="px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors duration-200"
+                    className="px-4 sm:px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors duration-200 text-sm sm:text-base w-full sm:w-auto min-h-[44px]"
                   >
                     Cancel
                   </button>
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="px-6 py-3 bg-[#F25849] text-white rounded-lg hover:bg-[#D6473C] transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center"
+                    className="px-4 sm:px-6 py-3 bg-[#F25849] text-white rounded-lg hover:bg-[#D6473C] transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center text-sm sm:text-base w-full sm:w-auto min-h-[44px]"
                   >
                     {isSubmitting ? (
                       <>

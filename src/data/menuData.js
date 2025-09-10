@@ -16,7 +16,7 @@ export const menuItems = [
     { href: '/clients', label: 'For Clients' },
     { href: '/partners', label: 'For Partners' },
     // { href: '/events', label: 'Events' },
-    { href: '/summit', label: '2025 Summit' },
+    // { href: '/summit', label: '2025 Summit' },
   ];
 
   export const paanAcademyMenu = [
@@ -33,7 +33,7 @@ export const menuItems = [
     { href: '/freelancers', label: 'For Freelancers' },
     { href: '/clients', label: 'For Clients' },
     { href: '/partners', label: 'For Partners' },
-    { href: '/summit', label: '2025 Summit' },
+    // { href: '/summit', label: '2025 Summit' },
   ];
   
   export const ctaButton = {

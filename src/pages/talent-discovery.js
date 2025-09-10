@@ -305,7 +305,7 @@ export default function TalentDiscoveryPage() {
         title="Talent Discovery Map - Find African Creative Professionals | PAAN"
         description="Discover 3,000+ verified creative professionals and agencies across 54 African countries. Connect with top talent for your next project on PAAN's interactive talent map."
         keywords="African creatives, creative agencies, talent discovery, creative professionals, design talent, marketing agencies, African designers"
-        image="/assets/images/opengraph.webp"
+        image="https://ik.imagekit.io/nkmvdjnna/PAAN/paan-logo.jpg?updatedAt=1757522406296"
       />
 
       <MapStyles />

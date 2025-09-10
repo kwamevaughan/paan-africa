@@ -245,13 +245,26 @@ const FreelancerHero = () => {
                 </div>
               </div>
 
-              <button className="bg-paan-red text-white py-2 md:py-3 px-6 md:px-10 rounded-full hover:bg-paan-red transition-all duration-300 transform ease-in-out hover:translate-y-[-5px] font-medium text-xs md:text-sm w-full md:w-auto"
-                onClick={() => { if (window.fbq) window.fbq('track', 'BecomeCertifiedClick'); }}
-              >
-                <Link href="https://membership.paan.africa/freelancers" passHref>
-                  Become a Certified PAAN Freelancer
-                </Link>
-              </button>
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center">
+                <button className="bg-paan-red text-white py-2 md:py-3 px-6 md:px-10 rounded-full hover:bg-paan-red transition-all duration-300 transform ease-in-out hover:translate-y-[-5px] font-medium text-xs md:text-sm w-full sm:w-auto"
+                  onClick={() => { if (window.fbq) window.fbq('track', 'BecomeCertifiedClick'); }}
+                >
+                  <Link href="https://membership.paan.africa/freelancers" passHref>
+                    Become a Certified PAAN Freelancer
+                  </Link>
+                </button>
+                
+                <a 
+                  href="https://chat.whatsapp.com/LInGxXOSKyh6nH1mMmYFDk?mode=ems_copy_c"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-green-600 text-white py-2 md:py-3 px-6 md:px-10 rounded-full hover:bg-green-700 transition-all duration-300 transform ease-in-out hover:translate-y-[-5px] font-medium text-xs md:text-sm w-full sm:w-auto flex items-center justify-center gap-2"
+                  onClick={() => { if (window.fbq) window.fbq('track', 'WhatsAppCommunityClick'); }}
+                >
+                  <Icon icon="logos:whatsapp-icon" className="w-4 h-4" />
+                  Join WhatsApp Community
+                </a>
+              </div>
             </div>
 
             {/* Freelancer images - Single responsive Slider */}

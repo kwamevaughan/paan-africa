@@ -340,7 +340,7 @@ const HomePage = () => {
     <>
     <SEO
       title="Pan-African Agency Network (PAAN) | Leading Digital Marketing & Tech Agencies Across Pan Africa"
-      description="Join the Pan-African Agency Network (PAAN), uniting top digital marketing agencies, tech agencies, and creative strategy partners across Pan Africa. Accelerate your business development with exclusive opportunities, strategic partnerships, and premium resources designed for Africa’s most innovative agencies and marketers."
+      description="Join the Pan African Agency Network, Alliance of independent agaencies across africa..."
       keywords="Pan-African creative agencies, top African tech agencies, African digital marketing network, join African agency network, creative agencies in Africa, leading African digital innovation, pan-African collaboration platform, agency network in Africa, African creatives community, tech partnerships Africa, Africa digital marketing agencies, pan-African tech innovation, African creative strategy partners, African digital agency network, pan-African business development, Africa’s creative agency network, digital marketing agencies in Africa, tech agency partnerships Africa"
     />
     <div className="relative">
@@ -847,7 +847,7 @@ const HomePage = () => {
                   </div>
                 </div>
                 <Link
-                  href="/summit"
+                  href="#"
                   className="inline-flex items-center gap-2 bg-[#172840] text-white px-8 py-3 rounded-full font-semibold hover:bg-[#F25849] transition-all duration-300 shadow-lg hover:shadow-xl"
                 >
                   <span>{t('homepage.events.featuredEvent.cta')}</span>

@@ -344,11 +344,11 @@ const Blogs = ({ initialBlogs }) => {
         keywords="PAAN blog, African tech insights, creative industry Africa, tech trends Africa, African innovation, creative tech blog, African digital transformation, tech leadership Africa"
         ogTitle="PAAN Blog | Africa's Creative & Tech Insights"
         ogDescription="Discover the latest insights and trends from Africa's creative and tech landscape. Expert analysis, industry news, and thought leadership from PAAN."
-        ogImage="/assets/images/opengraph.png"
+        ogImage="https://ik.imagekit.io/nkmvdjnna/PAAN/paan-logo.jpg?updatedAt=1757522406296"
         twitterCard="summary_large_image"
         twitterTitle="PAAN Blog | Africa's Creative & Tech Insights"
         twitterDescription="Discover the latest insights and trends from Africa's creative and tech landscape. Expert analysis, industry news, and thought leadership from PAAN."
-        twitterImage="/assets/images/opengraph.png"
+        twitterImage="https://ik.imagekit.io/nkmvdjnna/PAAN/paan-logo.jpg?updatedAt=1757522406296"
         canonicalUrl="https://paan.africa/blogs"
       />
       
