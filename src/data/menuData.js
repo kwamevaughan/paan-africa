@@ -1,12 +1,13 @@
 // data/menuData.js
 export const menuItems = [ 
-    { href: '/blogs', label: 'Blog' },
-    { href: '/faqs', label: 'FAQs' },
     { href: 'https://member-portal.paan.africa/', label: 'Member Portal' },
-    { href: '/academy', label: 'PAAN Academy' },
     { href: '/paan-ambassador', label: 'Ambassador Program' },
     { href: '/pricing', label: 'Full Member Benefits & Tiers' },
-    { href: '/paan-ma-program', label: 'Margers & Acquisition Program' },
+    { href: '/paan-ma-program', label: 'Mergers & Acquisition Program' },
+    { href: '/events', label: 'Events' },
+    { href: '/blogs', label: 'Blog' },
+    { href: '/careers', label: 'Careers' },
+    { href: '/faqs', label: 'FAQs' },
   ];
 
   export const freelancersMenu = [
@@ -15,7 +16,7 @@ export const menuItems = [
     { href: '/clients', label: 'For Clients' },
     { href: '/partners', label: 'For Partners' },
     // { href: '/events', label: 'Events' },
-    { href: '/summit', label: '2025 Summit' },
+    // { href: '/summit', label: '2025 Summit' },
   ];
 
   export const paanAcademyMenu = [
@@ -32,7 +33,7 @@ export const menuItems = [
     { href: '/freelancers', label: 'For Freelancers' },
     { href: '/clients', label: 'For Clients' },
     { href: '/partners', label: 'For Partners' },
-    { href: '/summit', label: '2025 Summit' },
+    // { href: '/summit', label: '2025 Summit' },
   ];
   
   export const ctaButton = {

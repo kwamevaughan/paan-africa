@@ -6,8 +6,9 @@ import { useState } from "react";
 import { Icon } from "@iconify/react";
 import { freelancersMenu, ctaButton } from "../data/menuData";
 import { handleScroll, useFixedHeader } from "../../utils/scrollUtils";
+import LanguageSwitcher from "../components/LanguageSwitcher";
 
-const Header = ({ navLinkColor }) => {
+const Header = ({ navLinkColor, transparent = false }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeNav, setActiveNav] = useState("For Agencies"); 
   const isFixed = useFixedHeader();
@@ -27,7 +28,7 @@ const Header = ({ navLinkColor }) => {
   return (
     <nav
       className={`w-full z-50 transition-all duration-300 fixed top-0 left-0
-        lg-custom:${isFixed ? "fixed top-0 left-0 shadow-lg backdrop-blur-md bg-white/95" : "absolute bg-white"}
+        lg-custom:${isFixed ? "fixed top-0 left-0 shadow-lg backdrop-blur-md bg-white/95" : transparent ? "absolute bg-transparent" : "absolute bg-white"}
       `}
     >
       <div className="w-full px-4 sm:px-6 lg-custom:px-8">
@@ -36,7 +37,7 @@ const Header = ({ navLinkColor }) => {
           <div className="flex-shrink-0 z-20">
             <Link href="/" passHref>
               <Image
-                src="/assets/images/logo.svg"
+                src={transparent && !isFixed ? "/assets/images/ma-program/white-logo.svg" : "/assets/images/logo.svg"}
                 alt="Logo"
                 width={120}
                 height={42}
@@ -97,6 +98,10 @@ const Header = ({ navLinkColor }) => {
                 </a>
               ))}
             </div>
+            
+            {/* Language Switcher */}
+            <LanguageSwitcher className="mr-3" />
+            
             <a
               onClick={(e) => {
                 handleScroll(e, "#contact-us", isFixed);
@@ -156,6 +161,11 @@ const Header = ({ navLinkColor }) => {
           {/* Mobile Menu Content */}
           <div className="flex flex-col h-screen bg-white">
             <div className="flex-1 px-4 py-6 space-y-3 bg-white overflow-y-auto">
+              {/* Language Switcher for Mobile */}
+              <div className="px-4 py-3 border-b border-gray-200">
+                <LanguageSwitcher />
+              </div>
+              
               {freelancersMenu.map((item) => (
                 <a
                   key={item.href}

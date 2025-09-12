@@ -28,6 +28,39 @@ const SummitPage = () => {
 
   const isFixed = useFixedHeader();
 
+  // Countdown timer state and logic
+  const [timeLeft, setTimeLeft] = useState({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0
+  });
+
+  // Set target date to April 23, 2026
+  useEffect(() => {
+    const targetDate = new Date('April 23, 2026 00:00:00');
+    
+    const interval = setInterval(() => {
+      const now = new Date();
+      const difference = targetDate - now;
+      
+      if (difference <= 0) {
+        clearInterval(interval);
+        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+        return;
+      }
+      
+      const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((difference / (1000 * 60)) % 60);
+      const seconds = Math.floor((difference / 1000) % 60);
+      
+      setTimeLeft({ days, hours, minutes, seconds });
+    }, 1000);
+    
+    return () => clearInterval(interval);
+  }, []);
+
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -100,7 +133,7 @@ const SummitPage = () => {
                   "addressCountry": "KE"
                 }
               },
-              "image": ["https://paan.africa/assets/images/hero.png"],
+              "image": ["https://paan.africa/assets/images/hero.webp"],
               "description": "Join the PAAN Africa Summit 2025 to connect with freelancers, businesses, and innovators shaping the African digital economy. Engage in workshops, panels, and networking sessions with industry leaders.",
               "offers": {
                 "@type": "Offer",
@@ -120,7 +153,38 @@ const SummitPage = () => {
       <main className="px-3 pt-6 sm:px-0 sm:pt-0 relative">
         <Header navLinkColor='text-white' />
 
-        <Hero sectionRefs={sectionRefs} handleScroll={handleScroll} isFixed={isFixed} scrollToSection={scrollToSection} />
+        <Hero sectionRefs={sectionRefs} handleScroll={handleScroll} isFixed={isFixed} scrollToSection={scrollToSection} timeLeft={timeLeft} />
+
+        {/* Spacer to maintain layout flow */}
+        <div className="h-screen"></div>
+
+        {/* Floating Countdown Box */}
+        <div className="relative -mt-48 z-10">
+          <div className="mx-auto max-w-4xl px-4 md:px-6">
+            <div className="bg-gradient-to-r from-[#F25849] to-[#172840] rounded-lg shadow-2xl py-8 px-6">
+              <div className="text-center">
+                <div className="flex justify-center items-center gap-3 md:gap-6">
+                  <div className="text-center bg-white/20 backdrop-blur-sm rounded-lg p-4 min-w-[80px]">
+                    <div className="text-2xl md:text-3xl font-bold text-white">{timeLeft.days}</div>
+                    <div className="text-xs md:text-sm text-white/80">Days</div>
+                  </div>
+                  <div className="text-center bg-white/20 backdrop-blur-sm rounded-lg p-4 min-w-[80px]">
+                    <div className="text-2xl md:text-3xl font-bold text-white">{timeLeft.hours}</div>
+                    <div className="text-xs md:text-sm text-white/80">Hours</div>
+                  </div>
+                  <div className="text-center bg-white/20 backdrop-blur-sm rounded-lg p-4 min-w-[80px]">
+                    <div className="text-2xl md:text-3xl font-bold text-white">{timeLeft.minutes}</div>
+                    <div className="text-xs md:text-sm text-white/80">Minutes</div>
+                  </div>
+                  <div className="text-center bg-white/20 backdrop-blur-sm rounded-lg p-4 min-w-[80px]">
+                    <div className="text-2xl md:text-3xl font-bold text-white">{timeLeft.seconds}</div>
+                    <div className="text-xs md:text-sm text-white/80">Seconds</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
 
         <div className="bg-[#172840] relative" id="about-us" ref={sectionRefs.about} handleScroll={handleScroll} isFixed={isFixed}>
         <section className="relative mx-auto max-w-6xl">
@@ -134,7 +198,7 @@ const SummitPage = () => {
               </h3>
             </div>
             <div className="flex justify-end">
-              <img src="/assets/images/about-summit.png" alt="PAAN Summit" className="h-[30rem] object-cover rounded shadow-lg" />
+              <img src="/assets/images/about-summit.webp" alt="PAAN Summit" className="h-[30rem] object-cover rounded shadow-lg" />
             </div>
           </div>
         </section>
@@ -175,7 +239,7 @@ const SummitPage = () => {
               <h4 className="font-normal">Summit Highlights</h4>
               <div className="flex items-center gap-3 border-b border-gray-200 pb-4 transform transition-transform duration-300 hover:translate-y-[-5px]">
                 <Image
-                  src="/assets/images/icon-1.png"
+                  src="/assets/images/icon-1.webp"
                   width={60}
                   height={60}
                   alt="Keynotes & Showcases"
@@ -189,7 +253,7 @@ const SummitPage = () => {
               </div>
               <div className="flex items-center gap-3 border-b border-gray-200 pb-4 transform transition-transform duration-300 hover:translate-y-[-5px]">
                 <Image
-                  src="/assets/images/icon-2.png"
+                  src="/assets/images/icon-2.webp"
                   width={60}
                   height={60}
                   alt="Networking Opportunities"
@@ -203,7 +267,7 @@ const SummitPage = () => {
               </div>
               <div className="flex items-center gap-3 border-b border-gray-200 pb-4 transform transition-transform duration-300 hover:translate-y-[-5px]">
                 <Image
-                  src="/assets/images/icon-3.png"
+                  src="/assets/images/icon-3.webp"
                   width={60}
                   height={60}
                   alt="Workshops & Panels"
@@ -266,44 +330,12 @@ const SummitPage = () => {
   );
 };
 
-const Hero = ({ sectionRefs, handleScroll, isFixed }) => {
-  // Countdown timer state and logic
-  const [timeLeft, setTimeLeft] = useState({
-    days: 0,
-    hours: 0,
-    minutes: 0,
-    seconds: 0
-  });
-
-  // Set target date to October 22, 2025
-  useEffect(() => {
-    const targetDate = new Date('October 22, 2025 00:00:00');
-    
-    const interval = setInterval(() => {
-      const now = new Date();
-      const difference = targetDate - now;
-      
-      if (difference <= 0) {
-        clearInterval(interval);
-        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-        return;
-      }
-      
-      const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
-      const minutes = Math.floor((difference / (1000 * 60)) % 60);
-      const seconds = Math.floor((difference / 1000) % 60);
-      
-      setTimeLeft({ days, hours, minutes, seconds });
-    }, 1000);
-    
-    return () => clearInterval(interval);
-  }, []);
+const Hero = ({ sectionRefs, handleScroll, isFixed, timeLeft }) => {
 
   return (
     <>
       <div
-        className="relative h-screen w-full" 
+        className="absolute top-0 left-0 h-screen w-full" 
         id="home"
         ref={sectionRefs.home}
       >
@@ -311,82 +343,47 @@ const Hero = ({ sectionRefs, handleScroll, isFixed }) => {
         <div 
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: "url('/assets/images/hero.webp')",
+            backgroundImage: "url('https://ik.imagekit.io/nkmvdjnna/PAAN/summit/summit-hero.webp?updatedAt=1757505455932')",
             filter: "brightness(0.5)" // Darkening the image
           }}
         />
                
         {/* Content overlay */}
-        <div className="relative h-full flex items-center">
-          <div className="mx-auto max-w-6xl px-4 md:px-6 w-full">
+        <div className="relative h-full flex items-end pb-48">
+          <div className="mx-auto max-w-6xl w-full">
             <div className="max-w-2xl">
-            <h3 className="text-md text-yellow-400 mb-1">PAAN Inaugural Summit 2025</h3>
+            <p className="bg-white/20 text-white px-4 py-2 rounded-full text-sm font-medium mb-4 w-fit border border-white">Africa Borderless Creative Economy Summit 2026</p>
               <h1 className="text-3xl md:text-3xl font-semibold uppercase text-yellow-400 mb-8">
-                Where Africa's Creative<br/>
-                and Tech Leaders Unite
+                Create. Connect. Commercialize.
               </h1>
-              <p className="text-gray-100 font-normal mb-8">
-                    Join the first-ever Pan-African Agency Network (PAAN) Summit — <br/>
-                    a landmark gathering of bold thinkers and changemakers shaping Africa's creative and tech industries.
-              </p>
               <div className="flex md:flex-row flex-col gap-4 mb-10">
                 <SeminarLocationAndDate />
               </div>
-              <div>
-                <p className="text-white text-xs italic">Be part of history. Be part of the movement.</p>
+              <div className="flex justify-center">
+                <button 
+                  onClick={() => window.location.href = '#tickets'} 
+                  className="bg-paan-red text-white px-8 py-3 rounded-full hover:bg-paan-red/90 transition-all duration-300 font-medium text-base shadow-lg flex items-center gap-2 mx-auto"
+                >
+                  Register Now
+                </button>
+                <button 
+                  onClick={() => window.location.href = '#tickets'} 
+                  className="bg-transparent border border-white text-white px-8 py-3 rounded-full hover:bg-white hover:text-paan-red transition-all duration-300 font-medium text-base shadow-lg flex items-center gap-2 mx-auto"
+                >
+                  Partner With Us
+                </button>
+                <button 
+                  onClick={() => window.location.href = '#tickets'} 
+                  className="bg-transparent border border-white text-white px-8 py-3 rounded-full hover:bg-white hover:text-paan-red transition-all duration-300 font-medium text-base shadow-lg flex items-center gap-2 mx-auto"
+                >
+                  View Agenda
+                </button>
               </div>
             </div>
           </div>
         </div>
       </div>
-      
-      {/* Fixed countdown bar at bottom of screen */}
-      <div className="fixed bottom-0 left-0 right-0 w-full z-50 shadow-lg border-t border-gray-200"
-          style={{ background: 'linear-gradient(to right, #87CEEB, #B0E0E6)' }}>
-          <div className="flex flex-col md:flex-row items-center justify-between max-w-6xl mx-auto px-4 py-3">
-              <div className="flex flex-col md:flex-row items-center gap-4 md:gap-8 w-full">
-              <div className="text-center md:text-left">
-                  <h3 className="text-lg font-medium text-[#172840] mb-1">Limited Seats Available</h3>
-              </div>
-              <div className="flex justify-center space-x-6">
-                  <div className="text-center">
-                  <div className="text-2xl font-bold text-[#172840] bg-blue-100 px-3 py-1 rounded">
-                      {timeLeft.days}
-                      <div className="text-xs text-gray-600">DAYS</div>
-                  </div>
-                  </div>
-                  <div className="text-center">
-                  <div className="text-2xl font-bold text-[#172840] bg-blue-100 px-3 py-1 rounded">
-                      {timeLeft.hours}
-                      <div className="text-xs text-gray-600">HOURS</div>
-                  </div>
-                  </div>
-                  <div className="text-center">
-                  <div className="text-2xl font-bold text-[#172840] bg-blue-100 px-3 py-1 rounded">
-                      {timeLeft.minutes}
-                      <div className="text-xs text-gray-600">MINUTES</div>
-                  </div>
-                  </div>
-                  <div className="text-center">
-                  <div className="text-2xl font-bold text-[#172840] bg-blue-100 px-3 py-1 rounded">
-                      {timeLeft.seconds}
-                      <div className="text-xs text-gray-600">SECONDS</div>
-                  </div>
-                  </div>
-              </div>
-              </div>
-              <div className="mt-3 md:mt-0">
-              <button
-                href={ctaButton.href}
-                onClick={(e) => handleScroll(e, ctaButton.href, isFixed)}
-                className={`bg-[#172840] text-white px-6 py-2 rounded-full font-medium text-sm hover:bg-[#D32F2F] transition duration-300 shadow ${isFixed ? 'fixed-class' : ''}`}
-                style={{ minWidth: '140px', textAlign: 'center' }}
-              >
-                Register Now
-              </button>
-              </div>
-          </div>
-      </div>
+
     </>
   );
 };
@@ -395,14 +392,18 @@ const SeminarLocationAndDate = ()=> {
     
   return (
     <div className="flex md:flex-row flex-col gap-4">
-      <div className="flex items-center gap-2 text-white text-sm">
-<Icon icon="mdi:map-marker" className="text-red-500" width="24" height="24" />
-        <span>Nairobi, Kenya</span>
+      <div className="flex items-center gap-2 text-white text-sm whitespace-nowrap">
+        <Icon icon="mdi:map-marker" className="text-red-500" width="24" height="24" />
+        <span>Sarit Centre, Nairobi, Kenya - <strong>23–24 April 2026</strong></span>
       </div>
       
-      <div className="flex items-center gap-2 text-white text-sm">
-<Icon icon="mdi:calendar" className="text-red-500" width="24" height="24" />
-        <span>22-24 October 2025</span>
+      <div className="flex items-center gap-2 text-white text-sm whitespace-nowrap">
+        <Icon icon="mdi:user-group" className="text-red-500" width="24" height="24" />
+        <span>300+ In Person</span>
+      </div>
+      <div className="flex items-center gap-2 text-white text-sm whitespace-nowrap">
+        <Icon icon="mdi:globe" className="text-red-500" width="24" height="24" />
+        <span>1,000+ Streaming</span>
       </div>
     </div>
   );
@@ -414,7 +415,7 @@ const  KeynotePanels =()=> {
       title: "Africa's Creative Future",
       description: "Where Brands, Tech & Talent Collide- Opening keynote setting the tone for collaboration and innovation.",
       icon: <Image
-      src="/assets/images/icons/brain-icon.png"
+      src="/assets/images/icons/brain-icon.webp"
       width={100}
       height={100}
       alt="Pan-African Reach"
@@ -424,7 +425,7 @@ const  KeynotePanels =()=> {
       title: "The Power of Partnership",
       description: "How African agencies and brands are building together — real stories co-presented by agency and client leaders.",
       icon: <Image
-      src="/assets/images/icons/hands-icon.png"
+      src="/assets/images/icons/hands-icon.webp"
       width={120}
       height={120}
       alt="Pan-African Reach"
@@ -434,7 +435,7 @@ const  KeynotePanels =()=> {
       title: "Tech Meets Creativity",
       description: "Driving results through innovation with Africa's top tech and martech partners.",
       icon: <Image
-      src="/assets/images/icons/tech-icon.png"
+      src="/assets/images/icons/tech-icon.webp"
       width={100}
       height={100}
       alt="Pan-African Reach"
@@ -444,7 +445,7 @@ const  KeynotePanels =()=> {
       title: "The World Of Data",
       description: "How data is transforming strategy and innovation across African markets and industries.",
       icon: <Image
-      src="/assets/images/icons/graph-icon.png"
+      src="/assets/images/icons/graph-icon.webp"
       width={100}
       height={100}
       alt="Pan-African Reach"

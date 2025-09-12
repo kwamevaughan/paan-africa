@@ -13,11 +13,11 @@ const TrendsDashboardPage = () => {
         <meta property="og:description" content="Discover trending design styles, viral campaigns, and popular hashtags in African creative industries." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://paan.africa/trends-dashboard" />
-        <meta property="og:image" content="/assets/images/trends-dashboard-og.webp" />
+        <meta property="og:image" content="https://ik.imagekit.io/nkmvdjnna/PAAN/paan-logo.jpg?updatedAt=1757522406296" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Creative Trends Dashboard - PAAN Africa" />
         <meta name="twitter:description" content="Discover trending design styles, viral campaigns, and popular hashtags in African creative industries." />
-        <meta name="twitter:image" content="/assets/images/trends-dashboard-og.webp" />
+        <meta name="twitter:image" content="https://ik.imagekit.io/nkmvdjnna/PAAN/paan-logo.jpg?updatedAt=1757522406296" />
         <link rel="canonical" href="https://paan.africa/trends-dashboard" />
       </Head>
 

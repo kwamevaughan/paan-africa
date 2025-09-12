@@ -160,7 +160,7 @@ const withBundleAnalyzer = initializeBundleAnalyzer({
   enabled: process.env.BUNDLE_ANALYZER_ENABLED === "true",
 });
 
-// The base Next.js configuration
+/** @type {import('next').NextConfig} */
 const nextConfig = {
   output: "standalone", // Keeps the build output as standalone (recommended for deployment)
   devIndicators: {
@@ -171,6 +171,15 @@ const nextConfig = {
     domains: ['ik.imagekit.io', 'flagcdn.com'],
   },
   reactStrictMode: true,
+  experimental: {
+    // ... existing experimental options ...
+  },
+  // Internationalization configuration
+  i18n: {
+    locales: ['en', 'fr'],
+    defaultLocale: 'en',
+    localeDetection: true,
+  },
 
   async redirects() {
     return [

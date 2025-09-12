@@ -1,40 +1,26 @@
 import { useState } from 'react';
+import { useAppTranslations } from '../hooks/useTranslations';
 
 export default function PartnerBenefits() {
+  const { t } = useAppTranslations();
   const [activeBenefit, setActiveBenefit] = useState(null);
   
   const benefits = [
     {
-      title: "Amplify Visibility",
-      description: [
-        "Partner Directory Listing: Showcase your solutions to agencies in our exclusive online directory.",
-        "Featured Spotlight: Monthly profile in PAAN's newsletter.",
-        "Co-Branded Initiatives: Collaborate quarterly on campaigns, case studies, or webinars to highlight your impact."
-      ]
+      title: t('partners.benefits.amplifyVisibility.title'),
+      description: t('partners.benefits.amplifyVisibility.items')
     },
     {
-      title: "Accelerate Adoption",
-      description: [
-        "Bulk Licensing Opportunities: Offer discounted rates to PAAN agencies, incentivizing adoption while scaling your user base.",
-        "Tailored Workshops: Train agencies on your product's value through annual hands-on sessions.",
-        "Product Surveys: Gather feedback from 100+ agencies and their clients annually to refine your Africa strategy."
-      ]
+      title: t('partners.benefits.accelerateAdoption.title'),
+      description: t('partners.benefits.accelerateAdoption.items')
     },
     {
-      title: "Drive Revenue",
-      description: [
-        "Priority Access to High-Value Agencies: Connect with top-tier agencies serving multinational clients.",
-        "Joint Ventures: Co-create Africa-focused product bundles with PAAN (e.g., AI tools for local storytelling).",
-        "Quarterly Strategy Sessions: Align with PAAN's leadership to identify trends, gaps, and opportunities."
-      ]
+      title: t('partners.benefits.driveRevenue.title'),
+      description: t('partners.benefits.driveRevenue.items')
     },
     {
-      title: "Exclusive Privileges",
-      description: [
-        "VIP Summit Access: Secure a speaking slot at the annual PAAN Summit + 20% off regional workshops.",
-        "Private Networking: Attend invite-only dinners with agency leaders and global brand executives.",
-        "Market Insights: Receive quarterly reports on emerging tech demands across Africa."
-      ]
+      title: t('partners.benefits.exclusivePrivileges.title'),
+      description: t('partners.benefits.exclusivePrivileges.items')
     }
   ];
 

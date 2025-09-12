@@ -12,6 +12,8 @@ import OfferingTab from "@/components/OfferingTab";
 import Footer from "@/layouts/footer";
 import { useEffect, useRef, useState } from "react";
 import { useFixedHeader, handleScroll } from '../../utils/scrollUtils';
+import { useAppTranslations } from '../hooks/useTranslations';
+import { usePopupBanner } from '../hooks/usePopupBanner';
 import ContactSection from "@/components/ContactSection";
 import AgencyEnquiryModal from "@/components/AgencyEnquiryModal";
 import AgenciesMarquee from "@/components/AgenciesMarquee";
@@ -20,11 +22,14 @@ import ScrollToTop from "@/components/ScrollToTop";
 import ConnectingDots from "@/components/ConnectingDots";
 import AcademyConsultationModal from "@/components/AcademyConsultationModal";
 import PaanAmbassadorProgramModal from "@/components/PaanAmbassadorProgramModal";
-import ProgramCard from "@/components/ProgramCard"
+import ProgramCard from "@/components/ProgramCard";
+import StrategicPartners from "@/components/StrategicPartners";
 
 // Add PasscodeCopy component definition before HomePage
 function PasscodeCopy({ passcode }) {
   const [copied, setCopied] = useState(false);
+  const { t } = useAppTranslations();
+  
   const handleCopy = () => {
     navigator.clipboard.writeText(passcode);
     setCopied(true);
@@ -32,25 +37,27 @@ function PasscodeCopy({ passcode }) {
   };
   return (
     <div className="flex items-center gap-2 bg-white border border-gray-200 rounded px-3 py-1 text-[#172840] text-sm font-medium select-none">
-      <span className="font-semibold">Passcode:</span>
+      <span className="font-semibold">{t('common.passcode')}</span>
       <span className="font-mono bg-gray-100 px-2 py-0.5 rounded text-base">{passcode}</span>
       <button
         onClick={handleCopy}
         className="ml-1 px-2 py-0.5 rounded hover:bg-gray-200 transition text-[#F25849] font-bold flex items-center gap-1 focus:outline-none"
-        title="Copy passcode"
+        title={t('common.copy')}
         type="button"
       >
         <Icon icon="mdi:content-copy" className="w-4 h-4" />
-        <span className="sr-only">Copy</span>
+        <span className="sr-only">{t('common.copy')}</span>
       </button>
       {copied && (
-        <span className="text-green-600 text-xs ml-2 transition-opacity duration-200">Copied!</span>
+        <span className="text-green-600 text-xs ml-2 transition-opacity duration-200">{t('common.copied')}</span>
       )}
     </div>
   );
 }
 
 const HomePage = () => {
+  const { t } = useAppTranslations();
+  
   const sectionRefs = {
     home: useRef(null),
     aboutUs: useRef(null),
@@ -65,10 +72,28 @@ const HomePage = () => {
   const isFixed = useFixedHeader();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const canvasRef = useRef(null);
+  
+  // Use popup banner hooks with 7-day cooldown
+  const { shouldShow: shouldShowConsultModal, markAsShown: markConsultModalAsShown } = usePopupBanner('consultation-modal', 7);
+  const { shouldShow: shouldShowAmbassadorModal, markAsShown: markAmbassadorModalAsShown } = usePopupBanner('ambassador-modal', 7);
+  
   const [showConsultModal, setShowConsultModal] = useState(false);
-  const [hasShownModal, setHasShownModal] = useState(false); // Track if modal has been shown
   const [showAmbassadorModal, setShowAmbassadorModal] = useState(false);
-  const [hasShownAmbassadorModal, setHasShownAmbassadorModal] = useState(false);
+
+  // Video controls: refs and playing state
+  const videoRefs = useRef([]);
+  const [isPlayingByIndex, setIsPlayingByIndex] = useState({});
+  const togglePlay = (index) => {
+    const el = videoRefs.current[index];
+    if (!el) return;
+    if (el.paused) {
+      el.play();
+      setIsPlayingByIndex((prev) => ({ ...prev, [index]: true }));
+    } else {
+      el.pause();
+      setIsPlayingByIndex((prev) => ({ ...prev, [index]: false }));
+    }
+  };
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
@@ -84,9 +109,9 @@ const HomePage = () => {
       // Trigger when user is within 100px of the bottom
       const isNearBottom = scrollTop + windowHeight >= documentHeight - 100;
       
-      if (isNearBottom && !hasShownModal) {
+      if (isNearBottom && shouldShowConsultModal && !showConsultModal) {
         setShowConsultModal(true);
-        setHasShownModal(true); // Prevent showing again
+        markConsultModalAsShown(); // Mark as shown and start 7-day cooldown
       }
     };
 
@@ -96,22 +121,22 @@ const HomePage = () => {
     return () => {
       window.removeEventListener('scroll', handleScrollToBottom);
     };
-  }, [hasShownModal]);
+  }, [shouldShowConsultModal, showConsultModal, markConsultModalAsShown]);
 
   // Add exit-intent detection for Ambassador Program Modal
   useEffect(() => {
     let exitIntentTimeout;
 
     const handleExitIntent = (e) => {
-      // Only trigger if user hasn't seen the modal yet
-      if (hasShownAmbassadorModal) return;
+      // Only trigger if user hasn't seen the modal yet and it should be shown
+      if (!shouldShowAmbassadorModal || showAmbassadorModal) return;
 
       // Check if mouse is leaving from the top of the page (exit intent)
       if (e.clientY <= 0) {
         // Add a small delay to avoid false triggers
         exitIntentTimeout = setTimeout(() => {
           setShowAmbassadorModal(true);
-          setHasShownAmbassadorModal(true);
+          markAmbassadorModalAsShown(); // Mark as shown and start 7-day cooldown
         }, 100);
       }
     };
@@ -133,9 +158,9 @@ const HomePage = () => {
 
     // Alternative: beforeunload event for mobile/tablet
     const handleBeforeUnload = (e) => {
-      if (!hasShownAmbassadorModal && !isDesktop) {
+      if (shouldShowAmbassadorModal && !showAmbassadorModal && !isDesktop) {
         setShowAmbassadorModal(true);
-        setHasShownAmbassadorModal(true);
+        markAmbassadorModalAsShown(); // Mark as shown and start 7-day cooldown
         // Note: Modern browsers ignore custom messages in beforeunload
         e.preventDefault();
         e.returnValue = '';
@@ -154,7 +179,7 @@ const HomePage = () => {
       document.removeEventListener('mouseenter', handleMouseEnter);
       window.removeEventListener('beforeunload', handleBeforeUnload);
     };
-  }, [hasShownAmbassadorModal]);
+  }, [shouldShowAmbassadorModal, showAmbassadorModal, markAmbassadorModalAsShown]);
 
   // Remove IntersectionObserver effect (lines 70-100)
   // useEffect(() => {
@@ -315,7 +340,7 @@ const HomePage = () => {
     <>
     <SEO
       title="Pan-African Agency Network (PAAN) | Leading Digital Marketing & Tech Agencies Across Pan Africa"
-      description="Join the Pan-African Agency Network (PAAN), uniting top digital marketing agencies, tech agencies, and creative strategy partners across Pan Africa. Accelerate your business development with exclusive opportunities, strategic partnerships, and premium resources designed for Africa’s most innovative agencies and marketers."
+      description="Join the Pan African Agency Network, Alliance of independent agaencies across africa..."
       keywords="Pan-African creative agencies, top African tech agencies, African digital marketing network, join African agency network, creative agencies in Africa, leading African digital innovation, pan-African collaboration platform, agency network in Africa, African creatives community, tech partnerships Africa, Africa digital marketing agencies, pan-African tech innovation, African creative strategy partners, African digital agency network, pan-African business development, Africa’s creative agency network, digital marketing agencies in Africa, tech agency partnerships Africa"
     />
     <div className="relative">
@@ -348,13 +373,10 @@ const HomePage = () => {
           <section className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 items-center px-4 sm:px-0 pt-40 sm:pt-0 relative z-10">
             <div className="flex flex-col gap-4 sm:gap-8 text-center sm:text-left">
               <h1 className="text-2xl sm:text-3xl md:text-5xl font-semibold uppercase text-[#172840] leading-tight">
-                Redefining Africa's Global Creative & Tech Footprint
+                {t('homepage.heroSection.mainTitle')}
               </h1>
               <p className="text-gray-500 font-normal text-sm sm:text-base">
-                The Pan-African Agency Network (PAAN) is a bold alliance of
-                independent agencies across Africa and the diaspora. We're on a
-                mission to transform fragmentation into unity and potential into
-                global influence.
+                {t('homepage.heroSection.description')}
               </p>
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center sm:justify-start">
                 <button                  
@@ -363,7 +385,7 @@ const HomePage = () => {
                     handleScroll(e, "#contact-us", isFixed);
                   }}
                 >
-                  Join The Network
+                  {t('homepage.heroSection.ctaButton')}
                 </button>
                 <button
                   className="bg-[#84C1D9] text-[#172840] px-6 sm:px-8 py-2.5 sm:py-3 rounded-full font-medium text-sm transition duration-300 hover:bg-[#6FA1B7] text-center w-full sm:w-auto"
@@ -391,31 +413,9 @@ const HomePage = () => {
           <div className="absolute bottom-60 -left-20 w-11 h-11 bg-[#D1D3D4] rounded-full z-30"></div>
           {/* <div className="absolute bottom-0 -right-10 w-11 h-11 bg-[#172840] rounded-full z-0"></div> */}
           <section className="relative z-10">
-            <p className="uppercase font-semibold mb-4">2. Who We Are</p>
+            <p className="uppercase font-semibold mb-4">{t('homepage.aboutUs.title')}</p>
             <p className="text-2xl">
-              The Pan-African Agency Network (PAAN) is a bold alliance of
-              <span className="relative inline-block">
-                <span className="text-[#F25849] font-semibold relative ml-2 z-0">independent</span>
-                
-                <Image
-                                  src="/assets/images/sketch-1.webp"
-                  width={400}
-                  height={200}
-                  alt=""
-                  className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-auto h-auto z-[-2]"
-                />
-              </span>{" "} agencies across Africa and the diaspora. We're on a
-              mission to <span className="relative inline-block">
-                <span className="text-[#F2B706] font-semibold relative z-0">transform</span>
-                <Image
-                                  src="/assets/images/sketch-3.webp"
-                  width={400}
-                  height={200}
-                  alt=""
-                  className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-auto h-auto z-[-2]"
-                />
-              </span> fragmentation into unity and potential into
-              global influence.
+              {t('homepage.aboutUs.description')}
             </p>
           </section>
           <section className="relative z-10 grid grid-cols-1 sm:grid-cols-2 gap-8 items-center mt-20">
@@ -434,7 +434,7 @@ const HomePage = () => {
                   }}
                   className="absolute -bottom-1 bg-[#F25849] text-white px-4 py-2 sm:px-10 sm:py-4 rounded-full font-bold text-xs sm:text-lg hover:bg-[#D6473C] transition duration-300 shadow-lg"
                 >
-                  Discover More
+                  {t('homepage.aboutUs.discoverMore')}
                 </button>
               </div>
             </div>
@@ -444,36 +444,36 @@ const HomePage = () => {
                   src="/assets/images/icons/pan-african-reach.svg"
                   width={50}
                   height={50}
-                  alt="Pan-African Reach"
+                  alt={t('homepage.aboutUs.features.panAfricanReach')}
                 />
-                <p className="text-xl font-base">Pan-African Reach</p>
+                <p className="text-xl font-base">{t('homepage.aboutUs.features.panAfricanReach')}</p>
               </div>
               <div className="flex items-center gap-3 border-b border-gray-200 pb-4 transform transition-transform duration-300 hover:translate-y-[-5px]">
                 <Image
                   src="/assets/images/icons/strategic-collaboration.svg"
                   width={50}
                   height={50}
-                  alt="Strategic Collaboration"
+                  alt={t('homepage.aboutUs.features.strategicCollaboration')}
                 />
-                <p className="text-xl font-base">Strategic Collaboration</p>
+                <p className="text-xl font-base">{t('homepage.aboutUs.features.strategicCollaboration')}</p>
               </div>
               <div className="flex items-center gap-3 border-b border-gray-200 pb-4 transform transition-transform duration-300 hover:translate-y-[-5px]">
                 <Image
                   src="/assets/images/icons/innovation-driven.svg"
                   width={50}
                   height={50}
-                  alt="Innovation-Driven"
+                  alt={t('homepage.aboutUs.features.innovationDriven')}
                 />
-                <p className="text-xl font-base">Innovation-Driven</p>
+                <p className="text-xl font-base">{t('homepage.aboutUs.features.innovationDriven')}</p>
               </div>
               <div className="flex items-center gap-3 border-b border-gray-200 pb-4 transform transition-transform duration-300 hover:translate-y-[-5px]">
                 <Image
                   src="/assets/images/icons/shared-knowledge-growth.svg"
                   width={50}
                   height={50}
-                  alt="Shared Knowledge & Growth"
+                  alt={t('homepage.aboutUs.features.sharedKnowledgeGrowth')}
                 />
-                <p className="text-xl font-base">Shared Knowledge & Growth</p>
+                <p className="text-xl font-base">{t('homepage.aboutUs.features.sharedKnowledgeGrowth')}</p>
               </div>
             </div>
           </section>
@@ -518,11 +518,10 @@ const HomePage = () => {
                     />
                     <div className="text-left">
                       <p className="text-xl sm:text-2xl font-semibold text-[#172840] mb-2">
-                        Vision Statement
+                        {t('homepage.ourMission.vision.title')}
                       </p>
                       <span className="text-[#172840] font-light text-sm sm:text-base">
-                        To become Africa's foremost collaborative network, shaping
-                        global narratives through creativity and technology.
+                        {t('homepage.ourMission.vision.description')}
                       </span>
                     </div>
                   </div>
@@ -540,11 +539,10 @@ const HomePage = () => {
                     />
                     <div className="text-left">
                       <p className="text-xl sm:text-2xl font-semibold text-[#172840] mb-2">
-                        Mission Statement
+                        {t('homepage.ourMission.mission.title')}
                       </p>
                       <span className="text-[#172840] font-light text-sm sm:text-base">
-                        Empowering African agencies through partnerships, shared resources, 
-                        and advocacy to deliver world-class solutions.
+                        {t('homepage.ourMission.mission.description')}
                       </span>
                     </div>
                   </div>
@@ -554,6 +552,8 @@ const HomePage = () => {
           </section>
         </div>
 
+        {/* Strategic Partners Section */}
+        {/* <StrategicPartners /> */}
 
         <div
           className="mx-auto max-w-6xl mt-20 mb-20 relative"
@@ -564,14 +564,12 @@ const HomePage = () => {
           <div className="hidden md:block absolute -top-14 right-52 w-16 h-16 bg-[#84C1D9] rounded-full z-0"></div>
           <div className="absolute -bottom-14 right-4 w-11 h-11 bg-[#172840] rounded-full z-0"></div>
           <section className="relative z-10">
-            <p className="uppercase font-semibold mb-4">3. Why Join PAAN?</p>
+            <p className="uppercase font-semibold mb-4">{t('homepage.whyJoinUs.title')}</p>
           </section>
           <section className="relative z-10 grid grid-cols-1 sm:grid-cols-2 gap-8 items-center">
             <div className="flex flex-col gap-20">
               <p className="text-2xl">
-                PAAN membership opens doors to global opportunities, exclusive
-                resources, and a thriving network of Africa's top creative and
-                tech minds.
+                {t('homepage.whyJoinUs.description')}
               </p>
               <Image
                   src="/assets/images/recently-added.webp"
@@ -695,17 +693,101 @@ const HomePage = () => {
 
         <AgencyLogosGrid />
 
+        {/* PAAN Certified Videos - COMMENTED OUT */}
+        {/* <div className="mt-20 section" id="certified-videos">
+          <section className="relative py-16 sm:py-20 bg-gradient-to-b from-gray-50 to-white">
+            <div className="mx-auto max-w-6xl px-4 sm:px-6">
+              <div className="text-center mb-12">
+                <p className="uppercase text-xs sm:text-sm font-semibold mb-3 text-paan-dark-blue/80 tracking-widest">5. PAAN Certified Agencies</p>
+                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Insights From Certified Leaders</h2>
+                <p className="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                  Curated videos recognized by PAAN for excellence, relevance, and impact across the creative and tech landscape.
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
+                {[
+                  { src: 'https://ik.imagekit.io/nkmvdjnna/PAAN/lyftup.webm/ik-video.mp4?updatedAt=1756713902496', type: 'video/mp4', title: 'LYFTUP Agency', href: '/certified-agencies/liftup' },
+                  { src: 'https://ik.imagekit.io/nkmvdjnna/PAAN/aquila.mp4', type: 'video/mp4', title: 'Aquila East Africa', href: '/certified-agencies/aquila' },
+                ].map((v, i) => (
+                  <div key={i} className="group bg-white rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden">
+                    <div className="relative aspect-video bg-black overflow-hidden">
+                      <video 
+                        className="w-full h-full object-cover" 
+                        controls 
+                        preload={i === 0 ? "auto" : "metadata"} 
+                        autoPlay
+                        preload="auto"
+                        playsInline
+                        muted
+                        crossOrigin="anonymous"
+                        onLoadStart={() => console.log('Video load started:', v.src)}
+                        onError={(e) => console.log('Video error:', e.target.error, v.src)}
+                        onCanPlay={() => console.log('Video can play:', v.src)}
+                        ref={(el) => { videoRefs.current[i] = el; }}
+                        onPlay={() => {
+                          setIsPlayingByIndex((prev) => ({ ...prev, [i]: true }));
+                        }}
+                        onPause={() => {
+                          setIsPlayingByIndex((prev) => ({ ...prev, [i]: false }));
+                        }}
+                      >
+                        <source src={v.src} type={v.type} />
+                        <source src={`/assets/videos/faqs-video.mp4`} type="video/mp4" />
+                        Your browser does not support the video tag.
+                      </video>
+                      <div className="absolute top-3 right-3">
+                         <span className="inline-flex items-center gap-1 text-xs font-semibold bg-white/90 text-paan-dark-blue px-2.5 py-1 rounded-full">
+                           <span className="inline-flex"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' className='w-4 h-4'><path d='M12 2l2.39 4.84L20 8.27l-3.9 3.8.92 5.36L12 15.9l-5.02 2.63.92-5.36L4 8.27l5.61-1.43L12 2z' fill='currentColor' /></svg></span>
+                           Certified
+                         </span>
+                       </div>
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                      <div 
+                        className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 cursor-pointer"
+                        onClick={() => togglePlay(i)}
+                        role="button"
+                        aria-label={isPlayingByIndex[i] ? 'Pause video' : 'Play video'}
+                      >
+                        <div className="w-16 h-16 rounded-full bg-white/95 flex items-center justify-center shadow-lg transform scale-90 group-hover:scale-100 transition-transform duration-300">
+                          {isPlayingByIndex[i] ? (
+                            <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' className='w-7 h-7 text-paan-red fill-current'>
+                              <path d='M6 5h4v14H6zM14 5h4v14h-4z'/>
+                            </svg>
+                          ) : (
+                            <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' className='w-8 h-8 text-paan-red fill-current'>
+                              <path d='M8 5v14l11-7z'/>
+                            </svg>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                    <div className="p-5">
+                      <h3 className="text-base font-semibold text-gray-900">{v.title}</h3>
+                      <p className="text-sm text-gray-500 mt-1">Reviewed and endorsed by PAAN for quality and relevance.</p>
+                      <div className="mt-3">
+                        <Link href={v.href} className="inline-flex items-center text-sm font-semibold text-paan-dark-blue hover:text-paan-red transition-colors">
+                          View Certified Profile
+                          <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' className='w-4 h-4 ml-1 fill-current'><path d='M13.172 7l-1.414 1.414L14.343 11H6v2h8.343l-2.585 2.586L13.172 17 18 12z'/></svg>
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        </div> */}
+
         <div
           className="mx-auto max-w-6xl mt-20 section"
           id="services"
           ref={sectionRefs.services}
         >
           <section>
-            <p className="uppercase font-semibold mb-4">4. What We Offer</p>
+            <p className="uppercase font-semibold mb-4">{t('homepage.services.title')}</p>
             <p className="text-2xl">
-              At PAAN, we go beyond networking. Our core services are built to
-              empower, elevate, and connect agencies across Africa and the
-              diaspora. Explore what we offer.
+              {t('homepage.services.description')}
             </p>
           </section>
           <section className="grid grid-cols-1 sm:grid-cols-3 gap-8 items-center mt-10">
@@ -729,135 +811,119 @@ const HomePage = () => {
           id="events"
           ref={sectionRefs.events}
         >
-          <section>
-            <p className="uppercase font-semibold mb-4">6. Summit & Events</p>
-            <p className="text-2xl">
-              Experience collaboration in action. Our signature events bring
-              together brands, agencies, and thought leaders to shape Africa's
-              creative future.
+          <section className="text-center mb-16">
+            <p className="uppercase font-semibold mb-4 text-[#F25849] tracking-wider">{t('homepage.events.title')}</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-[#172840] mb-6">
+              {t('homepage.events.mainTitle')}
+            </h2>
+            <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+              {t('homepage.events.description')}
             </p>
           </section>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 items-center mt-10">
+          
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
+            <div className="relative group">
+              <div className="absolute inset-0 bg-gradient-to-r from-[#F25849] to-[#F2B706] rounded-2xl transform rotate-1 group-hover:rotate-0 transition-transform duration-300"></div>
+              <div className="relative bg-white rounded-2xl p-8 shadow-2xl transform -rotate-1 group-hover:rotate-0 transition-transform duration-300">
+                <div className="mb-6">
+                  <span className="inline-block bg-[#F25849] text-white text-xs font-bold px-4 py-2 rounded-full tracking-wider uppercase mb-4">
+                    {t('homepage.events.featuredEvent.badge')}
+                  </span>
+                  <h3 className="text-2xl md:text-3xl font-bold text-[#172840] mb-4">
+                    {t('homepage.events.featuredEvent.title')}
+                  </h3>
+                  <p className="text-gray-600 text-lg leading-relaxed">
+                    {t('homepage.events.featuredEvent.description')}
+                  </p>
+                </div>
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="flex items-center gap-2 text-[#F25849]">
+                    <Icon icon="mdi:calendar" className="w-5 h-5" />
+                    <span className="font-semibold">{t('homepage.events.featuredEvent.date')}</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-[#172840]">
+                    <Icon icon="mdi:map-marker" className="w-5 h-5" />
+                    <span className="font-semibold">{t('homepage.events.featuredEvent.location')}</span>
+                  </div>
+                </div>
+                <Link
+                  href="#"
+                  className="inline-flex items-center gap-2 bg-[#172840] text-white px-8 py-3 rounded-full font-semibold hover:bg-[#F25849] transition-all duration-300 shadow-lg hover:shadow-xl"
+                >
+                  <span>{t('homepage.events.featuredEvent.cta')}</span>
+                  <Icon icon="mdi:arrow-right" className="w-5 h-5" />
+                </Link>
+              </div>
+            </div>
             
-            <div className="col-span-1 pattern-bg-2 rounded-lg transform transition-transform duration-300 hover:translate-y-[-5px]">
+            <div className="space-y-8">
+              <div className="bg-gradient-to-br from-gray-50 to-white rounded-xl p-8 border border-gray-100 shadow-lg">
+                <div className="flex items-start gap-4">
+                  <div className="flex-shrink-0">
+                    <div className="w-12 h-12 bg-[#84C1D9] rounded-full flex items-center justify-center">
+                      <Icon icon="mdi:presentation" className="w-6 h-6 text-white" />
+                    </div>
+                  </div>
+                  <div>
+                    <h4 className="text-xl font-bold text-[#172840] mb-2">{t('homepage.events.webinars.title')}</h4>
+                    <p className="text-gray-600 leading-relaxed">
+                      {t('homepage.events.webinars.description')}
+                    </p>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="bg-gradient-to-br from-gray-50 to-white rounded-xl p-8 border border-gray-100 shadow-lg">
+                <div className="flex items-start gap-4">
+                  <div className="flex-shrink-0">
+                    <div className="w-12 h-12 bg-[#F2B706] rounded-full flex items-center justify-center">
+                      <Icon icon="mdi:account-group" className="w-6 h-6 text-white" />
+                    </div>
+                  </div>
+                  <div>
+                    <h4 className="text-xl font-bold text-[#172840] mb-2">Networking Events</h4>
+                    <p className="text-gray-600 leading-relaxed">
+                      Exclusive networking opportunities with fellow agency leaders, potential clients, 
+                      and industry partners across Africa and beyond.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="bg-gradient-to-br from-gray-50 to-white rounded-xl p-8 border border-gray-100 shadow-lg">
+                <div className="flex items-start gap-4">
+                  <div className="flex-shrink-0">
+                    <div className="w-12 h-12 bg-[#F25849] rounded-full flex items-center justify-center">
+                      <Icon icon="mdi:lightbulb" className="w-6 h-6 text-white" />
+                    </div>
+                  </div>
+                  <div>
+                    <h4 className="text-xl font-bold text-[#172840] mb-2">Workshops & Training</h4>
+                    <p className="text-gray-600 leading-relaxed">
+                      Hands-on workshops and training sessions designed to enhance your team's skills 
+                      and keep you ahead of industry trends.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div className="text-center">
+            <div className="bg-gradient-to-r from-[#172840] to-[#84C1D9] rounded-2xl p-12 text-white">
+              <h3 className="text-3xl font-bold mb-4">Ready to Join Our Events?</h3>
+              <p className="text-xl mb-8 opacity-90">
+                Discover upcoming events, register for webinars, and connect with the PAAN community.
+              </p>
               <Link
-                href="/summit"
-                target="_blank" // Opens in new tab
-                rel="noopener noreferrer" // Security best practice for external links
+                href="/events"
+                className="inline-flex items-center gap-3 bg-white text-[#172840] px-10 py-4 rounded-full font-bold text-lg hover:bg-gray-100 transition-all duration-300 shadow-lg hover:shadow-xl"
               >
-                <Image
-                  src="/assets/images/oct-summit.jpg"
-                  width={900}
-                  height={0}
-                  alt="Webinar"
-                  className="rounded-lg object-cover w-full h-full"
-                />
+                <Icon icon="mdi:calendar-multiple" className="w-6 h-6" />
+                <span>View All Events</span>
               </Link>
             </div>
           </div>
-        </div>
-        {/* Past Webinars */}
-        <div className="mx-auto max-w-6xl mt-20" id="past-webinar-banner">
-          <section className="relative bg-gray-100 rounded-xl shadow-md overflow-hidden flex flex-col md:flex-row items-center gap-8 p-6 md:p-12 mb-16 border border-gray-200">
-            {/* Accent bar */}
-            <div className="absolute left-0 top-0 h-full w-2 bg-[#84C1D9] rounded-l-xl" />
-            {/* Badge */}
-            <div className="absolute top-6 left-8 z-10">
-              <span className="inline-block bg-[#84C1D9] text-[#172840] text-xs font-bold px-4 py-1 rounded-full shadow tracking-widest uppercase">Past Webinar</span>
-            </div>
-            <div className="w-full md:w-1/2 flex justify-center relative z-0">
-              <Image
-                src="/assets/images/webinar-banner.webp"
-                width={600}
-                height={340}
-                alt="Past Webinar Banner"
-                className="rounded-lg object-cover w-full h-auto max-h-80 shadow border border-gray-300"
-              />
-            </div>
-            <div className="w-full md:w-1/2 flex flex-col gap-6 items-start">
-              <div className="flex items-center gap-3">
-                <span className="inline-flex items-center justify-center bg-[#F2B706] text-[#172840] rounded-full p-2">
-                  <Icon icon="mdi:calendar" className="w-6 h-6" />
-                </span>
-                <h2 className="text-2xl sm:text-3xl font-bold text-[#172840]">AI For Client Retension & Growth</h2>
-              </div>
-              <p className="text-[#F25849] text-base font-semibold">Last Webinar • July 2 2025</p>
-              {/* Passcode with copy-to-clipboard */}
-              <PasscodeCopy passcode="K4W#LECp" />
-              <p className="text-gray-700 text-base sm:text-lg">
-                Join our exclusive webinar to discover how agency account managers can use AI to strengthen client relationships, save time and unlock new opportunities.
-              </p>
-              <a
-                href="https://us06web.zoom.us/rec/component-page?eagerLoadZvaPages=&accessLevel=meeting&action=viewdetailpage&sharelevel=meeting&useWhichPasswd=meeting&requestFrom=pwdCheck&clusterId=us06&componentName=need-password&meetingId=l0P--osw9rSwrswdJBo466Zg9oVCTk5d8kwZyAqnU1vkI29lzM_k9j9VPkTdstYE.Zu0TfEYAXBD1nLfv&originRequestUrl=https%3A%2F%2Fus06web.zoom.us%2Frec%2Fshare%2F-DKvx6Q2eX5lo42ukQ6ogCI-RZHRJ-57c-E2lXUZ5hvGMMzowrNY7jt5-utRbtAd.4hWokDGBJTjLD-55%3FstartTime%3D1751446311000"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="border-2 border-[#F25849] text-[#F25849] hover:bg-[#F25849] hover:text-white font-bold py-3 px-8 rounded-full transition-all duration-300 shadow text-base sm:text-lg mt-2 flex items-center gap-2"
-              >
-                <Icon icon="mdi:play-circle" className="w-6 h-6" />
-                Access Recording
-              </a>
-            </div>
-          </section>
-
-          {/* Second Past Webinar (previously Upcoming) */}
-          <section className="relative bg-gray-100 rounded-xl shadow-md overflow-hidden flex flex-col md:flex-row items-center gap-8 p-6 md:p-12 mb-16 border border-gray-200">
-            {/* Accent bar */}
-            <div className="absolute left-0 top-0 h-full w-2 bg-[#84C1D9] rounded-l-xl" />
-            {/* Badge */}
-            <div className="absolute top-6 left-8 z-10">
-              <span className="inline-block bg-[#84C1D9] text-[#172840] text-xs font-bold px-4 py-1 rounded-full shadow tracking-widest uppercase">Past Webinar</span>
-            </div>
-            <div className="w-full md:w-1/2 flex justify-center relative z-0">
-              <div className="aspect-square w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg flex items-center justify-center">
-                <Image
-                  src="/assets/images/Webinar-2.webp"
-                  width={600}
-                  height={600}
-                  alt="Voice AI for Consumer Engagement at Scale"
-                  className="rounded-lg object-cover w-full h-full shadow-lg border border-gray-200"
-                />
-              </div>
-            </div>
-            <div className="w-full md:w-1/2 flex flex-col gap-6 items-start">
-              <div className="flex items-center gap-3">
-                <span className="inline-flex items-center justify-center bg-[#84C1D9] text-[#172840] rounded-full p-2">
-                  <Icon icon="mdi:calendar-clock" className="w-6 h-6" />
-                </span>
-                <h2 className="text-2xl sm:text-3xl font-bold text-[#172840]">Voice AI for Consumer Engagement at Scale</h2>
-              </div>
-              <p className="text-[#F25849] text-base font-semibold">Webinar hosted by PAAN and led by Céline Duros of Viamo.</p>
-              <PasscodeCopy passcode="p$7j%9P9" />
-              <ul className="space-y-3 mt-2">
-                <li className="flex items-start gap-2 text-[#172840] text-base sm:text-lg">
-                  <span className="inline-block text-green-600 mt-1">
-                    <Icon icon="mdi:check-circle" className="w-5 h-5" />
-                  </span>
-                  Real-world use cases from African markets
-                </li>
-                <li className="flex items-start gap-2 text-[#172840] text-base sm:text-lg">
-                  <span className="inline-block text-green-600 mt-1">
-                    <Icon icon="mdi:check-circle" className="w-5 h-5" />
-                  </span>
-                  Practical steps to integrate Voice AI into your campaigns
-                </li>
-                <li className="flex items-start gap-2 text-[#172840] text-base sm:text-lg">
-                  <span className="inline-block text-green-600 mt-1">
-                    <Icon icon="mdi:check-circle" className="w-5 h-5" />
-                  </span>
-                  A better way to reach hard-to-reach communities
-                </li>
-              </ul>             
-              <a
-                href="https://us06web.zoom.us/rec/share/0GImiumaha-RtlQTN0Dncglvgi7Rf8BV4HLcBqcch0ZvFLEBs2V712fuXGutq3HO.BTEtNZA4KFhxfIWt"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="border-2 border-[#F25849] text-[#F25849] hover:bg-[#F25849] hover:text-white font-bold py-3 px-8 rounded-full transition-all duration-300 shadow text-base sm:text-lg mt-2 flex items-center gap-2"
-              >
-                <Icon icon="mdi:play-circle" className="w-6 h-6" />
-                Access Recording
-              </a>
-            </div>
-          </section>
         </div>
         {/* Past Webinar */}
         <div>

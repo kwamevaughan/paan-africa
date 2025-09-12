@@ -5,32 +5,34 @@ import Link from "next/link";
 import { useState } from "react";
 import { menuItems, ctaButton } from "../data/summitMenu";
 import { useFixedHeader, handleScroll } from "../../utils/scrollUtils";
+import LanguageSwitcher from "../components/LanguageSwitcher";
 
 const Header = ({ navLinkColor }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const isFixed = useFixedHeader();
   
-  // Determine the current text color based on scroll position
-  const currentTextColor = isFixed ? "text-white" : navLinkColor;
+  // Use PAAN dark blue color for text always
+  const currentTextColor = "text-[#172840]";
 
   return (
     <nav
       className={`w-full z-10 transition-all duration-300 ${
         isFixed
-          ? "fixed top-0 left-0 shadow-lg backdrop-blur-md bg-[#172840]"
-          : "absolute bg-transparent"
+          ? "fixed top-0 left-1/2 transform -translate-x-1/2 shadow-lg backdrop-blur-md bg-white rounded-lg mx-4 mt-4 max-w-7xl"
+          : "absolute left-1/2 transform -translate-x-1/2 bg-white rounded-lg mx-4 mt-4 shadow-md max-w-7xl"
       }`}
     >
-      <div className="w-full px-4 lg-custom:px-8">
-        <div className="flex items-center justify-between py-2">
+      <div className="w-full px-3 sm:px-4 md:px-6 lg:px-8">
+        <div className="flex items-center justify-between py-2 sm:py-3">
           {/* Logo - Left Side */}
           <div className="flex-shrink-0">
             <Link href="/" passHref>
               <Image
-                src="/assets/images/summit-logo.png"
+                src="/assets/images/paan-summit-logo.svg"
                 alt="Logo"
                 width={200}
                 height={70}
+                className="w-24 sm:w-28 md:w-32 lg:w-36 h-auto"
               />
             </Link>
           </div>
@@ -67,19 +69,23 @@ const Header = ({ navLinkColor }) => {
           </div>
 
           {/* Desktop Menu and CTA (hidden on mobile) */}
-          <div className="hidden lg-custom:flex lg-custom:items-center lg-custom:space-x-4 w-full justify-end">
+          <div className="hidden lg-custom:flex lg-custom:items-center lg-custom:space-x-1 xl:space-x-2 w-full justify-end">
             <div className="flex space-x-0 flex-grow justify-center md:justify-center">
               {menuItems.map((item) => (
                 <a
                   key={item.href}
                   href={item.href}
                   onClick={(e) => handleScroll(e, item.href, isFixed)}
-                  className={`${currentTextColor} hover:text-gray-900 hover:bg-[#F2B706] px-4 py-2 rounded-full transition-all duration-300 cursor-pointer`}
+                  className={`${currentTextColor} hover:text-gray-900 hover:bg-[#F2B706] px-2 sm:px-3 py-1.5 rounded-full transition-all duration-300 cursor-pointer text-xs sm:text-sm`}
                 >
                   {item.label}
                 </a>
               ))}
             </div>
+            
+            {/* Language Switcher */}
+            <LanguageSwitcher className="mr-3" />
+            
             <a
               href="https://membership.paan.africa/"              
               className={ctaButton.className}
@@ -91,7 +97,12 @@ const Header = ({ navLinkColor }) => {
 
         {/* Mobile Menu (shown when hamburger is clicked) */}
         <div className={`${isMenuOpen ? "block" : "hidden"} lg-custom:hidden`}>
-          <div className="px-2 pt-2 pb-3 space-y-1 bg-[#172840] rounded-lg shadow-lg">
+          <div className="px-3 sm:px-4 pt-2 pb-3 space-y-1 bg-white rounded-lg shadow-lg border border-gray-200">
+            {/* Language Switcher for Mobile */}
+            <div className="px-3 sm:px-4 py-3 border-b border-gray-200">
+              <LanguageSwitcher />
+            </div>
+            
             {menuItems.map((item) => (
               <a
                 key={item.href}
@@ -100,7 +111,7 @@ const Header = ({ navLinkColor }) => {
                   handleScroll(e, item.href, isFixed);
                   setIsMenuOpen(false);
                 }}
-                className={`${currentTextColor} hover:text-gray-900 hover:bg-[#F2B706] block px-4 py-2 rounded-full transition-all duration-300 cursor-pointer`}
+                className={`${currentTextColor} hover:text-gray-900 hover:bg-[#F2B706] block px-3 sm:px-4 py-1.5 rounded-full transition-all duration-300 cursor-pointer text-xs sm:text-sm`}
               >
                 {item.label}
               </a>

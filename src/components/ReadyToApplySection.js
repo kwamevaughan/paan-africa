@@ -1,7 +1,10 @@
 import React from "react";
 import Image from "next/image";
+import { useAppTranslations } from '../hooks/useTranslations';
 
 export default function ReadyToApplySection() {
+  const { t } = useAppTranslations();
+  
   return (
     <div className="bg-[#F25849] relative overflow-hidden px-4 sm:px-8 lg:px-16 py-8 sm:py-12 lg:py-16">
       {/* Main content */}
@@ -102,12 +105,10 @@ export default function ReadyToApplySection() {
 
         <div className="text-center px-4 relative">
           <h2 className="font-bold text-2xl sm:text-3xl lg:text-4xl text-dark mb-4 sm:mb-6">
-            Ready To Apply?
+            {t('freelancers.readyToApply.title')}
           </h2>
           <p className="text-dark mb-6 sm:mb-8 max-w-xl mx-auto text-base sm:text-lg leading-relaxed">
-            Top African agencies are actively hiring PAAN-certified freelancers
-            this quarter. Your perfect client is waiting – don't let them find
-            someone else.
+            {t('freelancers.readyToApply.description')}
           </p>
           <button
             type="submit"
@@ -118,7 +119,7 @@ export default function ReadyToApplySection() {
             }}
             className="bg-slate-900 text-white py-3 px-8 sm:py-2 sm:px-14 rounded-full hover:bg-orange-600 transition duration-300 font-medium text-base sm:text-lg w-full sm:w-auto"
           >
-            Apply Now
+            {t('freelancers.readyToApply.ctaButton')}
           </button>
         </div>
       </section>

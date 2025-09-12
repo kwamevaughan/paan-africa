@@ -9,8 +9,10 @@ import Link from "next/link";
 import EnquiryModal from "@/components/EnquiryModal";
 import AgencyLogosGrid from "@/components/AgencyLogosGrid";
 import ScrollToTop from "@/components/ScrollToTop";
+import { useAppTranslations } from '../hooks/useTranslations';
 
 const AgenciesPage = () => {
+  const { t } = useAppTranslations();
   const sectionRefs = {
     home: useRef(null),
     aboutUs: useRef(null),
@@ -24,6 +26,178 @@ const AgenciesPage = () => {
 
   const isFixed = useFixedHeader();
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  // Hero component defined inside main component to access translations
+  const Hero = ({ openModal }) => {
+    return (
+      <div
+        className="relative h-screen w-full bg-gray-900 overflow-visible" 
+        id="home"
+      >
+        {/* Background image positioned to cover full container */}
+        <div 
+          className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: "url('/assets/images/agency-hero-bg.webp')"
+          }}
+        />
+
+        {/* Dark overlay */}
+        <div className="absolute inset-0 bg-black bg-opacity-50" />
+
+        <div className="relative h-full flex mx-auto max-w-6xl">
+          <div className="w-full px-4 sm:px-6 md:px-8 pb-8 sm:pb-44 flex flex-col justify-center sm:justify-end h-full">
+            <div className="max-w-2xl text-left space-y-4 sm:space-y-6">
+              <h1 className="text-sm sm:text-md text-white relative uppercase tracking-wide">
+                {t('clients.hero.badge')}
+              </h1>
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl text-white relative font-semibold leading-tight">
+                {t('clients.hero.title')}
+              </h2>
+              <p className="text-white text-base sm:text-lg mb-6 font-light w-full leading-relaxed">
+                {t('clients.hero.description')}
+              </p>  
+              <button 
+                onClick={openModal}
+                className="bg-transparent border border-white text-white py-3 px-8 sm:px-10 rounded-full hover:bg-orange-600 transition-all duration-300 transform ease-in-out hover:translate-y-[-5px] font-medium text-sm w-full sm:w-auto"
+              >
+                {t('clients.hero.ctaButton')}
+              </button>             
+            </div>
+          </div>
+        </div>
+
+        {/* Overlapping cards positioned at bottom with responsive layout - hidden on mobile */}
+        <div className="absolute -bottom-8 sm:-bottom-16 left-1/2 transform -translate-x-1/2 w-full max-w-6xl px-4 sm:px-6 md:px-8 z-10 hidden sm:block">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
+            <div className="w-full h-40 sm:h-48 p-4 sm:p-6 flex items-center justify-center bg-white rounded-lg shadow-lg hover:bg-[#F2B706] transition-colors duration-300 cursor-pointer">
+              <div className="flex flex-col gap-2 text-center sm:text-left">
+                <div className="flex justify-center sm:justify-start">
+                  <Image
+                    src="/assets/images/icons/agencies.png"
+                    width={32}
+                    height={32}
+                    alt="Icon"
+                    className="sm:w-10 sm:h-10"
+                  />
+                </div>
+                <h2 className="font-semibold text-sm sm:text-base">{t('clients.hero.stats.agencies.title')}</h2>
+                <p className="font-light text-xs sm:text-sm">{t('clients.hero.stats.agencies.description')}</p>
+              </div>
+            </div>
+            <div className="w-full h-40 sm:h-48 p-4 sm:p-6 flex items-center justify-center bg-white rounded-lg shadow-lg hover:bg-[#F2B706] transition-colors duration-300 cursor-pointer">
+              <div className="flex flex-col gap-2 text-center sm:text-left">
+                <div className="flex justify-center sm:justify-start">
+                  <Image
+                    src="/assets/images/icons/freelancers.png"
+                    width={32}
+                    height={32}
+                    alt="Icon"
+                    className="sm:w-10 sm:h-10"
+                  />
+                </div>
+                <h2 className="font-semibold text-sm sm:text-base">{t('clients.hero.stats.freelancers.title')}</h2>
+                <p className="font-light text-xs sm:text-sm">{t('clients.hero.stats.freelancers.description')}</p>
+              </div>
+            </div>
+            <div className="w-full h-40 sm:h-48 p-4 sm:p-6 flex items-center justify-center bg-white rounded-lg shadow-lg hover:bg-[#F2B706] transition-colors duration-300 cursor-pointer">
+              <div className="flex flex-col gap-2 text-center sm:text-left">
+                <div className="flex justify-center sm:justify-start">
+                  <Image
+                    src="/assets/images/icons/docs.png"
+                    width={32}
+                    height={32}
+                    alt="Icon"
+                    className="sm:w-10 sm:h-10"
+                  />
+                </div>
+                <h2 className="font-semibold text-sm sm:text-base">{t('clients.services.fullyManagedCampaigns.title')}</h2>
+                <p className="font-light text-xs sm:text-sm">{t('clients.services.fullyManagedCampaigns.description')}</p>
+              </div>
+            </div>
+            <div className="w-full h-40 sm:h-48 p-4 sm:p-6 flex items-center justify-center bg-white rounded-lg shadow-lg hover:bg-[#F2B706] transition-colors duration-300 cursor-pointer">
+              <div className="flex flex-col gap-2 text-center sm:text-left">
+                <div className="flex justify-center sm:justify-start">
+                  <Image
+                    src="/assets/images/icons/creators.png"
+                    width={32}
+                    height={32}
+                    alt="Icon"
+                    className="sm:w-10 sm:h-10"
+                  />
+                </div>
+                <h2 className="font-semibold text-sm sm:text-base">{t('clients.services.vettedCreators.title')}</h2>
+                <p className="font-light text-xs sm:text-sm">{t('clients.services.vettedCreators.description')}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
+  // VerticalSteps component defined inside main component to access translations
+  const VerticalSteps = () => {
+    const [hoveredStep, setHoveredStep] = useState(null);
+    
+    const steps = [
+      {
+        number: 1,
+        title: t('clients.howItWorks.steps.step1.title'),
+        desc: t('clients.howItWorks.steps.step1.description')
+      },
+      {
+        number: 2,
+        title: t('clients.howItWorks.steps.step2.title'),
+        desc: t('clients.howItWorks.steps.step2.description')
+      },
+      {
+        number: 3,
+        title: t('clients.howItWorks.steps.step3.title'),
+        desc: t('clients.howItWorks.steps.step3.description')
+      },
+      {
+        number: 4,
+        title: t('clients.howItWorks.steps.step4.title'),
+        desc: t('clients.howItWorks.steps.step4.description')
+      }
+    ];
+    
+    return (
+      <div className="relative flex flex-col max-w-lg mx-auto">
+        {/* Vertical line that starts from center of first circle to center of last circle */}
+        <div className="absolute left-6 z-0" style={{
+          top: '24px', // Half of circle height (48px / 2 = 24px)
+          height: `calc(100% - 48px)` // Full height minus one full circle height
+        }}>
+          <div className="w-0.5 bg-[#F2B706] h-full" />
+        </div>
+        
+        {/* Steps */}
+        {steps.map((step, index) => (
+          <div 
+            key={step.number}
+            className={`flex items-center relative z-10 ${index !== steps.length - 1 ? 'mb-8' : ''}`}
+            onMouseEnter={() => setHoveredStep(step.number)}
+            onMouseLeave={() => setHoveredStep(null)}
+          >
+            {/* Circle */}
+            <div 
+              className={`flex items-center justify-center w-12 h-12 rounded-full bg-[#F2B706] text-[#172840] text-lg font-bold shadow-lg transition-transform duration-300 flex-shrink-0 ${hoveredStep === step.number ? 'transform scale-110' : ''}`}
+            >
+              {step.number}
+            </div>
+            
+            {/* Title on the right */}
+            <div className="ml-6">
+              <h4 className="text-[#84C1D9] text-base font-medium">{step.title}</h4>
+              <p className="text-white font-light">{step.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    );
+  };
 
   // Restore IntersectionObserver for section transitions
   useEffect(() => {
@@ -91,10 +265,9 @@ const AgenciesPage = () => {
 
           <section className="relative mx-auto max-w-6xl mt-16 sm:mt-24 md:mt-40 px-4 sm:px-6 pb-16 sm:pb-20">
             <div className="space-y-3 sm:space-y-4 text-center md:text-left">
-              <h3 className="text-lg sm:text-xl text-dark uppercase font-semibold">WHY JOIN?</h3>
+              <h3 className="text-lg sm:text-xl text-dark uppercase font-semibold">{t('clients.whyJoin.badge')}</h3>
               <h2 className="text-2xl sm:text-3xl md:text-4xl text-dark font-normal leading-tight">
-                Africa is a mosaic of markets. You need <br className="hidden sm:block" />
-                more than reach; you need readiness.
+                {t('clients.whyJoin.title')}
               </h2>
             </div>
             
@@ -112,13 +285,11 @@ const AgenciesPage = () => {
               <div className="flex flex-col order-1 md:order-2">
                 <div className="space-y-4 sm:space-y-6">
                   <p className="text-gray-700 leading-relaxed text-base sm:text-lg">
-                    PAAN connects your brand to a trusted network of vetted agencies and freelancers across 20+ African countries.
-                    <br /><br />
-                    Whether you're rolling out across multiple regions or localizing a single campaign, our ecosystem gives you the agility and confidence to deliver at scale.
+                    {t('clients.whyJoin.description')}
                   </p>
                   
                   <div className="mt-6 sm:mt-8">
-                    <h3 className="font-bold text-lg sm:text-xl mb-3 sm:mb-4 text-dark">We help you:</h3>
+                    <h3 className="font-bold text-lg sm:text-xl mb-3 sm:mb-4 text-dark">{t('clients.whyJoin.weHelpYou')}</h3>
                     <ul className="space-y-3 sm:space-y-4">
                       <li className="flex items-start">
                         <span className="mr-3 mt-1 flex-shrink-0">
@@ -126,7 +297,7 @@ const AgenciesPage = () => {
                             <path fill="currentColor" d="M225.86 102.82c-3.77-3.94-7.67-8-9.14-11.57c-1.36-3.27-1.44-8.69-1.52-13.94c-.15-9.76-.31-20.82-8-28.51s-18.75-7.85-28.51-8c-5.25-.08-10.67-.16-13.94-1.52c-3.56-1.47-7.63-5.37-11.57-9.14C146.28 23.51 138.44 16 128 16s-18.27 7.51-25.18 14.14c-3.94 3.77-8 7.67-11.57 9.14c-3.25 1.36-8.69 1.44-13.94 1.52c-9.76.15-20.82.31-28.51 8s-7.8 18.75-8 28.51c-.08 5.25-.16 10.67-1.52 13.94c-1.47 3.56-5.37 7.63-9.14 11.57C23.51 109.72 16 117.56 16 128s7.51 18.27 14.14 25.18c3.77 3.94 7.67 8 9.14 11.57c1.36 3.27 1.44 8.69 1.52 13.94c.15 9.76.31 20.82 8 28.51s18.75 7.85 28.51 8c5.25.08 10.67.16 13.94 1.52c3.56 1.47 7.63 5.37 11.57 9.14c6.9 6.63 14.74 14.14 25.18 14.14s18.27-7.51 25.18-14.14c3.94-3.77 8-7.67 11.57-9.14c3.27-1.36 8.69-1.44 13.94-1.52c9.76-.15 20.82-.31 28.51-8s7.85-18.75 8-28.51c.08-5.25.16-10.67 1.52-13.94c1.47-3.56 5.37-7.63 9.14-11.57c6.63-6.9 14.14-14.74 14.14-25.18s-7.51-18.27-14.14-25.18m-52.2 6.84l-56 56a8 8 0 0 1-11.32 0l-24-24a8 8 0 0 1 11.32-11.32L112 148.69l50.34-50.35a8 8 0 0 1 11.32 11.32"/>
                           </svg>              
                         </span>
-                        <span className="text-gray-700 leading-relaxed text-sm sm:text-base">Launch campaigns across regions with fewer unknowns</span>
+                        <span className="text-gray-700 leading-relaxed text-sm sm:text-base">{t('clients.whyJoin.benefits.launchCampaigns')}</span>
                       </li>
                       <li className="flex items-start">
                         <span className="mr-3 mt-1 flex-shrink-0">
@@ -134,7 +305,7 @@ const AgenciesPage = () => {
                             <path fill="currentColor" d="M225.86 102.82c-3.77-3.94-7.67-8-9.14-11.57c-1.36-3.27-1.44-8.69-1.52-13.94c-.15-9.76-.31-20.82-8-28.51s-18.75-7.85-28.51-8c-5.25-.08-10.67-.16-13.94-1.52c-3.56-1.47-7.63-5.37-11.57-9.14C146.28 23.51 138.44 16 128 16s-18.27 7.51-25.18 14.14c-3.94 3.77-8 7.67-11.57 9.14c-3.25 1.36-8.69 1.44-13.94 1.52c-9.76.15-20.82.31-28.51 8s-7.8 18.75-8 28.51c-.08 5.25-.16 10.67-1.52 13.94c-1.47 3.56-5.37 7.63-9.14 11.57C23.51 109.72 16 117.56 16 128s7.51 18.27 14.14 25.18c3.77 3.94 7.67 8 9.14 11.57c1.36 3.27 1.44 8.69 1.52 13.94c.15 9.76.31 20.82 8 28.51s18.75 7.85 28.51 8c5.25.08 10.67.16 13.94 1.52c3.56 1.47 7.63 5.37 11.57 9.14c6.9 6.63 14.74 14.14 25.18 14.14s18.27-7.51 25.18-14.14c3.94-3.77 8-7.67 11.57-9.14c3.27-1.36 8.69-1.44 13.94-1.52c9.76-.15 20.82-.31 28.51-8s7.85-18.75 8-28.51c.08-5.25.16-10.67 1.52-13.94c1.47-3.56 5.37-7.63 9.14-11.57c6.63-6.9 14.14-14.74 14.14-25.18s-7.51-18.27-14.14-25.18m-52.2 6.84l-56 56a8 8 0 0 1-11.32 0l-24-24a8 8 0 0 1 11.32-11.32L112 148.69l50.34-50.35a8 8 0 0 1 11.32 11.32"/>
                           </svg>   
                         </span>
-                        <span className="text-gray-700 leading-relaxed text-sm sm:text-base">Localize with insight, not guesswork</span>
+                        <span className="text-gray-700 leading-relaxed text-sm sm:text-base">{t('clients.whyJoin.benefits.localizeWithInsight')}</span>
                       </li>
                       <li className="flex items-start">
                         <span className="mr-3 mt-1 flex-shrink-0">
@@ -142,7 +313,7 @@ const AgenciesPage = () => {
                             <path fill="currentColor" d="M225.86 102.82c-3.77-3.94-7.67-8-9.14-11.57c-1.36-3.27-1.44-8.69-1.52-13.94c-.15-9.76-.31-20.82-8-28.51s-18.75-7.85-28.51-8c-5.25-.08-10.67-.16-13.94-1.52c-3.56-1.47-7.63-5.37-11.57-9.14C146.28 23.51 138.44 16 128 16s-18.27 7.51-25.18 14.14c-3.94 3.77-8 7.67-11.57 9.14c-3.25 1.36-8.69 1.44-13.94 1.52c-9.76.15-20.82.31-28.51 8s-7.8 18.75-8 28.51c-.08 5.25-.16 10.67-1.52 13.94c-1.47 3.56-5.37 7.63-9.14 11.57C23.51 109.72 16 117.56 16 128s7.51 18.27 14.14 25.18c3.77 3.94 7.67 8 9.14 11.57c1.36 3.27 1.44 8.69 1.52 13.94c.15 9.76.31 20.82 8 28.51s18.75 7.85 28.51 8c5.25.08 10.67.16 13.94 1.52c3.56 1.47 7.63 5.37 11.57 9.14c6.9 6.63 14.74 14.14 25.18 14.14s18.27-7.51 25.18-14.14c3.94-3.77 8-7.67 11.57-9.14c3.27-1.36 8.69-1.44 13.94-1.52c9.76-.15 20.82-.31 28.51-8s7.85-18.75 8-28.51c.08-5.25.16-10.67 1.52-13.94c1.47-3.56 5.37-7.63 9.14-11.57c6.63-6.9 14.14-14.74 14.14-25.18s-7.51-18.27-14.14-25.18m-52.2 6.84l-56 56a8 8 0 0 1-11.32 0l-24-24a8 8 0 0 1 11.32-11.32L112 148.69l50.34-50.35a8 8 0 0 1 11.32 11.32"/>
                           </svg>   
                         </span>
-                        <span className="text-gray-700 leading-relaxed text-sm sm:text-base">Work with delivery partners already trusted in their markets</span>
+                        <span className="text-gray-700 leading-relaxed text-sm sm:text-base">{t('clients.whyJoin.benefits.workWithTrustedPartners')}</span>
                       </li>
                     </ul>
                   </div>
@@ -153,9 +324,9 @@ const AgenciesPage = () => {
         </div>     
         <div className="relative mt-10 sm:mt-20 bg-[#84C1D9] py-6 sm:py-10">
             <section className="relative mx-auto max-w-6xl px-4 sm:px-6 space-y-2 sm:space-y-4" style={{ zIndex: 2 }}>
-              <h2 className="text-base sm:text-lg uppercase font-bold text-left mb-2 sm:mb-4">What you Get</h2>
-              <h3 className="text-xl sm:text-2xl font-semibold">Certified Talent. Regional Execution. Real Results</h3>
-              <p className="text-xs sm:text-sm">Working with PAAN gives you access to:</p>
+              <h2 className="text-base sm:text-lg uppercase font-bold text-left mb-2 sm:mb-4">{t('clients.whatYouGet.badge')}</h2>
+              <h3 className="text-xl sm:text-2xl font-semibold">{t('clients.whatYouGet.title')}</h3>
+              <p className="text-xs sm:text-sm">{t('clients.whatYouGet.subtitle')}</p>
               <ClientsSlider openModal={openModal} />
             </section>
             {/* Background Pattern */}
@@ -184,18 +355,12 @@ const AgenciesPage = () => {
               <div className="mb-10">
                 <div className="mt-6 md:mt-10 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 items-center">
                   <div className="flex flex-col space-y-4 md:space-y-6 max-w-lg mx-auto md:mx-0">
-                    <h2 className="text-lg md:text-xl font-normal uppercase text-center md:text-left">Who We Work With</h2>
+                    <h2 className="text-lg md:text-xl font-normal uppercase text-center md:text-left">{t('clients.whoWeWorkWith.badge')}</h2>
                     <h3 className="text-2xl md:text-3xl font-normal text-center md:text-left leading-tight md:leading-normal">
-                      Trusted by <span className="font-semibold text-[#F25849]">brands</span>,<br className="hidden md:block"/> 
-                      <span className="md:hidden"> </span><span className="font-semibold text-[#F2B706]">NGOs</span>, and <span className="font-semibold text-[#84C1D9]">institutions</span><br className="hidden md:block"/> 
-                      <span className="md:hidden"> </span>building across Africa
+                      {t('clients.whoWeWorkWith.title')}
                     </h3>
                     <p className="text-gray-700 leading-relaxed text-center md:text-left text-sm md:text-base">
-                      Our network supports global brands, regional NGOs, 
-                      and mission-driven organizations expanding into African markets.
-                      <br/><br/> 
-                      Whether you're launching a digital campaign, activating in new regions, 
-                      or building long-term brand presence, we help you find the right creative and strategic partners.
+                      {t('clients.whoWeWorkWith.description')}
                     </p> 
                   </div>
                   <div className="order-first md:order-last flex justify-center">
@@ -224,8 +389,8 @@ const AgenciesPage = () => {
           <section className="relative">
             <div className="mb-0">
               <div>
-                <h2 className="text-white text-lg sm:text-xl font-normal uppercase tracking-wide">How it works</h2>
-                <h3 className="text-white text-2xl sm:text-3xl font-normal">It's easy to get started.</h3>
+                <h2 className="text-white text-lg sm:text-xl font-normal uppercase tracking-wide">{t('clients.howItWorks.badge')}</h2>
+                <h3 className="text-white text-2xl sm:text-3xl font-normal">{t('clients.howItWorks.title')}</h3>
               </div>
               <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 items-center pb-10">
                 <div className="text-white flex flex-col justify-center items-center md:items-start space-y-4 sm:space-y-6 pb-8 sm:pb-10 text-center md:text-left h-full">
@@ -257,13 +422,13 @@ const AgenciesPage = () => {
             <div className="space-y-4 sm:space-y-6 lg:space-y-8 order-2 lg:order-1">              
               <div className="space-y-3 sm:space-y-4 md:space-y-6">
                 <h4 className="text-xl sm:text-2xl lg:text-2xl font-normal text-[#172840] leading-tight">
-                  Struggling to Write Client Briefs?
+                  {t('clients.aiBriefBuilder.strugglingTitle')}
                 </h4>
                 <h4 className="text-2xl sm:text-3xl lg:text-3xl font-semibold text-[#172840] leading-tight">
-                  Let <span className="text-paan-red">PAAN AI</span> Handle It.
+                  {t('clients.aiBriefBuilder.mainTitle')}
                 </h4>
                 <p className="text-gray-600 text-base sm:text-lg leading-relaxed">
-                  Create clear, professional project briefs in minutes. Just answer a few questions - we'll handle the structure, tone, and formatting for you.
+                  {t('clients.aiBriefBuilder.description')}
                 </p>
                 
                 <div className="space-y-3 sm:space-y-4 md:space-y-6">
@@ -275,10 +440,10 @@ const AgenciesPage = () => {
                     </div>
                     <div>
                       <h4 className="font-semibold text-[#172840] text-base sm:text-lg mb-1 sm:mb-2">
-                        Agency-Ready Output
+                        {t('clients.aiBriefBuilder.features.agencyReady.title')}
                       </h4>
                       <p className="text-gray-600 text-sm sm:text-base">
-                        Get a structured, clear brief that creative teams instantly understand.
+                        {t('clients.aiBriefBuilder.features.agencyReady.description')}
                       </p>
                     </div>
                   </div>
@@ -291,10 +456,10 @@ const AgenciesPage = () => {
                     </div>
                     <div>
                       <h4 className="font-semibold text-[#172840] text-base sm:text-lg mb-1 sm:mb-2">
-                        Fast & Effortless
+                        {t('clients.aiBriefBuilder.features.fastEffortless.title')}
                       </h4>
                       <p className="text-gray-600 text-sm sm:text-base">
-                        Just answer a few questions - our AI handles formatting, tone, and flow.
+                        {t('clients.aiBriefBuilder.features.fastEffortless.description')}
                       </p>
                     </div>
                   </div>
@@ -307,10 +472,10 @@ const AgenciesPage = () => {
                     </div>
                     <div>
                       <h4 className="font-semibold text-[#172840] text-base sm:text-lg mb-1 sm:mb-2">
-                        Seamless Collaboration
+                        {t('clients.aiBriefBuilder.features.seamlessCollaboration.title')}
                       </h4>
                       <p className="text-gray-600 text-sm sm:text-base">
-                        Download, copy, or share your brief directly with the PAAN network or your internal team.
+                        {t('clients.aiBriefBuilder.features.seamlessCollaboration.description')}
                       </p>
                     </div>
                   </div>
@@ -323,7 +488,7 @@ const AgenciesPage = () => {
                   href="/ai-brief-builder"
                   className="inline-flex items-center justify-center bg-paan-red text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-base sm:text-lg hover:from-[#D6473C] hover:to-[#E6A800] transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 hover:scale-105 group w-full sm:w-auto max-w-sm"
                 >
-                  Build My Brief Now
+                  {t('clients.aiBriefBuilder.ctaButton')}
                   <svg className="ml-2 w-4 h-4 sm:w-5 sm:h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                   </svg>
@@ -341,7 +506,7 @@ const AgenciesPage = () => {
                     <div className="w-2 h-2 sm:w-3 sm:h-3 bg-[#F2B706] rounded-full"></div>
                     <div className="w-2 h-2 sm:w-3 sm:h-3 bg-[#84C1D9] rounded-full"></div>
                     <div className="ml-2 sm:ml-3 md:ml-4 text-xs sm:text-sm text-gray-500">
-                      PAAN AI Brief Builder
+                      {t('clients.aiBriefBuilder.browserHeader')}
                     </div>
                   </div>
                   
@@ -349,7 +514,7 @@ const AgenciesPage = () => {
                   <div className="space-y-2 sm:space-y-3 md:space-y-4">
                     <div className="space-y-1 sm:space-y-2">
                       <label className="text-xs sm:text-sm font-medium text-gray-700">
-                        Project Type
+                        {t('clients.aiBriefBuilder.formLabels.projectType')}
                       </label>
                       <div className="h-6 sm:h-7 md:h-8 bg-gray-100 rounded border-l-4 border-[#F25849] px-2 sm:px-3 flex items-center">
                         <span className="text-xs sm:text-sm text-gray-600">
@@ -360,7 +525,7 @@ const AgenciesPage = () => {
                     
                     <div className="space-y-1 sm:space-y-2">
                       <label className="text-xs sm:text-sm font-medium text-gray-700">
-                        Target Market
+                        {t('clients.aiBriefBuilder.formLabels.targetMarket')}
                       </label>
                       <div className="h-6 sm:h-7 md:h-8 bg-gray-100 rounded border-l-4 border-[#F2B706] px-2 sm:px-3 flex items-center">
                         <span className="text-xs sm:text-sm text-gray-600">
@@ -371,7 +536,7 @@ const AgenciesPage = () => {
                     
                     <div className="space-y-1 sm:space-y-2">
                       <label className="text-xs sm:text-sm font-medium text-gray-700">
-                        Campaign Objective
+                        {t('clients.aiBriefBuilder.formLabels.campaignObjective')}
                       </label>
                       <div className="h-6 sm:h-7 md:h-8 bg-gray-100 rounded border-l-4 border-[#84C1D9] px-2 sm:px-3 flex items-center">
                         <span className="text-xs sm:text-sm text-gray-600">
@@ -386,7 +551,7 @@ const AgenciesPage = () => {
                     <div className="flex items-center gap-2 sm:gap-3">
                       <div className="animate-spin rounded-full h-3 w-3 sm:h-4 sm:w-4 md:h-5 md:w-5 border-2 border-[#F25849] border-t-transparent"></div>
                       <div className="text-[#F25849] text-xs sm:text-sm font-medium">
-                        AI is generating your professional brief...
+                        {t('clients.aiBriefBuilder.aiProcessing')}
                       </div>
                     </div>
                   </div>
@@ -401,7 +566,7 @@ const AgenciesPage = () => {
                         <polyline points="16,17 8,17"/>
                         <polyline points="10,9 9,9 8,9"/>
                       </svg>
-                      Generated Brief Preview
+                      {t('clients.aiBriefBuilder.generatedBrief')}
                     </div>
                     <div className="space-y-1 sm:space-y-2 text-xs text-gray-600">
                       <div className="h-2 sm:h-3 bg-gray-200 rounded w-full"></div>
@@ -479,177 +644,6 @@ const AgenciesPage = () => {
         <ScrollToTop />
       </main>
     </>
-  );
-};
-
-const Hero = ({ openModal }) => {
-  return (
-    <div
-      className="relative h-screen w-full bg-gray-900 overflow-visible" 
-      id="home"
-    >
-      {/* Background image positioned to cover full container */}
-      <div 
-        className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage: "url('/assets/images/agency-hero-bg.webp')"
-        }}
-      />
-
-      {/* Dark overlay */}
-      <div className="absolute inset-0 bg-black bg-opacity-50" />
-
-      <div className="relative h-full flex mx-auto max-w-6xl">
-        <div className="w-full px-4 sm:px-6 md:px-8 pb-8 sm:pb-44 flex flex-col justify-center sm:justify-end h-full">
-          <div className="max-w-2xl text-left space-y-4 sm:space-y-6">
-            <h1 className="text-sm sm:text-md text-white relative uppercase tracking-wide">
-              Grow Your Brand in Africa
-            </h1>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl text-white relative font-semibold leading-tight">
-              With <span className="text-[#F25849]">Partners</span> You Can <span className="text-[#F2B706]">Trust</span>
-            </h2>
-            <p className="text-white text-base sm:text-lg mb-6 font-light w-full leading-relaxed">
-              Work with certified agencies and freelancers who understand the
-              markets, move fast, and deliver with cultural fluency.
-            </p>  
-            <button 
-              onClick={openModal}
-              className="bg-transparent border border-white text-white py-3 px-8 sm:px-10 rounded-full hover:bg-orange-600 transition-all duration-300 transform ease-in-out hover:translate-y-[-5px] font-medium text-sm w-full sm:w-auto"
-            >
-              Find Your Delivery Partner
-            </button>             
-          </div>
-        </div>
-      </div>
-
-      {/* Overlapping cards positioned at bottom with responsive layout - hidden on mobile */}
-      <div className="absolute -bottom-8 sm:-bottom-16 left-1/2 transform -translate-x-1/2 w-full max-w-6xl px-4 sm:px-6 md:px-8 z-10 hidden sm:block">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
-          <div className="w-full h-40 sm:h-48 p-4 sm:p-6 flex items-center justify-center bg-white rounded-lg shadow-lg hover:bg-[#F2B706] transition-colors duration-300 cursor-pointer">
-            <div className="flex flex-col gap-2 text-center sm:text-left">
-              <div className="flex justify-center sm:justify-start">
-                <Image
-                  src="/assets/images/icons/agencies.png"
-                  width={32}
-                  height={32}
-                  alt="Icon"
-                  className="sm:w-10 sm:h-10"
-                />
-              </div>
-              <h2 className="font-semibold text-sm sm:text-base">200+ <br />Agencies</h2>
-              <p className="font-light text-xs sm:text-sm">Certified and trusted for campaign execution</p>
-            </div>
-          </div>
-          <div className="w-full h-40 sm:h-48 p-4 sm:p-6 flex items-center justify-center bg-white rounded-lg shadow-lg hover:bg-[#F2B706] transition-colors duration-300 cursor-pointer">
-            <div className="flex flex-col gap-2 text-center sm:text-left">
-              <div className="flex justify-center sm:justify-start">
-                <Image
-                  src="/assets/images/icons/freelancers.png"
-                  width={32}
-                  height={32}
-                  alt="Icon"
-                  className="sm:w-10 sm:h-10"
-                />
-              </div>
-              <h2 className="font-semibold text-sm sm:text-base">1000+ <br />Freelancers</h2>
-              <p className="font-light text-xs sm:text-sm">Local creative talent across Africa</p>
-            </div>
-          </div>
-          <div className="w-full h-40 sm:h-48 p-4 sm:p-6 flex items-center justify-center bg-white rounded-lg shadow-lg hover:bg-[#F2B706] transition-colors duration-300 cursor-pointer">
-            <div className="flex flex-col gap-2 text-center sm:text-left">
-              <div className="flex justify-center sm:justify-start">
-                <Image
-                  src="/assets/images/icons/docs.png"
-                  width={32}
-                  height={32}
-                  alt="Icon"
-                  className="sm:w-10 sm:h-10"
-                />
-              </div>
-              <h2 className="font-semibold text-sm sm:text-base">Fully Managed+ <br />Campaigns</h2>
-              <p className="font-light text-xs sm:text-sm">From briefing to rollout, we've got your back</p>
-            </div>
-          </div>
-          <div className="w-full h-40 sm:h-48 p-4 sm:p-6 flex items-center justify-center bg-white rounded-lg shadow-lg hover:bg-[#F2B706] transition-colors duration-300 cursor-pointer">
-            <div className="flex flex-col gap-2 text-center sm:text-left">
-              <div className="flex justify-center sm:justify-start">
-                <Image
-                  src="/assets/images/icons/creators.png"
-                  width={32}
-                  height={32}
-                  alt="Icon"
-                  className="sm:w-10 sm:h-10"
-                />
-              </div>
-              <h2 className="font-semibold text-sm sm:text-base">Vetted Creators <br />& Influencers</h2>
-              <p className="font-light text-xs sm:text-sm">Authentic voices that move markets</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-const VerticalSteps = () => {
-  const [hoveredStep, setHoveredStep] = useState(null);
-  
-  const steps = [
-    {
-      number: 1,
-      title:"Share Your Brief",
-      desc: "Tell us where you want to activate and what you need."
-    },
-    {
-      number: 2,
-      title:"We Match You",
-      desc: "Get paired with certified partners across Africa."
-    },
-    {
-      number: 3,
-      title:"Collaborate Your Way",
-      desc: "Work directly or with PAAN's support team for oversight."
-    },
-    {
-      number: 4,
-      title:"Launch Your Confidence",
-      desc: "Execute with partners who understand your markets."
-    }
-  ];
-  
-  return (
-    <div className="relative flex flex-col max-w-lg mx-auto">
-      {/* Vertical line that starts from center of first circle to center of last circle */}
-      <div className="absolute left-6 z-0" style={{
-        top: '24px', // Half of circle height (48px / 2 = 24px)
-        height: `calc(100% - 48px)` // Full height minus one full circle height
-      }}>
-        <div className="w-0.5 bg-[#F2B706] h-full" />
-      </div>
-      
-      {/* Steps */}
-      {steps.map((step, index) => (
-        <div 
-          key={step.number}
-          className={`flex items-center relative z-10 ${index !== steps.length - 1 ? 'mb-8' : ''}`}
-          onMouseEnter={() => setHoveredStep(step.number)}
-          onMouseLeave={() => setHoveredStep(null)}
-        >
-          {/* Circle */}
-          <div 
-            className={`flex items-center justify-center w-12 h-12 rounded-full bg-[#F2B706] text-[#172840] text-lg font-bold shadow-lg transition-transform duration-300 flex-shrink-0 ${hoveredStep === step.number ? 'transform scale-110' : ''}`}
-          >
-            {step.number}
-          </div>
-          
-          {/* Title on the right */}
-          <div className="ml-6">
-            <h4 className="text-[#84C1D9] text-base font-medium">{step.title}</h4>
-            <p className="text-white font-light">{step.desc}</p>
-          </div>
-        </div>
-      ))}
-    </div>
   );
 };
 

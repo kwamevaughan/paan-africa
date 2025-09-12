@@ -1,40 +1,43 @@
 import Image from "next/image";
 import Link from "next/link";
+import { useAppTranslations } from '../hooks/useTranslations';
 
 export default function FreelanceBenefits() {
+  const { t } = useAppTranslations();
+  
   return (
     <div className="mt-4 md:mt-10 mb-6 relative overflow-hidden px-4 sm:px-6 lg:px-8">
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
         {[
           {
             img: "/assets/images/icons/live-client.svg",
-            title: "Live Client Briefs",
-            desc: "Get matched with active briefs from Africa's top agencies & brands."
+            title: t('freelancers.whatYouGet.benefits.liveClientBriefs.title'),
+            desc: t('freelancers.whatYouGet.benefits.liveClientBriefs.description')
           },
           {
             img: "/assets/images/icons/upskill.svg",
-            title: "Expert-Led Upskilling",
-            desc: "Attend masterclasses and workshops led by industry legends."
+            title: t('freelancers.whatYouGet.benefits.expertLedUpskilling.title'),
+            desc: t('freelancers.whatYouGet.benefits.expertLedUpskilling.description')
           },
           {
             img: "/assets/images/icons/support.svg",
-            title: "Business & Growth Support",
-            desc: "Build systems for pricing, proposals, and managing clients like a pro."
+            title: t('freelancers.whatYouGet.benefits.businessGrowthSupport.title'),
+            desc: t('freelancers.whatYouGet.benefits.businessGrowthSupport.description')
           },
           {
             img: "/assets/images/icons/opportunities.svg",
-            title: "Showcase Opportunities",
-            desc: "Enter competitions and gain exposure through official PAAN spotlights."
+            title: t('freelancers.whatYouGet.benefits.showcaseOpportunities.title'),
+            desc: t('freelancers.whatYouGet.benefits.showcaseOpportunities.description')
           },
           {
             img: "/assets/images/icons/grants.svg",
-            title: "Creative Grants",
-            desc: "Apply for funding to pursue bold ideas backed by real partners."
+            title: t('freelancers.whatYouGet.benefits.creativeGrants.title'),
+            desc: t('freelancers.whatYouGet.benefits.creativeGrants.description')
           },
           {
             img: "/assets/images/icons/platform.svg",
-            title: "Platform Visibility",
-            desc: "Get discovered by clients through the PAAN network and directories."
+            title: t('freelancers.whatYouGet.benefits.platformVisibility.title'),
+            desc: t('freelancers.whatYouGet.benefits.platformVisibility.description')
           }
         ].map((item, i) => (
           <div
@@ -60,7 +63,7 @@ export default function FreelanceBenefits() {
           className="bg-paan-red text-white py-3 sm:py-3 md:py-4 px-6 sm:px-8 md:px-10 rounded-full hover:bg-paan-red transition-all duration-300 transform ease-in-out hover:translate-y-[-2px] sm:hover:translate-y-[-5px] font-medium text-sm sm:text-base w-full sm:w-auto text-center inline-block max-w-sm sm:max-w-none"
           onClick={() => { if (window.fbq) window.fbq('track', 'BecomeCertifiedClick'); }}
         >
-          Become a Certified PAAN Freelancer
+          {t('freelancers.whatYouGet.ctaButton')}
         </Link>
       </div>
     </div>

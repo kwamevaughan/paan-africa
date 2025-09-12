@@ -331,8 +331,8 @@ export default function BlogPost({ blog: initialBlog, error: serverError }) {
         />
         <meta property="og:type" content="article" />
         <meta property="og:url" content={`https://paan.africa/blogs/${slug}`} />
-        <meta property="og:image" content={blog.article_image || 'https://paan.africa/assets/images/opengraph.png'} />
-        <meta property="og:image:secure_url" content={blog.article_image || 'https://paan.africa/assets/images/opengraph.png'} />
+        <meta property="og:image" content={blog.article_image || 'https://ik.imagekit.io/nkmvdjnna/PAAN/paan-logo.jpg?updatedAt=1757522406296'} />
+        <meta property="og:image:secure_url" content={blog.article_image || 'https://ik.imagekit.io/nkmvdjnna/PAAN/paan-logo.jpg?updatedAt=1757522406296'} />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:site_name" content="Pan-African Agency Network (PAAN)" />
@@ -345,7 +345,7 @@ export default function BlogPost({ blog: initialBlog, error: serverError }) {
             blog.article_body.replace(/<[^>]*>/g, '').substring(0, 160) + '...' : 
             'Read the latest insights and trends from Africa\'s creative and tech landscape on the PAAN blog.')} 
         />
-        <meta name="twitter:image" content={blog.article_image || 'https://paan.africa/assets/images/opengraph.png'} />
+        <meta name="twitter:image" content={blog.article_image || 'https://ik.imagekit.io/nkmvdjnna/PAAN/paan-logo.jpg?updatedAt=1757522406296'} />
         <meta name="twitter:site" content="@paan_network" />
         <meta name="twitter:creator" content="@paan_network" />
         

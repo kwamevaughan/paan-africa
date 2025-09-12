@@ -1,45 +1,43 @@
 import React, { useRef, useEffect, useState } from 'react';
 import Image from 'next/image';
-
-const steps = [
-  {
-    number: '1',
-    title: 'Apply',
-    subtitle: "Let's get to know each other.",
-    description:
-      'Submit a short partnership application to help us understand your solution, target markets, and growth goals across Africa.',
-    image: '/assets/images/clipboard-icon.svg',
-  },
-  {
-    number: '2',
-    title: 'Align',
-    subtitle: 'We evaluate the fit',
-    description:
-      'Our team reviews your application to ensure a strong strategic fit and shared vision for growth across Africa.',
-    image: '/assets/images/handshake-icon.svg',
-  },
-  {
-    number: '3',
-    title: 'Activate',
-    subtitle: 'Launch with PAAN Support',
-    description:
-      'Co-design and roll out campaigns, training sessions, or licensing offers—equipping 200+ agencies with the tools to promote and implement your solution.',
-    image: '/assets/images/rocket-icon.svg',
-  },
-  {
-    number: '4',
-    title: 'Grow',
-    subtitle: 'Scale with data-driven insights.',
-    description:
-      'Track adoption, revenue impact, and user feedback—while collaborating with PAAN to fine-tune your strategy and unlock new regional opportunities.',
-    image: '/assets/images/growth-graph-icon.svg',
-  },
-];
+import { useAppTranslations } from '../hooks/useTranslations';
 
 const Steps = () => {
+  const { t } = useAppTranslations();
   const dividerRef = useRef(null);
   const sectionRef = useRef(null);
   const [fillHeight, setFillHeight] = useState(0);
+
+  const steps = [
+    {
+      number: '1',
+      title: t('partners.howItWorks.steps.step1.title'),
+      subtitle: t('partners.howItWorks.steps.step1.subtitle'),
+      description: t('partners.howItWorks.steps.step1.description'),
+      image: '/assets/images/clipboard-icon.svg',
+    },
+    {
+      number: '2',
+      title: t('partners.howItWorks.steps.step2.title'),
+      subtitle: t('partners.howItWorks.steps.step2.subtitle'),
+      description: t('partners.howItWorks.steps.step2.description'),
+      image: '/assets/images/handshake-icon.svg',
+    },
+    {
+      number: '3',
+      title: t('partners.howItWorks.steps.step3.title'),
+      subtitle: t('partners.howItWorks.steps.step3.subtitle'),
+      description: t('partners.howItWorks.steps.step3.description'),
+      image: '/assets/images/rocket-icon.svg',
+    },
+    {
+      number: '4',
+      title: t('partners.howItWorks.steps.step4.title'),
+      subtitle: t('partners.howItWorks.steps.step4.subtitle'),
+      description: t('partners.howItWorks.steps.step4.description'),
+      image: '/assets/images/growth-graph-icon.svg',
+    },
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -76,8 +74,8 @@ const Steps = () => {
   return (
     <div className="mb-20 relative py-16" ref={sectionRef}>
       <section className="relative">
-        <h2 className="text-xl text-center font-medium uppercase text-paan-yellow mb-2">How it Works</h2>
-        <h3 className='text-2xl text-center font-light text-paan-dark-blue mb-8'>A Simple 4-Step Path to Unlocking Growth Across Africa</h3>
+        <h2 className="text-xl text-center font-medium uppercase text-paan-yellow mb-2">{t('partners.howItWorks.badge')}</h2>
+        <h3 className='text-2xl text-center font-light text-paan-dark-blue mb-8'>{t('partners.howItWorks.title')}</h3>
         <div className="max-w-4xl mx-auto px-4">
           <div className="flex flex-col md:flex-row w-full">
             {/* Left column: image or text depending on step (desktop), full step (mobile) */}

@@ -211,3 +211,17 @@ map.on('click', (e) => {
 
 The Mapbox implementation will provide a professional, scalable, and feature-rich mapping solution for PAAN's talent discovery platform! 🗺️✨
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+

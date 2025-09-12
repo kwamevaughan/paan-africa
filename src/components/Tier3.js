@@ -1,7 +1,10 @@
 import { Icon } from "@iconify/react";
 import Image from "next/image";
+import { useAppTranslations } from '../hooks/useTranslations';
 
 const Tier3 = () => {
+  const { t } = useAppTranslations();
+  
   return (
     <div className="bg-white rounded-lg shadow-md hover:shadow-none hover:translate-y-[-5px] transition-all duration-300 ease-in-out relative">
       {/* Badge */}
@@ -17,13 +20,13 @@ const Tier3 = () => {
       
       {/* Header */}
       <div className="bg-[#C0614D] text-white text-center py-4 sm:py-6 rounded-t-lg">
-        <h3 className="text-lg sm:text-xl font-semibold">Associate Members</h3>
+        <h3 className="text-lg sm:text-xl font-semibold">{t('homepage.membershipTiers.tier3.title')}</h3>
       </div>
 
       {/* Content */}
       <div className="p-4 sm:p-6">
         <p className="font-normal mb-4 sm:mb-6 text-sm sm:text-base">
-          Tailored for Small to medium agencies
+          {t('homepage.membershipTiers.tier3.subtitle')}
         </p>
 
         {/* List of Benefits */}
@@ -36,7 +39,7 @@ const Tier3 = () => {
               className="text-[#C0614D] flex-shrink-0 mt-0.5"
             />
             <p className="text-xs sm:text-sm leading-tight">
-              Access to PAAN-certified freelancers
+              {t('homepage.membershipTiers.tier3.benefits.freelancers')}
             </p>
           </li>
           <li className="flex items-start gap-2 sm:gap-3 border-b border-dashed border-gray-300 pb-3 sm:pb-4">
@@ -47,7 +50,7 @@ const Tier3 = () => {
               className="text-[#C0614D] flex-shrink-0 mt-0.5"
             />
             <p className="text-xs sm:text-sm leading-tight">
-              Pan African Media Rate Cards
+              {t('homepage.membershipTiers.tier3.benefits.mediaRates')}
             </p>
           </li>
           <li className="flex items-start gap-2 sm:gap-3 border-b border-dashed border-gray-300 pb-3 sm:pb-4">
@@ -58,7 +61,7 @@ const Tier3 = () => {
               className="text-[#C0614D] flex-shrink-0 mt-0.5"
             />
             <p className="text-xs sm:text-sm leading-tight">
-              Knowledge transfer from larger agency partners
+              {t('homepage.membershipTiers.tier3.benefits.knowledgeTransfer')}
             </p>
           </li>
           <li className="flex items-start gap-2 sm:gap-3 border-b border-dashed border-gray-300 pb-3 sm:pb-4">
@@ -69,7 +72,7 @@ const Tier3 = () => {
               className="text-[#C0614D] flex-shrink-0 mt-0.5"
             />
             <p className="text-xs sm:text-sm leading-tight">
-              Subcontract on larger projects
+              {t('homepage.membershipTiers.tier3.benefits.subcontracting')}
             </p>
           </li>
           <li className="flex items-start gap-2 sm:gap-3">
@@ -80,7 +83,7 @@ const Tier3 = () => {
               className="text-[#C0614D] flex-shrink-0 mt-0.5"
             />
             <p className="text-xs sm:text-sm leading-tight">
-              Grow with a supportive and innovative network
+              {t('homepage.membershipTiers.tier3.benefits.networkGrowth')}
             </p>
           </li>
         </ul>

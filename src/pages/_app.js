@@ -2,10 +2,13 @@
 import { useEffect } from 'react';
 import { toast, Toaster } from 'react-hot-toast';
 import Head from 'next/head';
+import { useRouter } from 'next/router';
 import '../styles/globals.css';
 import Script from 'next/script';
 
 function MyApp({ Component, pageProps }) {
+  const router = useRouter();
+  
   useEffect(() => {
     if ('serviceWorker' in navigator) {
       caches.keys().then(cacheNames => {
@@ -18,6 +21,13 @@ function MyApp({ Component, pageProps }) {
       });
     }
   }, []);
+
+  // Set HTML lang attribute based on current locale
+  useEffect(() => {
+    if (router.locale) {
+      document.documentElement.lang = router.locale;
+    }
+  }, [router.locale]);
 
   // Global schema (Organization + FAQPage only)
   const globalSchema = {

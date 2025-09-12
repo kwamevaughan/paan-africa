@@ -1,7 +1,10 @@
 import { Icon } from "@iconify/react";
 import Image from "next/image";
+import { useAppTranslations } from '../hooks/useTranslations';
 
 const Tier1 = () => {
+  const { t } = useAppTranslations();
+  
   return (
     <div className="relative bg-white rounded-lg shadow-md hover:shadow-none hover:translate-y-[-5px] transition-all duration-300 ease-in-out">
      
@@ -18,13 +21,13 @@ const Tier1 = () => {
 
       {/* Header */}
       <div className="bg-[#F2B706] text-white text-center py-4 sm:py-6 rounded-t-lg">
-        <h3 className="text-lg sm:text-xl font-semibold">Gold Members</h3>
+        <h3 className="text-lg sm:text-xl font-semibold">{t('homepage.membershipTiers.tier1.title')}</h3>
       </div>
 
       {/* Content */}
       <div className="p-4 sm:p-6">
         <p className="font-normal mb-4 sm:mb-6 text-sm sm:text-base">
-          Ideal for leading agencies with proven regional success
+          {t('homepage.membershipTiers.tier1.subtitle')}
         </p>
 
         {/* List of Benefits */}
@@ -37,7 +40,7 @@ const Tier1 = () => {
               className="text-[#F2B706] flex-shrink-0 mt-0.5"
             />
             <p className="text-xs sm:text-sm leading-tight">
-              Access to exclusive RFPs/Tenders/RFQs 
+              {t('homepage.membershipTiers.tier1.benefits.exclusiveRfps')}
             </p>
           </li>
           <li className="flex items-start gap-2 sm:gap-3 border-b border-dashed border-gray-300 pb-3 sm:pb-4">
@@ -48,7 +51,7 @@ const Tier1 = () => {
               className="text-[#F2B706] flex-shrink-0 mt-0.5"
             />
             <p className="text-xs sm:text-sm leading-tight">
-              Co-bidding opportunities
+              {t('homepage.membershipTiers.tier1.benefits.coBidding')}
             </p>
           </li>
           <li className="flex items-start gap-2 sm:gap-3 border-b border-dashed border-gray-300 pb-3 sm:pb-4">
@@ -59,7 +62,7 @@ const Tier1 = () => {
               className="text-[#F2B706] flex-shrink-0 mt-0.5"
             />
             <p className="text-xs sm:text-sm leading-tight">
-              Tech Reseller Program
+              {t('homepage.membershipTiers.tier1.benefits.techReseller')}
             </p>
           </li>
           <li className="flex items-start gap-2 sm:gap-3 border-b border-dashed border-gray-300 pb-3 sm:pb-4">
@@ -70,7 +73,7 @@ const Tier1 = () => {
               className="text-[#F2B706] flex-shrink-0 mt-0.5"
             />
             <p className="text-xs sm:text-sm leading-tight">
-              Cross-Border Client Match-Making
+              {t('homepage.membershipTiers.tier1.benefits.crossBorder')}
             </p>
           </li>
           <li className="flex items-start gap-2 sm:gap-3">
@@ -81,7 +84,7 @@ const Tier1 = () => {
               className="text-[#F2B706] flex-shrink-0 mt-0.5"
             />
             <p className="text-xs sm:text-sm leading-tight">
-              Market insights & Data for Africa
+              {t('homepage.membershipTiers.tier1.benefits.marketInsights')}
             </p>
           </li>
         </ul>
