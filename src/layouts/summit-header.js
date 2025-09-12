@@ -100,7 +100,7 @@ const Header = ({ navLinkColor }) => {
           <div className="px-3 sm:px-4 pt-2 pb-3 space-y-1 bg-white rounded-lg shadow-lg border border-gray-200">
             {/* Language Switcher for Mobile */}
             <div className="px-3 sm:px-4 py-3 border-b border-gray-200">
-              <LanguageSwitcher />
+              <LanguageSwitch />
             </div>
             
             {menuItems.map((item) => (
