@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { freelancersMenu, ctaButton } from "../data/menuData";
 import { useFixedHeader } from "../../utils/scrollUtils";
-import LanguageSwitcher from "../components/LanguageSwitcher";
+import LanguageSwitch from "../components/LanguageSwitch";
 
 const Header = ({ navLinkColor }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -99,7 +99,7 @@ const Header = ({ navLinkColor }) => {
             </div>
             
             {/* Language Switcher */}
-            <LanguageSwitcher className="mr-3" />
+            <LanguageSwitch className="mr-3" />
             
             <a
               href="https://membership.paan.africa/"
@@ -160,7 +160,7 @@ const Header = ({ navLinkColor }) => {
             <div className="flex-1 px-4 py-6 space-y-3 bg-[#172840] overflow-y-auto">
               {/* Language Switcher for Mobile */}
               <div className="px-4 py-3 border-b border-white/10">
-                <LanguageSwitcher />
+                <LanguageSwitch />
               </div>
               
               {freelancersMenu.map((item) => (

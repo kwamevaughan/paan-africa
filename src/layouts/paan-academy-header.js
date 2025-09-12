@@ -5,7 +5,7 @@ import { useState } from "react";
 import { Icon } from "@iconify/react";
 import { paanAcademyMenu } from "../data/menuData";
 import { handleScroll, useFixedHeader } from "../../utils/scrollUtils";
-import LanguageSwitcher from "../components/LanguageSwitcher";
+import LanguageSwitch from "../components/LanguageSwitch";
 
 const Header = ({  openModal }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -138,7 +138,7 @@ const Header = ({  openModal }) => {
             </div>
             
             {/* Language Switcher */}
-            <LanguageSwitcher className="mr-3" />
+            <LanguageSwitch className="mr-3" />
             
             <div className="flex-1 flex justify-end">
               <button
@@ -201,7 +201,7 @@ const Header = ({  openModal }) => {
             <div className="flex-1 px-4 py-6 space-y-3 bg-white overflow-y-auto">
               {/* Language Switcher for Mobile */}
               <div className="px-4 py-3 border-b border-gray-200">
-                <LanguageSwitcher />
+                <LanguageSwitch />
               </div>
               
               {paanAcademyMenu.map((item) => (

@@ -1,0 +1,302 @@
+import { useState, useEffect, useRef } from "react";
+import { Icon } from "@iconify/react";
+import toast from "react-hot-toast";
+import TooltipIconButton from "@/components/TooltipIconButton";
+
+const LanguageSwitch = ({ mode }) => {
+  const dropdownRef = useRef(null);
+  const selectRef = useRef(null);
+  const initialLoadRef = useRef(true);
+  const googleTranslateElRef = useRef(null);
+
+  const languages = [
+    { name: "English", flag: "flag:us-1x1", code: "en" },
+    { name: "French", flag: "flag:fr-1x1", code: "fr" },
+    { name: "Swahili", flag: "flag:ke-1x1", code: "sw" },
+    { name: "Arabic", flag: "flag:sa-1x1", code: "ar" },
+    { name: "Hausa", flag: "flag:ng-1x1", code: "ha" },
+    // { name: "Akan", flag: "flag:gh-1x1", code: "ak" },
+  ];
+
+  const toastMessages = {
+    en: "Translated to English",
+    fr: "Traduit en Français",
+    sw: "Umetafsiriwa kwa Kiswahili",
+    ar: "تمت الترجمة إلى العربية",
+    ha: "An fassara zuwa Hausa",
+    // ak: "Wɔakyerɛ aseɛ kɔ Akan",
+  };
+
+  const detectInitialLanguage = () => {
+    if (typeof window === "undefined") return "English";
+    const saved = window.localStorage.getItem("selectedLanguage");
+    if (saved) return saved;
+    const browserLang = window.navigator.language.toLowerCase();
+    const match = languages.find((lang) => browserLang.startsWith(lang.code));
+    const defaultLang = match ? match.name : "English";
+    window.localStorage.setItem("selectedLanguage", defaultLang);
+    return defaultLang;
+  };
+
+  const [selectedLanguage, setSelectedLanguage] = useState("English");
+  const [isOpen, setIsOpen] = useState(false);
+  const [widgetInitialized, setWidgetInitialized] = useState(false);
+  const [useFallbackUI, setUseFallbackUI] = useState(false);
+  const [scriptLoaded, setScriptLoaded] = useState(false);
+
+  useEffect(() => {
+    setSelectedLanguage(detectInitialLanguage());
+  }, []);
+
+  // Load Google Translate script safely (once)
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    // If google translate already available, mark loaded
+    if (window.google && window.google.translate) {
+      setScriptLoaded(true);
+      return;
+    }
+
+    // If script tag exists, wait for callback
+    const existingScript = document.querySelector(
+      'script[src="//translate.google.com/translate_a/element.js"]'
+    );
+    if (existingScript) {
+      // Ensure callback sets scriptLoaded if/when fired
+      if (!window.googleTranslateElementInit) {
+        window.googleTranslateElementInit = () => setScriptLoaded(true);
+      }
+      return;
+    }
+
+    const script = document.createElement("script");
+    script.src =
+      "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
+    script.async = true;
+    script.onerror = () => {
+      console.error("Failed to load translation script");
+      toast.error("Failed to load translation service");
+      setUseFallbackUI(true);
+    };
+
+    // Define callback (do not delete any existing later)
+    window.googleTranslateElementInit = () => {
+      try {
+        setScriptLoaded(true);
+      } catch (error) {
+        console.error("Script initialization error:", error);
+      }
+    };
+
+    document.body.appendChild(script);
+  }, []);
+
+  // Initialize Google Translate Widget (singleton)
+  useEffect(() => {
+    if (typeof window === "undefined" || !scriptLoaded) return;
+
+    try {
+      // If already initialized elsewhere, just hook into the select
+      if (window.__paanGoogleTranslateInitialized) {
+        const globalSelect = document.querySelector(".goog-te-combo");
+        if (globalSelect) {
+          selectRef.current = globalSelect;
+          setWidgetInitialized(true);
+        }
+        return;
+      }
+
+      // Prevent double init across multiple LanguageSwitch mounts
+      window.__paanGoogleTranslateInitialized = true;
+
+      // Ensure a container exists for the widget
+      const containerId = googleTranslateElRef.current?.id || "google_translate_element";
+
+      new window.google.translate.TranslateElement(
+        {
+          pageLanguage: "en",
+          includedLanguages: languages.map((l) => l.code).join(","),
+          layout: window.google.translate.TranslateElement.InlineLayout.HORIZONTAL,
+          autoDisplay: false,
+        },
+        containerId
+      );
+
+      // Observe globally for the google select to appear
+      const tryAttachSelect = () => {
+        const globalSelect = document.querySelector(".goog-te-combo");
+        if (globalSelect) {
+          selectRef.current = globalSelect;
+          setWidgetInitialized(true);
+          return true;
+        }
+        return false;
+      };
+
+      if (!tryAttachSelect()) {
+        const observer = new MutationObserver(() => {
+          if (tryAttachSelect()) observer.disconnect();
+        });
+        observer.observe(document.body, { childList: true, subtree: true });
+        // Safety timeout
+        setTimeout(() => observer.disconnect(), 15000);
+      }
+    } catch (error) {
+      console.error("Widget initialization error:", error);
+      toast.error("Translation service initialization failed");
+      setUseFallbackUI(true);
+    }
+  }, [scriptLoaded]);
+
+  // As a fallback, also watch the local container for the select
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    if (selectRef.current) return;
+
+    const observer = new MutationObserver(() => {
+      const localSelect = googleTranslateElRef.current?.querySelector("select");
+      if (localSelect) {
+        selectRef.current = localSelect;
+        setWidgetInitialized(true);
+        observer.disconnect();
+      }
+    });
+
+    if (googleTranslateElRef.current) {
+      observer.observe(googleTranslateElRef.current, { childList: true, subtree: true });
+    }
+
+    const timeout = setTimeout(() => observer.disconnect(), 15000);
+    return () => {
+      observer.disconnect();
+      clearTimeout(timeout);
+    };
+  }, [googleTranslateElRef.current]);
+
+  // Apply selected language
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const match = languages.find((lang) => lang.name === selectedLanguage);
+    if (!match) return;
+
+    // If widget not ready, skip
+    if (!selectRef.current) return;
+
+    try {
+      selectRef.current.value = match.code;
+      const event = new Event("change");
+      selectRef.current.dispatchEvent(event);
+
+      if (!initialLoadRef.current) {
+        toast.success(toastMessages[match.code]);
+      } else {
+        initialLoadRef.current = false;
+      }
+    } catch (error) {
+      console.error("Error applying language:", error);
+    }
+  }, [selectedLanguage]);
+
+  // Close dropdown when clicked outside
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  // Hide Google Translate banner
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const style = document.createElement("style");
+    style.textContent = `
+      .goog-te-banner-frame { display: none !important; }
+      #goog-gt-tt { display: none !important; }
+      .goog-te-gadget { font-size: 0 !important; }
+      .goog-te-menu-value span:first-child { display: none; }
+      .goog-te-menu-frame { box-shadow: none !important; }
+      body { top: 0 !important; }
+    `;
+    document.head.appendChild(style);
+    return () => {
+      if (document.head.contains(style)) {
+        document.head.removeChild(style);
+      }
+    };
+  }, []);
+
+  const handleLanguageSelect = (language) => {
+    setSelectedLanguage(language.name);
+    if (typeof window !== "undefined") {
+      window.localStorage.setItem("selectedLanguage", language.name);
+    }
+    setIsOpen(false);
+
+    if (useFallbackUI) {
+      toast.success(toastMessages[language.code]);
+    }
+  };
+
+  return (
+    <div className="relative" ref={dropdownRef}>
+      {/* Hidden Translate container */}
+      <div
+        id="google_translate_element"
+        ref={googleTranslateElRef}
+        style={{
+          position: "absolute",
+          height: "0",
+          overflow: "hidden",
+          top: "-9999px",
+          left: "-9999px",
+        }}
+      />
+
+      <TooltipIconButton
+        label="Change Language"
+        mode={mode}
+        onClick={() => setIsOpen(!isOpen)}
+        className="bg-white/50"
+      >
+        <Icon
+          icon={
+            languages.find((lang) => lang.name === selectedLanguage)?.flag ||
+            languages[0].flag
+          }
+          className="h-5 w-5 rounded-lg "
+        />
+      </TooltipIconButton>
+
+      {isOpen && (
+        <div
+          className={`absolute right-0 mt-2 w-48 rounded-lg shadow-lg z-10 ${
+            mode === "dark" ? "bg-gray-800 text-white" : "bg-white text-[#231812]"
+          }`}
+        >
+          {languages.map((language) => (
+            <button
+              key={language.name}
+              onClick={() => handleLanguageSelect(language)}
+              className={`flex items-center w-full px-4 py-2 text-left hover:bg-opacity-10 hover:bg-gray-500 ${
+                selectedLanguage === language.name ? "bg-opacity-5 bg-gray-500" : ""
+              }`}
+            >
+              <Icon icon={language.flag} className="h-5 w-5 mr-2" />
+              {language.name}
+            </button>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default LanguageSwitch;

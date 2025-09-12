@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { menuItems, ctaButton } from "../data/summitMenu";
 import { useFixedHeader, handleScroll } from "../../utils/scrollUtils";
-import LanguageSwitcher from "../components/LanguageSwitcher";
+import LanguageSwitch from "../components/LanguageSwitch";
 
 const Header = ({ navLinkColor }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -84,7 +84,7 @@ const Header = ({ navLinkColor }) => {
             </div>
             
             {/* Language Switcher */}
-            <LanguageSwitcher className="mr-3" />
+            <LanguageSwitch className="mr-3" />
             
             <a
               href="https://membership.paan.africa/"              
