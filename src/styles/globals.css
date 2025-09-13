@@ -44,6 +44,35 @@
   background-color: #f3f4f6 !important;
 }
 
+/* Marquee Animations */
+@keyframes marquee-right {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-25%);
+  }
+}
+
+@keyframes marquee-left {
+  0% {
+    transform: translateX(-25%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.animate-marquee-right {
+  animation: marquee-right 30s linear infinite;
+  will-change: transform;
+}
+
+.animate-marquee-left {
+  animation: marquee-left 30s linear infinite;
+  will-change: transform;
+}
+
 /* Global font settings */
 body {
     font-family: 'Poppins', sans-serif;

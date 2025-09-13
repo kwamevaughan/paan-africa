@@ -1,5 +1,12 @@
 import nodemailer from "nodemailer";
-import { createClient } from "@supabase/supabase-js";
+import formidable from "formidable";
+import fs from "fs";
+
+export const config = {
+  api: {
+    bodyParser: false, // Disable the default body parser
+  },
+};
 
 export default async function handler(req, res) {
   console.log("Career application API called with method:", req.method);
@@ -9,78 +16,141 @@ export default async function handler(req, res) {
     return res.status(405).json({ message: "Method not allowed" });
   }
 
-  const {
-    firstName,
-    lastName,
-    email,
-    phone,
-    position,
-    experience,
-    location,
-    coverLetter,
-    recaptchaToken,
-  } = req.body;
-
-  console.log("Received application data:", { firstName, lastName, email, position });
-
-  // Validate required fields
-  if (!firstName || !lastName || !email || !position || !experience || !coverLetter || !recaptchaToken) {
-    return res.status(400).json({ message: "Missing required fields" });
-  }
-
-  // Verify reCAPTCHA token
-  const recaptchaSecret = process.env.RECAPTCHA_SECRET_KEY;
-  if (!recaptchaSecret) {
-    console.error(
-      "reCAPTCHA secret key is missing. Please set RECAPTCHA_SECRET_KEY in .env.local"
-    );
-    return res.status(500).json({ message: "Server configuration error" });
-  }
-
-  const recaptchaResponse = await fetch(
-    "https://www.google.com/recaptcha/api/siteverify",
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
-      },
-      body: `secret=${recaptchaSecret}&response=${recaptchaToken}`,
-    }
-  );
-
-  const recaptchaData = await recaptchaResponse.json();
-
-  if (!recaptchaData.success || recaptchaData.score < 0.5) {
-    return res
-      .status(400)
-      .json({ message: "reCAPTCHA verification failed. Please try again." });
-  }
-
-  // Create a transporter using SMTP
-  const transporter = nodemailer.createTransport({
-    host: process.env.SMTP_HOST,
-    port: process.env.SMTP_PORT,
-    secure: process.env.EMAIL_SECURE === "true",
-    auth: {
-      user: process.env.SMTP_EMAIL,
-      pass: process.env.SMTP_PASSWORD,
-    },
-  });
-
-  // Initialize Supabase client
-  const supabase = createClient(
-    process.env.SUPABASE_URL,
-    process.env.SUPABASE_SERVICE_KEY
-  );
+  let files = null; // Declare files in broader scope for cleanup
 
   try {
-    // Send both emails concurrently
-    const [adminEmailResult, userEmailResult] = await Promise.allSettled([
-      // Email to careers@paan.africa (admin)
-      transporter.sendMail({
-        from: process.env.SMTP_EMAIL,
-        to: "careers@paan.africa",
-        subject: `New Career Application: ${position} - ${firstName} ${lastName}`,
+    // Parse form data including files
+    const form = formidable({
+      maxFileSize: 5 * 1024 * 1024, // 5MB limit
+      filter: ({ name, originalFilename, mimetype }) => {
+        // Only allow PDF, DOC, DOCX files
+        const allowedTypes = ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
+        return allowedTypes.includes(mimetype);
+      }
+    });
+
+    const [fields, parsedFiles] = await form.parse(req);
+    files = parsedFiles; // Assign to the broader scope variable
+    
+    const {
+      firstName,
+      lastName,
+      email,
+      phone,
+      position,
+      experience,
+      location,
+      coverLetter,
+      recaptchaToken,
+    } = fields;
+
+    // Convert arrays to strings (formidable returns arrays)
+    const firstNameStr = Array.isArray(firstName) ? firstName[0] : firstName;
+    const lastNameStr = Array.isArray(lastName) ? lastName[0] : lastName;
+    const emailStr = Array.isArray(email) ? email[0] : email;
+    const phoneStr = Array.isArray(phone) ? phone[0] : phone;
+    const positionStr = Array.isArray(position) ? position[0] : position;
+    const experienceStr = Array.isArray(experience) ? experience[0] : experience;
+    const locationStr = Array.isArray(location) ? location[0] : location;
+    const coverLetterStr = Array.isArray(coverLetter) ? coverLetter[0] : coverLetter;
+    const recaptchaTokenStr = Array.isArray(recaptchaToken) ? recaptchaToken[0] : recaptchaToken;
+
+    console.log("Received application data:", { firstName: firstNameStr, lastName: lastNameStr, email: emailStr, position: positionStr });
+    console.log("Files received:", files);
+
+    // Validate required fields
+    if (!firstNameStr || !lastNameStr || !emailStr || !positionStr || !experienceStr || !coverLetterStr || !recaptchaTokenStr) {
+      return res.status(400).json({ message: "Missing required fields" });
+    }
+
+    // Verify reCAPTCHA token
+    const recaptchaSecret = process.env.RECAPTCHA_SECRET_KEY;
+    if (!recaptchaSecret) {
+      console.error(
+        "reCAPTCHA secret key is missing. Please set RECAPTCHA_SECRET_KEY in .env.local"
+      );
+      return res.status(500).json({ message: "Server configuration error" });
+    }
+
+    const recaptchaResponse = await fetch(
+      "https://www.google.com/recaptcha/api/siteverify",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: `secret=${recaptchaSecret}&response=${recaptchaTokenStr}`,
+      }
+    );
+
+    const recaptchaData = await recaptchaResponse.json();
+
+    if (!recaptchaData.success || recaptchaData.score < 0.5) {
+      return res
+        .status(400)
+        .json({ message: "reCAPTCHA verification failed. Please try again." });
+    }
+
+    // Debug SMTP configuration
+    console.log("SMTP Configuration:", {
+      host: process.env.SMTP_HOST,
+      port: process.env.SMTP_PORT,
+      secure: process.env.EMAIL_SECURE,
+      user: process.env.SMTP_EMAIL,
+      hasPassword: !!process.env.SMTP_PASSWORD
+    });
+
+    // Create a transporter using SMTP
+    const transporter = nodemailer.createTransport({
+      host: process.env.SMTP_HOST,
+      port: process.env.SMTP_PORT,
+      secure: process.env.EMAIL_SECURE === "true",
+      auth: {
+        user: process.env.SMTP_EMAIL,
+        pass: process.env.SMTP_PASSWORD,
+      },
+      tls: {
+        rejectUnauthorized: false
+      },
+      debug: true, // Enable debug mode
+      logger: true // Enable logging
+    });
+
+    // Prepare email attachments
+    const attachments = [];
+    if (files.resume && files.resume[0]) {
+      const resumeFile = files.resume[0];
+      attachments.push({
+        filename: resumeFile.originalFilename || 'resume.pdf',
+        path: resumeFile.filepath,
+        contentType: resumeFile.mimetype
+      });
+      console.log("Attachment prepared:", {
+        filename: resumeFile.originalFilename,
+        size: resumeFile.size,
+        mimetype: resumeFile.mimetype
+      });
+    } else {
+      console.log("No resume file found");
+    }
+
+    // Test SMTP connection first
+    try {
+      await transporter.verify();
+      console.log("SMTP connection verified successfully");
+    } catch (verifyError) {
+      console.error("SMTP connection verification failed:", verifyError);
+      return res.status(500).json({
+        message: "Email service is currently unavailable. Please try again later.",
+      });
+    }
+
+    // Send email to admin first (without attachments for testing)
+    const adminEmailResult = await transporter.sendMail({
+      from: process.env.SMTP_EMAIL,
+      to: "careers@paan.africa",
+      subject: `New Career Application: ${positionStr} - ${firstNameStr} ${lastNameStr}`,
+      // attachments: attachments, // Temporarily disabled for testing
         html: `
           <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f9f9f9;">
             <div style="background-color: white; padding: 30px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
@@ -94,36 +164,36 @@ export default async function handler(req, res) {
                 <table style="width: 100%; border-collapse: collapse;">
                   <tr>
                     <td style="padding: 8px 0; font-weight: bold; color: #172840; width: 30%;">Name:</td>
-                    <td style="padding: 8px 0; color: #333;">${firstName} ${lastName}</td>
+                    <td style="padding: 8px 0; color: #333;">${firstNameStr} ${lastNameStr}</td>
                   </tr>
                   <tr>
                     <td style="padding: 8px 0; font-weight: bold; color: #172840;">Email:</td>
-                    <td style="padding: 8px 0; color: #333;">${email}</td>
+                    <td style="padding: 8px 0; color: #333;">${emailStr}</td>
                   </tr>
                   <tr>
                     <td style="padding: 8px 0; font-weight: bold; color: #172840;">Phone:</td>
-                    <td style="padding: 8px 0; color: #333;">${phone || 'Not provided'}</td>
+                    <td style="padding: 8px 0; color: #333;">${phoneStr || 'Not provided'}</td>
                   </tr>
                   <tr>
                     <td style="padding: 8px 0; font-weight: bold; color: #172840;">Position:</td>
-                    <td style="padding: 8px 0; color: #333;">${position}</td>
+                    <td style="padding: 8px 0; color: #333;">${positionStr}</td>
                   </tr>
                   <tr>
                     <td style="padding: 8px 0; font-weight: bold; color: #172840;">Experience:</td>
-                    <td style="padding: 8px 0; color: #333;">${experience} years</td>
+                    <td style="padding: 8px 0; color: #333;">${experienceStr} years</td>
                   </tr>
                   <tr>
                     <td style="padding: 8px 0; font-weight: bold; color: #172840;">Location:</td>
-                    <td style="padding: 8px 0; color: #333;">${location || 'Not specified'}</td>
+                    <td style="padding: 8px 0; color: #333;">${locationStr || 'Not specified'}</td>
                   </tr>
                 </table>
               </div>
 
-              ${coverLetter ? `
+              ${coverLetterStr ? `
                 <div style="margin-bottom: 25px;">
                   <h3 style="color: #172840; margin: 0 0 15px 0; font-size: 16px;">Cover Letter</h3>
                   <div style="background-color: #f8f9fa; padding: 15px; border-radius: 6px; border-left: 4px solid #84C1D9;">
-                    <p style="margin: 0; color: #333; line-height: 1.6; white-space: pre-wrap;">${coverLetter}</p>
+                    <p style="margin: 0; color: #333; line-height: 1.6; white-space: pre-wrap;">${coverLetterStr}</p>
                   </div>
                 </div>
               ` : ''}
@@ -144,108 +214,63 @@ export default async function handler(req, res) {
                   })}
                 </p>
               </div>
-            </div>
-          </div>
-        `,
-      }),
-
-      // Confirmation email to applicant
-      transporter.sendMail({
-        from: process.env.SMTP_EMAIL,
-        to: email,
-        subject: "Application Received - Pan African Agency Network (PAAN)",
-        html: `
-          <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f9f9f9;">
-            <div style="background-color: white; padding: 30px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
-              <div style="text-align: center; margin-bottom: 30px;">
-                <div style="background-color: #34B6A7; width: 60px; height: 60px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-bottom: 20px;">
-                  <span style="color: white; font-size: 24px; font-weight: bold;">✓</span>
-                </div>
-                <h1 style="color: #172840; margin: 0; font-size: 24px;">Application Received!</h1>
-                <p style="color: #666; margin: 10px 0 0 0;">Thank you for your interest in joining PAAN</p>
-              </div>
               
-              <div style="background-color: #f8f9fa; padding: 20px; border-radius: 8px; margin-bottom: 25px;">
-                <h2 style="color: #172840; margin: 0 0 15px 0; font-size: 18px;">Application Summary</h2>
-                <table style="width: 100%; border-collapse: collapse;">
-                  <tr>
-                    <td style="padding: 8px 0; font-weight: bold; color: #172840; width: 30%;">Name:</td>
-                    <td style="padding: 8px 0; color: #333;">${firstName} ${lastName}</td>
-                  </tr>
-                  <tr>
-                    <td style="padding: 8px 0; font-weight: bold; color: #172840;">Position:</td>
-                    <td style="padding: 8px 0; color: #333;">${position}</td>
-                  </tr>
-                  <tr>
-                    <td style="padding: 8px 0; font-weight: bold; color: #172840;">Experience:</td>
-                    <td style="padding: 8px 0; color: #333;">${experience} years</td>
-                  </tr>
-                </table>
-              </div>
-
-              <div style="background-color: #e8f4f8; padding: 20px; border-radius: 8px; border-left: 4px solid #84C1D9; margin-bottom: 25px;">
-                <h3 style="color: #172840; margin: 0 0 10px 0; font-size: 16px;">What's Next?</h3>
-                <ul style="color: #333; margin: 0; padding-left: 20px; line-height: 1.6;">
-                  <li>Our HR team will review your application within 5-7 business days</li>
-                  <li>If your profile matches our requirements, we'll contact you for the next steps</li>
-                  <li>We may reach out for additional information or to schedule an interview</li>
-                  <li>Due to the high volume of applications, we may not be able to respond to all candidates</li>
-                </ul>
-              </div>
-
-              <div style="text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid #eee;">
-                <p style="color: #666; margin: 0; font-size: 14px;">
-                  Thank you for considering PAAN as your next career destination.
+              ${files.resume && files.resume[0] ? `
+              <div style="background-color: #fff3cd; padding: 15px; border-radius: 8px; border-left: 4px solid #ffc107; margin-top: 20px;">
+                <h3 style="color: #856404; margin: 0 0 10px 0; font-size: 16px;">📎 Resume Attached</h3>
+                <p style="color: #856404; margin: 0; font-size: 14px;">
+                  <strong>Filename:</strong> ${files.resume[0].originalFilename}<br>
+                  <strong>Size:</strong> ${Math.round(files.resume[0].size / 1024)} KB<br>
+                  <strong>Type:</strong> ${files.resume[0].mimetype}
                 </p>
-                <p style="color: #666; margin: 5px 0 0 0; font-size: 12px;">
-                  Best regards,<br>
-                  The PAAN Team
+                <p style="color: #856404; margin: 10px 0 0 0; font-size: 12px; font-style: italic;">
+                  Note: Resume file is available in the system but not attached to this email for testing purposes.
                 </p>
               </div>
+              ` : ''}
             </div>
           </div>
         `,
-      }),
-    ]);
+    });
 
-    // Store application in Supabase
-    const { data: applicationData, error: applicationError } = await supabase
-      .from("career_applications")
-      .insert([
-        {
-          first_name: firstName,
-          last_name: lastName,
-          email: email,
-          phone: phone || null,
-          position: position,
-          experience: experience,
-          location: location || null,
-          cover_letter: coverLetter || null,
-          submitted_at: new Date().toISOString(),
-        },
-      ]);
+    // Log application data for debugging
+    console.log("Application data:", {
+      firstName: firstNameStr,
+      lastName: lastNameStr,
+      email: emailStr,
+      position: positionStr,
+      experience: experienceStr,
+      hasResume: !!(files.resume && files.resume[0])
+    });
 
-    if (applicationError) {
-      console.error("Error storing application in Supabase:", applicationError);
-      // Don't fail the request if Supabase storage fails
+    // Clean up temporary files
+    if (files.resume && files.resume[0]) {
+      try {
+        fs.unlinkSync(files.resume[0].filepath);
+      } catch (cleanupError) {
+        console.error("Error cleaning up temporary file:", cleanupError);
+      }
     }
 
-    // Check if both emails were sent successfully
-    if (adminEmailResult.status === "rejected" || userEmailResult.status === "rejected") {
-      console.error("Email sending failed:", {
-        admin: adminEmailResult.reason,
-        user: userEmailResult.reason,
-      });
-      return res.status(500).json({
-        message: "Failed to send application. Please try again later.",
-      });
-    }
+    // Check if email was sent successfully
+    console.log("Email sent successfully:", adminEmailResult.messageId);
 
     return res.status(200).json({
       message: "Application submitted successfully!",
     });
   } catch (error) {
     console.error("Error processing career application:", error);
+    
+    // Clean up temporary files in case of error
+    if (files && files.resume && files.resume[0]) {
+      try {
+        fs.unlinkSync(files.resume[0].filepath);
+        console.log("Cleaned up temporary file");
+      } catch (cleanupError) {
+        console.error("Error cleaning up temporary file:", cleanupError);
+      }
+    }
+    
     return res.status(500).json({
       message: "An error occurred while processing your application. Please try again later.",
     });

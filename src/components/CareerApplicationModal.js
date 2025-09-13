@@ -73,19 +73,27 @@ const CareerApplicationModal = ({ isOpen, onClose }) => {
     }
 
     try {
-      // Prepare form data
-      const submitData = {
-        ...formData,
-        recaptchaToken,
-      };
+      // Prepare form data for file upload
+      const submitData = new FormData();
+      submitData.append('firstName', formData.firstName);
+      submitData.append('lastName', formData.lastName);
+      submitData.append('email', formData.email);
+      submitData.append('phone', formData.phone || '');
+      submitData.append('position', formData.position);
+      submitData.append('experience', formData.experience);
+      submitData.append('location', formData.location || '');
+      submitData.append('coverLetter', formData.coverLetter);
+      submitData.append('recaptchaToken', recaptchaToken);
+      
+      // Add resume file if selected
+      if (formData.resume) {
+        submitData.append('resume', formData.resume);
+      }
 
       // Submit to API
       const response = await fetch("/api/send-career-application", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(submitData),
+        body: submitData, // Don't set Content-Type header, let browser set it with boundary
       });
 
       let result;
