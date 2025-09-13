@@ -204,7 +204,7 @@ const SummitPage = () => {
 
   // Set target date to April 23, 2026
   useEffect(() => {
-    const targetDate = new Date('April 23, 2026 00:00:00');
+    const targetDate = new Date('2026-04-23T00:00:00+03:00'); // April 23, 2026 at midnight EAT
     
     const interval = setInterval(() => {
       const now = new Date();
@@ -483,8 +483,12 @@ const SummitPage = () => {
 
                 <div className="bg-white rounded-lg shadow-lg p-4">
                   <div className="flex justify-end mb-2">
-                    <div className="w-10 h-10 bg-[#F25849] rounded-full border-2 border-white flex items-center justify-center shadow-sm">
-                      <Icon icon="mdi:video" className="text-white" width={20} height={20} />
+                    <div className="flex items-center justify-center">
+                      <img 
+                        src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/icons/003-videocall%201.svg" 
+                        alt="Video Call Icon" 
+                        className="w-12 h-12"
+                      />
                     </div>
                   </div>
                   <h4 className="text-4xl font-bold text-left">1,000+</h4> 
@@ -492,8 +496,12 @@ const SummitPage = () => {
                 </div>
                 <div className="bg-white rounded-lg shadow-lg p-4"> 
                   <div className="flex justify-end mb-2">
-                    <div className="w-10 h-10 bg-[#F25849] rounded-full border-2 border-white flex items-center justify-center shadow-sm">
-                      <Icon icon="mdi:microphone" className="text-white" width={20} height={20} />
+                    <div className="flex items-center justify-center">
+                      <img 
+                        src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/icons/038-microphones%201.svg" 
+                        alt="Microphones Icon" 
+                        className="w-12 h-12"
+                      />
                     </div>
                   </div>
                   <h4 className="text-4xl font-bold text-left">30+</h4> 
@@ -501,8 +509,12 @@ const SummitPage = () => {
                 </div>
                 <div className="bg-white rounded-lg shadow-lg p-4">
                   <div className="flex justify-end mb-2">
-                    <div className="w-10 h-10 bg-[#F25849] rounded-full border-2 border-white flex items-center justify-center shadow-sm">
-                      <Icon icon="mdi:globe" className="text-white" width={20} height={20} />
+                    <div className="flex items-center justify-center">
+                      <img 
+                        src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/icons/008-meeting%201.svg" 
+                        alt="Meeting Icon" 
+                        className="w-12 h-12"
+                      />
                     </div>
                   </div>
                   <h4 className="text-4xl font-bold text-left">50+</h4> 
@@ -510,8 +522,12 @@ const SummitPage = () => {
                 </div>
                 <div className="bg-white rounded-lg shadow-lg p-4">
                   <div className="flex justify-end mb-2">
-                    <div className="w-10 h-10 bg-[#F25849] rounded-full border-2 border-white flex items-center justify-center shadow-sm">
-                      <Icon icon="mdi:globe" className="text-white" width={20} height={20} />
+                    <div className="flex items-center justify-center">
+                      <img 
+                        src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/icons/023-network%201.svg" 
+                        alt="Network Icon" 
+                        className="w-12 h-12"
+                      />
                     </div>
                   </div>
                   <h4 className="text-4xl font-bold text-left">40+</h4> 
@@ -1517,8 +1533,8 @@ const SummitPage = () => {
                <Accordion 
                      items={[
                        {
-                         title: "Getting to Nairobi",
-                         content: "Nairobi is well-connected with direct flights from major African cities and international hubs. Jomo Kenyatta International Airport (NBO) is the main airport, located 15km from the city center. We recommend booking flights early for the best rates."
+                         title: "Who Should Attend?",
+                         content: "Creators, freelancers, agencies, tech founders, investors, and policy makers."
                        },
                        {
                          title: "Accommodation",
