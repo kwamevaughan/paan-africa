@@ -291,3 +291,22 @@ html {
 .prose hr {
   @apply my-8 border-gray-200;
 }
+
+
+
+.skiptranslate,
+#goog-gt-tt,
+.goog-te-spinner-pos,
+.goog-te-spinner-animation,
+.goog-te-banner-frame,
+.goog-tooltip,
+.goog-text-highlight,
+.VIpgJd-ZVi9od-aZ2wEe-wOHMyf-ti6hGc {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+}
+
+.goog-te-gadget {
+  font-size: 0 !important;
+}

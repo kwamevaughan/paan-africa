@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { useFixedHeader } from "../../utils/scrollUtils";
-import LanguageSwitcher from "../components/LanguageSwitcher";
+import LanguageSwitch from "../components/LanguageSwitch";
 
 const PaanMaHeader = ({ openModal }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -90,7 +90,7 @@ const PaanMaHeader = ({ openModal }) => {
           {/* Language Switcher and CTA Button */}
           <div className="hidden md:flex items-center space-x-4">
             {/* Language Switcher */}
-            <LanguageSwitcher />
+            <LanguageSwitch />
             
             {/* CTA Button */}
             <button
@@ -162,7 +162,7 @@ const PaanMaHeader = ({ openModal }) => {
               <div className="flex-1 px-4 pb-4">
                 {/* Language Switcher for Mobile */}
                 <div className="px-4 py-3 border-b border-gray-200 mb-4">
-                  <LanguageSwitcher />
+                  <LanguageSwitch />
                 </div>
                 
                 <div className="space-y-2">
