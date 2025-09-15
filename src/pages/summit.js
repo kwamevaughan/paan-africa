@@ -13,7 +13,41 @@ import { ctaButton } from "../data/summitMenu";
 import ScrollToTop from "@/components/ScrollToTop";
 import Head from "next/head";
 import Accordion from "@/components/Accordion";
+import TicketPurchaseButton from "@/components/TicketPurchaseButton";
+import { motion } from "framer-motion";
 
+// Animation variants - defined outside component for global access
+const fadeInUp = {
+  initial: { opacity: 0, y: 60 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.6, ease: "easeOut" }
+};
+
+const fadeInLeft = {
+  initial: { opacity: 0, x: -60 },
+  animate: { opacity: 1, x: 0 },
+  transition: { duration: 0.6, ease: "easeOut" }
+};
+
+const fadeInRight = {
+  initial: { opacity: 0, x: 60 },
+  animate: { opacity: 1, x: 0 },
+  transition: { duration: 0.6, ease: "easeOut" }
+};
+
+const staggerContainer = {
+  animate: {
+    transition: {
+      staggerChildren: 0.1
+    }
+  }
+};
+
+const scaleIn = {
+  initial: { opacity: 0, scale: 0.8 },
+  animate: { opacity: 1, scale: 1 },
+  transition: { duration: 0.5, ease: "easeOut" }
+};
 
 const SummitPage = () => {
   const sectionRefs = {
@@ -376,35 +410,56 @@ const SummitPage = () => {
         </div>
 
         <div className="bg-white relative" id="about-us" ref={sectionRefs.about} handleScroll={handleScroll} isFixed={isFixed}>
-        <section className="relative mx-auto max-w-6xl">
+        <section className="relative mx-auto max-w-6xl z-10">
           <div className="grid md:grid-cols-2 sm:grid-cols-1 gap-8 py-20 items-center">
-            <div className="flex flex-col gap-6 z-0 pr-6">
-              <div className="flex flex-col gap-4">
+            <motion.div 
+              className="flex flex-col gap-6 relative z-10 pr-6"
+              variants={staggerContainer}
+              initial="initial"
+              whileInView="animate"
+              viewport={{ once: true, amount: 0.3 }}
+            >
+              <motion.div 
+                className="flex flex-col gap-4"
+                variants={fadeInLeft}
+              >
                 <span className="bg-paan-blue text-white rounded-full px-6 py-2 text-sm font-medium w-fit">About</span>
                 <h2 className="text-4xl text-[#172840] uppercase font-bold">About the Summit</h2>
                 <h3 className="text-2xl text-[#172840] font-semibold">A deal-first gathering built for action.</h3>
-              </div>
+              </motion.div>
               
-              <div className="space-y-4 text-[#172840] text-lg leading-relaxed">
+              <motion.div 
+                className="space-y-4 text-[#172840] text-lg leading-relaxed"
+                variants={fadeInLeft}
+              >
                 <p>
                   The Africa Borderless Creative Economy Summit 2026, hosted by the Pan-African Agency Network (PAAN), is the continent's leading deal-first gathering for creators, agencies, studios, tech innovators, investors, and policymakers.
                 </p>
                 <p>
                   Unlike inspiration-only events, the Summit is built for action: curated deal rooms, live simulations, and partner-funded clinics that turn conversations into MoUs, pilots, term sheets, and contracts. We're not just imagining Africa's creative future — we're building it in real time.
                 </p>
-              </div>
+              </motion.div>
 
-              <div className="flex flex-col sm:flex-row gap-4 pt-4">
+              <motion.div 
+                className="flex flex-col sm:flex-row gap-4 pt-4 relative z-20"
+                variants={scaleIn}
+              >
                 <button 
-                  className="bg-[#F25849] text-white rounded-full px-8 py-4 text-base font-semibold hover:bg-[#E0473A] transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1" 
-                  onClick={() => window.location.href = '#tickets'}
+                  onClick={(e) => handleScroll(e, '#tickets-section')}
+                  className="px-8 py-4 text-base font-semibold bg-paan-red text-white hover:bg-paan-red/90 rounded-full shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 cursor-pointer relative z-20"
                 >
                   Register Now
                 </button>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
             
-            <div className="flex justify-center lg:justify-end">
+            <motion.div 
+              className="flex justify-center lg:justify-end"
+              variants={fadeInRight}
+              initial="initial"
+              whileInView="animate"
+              viewport={{ once: true, amount: 0.3 }}
+            >
               <div className="relative overflow-hidden">
                 <img 
                   src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/about-summit.png?updatedAt=1757608226948" 
@@ -416,7 +471,7 @@ const SummitPage = () => {
                 {/* Bottom whitish effect */}
                 <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white/100 to-transparent"></div>
               </div>
-            </div>
+            </motion.div>
           </div>
         </section>
         <Image
@@ -424,7 +479,7 @@ const SummitPage = () => {
             width={0}
             height={0}
             alt="Background Pattern"
-            className="absolute bottom-0 left-0 w-full h-1/3 object-cover z-0 opacity-10"
+            className="absolute bottom-0 left-0 w-full h-1/3 object-cover z-0 opacity-10 pointer-events-none"
           />
         </div>
 
@@ -535,7 +590,13 @@ const SummitPage = () => {
                 </div>
             </div>
             <div className="flex justify-start gap-2 pt-4">
-              <button className="bg-paan-red text-white px-8 py-3 rounded-full hover:bg-paan-red/90 transition-all duration-300 font-medium text-base shadow-lg flex items-center gap-2">Register Now</button>
+              <TicketPurchaseButton 
+                variant="primary" 
+                size="md"
+                className="px-8 py-3 text-base font-medium"
+              >
+                Register Now
+              </TicketPurchaseButton>
               <button className="bg-transparent border border-paan-dark-blue text-paan-dark-blue px-8 py-3 rounded-full hover:bg-paan-dark-blue hover:text-white transition-all duration-300 font-medium text-base shadow-lg flex items-center gap-2">Partner With Us</button>
               <button className="bg-transparent border border-paan-dark-blue text-paan-dark-blue px-8 py-3 rounded-full hover:bg-paan-dark-blue hover:text-white transition-all duration-300 font-medium text-base shadow-lg flex items-center gap-2">View Agenda</button>
             </div>
@@ -1268,7 +1329,7 @@ const SummitPage = () => {
              </div>
              <div className="flex justify-center gap-2 mt-12">
                 <button 
-                  onClick={() => window.location.href = '#paan-awards-section'} 
+                  onClick={() => window.location.href = '/paan-awards'} 
                   className="bg-paan-red text-white px-8 py-3 rounded-full hover:bg-paan-red/90 transition-all duration-300 font-medium text-base shadow-lg flex items-center gap-2"
                 >
                   Explore All Categories
@@ -1397,13 +1458,14 @@ const SummitPage = () => {
               
               {/* Registration Button */}
               <div className="flex justify-center">
-                <button 
-                  onClick={() => window.location.href = '#tickets-section'} 
-                  className="bg-paan-red text-white px-12 py-4 rounded-full hover:bg-paan-red/90 transition-all duration-300 font-medium text-lg shadow-lg flex items-center gap-3"
+                <TicketPurchaseButton 
+                  variant="primary" 
+                  size="lg"
+                  className="px-12 py-4 text-lg"
                 >
                   <Icon icon="mdi:ticket" width="24" height="24" />
                   Register Now
-                </button>
+                </TicketPurchaseButton>
              </div>
           </section>
         </div>
@@ -1597,35 +1659,54 @@ const Hero = ({ sectionRefs, handleScroll, isFixed, timeLeft }) => {
         {/* Content overlay */}
         <div className="relative h-full flex items-end pb-48">
           <div className="mx-auto max-w-6xl w-full">
-            <div className="max-w-2xl">
-            <p className="bg-white/20 text-white px-4 py-2 rounded-full text-sm font-medium mb-4 w-fit border border-white">Africa Borderless Creative Economy Summit 2026</p>
-              <h1 className="text-3xl md:text-3xl font-semibold uppercase text-yellow-400 mb-8">
+            <motion.div 
+              className="max-w-2xl"
+              variants={staggerContainer}
+              initial="initial"
+              animate="animate"
+            >
+              <motion.p 
+                className="bg-white/20 text-white px-4 py-2 rounded-full text-sm font-medium mb-4 w-fit border border-white"
+                variants={fadeInUp}
+              >
+                Africa Borderless Creative Economy Summit 2026
+              </motion.p>
+              <motion.h1 
+                className="text-3xl md:text-3xl font-semibold uppercase text-yellow-400 mb-8"
+                variants={fadeInUp}
+              >
                 Create. Connect. Commercialize.
-              </h1>
-              <div className="flex md:flex-row flex-col gap-4 mb-10">
+              </motion.h1>
+              <motion.div 
+                className="flex md:flex-row flex-col gap-4 mb-10"
+                variants={fadeInUp}
+              >
                 <SeminarLocationAndDate />
-              </div>
-              <div className="flex justify-center">
+              </motion.div>
+              <motion.div 
+                className="flex flex-col sm:flex-row justify-center gap-8"
+                variants={scaleIn}
+              >
                 <button 
-                  onClick={() => window.location.href = '#tickets'} 
-                  className="bg-paan-red text-white px-8 py-3 rounded-full hover:bg-paan-red/90 transition-all duration-300 font-medium text-base shadow-lg flex items-center gap-2 mx-auto"
+                  onClick={(e) => handleScroll(e, '#tickets-section')}
+                  className="bg-paan-red text-white px-8 py-3 rounded-full hover:bg-paan-red/90 transition-all duration-300 font-medium text-base shadow-lg flex items-center gap-2"
                 >
                   Register Now
                 </button>
                 <button 
                   onClick={() => window.location.href = '#tickets'} 
-                  className="bg-transparent border border-white text-white px-8 py-3 rounded-full hover:bg-white hover:text-paan-red transition-all duration-300 font-medium text-base shadow-lg flex items-center gap-2 mx-auto"
+                  className="bg-transparent border border-white text-white px-8 py-3 rounded-full hover:bg-white hover:text-paan-red transition-all duration-300 font-medium text-base shadow-lg flex items-center gap-2"
                 >
                   Partner With Us
                 </button>
                 <button 
-                  onClick={() => window.location.href = '#tickets'} 
-                  className="bg-transparent border border-white text-white px-8 py-3 rounded-full hover:bg-white hover:text-paan-red transition-all duration-300 font-medium text-base shadow-lg flex items-center gap-2 mx-auto"
+                  onClick={(e) => handleScroll(e, '#agenda')}
+                  className="bg-transparent border border-white text-white px-8 py-3 rounded-full hover:bg-white hover:text-paan-red transition-all duration-300 font-medium text-base shadow-lg flex items-center gap-2"
                 >
                   View Agenda
-                </button>
-              </div>
-            </div>
+                </button>                
+              </motion.div>
+            </motion.div>
           </div>
         </div>
       </div>

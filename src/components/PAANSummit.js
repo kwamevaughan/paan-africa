@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import TicketPurchaseButton from './TicketPurchaseButton';
 
 const PAANSummit = () => {
   return (
@@ -73,15 +74,16 @@ const PAANSummit = () => {
 
             {/* CTA Button */}
             <div className='pt-4'>
-              <button 
-                onClick={() => window.location.href = '/summit'} 
+              <TicketPurchaseButton 
+                variant="primary" 
+                size="md"
                 className="bg-[#172840] hover:bg-[#D6473C] text-white font-semibold py-3 px-8 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 flex items-center gap-2 group text-base"
               >
                 Register Now
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" className="fill-current group-hover:translate-x-1 transition-transform">
                   <path d="M8.59 16.59L13.17 12L8.59 7.41L10 6l6 6l-6 6l-1.41-1.41z"/>
                 </svg>
-              </button>
+              </TicketPurchaseButton>
             </div>
           </div>
         </div>

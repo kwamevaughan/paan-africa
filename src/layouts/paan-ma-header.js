@@ -76,7 +76,7 @@ const PaanMaHeader = ({ openModal }) => {
                 onClick={() => scrollToSection(item.id)}
                 className={`text-sm font-medium transition-all duration-200 px-4 py-2 rounded-full ${
                   activeSection === item.id
-                    ? 'bg-[#F2B706] text-[#172840] shadow-md'
+                    ? 'bg-paan-yellow text-paan-dark-blue shadow-md'
                     : isFixed 
                       ? 'text-gray-900 hover:text-paan-red hover:bg-gray-100' 
                       : 'text-white hover:text-paan-red hover:bg-white/10'
@@ -172,7 +172,7 @@ const PaanMaHeader = ({ openModal }) => {
                       onClick={() => scrollToSection(item.id)}
                       className={`block w-full text-left px-4 py-3 text-sm font-medium transition-colors duration-200 rounded-lg ${
                         activeSection === item.id
-                          ? 'bg-[#F2B706] text-[#172840]'
+                          ? 'bg-paan-yellow text-paan-dark-blue'
                           : 'text-gray-900 hover:text-paan-red hover:bg-gray-50'
                       }`}
                     >

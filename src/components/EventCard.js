@@ -2,6 +2,7 @@ import Image from 'next/image';
 import { Icon } from '@iconify/react';
 import Link from 'next/link';
 import { useState } from 'react';
+import TicketPurchaseButton from './TicketPurchaseButton';
 
 const EventCard = ({ event, isPast = false }) => {
   const [copied, setCopied] = useState(false);
@@ -150,14 +151,13 @@ const EventCard = ({ event, isPast = false }) => {
               </Link>
             </div>
           ) : (
-            <Link
-              href={event.registrationUrl || `/events/${event.id}`}
-              target={event.registrationUrl && event.registrationUrl.startsWith('http') ? '_blank' : '_self'}
-              rel={event.registrationUrl && event.registrationUrl.startsWith('http') ? 'noopener noreferrer' : ''}
+            <TicketPurchaseButton 
+              variant="primary" 
+              size="sm"
               className="px-4 sm:px-6 py-2 rounded-full font-semibold text-xs sm:text-sm transition-all duration-300 bg-paan-red text-white hover:bg-paan-red/90 hover:scale-105 w-full sm:w-auto text-center"
             >
               Register Now
-            </Link>
+            </TicketPurchaseButton>
           )}
         </div>
 

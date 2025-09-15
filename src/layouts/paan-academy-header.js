@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Icon } from "@iconify/react";
 import { paanAcademyMenu } from "../data/menuData";
 import { handleScroll, useFixedHeader } from "../../utils/scrollUtils";
@@ -9,7 +9,8 @@ import LanguageSwitch from "../components/LanguageSwitch";
 
 const Header = ({  openModal }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [activeNav, setActiveNav] = useState("Home"); 
+  const [activeNav, setActiveNav] = useState("Home");
+  const [activeSection, setActiveSection] = useState('home');
   const isFixed = useFixedHeader();
   
   // Determine the current text color and logo based on scroll position
@@ -26,6 +27,25 @@ const Header = ({  openModal }) => {
   const handleMenuToggle = () => {
     setIsMenuOpen(!isMenuOpen);
   };
+
+  // Track active section based on scroll position
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = ['home', 'why-join-us', 'training', 'formats', 'freelancers'];
+      const scrollPosition = window.scrollY + 100;
+
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const section = document.getElementById(sections[i]);
+        if (section && section.offsetTop <= scrollPosition) {
+          setActiveSection(sections[i]);
+          break;
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   // Map navigation items to actual sections on the page
   const getSectionId = (label) => {
@@ -45,6 +65,38 @@ const Header = ({  openModal }) => {
       default:
         return "#home";
     }
+  };
+
+  // Get section ID from label for active state checking
+  const getSectionIdFromLabel = (label) => {
+    switch(label) {
+      case "Home":
+        return "home";
+      case "Why PAAN":
+        return "why-join-us";
+      case "Training":
+        return "training";
+      case "Formats":
+        return "formats";
+      case "Individual":
+        return "freelancers";
+      case "Teams":
+        return "freelancers";
+      default:
+        return "home";
+    }
+  };
+
+  // Get navigation item styling based on active state
+  const getNavItemStyle = (label) => {
+    const sectionId = getSectionIdFromLabel(label);
+    const isActive = activeSection === sectionId;
+    
+    if (isActive) {
+      return "bg-paan-yellow text-paan-dark-blue px-4 py-2 rounded-full transition-all duration-300 cursor-pointer";
+    }
+    
+    return `${currentTextColor} hover:bg-paan-dark-blue px-4 py-2 rounded-full transition-all duration-300 cursor-pointer`;
   };
 
   return (
@@ -125,11 +177,7 @@ const Header = ({  openModal }) => {
                     handleNavClick(item.label);
                     handleScroll(e, getSectionId(item.label), isFixed);
                   }}
-                  className={`${
-                    activeNav === item.label 
-                      ? "bg-[#F2B706]" 
-                      : `${currentTextColor} hover:bg-paan-dark-blue`
-                  } px-4 py-2 rounded-full transition-all duration-300 cursor-pointer`}
+                  className={getNavItemStyle(item.label)}
                 >
                   {item.icon && <Icon icon={item.icon} className="w-4 h-4" />}
                   {item.label}
@@ -214,9 +262,9 @@ const Header = ({  openModal }) => {
                     setIsMenuOpen(false);
                   }}
                   className={`${
-                    activeNav === item.label 
-                      ? "bg-[#F2B706] text-gray-900 shadow-sm" 
-                      : "text-gray-700 hover:text-gray-900 hover:bg-[#F2B706]"
+                    activeSection === getSectionIdFromLabel(item.label)
+                      ? "bg-paan-yellow text-paan-dark-blue shadow-sm" 
+                      : "text-gray-700 hover:text-gray-900 hover:bg-paan-yellow"
                   } flex items-center space-x-3 px-4 py-3 rounded-xl transition-all duration-200 text-base font-medium`}
                 >
                   {item.icon && (

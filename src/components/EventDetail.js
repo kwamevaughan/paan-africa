@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { Icon } from '@iconify/react';
 import Link from 'next/link';
+import TicketPurchaseButton from './TicketPurchaseButton';
 
 const EventDetail = ({ event, isPast = false }) => {
   const formatDate = (dateString) => {
@@ -164,16 +165,22 @@ const EventDetail = ({ event, isPast = false }) => {
             )}
 
             {/* CTA Button */}
-            <Link
-              href={isPast ? '#' : event.registrationUrl}
-              className={`w-full text-center px-6 py-3 rounded-full font-semibold transition-all duration-300 ${
-                isPast
-                  ? 'bg-gray-200 text-gray-600 hover:bg-gray-300'
-                  : 'bg-paan-red text-white hover:bg-paan-red/90 hover:scale-105'
-              }`}
-            >
-              {isPast ? 'View Event Summary' : 'Register Now'}
-            </Link>
+            {isPast ? (
+              <Link
+                href="#"
+                className="w-full text-center px-6 py-3 rounded-full font-semibold transition-all duration-300 bg-gray-200 text-gray-600 hover:bg-gray-300"
+              >
+                View Event Summary
+              </Link>
+            ) : (
+              <TicketPurchaseButton 
+                variant="primary" 
+                size="md"
+                className="w-full text-center px-6 py-3 rounded-full font-semibold transition-all duration-300 bg-paan-red text-white hover:bg-paan-red/90 hover:scale-105"
+              >
+                Register Now
+              </TicketPurchaseButton>
+            )}
           </div>
         </div>
       </div>

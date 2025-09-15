@@ -1,6 +1,7 @@
 import { useState, useRef } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import ReCAPTCHA from "react-google-recaptcha";
+import TicketPurchaseButton from './TicketPurchaseButton';
 
 export default function SeminarRegistration() {
   const [formData, setFormData] = useState({
@@ -248,12 +249,13 @@ export default function SeminarRegistration() {
               </div>
               
               <div className="flex w-full">
-                <button
-                  type="submit"
+                <TicketPurchaseButton 
+                  variant="primary" 
+                  size="md"
                   className="bg-[#F2B706] text-[#172840] py-3 px-6 rounded-full hover:bg-orange-600 transition duration-300 font-medium ml-auto"
                 >
                   Register Now
-                </button>
+                </TicketPurchaseButton>
               </div>
             </form>
           </div>
