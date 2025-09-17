@@ -29,6 +29,7 @@ const TicketPurchaseForm = ({ onClose }) => {
       name: "Members",
       price: 100,
       currency: "USD",
+      priceKes: 13000, // 100 USD * 130 KES
       description: "PAAN Members pricing",
       features: [
         "Full 3-day summit access",
@@ -44,6 +45,7 @@ const TicketPurchaseForm = ({ onClose }) => {
       name: "Non-Members",
       price: 150,
       currency: "USD",
+      priceKes: 19500, // 150 USD * 130 KES
       description: "General public pricing",
       features: [
         "Full 3-day summit access",
@@ -221,27 +223,76 @@ const TicketPurchaseForm = ({ onClose }) => {
     // Get selected ticket
     const selectedTicket = ticketOptions.find(ticket => ticket.id === formData.ticketType);
     
-    // Convert USD to NGN (approximate rate: 1 USD = 1500 NGN)
-    const usdToNgnRate = 1500;
-    const amountInNgn = selectedTicket.price * usdToNgnRate;
-    const amountInKobo = amountInNgn * 100; // Convert to kobo
+    // Support both USD and KES currencies
+    const currency = formData.country === "Kenya" ? "KES" : "USD";
+    
+    // Convert amount based on currency
+    let amountInCents;
+    if (currency === "KES") {
+      // Use KES pricing directly
+      amountInCents = selectedTicket.priceKes * 100; // Convert to cents
+    } else {
+      // USD amount
+      amountInCents = selectedTicket.price * 100; // Convert to cents
+    }
+
+    // Check if Paystack key is configured
+    if (!process.env.NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY) {
+      alert("Payment system not configured. Please contact support.");
+      setIsLoading(false);
+      return;
+    }
+
+    // Validate required fields
+    if (!formData.email || !formData.name) {
+      alert("Please fill in all required fields.");
+      setIsLoading(false);
+      return;
+    }
+
+    // Generate a unique reference
+    const reference = `PAAN_SUMMIT_${formData.ticketType}_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
 
     // Paystack configuration
     const paystackConfig = {
-      key: process.env.NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY, // You'll need to add this to your .env file
+      key: process.env.NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY,
       email: formData.email,
-      amount: amountInKobo, // Amount in kobo
-      currency: "NGN",
-      ref: `PAAN_SUMMIT_${formData.ticketType}_${Date.now()}`,
+      amount: amountInCents, // Amount in cents
+      currency: "KES",
+      ref: reference,
       metadata: {
-        name: formData.name,
-        phone: formData.phone,
-        country: formData.country,
-        role: formData.role,
-        company: formData.company,
-        ticketType: selectedTicket.name,
-        ticketPrice: `${selectedTicket.price} ${selectedTicket.currency}`,
-        event: "PAAN Summit 2025"
+        custom_fields: [
+          {
+            display_name: "Name",
+            variable_name: "name",
+            value: formData.name
+          },
+          {
+            display_name: "Phone",
+            variable_name: "phone", 
+            value: formData.phone
+          },
+          {
+            display_name: "Country",
+            variable_name: "country",
+            value: formData.country
+          },
+          {
+            display_name: "Role",
+            variable_name: "role",
+            value: formData.role
+          },
+          {
+            display_name: "Company",
+            variable_name: "company",
+            value: formData.company
+          },
+          {
+            display_name: "Ticket Type",
+            variable_name: "ticket_type",
+            value: selectedTicket.name
+          }
+        ]
       },
       callback: function(response) {
         // Handle successful payment
@@ -258,10 +309,29 @@ const TicketPurchaseForm = ({ onClose }) => {
       }
     };
 
+    // Debug: Log configuration
+    console.log("Paystack Configuration:", {
+      key: process.env.NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY ? "Present" : "Missing",
+      email: formData.email,
+      amount: amountInCents,
+      currency: currency,
+      ref: reference,
+      country: formData.country,
+      originalPrice: selectedTicket.price,
+      convertedPrice: currency === "KES" ? selectedTicket.priceKes : selectedTicket.price
+    });
+
     // Initialize Paystack
     if (typeof window !== "undefined" && window.PaystackPop) {
-      const handler = window.PaystackPop.setup(paystackConfig);
-      handler.openIframe();
+      try {
+        const handler = window.PaystackPop.setup(paystackConfig);
+        handler.openIframe();
+      } catch (error) {
+        console.error("Paystack initialization error:", error);
+        console.error("Paystack config:", paystackConfig);
+        alert(`Payment initialization failed: ${error.message || 'Unknown error'}. Please check your internet connection and try again.`);
+        setIsLoading(false);
+      }
     } else {
       console.error("Paystack not loaded");
       alert("Payment system is not ready. Please refresh the page and try again.");
@@ -307,8 +377,15 @@ const TicketPurchaseForm = ({ onClose }) => {
                   <div className="text-center">
                     <h4 className="font-bold text-paan-dark-blue mb-2">{ticket.name}</h4>
                     <div className="mb-3">
-                      <span className="text-3xl font-bold text-paan-red">${ticket.price}</span>
-                      <span className="text-gray-500 ml-1">USD</span>
+                      <span className="text-3xl font-bold text-paan-red">
+                        {formData.country === "Kenya" 
+                          ? `KSh ${ticket.priceKes?.toLocaleString()}` 
+                          : `$${ticket.price}`
+                        }
+                      </span>
+                      <span className="text-gray-500 ml-1">
+                        {formData.country === "Kenya" ? "KES" : "USD"}
+                      </span>
                     </div>
                     <p className="text-sm text-gray-600 mb-3">{ticket.description}</p>
                     {ticket.validUntil && (
@@ -570,7 +647,10 @@ const TicketPurchaseForm = ({ onClose }) => {
               ) : (
                 <>
                   <Icon icon="mdi:credit-card" className="w-5 h-5" />
-                  Pay ${ticketOptions.find(t => t.id === formData.ticketType)?.price} USD
+                  Pay {formData.country === "Kenya" 
+                    ? `KSh ${ticketOptions.find(t => t.id === formData.ticketType)?.priceKes?.toLocaleString()}` 
+                    : `$${ticketOptions.find(t => t.id === formData.ticketType)?.price} USD`
+                  }
                 </>
               )}
             </button>

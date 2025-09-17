@@ -3,14 +3,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import { menuItems, ctaButton } from "../data/summitMenu";
 import { useFixedHeader, handleScroll } from "../../utils/scrollUtils";
-import LanguageSwitch from "../components/LanguageSwitch";
-import TicketPurchaseButton from "../components/TicketPurchaseButton";
 
-const Header = ({ navLinkColor }) => {
+const TravelGuideHeader = ({ navLinkColor }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState('home');
+  const [activeSection, setActiveSection] = useState('visa-requirements');
   const isFixed = useFixedHeader();
   
   // Use PAAN dark blue color for text always
@@ -19,8 +16,8 @@ const Header = ({ navLinkColor }) => {
   // Track active section based on scroll position
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['home', 'about-us', 'agenda', 'speakers-section', 'sessions-section', 'paan-awards-section', 'tickets-section', 'plan-your-trip'];
-      const scrollPosition = window.scrollY + 100;
+      const sections = ['visa-requirements', 'accommodation', 'travel-essentials', 'pack-smart', 'explore-nairobi'];
+      const scrollPosition = window.scrollY + 150; // Increased offset for better detection
 
       for (let i = sections.length - 1; i >= 0; i--) {
         const section = document.getElementById(sections[i]);
@@ -31,9 +28,43 @@ const Header = ({ navLinkColor }) => {
       }
     };
 
+    // Initial call to set active section on page load
+    handleScroll();
+    
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const scrollToSection = (sectionId) => {
+    console.log('Scrolling to section:', sectionId); // Debug log
+    const element = document.getElementById(sectionId);
+    if (element) {
+      // Add offset to account for fixed header
+      const headerHeight = 100;
+      const elementPosition = element.offsetTop - headerHeight;
+      
+      console.log('Element found, scrolling to position:', elementPosition); // Debug log
+      
+      // Use requestAnimationFrame for smoother scrolling
+      requestAnimationFrame(() => {
+        window.scrollTo({
+          top: Math.max(0, elementPosition),
+          behavior: 'smooth'
+        });
+      });
+    } else {
+      console.log('Element not found for section:', sectionId); // Debug log
+    }
+    setIsMenuOpen(false);
+  };
+
+  const navItems = [
+    { name: 'Visa Requirements', href: '#visa-requirements' },
+    { name: 'Accommodation', href: '#accommodation' },
+    { name: 'Travel Essentials', href: '#travel-essentials' },
+    { name: 'Pack Smart', href: '#pack-smart' },
+    { name: 'Explore Nairobi', href: '#explore-nairobi' },
+  ];
 
   // Get navigation item styling based on active state
   const getNavItemStyle = (href) => {
@@ -51,8 +82,8 @@ const Header = ({ navLinkColor }) => {
     <nav
       className={`w-full z-10 transition-all duration-300 ${
         isFixed
-          ? "fixed top-0 left-0 right-0 shadow-lg backdrop-blur-md bg-white rounded-none sm:rounded-lg mx-0 sm:mx-4 mt-0 sm:mt-4 max-w-none sm:max-w-7xl sm:left-1/2 sm:transform sm:-translate-x-1/2"
-          : "fixed top-0 left-0 right-0 sm:absolute sm:left-1/2 sm:transform sm:-translate-x-1/2 bg-white rounded-none sm:rounded-lg mx-0 sm:mx-4 mt-0 sm:mt-4 shadow-md max-w-none sm:max-w-7xl"
+          ? "fixed top-0 left-1/2 transform -translate-x-1/2 shadow-lg backdrop-blur-md bg-white rounded-lg mx-4 mt-4 max-w-7xl"
+          : "absolute left-1/2 transform -translate-x-1/2 bg-white rounded-lg mx-4 mt-4 shadow-md max-w-7xl"
       }`}
     >
       <div className="w-full px-3 sm:px-4 md:px-6 lg:px-8">
@@ -65,19 +96,19 @@ const Header = ({ navLinkColor }) => {
                 alt="Logo"
                 width={200}
                 height={70}
-                className="w-20 sm:w-24 md:w-28 lg:w-32 xl:w-36 h-auto"
+                className="w-24 sm:w-28 md:w-32 lg:w-36 h-auto"
               />
             </Link>
           </div>
 
           {/* Hamburger Menu Button (mobile only) */}
           <div className="lg-custom:hidden flex items-center">
-                          <button
+            <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className={`p-2 sm:p-3 rounded-md ${currentTextColor} focus:outline-none`}
+              className={`p-2 rounded-md ${currentTextColor} focus:outline-none`}
             >
               <svg
-                className="h-5 w-5 sm:h-6 sm:w-6"
+                className="h-6 w-6"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -103,70 +134,53 @@ const Header = ({ navLinkColor }) => {
 
           {/* Desktop Menu and CTA (hidden on mobile) */}
           <div className="hidden lg-custom:flex lg-custom:items-center lg-custom:space-x-1 xl:space-x-2 w-full justify-end">
-            <div className="flex space-x-1 xl:space-x-2 flex-grow justify-center md:justify-center">
-              {menuItems.map((item) => (
-                <a
+            <div className="flex space-x-0 flex-grow justify-center md:justify-center">
+              {navItems.map((item) => (
+                <button
                   key={item.href}
-                  href={item.href}
-                  onClick={(e) => handleScroll(e, item.href, isFixed)}
+                  onClick={() => scrollToSection(item.href.replace('#', ''))}
                   className={getNavItemStyle(item.href)}
                 >
-                  {item.label}
-                </a>
+                  {item.name}
+                </button>
               ))}
             </div>
             
-            {/* Language Switcher */}
-            <LanguageSwitch className="mr-2 xl:mr-3" />
-            
-            <TicketPurchaseButton 
-              variant="primary" 
-              size="sm"
-              className={ctaButton.className}
+            <Link
+              href="/summit"
+              className="bg-paan-red text-white px-4 py-2 rounded-full hover:bg-paan-red/90 transition-all duration-300 font-medium text-sm shadow-lg flex items-center gap-2 mr-3"
             >
-              {ctaButton.label}
-            </TicketPurchaseButton>
+              Back to Summit
+            </Link>
           </div>
         </div>
 
         {/* Mobile Menu (shown when hamburger is clicked) */}
         <div className={`${isMenuOpen ? "block" : "hidden"} lg-custom:hidden`}>
-          <div className="px-3 sm:px-4 pt-2 pb-3 space-y-1 bg-white rounded-none sm:rounded-lg shadow-lg border-t border-gray-200 sm:border border-gray-200">
-            {/* Language Switcher for Mobile */}
-            <div className="px-3 sm:px-4 py-3 border-b border-gray-200">
-              <LanguageSwitch />
-            </div>
-            
-            {menuItems.map((item) => {
+          <div className="px-3 sm:px-4 pt-2 pb-3 space-y-1 bg-white rounded-lg shadow-lg border border-gray-200">
+            {navItems.map((item) => {
               const sectionId = item.href.replace('#', '');
               const isActive = activeSection === sectionId;
               const mobileStyle = isActive 
-                ? `text-paan-dark-blue bg-paan-yellow block px-3 sm:px-4 py-2 sm:py-3 rounded-full transition-all duration-300 cursor-pointer text-sm sm:text-base font-medium`
-                : `${currentTextColor} hover:text-gray-900 hover:bg-[#F2B706] block px-3 sm:px-4 py-2 sm:py-3 rounded-full transition-all duration-300 cursor-pointer text-sm sm:text-base`;
+                ? `text-paan-dark-blue bg-paan-yellow block px-3 sm:px-4 py-1.5 rounded-full transition-all duration-300 cursor-pointer text-xs sm:text-sm font-medium`
+                : `${currentTextColor} hover:text-gray-900 hover:bg-[#F2B706] block px-3 sm:px-4 py-1.5 rounded-full transition-all duration-300 cursor-pointer text-xs sm:text-sm`;
               
               return (
-                <a
+                <button
                   key={item.href}
-                  href={item.href}
-                  onClick={(e) => {
-                    handleScroll(e, item.href, isFixed);
-                    setIsMenuOpen(false);
-                  }}
+                  onClick={() => scrollToSection(sectionId)}
                   className={mobileStyle}
                 >
-                  {item.label}
-                </a>
+                  {item.name}
+                </button>
               );
             })}
-            <div className="px-3 sm:px-4 py-3 mt-4">
-              <TicketPurchaseButton 
-                variant="primary" 
-                size="sm"
-                className={ctaButton.mobileClassName}
-              >
-                {ctaButton.label}
-              </TicketPurchaseButton>
-            </div>
+            <Link
+              href="/summit"
+              className="bg-paan-red text-white px-4 py-2 rounded-full hover:bg-paan-red/90 transition-all duration-300 font-medium text-sm shadow-lg flex items-center justify-center gap-2 mt-3"
+            >
+              Back to Summit
+            </Link>
           </div>
         </div>
       </div>
@@ -174,4 +188,4 @@ const Header = ({ navLinkColor }) => {
   );
 };
 
-export default Header;
+export default TravelGuideHeader;

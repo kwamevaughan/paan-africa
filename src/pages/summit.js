@@ -14,6 +14,8 @@ import ScrollToTop from "@/components/ScrollToTop";
 import Head from "next/head";
 import Accordion from "@/components/Accordion";
 import TicketPurchaseButton from "@/components/TicketPurchaseButton";
+import PartnerWithUsModal from "@/components/PartnerWithUsModal";
+import ExhibitionApplicationModal from "@/components/ExhibitionApplicationModal";
 import { motion } from "framer-motion";
 
 // Animation variants - defined outside component for global access
@@ -64,6 +66,8 @@ const SummitPage = () => {
 
   const isFixed = useFixedHeader();
   const [activeDay, setActiveDay] = useState('day1');
+  const [showPartnerModal, setShowPartnerModal] = useState(false);
+  const [showExhibitionModal, setShowExhibitionModal] = useState(false);
   
   // Count up animation state
   const [isVisible, setIsVisible] = useState(false);
@@ -371,37 +375,37 @@ const SummitPage = () => {
         />
       </Head>
 
-      <main className="px-3 pt-6 sm:px-0 sm:pt-0 relative">
+      <main className="px-3 pt-20 sm:pt-6 sm:px-0 sm:pt-0 relative">
         <Header navLinkColor='text-white' />
 
-        <Hero sectionRefs={sectionRefs} handleScroll={handleScroll} isFixed={isFixed} scrollToSection={scrollToSection} timeLeft={timeLeft} />
+        <Hero sectionRefs={sectionRefs} handleScroll={handleScroll} isFixed={isFixed} scrollToSection={scrollToSection} timeLeft={timeLeft} onPartnerClick={() => setShowPartnerModal(true)} />
 
         {/* Spacer to maintain layout flow */}
         <div className="h-screen"></div>
 
 
         {/* About the Summit */}
-        {/* Countdown Banner with offset */}
-        <div className="relative -mt-16 z-8">
-          <div className="mx-auto max-w-4xl px-4 md:px-6">
-            <div className="bg-gradient-to-r from-[#F25849] to-[#172840] rounded-lg shadow-2xl py-8 px-6">
+        {/* Countdown Banner with offset - Hidden on mobile */}
+        <div className="hidden sm:block relative -mt-8 sm:-mt-12 md:-mt-16 z-8">
+          <div className="mx-auto max-w-4xl px-4 sm:px-6">
+            <div className="bg-gradient-to-r from-[#F25849] to-[#172840] rounded-lg shadow-2xl py-6 sm:py-8 px-4 sm:px-6">
               <div className="text-center">
-                <div className="flex justify-center items-center gap-3 md:gap-6">
-                  <div className="text-center bg-white/20 backdrop-blur-sm rounded-lg p-4 min-w-[80px]">
-                    <div className="text-2xl md:text-3xl font-bold text-white">{timeLeft.days}</div>
-                    <div className="text-xs md:text-sm text-white/80">Days</div>
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
+                  <div className="text-center bg-white/20 backdrop-blur-sm rounded-lg p-3 sm:p-4">
+                    <div className="text-xl sm:text-2xl md:text-3xl font-bold text-white">{timeLeft.days}</div>
+                    <div className="text-xs sm:text-sm text-white/80">Days</div>
                   </div>
-                  <div className="text-center bg-white/20 backdrop-blur-sm rounded-lg p-4 min-w-[80px]">
-                    <div className="text-2xl md:text-3xl font-bold text-white">{timeLeft.hours}</div>
-                    <div className="text-xs md:text-sm text-white/80">Hours</div>
+                  <div className="text-center bg-white/20 backdrop-blur-sm rounded-lg p-3 sm:p-4">
+                    <div className="text-xl sm:text-2xl md:text-3xl font-bold text-white">{timeLeft.hours}</div>
+                    <div className="text-xs sm:text-sm text-white/80">Hours</div>
                   </div>
-                  <div className="text-center bg-white/20 backdrop-blur-sm rounded-lg p-4 min-w-[80px]">
-                    <div className="text-2xl md:text-3xl font-bold text-white">{timeLeft.minutes}</div>
-                    <div className="text-xs md:text-sm text-white/80">Minutes</div>
+                  <div className="text-center bg-white/20 backdrop-blur-sm rounded-lg p-3 sm:p-4">
+                    <div className="text-xl sm:text-2xl md:text-3xl font-bold text-white">{timeLeft.minutes}</div>
+                    <div className="text-xs sm:text-sm text-white/80">Minutes</div>
                   </div>
-                  <div className="text-center bg-white/20 backdrop-blur-sm rounded-lg p-4 min-w-[80px]">
-                    <div className="text-2xl md:text-3xl font-bold text-white">{timeLeft.seconds}</div>
-                    <div className="text-xs md:text-sm text-white/80">Seconds</div>
+                  <div className="text-center bg-white/20 backdrop-blur-sm rounded-lg p-3 sm:p-4">
+                    <div className="text-xl sm:text-2xl md:text-3xl font-bold text-white">{timeLeft.seconds}</div>
+                    <div className="text-xs sm:text-sm text-white/80">Seconds</div>
                   </div>
                 </div>
               </div>
@@ -410,26 +414,26 @@ const SummitPage = () => {
         </div>
 
         <div className="bg-white relative" id="about-us" ref={sectionRefs.about} handleScroll={handleScroll} isFixed={isFixed}>
-        <section className="relative mx-auto max-w-6xl z-10">
-          <div className="grid md:grid-cols-2 sm:grid-cols-1 gap-8 py-20 items-center">
+        <section className="relative mx-auto max-w-6xl z-10 px-4 sm:px-6">
+          <div className="grid md:grid-cols-2 gap-8 py-12 sm:py-16 md:py-20 items-center">
             <motion.div 
-              className="flex flex-col gap-6 relative z-10 pr-6"
+              className="flex flex-col gap-4 sm:gap-6 relative z-10 md:pr-6"
               variants={staggerContainer}
               initial="initial"
               whileInView="animate"
               viewport={{ once: true, amount: 0.3 }}
             >
               <motion.div 
-                className="flex flex-col gap-4"
+                className="flex flex-col gap-3 sm:gap-4"
                 variants={fadeInLeft}
               >
-                <span className="bg-paan-blue text-white rounded-full px-6 py-2 text-sm font-medium w-fit">About</span>
-                <h2 className="text-4xl text-[#172840] uppercase font-bold">About the Summit</h2>
-                <h3 className="text-2xl text-[#172840] font-semibold">A deal-first gathering built for action.</h3>
+                <span className="bg-paan-blue text-white rounded-full px-4 sm:px-6 py-2 text-xs sm:text-sm font-medium w-fit">About</span>
+                <h2 className="text-2xl sm:text-3xl md:text-4xl text-[#172840] uppercase font-bold">About the Summit</h2>
+                <h3 className="text-lg sm:text-xl md:text-2xl text-[#172840] font-semibold">A deal-first gathering built for action.</h3>
               </motion.div>
               
               <motion.div 
-                className="space-y-4 text-[#172840] text-lg leading-relaxed"
+                className="space-y-3 sm:space-y-4 text-[#172840] text-sm sm:text-base md:text-lg leading-relaxed"
                 variants={fadeInLeft}
               >
                 <p>
@@ -441,12 +445,12 @@ const SummitPage = () => {
               </motion.div>
 
               <motion.div 
-                className="flex flex-col sm:flex-row gap-4 pt-4 relative z-20"
+                className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-3 sm:pt-4 relative z-20"
                 variants={scaleIn}
               >
                 <button 
                   onClick={(e) => handleScroll(e, '#tickets-section')}
-                  className="px-8 py-4 text-base font-semibold bg-paan-red text-white hover:bg-paan-red/90 rounded-full shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 cursor-pointer relative z-20"
+                  className="px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base font-semibold bg-paan-red text-white hover:bg-paan-red/90 rounded-full shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 cursor-pointer relative z-20 w-full sm:w-auto"
                 >
                   Register Now
                 </button>
@@ -460,16 +464,16 @@ const SummitPage = () => {
               whileInView="animate"
               viewport={{ once: true, amount: 0.3 }}
             >
-              <div className="relative overflow-hidden">
+              <div className="relative overflow-hidden w-full max-w-md lg:max-w-none">
                 <img 
                   src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/about-summit.png?updatedAt=1757608226948" 
                   alt="PAAN Summit" 
-                  className="h-[45rem] w-full object-cover" 
+                  className="h-64 sm:h-80 md:h-96 lg:h-[45rem] w-full object-cover rounded-lg" 
                 />
                 {/* Top whitish effect */}
-                <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-white/100 to-transparent"></div>
+                <div className="absolute top-0 left-0 right-0 h-16 sm:h-24 md:h-32 bg-gradient-to-b from-white/100 to-transparent"></div>
                 {/* Bottom whitish effect */}
-                <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white/100 to-transparent"></div>
+                <div className="absolute bottom-0 left-0 right-0 h-16 sm:h-24 md:h-32 bg-gradient-to-t from-white/100 to-transparent"></div>
               </div>
             </motion.div>
           </div>
@@ -483,122 +487,127 @@ const SummitPage = () => {
           />
         </div>
 
-        <div className="mt-10 bg-[#DAECF3] relative">
-          <section className="relative text-center mx-auto max-w-6xl py-20">
-            <h2 className="text-4xl uppercase font-bold">AT A GLANCE</h2>
-            <h3 className="text-md font-normal py-4">The scale and reach of the Summit.</h3>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-               <div className="bg-white rounded-lg shadow-lg p-4">
+        <div className="mt-6 sm:mt-10 bg-[#DAECF3] relative">
+          <section className="relative text-center mx-auto max-w-6xl py-12 sm:py-16 md:py-20 px-4 sm:px-6">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl uppercase font-bold">AT A GLANCE</h2>
+            <h3 className="text-sm sm:text-base md:text-md font-normal py-3 sm:py-4">The scale and reach of the Summit.</h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+               <div className="bg-white rounded-lg shadow-lg p-3 sm:p-4">
                  <div className="flex justify-end mb-2">
-                   <div className="flex -space-x-2">
-                     <div className="w-8 h-8 bg-[#F25849] rounded-full border-2 border-white flex items-center justify-center">
-                       <Icon icon="mdi:account" className="text-white" width={16} height={16} />
+                   <div className="flex -space-x-1 sm:-space-x-2">
+                     <div className="w-6 h-6 sm:w-8 sm:h-8 bg-[#F25849] rounded-full border-2 border-white flex items-center justify-center">
+                       <Icon icon="mdi:account" className="text-white" width="12" height="12" />
                      </div>
-                     <div className="w-8 h-8 bg-[#84C1D9] rounded-full border-2 border-white flex items-center justify-center">
-                       <Icon icon="mdi:account" className="text-white" width={16} height={16} />
+                     <div className="w-6 h-6 sm:w-8 sm:h-8 bg-[#84C1D9] rounded-full border-2 border-white flex items-center justify-center">
+                       <Icon icon="mdi:account" className="text-white" width="12" height="12" />
                      </div>
-                     <div className="w-8 h-8 bg-[#172840] rounded-full border-2 border-white flex items-center justify-center">
-                       <Icon icon="mdi:account" className="text-white" width={16} height={16} />
+                     <div className="w-6 h-6 sm:w-8 sm:h-8 bg-[#172840] rounded-full border-2 border-white flex items-center justify-center">
+                       <Icon icon="mdi:account" className="text-white" width="12" height="12" />
                      </div>
-                     <div className="w-8 h-8 bg-[#D1D3D4] rounded-full border-2 border-white flex items-center justify-center">
-                       <Icon icon="mdi:account" className="text-white" width={16} height={16} />
+                     <div className="w-6 h-6 sm:w-8 sm:h-8 bg-[#D1D3D4] rounded-full border-2 border-white flex items-center justify-center">
+                       <Icon icon="mdi:account" className="text-white" width="12" height="12" />
                      </div>
                    </div>
                  </div>
-                 <h4 className="text-4xl font-bold text-left">300+</h4> 
-                 <h5 className="text-md font-normal text-left">In-person Attendees</h5>
+                 <h4 className="text-2xl sm:text-3xl md:text-4xl font-bold text-left">300+</h4> 
+                 <h5 className="text-sm sm:text-base font-normal text-left">In-person Attendees</h5>
                </div>
                
-               <div className="bg-white rounded-lg shadow-lg p-4">
+               <div className="bg-white rounded-lg shadow-lg p-3 sm:p-4">
                  <div className="flex justify-end mb-2">
                    <div className="flex -space-x-1">
-                     <div className="w-10 h-10 rounded-full border-2 border-white flex items-center justify-center overflow-hidden shadow-sm">
+                     <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full border-2 border-white flex items-center justify-center overflow-hidden shadow-sm">
                        <img src="https://flagcdn.com/w40/ke.png" alt="Kenya" className="w-full h-full object-cover" />
                      </div>
-                     <div className="w-10 h-10 rounded-full border-2 border-white flex items-center justify-center overflow-hidden shadow-sm">
+                     <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full border-2 border-white flex items-center justify-center overflow-hidden shadow-sm">
                        <img src="https://flagcdn.com/w40/ng.png" alt="Nigeria" className="w-full h-full object-cover" />
                      </div>
-                     <div className="w-10 h-10 rounded-full border-2 border-white flex items-center justify-center overflow-hidden shadow-sm">
+                     <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full border-2 border-white flex items-center justify-center overflow-hidden shadow-sm">
                        <img src="https://flagcdn.com/w40/za.png" alt="South Africa" className="w-full h-full object-cover" />
                      </div>
-                     <div className="w-10 h-10 rounded-full border-2 border-white flex items-center justify-center overflow-hidden shadow-sm">
+                     <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full border-2 border-white flex items-center justify-center overflow-hidden shadow-sm">
                        <img src="https://flagcdn.com/w40/tz.png" alt="Tanzania" className="w-full h-full object-cover" />
                      </div>
-                     <div className="w-10 h-10 rounded-full border-2 border-white flex items-center justify-center overflow-hidden shadow-sm">
+                     <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full border-2 border-white flex items-center justify-center overflow-hidden shadow-sm">
                        <img src="https://flagcdn.com/w40/ug.png" alt="Uganda" className="w-full h-full object-cover" />
                      </div>
-                     <div className="w-10 h-10 rounded-full border-2 border-white flex items-center justify-center overflow-hidden shadow-sm">
+                     <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full border-2 border-white flex items-center justify-center overflow-hidden shadow-sm">
                        <img src="https://flagcdn.com/w40/gh.png" alt="Ghana" className="w-full h-full object-cover" />
                      </div>
                    </div>
                  </div>
-                 <h4 className="text-4xl font-bold text-left">20+</h4> 
-                 <h5 className="text-md font-normal text-left">Countries Represented</h5>
+                 <h4 className="text-2xl sm:text-3xl md:text-4xl font-bold text-left">20+</h4> 
+                 <h5 className="text-sm sm:text-base font-normal text-left">Countries Represented</h5>
                </div>
 
-                <div className="bg-white rounded-lg shadow-lg p-4">
+                <div className="bg-white rounded-lg shadow-lg p-3 sm:p-4">
                   <div className="flex justify-end mb-2">
                     <div className="flex items-center justify-center">
                       <img 
                         src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/icons/003-videocall%201.svg" 
                         alt="Video Call Icon" 
-                        className="w-12 h-12"
+                        className="w-10 h-10 sm:w-12 sm:h-12"
                       />
                     </div>
                   </div>
-                  <h4 className="text-4xl font-bold text-left">1,000+</h4> 
-                  <h5 className="text-md font-normal text-left">Streaming Attendees</h5>
+                  <h4 className="text-2xl sm:text-3xl md:text-4xl font-bold text-left">1,000+</h4> 
+                  <h5 className="text-sm sm:text-base font-normal text-left">Streaming Attendees</h5>
                 </div>
-                <div className="bg-white rounded-lg shadow-lg p-4"> 
+                <div className="bg-white rounded-lg shadow-lg p-3 sm:p-4"> 
                   <div className="flex justify-end mb-2">
                     <div className="flex items-center justify-center">
                       <img 
                         src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/icons/038-microphones%201.svg" 
                         alt="Microphones Icon" 
-                        className="w-12 h-12"
+                        className="w-10 h-10 sm:w-12 sm:h-12"
                       />
                     </div>
                   </div>
-                  <h4 className="text-4xl font-bold text-left">30+</h4> 
-                  <h5 className="text-md font-normal text-left">Industry‑leading speakers</h5>
+                  <h4 className="text-2xl sm:text-3xl md:text-4xl font-bold text-left">30+</h4> 
+                  <h5 className="text-sm sm:text-base font-normal text-left">Industry‑leading speakers</h5>
                 </div>
-                <div className="bg-white rounded-lg shadow-lg p-4">
+                <div className="bg-white rounded-lg shadow-lg p-3 sm:p-4">
                   <div className="flex justify-end mb-2">
                     <div className="flex items-center justify-center">
                       <img 
                         src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/icons/008-meeting%201.svg" 
                         alt="Meeting Icon" 
-                        className="w-12 h-12"
+                        className="w-10 h-10 sm:w-12 sm:h-12"
                       />
                     </div>
                   </div>
-                  <h4 className="text-4xl font-bold text-left">50+</h4> 
-                  <h5 className="text-md font-normal text-left">Investors & funds</h5>
+                  <h4 className="text-2xl sm:text-3xl md:text-4xl font-bold text-left">50+</h4> 
+                  <h5 className="text-sm sm:text-base font-normal text-left">Investors & funds</h5>
                 </div>
-                <div className="bg-white rounded-lg shadow-lg p-4">
+                <div className="bg-white rounded-lg shadow-lg p-3 sm:p-4">
                   <div className="flex justify-end mb-2">
                     <div className="flex items-center justify-center">
                       <img 
                         src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/icons/023-network%201.svg" 
                         alt="Network Icon" 
-                        className="w-12 h-12"
+                        className="w-10 h-10 sm:w-12 sm:h-12"
                       />
                     </div>
                   </div>
-                  <h4 className="text-4xl font-bold text-left">40+</h4> 
-                  <h5 className="text-md font-normal text-left">Sessions & clinics</h5>
+                  <h4 className="text-2xl sm:text-3xl md:text-4xl font-bold text-left">40+</h4> 
+                  <h5 className="text-sm sm:text-base font-normal text-left">Sessions & clinics</h5>
                 </div>
             </div>
-            <div className="flex justify-start gap-2 pt-4">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-2 pt-4">
               <TicketPurchaseButton 
                 variant="primary" 
                 size="md"
-                className="px-8 py-3 text-base font-medium"
+                className="px-6 sm:px-8 py-3 text-sm sm:text-base font-medium w-full sm:w-auto"
               >
                 Register Now
               </TicketPurchaseButton>
-              <button className="bg-transparent border border-paan-dark-blue text-paan-dark-blue px-8 py-3 rounded-full hover:bg-paan-dark-blue hover:text-white transition-all duration-300 font-medium text-base shadow-lg flex items-center gap-2">Partner With Us</button>
-              <button className="bg-transparent border border-paan-dark-blue text-paan-dark-blue px-8 py-3 rounded-full hover:bg-paan-dark-blue hover:text-white transition-all duration-300 font-medium text-base shadow-lg flex items-center gap-2">View Agenda</button>
+              <button 
+                onClick={() => setShowPartnerModal(true)}
+                className="bg-transparent border border-paan-dark-blue text-paan-dark-blue px-6 sm:px-8 py-3 rounded-full hover:bg-paan-dark-blue hover:text-white transition-all duration-300 font-medium text-sm sm:text-base shadow-lg flex items-center justify-center gap-2 w-full sm:w-auto"
+              >
+                Partner With Us
+              </button>
+              <button onClick={() => window.location.href = '#agenda'} className="bg-transparent border border-paan-dark-blue text-paan-dark-blue px-6 sm:px-8 py-3 rounded-full hover:bg-paan-dark-blue hover:text-white transition-all duration-300 font-medium text-sm sm:text-base shadow-lg flex items-center justify-center gap-2 w-full sm:w-auto">View Agenda</button>
             </div>
           </section>
         </div>
@@ -617,51 +626,51 @@ const SummitPage = () => {
       
         {/* Program Section */}
         <div className="bg-paan-dark-blue relative">
-            <section className="mx-auto max-w-6xl py-20 justify-start">
-              <div className="flex justify-between gap-8">
+            <section className="mx-auto max-w-6xl py-12 sm:py-16 md:py-20 px-4 sm:px-6">
+              <div className="flex flex-col sm:flex-row justify-between gap-4 sm:gap-6 md:gap-8 mb-8 sm:mb-12">
                 <div className="text-left">
-                    <h2 className="text-xs border w-fit mx-auto border-white text-white rounded-full px-4 py-2 text-center mb-2">Summit Program</h2>
-                    <h3 className="text-2xl font-bold uppercase text-paan-yellow">Program</h3>
+                    <h2 className="text-xs sm:text-sm border w-fit border-white text-white rounded-full px-3 sm:px-4 py-1 sm:py-2 text-center mb-2 sm:mb-3">Summit Program</h2>
+                    <h3 className="text-xl sm:text-2xl md:text-3xl font-bold uppercase text-paan-yellow">Program</h3>
                 </div>
-                <div>
-                  <p className="text-white text-3xl">Tracks and the two-day<br/> agenda snapshot.</p>
+                <div className="mt-2 sm:mt-0">
+                  <p className="text-white text-lg sm:text-xl md:text-2xl lg:text-3xl leading-tight">Tracks and the two-day<br className="hidden sm:block"/> agenda snapshot.</p>
                 </div>
               </div>
-               <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
-                 <div className="relative rounded-lg shadow-lg overflow-hidden h-[34rem]">
+               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
+                 <div className="relative rounded-lg shadow-lg overflow-hidden h-64 sm:h-80 md:h-96 lg:h-[34rem]">
                    <Image
                      src="/assets/images/ip.png"
                      alt="Track 1"
                      fill
                      className="object-contain object-center"
                    />
-                   <div className="absolute bottom-0 left-0 right-0 bg-white rounded-t-lg p-6">
-                     <h4 className="text-2xl font-bold text-paan-dark-blue mb-2">IP, Capital & Content Exports</h4>
-                     <p className="text-paan-dark-blue">Financing film, music, gaming, and fashion IP.</p>
+                   <div className="absolute bottom-0 left-0 right-0 bg-white rounded-t-lg p-4 sm:p-6">
+                     <h4 className="text-lg sm:text-xl md:text-2xl font-bold text-paan-dark-blue mb-1 sm:mb-2">IP, Capital & Content Exports</h4>
+                     <p className="text-paan-dark-blue text-sm sm:text-base">Financing film, music, gaming, and fashion IP.</p>
                    </div>
                  </div>
-                 <div className="relative rounded-lg shadow-lg overflow-hidden h-[34rem]">
+                 <div className="relative rounded-lg shadow-lg overflow-hidden h-64 sm:h-80 md:h-96 lg:h-[34rem]">
                    <Image
                      src="/assets/images/nomad-work.png"
-                     alt="Track 1"
+                     alt="Track 2"
                      fill
                      className="object-contain object-center"
                    />
-                   <div className="absolute bottom-0 left-0 right-0 bg-white rounded-t-lg p-6">
-                     <h4 className="text-2xl font-bold text-paan-dark-blue mb-2">Payments, Market Entry & Nomad Work</h4>
-                     <p className="text-paan-dark-blue">Making cross-border work frictionless and borderless.</p>
+                   <div className="absolute bottom-0 left-0 right-0 bg-white rounded-t-lg p-4 sm:p-6">
+                     <h4 className="text-lg sm:text-xl md:text-2xl font-bold text-paan-dark-blue mb-1 sm:mb-2">Payments, Market Entry & Nomad Work</h4>
+                     <p className="text-paan-dark-blue text-sm sm:text-base">Making cross-border work frictionless and borderless.</p>
                    </div>
                  </div>
-                 <div className="relative rounded-lg shadow-lg overflow-hidden h-[34rem]">
+                 <div className="relative rounded-lg shadow-lg overflow-hidden h-64 sm:h-80 md:h-96 lg:h-[34rem] sm:col-span-2 lg:col-span-1">
                    <Image
                      src="/assets/images/ai-data.png"
-                     alt="Track 1"
+                     alt="Track 3"
                      fill
                      className="object-contain object-center"
                    />
-                   <div className="absolute bottom-0 left-0 right-0 bg-white rounded-t-lg p-6">
-                     <h4 className="text-2xl font-bold text-paan-dark-blue mb-2">AI, Data, Discovery & <br/>Innovation</h4>
-                     <p className="text-paan-dark-blue">Leveraging AI for content, compliance, and monetization.</p>
+                   <div className="absolute bottom-0 left-0 right-0 bg-white rounded-t-lg p-4 sm:p-6">
+                     <h4 className="text-lg sm:text-xl md:text-2xl font-bold text-paan-dark-blue mb-1 sm:mb-2">AI, Data, Discovery & <br className="hidden sm:block"/>Innovation</h4>
+                     <p className="text-paan-dark-blue text-sm sm:text-base">Leveraging AI for content, compliance, and monetization.</p>
                    </div>
                  </div>
                </div>
@@ -669,17 +678,17 @@ const SummitPage = () => {
         </div>
 
         {/* Day 1 Section */}
-        <div className="bg-[#F3F9FB] py-20" id="agenda" ref={sectionRefs.events} handleScroll={handleScroll} isFixed={isFixed}>          
-           <section className="mx-auto max-w-6xl">            
-             <div className="text-center mb-12">
-               <h2 className="text-3xl font-bold text-paan-dark-blue mb-4">Summit Agenda</h2>
-               <p className="text-lg text-gray-600">Two days of intensive learning, networking, and deal-making</p>
+        <div className="bg-[#F3F9FB] py-12 sm:py-16 md:py-20" id="agenda" ref={sectionRefs.events} handleScroll={handleScroll} isFixed={isFixed}>          
+           <section className="mx-auto max-w-6xl px-4 sm:px-6">            
+             <div className="text-center mb-8 sm:mb-12">
+               <h2 className="text-2xl sm:text-3xl font-bold text-paan-dark-blue mb-3 sm:mb-4">Summit Agenda</h2>
+               <p className="text-base sm:text-lg text-gray-600">Two days of intensive learning, networking, and deal-making</p>
              </div>
              
-             <div className="flex justify-center gap-4 mb-12">
+             <div className="flex justify-center gap-3 sm:gap-4 mb-8 sm:mb-12">
                <button 
                  onClick={() => setActiveDay('day1')}
-                 className={`px-8 py-3 rounded-full transition-all duration-300 font-medium text-base shadow-lg flex items-center gap-2 uppercase ${
+                 className={`px-6 sm:px-8 py-2 sm:py-3 rounded-full transition-all duration-300 font-medium text-sm sm:text-base shadow-lg flex items-center gap-2 uppercase ${
                    activeDay === 'day1' 
                      ? 'bg-paan-blue border border-paan-blue text-white' 
                      : 'bg-transparent border border-paan-blue text-paan-blue hover:bg-paan-blue hover:text-white'
@@ -689,7 +698,7 @@ const SummitPage = () => {
                </button>
                <button 
                  onClick={() => setActiveDay('day2')}
-                 className={`px-8 py-3 rounded-full transition-all duration-300 font-medium text-base shadow-lg flex items-center gap-2 ${
+                 className={`px-6 sm:px-8 py-2 sm:py-3 rounded-full transition-all duration-300 font-medium text-sm sm:text-base shadow-lg flex items-center gap-2 ${
                    activeDay === 'day2' 
                      ? 'bg-paan-blue border border-paan-blue text-white' 
                      : 'bg-transparent border border-paan-blue text-paan-blue hover:bg-paan-blue hover:text-white'
@@ -699,20 +708,20 @@ const SummitPage = () => {
                </button>
             </div>
              
-             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-               <div className="space-y-6">
+             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-start">
+               <div className="space-y-4 sm:space-y-6">
                  <div className="relative rounded-lg overflow-hidden shadow-lg">
                    <Image
                      src="/assets/images/day1-1.png"
                      alt="Day 1 Morning Sessions"
                      width={500}
                      height={400}
-                     className="w-full h-80 object-cover"
+                     className="w-full h-64 sm:h-80 object-cover"
                    />
                    <div className="absolute inset-0 bg-black/40"></div>
-                   <div className="absolute bottom-4 left-4 text-white">
-                     <h3 className="text-xl font-bold">Morning Sessions</h3>
-                     <p className="text-sm">Keynotes & Panels</p>
+                   <div className="absolute bottom-3 sm:bottom-4 left-3 sm:left-4 text-white">
+                     <h3 className="text-lg sm:text-xl font-bold">Morning Sessions</h3>
+                     <p className="text-xs sm:text-sm">Keynotes & Panels</p>
                    </div>
                  </div>
                  <div className="relative rounded-lg overflow-hidden shadow-lg">
@@ -721,12 +730,12 @@ const SummitPage = () => {
                      alt="Day 1 Afternoon Sessions"
                      width={500}
                      height={400}
-                     className="w-full h-80 object-cover"
+                     className="w-full h-64 sm:h-80 object-cover"
                    />
                    <div className="absolute inset-0 bg-black/40"></div>
-                   <div className="absolute bottom-4 left-4 text-white">
-                     <h3 className="text-xl font-bold">Afternoon Sessions</h3>
-                     <p className="text-sm">Deal Rooms & Clinics</p>
+                   <div className="absolute bottom-3 sm:bottom-4 left-3 sm:left-4 text-white">
+                     <h3 className="text-lg sm:text-xl font-bold">Afternoon Sessions</h3>
+                     <p className="text-xs sm:text-sm">Deal Rooms & Clinics</p>
                    </div>
                  </div>
                </div>
@@ -734,14 +743,14 @@ const SummitPage = () => {
                <div className="bg-white rounded-xl shadow-xl overflow-hidden">
                  {activeDay === 'day1' ? (
                    <>
-                     <div className="bg-paan-dark-blue text-white p-6">
-                       <h4 className="text-xl font-bold">Day 1 — Building the Borderless Economy</h4>
-                       <p className="text-sm opacity-90 mt-1">April 23, 2026</p>
+                     <div className="bg-paan-dark-blue text-white p-4 sm:p-6">
+                       <h4 className="text-lg sm:text-xl font-bold">Day 1 — Building the Borderless Economy</h4>
+                       <p className="text-xs sm:text-sm opacity-90 mt-1">April 23, 2026</p>
                      </div>
                  
-                 <div className="p-6 relative">
+                 <div className="p-4 sm:p-6 relative">
                    {/* Container for timeline items */}
-                   <div className="space-y-6 relative">
+                   <div className="space-y-4 sm:space-y-6 relative">
                      {/* Continuous vertical line that runs through the middle of all circles */}
                      <div className="absolute left-[5px] top-[6px] bottom-[6px] w-0.5 bg-paan-red"></div>
                      {/* Timeline item 1 */}
@@ -750,9 +759,9 @@ const SummitPage = () => {
                          <div className="w-3 h-3 bg-paan-red rounded-full shadow-lg shadow-paan-red/50 flex-shrink-0 z-10 relative"></div>
                          <div className="absolute inset-0 w-3 h-3 bg-paan-red rounded-full opacity-30 animate-ping"></div>
                        </div>
-                       <div className="ml-6">
-                         <div className="text-sm font-bold text-paan-blue mb-1">09:00 - 09:45</div>
-                         <h5 className="text-paan-dark-blue">Opening Plenary & Keynotes</h5>
+                       <div className="ml-4 sm:ml-6">
+                         <div className="text-xs sm:text-sm font-bold text-paan-blue mb-1">09:00 - 09:45</div>
+                         <h5 className="text-paan-dark-blue text-sm sm:text-base">Opening Plenary & Keynotes</h5>
                        </div>
                      </div>
                      
@@ -762,9 +771,9 @@ const SummitPage = () => {
                          <div className="w-3 h-3 bg-paan-red rounded-full shadow-lg shadow-paan-red/50 flex-shrink-0 z-10 relative"></div>
                          <div className="absolute inset-0 w-3 h-3 bg-paan-red rounded-full opacity-30 animate-ping"></div>
                        </div>
-                       <div className="ml-6">
-                         <div className="text-sm font-bold text-paan-blue mb-1">10:00 - 11:15</div>
-                         <h5 className="text-paan-dark-blue"><span className="font-bold">Panels:</span> Creative IP Finance / AfCFTA Digital Trade</h5>
+                       <div className="ml-4 sm:ml-6">
+                         <div className="text-xs sm:text-sm font-bold text-paan-blue mb-1">10:00 - 11:15</div>
+                         <h5 className="text-paan-dark-blue text-sm sm:text-base"><span className="font-bold">Panels:</span> Creative IP Finance / AfCFTA Digital Trade</h5>
                        </div>
                      </div>
                      
@@ -832,14 +841,14 @@ const SummitPage = () => {
                    </>
                  ) : (
                    <>
-                     <div className="bg-paan-dark-blue text-white p-6">
-                       <h4 className="text-xl font-bold">Day 2 — Scaling & Innovation</h4>
-                       <p className="text-sm opacity-90 mt-1">April 24, 2026</p>
+                     <div className="bg-paan-dark-blue text-white p-4 sm:p-6">
+                       <h4 className="text-lg sm:text-xl font-bold">Day 2 — Scaling & Innovation</h4>
+                       <p className="text-xs sm:text-sm opacity-90 mt-1">April 24, 2026</p>
                      </div>
                  
-                     <div className="p-6 relative">
+                     <div className="p-4 sm:p-6 relative">
                        {/* Container for timeline items */}
-                       <div className="space-y-6 relative">
+                       <div className="space-y-4 sm:space-y-6 relative">
                          {/* Continuous vertical line that runs through the middle of all circles */}
                          <div className="absolute left-[5px] top-[6px] bottom-[6px] w-0.5 bg-paan-red"></div>
                          
@@ -1065,35 +1074,35 @@ const SummitPage = () => {
         </div>
         
          {/* speakers section */}
-         <div className="bg-white relative py-20" id="speakers-section" isFixed={isFixed}>
-           <section className="relative mx-auto max-w-6xl">
-             <div className="flex justify-between items-start mb-8">
+         <div className="bg-white relative py-12 sm:py-16 md:py-20" id="speakers-section" isFixed={isFixed}>
+           <section className="relative mx-auto max-w-6xl px-4 sm:px-6">
+             <div className="flex flex-col sm:flex-row justify-between items-start mb-6 sm:mb-8 gap-4">
                <div>
-                 <h2 className="text-sm w-fit text-paan-dark-blue mb-4 bg-paan-blue text-white rounded-full px-4 py-1">Our Speakers</h2>
-                 <h3 className="text-3xl text-paan-dark-blue font-bold uppercase">Meet the speakers</h3>
-                 <p className="text-xl font-normal text-paan-dark-blue mb-4">Africa's top creators, innovators, and enablers.</p>
+                 <h2 className="text-xs sm:text-sm w-fit text-paan-dark-blue mb-3 sm:mb-4 bg-paan-blue text-white rounded-full px-3 sm:px-4 py-1">Our Speakers</h2>
+                 <h3 className="text-2xl sm:text-3xl text-paan-dark-blue font-bold uppercase">Meet the speakers</h3>
+                 <p className="text-base sm:text-lg md:text-xl font-normal text-paan-dark-blue mb-4">Africa's top creators, innovators, and enablers.</p>
                </div>
                {/* Navigation arrows */}
-               <div className="flex gap-2">
+               <div className="flex gap-2 self-end">
                  <button 
                    onClick={prevSpeakers}
-                   className="w-12 h-12 border border-paan-dark-blue text-paan-dark-blue rounded-full flex items-center justify-center hover:bg-paan-dark-blue hover:text-white transition-colors duration-300 shadow-lg"
+                   className="w-10 h-10 sm:w-12 sm:h-12 border border-paan-dark-blue text-paan-dark-blue rounded-full flex items-center justify-center hover:bg-paan-dark-blue hover:text-white transition-colors duration-300 shadow-lg"
                    disabled={currentSpeakerIndex === 0}
                  >
-                   <Icon icon="mdi:chevron-left" width="24" height="24" />
+                   <Icon icon="mdi:chevron-left" width="20" height="20" />
                  </button>
                  <button 
                    onClick={nextSpeakers}
-                   className="w-12 h-12 border border-paan-dark-blue text-paan-dark-blue rounded-full flex items-center justify-center hover:bg-paan-dark-blue hover:text-white transition-colors duration-300 shadow-lg"
+                   className="w-10 h-10 sm:w-12 sm:h-12 border border-paan-dark-blue text-paan-dark-blue rounded-full flex items-center justify-center hover:bg-paan-dark-blue hover:text-white transition-colors duration-300 shadow-lg"
                    disabled={currentSpeakerIndex + visibleSpeakers >= speakers.length}
                  >
-                   <Icon icon="mdi:chevron-right" width="24" height="24" />
+                   <Icon icon="mdi:chevron-right" width="20" height="20" />
                  </button>
                </div>
              </div>
-             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
                {getVisibleSpeakers().map((speaker) => (
-                 <div key={speaker.id} className="relative rounded-xl shadow-xl overflow-hidden group cursor-pointer h-96">
+                 <div key={speaker.id} className="relative rounded-xl shadow-xl overflow-hidden group cursor-pointer h-80 sm:h-96">
                    <Image
                      src={speaker.image}
                      alt={speaker.name}
@@ -1103,9 +1112,9 @@ const SummitPage = () => {
                    />
                    {/* White overlay on hover */}
                    <div className="absolute inset-0 bg-white/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                     <div className="text-center p-6">
-                       <h4 className="text-2xl font-bold text-paan-dark-blue mb-2">{speaker.name}</h4>
-                       <p className="text-paan-dark-blue mb-4">{speaker.title}</p>
+                     <div className="text-center p-4 sm:p-6">
+                       <h4 className="text-lg sm:text-xl md:text-2xl font-bold text-paan-dark-blue mb-2">{speaker.name}</h4>
+                       <p className="text-paan-dark-blue mb-4 text-sm sm:text-base">{speaker.title}</p>
                        <div className="flex justify-center">
                          <a 
                            href={speaker.linkedin} 
@@ -1113,17 +1122,17 @@ const SummitPage = () => {
                            rel="noopener noreferrer"
                            className="hover:scale-110 transition-transform duration-200"
                          >
-                           <Icon icon="mdi:linkedin" className="text-paan-dark-blue" width="32" height="32" />
+                           <Icon icon="mdi:linkedin" className="text-paan-dark-blue" width="28" height="28" />
                          </a>
                        </div>
                      </div>
                    </div>
                    {/* Speaker info at bottom */}
-                   <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
+                   <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4 sm:p-6">
                      <div className="flex justify-between items-center">
                        <div>
-                         <h4 className="text-xl font-bold text-white mb-1">{speaker.name}</h4>
-                         <p className="text-white/90 text-sm">{speaker.title}</p>
+                         <h4 className="text-lg sm:text-xl font-bold text-white mb-1">{speaker.name}</h4>
+                         <p className="text-white/90 text-xs sm:text-sm">{speaker.title}</p>
                        </div>
                        <div className="flex-shrink-0">
                          <a 
@@ -1132,7 +1141,7 @@ const SummitPage = () => {
                            rel="noopener noreferrer"
                            className="hover:scale-110 transition-transform duration-200"
                          >
-                           <Icon icon="mdi:linkedin" className="text-white" width="24" height="24" />
+                           <Icon icon="mdi:linkedin" className="text-white" width="20" height="20" />
                          </a>
                        </div>
                      </div>
@@ -1140,16 +1149,10 @@ const SummitPage = () => {
                  </div>
                ))}
              </div>
-              <div className="flex justify-start gap-2 mt-8">
+              <div className="flex justify-center sm:justify-start gap-2 mt-6 sm:mt-8">
                 <button 
-                  onClick={() => window.location.href = '#speakers-section'} 
-                  className="bg-paan-red text-white px-8 py-3 rounded-full hover:bg-paan-red/90 transition-all duration-300 font-medium text-base shadow-lg flex items-center gap-2"
-                >
-                  View All Speakers
-                </button>
-                <button 
-                  onClick={() => window.location.href = '#speakers-section'} 
-                  className="bg-transparent border border-paan-dark-blue text-paan-dark-blue px-8 py-3 rounded-full hover:bg-paan-dark-blue hover:text-white transition-all duration-300 font-medium text-base shadow-lg flex items-center gap-2"
+                  onClick={() => window.location.href = '/summit/speaker-application'} 
+                  className="bg-transparent border border-paan-dark-blue text-paan-dark-blue px-6 sm:px-8 py-3 rounded-full hover:bg-paan-dark-blue hover:text-white transition-all duration-300 font-medium text-sm sm:text-base shadow-lg flex items-center justify-center gap-2 w-full sm:w-auto"
                 >
                   Apply to Speak
                 </button>
@@ -1158,26 +1161,26 @@ const SummitPage = () => {
         </div>
 
            {/* Marquee Section */}
-         <div className="bg-[#DAECF3] relative py-20" isFixed={isFixed}>
-           <section className="relative mx-auto max-w-6xl">
-             <div className="flex justify-center mb-12">
-               <h2 className="text-sm w-fit border border-paan-dark-blue text-paan-dark-blue mb-4 bg-paan-blue rounded-full px-4 py-1">Who's in the room</h2>
+         <div className="bg-[#DAECF3] relative py-12 sm:py-16 md:py-20" isFixed={isFixed}>
+           <section className="relative mx-auto max-w-6xl px-4 sm:px-6">
+             <div className="flex justify-center mb-8 sm:mb-12">
+               <h2 className="text-xs sm:text-sm w-fit border border-paan-dark-blue text-paan-dark-blue mb-4 bg-paan-blue rounded-full px-3 sm:px-4 py-1">Who's in the room</h2>
              </div>
              
              {/* First Marquee - Right Direction */}
-             <div className="w-full overflow-hidden whitespace-nowrap py-5 bg-white/20 rounded-lg mb-4">
+             <div className="w-full overflow-hidden whitespace-nowrap py-4 sm:py-5 bg-white/20 rounded-lg mb-3 sm:mb-4">
                <div className="inline-flex animate-marquee-right">
-                 <div className="flex space-x-8 whitespace-nowrap">
+                 <div className="flex space-x-4 sm:space-x-6 md:space-x-8 whitespace-nowrap">
                    {[...Array(4)].map((_, i) => (
-                     <div key={`right-${i}`} className="flex items-center space-x-8">
-                       <span className="text-2xl font-semibold text-paan-dark-blue whitespace-nowrap">Music Producers</span>
-                       <span className="text-3xl text-paan-red">•</span>
-                       <span className="text-2xl font-semibold text-paan-dark-blue whitespace-nowrap">Fashion Designers</span>
-                       <span className="text-3xl text-paan-blue">•</span>
-                       <span className="text-2xl font-semibold text-paan-dark-blue whitespace-nowrap">Gaming Studions</span>
-                       <span className="text-3xl text-paan-dark-blue">•</span>
-                       <span className="text-2xl font-semibold text-paan-dark-blue whitespace-nowrap">SaaS Founders</span>
-                       <span className="text-3xl text-paan-yellow">•</span>
+                     <div key={`right-${i}`} className="flex items-center space-x-4 sm:space-x-6 md:space-x-8">
+                       <span className="text-lg sm:text-xl md:text-2xl font-semibold text-paan-dark-blue whitespace-nowrap">Music Producers</span>
+                       <span className="text-2xl sm:text-3xl text-paan-red">•</span>
+                       <span className="text-lg sm:text-xl md:text-2xl font-semibold text-paan-dark-blue whitespace-nowrap">Fashion Designers</span>
+                       <span className="text-2xl sm:text-3xl text-paan-blue">•</span>
+                       <span className="text-lg sm:text-xl md:text-2xl font-semibold text-paan-dark-blue whitespace-nowrap">Gaming Studios</span>
+                       <span className="text-2xl sm:text-3xl text-paan-dark-blue">•</span>
+                       <span className="text-lg sm:text-xl md:text-2xl font-semibold text-paan-dark-blue whitespace-nowrap">SaaS Founders</span>
+                       <span className="text-2xl sm:text-3xl text-paan-yellow">•</span>
                      </div>
                    ))}
                  </div>
@@ -1185,19 +1188,19 @@ const SummitPage = () => {
              </div>
 
              {/* Second Marquee - Left Direction */}
-             <div className="w-full overflow-hidden whitespace-nowrap py-5 bg-white/20 rounded-lg">
+             <div className="w-full overflow-hidden whitespace-nowrap py-4 sm:py-5 bg-white/20 rounded-lg">
                <div className="inline-flex animate-marquee-left">
-                 <div className="flex space-x-8 whitespace-nowrap">
+                 <div className="flex space-x-4 sm:space-x-6 md:space-x-8 whitespace-nowrap">
                    {[...Array(4)].map((_, i) => (
-                     <div key={`left-${i}`} className="flex items-center space-x-8">
-                       <span className="text-2xl font-semibold text-paan-dark-blue whitespace-nowrap">Film Directors</span>
-                       <span className="text-3xl text-paan-red">•</span>
-                       <span className="text-2xl font-semibold text-paan-dark-blue whitespace-nowrap">Brand Strategists</span>
-                       <span className="text-3xl text-paan-blue">•</span>
-                       <span className="text-2xl font-semibold text-paan-dark-blue whitespace-nowrap">UX/UI Designers</span>
-                       <span className="text-3xl text-paan-maroon">•</span>
-                       <span className="text-2xl font-semibold text-paan-dark-blue whitespace-nowrap">Marketing Leaders</span>
-                       <span className="text-3xl text-paan-yellow">•</span>
+                     <div key={`left-${i}`} className="flex items-center space-x-4 sm:space-x-6 md:space-x-8">
+                       <span className="text-lg sm:text-xl md:text-2xl font-semibold text-paan-dark-blue whitespace-nowrap">Film Directors</span>
+                       <span className="text-2xl sm:text-3xl text-paan-red">•</span>
+                       <span className="text-lg sm:text-xl md:text-2xl font-semibold text-paan-dark-blue whitespace-nowrap">Brand Strategists</span>
+                       <span className="text-2xl sm:text-3xl text-paan-blue">•</span>
+                       <span className="text-lg sm:text-xl md:text-2xl font-semibold text-paan-dark-blue whitespace-nowrap">UX/UI Designers</span>
+                       <span className="text-2xl sm:text-3xl text-paan-maroon">•</span>
+                       <span className="text-lg sm:text-xl md:text-2xl font-semibold text-paan-dark-blue whitespace-nowrap">Marketing Leaders</span>
+                       <span className="text-2xl sm:text-3xl text-paan-yellow">•</span>
                      </div>
                    ))}
                  </div>
@@ -1207,35 +1210,35 @@ const SummitPage = () => {
          </div>
 
          {/* Session section */}
-         <div className="bg-paan-dark-blue relative py-20" id="sessions-section" isFixed={isFixed}>
-           <section className="relative mx-auto max-w-6xl">
-             <div className="flex justify-between items-start mb-8">
+         <div className="bg-paan-dark-blue relative py-12 sm:py-16 md:py-20" id="sessions-section" isFixed={isFixed}>
+           <section className="relative mx-auto max-w-6xl px-4 sm:px-6">
+             <div className="flex flex-col sm:flex-row justify-between items-start mb-6 sm:mb-8 gap-4">
                <div>
-                 <h2 className="text-sm w-fit text-white border border-white mb-4 bg-transparent text-white rounded-full px-4 py-1">Special Features</h2>
-                 <h3 className="text-3xl text-white font-bold uppercase">Beyond the sessions</h3>
-                 <p className="text-xl font-normal text-white mb-4">Experience Nairobi and make connections that last.</p>
+                 <h2 className="text-xs sm:text-sm w-fit text-white border border-white mb-3 sm:mb-4 bg-transparent text-white rounded-full px-3 sm:px-4 py-1">Special Features</h2>
+                 <h3 className="text-2xl sm:text-3xl text-white font-bold uppercase">Beyond the sessions</h3>
+                 <p className="text-base sm:text-lg md:text-xl font-normal text-white mb-4">Experience Nairobi and make connections that last.</p>
                </div>
                {/* Navigation arrows */}
-               <div className="flex gap-2">
+               <div className="flex gap-2 self-end">
                  <button 
                    onClick={prevSessions}
-                   className="w-12 h-12 border border-white text-white rounded-full flex items-center justify-center hover:bg-white hover:text-paan-dark-blue transition-colors duration-300 shadow-lg"
+                   className="w-10 h-10 sm:w-12 sm:h-12 border border-white text-white rounded-full flex items-center justify-center hover:bg-white hover:text-paan-dark-blue transition-colors duration-300 shadow-lg"
                    disabled={currentSessionIndex === 0}
                  >
-                   <Icon icon="mdi:chevron-left" width="24" height="24" />
+                   <Icon icon="mdi:chevron-left" width="20" height="20" />
                  </button>
                  <button 
                    onClick={nextSessions}
-                   className="w-12 h-12 border border-white text-white rounded-full flex items-center justify-center hover:bg-white hover:text-paan-dark-blue transition-colors duration-300 shadow-lg"
+                   className="w-10 h-10 sm:w-12 sm:h-12 border border-white text-white rounded-full flex items-center justify-center hover:bg-white hover:text-paan-dark-blue transition-colors duration-300 shadow-lg"
                    disabled={currentSessionIndex + visibleSessions >= sessions.length}
                  >
-                   <Icon icon="mdi:chevron-right" width="24" height="24" />
+                   <Icon icon="mdi:chevron-right" width="20" height="20" />
                  </button>
                </div>
              </div>
-             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
                {getVisibleSessions().map((session) => (
-                 <div key={session.id} className="relative rounded-xl shadow-xl overflow-hidden group cursor-pointer h-96">
+                 <div key={session.id} className="relative rounded-xl shadow-xl overflow-hidden group cursor-pointer h-80 sm:h-96">
                    <Image
                      src={session.image}
                      alt={session.title}
@@ -1247,14 +1250,14 @@ const SummitPage = () => {
                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
                    
                    {/* Session info at bottom */}
-                   <div className="absolute bottom-0 left-0 right-0 p-6">
-                     <div className="space-y-3">
+                   <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6">
+                     <div className="space-y-2 sm:space-y-3">
                        <div>
-                         <h4 className="text-xl font-bold text-white mb-2">{session.title}</h4>
-                         <p className="text-white/90 text-sm leading-relaxed">{session.description}</p>
+                         <h4 className="text-lg sm:text-xl font-bold text-white mb-2">{session.title}</h4>
+                         <p className="text-white/90 text-xs sm:text-sm leading-relaxed">{session.description}</p>
                        </div>
                        <div className="flex justify-between items-center">
-                         <span className="inline-block bg-paan-blue text-white px-3 py-1 rounded-full text-sm font-medium">
+                         <span className="inline-block bg-paan-blue text-white px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm font-medium">
                            {session.category}
                          </span>
                      </div>
@@ -1337,51 +1340,170 @@ const SummitPage = () => {
                        </div>
           </section>
                      </div>
-
-         {/* Parallax Section */}
-         <div className="relative py-20 overflow-hidden h-[500px]" id="parallax-section" isFixed={isFixed}>
-           {/* Parallax Background Image */}
-           <div 
-             className="absolute inset-0 bg-cover bg-center bg-fixed"
-             style={{
-               backgroundImage: "url('https://ik.imagekit.io/nkmvdjnna/PAAN/summit/exhibitor.png')",
-               filter: "brightness(0.8)"
-             }}
-           />
-           
-           {/* Dark overlay for better text readability */}
-           <div className="absolute inset-0 bg-paan-dark-blue/40"></div>
-           
-           <section className="relative mx-auto max-w-6xl">
-             <div className="w-3/4">
-               <div className="flex flex-col justify-start mb-12">
-                 <h2 className="text-sm w-fit text-white border border-white mb-4 bg-transparent text-white rounded-full px-4 py-1">Exhibition Opportunities</h2>
-                 <h3 className="text-3xl text-white font-bold uppercase">Showcase your brand at Africa's Borderless Creative Economy Summit.</h3>
-                 <p className="text-xl font-normal text-white mb-4">Join leading agencies, startups, and creative innovators in the Exhibition Zone. Share your work, connect with investors and partners, and stand out at Africa's most influential creative economy gathering.</p>
-                   </div>
-               <div className="flex justify-start">
-                 <button 
-                   onClick={() => window.location.href = '#parallax-section'} 
-                   className="bg-paan-red text-white px-8 py-3 rounded-full hover:bg-paan-red/90 transition-all duration-300 font-medium text-base shadow-lg flex items-center gap-2"
-                 >
-                   Apply to Exhibit
-                 </button>
-                 </div>
-             </div>
-           </section>
-         </div>
+          {/* Parallax Section */}
+          <div className="relative py-6 sm:py-8 md:py-12 lg:py-16 xl:py-20 overflow-hidden h-[320px] sm:h-[400px] md:h-[450px] lg:h-[500px] xl:h-[550px]" id="parallax-section" isFixed={isFixed}>
+            {/* Parallax Background Image */}
+            <div 
+              className="absolute inset-0 bg-cover bg-center sm:bg-fixed bg-scroll"
+              style={{
+                backgroundImage: "url('https://ik.imagekit.io/nkmvdjnna/PAAN/summit/exhibitor.png')",
+                filter: "brightness(0.8)",
+                backgroundPosition: "center center"
+              }}
+            />
+            
+            {/* Dark overlay for better text readability */}
+            <div className="absolute inset-0 bg-paan-dark-blue/40 sm:bg-paan-dark-blue/30"></div>
+            
+            <section className="relative mx-auto max-w-7xl px-3 sm:px-4 md:px-6 lg:px-8 h-full flex items-center">
+              <div className="w-full">
+                <div className="flex flex-col justify-center items-center text-center sm:text-left sm:items-start space-y-4 sm:space-y-6 md:space-y-8">
+                  {/* Badge */}
+                  <h2 className="text-xs sm:text-sm w-fit text-white border border-white/80 bg-transparent rounded-full px-3 sm:px-4 py-1.5 sm:py-2 backdrop-blur-sm">
+                    Exhibition Opportunities
+                  </h2>
+                  
+                  {/* Main Heading */}
+                  <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-white font-bold uppercase leading-tight max-w-3xl">
+                    Showcase your brand at Africa's Borderless Creative Economy Summit.
+                  </h3>
+                  
+                  {/* Description */}
+                  <p className="text-sm sm:text-base md:text-lg font-normal text-white/90 leading-relaxed max-w-2xl">
+                    Join leading agencies, startups, and creative innovators in the Exhibition Zone. Connect with investors and partners at Africa's most influential creative economy gathering.
+                  </p>
+                </div>
+                
+                {/* CTA Button */}
+                <div className="flex justify-center sm:justify-start mt-6 sm:mt-8 md:mt-10">
+                  <button 
+                    onClick={() => setShowExhibitionModal(true)} 
+                    className="bg-paan-red hover:bg-paan-red/90 text-white px-6 sm:px-8 md:px-10 py-3 sm:py-4 rounded-full transition-all duration-300 font-medium text-sm sm:text-base shadow-lg hover:shadow-xl flex items-center justify-center gap-2 w-full max-w-xs sm:max-w-sm md:w-auto min-h-[48px] active:scale-95"
+                  >
+                    <span>Apply to Exhibit</span>
+                    <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </section>
+          </div>
 
           {/* Tickets Section */}
-          <div className="bg-white relative py-20" id="tickets-section" isFixed={isFixed}>
-            <section className="relative mx-auto max-w-6xl">
-              <div className="flex flex-col text-center mb-12">
-                <h3 className="text-3xl text-paan-dark-blue font-bold uppercase">Secure Your Spot</h3>
-                <p className="text-xl font-normal text-paan-dark-blue mb-8">Join leading agencies, startups, and creative innovators in the Exhibition Zone. Share your work, connect with investors and partners, and stand out at Africa's most influential creative economy gathering.</p>
+          <div className="bg-white relative py-12 sm:py-16 md:py-20" id="tickets-section" isFixed={isFixed}>
+            <section className="relative mx-auto max-w-6xl px-4 sm:px-6">
+              <div className="flex flex-col text-center mb-6 sm:mb-8 md:mb-12">
+                <h3 className="text-xl sm:text-2xl md:text-3xl text-paan-dark-blue font-bold uppercase">Secure Your Spot</h3>
+                <p className="text-sm sm:text-base md:text-lg lg:text-xl font-normal text-paan-dark-blue mb-4 sm:mb-6 md:mb-8 leading-relaxed">Join leading agencies, startups, and creative innovators in the Exhibition Zone. Share your work, connect with investors and partners, and stand out at Africa's most influential creative economy gathering.</p>
               </div>
               
-              {/* Ticket Badge */}
-              <div className="flex justify-center mb-12">
-                <div className="relative">
+              {/* Mobile Ticket Section */}
+              <div className="block sm:hidden">
+                <div className="space-y-6">
+                  {/* Mobile Ticket Cards */}
+                  <div className="grid grid-cols-1 gap-4">
+                    {/* Members Ticket */}
+                    <div className="bg-gradient-to-r from-paan-blue to-paan-dark-blue rounded-2xl p-6 text-white shadow-xl">
+                      <div className="flex justify-between items-start mb-4">
+                        <div>
+                          <h4 className="text-lg font-bold mb-1">PAAN Members</h4>
+                          <p className="text-sm opacity-90">Special pricing for members</p>
+                        </div>
+                        <div className="text-right">
+                          <div className="text-3xl font-bold">$100</div>
+                          <div className="text-xs opacity-75">per ticket</div>
+                        </div>
+                      </div>
+                      <div className="space-y-2 text-sm">
+                        <div className="flex items-center gap-2">
+                          <Icon icon="mdi:check" className="text-paan-yellow" width="16" height="16" />
+                          <span>Access to all sessions & workshops</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <Icon icon="mdi:check" className="text-paan-yellow" width="16" height="16" />
+                          <span>Deal Rooms priority access</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <Icon icon="mdi:check" className="text-paan-yellow" width="16" height="16" />
+                          <span>Networking events & Creator Crawl</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <Icon icon="mdi:check" className="text-paan-yellow" width="16" height="16" />
+                          <span>Post-event recordings</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Non-Members Ticket */}
+                    <div className="bg-gradient-to-r from-paan-red to-paan-maroon rounded-2xl p-6 text-white shadow-xl">
+                      <div className="flex justify-between items-start mb-4">
+                        <div>
+                          <h4 className="text-lg font-bold mb-1">General Admission</h4>
+                          <p className="text-sm opacity-90">Open to all attendees</p>
+                        </div>
+                        <div className="text-right">
+                          <div className="text-3xl font-bold">$150</div>
+                          <div className="text-xs opacity-75">per ticket</div>
+                        </div>
+                      </div>
+                      <div className="space-y-2 text-sm">
+                        <div className="flex items-center gap-2">
+                          <Icon icon="mdi:check" className="text-paan-yellow" width="16" height="16" />
+                          <span>Access to all sessions & workshops</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <Icon icon="mdi:check" className="text-paan-yellow" width="16" height="16" />
+                          <span>Deal Rooms priority access</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <Icon icon="mdi:check" className="text-paan-yellow" width="16" height="16" />
+                          <span>Networking events & Creator Crawl</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <Icon icon="mdi:check" className="text-paan-yellow" width="16" height="16" />
+                          <span>Post-event recordings</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Event Details */}
+                  <div className="bg-gray-50 rounded-2xl p-6">
+                    <h4 className="text-lg font-bold text-paan-dark-blue mb-4">Event Details</h4>
+                    <div className="space-y-3">
+                      <div className="flex items-center gap-3">
+                        <Icon icon="mdi:calendar" className="text-paan-red" width="20" height="20" />
+                        <span className="text-sm font-medium">April 23-24, 2026</span>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <Icon icon="mdi:map-marker" className="text-paan-red" width="20" height="20" />
+                        <span className="text-sm font-medium">Sarit Centre, Nairobi, Kenya</span>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <Icon icon="mdi:users" className="text-paan-red" width="20" height="20" />
+                        <span className="text-sm font-medium">300+ In-Person Attendees</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Registration Button */}
+                  <div className="pt-4">
+                    <TicketPurchaseButton 
+                      variant="primary" 
+                      size="lg"
+                      className="w-full py-4 text-lg font-semibold"
+                    >
+                      <Icon icon="mdi:ticket" width="20" height="20" />
+                      Register Now
+                    </TicketPurchaseButton>
+                  </div>
+                </div>
+              </div>
+
+              {/* Desktop Ticket Badge */}
+              <div className="hidden sm:flex justify-center mb-6 sm:mb-8 md:mb-12">
+                <div className="relative w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-none">
                   <img 
                     src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/ticket.svg" 
                     alt="PAAN Summit Ticket" 
@@ -1389,43 +1511,43 @@ const SummitPage = () => {
                   />
                   
                   {/* Content overlay on ticket */}
-                  <div className="absolute inset-0 flex items-center justify-center p-8">
-                    <div className="text-paan-dark-blue w-full flex items-center">
+                  <div className="absolute inset-0 flex items-center justify-center p-3 sm:p-4 md:p-6 lg:p-8">
+                    <div className="text-paan-dark-blue w-full flex flex-col sm:flex-row items-center">
                       {/* Left part */}
-                        <div className="flex-1 text-left pl-8 text-white">
-                          <h4 className="text-3xl font-bold mb-3">PAAN SUMMIT 2026</h4>
-                          <p className="text-6xl font-semibold mb-6">Ticket Options</p>
-                          <div className="flex gap-4 mb-6">
-                            <div className="flex flex-col items-left bg-white/20 border border-white rounded-lg px-4 py-3 w-40">
-                              <h4 className="text-sm font-light">Members: </h4>
-                              <p className="text-3xl font-bold">$100</p>
+                        <div className="flex-1 text-left pl-2 sm:pl-4 md:pl-6 lg:pl-8 text-white mb-3 sm:mb-4 md:mb-0">
+                          <h4 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold mb-1 sm:mb-2 md:mb-3">PAAN SUMMIT 2026</h4>
+                          <p className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-semibold mb-3 sm:mb-4 md:mb-6">Ticket Options</p>
+                          <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 md:gap-4 mb-3 sm:mb-4 md:mb-6">
+                            <div className="flex flex-col items-left bg-white/20 border border-white rounded-lg px-2 sm:px-3 md:px-4 py-1 sm:py-2 md:py-3 w-full sm:w-32 md:w-40">
+                              <h4 className="text-xs sm:text-sm font-light">Members: </h4>
+                              <p className="text-xl sm:text-2xl md:text-3xl font-bold">$100</p>
                             </div>
-                            <div className="flex flex-col items-left bg-white/20 border border-white rounded-lg px-4 py-3 w-40">
-                              <h4 className="text-sm font-light">Non-Members: </h4>
-                              <p className="text-3xl font-bold">$150</p>
+                            <div className="flex flex-col items-left bg-white/20 border border-white rounded-lg px-2 sm:px-3 md:px-4 py-1 sm:py-2 md:py-3 w-full sm:w-32 md:w-40">
+                              <h4 className="text-xs sm:text-sm font-light">Non-Members: </h4>
+                              <p className="text-xl sm:text-2xl md:text-3xl font-bold">$150</p>
                             </div>
                           </div>
-                          <ul className="text-sm font-light space-y-2">
-                            <li className="flex items-center gap-3">
-                              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" className="flex-shrink-0">
+                          <ul className="text-xs sm:text-sm font-light space-y-1 sm:space-y-2">
+                            <li className="flex items-center gap-1 sm:gap-2 md:gap-3">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" className="flex-shrink-0 sm:w-4 sm:h-4">
                                 <path fill="currentColor" d="m10.6 16.6l7.05-7.05l-1.4-1.4l-5.65 5.65l-2.85-2.85l-1.4 1.4zM12 22q-2.075 0-3.9-.788t-3.175-2.137T2.788 15.9T2 12t.788-3.9t2.137-3.175T8.1 2.788T12 2t3.9.788t3.175 2.137T21.213 8.1T22 12t-.788 3.9t-2.137 3.175t-3.175 2.138T12 22"/>
                               </svg>
                               Access to all sessions & workshops.
                             </li>
-                            <li className="flex items-center gap-3">
-                              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" className="flex-shrink-0">
+                            <li className="flex items-center gap-1 sm:gap-2 md:gap-3">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" className="flex-shrink-0 sm:w-4 sm:h-4">
                                 <path fill="currentColor" d="m10.6 16.6l7.05-7.05l-1.4-1.4l-5.65 5.65l-2.85-2.85l-1.4 1.4zM12 22q-2.075 0-3.9-.788t-3.175-2.137T2.788 15.9T2 12t.788-3.9t2.137-3.175T8.1 2.788T12 2t3.9.788t3.175 2.137T21.213 8.1T22 12t-.788 3.9t-2.137 3.175t-3.175 2.138T12 22"/>
                               </svg>
                               Deal Rooms priority (Business/Investor pass).
                             </li> 
-                            <li className="flex items-center gap-3">
-                              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" className="flex-shrink-0">
+                            <li className="flex items-center gap-1 sm:gap-2 md:gap-3">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" className="flex-shrink-0 sm:w-4 sm:h-4">
                                 <path fill="currentColor" d="m10.6 16.6l7.05-7.05l-1.4-1.4l-5.65 5.65l-2.85-2.85l-1.4 1.4zM12 22q-2.075 0-3.9-.788t-3.175-2.137T2.788 15.9T2 12t.788-3.9t2.137-3.175T8.1 2.788T12 2t3.9.788t3.175 2.137T21.213 8.1T22 12t-.788 3.9t-2.137 3.175t-3.175 2.138T12 22"/>
                               </svg>
                               Networking events, including Creator Crawl
                             </li>
-                            <li className="flex items-center gap-3">
-                              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" className="flex-shrink-0">
+                            <li className="flex items-center gap-1 sm:gap-2 md:gap-3">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" className="flex-shrink-0 sm:w-4 sm:h-4">
                                 <path fill="currentColor" d="m10.6 16.6l7.05-7.05l-1.4-1.4l-5.65 5.65l-2.85-2.85l-1.4 1.4zM12 22q-2.075 0-3.9-.788t-3.175-2.137T2.788 15.9T2 12t.788-3.9t2.137-3.175T8.1 2.788T12 2t3.9.788t3.175 2.137T21.213 8.1T22 12t-.788 3.9t-2.137 3.175t-3.175 2.138T12 22"/>
                               </svg>
                               Select recordings post‑event
@@ -1433,22 +1555,22 @@ const SummitPage = () => {
                           </ul>
                         </div>
                       
-                      {/* White vertical dotted line at center */}
-                      <div className="mx-6 self-center" style={{
+                      {/* White vertical dotted line at center - hidden on mobile */}
+                      <div className="hidden sm:block mx-2 sm:mx-4 md:mx-6 self-center" style={{
                         width: '2px',
-                        height: '500px',
+                        height: '300px',
                         background: 'repeating-linear-gradient(to bottom, white 0px, white 4px, transparent 4px, transparent 8px)'
                       }}></div>
                       
                       {/* Right part */}
-                      <div className="flex-1 text-left text-white space-y-3 text-sm pl-8">
-                        <p className="font-semibold text-lg">Admit One</p>
-                        <p className="font-bold text-3xl">PAAN Summit 2026</p>
-                        <p className="font-semibold text-lg">Seat . TBA</p>
+                      <div className="flex-1 text-left text-white space-y-1 sm:space-y-2 md:space-y-3 text-xs sm:text-sm pl-2 sm:pl-4 md:pl-6 lg:pl-8">
+                        <p className="font-semibold text-xs sm:text-sm md:text-lg">Admit One</p>
+                        <p className="font-bold text-lg sm:text-xl md:text-2xl lg:text-3xl">PAAN Summit 2026</p>
+                        <p className="font-semibold text-xs sm:text-sm md:text-lg">Seat . TBA</p>
 
-                        <div className="flex flex-col gap-3 mt-6">
-                          <button className="bg-paan-yellow text-paan-dark-blue px-3 py-2 rounded-full hover:bg-paan-yellow/90 transition-all duration-300 font-medium text-sm shadow-lg flex items-center justify-center w-fit">April 23-24, 2026</button>
-                          <button className="bg-transparent border border-white text-white px-3 py-2 rounded-full hover:bg-white hover:text-paan-dark-blue transition-all duration-300 font-medium text-sm shadow-lg flex items-center justify-center w-fit">Nairobi, Kenya</button>
+                        <div className="flex flex-col gap-1 sm:gap-2 md:gap-3 mt-3 sm:mt-4 md:mt-6">
+                          <button className="bg-paan-yellow text-paan-dark-blue px-2 sm:px-3 py-1 sm:py-2 rounded-full hover:bg-paan-yellow/90 transition-all duration-300 font-medium text-xs sm:text-sm shadow-lg flex items-center justify-center w-fit">April 23-24, 2026</button>
+                          <button className="bg-transparent border border-white text-white px-2 sm:px-3 py-1 sm:py-2 rounded-full hover:bg-white hover:text-paan-dark-blue transition-all duration-300 font-medium text-xs sm:text-sm shadow-lg flex items-center justify-center w-fit">Nairobi, Kenya</button>
                         </div>
                       </div>
                     </div>
@@ -1456,14 +1578,14 @@ const SummitPage = () => {
                 </div>
               </div>
               
-              {/* Registration Button */}
-              <div className="flex justify-center">
+              {/* Desktop Registration Button */}
+              <div className="hidden sm:flex justify-center">
                 <TicketPurchaseButton 
                   variant="primary" 
                   size="lg"
-                  className="px-12 py-4 text-lg"
+                  className="px-6 sm:px-8 md:px-12 py-2 sm:py-3 md:py-4 text-sm sm:text-base md:text-lg w-full sm:w-auto"
                 >
-                  <Icon icon="mdi:ticket" width="24" height="24" />
+                  <Icon icon="mdi:ticket" width="16" height="16" className="sm:w-5 sm:h-5" />
                   Register Now
                 </TicketPurchaseButton>
              </div>
@@ -1471,35 +1593,35 @@ const SummitPage = () => {
         </div>
 
          {/* Our Partners */}
-         <div className="bg-[#D1D3D4] relative py-20">
-           <section className="relative mx-auto max-w-6xl">
-             <div className="flex flex-col text-center mb-12 space-y-4">
-               <h3 className="text-3xl text-paan-dark-blue font-bold uppercase">Our Partners</h3>
-               <p className="text-xl font-normal text-paan-dark-blue mb-8">Join leading agencies, startups, and creative innovators in the Exhibition Zone. Share your work, connect with investors and partners, and stand out at Africa's most influential creative economy gathering.</p>
+         <div className="bg-[#D1D3D4] relative py-12 sm:py-16 md:py-20">
+           <section className="relative mx-auto max-w-6xl px-4 sm:px-6">
+             <div className="flex flex-col text-center mb-8 sm:mb-12 space-y-3 sm:space-y-4">
+               <h3 className="text-2xl sm:text-3xl text-paan-dark-blue font-bold uppercase">Our Partners</h3>
+               <p className="text-base sm:text-lg md:text-xl font-normal text-paan-dark-blue mb-6 sm:mb-8">Join leading agencies, startups, and creative innovators in the Exhibition Zone. Share your work, connect with investors and partners, and stand out at Africa's most influential creative economy gathering.</p>
              </div>
              
              {/* Sliding Partners Logos */}
-             <div className="w-full overflow-hidden whitespace-nowrap py-5">
+             <div className="w-full overflow-hidden whitespace-nowrap py-4 sm:py-5">
                <div className="inline-flex animate-marquee-right">
-                 <div className="flex space-x-8 whitespace-nowrap">
+                 <div className="flex space-x-4 sm:space-x-6 md:space-x-8 whitespace-nowrap">
                    {[...Array(3)].map((_, i) => (
-                     <div key={`partners-${i}`} className="flex items-center space-x-8">
-                       <div className="bg-white w-32 h-32 rounded-lg shadow-xl overflow-hidden relative flex items-center justify-center flex-shrink-0">
+                     <div key={`partners-${i}`} className="flex items-center space-x-4 sm:space-x-6 md:space-x-8">
+                       <div className="bg-white w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-lg shadow-xl overflow-hidden relative flex items-center justify-center flex-shrink-0">
                          <img src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/partner-1.svg" alt="Partner 1" className="w-full h-full object-contain" />
                        </div>
-                       <div className="bg-white w-32 h-32 rounded-lg shadow-xl overflow-hidden relative flex items-center justify-center flex-shrink-0">
+                       <div className="bg-white w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-lg shadow-xl overflow-hidden relative flex items-center justify-center flex-shrink-0">
                          <img src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/partner-2.svg" alt="Partner 2" className="w-full h-full object-contain" />
                        </div>
-                       <div className="bg-white w-32 h-32 rounded-lg shadow-xl overflow-hidden relative flex items-center justify-center flex-shrink-0">
+                       <div className="bg-white w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-lg shadow-xl overflow-hidden relative flex items-center justify-center flex-shrink-0">
                          <img src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/partner-3.svg" alt="Partner 3" className="w-full h-full object-contain" />
                        </div>
-                       <div className="bg-white w-32 h-32 rounded-lg shadow-xl overflow-hidden relative flex items-center justify-center flex-shrink-0">
+                       <div className="bg-white w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-lg shadow-xl overflow-hidden relative flex items-center justify-center flex-shrink-0">
                          <img src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/partner-4.svg" alt="Partner 4" className="w-full h-full object-contain" />
                        </div>
-                       <div className="bg-white w-32 h-32 rounded-lg shadow-xl overflow-hidden relative flex items-center justify-center flex-shrink-0">
+                       <div className="bg-white w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-lg shadow-xl overflow-hidden relative flex items-center justify-center flex-shrink-0">
                          <img src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/partner-5.svg" alt="Partner 5" className="w-full h-full object-contain" />
                        </div>
-                       <div className="bg-white w-32 h-32 rounded-lg shadow-xl overflow-hidden relative flex items-center justify-center flex-shrink-0">
+                       <div className="bg-white w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-lg shadow-xl overflow-hidden relative flex items-center justify-center flex-shrink-0">
                          <img src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/partner-6.svg" alt="Partner 6" className="w-full h-full object-contain" />
                        </div>
                      </div>
@@ -1511,78 +1633,78 @@ const SummitPage = () => {
          </div>
 
          {/* Plan Your Trip */}
-         <div className="bg-white relative py-20" id="plan-your-trip">
-           <section className="relative mx-auto max-w-6xl">
-             <div className="text-left mb-12">
-               <h3 className="text-sm w-fit text-white font-light bg-paan-blue rounded-full px-4 py-2 mb-4">Plan Your Trip</h3>
-               <h2 className="text-3xl text-paan-dark-blue font-bold uppercase mb-4">Plan Your Trip</h2>
-               <p className="text-xl font-normal text-paan-dark-blue">Smooth logistics, unforgettable Nairobi experience.</p>
+         <div className="bg-white relative py-12 sm:py-16 md:py-20" id="plan-your-trip">
+           <section className="relative mx-auto max-w-6xl px-4 sm:px-6">
+             <div className="text-left mb-8 sm:mb-12">
+               <h3 className="text-xs sm:text-sm w-fit text-white font-light bg-paan-blue rounded-full px-3 sm:px-4 py-2 mb-3 sm:mb-4">Plan Your Trip</h3>
+               <h2 className="text-2xl sm:text-3xl text-paan-dark-blue font-bold uppercase mb-3 sm:mb-4">Plan Your Trip</h2>
+               <p className="text-base sm:text-lg md:text-xl font-normal text-paan-dark-blue">Smooth logistics, unforgettable Nairobi experience.</p>
              </div>
              
-             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 mb-8 sm:mb-12">
                {/* Venue Information Card */}
-               <div className="bg-gradient-to-br from-[#DAECF4] to-[#F3F9FB] rounded-xl p-6 shadow-lg">
-                 <div className="flex items-center gap-3 mb-4">
+               <div className="bg-gradient-to-br from-[#DAECF4] to-[#F3F9FB] rounded-xl p-4 sm:p-6 shadow-lg">
+                 <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
                    <div className="bg-paan-red rounded-full p-2">
-                     <Icon icon="mdi:map-marker" className="text-white" width="24" height="24" />
+                     <Icon icon="mdi:map-marker" className="text-white" width="20" height="20" />
                    </div>
-                   <h3 className="text-xl font-bold text-paan-dark-blue">Venue Information</h3>
+                   <h3 className="text-lg sm:text-xl font-bold text-paan-dark-blue">Venue Information</h3>
                  </div>
-                 <p className="text-paan-dark-blue mb-6 leading-relaxed">
+                 <p className="text-paan-dark-blue mb-4 sm:mb-6 leading-relaxed text-sm sm:text-base">
                    Final venue details will be announced soon. Expect world‑class facilities, breakout rooms for deal‑making, and easy access to Nairobi's creative hubs.
                  </p>
                  
-                 <div className="space-y-4">
-                   <div className="bg-white rounded-lg p-4 shadow-md">
-                     <div className="flex items-center gap-3 mb-2">
-                       <Icon icon="mdi:map-marker" className="text-paan-red" width="20" height="20" />
-                       <h4 className="font-semibold text-paan-dark-blue">Sarit Centre, Nairobi</h4>
+                 <div className="space-y-3 sm:space-y-4">
+                   <div className="bg-white rounded-lg p-3 sm:p-4 shadow-md">
+                     <div className="flex items-center gap-2 sm:gap-3 mb-2">
+                       <Icon icon="mdi:map-marker" className="text-paan-red" width="16" height="16" />
+                       <h4 className="font-semibold text-paan-dark-blue text-sm sm:text-base">Sarit Centre, Nairobi</h4>
                      </div>
                      <a 
                        href="https://www.google.com/maps/dir/?api=1&destination=Sarit+Centre+Nairobi" 
                        target="_blank" 
                        rel="noopener noreferrer"
-                       className="text-paan-blue hover:text-paan-red transition-colors text-sm"
+                       className="text-paan-blue hover:text-paan-red transition-colors text-xs sm:text-sm"
                      >
                        View Directions →
                      </a>
                    </div>
                    
-                   <div className="bg-white rounded-lg p-4 shadow-md">
-                     <div className="flex items-center gap-3 mb-2">
-                       <Icon icon="mdi:calendar" className="text-paan-red" width="20" height="20" />
-                       <h4 className="font-semibold text-paan-dark-blue">Event Dates</h4>
+                   <div className="bg-white rounded-lg p-3 sm:p-4 shadow-md">
+                     <div className="flex items-center gap-2 sm:gap-3 mb-2">
+                       <Icon icon="mdi:calendar" className="text-paan-red" width="16" height="16" />
+                       <h4 className="font-semibold text-paan-dark-blue text-sm sm:text-base">Event Dates</h4>
                      </div>
-                     <p className="text-paan-dark-blue">April 23-24, 2026</p>
+                     <p className="text-paan-dark-blue text-sm sm:text-base">April 23-24, 2026</p>
                    </div>
                  </div>
                </div>
 
                {/* Travel Support Card */}
-               <div className="bg-gradient-to-br from-[#F3F9FB] to-[#DAECF4] rounded-xl p-6 shadow-lg">
-                 <div className="flex items-center gap-3 mb-4">
+               <div className="bg-gradient-to-br from-[#F3F9FB] to-[#DAECF4] rounded-xl p-4 sm:p-6 shadow-lg">
+                 <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
                    <div className="bg-paan-blue rounded-full p-2">
-                     <Icon icon="mdi:help-circle" className="text-white" width="24" height="24" />
+                     <Icon icon="mdi:help-circle" className="text-white" width="20" height="20" />
                    </div>
-                   <h3 className="text-xl font-bold text-paan-dark-blue">Travel Support</h3>
+                   <h3 className="text-lg sm:text-xl font-bold text-paan-dark-blue">Travel Support</h3>
                  </div>
                  
-                 <div className="space-y-4">
-                   <div className="bg-white rounded-lg p-4 shadow-md">
-                     <h4 className="font-semibold text-paan-dark-blue mb-2">Need Assistance?</h4>
-                     <p className="text-paan-dark-blue text-sm mb-3">
+                 <div className="space-y-3 sm:space-y-4">
+                   <div className="bg-white rounded-lg p-3 sm:p-4 shadow-md">
+                     <h4 className="font-semibold text-paan-dark-blue mb-2 text-sm sm:text-base">Need Assistance?</h4>
+                     <p className="text-paan-dark-blue text-xs sm:text-sm mb-3">
                        Our travel team is here to help with logistics, accommodation, and any questions you might have.
                      </p>
                      <a 
-                       href="mailto:travel@paan.africa" 
-                       className="text-paan-blue hover:text-paan-red transition-colors font-medium"
+                       href="mailto:secretariat@paan.africa" 
+                       className="text-paan-blue hover:text-paan-red transition-colors font-medium text-xs sm:text-sm break-all"
                      >
-                       travel@paan.africa
+                       secretariat@paan.africa
                      </a>
                    </div>
                    
-                   <button className="w-full bg-paan-dark-blue text-white px-6 py-3 rounded-lg hover:bg-paan-red transition-all duration-300 font-medium shadow-lg flex items-center justify-center gap-2">
-                     <Icon icon="mdi:book-open" width="20" height="20" />
+                   <button onClick={() => window.location.href = '/summit/travel-guide'} className="w-full bg-paan-dark-blue text-white px-4 sm:px-6 py-2 sm:py-3 rounded-lg hover:bg-paan-red transition-all duration-300 font-medium shadow-lg flex items-center justify-center gap-2 text-sm sm:text-base">
+                     <Icon icon="mdi:book-open" width="16" height="16" />
                      Open Travel Guide
                    </button>
                  </div>
@@ -1591,7 +1713,7 @@ const SummitPage = () => {
                  
              {/* Accordion */}
              <div className="w-full">
-               <h3 className="text-2xl font-bold text-paan-dark-blue mb-6">Frequently Asked Questions</h3>
+               <h3 className="text-xl sm:text-2xl font-bold text-paan-dark-blue mb-4 sm:mb-6">Frequently Asked Questions</h3>
                <Accordion 
                      items={[
                        {
@@ -1633,12 +1755,24 @@ const SummitPage = () => {
          </div>
         <SummitFooter />
         <ScrollToTop />
+        
+        {/* Partner With Us Modal */}
+        <PartnerWithUsModal 
+          isOpen={showPartnerModal} 
+          onClose={() => setShowPartnerModal(false)} 
+        />
+        
+        {/* Exhibition Application Modal */}
+        <ExhibitionApplicationModal 
+          isOpen={showExhibitionModal} 
+          onClose={() => setShowExhibitionModal(false)} 
+        />
       </main>
     </>
   );
 };
 
-const Hero = ({ sectionRefs, handleScroll, isFixed, timeLeft }) => {
+const Hero = ({ sectionRefs, handleScroll, isFixed, timeLeft, onPartnerClick }) => {
 
   return (
     <>
@@ -1657,8 +1791,8 @@ const Hero = ({ sectionRefs, handleScroll, isFixed, timeLeft }) => {
         />
                
         {/* Content overlay */}
-        <div className="relative h-full flex items-end pb-48">
-          <div className="mx-auto max-w-6xl w-full">
+        <div className="relative h-full flex items-end pb-16 sm:pb-24 md:pb-48">
+          <div className="mx-auto max-w-6xl w-full px-4">
             <motion.div 
               className="max-w-2xl"
               variants={staggerContainer}
@@ -1666,42 +1800,42 @@ const Hero = ({ sectionRefs, handleScroll, isFixed, timeLeft }) => {
               animate="animate"
             >
               <motion.p 
-                className="bg-white/20 text-white px-4 py-2 rounded-full text-sm font-medium mb-4 w-fit border border-white"
+                className="bg-white/20 text-white px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-medium mb-4 w-fit border border-white"
                 variants={fadeInUp}
               >
                 Africa Borderless Creative Economy Summit 2026
               </motion.p>
               <motion.h1 
-                className="text-3xl md:text-3xl font-semibold uppercase text-yellow-400 mb-8"
+                className="text-2xl sm:text-3xl md:text-4xl font-semibold uppercase text-yellow-400 mb-6 sm:mb-8 leading-tight"
                 variants={fadeInUp}
               >
                 Create. Connect. Commercialize.
               </motion.h1>
               <motion.div 
-                className="flex md:flex-row flex-col gap-4 mb-10"
+                className="flex flex-col sm:flex-row gap-2 sm:gap-4 mb-6 sm:mb-10"
                 variants={fadeInUp}
               >
                 <SeminarLocationAndDate />
               </motion.div>
               <motion.div 
-                className="flex flex-col sm:flex-row justify-center gap-8"
+                className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-6 md:gap-8"
                 variants={scaleIn}
               >
                 <button 
                   onClick={(e) => handleScroll(e, '#tickets-section')}
-                  className="bg-paan-red text-white px-8 py-3 rounded-full hover:bg-paan-red/90 transition-all duration-300 font-medium text-base shadow-lg flex items-center gap-2"
+                  className="bg-paan-red text-white px-6 sm:px-8 py-3 rounded-full hover:bg-paan-red/90 transition-all duration-300 font-medium text-sm sm:text-base shadow-lg flex items-center justify-center gap-2 w-full sm:w-auto"
                 >
                   Register Now
                 </button>
                 <button 
-                  onClick={() => window.location.href = '#tickets'} 
-                  className="bg-transparent border border-white text-white px-8 py-3 rounded-full hover:bg-white hover:text-paan-red transition-all duration-300 font-medium text-base shadow-lg flex items-center gap-2"
+                  onClick={onPartnerClick}
+                  className="bg-transparent border border-white text-white px-6 sm:px-8 py-3 rounded-full hover:bg-white hover:text-paan-red transition-all duration-300 font-medium text-sm sm:text-base shadow-lg flex items-center justify-center gap-2 w-full sm:w-auto"
                 >
                   Partner With Us
                 </button>
                 <button 
                   onClick={(e) => handleScroll(e, '#agenda')}
-                  className="bg-transparent border border-white text-white px-8 py-3 rounded-full hover:bg-white hover:text-paan-red transition-all duration-300 font-medium text-base shadow-lg flex items-center gap-2"
+                  className="bg-transparent border border-white text-white px-6 sm:px-8 py-3 rounded-full hover:bg-white hover:text-paan-red transition-all duration-300 font-medium text-sm sm:text-base shadow-lg flex items-center justify-center gap-2 w-full sm:w-auto"
                 >
                   View Agenda
                 </button>                
@@ -1718,19 +1852,19 @@ const Hero = ({ sectionRefs, handleScroll, isFixed, timeLeft }) => {
 const SeminarLocationAndDate = ()=> {
     
   return (
-    <div className="flex md:flex-row flex-col gap-4">
-      <div className="flex items-center gap-2 text-white text-sm whitespace-nowrap">
-        <Icon icon="mdi:map-marker" className="text-red-500" width="24" height="24" />
-        <span>Sarit Centre, Nairobi, Kenya - <strong>23–24 April 2026</strong></span>
+    <div className="flex flex-col sm:flex-row gap-2 sm:gap-4">
+      <div className="flex items-center gap-2 text-white text-xs sm:text-sm">
+        <Icon icon="mdi:map-marker" className="text-red-500 flex-shrink-0" width="20" height="20" />
+        <span className="break-words sm:whitespace-nowrap">Sarit Centre, Nairobi, Kenya - <strong>23–24 April 2026</strong></span>
       </div>
       
-      <div className="flex items-center gap-2 text-white text-sm whitespace-nowrap">
-        <Icon icon="mdi:user-group" className="text-red-500" width="24" height="24" />
-        <span>300+ In Person</span>
+      <div className="flex items-center gap-2 text-white text-xs sm:text-sm">
+        <Icon icon="mdi:user-group" className="text-red-500 flex-shrink-0" width="20" height="20" />
+        <span className="whitespace-nowrap">300+ In Person</span>
       </div>
-      <div className="flex items-center gap-2 text-white text-sm whitespace-nowrap">
-        <Icon icon="mdi:globe" className="text-red-500" width="24" height="24" />
-        <span>1,000+ Streaming</span>
+      <div className="flex items-center gap-2 text-white text-xs sm:text-sm">
+        <Icon icon="mdi:globe" className="text-red-500 flex-shrink-0" width="20" height="20" />
+        <span className="whitespace-nowrap">1,000+ Streaming</span>
       </div>
     </div>
   );
