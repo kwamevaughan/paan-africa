@@ -373,22 +373,22 @@ const TravelGuide = () => {
                 "https://ik.imagekit.io/nkmvdjnna/PAAN/summit/summit-hero.webp?updatedAt=1757505455932"
               ],
               "mainEntity": {
-                "@type": "Event",
+              "@type": "Event",
                 "name": "PAAN Summit 2025 - Africa's Premier Creative & Tech Leadership Conference",
-                "startDate": "2025-10-22T09:00:00+03:00",
-                "endDate": "2025-10-24T17:00:00+03:00",
-                "eventAttendanceMode": "https://schema.org/MixedEventAttendanceMode",
-                "eventStatus": "https://schema.org/EventScheduled",
-                "location": {
-                  "@type": "Place",
+              "startDate": "2025-10-22T09:00:00+03:00",
+              "endDate": "2025-10-24T17:00:00+03:00",
+              "eventAttendanceMode": "https://schema.org/MixedEventAttendanceMode",
+              "eventStatus": "https://schema.org/EventScheduled",
+              "location": {
+                "@type": "Place",
                   "name": "Sarit Centre",
-                  "address": {
-                    "@type": "PostalAddress",
+                "address": {
+                  "@type": "PostalAddress",
                     "streetAddress": "Sarit Centre, Westlands",
-                    "addressLocality": "Nairobi",
-                    "addressRegion": "Nairobi County",
-                    "postalCode": "00100",
-                    "addressCountry": "KE"
+                  "addressLocality": "Nairobi",
+                  "addressRegion": "Nairobi County",
+                  "postalCode": "00100",
+                  "addressCountry": "KE"
                   },
                   "geo": {
                     "@type": "GeoCoordinates",
@@ -459,7 +459,7 @@ const TravelGuide = () => {
 
          {/* Visa requirements section */}
          <motion.div 
-           className="bg-[#DAECF3] relative py-20 pt-32" 
+           className="bg-[#DAECF3] relative py-12 sm:py-16 md:py-20 pt-20 sm:pt-24 md:pt-32" 
            id="visa-requirements" 
            isFixed={isFixed}
            initial={{ opacity: 0, y: 50 }}
@@ -467,16 +467,16 @@ const TravelGuide = () => {
            transition={{ duration: 0.8, ease: "easeOut" }}
            viewport={{ once: true, margin: "-100px" }}
          >
-          <section className="relative mx-auto max-w-6xl">
+          <section className="relative mx-auto max-w-6xl px-4 sm:px-6">
             <motion.div 
-              className="text-left mb-12"
+              className="text-left mb-8 sm:mb-12"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, ease: "easeOut" }}
               viewport={{ once: true, margin: "-50px" }}
             >
                 <motion.h2 
-                  className="text-3xl lg:text-4xl uppercase font-bold leading-tight mb-6"
+                  className="text-2xl sm:text-3xl lg:text-4xl uppercase font-bold leading-tight mb-4 sm:mb-6"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
@@ -485,7 +485,7 @@ const TravelGuide = () => {
                   Visa & Entry Requirements
                 </motion.h2>
                 <motion.p 
-                  className="text-lg font-light leading-relaxed mb-8"
+                  className="text-base sm:text-lg font-light leading-relaxed mb-6 sm:mb-8"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
@@ -494,7 +494,7 @@ const TravelGuide = () => {
                   Most international visitors require an Electronic Travel Authorization (eTA) to enter Kenya.
                 </motion.p>
             </motion.div>
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 items-center">
               {/* Content Section */}
               <div className="flex flex-col justify-center space-y-8">                                
                 <div className="space-y-4">            
@@ -536,14 +536,15 @@ const TravelGuide = () => {
                 </div>
                 
                 <motion.div 
-                  className="flex flex-col sm:flex-row gap-4 pt-4"
+                  className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-4"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
                   viewport={{ once: true, margin: "-50px" }}
                 >
                   <motion.button 
-                    className="bg-paan-red text-white px-8 py-4 rounded-full hover:bg-paan-red/90 transition-all duration-300 font-medium text-base shadow-lg flex items-center justify-center gap-2 hover:shadow-xl transform hover:-translate-y-1"
+                    onClick={() => window.open('https://www.etakenya.go.ke/', '_blank')}
+                    className="bg-paan-red text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full hover:bg-paan-red/90 transition-all duration-300 font-medium text-sm sm:text-base shadow-lg flex items-center justify-center gap-2 hover:shadow-xl transform hover:-translate-y-1"
                     whileHover={{ scale: 1.05, y: -2 }}
                     whileTap={{ scale: 0.95 }}
                     transition={{ duration: 0.2 }}
@@ -551,7 +552,8 @@ const TravelGuide = () => {
                     Apply for eTA
                   </motion.button>
                   <motion.button 
-                    className="bg-transparent border-2 border-paan-dark-blue text-paan-dark-blue px-8 py-4 rounded-full hover:bg-paan-dark-blue hover:text-white transition-all duration-300 font-medium text-base shadow-lg flex items-center justify-center gap-2 hover:shadow-xl transform hover:-translate-y-1"
+                    onClick={() => window.location.href = 'mailto:secretariat@paan.africa?subject=PAAN Summit 2025 - Visa Invitation Letter Request&body=Hello,%0D%0A%0D%0AI am planning to attend the PAAN Summit 2025 in Nairobi and would like to request a visa invitation letter.%0D%0A%0D%0APlease provide the following information:%0D%0A- Full Name:%0D%0A- Passport Number:%0D%0A- Nationality:%0D%0A- Date of Birth:%0D%0A- Arrival Date:%0D%0A- Departure Date:%0D%0A- Hotel/Accommodation Details:%0D%0A%0D%0AThank you for your assistance.%0D%0A%0D%0ABest regards'}
+                    className="bg-transparent border-2 border-paan-dark-blue text-paan-dark-blue px-6 sm:px-8 py-3 sm:py-4 rounded-full hover:bg-paan-dark-blue hover:text-white transition-all duration-300 font-medium text-sm sm:text-base shadow-lg flex items-center justify-center gap-2 hover:shadow-xl transform hover:-translate-y-1"
                     whileHover={{ scale: 1.05, y: -2 }}
                     whileTap={{ scale: 0.95 }}
                     transition={{ duration: 0.2 }}
@@ -590,21 +592,21 @@ const TravelGuide = () => {
 
          {/* Accommodation section */}
          <motion.div 
-           className="bg-white py-20 pt-24" 
+           className="bg-white py-12 sm:py-16 md:py-20 pt-16 sm:pt-20 md:pt-24" 
            id="accommodation"
            initial={{ opacity: 0, y: 50 }}
            whileInView={{ opacity: 1, y: 0 }}
            transition={{ duration: 0.8, ease: "easeOut" }}
            viewport={{ once: true, margin: "-100px" }}
          >
-            <section className="mx-auto max-w-6xl px-4">
-                <div className="text-left mb-16">
-                    <h2 className="text-3xl lg:text-4xl uppercase font-bold leading-tight mb-6 text-paan-dark-blue">Accommodation</h2>
-                    <p className="text-lg font-light leading-relaxed mb-8 text-gray-600 max-w-3xl">
+            <section className="mx-auto max-w-6xl px-4 sm:px-6">
+                <div className="text-left mb-12 sm:mb-16">
+                    <h2 className="text-2xl sm:text-3xl lg:text-4xl uppercase font-bold leading-tight mb-4 sm:mb-6 text-paan-dark-blue">Accommodation</h2>
+                    <p className="text-base sm:text-lg font-light leading-relaxed mb-6 sm:mb-8 text-gray-600 max-w-3xl">
                         We've secured special rates at partner hotels near the venue. Options range from luxury hotels to budget-friendly accommodations.
                     </p>
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
                     <div className="relative rounded-xl shadow-lg overflow-hidden bg-white hover:shadow-xl transition-shadow duration-300">
                         <div className="relative h-64">
                             <Image
@@ -670,19 +672,19 @@ const TravelGuide = () => {
 
          {/* Arrival & Transport */}
         <motion.div 
-          className="bg-paan-dark-blue py-20"
+          className="bg-paan-dark-blue py-12 sm:py-16 md:py-20"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
           viewport={{ once: true, margin: "-100px" }}
         >
-            <section className="mx-auto max-w-6xl px-4">
-                <div className="text-left mb-2">
-                    <h2 className="text-3xl lg:text-4xl uppercase font-bold leading-tight text-white">Arrival & Transport</h2>                    
+            <section className="mx-auto max-w-6xl px-4 sm:px-6">
+                <div className="text-left mb-6 sm:mb-8">
+                    <h2 className="text-2xl sm:text-3xl lg:text-4xl uppercase font-bold leading-tight text-white">Arrival & Transport</h2>                    
                 </div>
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-                    <div className="p-8 transition-all duration-300">
-                        <div className="relative h-64 mb-6 rounded-lg overflow-hidden">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12">
+                    <div className="p-4 sm:p-6 md:p-8 transition-all duration-300">
+                        <div className="relative h-48 sm:h-56 md:h-64 mb-4 sm:mb-6 rounded-lg overflow-hidden">
                             <Image
                                 src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/airport.png"
                                 alt="Airport to Sarit Center"
@@ -690,14 +692,14 @@ const TravelGuide = () => {
                                 className="object-cover"
                             />
                         </div>
-                        <div className="space-y-4">
-                            <h3 className="text-2xl font-bold text-white mb-3">Airport → Sarit Center</h3>
-                            <p className="text-white">Arrive via Jomo Kenyatta International (NBO). The venue is 25–40 minutes by car. Options include Uber, Bolt, Little Cab, or hotel transfers. Complimentary shuttles will run at set times.</p>
+                        <div className="space-y-3 sm:space-y-4">
+                            <h3 className="text-xl sm:text-2xl font-bold text-white mb-2 sm:mb-3">Airport → Sarit Center</h3>
+                            <p className="text-white text-sm sm:text-base">Arrive via Jomo Kenyatta International (NBO). The venue is 25–40 minutes by car. Options include Uber, Bolt, Little Cab, or hotel transfers. Complimentary shuttles will run at set times.</p>
                         </div>
                     </div>
                     
-                    <div className="p-8 transition-all duration-300">
-                        <div className="relative h-64 mb-6 rounded-lg overflow-hidden">
+                    <div className="p-4 sm:p-6 md:p-8 transition-all duration-300">
+                        <div className="relative h-48 sm:h-56 md:h-64 mb-4 sm:mb-6 rounded-lg overflow-hidden">
                             <Image
                                 src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/city.png"
                                 alt="Around the City"
@@ -705,9 +707,9 @@ const TravelGuide = () => {
                                 className="object-cover"
                             />
                         </div>
-                        <div className="space-y-4">
-                            <h3 className="text-2xl font-bold text-white mb-3">Around the City</h3>
-                            <p className="text-white">Ride-hailing is the easiest way to move around Nairobi. Hotel concierges can arrange taxis or private transfers for VIPs and speakers.</p>
+                        <div className="space-y-3 sm:space-y-4">
+                            <h3 className="text-xl sm:text-2xl font-bold text-white mb-2 sm:mb-3">Around the City</h3>
+                            <p className="text-white text-sm sm:text-base">Ride-hailing is the easiest way to move around Nairobi. Hotel concierges can arrange taxis or private transfers for VIPs and speakers.</p>
                         </div>
                     </div>
                 </div>
@@ -716,22 +718,22 @@ const TravelGuide = () => {
       
          {/* Travel Essentials section */}
          <motion.div 
-           className="bg-white py-20 pt-24" 
+           className="bg-white py-12 sm:py-16 md:py-20 pt-16 sm:pt-20 md:pt-24" 
            id="travel-essentials"
            initial={{ opacity: 0, y: 50 }}
            whileInView={{ opacity: 1, y: 0 }}
            transition={{ duration: 0.8, ease: "easeOut" }}
            viewport={{ once: true, margin: "-100px" }}
          >
-            <section className="mx-auto max-w-6xl px-4">
-                <div className="text-left mb-12">
-                    <h2 className="text-3xl lg:text-4xl uppercase font-bold leading-tight text-paan-dark-blue">Travel Essentials</h2>
-                    <p className="text-lg font-light leading-relaxed mb-8 text-gray-600 max-w-3xl">
+            <section className="mx-auto max-w-6xl px-4 sm:px-6">
+                <div className="text-left mb-8 sm:mb-12">
+                    <h2 className="text-2xl sm:text-3xl lg:text-4xl uppercase font-bold leading-tight text-paan-dark-blue">Travel Essentials</h2>
+                    <p className="text-base sm:text-lg font-light leading-relaxed mb-6 sm:mb-8 text-gray-600 max-w-3xl">
                         Everything you need to know for a smooth trip to Nairobi.
                     </p>
                 </div>
                 <motion.div 
-                  className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+                  className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"
                   variants={staggerContainer}
                   initial="initial"
                   whileInView="animate"
@@ -874,22 +876,22 @@ const TravelGuide = () => {
 
          {/* pack smart section */}
          <motion.div 
-           className="bg-white py-20 pt-24" 
+           className="bg-white py-12 sm:py-16 md:py-20 pt-16 sm:pt-20 md:pt-24" 
            id="pack-smart"
            initial={{ opacity: 0, y: 50 }}
            whileInView={{ opacity: 1, y: 0 }}
            transition={{ duration: 0.8, ease: "easeOut" }}
            viewport={{ once: true, margin: "-100px" }}
          >
-            <section className="mx-auto max-w-6xl px-4">
-                <div className="text-left mb-12">
-                    <h2 className="text-3xl lg:text-4xl uppercase font-bold leading-tight text-paan-dark-blue">Pack Smart</h2>
-                    <p className="text-lg font-light leading-relaxed mb-8 text-gray-600 max-w-3xl">
+            <section className="mx-auto max-w-6xl px-4 sm:px-6">
+                <div className="text-left mb-8 sm:mb-12">
+                    <h2 className="text-2xl sm:text-3xl lg:text-4xl uppercase font-bold leading-tight text-paan-dark-blue">Pack Smart</h2>
+                    <p className="text-base sm:text-lg font-light leading-relaxed mb-6 sm:mb-8 text-gray-600 max-w-3xl">
                         Pack light, stay comfortable, and enjoy your trip to Nairobi.
                     </p>
                 </div>
                 <motion.div 
-                  className="grid grid-cols-2 gap-8"
+                  className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8"
                   variants={staggerContainer}
                   initial="initial"
                   whileInView="animate"
@@ -1002,22 +1004,22 @@ const TravelGuide = () => {
         </motion.div>
 
          <motion.div 
-           className="bg-paan-dark-blue relative pt-24" 
+           className="bg-paan-dark-blue relative pt-16 sm:pt-20 md:pt-24" 
            id="explore-nairobi"
            initial={{ opacity: 0, y: 50 }}
            whileInView={{ opacity: 1, y: 0 }}
            transition={{ duration: 0.8, ease: "easeOut" }}
            viewport={{ once: true, margin: "-100px" }}
          >
-             <section className="mx-auto max-w-6xl py-20 justify-start">
-              <div className="flex justify-between gap-8">
+             <section className="mx-auto max-w-6xl py-12 sm:py-16 md:py-20 justify-start px-4 sm:px-6">
+              <div className="flex justify-between gap-4 sm:gap-8">
                 <div className="text-left">
-                    <h2 className="text-3xl font-bold mx-auto uppercase text-white mb-2">EXPLORE NAIROBI</h2>
-                    <h3 className="text-2xl font-light text-white">Make the most of your stay before or after the Summit.</h3>
+                    <h2 className="text-2xl sm:text-3xl font-bold mx-auto uppercase text-white mb-2 sm:mb-3">EXPLORE NAIROBI</h2>
+                    <h3 className="text-lg sm:text-xl md:text-2xl font-light text-white">Make the most of your stay before or after the Summit.</h3>
                 </div>
               </div>
                <motion.div 
-                 className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12"
+                 className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mt-8 sm:mt-12"
                  variants={staggerContainer}
                  initial="initial"
                  whileInView="animate"
@@ -1090,14 +1092,9 @@ const TravelGuide = () => {
          </motion.div>
 
          {/* Parallax Section */}
-         <motion.div 
-           className="relative py-20 overflow-hidden h-[500px]" 
+         <div 
+           className="relative py-12 sm:py-16 md:py-20 overflow-hidden h-[400px] sm:h-[450px] md:h-[500px]" 
            id="parallax-section" 
-           isFixed={isFixed}
-           initial={{ opacity: 0, y: 50 }}
-           whileInView={{ opacity: 1, y: 0 }}
-           transition={{ duration: 0.8, ease: "easeOut" }}
-           viewport={{ once: true, margin: "-100px" }}
          >
            {/* Parallax Background Image */}
            <div 
@@ -1111,29 +1108,29 @@ const TravelGuide = () => {
            {/* Dark overlay for better text readability */}
            <div className="absolute inset-0 bg-paan-dark-blue/40"></div>
            
-           <section className="relative mx-auto max-w-6xl">
-             <div className="w-3/4">
-               <div className="flex flex-col justify-start mb-12">
-                 <h3 className="text-3xl text-white font-bold uppercase">Need Assistance?</h3>
-                 <p className="text-xl font-normal text-white mb-4">Our logistics team can help with visas, hotels, and transport.</p>
-                   </div>
-               <div className="flex gap-8 justify-start">
+           <section className="relative mx-auto max-w-6xl px-4 sm:px-6 h-full flex items-center justify-center">
+             <div className="text-center w-full max-w-4xl">
+               <div className="mb-8 sm:mb-12">
+                 <h3 className="text-2xl sm:text-3xl text-white font-bold uppercase mb-4 sm:mb-6">Need Assistance?</h3>
+                 <p className="text-lg sm:text-xl font-normal text-white">Our logistics team can help with visas, hotels, and transport.</p>
+               </div>
+               <div className="flex flex-col sm:flex-row gap-4 sm:gap-8 justify-center">
                  <button 
-                   onClick={() => window.location.href = '#parallax-section'} 
-                   className="bg-paan-blue text-paan-dark-blue px-8 py-3 rounded-full hover:bg-paan-blue/90 transition-all duration-300 font-medium text-base shadow-lg flex items-center gap-2"
+                   onClick={() => window.location.href = 'mailto:secretariat@paan.africa?subject=PAAN Summit 2025 - Travel Assistance Request&body=Hello PAAN Travel Team,%0D%0A%0D%0AI need assistance with my travel arrangements for the PAAN Summit 2025 in Nairobi.%0D%0A%0D%0APlease help me with:%0D%0A- [ ] Visa requirements and application%0D%0A- [ ] Hotel recommendations and bookings%0D%0A- [ ] Transportation arrangements%0D%0A- [ ] General travel advice%0D%0A- [ ] Other: _________________%0D%0A%0D%0AAdditional details:%0D%0A%0D%0A%0D%0AThank you for your assistance.%0D%0A%0D%0ABest regards'}
+                   className="bg-paan-blue text-paan-dark-blue px-6 sm:px-8 py-3 rounded-full hover:bg-paan-blue/90 transition-all duration-300 font-medium text-sm sm:text-base shadow-lg flex items-center justify-center gap-2"
                  >
                    Talk to Us
                  </button>
                  <button 
-                   onClick={() => window.location.href = '#parallax-section'} 
-                   className="bg-transparent border border-white text-white px-8 py-3 rounded-full hover:bg-paan-blue/90 transition-all duration-300 font-medium text-base shadow-lg flex items-center gap-2"
+                   onClick={() => window.open('https://www.etakenya.go.ke/check-requirements', '_blank')}
+                   className="bg-transparent border border-white text-white px-6 sm:px-8 py-3 rounded-full hover:bg-paan-blue/90 transition-all duration-300 font-medium text-sm sm:text-base shadow-lg flex items-center justify-center gap-2"
                  >
                    Visa Quick Check
                  </button>
-                 </div>
+               </div>
              </div>
            </section>
-         </motion.div>
+         </div>
          <div className="bg-paan-dark-blue relative">
            <div className="w-full h-[30px] sm:h-[40px] md:h-[50px] relative">
               <Image
@@ -1172,8 +1169,8 @@ const Hero = ({ sectionRefs, handleScroll, isFixed, timeLeft }) => {
         />
                
         {/* Content overlay */}
-        <div className="relative h-full flex items-end pb-48">
-          <div className="mx-auto max-w-6xl w-full">
+        <div className="relative h-full flex items-end pb-16 sm:pb-24 md:pb-48">
+          <div className="mx-auto max-w-6xl w-full px-4">
             <motion.div 
               className="max-w-2xl"
               variants={staggerContainer}
@@ -1181,39 +1178,45 @@ const Hero = ({ sectionRefs, handleScroll, isFixed, timeLeft }) => {
               animate="animate"
             >
               <motion.p 
-                className="bg-white/20 text-white px-4 py-2 rounded-full text-sm font-medium mb-4 w-fit border border-white"
+                className="bg-white/20 text-white px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-medium mb-4 w-fit border border-white"
                 variants={fadeInUp}
               >
                 Travel Guide
               </motion.p>
               
               <motion.h1 
-                className="text-3xl md:text-3xl font-semibold uppercase text-yellow-400 mb-8"
+                className="text-2xl sm:text-3xl md:text-4xl font-semibold uppercase text-yellow-400 mb-6 sm:mb-8 leading-tight"
                 variants={fadeInUp}
               >
                 Travel Guide — Nairobi 2026
               </motion.h1>
-              <motion.p 
-                className="font-normal text-white mb-8"
-                variants={fadeInUp}
-              >
-                Your complete guide to visas, venue, hotels, transport, and what to pack for the PAAN Summit.
-              </motion.p>
               <motion.div 
-                className="flex md:flex-row flex-col gap-4 mb-10"
+                className="flex flex-col sm:flex-row gap-2 sm:gap-4 mb-6 sm:mb-10"
                 variants={fadeInUp}
               >
                 <SeminarLocationAndDate />
               </motion.div>
               <motion.div 
-                className="flex flex-col sm:flex-row justify-start gap-8"
+                className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-6 md:gap-8"
                 variants={scaleIn}
               >
                 <button 
-                  onClick={(e) => handleScroll(e, '#tickets-section')}
-                  className="bg-paan-red text-white px-8 py-3 rounded-full hover:bg-paan-red/90 transition-all duration-300 font-medium text-base shadow-lg flex items-center gap-2"
+                  onClick={() => window.location.href = '/summit'}
+                  className="bg-paan-red text-white px-6 sm:px-8 py-3 rounded-full hover:bg-paan-red/90 transition-all duration-300 font-medium text-sm sm:text-base shadow-lg flex items-center justify-center gap-2 w-full sm:w-auto"
                 >
                   Register Now
+                </button>
+                <button 
+                  onClick={() => window.location.href = '/summit/travel-guide#visa-requirements'}
+                  className="bg-transparent border border-white text-white px-6 sm:px-8 py-3 rounded-full hover:bg-white hover:text-paan-red transition-all duration-300 font-medium text-sm sm:text-base shadow-lg flex items-center justify-center gap-2 w-full sm:w-auto"
+                >
+                  Visa Requirements
+                </button>
+                <button 
+                  onClick={() => window.location.href = '/summit/travel-guide#accommodation'}
+                  className="bg-transparent border border-white text-white px-6 sm:px-8 py-3 rounded-full hover:bg-white hover:text-paan-red transition-all duration-300 font-medium text-sm sm:text-base shadow-lg flex items-center justify-center gap-2 w-full sm:w-auto"
+                >
+                  Accommodation
                 </button>             
               </motion.div>
             </motion.div>
@@ -1228,19 +1231,19 @@ const Hero = ({ sectionRefs, handleScroll, isFixed, timeLeft }) => {
 const SeminarLocationAndDate = ()=> {
     
   return (
-    <div className="flex md:flex-row flex-col gap-4">
-      <div className="flex items-center gap-2 text-white text-sm whitespace-nowrap">
-        <Icon icon="mdi:map-marker" className="text-red-500" width="24" height="24" />
-        <span>Sarit Centre, Nairobi, Kenya - <strong>23–24 April 2026</strong></span>
+    <div className="flex flex-col sm:flex-row gap-2 sm:gap-4">
+      <div className="flex items-center gap-2 text-white text-xs sm:text-sm">
+        <Icon icon="mdi:map-marker" className="text-red-500 flex-shrink-0" width="20" height="20" />
+        <span className="break-words sm:whitespace-nowrap">Sarit Centre, Nairobi, Kenya - <strong>23–24 April 2026</strong></span>
       </div>
       
-      <div className="flex items-center gap-2 text-white text-sm whitespace-nowrap">
-        <Icon icon="mdi:user-group" className="text-red-500" width="24" height="24" />
-        <span>300+ In Person</span>
+      <div className="flex items-center gap-2 text-white text-xs sm:text-sm">
+        <Icon icon="mdi:user-group" className="text-red-500 flex-shrink-0" width="20" height="20" />
+        <span className="whitespace-nowrap">300+ In Person</span>
       </div>
-      <div className="flex items-center gap-2 text-white text-sm whitespace-nowrap">
-        <Icon icon="mdi:globe" className="text-red-500" width="24" height="24" />
-        <span>1,000+ Streaming</span>
+      <div className="flex items-center gap-2 text-white text-xs sm:text-sm">
+        <Icon icon="mdi:globe" className="text-red-500 flex-shrink-0" width="20" height="20" />
+        <span className="whitespace-nowrap">1,000+ Streaming</span>
       </div>
     </div>
   );
