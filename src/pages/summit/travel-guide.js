@@ -349,9 +349,14 @@ const TravelGuide = () => {
   return (
     <>
       <SEO
-        title="PAAN Summit 2025 | Africa's Premier Creative & Tech Leadership Conference"
-        description="Join the inaugural PAAN Summit in Nairobi, Kenya — a groundbreaking event uniting Africa's top creative and tech leaders for three days of innovation, collaboration, and growth."
-        keywords="PAAN Summit 2025, African creative summit, tech conference Africa, Nairobi summit, Pan-African events, African innovation, creative tech Africa, agency summit Africa"
+        title="PAAN Summit 2025 Travel Guide | Nairobi, Kenya - Visa, Hotels & Transport"
+        description="Complete travel guide for PAAN Summit 2025 in Nairobi, Kenya. Get visa requirements, accommodation options, transport details, and essential travel tips for your visit to Africa's premier creative and tech conference."
+        keywords="PAAN Summit travel guide, Nairobi travel guide, Kenya visa requirements, Nairobi accommodation, PAAN Summit hotels, Nairobi transport, Kenya travel tips, African conference travel, business travel Kenya, Nairobi conference guide"
+        image="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/travel-guide-parallax-image.png"
+        ogTitle="PAAN Summit 2025 Travel Guide | Nairobi, Kenya - Visa, Hotels & Transport"
+        ogDescription="Complete travel guide for PAAN Summit 2025 in Nairobi, Kenya. Get visa requirements, accommodation options, transport details, and essential travel tips for your visit to Africa's premier creative and tech conference."
+        twitterTitle="PAAN Summit 2025 Travel Guide | Nairobi, Kenya - Visa, Hotels & Transport"
+        twitterDescription="Complete travel guide for PAAN Summit 2025 in Nairobi, Kenya. Get visa requirements, accommodation options, transport details, and essential travel tips for your visit to Africa's premier creative and tech conference."
       />
       <Head>
         <script
@@ -359,36 +364,85 @@ const TravelGuide = () => {
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "Event",
-              "name": "PAAN Inaugural Summit 2025",
-              "startDate": "2025-10-22T09:00:00+03:00",
-              "endDate": "2025-10-24T17:00:00+03:00",
-              "eventAttendanceMode": "https://schema.org/MixedEventAttendanceMode",
-              "eventStatus": "https://schema.org/EventScheduled",
-              "location": {
-                "@type": "Place",
-                "name": "PAAN Africa Conference Center",
-                "address": {
-                  "@type": "PostalAddress",
-                  "streetAddress": "Nairobi Business Hub",
-                  "addressLocality": "Nairobi",
-                  "addressRegion": "Nairobi County",
-                  "postalCode": "00100",
-                  "addressCountry": "KE"
+              "@type": "WebPage",
+              "name": "PAAN Summit 2025 Travel Guide | Nairobi, Kenya - Visa, Hotels & Transport",
+              "description": "Complete travel guide for PAAN Summit 2025 in Nairobi, Kenya. Get visa requirements, accommodation options, transport details, and essential travel tips for your visit to Africa's premier creative and tech conference.",
+              "url": "https://paan.africa/summit/travel-guide",
+              "image": [
+                "https://ik.imagekit.io/nkmvdjnna/PAAN/summit/travel-guide-parallax-image.png",
+                "https://ik.imagekit.io/nkmvdjnna/PAAN/summit/summit-hero.webp?updatedAt=1757505455932"
+              ],
+              "mainEntity": {
+                "@type": "Event",
+                "name": "PAAN Summit 2025 - Africa's Premier Creative & Tech Leadership Conference",
+                "startDate": "2025-10-22T09:00:00+03:00",
+                "endDate": "2025-10-24T17:00:00+03:00",
+                "eventAttendanceMode": "https://schema.org/MixedEventAttendanceMode",
+                "eventStatus": "https://schema.org/EventScheduled",
+                "location": {
+                  "@type": "Place",
+                  "name": "Sarit Centre",
+                  "address": {
+                    "@type": "PostalAddress",
+                    "streetAddress": "Sarit Centre, Westlands",
+                    "addressLocality": "Nairobi",
+                    "addressRegion": "Nairobi County",
+                    "postalCode": "00100",
+                    "addressCountry": "KE"
+                  },
+                  "geo": {
+                    "@type": "GeoCoordinates",
+                    "latitude": "-1.2921",
+                    "longitude": "36.8219"
+                  }
+                },
+                "organizer": { 
+                  "@type": "Organization", 
+                  "name": "Pan-African Agency Network (PAAN)", 
+                  "url": "https://paan.africa"
                 }
               },
-              "image": ["https://paan.africa/assets/images/hero.webp"],
-              "description": "Join the PAAN Africa Summit 2025 to connect with freelancers, businesses, and innovators shaping the African digital economy. Engage in workshops, panels, and networking sessions with industry leaders.",
-              "offers": {
-                "@type": "Offer",
-                "url": "https://paan.africa/summit",
-                "price": "0",
-                "priceCurrency": "USD",
-                "availability": "https://schema.org/InStock",
-                "validFrom": "2025-09-01T00:00:00+03:00"
+              "breadcrumb": {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                  {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://paan.africa"
+                  },
+                  {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Summit",
+                    "item": "https://paan.africa/summit"
+                  },
+                  {
+                    "@type": "ListItem",
+                    "position": 3,
+                    "name": "Travel Guide",
+                    "item": "https://paan.africa/summit/travel-guide"
+                  }
+                ]
               },
-              "performer": { "@type": "Organization", "name": "PAAN Africa" },
-              "organizer": { "@type": "Organization", "name": "PAAN Africa", "url": "https://paan.africa" }
+              "about": [
+                {
+                  "@type": "Thing",
+                  "name": "Nairobi Travel Information",
+                  "description": "Essential travel information for visiting Nairobi, Kenya"
+                },
+                {
+                  "@type": "Thing", 
+                  "name": "Kenya Visa Requirements",
+                  "description": "Visa and entry requirements for Kenya"
+                },
+                {
+                  "@type": "Thing",
+                  "name": "Nairobi Accommodation",
+                  "description": "Hotel and accommodation options in Nairobi"
+                }
+              ],
+              "keywords": "PAAN Summit travel guide, Nairobi travel guide, Kenya visa requirements, Nairobi accommodation, PAAN Summit hotels, Nairobi transport, Kenya travel tips, African conference travel, business travel Kenya, Nairobi conference guide"
             }),
           }}
         />

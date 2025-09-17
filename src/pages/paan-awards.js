@@ -379,9 +379,14 @@ const SummitPage = () => {
   return (
     <>
       <SEO
-        title="PAAN Summit 2025 | Africa's Premier Creative & Tech Leadership Conference"
-        description="Join the inaugural PAAN Summit in Nairobi, Kenya — a groundbreaking event uniting Africa's top creative and tech leaders for three days of innovation, collaboration, and growth."
-        keywords="PAAN Summit 2025, African creative summit, tech conference Africa, Nairobi summit, Pan-African events, African innovation, creative tech Africa, agency summit Africa"
+        title="PAAN Awards 2025 | Celebrating Excellence in African Creative & Tech Industry"
+        description="Join the prestigious PAAN Awards 2025, recognizing outstanding achievements in Africa's creative and tech industry. Celebrate innovation, creativity, and excellence across agencies, freelancers, and digital professionals shaping Africa's future."
+        keywords="PAAN Awards 2025, African creative awards, tech industry awards, creative excellence Africa, digital innovation awards, African agency awards, freelancer recognition, creative industry awards, tech leadership awards, African business awards"
+        image="https://ik.imagekit.io/nkmvdjnna/PAAN/awards/awards-hero.webp"
+        ogTitle="PAAN Awards 2025 | Celebrating Excellence in African Creative & Tech Industry"
+        ogDescription="Join the prestigious PAAN Awards 2025, recognizing outstanding achievements in Africa's creative and tech industry. Celebrate innovation, creativity, and excellence across agencies, freelancers, and digital professionals shaping Africa's future."
+        twitterTitle="PAAN Awards 2025 | Celebrating Excellence in African Creative & Tech Industry"
+        twitterDescription="Join the prestigious PAAN Awards 2025, recognizing outstanding achievements in Africa's creative and tech industry. Celebrate innovation, creativity, and excellence across agencies, freelancers, and digital professionals shaping Africa's future."
       />
       <Head>
         <script
@@ -390,35 +395,74 @@ const SummitPage = () => {
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Event",
-              "name": "PAAN Inaugural Summit 2025",
-              "startDate": "2025-10-22T09:00:00+03:00",
-              "endDate": "2025-10-24T17:00:00+03:00",
+              "name": "PAAN Awards 2025 - Celebrating Excellence in African Creative & Tech Industry",
+              "alternateName": "PAAN Creative & Tech Awards 2025",
+              "startDate": "2025-10-22T19:00:00+03:00",
+              "endDate": "2025-10-22T23:00:00+03:00",
               "eventAttendanceMode": "https://schema.org/MixedEventAttendanceMode",
               "eventStatus": "https://schema.org/EventScheduled",
               "location": {
                 "@type": "Place",
-                "name": "PAAN Africa Conference Center",
+                "name": "Sarit Centre",
                 "address": {
                   "@type": "PostalAddress",
-                  "streetAddress": "Nairobi Business Hub",
+                  "streetAddress": "Sarit Centre, Westlands",
                   "addressLocality": "Nairobi",
                   "addressRegion": "Nairobi County",
                   "postalCode": "00100",
                   "addressCountry": "KE"
+                },
+                "geo": {
+                  "@type": "GeoCoordinates",
+                  "latitude": "-1.2921",
+                  "longitude": "36.8219"
                 }
               },
-              "image": ["https://paan.africa/assets/images/hero.webp"],
-              "description": "Join the PAAN Africa Summit 2025 to connect with freelancers, businesses, and innovators shaping the African digital economy. Engage in workshops, panels, and networking sessions with industry leaders.",
+              "image": [
+                "https://ik.imagekit.io/nkmvdjnna/PAAN/awards/awards-hero.webp",
+                "https://paan.africa/assets/images/hero.webp"
+              ],
+              "description": "Join the prestigious PAAN Awards 2025, recognizing outstanding achievements in Africa's creative and tech industry. Celebrate innovation, creativity, and excellence across agencies, freelancers, and digital professionals shaping Africa's future.",
               "offers": {
                 "@type": "Offer",
-                "url": "https://paan.africa/summit",
+                "url": "https://paan.africa/paan-awards",
                 "price": "0",
                 "priceCurrency": "USD",
                 "availability": "https://schema.org/InStock",
-                "validFrom": "2025-09-01T00:00:00+03:00"
+                "validFrom": "2025-09-01T00:00:00+03:00",
+                "description": "Free attendance for PAAN Awards 2025 ceremony"
               },
-              "performer": { "@type": "Organization", "name": "PAAN Africa" },
-              "organizer": { "@type": "Organization", "name": "PAAN Africa", "url": "https://paan.africa" }
+              "performer": { 
+                "@type": "Organization", 
+                "name": "PAAN Africa",
+                "url": "https://paan.africa"
+              },
+              "organizer": { 
+                "@type": "Organization", 
+                "name": "Pan-African Agency Network (PAAN)", 
+                "url": "https://paan.africa",
+                "logo": "https://ik.imagekit.io/nkmvdjnna/PAAN/paan-logo.jpg?updatedAt=1757522406296"
+              },
+              "audience": {
+                "@type": "Audience",
+                "audienceType": "Creative professionals, tech industry leaders, agencies, freelancers, digital innovators, award nominees and winners"
+              },
+              "eventSchedule": {
+                "@type": "Schedule",
+                "startTime": "19:00",
+                "endTime": "23:00",
+                "duration": "PT4H"
+              },
+              "award": {
+                "@type": "Award",
+                "name": "PAAN Awards 2025",
+                "description": "Annual awards recognizing excellence in African creative and tech industry",
+                "sponsor": {
+                  "@type": "Organization",
+                  "name": "Pan-African Agency Network (PAAN)"
+                }
+              },
+              "keywords": "PAAN Awards 2025, African creative awards, tech industry awards, creative excellence Africa, digital innovation awards, African agency awards, freelancer recognition, creative industry awards, tech leadership awards, African business awards"
             }),
           }}
         />

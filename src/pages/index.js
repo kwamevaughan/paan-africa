@@ -847,7 +847,7 @@ const HomePage = () => {
                   </div>
                 </div>
                 <Link
-                  href="#"
+                  href="summit"
                   className="inline-flex items-center gap-2 bg-[#172840] text-white px-8 py-3 rounded-full font-semibold hover:bg-[#F25849] transition-all duration-300 shadow-lg hover:shadow-xl"
                 >
                   <span>{t('homepage.events.featuredEvent.cta')}</span>

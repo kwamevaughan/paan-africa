@@ -331,8 +331,13 @@ const SummitPage = () => {
     <>
       <SEO
         title="PAAN Summit 2025 | Africa's Premier Creative & Tech Leadership Conference"
-        description="Join the inaugural PAAN Summit in Nairobi, Kenya — a groundbreaking event uniting Africa's top creative and tech leaders for three days of innovation, collaboration, and growth."
-        keywords="PAAN Summit 2025, African creative summit, tech conference Africa, Nairobi summit, Pan-African events, African innovation, creative tech Africa, agency summit Africa"
+        description="Join the inaugural PAAN Summit in Nairobi, Kenya — a groundbreaking event uniting Africa's top creative and tech leaders for three days of innovation, collaboration, and growth. Connect with industry leaders, explore cutting-edge trends, and shape the future of African creativity and technology."
+        keywords="PAAN Summit 2025, African creative summit, tech conference Africa, Nairobi summit, Pan-African events, African innovation, creative tech Africa, agency summit Africa, creative leadership, tech leadership, African business summit, innovation conference"
+        image="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/summit-hero.webp?updatedAt=1757505455932"
+        ogTitle="PAAN Summit 2025 | Africa's Premier Creative & Tech Leadership Conference"
+        ogDescription="Join the inaugural PAAN Summit in Nairobi, Kenya — a groundbreaking event uniting Africa's top creative and tech leaders for three days of innovation, collaboration, and growth."
+        twitterTitle="PAAN Summit 2025 | Africa's Premier Creative & Tech Leadership Conference"
+        twitterDescription="Join the inaugural PAAN Summit in Nairobi, Kenya — a groundbreaking event uniting Africa's top creative and tech leaders for three days of innovation, collaboration, and growth."
       />
       <Head>
         <script
@@ -341,35 +346,66 @@ const SummitPage = () => {
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Event",
-              "name": "PAAN Inaugural Summit 2025",
+              "name": "PAAN Summit 2025 - Africa's Premier Creative & Tech Leadership Conference",
+              "alternateName": "PAAN Inaugural Summit 2025",
               "startDate": "2025-10-22T09:00:00+03:00",
               "endDate": "2025-10-24T17:00:00+03:00",
               "eventAttendanceMode": "https://schema.org/MixedEventAttendanceMode",
               "eventStatus": "https://schema.org/EventScheduled",
               "location": {
                 "@type": "Place",
-                "name": "PAAN Africa Conference Center",
+                "name": "Sarit Centre",
                 "address": {
                   "@type": "PostalAddress",
-                  "streetAddress": "Nairobi Business Hub",
+                  "streetAddress": "Sarit Centre, Westlands",
                   "addressLocality": "Nairobi",
                   "addressRegion": "Nairobi County",
                   "postalCode": "00100",
                   "addressCountry": "KE"
+                },
+                "geo": {
+                  "@type": "GeoCoordinates",
+                  "latitude": "-1.2921",
+                  "longitude": "36.8219"
                 }
               },
-              "image": ["https://paan.africa/assets/images/hero.webp"],
-              "description": "Join the PAAN Africa Summit 2025 to connect with freelancers, businesses, and innovators shaping the African digital economy. Engage in workshops, panels, and networking sessions with industry leaders.",
+              "image": [
+                "https://ik.imagekit.io/nkmvdjnna/PAAN/summit/summit-hero.webp?updatedAt=1757505455932",
+                "https://paan.africa/assets/images/hero.webp"
+              ],
+              "description": "Join the inaugural PAAN Summit in Nairobi, Kenya — a groundbreaking event uniting Africa's top creative and tech leaders for three days of innovation, collaboration, and growth. Connect with industry leaders, explore cutting-edge trends, and shape the future of African creativity and technology.",
               "offers": {
                 "@type": "Offer",
                 "url": "https://paan.africa/summit",
                 "price": "0",
                 "priceCurrency": "USD",
                 "availability": "https://schema.org/InStock",
-                "validFrom": "2025-09-01T00:00:00+03:00"
+                "validFrom": "2025-09-01T00:00:00+03:00",
+                "description": "Free registration for PAAN Summit 2025"
               },
-              "performer": { "@type": "Organization", "name": "PAAN Africa" },
-              "organizer": { "@type": "Organization", "name": "PAAN Africa", "url": "https://paan.africa" }
+              "performer": { 
+                "@type": "Organization", 
+                "name": "PAAN Africa",
+                "url": "https://paan.africa"
+              },
+              "organizer": { 
+                "@type": "Organization", 
+                "name": "Pan-African Agency Network (PAAN)", 
+                "url": "https://paan.africa",
+                "logo": "https://ik.imagekit.io/nkmvdjnna/PAAN/paan-logo.jpg?updatedAt=1757522406296"
+              },
+              "audience": {
+                "@type": "Audience",
+                "audienceType": "Creative and tech professionals, agency leaders, entrepreneurs, innovators"
+              },
+              "eventSchedule": {
+                "@type": "Schedule",
+                "startTime": "09:00",
+                "endTime": "17:00",
+                "repeatFrequency": "P1D",
+                "duration": "P3D"
+              },
+              "keywords": "PAAN Summit 2025, African creative summit, tech conference Africa, Nairobi summit, Pan-African events, African innovation, creative tech Africa, agency summit Africa"
             }),
           }}
         />
