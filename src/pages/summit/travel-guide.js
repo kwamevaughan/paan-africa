@@ -1239,7 +1239,7 @@ const SeminarLocationAndDate = ()=> {
       
       <div className="flex items-center gap-2 text-white text-xs sm:text-sm">
         <Icon icon="mdi:user-group" className="text-red-500 flex-shrink-0" width="20" height="20" />
-        <span className="whitespace-nowrap">300+ In Person</span>
+        <span className="whitespace-nowrap">500+ In Person</span>
       </div>
       <div className="flex items-center gap-2 text-white text-xs sm:text-sm">
         <Icon icon="mdi:globe" className="text-red-500 flex-shrink-0" width="20" height="20" />

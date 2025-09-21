@@ -66,9 +66,9 @@ const SummitPage = () => {
     termSheets: 0
   });
 
-  // Speakers carousel state
-  const [currentJuryIndex, setCurrentJuryIndex] = useState(0);
-  const [visibleJury, setVisibleJury] = useState(3);
+  // Speakers carousel state - Commented out jury state
+  // const [currentJuryIndex, setCurrentJuryIndex] = useState(0);
+  // const [visibleJury, setVisibleJury] = useState(3);
 
   // Sessions carousel state
   const [currentSessionIndex, setCurrentSessionIndex] = useState(0);
@@ -78,37 +78,37 @@ const SummitPage = () => {
   const [awardType, setAwardType] = useState('agency'); // 'agency' or 'freelancer'
 
  
-  // Get visible jury
-  const getVisibleJury = () => {
-    return jury.slice(currentJuryIndex, currentJuryIndex + visibleJury);
-  };
+  // Get visible jury - Commented out
+  // const getVisibleJury = () => {
+  //   return jury.slice(currentJuryIndex, currentJuryIndex + visibleJury);
+  // };
 
   // Get visible sessions
   const getVisibleSessions = () => {
     return sessions.slice(currentSessionIndex, currentSessionIndex + visibleSessions);
   };
 
-  // Jury data
-  const jury = [
-    {
-      id: 1,
-      name: "Mark Doe",
-      title: "CEO, Company",
-      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/awards/jury/1.png",
-    },
-    {
-      id: 2,
-      name: "Sarah Johnson",
-      title: "Creative Director, Design Studio",
-      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/awards/jury/1.png",
-    },
-    {
-      id: 3,
-      name: "David Kim",
-      title: "Tech Innovation Lead, Startup Inc",
-      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/awards/jury/1.png",
-    },
-  ];
+  // Jury data - Commented out
+  // const jury = [
+  //   {
+  //     id: 1,
+  //     name: "Mark Doe",
+  //     title: "CEO, Company",
+  //     image: "https://ik.imagekit.io/nkmvdjnna/PAAN/awards/jury/1.png",
+  //   },
+  //   {
+  //     id: 2,
+  //     name: "Sarah Johnson",
+  //     title: "Creative Director, Design Studio",
+  //     image: "https://ik.imagekit.io/nkmvdjnna/PAAN/awards/jury/1.png",
+  //   },
+  //   {
+  //     id: 3,
+  //     name: "David Kim",
+  //     title: "Tech Innovation Lead, Startup Inc",
+  //     image: "https://ik.imagekit.io/nkmvdjnna/PAAN/awards/jury/1.png",
+  //   },
+  // ];
 
   // Sessions/Special Features data
   const sessions = [
@@ -289,9 +289,9 @@ const SummitPage = () => {
     seconds: 0
   });
 
-  // Set target date to April 23, 2026
+  // Set target date to April 22, 2026
   useEffect(() => {
-    const targetDate = new Date('2026-04-23T00:00:00+03:00'); // April 23, 2026 at midnight EAT
+    const targetDate = new Date('2026-04-22T00:00:00+03:00'); // April 22, 2026 at midnight EAT
     
     const interval = setInterval(() => {
       const now = new Date();
@@ -379,14 +379,14 @@ const SummitPage = () => {
   return (
     <>
       <SEO
-        title="PAAN Awards 2025 | Celebrating Excellence in African Creative & Tech Industry"
-        description="Join the prestigious PAAN Awards 2025, recognizing outstanding achievements in Africa's creative and tech industry. Celebrate innovation, creativity, and excellence across agencies, freelancers, and digital professionals shaping Africa's future."
-        keywords="PAAN Awards 2025, African creative awards, tech industry awards, creative excellence Africa, digital innovation awards, African agency awards, freelancer recognition, creative industry awards, tech leadership awards, African business awards"
+        title="PAAN Awards 2026 | Celebrating Excellence in African Creative & Tech Industry"
+        description="Join the prestigious PAAN Awards 2026, recognizing outstanding achievements in Africa's creative and tech industry. Celebrate innovation, creativity, and excellence across agencies, freelancers, and digital professionals shaping Africa's future."
+        keywords="PAAN Awards 2026, African creative awards, tech industry awards, creative excellence Africa, digital innovation awards, African agency awards, freelancer recognition, creative industry awards, tech leadership awards, African business awards"
         image="https://ik.imagekit.io/nkmvdjnna/PAAN/awards/awards-hero.webp"
-        ogTitle="PAAN Awards 2025 | Celebrating Excellence in African Creative & Tech Industry"
-        ogDescription="Join the prestigious PAAN Awards 2025, recognizing outstanding achievements in Africa's creative and tech industry. Celebrate innovation, creativity, and excellence across agencies, freelancers, and digital professionals shaping Africa's future."
-        twitterTitle="PAAN Awards 2025 | Celebrating Excellence in African Creative & Tech Industry"
-        twitterDescription="Join the prestigious PAAN Awards 2025, recognizing outstanding achievements in Africa's creative and tech industry. Celebrate innovation, creativity, and excellence across agencies, freelancers, and digital professionals shaping Africa's future."
+        ogTitle="PAAN Awards 2026 | Celebrating Excellence in African Creative & Tech Industry"
+        ogDescription="Join the prestigious PAAN Awards 2026, recognizing outstanding achievements in Africa's creative and tech industry. Celebrate innovation, creativity, and excellence across agencies, freelancers, and digital professionals shaping Africa's future."
+        twitterTitle="PAAN Awards 2026 | Celebrating Excellence in African Creative & Tech Industry"
+        twitterDescription="Join the prestigious PAAN Awards 2026, recognizing outstanding achievements in Africa's creative and tech industry. Celebrate innovation, creativity, and excellence across agencies, freelancers, and digital professionals shaping Africa's future."
       />
       <Head>
         <script
@@ -395,10 +395,10 @@ const SummitPage = () => {
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Event",
-              "name": "PAAN Awards 2025 - Celebrating Excellence in African Creative & Tech Industry",
-              "alternateName": "PAAN Creative & Tech Awards 2025",
-              "startDate": "2025-10-22T19:00:00+03:00",
-              "endDate": "2025-10-22T23:00:00+03:00",
+              "name": "PAAN Awards 2026 - Celebrating Excellence in African Creative & Tech Industry",
+              "alternateName": "PAAN Creative & Tech Awards 2026",
+              "startDate": "2026-04-22T19:00:00+03:00",
+              "endDate": "2026-04-22T23:00:00+03:00",
               "eventAttendanceMode": "https://schema.org/MixedEventAttendanceMode",
               "eventStatus": "https://schema.org/EventScheduled",
               "location": {
@@ -422,15 +422,15 @@ const SummitPage = () => {
                 "https://ik.imagekit.io/nkmvdjnna/PAAN/awards/awards-hero.webp",
                 "https://paan.africa/assets/images/hero.webp"
               ],
-              "description": "Join the prestigious PAAN Awards 2025, recognizing outstanding achievements in Africa's creative and tech industry. Celebrate innovation, creativity, and excellence across agencies, freelancers, and digital professionals shaping Africa's future.",
+              "description": "Join the prestigious PAAN Awards 2026, recognizing outstanding achievements in Africa's creative and tech industry. Celebrate innovation, creativity, and excellence across agencies, freelancers, and digital professionals shaping Africa's future.",
               "offers": {
                 "@type": "Offer",
                 "url": "https://paan.africa/paan-awards",
                 "price": "0",
                 "priceCurrency": "USD",
                 "availability": "https://schema.org/InStock",
-                "validFrom": "2025-09-01T00:00:00+03:00",
-                "description": "Free attendance for PAAN Awards 2025 ceremony"
+                "validFrom": "2026-09-01T00:00:00+03:00",
+                "description": "Free attendance for PAAN Awards 2026 ceremony"
               },
               "performer": { 
                 "@type": "Organization", 
@@ -455,14 +455,14 @@ const SummitPage = () => {
               },
               "award": {
                 "@type": "Award",
-                "name": "PAAN Awards 2025",
+                "name": "PAAN Awards 2026",
                 "description": "Annual awards recognizing excellence in African creative and tech industry",
                 "sponsor": {
                   "@type": "Organization",
                   "name": "Pan-African Agency Network (PAAN)"
                 }
               },
-              "keywords": "PAAN Awards 2025, African creative awards, tech industry awards, creative excellence Africa, digital innovation awards, African agency awards, freelancer recognition, creative industry awards, tech leadership awards, African business awards"
+              "keywords": "PAAN Awards 2026, African creative awards, tech industry awards, creative excellence Africa, digital innovation awards, African agency awards, freelancer recognition, creative industry awards, tech leadership awards, African business awards"
             }),
           }}
         />
@@ -701,13 +701,14 @@ const SummitPage = () => {
           />
         </div>
 
-        {/* Jury section */}
+        {/* Jury section - Commented out */}
+        {/*
         <div className="bg-white relative py-20" id="speakers-section" isFixed={isFixed}>
            <section className="relative mx-auto max-w-6xl">
              <div className="text-center mb-12">
                <div>
                  <h3 className="text-3xl text-paan-dark-blue font-bold">Meet the Jury</h3>
-                 <p className="text-xl font-normal text-paan-dark-blue mb-4">Independent leaders shaping Africa’s creative future.</p>
+                 <p className="text-xl font-normal text-paan-dark-blue mb-4">Independent leaders shaping Africa's creative future.</p>
                </div>
              </div>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -720,7 +721,6 @@ const SummitPage = () => {
                       height={500}
                       className="w-full h-full object-cover"
                     />
-                    {/* Jury info at bottom */}
                     <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
                       <div>
                         <h4 className="text-xl font-bold text-paan-red mb-1">{jury.name}</h4>
@@ -732,6 +732,7 @@ const SummitPage = () => {
               </div>
           </section>
         </div>
+        */}
         
         {/* Categories Section */}
         <div className="bg-paan-dark-blue relative py-20" id="categories-section" isFixed={isFixed}>
@@ -807,9 +808,9 @@ const SummitPage = () => {
         <div className="bg-[#F3F9FB] relative py-20" id="key-dates-section" isFixed={isFixed}>
           <section className="relative mx-auto max-w-6xl">
             <div className="text-center mb-16">
-              <h2 className="text-4xl lg:text-5xl text-paan-dark-blue uppercase font-bold leading-tight mb-6">Key Dates 2025</h2>
+              <h2 className="text-4xl lg:text-5xl text-paan-dark-blue uppercase font-bold leading-tight mb-6">Key Dates 2026</h2>
               <p className="text-lg text-paan-dark-blue font-light leading-relaxed max-w-4xl mx-auto">
-                Mark your calendar for the PAAN Summit & Creative Excellence Awards 2025.
+                Mark your calendar for the PAAN Summit & Creative Excellence Awards 2026.
               </p>
             </div>
 
@@ -825,27 +826,27 @@ const SummitPage = () => {
                 </thead>
                 <tbody>
                   <tr className="border-t border-paan-dark-blue/20">
-                    <td className="py-6 px-6 text-paan-dark-blue font-medium">10 March 2025</td>
+                    <td className="py-6 px-6 text-paan-dark-blue font-medium">10 March 2026</td>
                     <td className="py-6 px-6 text-paan-red font-medium">Entries Open</td>
                     <td className="py-6 px-6 text-paan-dark-blue font-light">Submit your entries starting March 10. Showcase your agency, brand, or freelance work to a continental jury.</td>
                   </tr>
                   <tr className="border-t border-paan-dark-blue/20">
-                    <td className="py-6 px-6 text-paan-dark-blue font-medium">15 May 2025</td>
+                    <td className="py-6 px-6 text-paan-dark-blue font-medium">15 May 2026</td>
                     <td className="py-6 px-6 text-paan-red font-medium">Early Bird Deadline</td>
                     <td className="py-6 px-6 text-paan-dark-blue font-light">Take advantage of reduced entry fees and priority review for submissions received by this date.</td>
                   </tr>
                   <tr className="border-t border-paan-dark-blue/20">
-                    <td className="py-6 px-6 text-paan-dark-blue font-medium">30 June 2025</td>
+                    <td className="py-6 px-6 text-paan-dark-blue font-medium">30 June 2026</td>
                     <td className="py-6 px-6 text-paan-red font-medium">Final Entry Deadline</td>
                     <td className="py-6 px-6 text-paan-dark-blue font-light">All award entries must be submitted by midnight EAT. Late submissions will not be accepted.</td>
                   </tr>
                   <tr className="border-t border-paan-dark-blue/20">
-                    <td className="py-6 px-6 text-paan-dark-blue font-medium">15 August 2025</td>
+                    <td className="py-6 px-6 text-paan-dark-blue font-medium">15 August 2026</td>
                     <td className="py-6 px-6 text-paan-red font-medium">Finalists Announced</td>
                     <td className="py-6 px-6 text-paan-dark-blue font-light">The shortlisted entries will be revealed across all categories. Finalists will be notified directly.</td>
                   </tr>
                   <tr className="border-t border-paan-dark-blue/20">
-                    <td className="py-6 px-6 text-paan-dark-blue font-medium">22-24 October 2025</td>
+                    <td className="py-6 px-6 text-paan-dark-blue font-medium">22 April 2026</td>
                     <td className="py-6 px-6 text-paan-red font-medium">Awards Ceremony</td>
                     <td className="py-6 px-6 text-paan-dark-blue font-light">Join us at the PAAN Summit in Nairobi for the prestigious awards ceremony celebrating Africa's creative excellence.</td>
                   </tr>
