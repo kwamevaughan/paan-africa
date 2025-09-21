@@ -173,13 +173,22 @@ const EventDetail = ({ event, isPast = false }) => {
                 View Event Summary
               </Link>
             ) : (
-              <TicketPurchaseButton 
-                variant="primary" 
-                size="md"
-                className="w-full text-center px-6 py-3 rounded-full font-semibold transition-all duration-300 bg-paan-red text-white hover:bg-paan-red/90 hover:scale-105"
-              >
-                Register Now
-              </TicketPurchaseButton>
+              event.registrationUrl === "/summit" ? (
+                <Link
+                  href="/summit"
+                  className="w-full text-center px-6 py-3 rounded-full font-semibold transition-all duration-300 bg-paan-red text-white hover:bg-paan-red/90 hover:scale-105"
+                >
+                  Register Now
+                </Link>
+              ) : (
+                <TicketPurchaseButton 
+                  variant="primary" 
+                  size="md"
+                  className="w-full text-center px-6 py-3 rounded-full font-semibold transition-all duration-300 bg-paan-red text-white hover:bg-paan-red/90 hover:scale-105"
+                >
+                  Register Now
+                </TicketPurchaseButton>
+              )
             )}
           </div>
         </div>

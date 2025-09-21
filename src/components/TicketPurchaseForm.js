@@ -397,98 +397,100 @@ const TicketPurchaseForm = ({ onClose }) => {
             </div>
           </div>
 
-          {/* Membership Verification */}
-          <div className="bg-blue-50 border border-blue-200 rounded-xl p-4">
-            <h3 className="text-lg font-semibold text-paan-dark-blue mb-4">PAAN Membership Verification</h3>
-            <p className="text-sm text-gray-600 mb-4">
-              Verify your PAAN membership to access member pricing ($100 vs $150 for non-members)
-            </p>
-            
-            {/* Verification Method Selection */}
-            <div className="mb-4">
-              <label className="block text-sm font-medium text-paan-dark-blue mb-2">
-                Verification Method
-              </label>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                {verificationMethods.map((method) => (
-                  <button
-                    key={method.id}
-                    onClick={() => handleVerificationMethodChange(method.id)}
-                    className={`p-3 text-left border rounded-lg transition-all ${
-                      formData.membershipVerification.method === method.id
-                        ? "border-paan-blue bg-paan-blue/10"
-                        : "border-gray-200 hover:border-paan-blue"
-                    }`}
-                  >
-                    <div className="font-medium text-sm">{method.name}</div>
-                    <div className="text-xs text-gray-500 mt-1">{method.description}</div>
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            {/* Verification Input */}
-            {formData.membershipVerification.method && (
+          {/* Membership Verification - Only show for members ticket */}
+          {formData.ticketType === "members" && (
+            <div className="bg-blue-50 border border-blue-200 rounded-xl p-4">
+              <h3 className="text-lg font-semibold text-paan-dark-blue mb-4">PAAN Membership Verification</h3>
+              <p className="text-sm text-gray-600 mb-4">
+                Verify your PAAN membership to access member pricing ($100 vs $150 for non-members)
+              </p>
+              
+              {/* Verification Method Selection */}
               <div className="mb-4">
                 <label className="block text-sm font-medium text-paan-dark-blue mb-2">
-                  {verificationMethods.find(m => m.id === formData.membershipVerification.method)?.name}
+                  Verification Method
                 </label>
-                <div className="flex gap-2">
-                  <input
-                    type="text"
-                    value={formData.membershipVerification.value}
-                    onChange={(e) => handleVerificationValueChange(e.target.value)}
-                    placeholder={verificationMethods.find(m => m.id === formData.membershipVerification.method)?.placeholder}
-                    className="flex-1 px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-paan-blue focus:border-transparent transition-all"
-                  />
-                  <button
-                    onClick={verifyMembership}
-                    disabled={isVerifying || !formData.membershipVerification.value}
-                    className="px-6 py-3 bg-paan-blue text-white rounded-xl hover:bg-paan-blue/90 transition-colors font-medium disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
-                  >
-                    {isVerifying ? (
-                      <>
-                        <Icon icon="mdi:loading" className="w-4 h-4 animate-spin" />
-                        Verifying...
-                      </>
-                    ) : (
-                      <>
-                        <Icon icon="mdi:check-circle" className="w-4 h-4" />
-                        Verify
-                      </>
-                    )}
-                  </button>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  {verificationMethods.map((method) => (
+                    <button
+                      key={method.id}
+                      onClick={() => handleVerificationMethodChange(method.id)}
+                      className={`p-3 text-left border rounded-lg transition-all ${
+                        formData.membershipVerification.method === method.id
+                          ? "border-paan-blue bg-paan-blue/10"
+                          : "border-gray-200 hover:border-paan-blue"
+                      }`}
+                    >
+                      <div className="font-medium text-sm">{method.name}</div>
+                      <div className="text-xs text-gray-500 mt-1">{method.description}</div>
+                    </button>
+                  ))}
                 </div>
               </div>
-            )}
 
-            {/* Verification Status */}
-            {verificationStatus && (
-              <div className={`p-3 rounded-lg flex items-center gap-2 ${
-                verificationStatus === "verified" 
-                  ? "bg-green-50 border border-green-200" 
-                  : "bg-red-50 border border-red-200"
-              }`}>
-                <Icon 
-                  icon={verificationStatus === "verified" ? "mdi:check-circle" : "mdi:close-circle"} 
-                  className={`w-5 h-5 ${
-                    verificationStatus === "verified" ? "text-green-600" : "text-red-600"
-                  }`} 
-                />
-                <span className={`text-sm font-medium ${
-                  verificationStatus === "verified" ? "text-green-800" : "text-red-800"
+              {/* Verification Input */}
+              {formData.membershipVerification.method && (
+                <div className="mb-4">
+                  <label className="block text-sm font-medium text-paan-dark-blue mb-2">
+                    {verificationMethods.find(m => m.id === formData.membershipVerification.method)?.name}
+                  </label>
+                  <div className="flex gap-2">
+                    <input
+                      type="text"
+                      value={formData.membershipVerification.value}
+                      onChange={(e) => handleVerificationValueChange(e.target.value)}
+                      placeholder={verificationMethods.find(m => m.id === formData.membershipVerification.method)?.placeholder}
+                      className="flex-1 px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-paan-blue focus:border-transparent transition-all"
+                    />
+                    <button
+                      onClick={verifyMembership}
+                      disabled={isVerifying || !formData.membershipVerification.value}
+                      className="px-6 py-3 bg-paan-blue text-white rounded-xl hover:bg-paan-blue/90 transition-colors font-medium disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
+                    >
+                      {isVerifying ? (
+                        <>
+                          <Icon icon="mdi:loading" className="w-4 h-4 animate-spin" />
+                          Verifying...
+                        </>
+                      ) : (
+                        <>
+                          <Icon icon="mdi:check-circle" className="w-4 h-4" />
+                          Verify
+                        </>
+                      )}
+                    </button>
+                  </div>
+                </div>
+              )}
+
+              {/* Verification Status */}
+              {verificationStatus && (
+                <div className={`p-3 rounded-lg flex items-center gap-2 ${
+                  verificationStatus === "verified" 
+                    ? "bg-green-50 border border-green-200" 
+                    : "bg-red-50 border border-red-200"
                 }`}>
-                  {verificationStatus === "verified" 
-                    ? "✅ Membership verified! You qualify for member pricing." 
-                    : "❌ Membership not verified. You will be charged non-member pricing."}
-                </span>
-              </div>
-            )}
+                  <Icon 
+                    icon={verificationStatus === "verified" ? "mdi:check-circle" : "mdi:close-circle"} 
+                    className={`w-5 h-5 ${
+                      verificationStatus === "verified" ? "text-green-600" : "text-red-600"
+                    }`} 
+                  />
+                  <span className={`text-sm font-medium ${
+                    verificationStatus === "verified" ? "text-green-800" : "text-red-800"
+                  }`}>
+                    {verificationStatus === "verified" 
+                      ? "✅ Membership verified! You qualify for member pricing." 
+                      : "❌ Membership not verified. You will be charged non-member pricing."}
+                  </span>
+                </div>
+              )}
 
-            {errors.membershipVerification && (
-              <p className="text-red-500 text-sm mt-2">{errors.membershipVerification}</p>
-            )}
-          </div>
+              {errors.membershipVerification && (
+                <p className="text-red-500 text-sm mt-2">{errors.membershipVerification}</p>
+              )}
+            </div>
+          )}
 
           {/* Form Fields */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

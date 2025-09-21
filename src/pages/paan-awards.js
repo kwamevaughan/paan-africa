@@ -903,7 +903,7 @@ const SummitPage = () => {
   );
 };
 
-const Hero = ({ sectionRefs, handleScroll, isFixed, timeLeft }) => {
+const Hero = ({ sectionRefs, handleScroll, isFixed, scrollToSection, timeLeft }) => {
 
   return (
     <>
@@ -948,13 +948,13 @@ const Hero = ({ sectionRefs, handleScroll, isFixed, timeLeft }) => {
                 variants={scaleIn}
               >
                 <button 
-                  onClick={() => document.getElementById('open-positions').scrollIntoView({ behavior: 'smooth' })}
+                  onClick={() => scrollToSection('paan-awards-section')}
                   className="bg-[#F25849] border border-[#F25849] text-white py-3 sm:py-4 px-4 sm:px-6 md:px-8 lg:px-10 rounded-full hover:bg-[#D6473C] transition-all duration-300 transform ease-in-out hover:translate-y-[-2px] font-semibold text-sm sm:text-base w-full sm:w-auto min-h-[44px]"
                 >
                   Apply Now
                 </button>
                 <button 
-                  onClick={() => document.getElementById('why-join-us').scrollIntoView({ behavior: 'smooth' })}
+                  onClick={() => scrollToSection('categories-section')}
                   className="bg-transparent border border-white text-white py-3 sm:py-4 px-4 sm:px-6 md:px-8 lg:px-10 rounded-full hover:bg-white hover:text-[#172840] transition-all duration-300 transform ease-in-out hover:translate-y-[-2px] font-semibold text-sm sm:text-base w-full sm:w-auto min-h-[44px]"
                 >
                   Explore Categories

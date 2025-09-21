@@ -1163,7 +1163,7 @@ const Hero = ({ sectionRefs, handleScroll, isFixed, timeLeft }) => {
         <div 
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: "url('https://ik.imagekit.io/nkmvdjnna/PAAN/summit/summit-hero.webp?updatedAt=1757505455932')",
+            backgroundImage: "url('https://ik.imagekit.io/nkmvdjnna/PAAN/summit/nairobi-area.jpg')",
             filter: "brightness(0.5)" // Darkening the image
           }}
         />

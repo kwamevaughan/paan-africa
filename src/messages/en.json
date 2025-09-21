@@ -107,8 +107,8 @@
         "badge": "Featured Event",
         "title": "PAAN Creative Summit 2026",
         "description": "Join us for the biggest creative industry gathering in Africa. Network with top agencies, freelancers, and clients in an environment designed for meaningful connections and growth.",
-        "date": "April 23, 2026",
-        "location": "Nairobi, Kenya",
+        "date": "April 21-22, 2026",
+        "location": "Sarit Centre, Nairobi",
         "cta": "Learn More"
       },
       "webinars": {
@@ -804,7 +804,7 @@
       "title": "Stay Updated with PAAN Events",
       "description": "Never miss an opportunity to connect with Africa's creative community. Subscribe to our newsletter for event updates and industry insights.",
       "joinNetwork": "Join the Network",
-      "learnAboutSummit": "Learn About Summit 2025"
+      "learnAboutSummit": "Learn About Summit 2026"
     },
     "altText": {
       "backgroundPattern": "Background Pattern"

@@ -151,13 +151,22 @@ const EventCard = ({ event, isPast = false }) => {
               </Link>
             </div>
           ) : (
-            <TicketPurchaseButton 
-              variant="primary" 
-              size="sm"
-              className="px-4 sm:px-6 py-2 rounded-full font-semibold text-xs sm:text-sm transition-all duration-300 bg-paan-red text-white hover:bg-paan-red/90 hover:scale-105 w-full sm:w-auto text-center"
-            >
-              Register Now
-            </TicketPurchaseButton>
+            event.registrationUrl === "/summit" ? (
+              <Link
+                href="/summit"
+                className="px-4 sm:px-6 py-2 rounded-full font-semibold text-xs sm:text-sm transition-all duration-300 bg-paan-red text-white hover:bg-paan-red/90 hover:scale-105 w-full sm:w-auto text-center"
+              >
+                Register Now
+              </Link>
+            ) : (
+              <TicketPurchaseButton 
+                variant="primary" 
+                size="sm"
+                className="px-4 sm:px-6 py-2 rounded-full font-semibold text-xs sm:text-sm transition-all duration-300 bg-paan-red text-white hover:bg-paan-red/90 hover:scale-105 w-full sm:w-auto text-center"
+              >
+                Register Now
+              </TicketPurchaseButton>
+            )
           )}
         </div>
 

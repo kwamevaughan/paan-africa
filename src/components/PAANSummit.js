@@ -25,7 +25,7 @@ const PAANSummit = () => {
           <div className='flex flex-col justify-center p-4 lg:p-6 space-y-4'>
             <div>
               <h2 className='text-2xl lg:text-3xl font-bold text-[#172840] mb-3'>
-                PAAN Summit 2025
+                PAAN Summit 2026
               </h2>
               
               <div className='flex flex-col sm:flex-row gap-4 mb-4'>
@@ -74,16 +74,14 @@ const PAANSummit = () => {
 
             {/* CTA Button */}
             <div className='pt-4'>
-              <TicketPurchaseButton 
-                variant="primary" 
-                size="md"
-                className="bg-[#172840] hover:bg-[#D6473C] text-white font-semibold py-3 px-8 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 flex items-center gap-2 group text-base"
-              >
-                Register Now
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" className="fill-current group-hover:translate-x-1 transition-transform">
-                  <path d="M8.59 16.59L13.17 12L8.59 7.41L10 6l6 6l-6 6l-1.41-1.41z"/>
-                </svg>
-              </TicketPurchaseButton>
+              <Link href="/summit">
+                <button className='bg-[#172840] hover:bg-[#D6473C] text-white font-semibold py-3 px-8 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 flex items-center gap-2 group text-base'>
+                  Register Now
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" className="fill-current group-hover:translate-x-1 transition-transform">
+                    <path d="M8.59 16.59L13.17 12L8.59 7.41L10 6l6 6l-6 6l-1.41-1.41z"/>
+                  </svg>
+                </button>
+              </Link>
             </div>
           </div>
         </div>

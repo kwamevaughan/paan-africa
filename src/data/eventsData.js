@@ -3,11 +3,11 @@ export const eventsData = {
   upcoming: [
     {
       id: 2,
-      title: "PAAN Creative Summit 2025",
-      date: "2025-10-22",
+      title: "PAAN Creative Summit 2026",
+      date: "2026-04-21",
       time: "09:00 AM - 06:00 PM",
       location: "Nairobi, Kenya",
-      // venue: "KICC Conference Center",
+      venue: "Sarit Centre, Nairobi",
       description: "Join us for the biggest creative industry gathering in Africa. Network with top agencies, freelancers, and clients. Features keynote speakers, workshops, and networking sessions.",
       image: "/assets/images/summit-image.webp",
       category: "Summit",

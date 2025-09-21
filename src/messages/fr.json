@@ -105,10 +105,10 @@
       "description": "Nos événements signature réunissent marques, agences et leaders d'opinion pour façonner l'avenir créatif de l'Afrique par le partage de connaissances et les partenariats stratégiques.",
       "featuredEvent": {
         "badge": "Événement Vedette",
-        "title": "Sommet Créatif PAAN 2025",
+        "title": "Sommet Créatif PAAN 2026",
         "description": "Rejoignez-nous pour le plus grand rassemblement de l'industrie créative en Afrique. Réseautez avec les meilleures agences, freelances et clients dans un environnement conçu pour des connexions significatives et la croissance.",
-        "date": "22 Octobre 2025",
-        "location": "Nairobi, Kenya",
+        "date": "21-22 Avril 2026",
+        "location": "Sarit Centre, Nairobi",
         "cta": "En Savoir Plus"
       },
       "webinars": {
@@ -736,7 +736,7 @@
       "title": "Restez Informé des Événements PAAN",
       "description": "Ne manquez jamais une opportunité de vous connecter avec la communauté créative africaine. Abonnez-vous à notre newsletter pour les mises à jour d'événements et les insights de l'industrie.",
       "joinNetwork": "Rejoindre le Réseau",
-      "learnAboutSummit": "En Savoir Plus sur le Sommet 2025"
+      "learnAboutSummit": "En Savoir Plus sur le Sommet 2026"
     },
     "altText": {
       "backgroundPattern": "Motif d'Arrière-plan"

@@ -125,23 +125,51 @@ const SummitPage = () => {
   const speakers = [
     {
       id: 1,
-      name: "Mark Doe",
-      title: "CEO, Company",
-      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/summit/speakers/1.png",
+      name: "Clive Mishon",
+      title: "Founder, Alliance of Independent Agencies. UK",
+      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/summit/speakers/clive.jpeg",
       linkedin: "https://linkedin.com/in/markdoe"
     },
     {
       id: 2,
-      name: "Sarah Johnson",
-      title: "Creative Director, Design Studio",
-      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/summit/speakers/2.png",
+      name: "Anna Ceesay",
+      title: "Founder & CEO, Fabella, The Gambia",
+      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/summit/speakers/Anna.png",
       linkedin: "https://linkedin.com/in/sarahjohnson"
     },
     {
       id: 3,
-      name: "David Kim",
-      title: "Tech Innovation Lead, Startup Inc",
-      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/summit/speakers/3.png",
+      name: "Yannick Lefang",
+      title: "CEO & Founder - Kasi Insight, Africa",
+      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/summit/speakers/Yannick.jpeg",
+      linkedin: "https://linkedin.com/in/davidkim"
+    },
+    {
+      id: 4,
+      name: " Magdalene Kariuki",
+      title: "Associate director, Africa Practice. Kenya",
+      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/summit/speakers/Magdalene.jpeg",
+      linkedin: "https://linkedin.com/in/davidkim"
+    },
+    {
+      id: 5,
+      name: "Victor Simba",
+      title: "International Development, PWC. Kenya",
+      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/summit/speakers/Victor.jpeg",
+      linkedin: "https://linkedin.com/in/davidkim"
+    },
+    {
+      id: 6,
+      name: "Dr. Gillian Hammah",
+      title: "CMO Aya Data. Ghana",
+      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/summit/speakers/Hammar.jpeg",
+      linkedin: "https://linkedin.com/in/davidkim"
+    },
+    {
+      id: 7,
+      name: "Musa Kalenga",
+      title: "CEO, Brave Group, South Africa",
+      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/summit/speakers/musa.webp",
       linkedin: "https://linkedin.com/in/davidkim"
     },
   ];
@@ -545,7 +573,7 @@ const SummitPage = () => {
                      </div>
                    </div>
                  </div>
-                 <h4 className="text-2xl sm:text-3xl md:text-4xl font-bold text-left">300+</h4> 
+                 <h4 className="text-2xl sm:text-3xl md:text-4xl font-bold text-left">500+</h4> 
                  <h5 className="text-sm sm:text-base font-normal text-left">In-person Attendees</h5>
                </div>
                
@@ -968,7 +996,7 @@ const SummitPage = () => {
                            </div>
                            <div className="ml-6">
                              <div className="text-sm font-bold text-paan-blue mb-1">17:30 - Late</div>
-                             <h5 className="font-bold text-paan-dark-blue">Summit Closing Reception</h5>
+                             <h5 className="font-bold text-paan-dark-blue">PAAN Awards & Summit Closing Reception</h5>
                            </div>
                          </div>
                        </div>
@@ -1637,28 +1665,56 @@ const SummitPage = () => {
              </div>
              
              {/* Sliding Partners Logos */}
-             <div className="w-full overflow-hidden whitespace-nowrap py-4 sm:py-5">
+             <div className="w-full overflow-hidden whitespace-nowrap py-6 sm:py-8">
                <div className="inline-flex animate-marquee-right">
-                 <div className="flex space-x-4 sm:space-x-6 md:space-x-8 whitespace-nowrap">
+                 <div className="flex space-x-6 sm:space-x-8 md:space-x-10 whitespace-nowrap">
                    {[...Array(3)].map((_, i) => (
-                     <div key={`partners-${i}`} className="flex items-center space-x-4 sm:space-x-6 md:space-x-8">
-                       <div className="bg-white w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-lg shadow-xl overflow-hidden relative flex items-center justify-center flex-shrink-0">
-                         <img src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/partner-1.svg" alt="Partner 1" className="w-full h-full object-contain" />
+                     <div key={`partners-${i}`} className="flex items-center space-x-6 sm:space-x-8 md:space-x-10">
+                       {/* AIA Logo */}
+                       <div className="bg-white w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden relative flex items-center justify-center flex-shrink-0 border border-gray-100" style={{ backgroundColor: '#1a1a1a' }}>
+                         <img src="/assets/images/partners/aia.svg" alt="AIA Logo" className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 object-contain" />
                        </div>
-                       <div className="bg-white w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-lg shadow-xl overflow-hidden relative flex items-center justify-center flex-shrink-0">
-                         <img src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/partner-2.svg" alt="Partner 2" className="w-full h-full object-contain" />
+                       
+                       {/* IAN Logo */}
+                       <div className="bg-white w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden relative flex items-center justify-center flex-shrink-0 border border-gray-100">
+                         <img src="/assets/images/partners/IAN.png" alt="IAN Logo" className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 object-contain" />
                        </div>
-                       <div className="bg-white w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-lg shadow-xl overflow-hidden relative flex items-center justify-center flex-shrink-0">
-                         <img src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/partner-3.svg" alt="Partner 3" className="w-full h-full object-contain" />
+                       
+                       {/* ICCO Logo */}
+                       <div className="bg-white w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden relative flex items-center justify-center flex-shrink-0 border border-gray-100">
+                         <img src="/assets/images/partners/ICCO.png" alt="ICCO Logo" className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 object-contain" />
                        </div>
-                       <div className="bg-white w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-lg shadow-xl overflow-hidden relative flex items-center justify-center flex-shrink-0">
-                         <img src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/partner-4.svg" alt="Partner 4" className="w-full h-full object-contain" />
+                       
+                       {/* PRCA Logo */}
+                       <div className="bg-white w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden relative flex items-center justify-center flex-shrink-0 border border-gray-100">
+                         <img src="/assets/images/partners/PRCA.png" alt="PRCA Logo" className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 object-contain" />
                        </div>
-                       <div className="bg-white w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-lg shadow-xl overflow-hidden relative flex items-center justify-center flex-shrink-0">
-                         <img src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/partner-5.svg" alt="Partner 5" className="w-full h-full object-contain" />
+                       
+                       {/* Uber Logo */}
+                       <div className="bg-white w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden relative flex items-center justify-center flex-shrink-0 border border-gray-100">
+                         <img src="/assets/images/partners/uber.svg" alt="Uber Logistics Logo" className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 object-contain" />
                        </div>
-                       <div className="bg-white w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-lg shadow-xl overflow-hidden relative flex items-center justify-center flex-shrink-0">
-                         <img src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/partner-6.svg" alt="Partner 6" className="w-full h-full object-contain" />
+                       
+                       {/* Viamo Logo */}
+                       <div className="bg-white w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden relative flex items-center justify-center flex-shrink-0 border border-gray-100" style={{ backgroundColor: '#1a1a1a' }}>
+                         <img src="/assets/images/partners/viamo.svg" alt="Viamo Logo" className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 object-contain" />
+                       </div>
+                       
+                       {/* Growthpad Logo */}
+                       <div className="bg-white w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden relative flex items-center justify-center flex-shrink-0 border border-gray-100">
+                         <img src="/assets/images/partners/gcg.png" alt="Growthpad Logo" className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 object-contain" />
+                       </div>
+                       
+                       {/* Penguin Agency Logo */}
+                       <div className="bg-white w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden relative flex items-center justify-center flex-shrink-0 border border-gray-100" style={{ backgroundColor: '#1a1a1a' }}>
+                         <img src="/assets/images/partners/penguin-agency.png" alt="Penguin Agency Logo" className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 object-contain" />
+                       </div>
+                       
+                       {/* CEvent Text Logo */}
+                       <div className="bg-white w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden relative flex items-center justify-center flex-shrink-0 border border-gray-100">
+                         <div className="text-center px-2">
+                           <div className="text-paan-dark-blue font-bold text-lg sm:text-xl md:text-2xl leading-tight">CEvent</div>
+                         </div>
                        </div>
                      </div>
                    ))}
