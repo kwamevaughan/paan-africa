@@ -39,7 +39,10 @@
     "goodbye": "Au revoir",
     "copy": "Copier",
     "copied": "Copié !",
-    "passcode": "Code d'accès :"
+    "passcode": "Code d'accès :",
+    "applyNow": "Postuler Maintenant",
+    "required": "Requis",
+    "optional": "Optionnel"
   },
   "homepage": {
     "hero": {
@@ -342,6 +345,83 @@
       "title": "Prêt à Postuler?",
       "description": "Les meilleures agences africaines recrutent activement des freelances certifiés PAAN ce trimestre. Votre client parfait attend – ne les laissez pas trouver quelqu'un d'autre.",
       "ctaButton": "Postuler Maintenant"
+    }
+  },
+  "awardsApplication": {
+    "title": "Candidature aux Prix PAAN",
+    "subtitle": "Rejoignez les Prix Créatifs les Plus Prestigieux d'Afrique",
+    "pricing": {
+      "agency": {
+        "title": "Candidature Agence",
+        "price": "300 $ USD",
+        "description": "Frais de Candidature Agence"
+      },
+      "freelancer": {
+        "title": "Candidature Freelance",
+        "price": "50 $ USD", 
+        "description": "Frais de Candidature Freelance"
+      }
+    },
+    "sections": {
+      "personalInfo": "Informations Personnelles",
+      "professionalInfo": "Informations Professionnelles",
+      "awardCategories": "Sélectionner les Catégories de Prix",
+      "projectInfo": "Informations sur le Projet/Travail",
+      "additionalInfo": "Informations Supplémentaires",
+      "termsConditions": "Termes et Conditions"
+    },
+    "form": {
+      "fullName": "Nom Complet",
+      "email": "Adresse Email",
+      "phone": "Numéro de Téléphone",
+      "country": "Pays",
+      "companyName": "Nom de l'Entreprise",
+      "website": "Site Web/Portfolio URL",
+      "yearsExperience": "Années d'Expérience",
+      "projectTitle": "Titre du Projet",
+      "projectDescription": "Description du Projet",
+      "projectUrl": "URL du Projet",
+      "projectImages": "Images du Projet",
+      "whyApply": "Pourquoi devriez-vous gagner ce prix ?",
+      "previousAwards": "Prix/Reconnaissance Précédents",
+      "linkedin": "Profil LinkedIn",
+      "twitter": "Nom d'Utilisateur Twitter",
+      "instagram": "Nom d'Utilisateur Instagram",
+      "agreeToTerms": "J'accepte les Termes et Conditions et les Directives des Prix",
+      "agreeToDataProcessing": "Je consens au traitement de mes données personnelles aux fins de cette candidature aux prix"
+    },
+    "placeholders": {
+      "fullName": "Entrez votre nom complet",
+      "email": "Entrez votre email",
+      "phone": "Entrez votre numéro de téléphone",
+      "country": "Sélectionnez votre pays",
+      "companyName": "Entrez le nom de votre entreprise",
+      "website": "https://votre-site.com",
+      "yearsExperience": "Sélectionnez le niveau d'expérience",
+      "projectTitle": "Entrez le titre de votre projet",
+      "projectDescription": "Décrivez votre projet, son impact et pourquoi il mérite une reconnaissance",
+      "projectUrl": "https://votre-projet.com",
+      "whyApply": "Dites-nous pourquoi vous méritez de gagner ce prix...",
+      "previousAwards": "Listez tous les prix ou reconnaissances précédents que vous avez reçus",
+      "linkedin": "https://linkedin.com/in/votreprofil",
+      "twitter": "@votrenom",
+      "instagram": "@votrenom"
+    },
+    "validation": {
+      "required": "Ce champ est requis",
+      "emailInvalid": "L'email est invalide",
+      "selectCategory": "Veuillez sélectionner au moins une catégorie de prix",
+      "completeRecaptcha": "Veuillez compléter la vérification reCAPTCHA"
+    },
+    "payment": {
+      "summary": "Résumé du Paiement",
+      "oneTimePayment": "Paiement unique",
+      "categoriesSelected": "catégorie(s) sélectionnée(s)",
+      "payNow": "Payer {amount} USD",
+      "processing": "Traitement...",
+      "success": "Paiement réussi ! Votre candidature a été soumise.",
+      "failed": "Le paiement a échoué. Veuillez réessayer.",
+      "cancelled": "Paiement annulé"
     }
   },
   "clients": {

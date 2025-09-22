@@ -39,7 +39,10 @@
     "goodbye": "Goodbye",
     "copy": "Copy",
     "copied": "Copied!",
-    "passcode": "Passcode:"
+    "passcode": "Passcode:",
+    "applyNow": "Apply Now",
+    "required": "Required",
+    "optional": "Optional"
   },
   "homepage": {
     "hero": {
@@ -410,6 +413,83 @@
       "title": "Ready To Apply?",
       "description": "Top African agencies are actively hiring PAAN-certified freelancers this quarter. Your perfect client is waiting – don't let them find someone else.",
       "ctaButton": "Apply Now"
+    }
+  },
+  "awardsApplication": {
+    "title": "PAAN Awards Application",
+    "subtitle": "Join Africa's Most Prestigious Creative Awards",
+    "pricing": {
+      "agency": {
+        "title": "Agency Application",
+        "price": "$300 USD",
+        "description": "Agency Application Fee"
+      },
+      "freelancer": {
+        "title": "Freelancer Application", 
+        "price": "$50 USD",
+        "description": "Freelancer Application Fee"
+      }
+    },
+    "sections": {
+      "personalInfo": "Personal Information",
+      "professionalInfo": "Professional Information",
+      "awardCategories": "Select Award Categories",
+      "projectInfo": "Project/Work Information",
+      "additionalInfo": "Additional Information",
+      "termsConditions": "Terms and Conditions"
+    },
+    "form": {
+      "fullName": "Full Name",
+      "email": "Email Address",
+      "phone": "Phone Number",
+      "country": "Country",
+      "companyName": "Company Name",
+      "website": "Website/Portfolio URL",
+      "yearsExperience": "Years of Experience",
+      "projectTitle": "Project Title",
+      "projectDescription": "Project Description",
+      "projectUrl": "Project URL",
+      "projectImages": "Project Images",
+      "whyApply": "Why should you win this award?",
+      "previousAwards": "Previous Awards/Recognition",
+      "linkedin": "LinkedIn Profile",
+      "twitter": "Twitter Handle",
+      "instagram": "Instagram Handle",
+      "agreeToTerms": "I agree to the Terms and Conditions and Award Guidelines",
+      "agreeToDataProcessing": "I consent to the processing of my personal data for the purpose of this award application"
+    },
+    "placeholders": {
+      "fullName": "Enter your full name",
+      "email": "Enter your email",
+      "phone": "Enter your phone number",
+      "country": "Select your country",
+      "companyName": "Enter your company name",
+      "website": "https://your-website.com",
+      "yearsExperience": "Select experience level",
+      "projectTitle": "Enter your project title",
+      "projectDescription": "Describe your project, its impact, and why it deserves recognition",
+      "projectUrl": "https://your-project.com",
+      "whyApply": "Tell us why you deserve to win this award...",
+      "previousAwards": "List any previous awards or recognition you've received",
+      "linkedin": "https://linkedin.com/in/yourprofile",
+      "twitter": "@yourhandle",
+      "instagram": "@yourhandle"
+    },
+    "validation": {
+      "required": "This field is required",
+      "emailInvalid": "Email is invalid",
+      "selectCategory": "Please select at least one award category",
+      "completeRecaptcha": "Please complete the reCAPTCHA verification"
+    },
+    "payment": {
+      "summary": "Payment Summary",
+      "oneTimePayment": "One-time payment",
+      "categoriesSelected": "category(ies) selected",
+      "payNow": "Pay {amount} USD",
+      "processing": "Processing...",
+      "success": "Payment successful! Your application has been submitted.",
+      "failed": "Payment failed. Please try again.",
+      "cancelled": "Payment cancelled"
     }
   },
   "clients": {

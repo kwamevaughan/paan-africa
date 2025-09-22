@@ -16,6 +16,7 @@ import Accordion from "@/components/Accordion";
 import TicketPurchaseButton from "@/components/TicketPurchaseButton";
 import PartnerWithUsModal from "@/components/PartnerWithUsModal";
 import ExhibitionApplicationModal from "@/components/ExhibitionApplicationModal";
+import PaystackScript from "@/components/PaystackScript";
 import { motion } from "framer-motion";
 
 // Animation variants - defined outside component for global access
@@ -128,49 +129,56 @@ const SummitPage = () => {
       name: "Clive Mishon",
       title: "Founder, Alliance of Independent Agencies. UK",
       image: "https://ik.imagekit.io/nkmvdjnna/PAAN/summit/speakers/clive.jpeg",
-      linkedin: "https://linkedin.com/in/markdoe"
+      linkedin: "https://www.linkedin.com/in/clive-mishon-33b5318?originalSubdomain=uk"
     },
     {
       id: 2,
       name: "Anna Ceesay",
       title: "Founder & CEO, Fabella, The Gambia",
       image: "https://ik.imagekit.io/nkmvdjnna/PAAN/summit/speakers/Anna.png",
-      linkedin: "https://linkedin.com/in/sarahjohnson"
+      linkedin: "https://www.linkedin.com/in/annaceesay/?originalSubdomain=gm"
     },
     {
       id: 3,
       name: "Yannick Lefang",
       title: "CEO & Founder - Kasi Insight, Africa",
       image: "https://ik.imagekit.io/nkmvdjnna/PAAN/summit/speakers/Yannick.jpeg",
-      linkedin: "https://linkedin.com/in/davidkim"
+      linkedin: "https://www.linkedin.com/in/yannicklefang?originalSubdomain=ca"
     },
     {
       id: 4,
-      name: " Magdalene Kariuki",
+      name: "Magdalene Kariuki",
       title: "Associate director, Africa Practice. Kenya",
       image: "https://ik.imagekit.io/nkmvdjnna/PAAN/summit/speakers/Magdalene.jpeg",
-      linkedin: "https://linkedin.com/in/davidkim"
+      linkedin: "https://www.linkedin.com/in/magdalene-kariuki-mppa"
     },
     {
       id: 5,
       name: "Victor Simba",
       title: "International Development, PWC. Kenya",
       image: "https://ik.imagekit.io/nkmvdjnna/PAAN/summit/speakers/Victor.jpeg",
-      linkedin: "https://linkedin.com/in/davidkim"
+      linkedin: "https://www.linkedin.com/in/victor-simba-06502123a?originalSubdomain=ke"
     },
     {
       id: 6,
       name: "Dr. Gillian Hammah",
       title: "CMO Aya Data. Ghana",
       image: "https://ik.imagekit.io/nkmvdjnna/PAAN/summit/speakers/Hammar.jpeg",
-      linkedin: "https://linkedin.com/in/davidkim"
+      linkedin: "https://www.linkedin.com/in/gillian-hammah?originalSubdomain=gh"
     },
     {
       id: 7,
       name: "Musa Kalenga",
       title: "CEO, Brave Group, South Africa",
       image: "https://ik.imagekit.io/nkmvdjnna/PAAN/summit/speakers/musa.webp",
-      linkedin: "https://linkedin.com/in/davidkim"
+      linkedin: "https://www.linkedin.com/in/musa-kalenga-31b10523/?originalSubdomain=za"
+    },
+    {
+      id: 8,
+      name: "Craig Rodney",
+      title: "Founder, The Agency Coach, South Africa",
+      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/summit/speakers/Craig.jpeg",
+      linkedin: "https://www.linkedin.com/in/craigrodney/?originalSubdomain=za"
     },
   ];
 
@@ -1860,6 +1868,9 @@ const SummitPage = () => {
           onClose={() => setShowExhibitionModal(false)} 
         />
       </main>
+      
+      {/* Paystack Script */}
+      <PaystackScript />
     </>
   );
 };

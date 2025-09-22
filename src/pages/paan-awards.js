@@ -8,6 +8,8 @@ import { useFixedHeader, handleScroll } from '../../utils/scrollUtils';
 import ScrollToTop from "@/components/ScrollToTop";
 import Head from "next/head";
 import { motion } from "framer-motion";
+import PAANAwardsApplicationModal from "@/components/PAANAwardsApplicationModal";
+import PaystackScript from "@/components/PaystackScript";
 
 // Animation variants - defined outside component for global access
 const fadeInUp = {
@@ -76,6 +78,9 @@ const SummitPage = () => {
 
   // Awards toggle state
   const [awardType, setAwardType] = useState('agency'); // 'agency' or 'freelancer'
+  
+  // Application modal state
+  const [isApplicationModalOpen, setIsApplicationModalOpen] = useState(false);
 
  
   // Get visible jury - Commented out
@@ -469,13 +474,16 @@ const SummitPage = () => {
       </Head>
 
       <main className="px-3 pt-6 sm:px-0 sm:pt-0 relative">
-        <PAANAwardsHeader navLinkColor='text-white' />
+        <PAANAwardsHeader 
+          navLinkColor='text-white' 
+          onApplyNowClick={() => setIsApplicationModalOpen(true)}
+        />
 
-        <Hero sectionRefs={sectionRefs} handleScroll={handleScroll} isFixed={isFixed} scrollToSection={scrollToSection} timeLeft={timeLeft} />
+        <Hero sectionRefs={sectionRefs} handleScroll={handleScroll} isFixed={isFixed} scrollToSection={scrollToSection} timeLeft={timeLeft} onApplyNowClick={() => setIsApplicationModalOpen(true)} />
 
      
         {/* About the Awards */}
-        <div className="bg-[#F3F9FB] relative" id="about-us" ref={sectionRefs.about} handleScroll={handleScroll} isFixed={isFixed}>
+        <div className="bg-[#F3F9FB]" id="about-us" ref={sectionRefs.about} handleScroll={handleScroll} isFixed={isFixed}>
         <section className="relative mx-auto max-w-6xl">
           <div className="grid lg:grid-cols-2 gap-4 py-20 items-center">
             <div className="flex flex-col gap-8 z-0">
@@ -526,7 +534,7 @@ const SummitPage = () => {
               <div className="flex flex-col sm:flex-row gap-4 pt-4">
                 <button 
                   className="bg-[#F25849] text-white rounded-full px-8 py-4 text-base font-semibold hover:bg-[#E0473A] transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1" 
-                  onClick={() => window.location.href = '#tickets'}
+                  onClick={() => setIsApplicationModalOpen(true)}
                 >
                   Apply Now
                 </button>
@@ -614,7 +622,7 @@ const SummitPage = () => {
                ))}
                 {/* Add a new category */}
                 <div className="bg-white border-2 border-paan-dark-blue w-80 h-80 rounded-full shadow-xl overflow-hidden relative flex items-center justify-center hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
-                  <div className="text-center relative z-10 max-w-48 px-4">
+                  <div className="text-center relative max-w-48 px-4">
                     <h4 className="text-md font-bold text-paan-dark-blue mb-3">Your Voice Matters</h4>
                     <p className="text-paan-dark-blue font-light text-xs leading-relaxed mb-4">Suggest a new category that reflects Africa's evolving creative landscape.</p>
                     <button className="bg-paan-red text-white px-6 py-2 rounded-full hover:bg-paan-red/90 transition-all duration-300 font-medium text-sm shadow-lg hover:shadow-xl transform hover:-translate-y-1">
@@ -778,10 +786,16 @@ const SummitPage = () => {
                 </div>
                 
                 <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                  <button className="bg-paan-red text-white px-8 py-4 rounded-full hover:bg-paan-red/90 transition-all duration-300 font-medium text-base shadow-lg flex items-center justify-center gap-2 hover:shadow-xl transform hover:-translate-y-1">
+                  <button 
+                    className="bg-paan-red text-white px-8 py-4 rounded-full hover:bg-paan-red/90 transition-all duration-300 font-medium text-base shadow-lg flex items-center justify-center gap-2 hover:shadow-xl transform hover:-translate-y-1"
+                    onClick={() => setIsApplicationModalOpen(true)}
+                  >
                     Apply Now
                   </button>
-                  <button className="bg-transparent border-2 border-white text-white px-8 py-4 rounded-full hover:bg-white hover:text-paan-dark-blue transition-all duration-300 font-medium text-base shadow-lg flex items-center justify-center gap-2 hover:shadow-xl transform hover:-translate-y-1">
+                  <button 
+                    className="bg-transparent border-2 border-white text-white px-8 py-4 rounded-full hover:bg-white hover:text-paan-dark-blue transition-all duration-300 font-medium text-base shadow-lg flex items-center justify-center gap-2 hover:shadow-xl transform hover:-translate-y-1"
+                    onClick={() => scrollToSection('paan-awards-section')}
+                  >
                     Explore Categories
                   </button>
                 </div>
@@ -808,7 +822,7 @@ const SummitPage = () => {
         <div className="bg-[#F3F9FB] relative py-20" id="key-dates-section" isFixed={isFixed}>
           <section className="relative mx-auto max-w-6xl">
             <div className="text-center mb-16">
-              <h2 className="text-4xl lg:text-5xl text-paan-dark-blue uppercase font-bold leading-tight mb-6">Key Dates 2026</h2>
+              <h2 className="text-4xl lg:text-5xl text-paan-dark-blue uppercase font-bold leading-tight mb-6">Key Dates 2025/2026</h2>
               <p className="text-lg text-paan-dark-blue font-light leading-relaxed max-w-4xl mx-auto">
                 Mark your calendar for the PAAN Summit & Creative Excellence Awards 2026.
               </p>
@@ -826,22 +840,22 @@ const SummitPage = () => {
                 </thead>
                 <tbody>
                   <tr className="border-t border-paan-dark-blue/20">
-                    <td className="py-6 px-6 text-paan-dark-blue font-medium">10 March 2026</td>
+                    <td className="py-6 px-6 text-paan-dark-blue font-medium">10 October 2025</td>
                     <td className="py-6 px-6 text-paan-red font-medium">Entries Open</td>
                     <td className="py-6 px-6 text-paan-dark-blue font-light">Submit your entries starting March 10. Showcase your agency, brand, or freelance work to a continental jury.</td>
                   </tr>
                   <tr className="border-t border-paan-dark-blue/20">
-                    <td className="py-6 px-6 text-paan-dark-blue font-medium">15 May 2026</td>
+                    <td className="py-6 px-6 text-paan-dark-blue font-medium">15 November 2025</td>
                     <td className="py-6 px-6 text-paan-red font-medium">Early Bird Deadline</td>
                     <td className="py-6 px-6 text-paan-dark-blue font-light">Take advantage of reduced entry fees and priority review for submissions received by this date.</td>
                   </tr>
                   <tr className="border-t border-paan-dark-blue/20">
-                    <td className="py-6 px-6 text-paan-dark-blue font-medium">30 June 2026</td>
+                    <td className="py-6 px-6 text-paan-dark-blue font-medium">30 November 2025</td>
                     <td className="py-6 px-6 text-paan-red font-medium">Final Entry Deadline</td>
                     <td className="py-6 px-6 text-paan-dark-blue font-light">All award entries must be submitted by midnight EAT. Late submissions will not be accepted.</td>
                   </tr>
                   <tr className="border-t border-paan-dark-blue/20">
-                    <td className="py-6 px-6 text-paan-dark-blue font-medium">15 August 2026</td>
+                    <td className="py-6 px-6 text-paan-dark-blue font-medium">15 January 2026</td>
                     <td className="py-6 px-6 text-paan-red font-medium">Finalists Announced</td>
                     <td className="py-6 px-6 text-paan-dark-blue font-light">The shortlisted entries will be revealed across all categories. Finalists will be notified directly.</td>
                   </tr>
@@ -880,7 +894,7 @@ const SummitPage = () => {
                </div>
                <div className="flex flex-col sm:flex-row gap-4 justify-center">
                  <button 
-                   onClick={() => window.location.href = '#parallax-section'} 
+                   onClick={() => setIsApplicationModalOpen(true)} 
                    className="bg-paan-red text-white px-8 py-4 rounded-full hover:bg-paan-red/90 transition-all duration-300 font-medium text-base shadow-lg flex items-center justify-center gap-2 hover:shadow-xl transform hover:-translate-y-1"
                  >
                    Apply Now
@@ -898,12 +912,21 @@ const SummitPage = () => {
 
         <Footer />
         <ScrollToTop />
+        
+        {/* Paystack Script */}
+        <PaystackScript />
+        
+        {/* Application Modal */}
+        <PAANAwardsApplicationModal 
+          isOpen={isApplicationModalOpen}
+          onClose={() => setIsApplicationModalOpen(false)}
+        />
       </main>
     </>
   );
 };
 
-const Hero = ({ sectionRefs, handleScroll, isFixed, scrollToSection, timeLeft }) => {
+const Hero = ({ sectionRefs, handleScroll, isFixed, scrollToSection, timeLeft, onApplyNowClick }) => {
 
   return (
     <>
@@ -948,7 +971,7 @@ const Hero = ({ sectionRefs, handleScroll, isFixed, scrollToSection, timeLeft })
                 variants={scaleIn}
               >
                 <button 
-                  onClick={() => scrollToSection('paan-awards-section')}
+                  onClick={onApplyNowClick}
                   className="bg-[#F25849] border border-[#F25849] text-white py-3 sm:py-4 px-4 sm:px-6 md:px-8 lg:px-10 rounded-full hover:bg-[#D6473C] transition-all duration-300 transform ease-in-out hover:translate-y-[-2px] font-semibold text-sm sm:text-base w-full sm:w-auto min-h-[44px]"
                 >
                   Apply Now

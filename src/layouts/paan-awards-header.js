@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import { useFixedHeader, handleScroll } from "../../utils/scrollUtils";
 import LanguageSwitch from "../components/LanguageSwitch";
 
-const PAANAwardsHeader = ({ navLinkColor }) => {
+const PAANAwardsHeader = ({ navLinkColor, onApplyNowClick }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
   const isFixed = useFixedHeader();
@@ -20,10 +20,11 @@ const PAANAwardsHeader = ({ navLinkColor }) => {
   ];
 
   const ctaButton = {
-    href: '#parallax-section',
+    href: '#',
     label: 'Apply Now',
     className: 'bg-[#F25849] text-white px-4 py-3 rounded-full text-sm font-bold hover:bg-[#D6473C] transition duration-300',
     mobileClassName: 'bg-[#F25849] text-white block px-3 py-2 rounded-full text-sm font-bold hover:bg-[#D6473C] transition duration-300',
+    onClick: onApplyNowClick
   };
   
   // Use PAAN dark blue color for text when fixed, navLinkColor when not fixed
@@ -134,12 +135,12 @@ const PAANAwardsHeader = ({ navLinkColor }) => {
             {/* Language Switcher */}
             <LanguageSwitch className="mr-3" />
             
-            <a
-              href={ctaButton.href}              
+            <button
+              onClick={ctaButton.onClick}              
               className={ctaButton.className}
             >
               {ctaButton.label}
-            </a>
+            </button>
           </div>
         </div>
 
@@ -178,12 +179,12 @@ const PAANAwardsHeader = ({ navLinkColor }) => {
                 </a>
               );
             })}
-            <a
-              href={ctaButton.href}              
+            <button
+              onClick={ctaButton.onClick}              
               className={ctaButton.mobileClassName}
             >
               {ctaButton.label}
-            </a>
+            </button>
           </div>
         </div>
       </div>

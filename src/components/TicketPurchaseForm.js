@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Icon } from "@iconify/react";
 
 const TicketPurchaseForm = ({ onClose }) => {
@@ -21,6 +21,27 @@ const TicketPurchaseForm = ({ onClose }) => {
   const [errors, setErrors] = useState({});
   const [isVerifying, setIsVerifying] = useState(false);
   const [verificationStatus, setVerificationStatus] = useState(null);
+  const [paystackReady, setPaystackReady] = useState(false);
+
+  // Check if Paystack is ready
+  useEffect(() => {
+    const checkPaystackReady = () => {
+      if (typeof window !== "undefined" && window.PaystackPop) {
+        setPaystackReady(true);
+      } else {
+        setPaystackReady(false);
+      }
+    };
+
+    // Check immediately
+    checkPaystackReady();
+
+    // Check periodically until ready
+    const interval = setInterval(checkPaystackReady, 1000);
+
+    // Cleanup interval when component unmounts
+    return () => clearInterval(interval);
+  }, []);
 
   // Ticket options
   const ticketOptions = [
@@ -213,8 +234,14 @@ const TicketPurchaseForm = ({ onClose }) => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handlePaystackPayment = () => {
+  const handlePaystackPayment = async () => {
     if (!validateForm()) {
+      return;
+    }
+
+    // Check if Paystack is ready
+    if (!paystackReady) {
+      alert("Payment system is loading. Please wait a moment and try again.");
       return;
     }
 
@@ -257,14 +284,14 @@ const TicketPurchaseForm = ({ onClose }) => {
     const paystackConfig = {
       key: process.env.NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY,
       email: formData.email,
-      amount: amountInCents, // Amount in cents
-      currency: "KES",
+      amount: amountInCents,
+      currency: currency,
       ref: reference,
       metadata: {
         custom_fields: [
           {
-            display_name: "Name",
-            variable_name: "name",
+            display_name: "Full Name",
+            variable_name: "full_name",
             value: formData.name
           },
           {
@@ -290,51 +317,76 @@ const TicketPurchaseForm = ({ onClose }) => {
           {
             display_name: "Ticket Type",
             variable_name: "ticket_type",
-            value: selectedTicket.name
+            value: formData.ticketType
           }
         ]
       },
       callback: function(response) {
-        // Handle successful payment
-        console.log("Payment successful:", response);
-        setIsLoading(false);
-        // You can redirect to a success page or show a success message
-        alert(`Payment successful! You have purchased a ${selectedTicket.name} ticket. You will receive a confirmation email shortly.`);
-        onClose();
+        if (response.status === 'success') {
+          // Send ticket purchase data to secretariat
+          fetch('/api/send-summit-ticket', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              paymentData: {
+                reference: response.reference,
+                amount: amountInCents,
+                currency: currency,
+                status: 'success',
+                paidAt: new Date().toISOString()
+              },
+              ticketData: {
+                name: formData.name,
+                email: formData.email,
+                phone: formData.phone,
+                country: formData.country,
+                role: formData.role,
+                company: formData.company,
+                ticketType: formData.ticketType,
+                amount: currency === "KES" ? selectedTicket.priceKes : selectedTicket.price,
+                currency: currency,
+                features: selectedTicket.features,
+                membershipVerification: formData.membershipVerification
+              },
+              reference: response.reference
+            }),
+          })
+          .then(emailResponse => emailResponse.json())
+          .then(emailResult => {
+            if (emailResult.success) {
+              console.log('Ticket purchase email sent successfully');
+            } else {
+              console.error('Failed to send ticket purchase email:', emailResult.message);
+            }
+          })
+          .catch(emailError => {
+            console.error('Error sending ticket purchase email:', emailError);
+            // Don't block the payment success flow if email fails
+          });
+
+          // Redirect to success page with reference
+          window.location.href = `/payment/success?reference=${response.reference}&type=summit`;
+        } else {
+          alert('Payment failed. Please try again.');
+          setIsLoading(false);
+        }
       },
       onClose: function() {
-        // Handle payment cancellation
-        console.log("Payment cancelled");
+        // Redirect to failure page
+        window.location.href = `/payment/failure?error=${encodeURIComponent('Payment was cancelled by user')}&reference=${reference}`;
         setIsLoading(false);
       }
     };
 
-    // Debug: Log configuration
-    console.log("Paystack Configuration:", {
-      key: process.env.NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY ? "Present" : "Missing",
-      email: formData.email,
-      amount: amountInCents,
-      currency: currency,
-      ref: reference,
-      country: formData.country,
-      originalPrice: selectedTicket.price,
-      convertedPrice: currency === "KES" ? selectedTicket.priceKes : selectedTicket.price
-    });
-
     // Initialize Paystack
-    if (typeof window !== "undefined" && window.PaystackPop) {
-      try {
-        const handler = window.PaystackPop.setup(paystackConfig);
-        handler.openIframe();
-      } catch (error) {
-        console.error("Paystack initialization error:", error);
-        console.error("Paystack config:", paystackConfig);
-        alert(`Payment initialization failed: ${error.message || 'Unknown error'}. Please check your internet connection and try again.`);
-        setIsLoading(false);
-      }
-    } else {
-      console.error("Paystack not loaded");
-      alert("Payment system is not ready. Please refresh the page and try again.");
+    try {
+      const handler = window.PaystackPop.setup(paystackConfig);
+      handler.openIframe();
+    } catch (error) {
+      console.error('Error initializing Paystack:', error);
+      alert('Payment system error. Please refresh the page and try again.');
       setIsLoading(false);
     }
   };
@@ -638,13 +690,18 @@ const TicketPurchaseForm = ({ onClose }) => {
             </button>
             <button
               onClick={handlePaystackPayment}
-              disabled={isLoading}
+              disabled={isLoading || !paystackReady}
               className="flex-1 bg-paan-red text-white px-6 py-3 rounded-xl hover:bg-paan-red/90 transition-colors font-medium flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {isLoading ? (
                 <>
                   <Icon icon="mdi:loading" className="w-5 h-5 animate-spin" />
                   Processing...
+                </>
+              ) : !paystackReady ? (
+                <>
+                  <Icon icon="mdi:loading" className="w-5 h-5 animate-spin" />
+                  Loading Payment System...
                 </>
               ) : (
                 <>

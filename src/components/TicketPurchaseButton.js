@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { Icon } from "@iconify/react";
 import TicketPurchaseForm from "./TicketPurchaseForm";
-import PaystackScript from "./PaystackScript";
 
 const TicketPurchaseButton = ({ 
   variant = "primary", 
@@ -32,7 +31,6 @@ const TicketPurchaseButton = ({
 
   return (
     <>
-      <PaystackScript />
       <button
         onClick={() => {
           console.log("TicketPurchaseButton clicked");
