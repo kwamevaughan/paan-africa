@@ -52,12 +52,75 @@ export default async function handler(req, res) {
       formatted += `Price: ${data.currency} ${data.amount.toLocaleString()}\n`;
       formatted += `Features: ${data.features.join(', ')}\n\n`;
 
-      // Membership Verification (if applicable)
-      if (data.membershipVerification && data.membershipVerification.method) {
-        formatted += 'MEMBERSHIP VERIFICATION\n';
-        formatted += '=======================\n';
-        formatted += `Method: ${data.membershipVerification.method}\n`;
-        formatted += `Value: ${data.membershipVerification.value}\n\n`;
+      // Student & Young Creatives Information
+      if (data.ticketType === 'student-creatives' && (data.studentId || data.institution || data.graduationYear)) {
+        formatted += 'STUDENT INFORMATION\n';
+        formatted += '===================\n';
+        if (data.studentId) formatted += `Student ID: ${data.studentId}\n`;
+        if (data.institution) formatted += `Institution: ${data.institution}\n`;
+        if (data.graduationYear) formatted += `Graduation Year: ${data.graduationYear}\n`;
+        formatted += '\n';
+      }
+
+      // Corporate Group Information
+      if (data.ticketType === 'corporate-group') {
+        formatted += 'CORPORATE GROUP INFORMATION\n';
+        formatted += '===========================\n';
+        formatted += `Team Size: ${data.teamSize} members\n`;
+        if (data.teamMembers && data.teamMembers.length > 0) {
+          formatted += `Team Members:\n`;
+          data.teamMembers.forEach((member, index) => {
+            formatted += `  ${index + 1}. ${member}\n`;
+          });
+        }
+        formatted += '\n';
+      }
+
+      // International Delegate Information
+      if (data.ticketType === 'international-delegate' && (data.passportNumber || data.visaRequired || data.accommodationNeeded || data.arrivalDate || data.departureDate)) {
+        formatted += 'INTERNATIONAL TRAVEL INFORMATION\n';
+        formatted += '=================================\n';
+        if (data.passportNumber) formatted += `Passport Number: ${data.passportNumber}\n`;
+        if (data.visaRequired) formatted += `Visa Required: ${data.visaRequired}\n`;
+        if (data.accommodationNeeded) formatted += `Accommodation Assistance: ${data.accommodationNeeded}\n`;
+        if (data.arrivalDate) formatted += `Arrival Date: ${data.arrivalDate}\n`;
+        if (data.departureDate) formatted += `Departure Date: ${data.departureDate}\n`;
+        formatted += '\n';
+      }
+
+      // Virtual Access Information
+      if (data.ticketType === 'virtual-access' && (data.timezone || data.preferredLanguage)) {
+        formatted += 'VIRTUAL ACCESS PREFERENCES\n';
+        formatted += '==========================\n';
+        if (data.timezone) formatted += `Timezone: ${data.timezone}\n`;
+        if (data.preferredLanguage) formatted += `Preferred Language: ${data.preferredLanguage}\n`;
+        formatted += '\n';
+      }
+
+      // Agency Growth Information
+      if (data.ticketType === 'agency-growth' && (data.agencySize || data.yearsInBusiness)) {
+        formatted += 'AGENCY INFORMATION\n';
+        formatted += '==================\n';
+        if (data.agencySize) formatted += `Agency Size: ${data.agencySize}\n`;
+        if (data.yearsInBusiness) formatted += `Years in Business: ${data.yearsInBusiness}\n`;
+        formatted += '\n';
+      }
+
+      // VIP Delegate Information
+      if (data.ticketType === 'vip-delegate' && (data.dietaryRequirements || data.accessibilityNeeds)) {
+        formatted += 'VIP PREFERENCES\n';
+        formatted += '===============\n';
+        if (data.dietaryRequirements) formatted += `Dietary Requirements: ${data.dietaryRequirements}\n`;
+        if (data.accessibilityNeeds) formatted += `Accessibility Needs: ${data.accessibilityNeeds}\n`;
+        formatted += '\n';
+      }
+
+      // Early Bird Information
+      if (data.ticketType === 'early-bird' && data.heardAbout) {
+        formatted += 'EARLY BIRD INFORMATION\n';
+        formatted += '======================\n';
+        formatted += `How did you hear about PAAN Summit: ${data.heardAbout}\n`;
+        formatted += '\n';
       }
 
       return formatted;
@@ -143,11 +206,68 @@ PAAN Summit Team
                     </div>
                 </div>
 
-                ${ticketData.membershipVerification && ticketData.membershipVerification.method ? `
+                ${ticketData.ticketType === 'student-creatives' && (ticketData.studentId || ticketData.institution || ticketData.graduationYear) ? `
                 <div class="section">
-                    <h3>Membership Verification</h3>
-                    <div class="field"><strong>Method:</strong> ${ticketData.membershipVerification.method}</div>
-                    <div class="field"><strong>Value:</strong> ${ticketData.membershipVerification.value}</div>
+                    <h3>Student Information</h3>
+                    ${ticketData.studentId ? `<div class="field"><strong>Student ID:</strong> ${ticketData.studentId}</div>` : ''}
+                    ${ticketData.institution ? `<div class="field"><strong>Institution:</strong> ${ticketData.institution}</div>` : ''}
+                    ${ticketData.graduationYear ? `<div class="field"><strong>Graduation Year:</strong> ${ticketData.graduationYear}</div>` : ''}
+                </div>
+                ` : ''}
+
+                ${ticketData.ticketType === 'corporate-group' ? `
+                <div class="section">
+                    <h3>Corporate Group Information</h3>
+                    <div class="field"><strong>Team Size:</strong> ${ticketData.teamSize} members</div>
+                    ${ticketData.teamMembers && ticketData.teamMembers.length > 0 ? `
+                    <div class="field"><strong>Team Members:</strong>
+                        <ol>
+                            ${ticketData.teamMembers.map(member => `<li>${member}</li>`).join('')}
+                        </ol>
+                    </div>
+                    ` : ''}
+                </div>
+                ` : ''}
+
+                ${ticketData.ticketType === 'international-delegate' && (ticketData.passportNumber || ticketData.visaRequired || ticketData.accommodationNeeded || ticketData.arrivalDate || ticketData.departureDate) ? `
+                <div class="section">
+                    <h3>International Travel Information</h3>
+                    ${ticketData.passportNumber ? `<div class="field"><strong>Passport Number:</strong> ${ticketData.passportNumber}</div>` : ''}
+                    ${ticketData.visaRequired ? `<div class="field"><strong>Visa Required:</strong> ${ticketData.visaRequired}</div>` : ''}
+                    ${ticketData.accommodationNeeded ? `<div class="field"><strong>Accommodation Assistance:</strong> ${ticketData.accommodationNeeded}</div>` : ''}
+                    ${ticketData.arrivalDate ? `<div class="field"><strong>Arrival Date:</strong> ${ticketData.arrivalDate}</div>` : ''}
+                    ${ticketData.departureDate ? `<div class="field"><strong>Departure Date:</strong> ${ticketData.departureDate}</div>` : ''}
+                </div>
+                ` : ''}
+
+                ${ticketData.ticketType === 'virtual-access' && (ticketData.timezone || ticketData.preferredLanguage) ? `
+                <div class="section">
+                    <h3>Virtual Access Preferences</h3>
+                    ${ticketData.timezone ? `<div class="field"><strong>Timezone:</strong> ${ticketData.timezone}</div>` : ''}
+                    ${ticketData.preferredLanguage ? `<div class="field"><strong>Preferred Language:</strong> ${ticketData.preferredLanguage}</div>` : ''}
+                </div>
+                ` : ''}
+
+                ${ticketData.ticketType === 'agency-growth' && (ticketData.agencySize || ticketData.yearsInBusiness) ? `
+                <div class="section">
+                    <h3>Agency Information</h3>
+                    ${ticketData.agencySize ? `<div class="field"><strong>Agency Size:</strong> ${ticketData.agencySize}</div>` : ''}
+                    ${ticketData.yearsInBusiness ? `<div class="field"><strong>Years in Business:</strong> ${ticketData.yearsInBusiness}</div>` : ''}
+                </div>
+                ` : ''}
+
+                ${ticketData.ticketType === 'vip-delegate' && (ticketData.dietaryRequirements || ticketData.accessibilityNeeds) ? `
+                <div class="section">
+                    <h3>VIP Preferences</h3>
+                    ${ticketData.dietaryRequirements ? `<div class="field"><strong>Dietary Requirements:</strong> ${ticketData.dietaryRequirements}</div>` : ''}
+                    ${ticketData.accessibilityNeeds ? `<div class="field"><strong>Accessibility Needs:</strong> ${ticketData.accessibilityNeeds}</div>` : ''}
+                </div>
+                ` : ''}
+
+                ${ticketData.ticketType === 'early-bird' && ticketData.heardAbout ? `
+                <div class="section">
+                    <h3>Early Bird Information</h3>
+                    <div class="field"><strong>How did you hear about PAAN Summit:</strong> ${ticketData.heardAbout}</div>
                 </div>
                 ` : ''}
 

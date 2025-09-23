@@ -353,13 +353,13 @@
     "pricing": {
       "agency": {
         "title": "Candidature Agence",
-        "price": "300 $ USD",
-        "description": "Frais de Candidature Agence"
+        "price": "130 $ USD par catégorie",
+        "description": "Frais de Candidature Agence par Catégorie"
       },
       "freelancer": {
         "title": "Candidature Freelance",
-        "price": "50 $ USD", 
-        "description": "Frais de Candidature Freelance"
+        "price": "30 $ USD par catégorie", 
+        "description": "Frais de Candidature Freelance par Catégorie"
       }
     },
     "sections": {

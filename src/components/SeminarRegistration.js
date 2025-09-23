@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import ReCAPTCHA from "react-google-recaptcha";
 import TicketPurchaseButton from './TicketPurchaseButton';
@@ -16,6 +16,14 @@ export default function SeminarRegistration() {
   const [recaptchaToken, setRecaptchaToken] = useState(null);
   const recaptchaRef = useRef(null);
 
+  // Early Bird countdown timer state
+  const [earlyBirdTimeLeft, setEarlyBirdTimeLeft] = useState({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0
+  });
+
   // Check if reCAPTCHA site key is available
   const recaptchaSiteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
   if (!recaptchaSiteKey) {
@@ -23,6 +31,31 @@ export default function SeminarRegistration() {
       "reCAPTCHA site key is missing. Please set NEXT_PUBLIC_RECAPTCHA_SITE_KEY in .env.local"
     );
   }
+
+  // Early Bird countdown timer
+  useEffect(() => {
+    const targetDate = new Date('2025-11-01T23:59:59+03:00'); // November 1, 2025 at 11:59 PM EAT
+    
+    const interval = setInterval(() => {
+      const now = new Date();
+      const difference = targetDate - now;
+      
+      if (difference <= 0) {
+        clearInterval(interval);
+        setEarlyBirdTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+        return;
+      }
+      
+      const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((difference / (1000 * 60)) % 60);
+      const seconds = Math.floor((difference / 1000) % 60);
+      
+      setEarlyBirdTimeLeft({ days, hours, minutes, seconds });
+    }, 1000);
+    
+    return () => clearInterval(interval);
+  }, []);
 
   const validateForm = () => {
     const newErrors = {};
@@ -148,17 +181,141 @@ export default function SeminarRegistration() {
             
             <div className="bg-[#F25849] rounded-lg p-6 text-white shadow-lg">
               <h3 className="text-2xl font-semibold mb-4">Ticket Options</h3>
-              <div className="">
-                <div className="border-orange-400">
-                  <h4 className="font-medium text-xl">Members: $100</h4>
+              <div className="space-y-3">
+                <div className="bg-white/10 rounded-lg p-3">
+                  <h4 className="font-medium text-lg">Early Bird Pass: $65</h4>
+                  <p className="text-sm opacity-90">Only 100 slots available</p>
+                  
+                  {/* Early Bird Countdown Timer */}
+                  {earlyBirdTimeLeft.days > 0 || earlyBirdTimeLeft.hours > 0 || earlyBirdTimeLeft.minutes > 0 || earlyBirdTimeLeft.seconds > 0 ? (
+                    <div className="mt-2 p-2 bg-white/20 rounded">
+                      <div className="text-center">
+                        <p className="text-xs font-medium opacity-90 mb-1">Early Bird Offer Ends In:</p>
+                        <div className="flex justify-center gap-1 text-xs">
+                          <div className="bg-white/30 rounded px-1 py-0.5 min-w-[30px]">
+                            <div className="font-bold">{earlyBirdTimeLeft.days}</div>
+                            <div className="text-xs opacity-75">D</div>
+                          </div>
+                          <div className="bg-white/30 rounded px-1 py-0.5 min-w-[30px]">
+                            <div className="font-bold">{earlyBirdTimeLeft.hours}</div>
+                            <div className="text-xs opacity-75">H</div>
+                          </div>
+                          <div className="bg-white/30 rounded px-1 py-0.5 min-w-[30px]">
+                            <div className="font-bold">{earlyBirdTimeLeft.minutes}</div>
+                            <div className="text-xs opacity-75">M</div>
+                          </div>
+                          <div className="bg-white/30 rounded px-1 py-0.5 min-w-[30px]">
+                            <div className="font-bold">{earlyBirdTimeLeft.seconds}</div>
+                            <div className="text-xs opacity-75">S</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="mt-2 p-2 bg-red-500/30 rounded">
+                      <p className="text-center text-xs font-medium">Early Bird Offer Has Ended</p>
+                    </div>
+                  )}
                 </div>
-                <div className="pb-6">
-                  <h4 className="font-medium text-xl">Non-Members: $150</h4>
+                <div className="bg-white/10 rounded-lg p-3">
+                  <h4 className="font-medium text-lg">General Admission: $95</h4>
+                  <p className="text-sm opacity-90">Most Popular Standard</p>
+                </div>
+                <div className="bg-white/10 rounded-lg p-3">
+                  <h4 className="font-medium text-lg">VIP Delegate Pass: $220</h4>
+                  <p className="text-sm opacity-90">Exclusive Access</p>
+                </div>
+                <div className="bg-white/10 rounded-lg p-3">
+                  <h4 className="font-medium text-lg">Student & Young Creatives: $50</h4>
+                  <p className="text-sm opacity-90">For students and young professionals</p>
+                </div>
+                <div className="bg-white/10 rounded-lg p-3">
+                  <h4 className="font-medium text-lg">Virtual Access Pass: $15</h4>
+                  <p className="text-sm opacity-90">Join from anywhere</p>
                 </div>
                
-                <div>
-                  <p className="text-md text-left">Includes access to all sessions, workshops, and networking events during the summit.</p>
+                <div className="pt-3">
+                  <p className="text-md text-left">Choose the ticket that best fits your needs. All tickets include access to keynotes, panels, and networking opportunities.</p>
                 </div>
+              </div>
+            </div>
+            
+            {/* Benefits Overview */}
+            <div className="bg-white border border-gray-200 rounded-lg p-6 shadow-lg">
+              <h3 className="text-xl font-semibold text-gray-800 mb-4">What's Included in Your Ticket</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="space-y-3">
+                  <div className="flex items-start gap-3">
+                    <div className="w-2 h-2 bg-[#F25849] rounded-full mt-2 flex-shrink-0"></div>
+                    <div>
+                      <h4 className="font-medium text-gray-800">Full Summit Access</h4>
+                      <p className="text-sm text-gray-600">2-day access to all keynotes, panels, and workshops</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <div className="w-2 h-2 bg-[#F25849] rounded-full mt-2 flex-shrink-0"></div>
+                    <div>
+                      <h4 className="font-medium text-gray-800">Networking Opportunities</h4>
+                      <p className="text-sm text-gray-600">Connect with industry leaders and fellow creatives</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <div className="w-2 h-2 bg-[#F25849] rounded-full mt-2 flex-shrink-0"></div>
+                    <div>
+                      <h4 className="font-medium text-gray-800">Digital Certificate</h4>
+                      <p className="text-sm text-gray-600">Certificate of participation for your portfolio</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <div className="w-2 h-2 bg-[#F25849] rounded-full mt-2 flex-shrink-0"></div>
+                    <div>
+                      <h4 className="font-medium text-gray-800">Exhibition Access</h4>
+                      <p className="text-sm text-gray-600">Explore innovative projects and connect with exhibitors</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="space-y-3">
+                  <div className="flex items-start gap-3">
+                    <div className="w-2 h-2 bg-[#F25849] rounded-full mt-2 flex-shrink-0"></div>
+                    <div>
+                      <h4 className="font-medium text-gray-800">Post-Event Access</h4>
+                      <p className="text-sm text-gray-600">Digital recordings and speaker presentations</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <div className="w-2 h-2 bg-[#F25849] rounded-full mt-2 flex-shrink-0"></div>
+                    <div>
+                      <h4 className="font-medium text-gray-800">Refreshments</h4>
+                      <p className="text-sm text-gray-600">Lunch and refreshments during the summit</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <div className="w-2 h-2 bg-[#F25849] rounded-full mt-2 flex-shrink-0"></div>
+                    <div>
+                      <h4 className="font-medium text-gray-800">Welcome Kit</h4>
+                      <p className="text-sm text-gray-600">Exclusive summit materials and branded items</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <div className="w-2 h-2 bg-[#F25849] rounded-full mt-2 flex-shrink-0"></div>
+                    <div>
+                      <h4 className="font-medium text-gray-800">Business Opportunities</h4>
+                      <p className="text-sm text-gray-600">Access to deal rooms and partnership opportunities</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              {/* Premium Benefits Note */}
+              <div className="mt-4 p-3 bg-[#F25849]/10 border border-[#F25849]/20 rounded-lg">
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-[#F25849] rounded-full"></div>
+                  <h4 className="font-medium text-gray-800">Premium Benefits</h4>
+                </div>
+                <p className="text-sm text-gray-600 mt-1">
+                  VIP, Agency Growth, and International Delegate passes include additional perks like priority seating, 
+                  exclusive networking events, premium lounges, and access to the PAAN Awards Gala.
+                </p>
               </div>
             </div>
           </div>

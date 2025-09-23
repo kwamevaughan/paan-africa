@@ -9,6 +9,7 @@ import ScrollToTop from "@/components/ScrollToTop";
 import Head from "next/head";
 import { motion } from "framer-motion";
 import PAANAwardsApplicationModal from "@/components/PAANAwardsApplicationModal";
+import CategoryNominationModal from "@/components/CategoryNominationModal";
 import PaystackScript from "@/components/PaystackScript";
 
 // Animation variants - defined outside component for global access
@@ -81,6 +82,9 @@ const SummitPage = () => {
   
   // Application modal state
   const [isApplicationModalOpen, setIsApplicationModalOpen] = useState(false);
+  
+  // Category nomination modal state
+  const [isNominationModalOpen, setIsNominationModalOpen] = useState(false);
 
  
   // Get visible jury - Commented out
@@ -625,7 +629,10 @@ const SummitPage = () => {
                   <div className="text-center relative max-w-48 px-4">
                     <h4 className="text-md font-bold text-paan-dark-blue mb-3">Your Voice Matters</h4>
                     <p className="text-paan-dark-blue font-light text-xs leading-relaxed mb-4">Suggest a new category that reflects Africa's evolving creative landscape.</p>
-                    <button className="bg-paan-red text-white px-6 py-2 rounded-full hover:bg-paan-red/90 transition-all duration-300 font-medium text-sm shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                    <button 
+                      onClick={() => setIsNominationModalOpen(true)}
+                      className="bg-paan-red text-white px-6 py-2 rounded-full hover:bg-paan-red/90 transition-all duration-300 font-medium text-sm shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                    >
                       Nominate a Category
                     </button>
                   </div>
@@ -920,6 +927,12 @@ const SummitPage = () => {
         <PAANAwardsApplicationModal 
           isOpen={isApplicationModalOpen}
           onClose={() => setIsApplicationModalOpen(false)}
+        />
+        
+        {/* Category Nomination Modal */}
+        <CategoryNominationModal 
+          isOpen={isNominationModalOpen}
+          onClose={() => setIsNominationModalOpen(false)}
         />
       </main>
     </>

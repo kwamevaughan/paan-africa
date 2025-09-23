@@ -150,15 +150,42 @@ const PAANAwardsApplicationModal = ({ isOpen, onClose }) => {
   // Pricing configuration
   const pricing = {
     agency: {
-      price: 300,
+      pricePerCategory: 130,
       currency: 'USD',
-      description: 'Agency Application Fee'
+      description: 'Agency Application Fee per Category'
     },
     freelancer: {
-      price: 50,
+      pricePerCategory: 30,
       currency: 'USD',
-      description: 'Freelancer Application Fee'
+      description: 'Freelancer Application Fee per Category'
     }
+  };
+
+  // Calculate total price with multi-category discount
+  const calculateTotalPrice = () => {
+    const selectedPricing = pricing[formData.applicantType];
+    const categoryCount = formData.selectedCategories.length;
+    
+    if (categoryCount === 0) return 0;
+    
+    const basePrice = selectedPricing.pricePerCategory * categoryCount;
+    
+    // Apply 25% discount for multiple categories
+    if (categoryCount > 1) {
+      return basePrice * 0.75; // 25% discount
+    }
+    
+    return basePrice;
+  };
+
+  const getDiscountAmount = () => {
+    const selectedPricing = pricing[formData.applicantType];
+    const categoryCount = formData.selectedCategories.length;
+    
+    if (categoryCount <= 1) return 0;
+    
+    const basePrice = selectedPricing.pricePerCategory * categoryCount;
+    return basePrice * 0.25; // 25% discount amount
   };
 
   const handleInputChange = (e) => {
@@ -256,7 +283,8 @@ const PAANAwardsApplicationModal = ({ isOpen, onClose }) => {
 
     setIsSubmitting(true);
 
-    // Get selected pricing
+    // Calculate total price
+    const totalPrice = calculateTotalPrice();
     const selectedPricing = pricing[formData.applicantType];
     
     // Check if Paystack key is configured
@@ -273,7 +301,7 @@ const PAANAwardsApplicationModal = ({ isOpen, onClose }) => {
     const paystackConfig = {
       key: process.env.NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY,
       email: formData.email,
-      amount: selectedPricing.price * 100, // Convert to cents
+      amount: totalPrice * 100, // Convert to cents
       currency: selectedPricing.currency,
       ref: reference,
       metadata: {
@@ -321,7 +349,7 @@ const PAANAwardsApplicationModal = ({ isOpen, onClose }) => {
             body: JSON.stringify({
               paymentData: {
                 reference: response.reference,
-                amount: selectedPricing.price * 100,
+                amount: totalPrice * 100,
                 currency: selectedPricing.currency,
                 status: 'success',
                 paidAt: new Date().toISOString()
@@ -426,7 +454,10 @@ const PAANAwardsApplicationModal = ({ isOpen, onClose }) => {
             <div>
               <h2 className="text-2xl font-bold">PAAN Awards Application</h2>
               <p className="text-white/80 mt-1">
-                {formData.applicantType === 'agency' ? 'Agency Application' : 'Freelancer Application'} - ${currentPricing.price} USD
+                {formData.applicantType === 'agency' ? 'Agency Application' : 'Freelancer Application'} - ${currentPricing.pricePerCategory} USD per category
+                {formData.selectedCategories.length > 1 && (
+                  <span className="text-yellow-400 ml-2">(25% discount applied!)</span>
+                )}
               </p>
               {!paystackReady && (
                 <div className="flex items-center gap-2 mt-2">
@@ -463,7 +494,7 @@ const PAANAwardsApplicationModal = ({ isOpen, onClose }) => {
                 <div className="text-center">
                   <Icon icon="mdi:office-building" className="w-8 h-8 mx-auto mb-2" />
                   <h3 className="font-semibold">Agency</h3>
-                  <p className="text-sm text-gray-600">$300 USD</p>
+                  <p className="text-sm text-gray-600">$130 USD per category</p>
                 </div>
               </button>
               <button
@@ -478,7 +509,7 @@ const PAANAwardsApplicationModal = ({ isOpen, onClose }) => {
                 <div className="text-center">
                   <Icon icon="mdi:account" className="w-8 h-8 mx-auto mb-2" />
                   <h3 className="font-semibold">Freelancer</h3>
-                  <p className="text-sm text-gray-600">$50 USD</p>
+                  <p className="text-sm text-gray-600">$30 USD per category</p>
                 </div>
               </button>
             </div>
@@ -656,6 +687,20 @@ const PAANAwardsApplicationModal = ({ isOpen, onClose }) => {
                 ))}
               </div>
               {errors.selectedCategories && <p className="text-red-500 text-xs mt-2">{errors.selectedCategories}</p>}
+              
+              {/* Important Award Information */}
+              <div className="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+                <div className="flex items-start gap-3">
+                  <Icon icon="mdi:trophy" className="w-6 h-6 text-blue-600 mt-0.5 flex-shrink-0" />
+                  <div>
+                    <h4 className="font-semibold text-blue-900 mb-2">Important Award Information</h4>
+                    <p className="text-sm text-blue-800">
+                      <strong>In every category, both the agency and client are honored with their own award as a mark of shared achievement.</strong> 
+                      This means when you win, both your organization and your client receive recognition, celebrating the collaborative success of your partnership.
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
 
             {/* Project Information */}
@@ -869,21 +914,82 @@ const PAANAwardsApplicationModal = ({ isOpen, onClose }) => {
               </div>
             )}
 
+            {/* Conversion Boosters */}
+            <div className="bg-gradient-to-r from-green-50 to-blue-50 border border-green-200 rounded-xl p-6">
+              <h3 className="text-lg font-semibold text-gray-900 mb-4">Why Apply for PAAN Awards?</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="space-y-3">
+                  <div className="flex items-start gap-3">
+                    <Icon icon="mdi:trophy-variant" className="w-6 h-6 text-yellow-600 mt-0.5 flex-shrink-0" />
+                    <div>
+                      <h4 className="font-semibold text-gray-900">Pan African Recognition</h4>
+                      <p className="text-sm text-gray-600">Opportunity for Pan African recognition of your work</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <Icon icon="mdi:newspaper" className="w-6 h-6 text-blue-600 mt-0.5 flex-shrink-0" />
+                    <div>
+                      <h4 className="font-semibold text-gray-900">Media Coverage</h4>
+                      <p className="text-sm text-gray-600">Winning work featured across leading African media</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="space-y-3">
+                  <div className="flex items-start gap-3">
+                    <Icon icon="mdi:handshake" className="w-6 h-6 text-green-600 mt-0.5 flex-shrink-0" />
+                    <div>
+                      <h4 className="font-semibold text-gray-900">Dual Recognition</h4>
+                      <p className="text-sm text-gray-600">Every win = 1 award for your agency + 1 award for your client</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <Icon icon="mdi:earth" className="w-6 h-6 text-purple-600 mt-0.5 flex-shrink-0" />
+                    <div>
+                      <h4 className="font-semibold text-gray-900">Pan African Reach</h4>
+                      <p className="text-sm text-gray-600">Entries coming from over 25+ African countries</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
             {/* Payment Summary */}
             <div className="bg-paan-dark-blue text-white p-6 rounded-xl">
               <h3 className="text-lg font-semibold mb-4">Payment Summary</h3>
-              <div className="flex justify-between items-center">
-                <div>
-                  <p className="text-white/80">
-                    {formData.applicantType === 'agency' ? 'Agency Application Fee' : 'Freelancer Application Fee'}
-                  </p>
-                  <p className="text-sm text-white/60">
-                    {formData.selectedCategories.length} category(ies) selected
-                  </p>
+              <div className="space-y-3">
+                <div className="flex justify-between items-center">
+                  <div>
+                    <p className="text-white/80">
+                      {formData.applicantType === 'agency' ? 'Agency Application Fee' : 'Freelancer Application Fee'}
+                    </p>
+                    <p className="text-sm text-white/60">
+                      {formData.selectedCategories.length} category(ies) × ${currentPricing.pricePerCategory} USD
+                    </p>
+                  </div>
+                  <div className="text-right">
+                    <p className="text-lg font-semibold">${currentPricing.pricePerCategory * formData.selectedCategories.length} USD</p>
+                  </div>
                 </div>
-                <div className="text-right">
-                  <p className="text-2xl font-bold">${currentPricing.price} USD</p>
-                  <p className="text-sm text-white/60">One-time payment</p>
+                
+                {formData.selectedCategories.length > 1 && (
+                  <div className="flex justify-between items-center border-t border-white/20 pt-3">
+                    <div>
+                      <p className="text-yellow-400 font-medium">Multi-Category Discount (25%)</p>
+                    </div>
+                    <div className="text-right">
+                      <p className="text-yellow-400 font-semibold">-${getDiscountAmount()} USD</p>
+                    </div>
+                  </div>
+                )}
+                
+                <div className="flex justify-between items-center border-t border-white/20 pt-3">
+                  <div>
+                    <p className="text-white font-medium">Total Amount</p>
+                  </div>
+                  <div className="text-right">
+                    <p className="text-2xl font-bold">${calculateTotalPrice()} USD</p>
+                    <p className="text-sm text-white/60">One-time payment</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -916,7 +1022,7 @@ const PAANAwardsApplicationModal = ({ isOpen, onClose }) => {
                 ) : (
                   <>
                     <Icon icon="mdi:credit-card" className="w-5 h-5" />
-                    Pay ${currentPricing.price} USD
+                    Pay ${calculateTotalPrice()} USD
                   </>
                 )}
               </button>

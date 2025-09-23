@@ -268,8 +268,16 @@ const SummitPage = () => {
     }
   }, [isVisible]);
 
-  // Countdown timer state and logic
+  // Countdown timer state and logic for summit
   const [timeLeft, setTimeLeft] = useState({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0
+  });
+
+  // Early Bird countdown timer state
+  const [earlyBirdTimeLeft, setEarlyBirdTimeLeft] = useState({
     days: 0,
     hours: 0,
     minutes: 0,
@@ -296,6 +304,31 @@ const SummitPage = () => {
       const seconds = Math.floor((difference / 1000) % 60);
       
       setTimeLeft({ days, hours, minutes, seconds });
+    }, 1000);
+    
+    return () => clearInterval(interval);
+  }, []);
+
+  // Set target date to November 1, 2025 for Early Bird deadline
+  useEffect(() => {
+    const targetDate = new Date('2025-11-01T23:59:59+03:00'); // November 1, 2025 at 11:59 PM EAT
+    
+    const interval = setInterval(() => {
+      const now = new Date();
+      const difference = targetDate - now;
+      
+      if (difference <= 0) {
+        clearInterval(interval);
+        setEarlyBirdTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+        return;
+      }
+      
+      const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((difference / (1000 * 60)) % 60);
+      const seconds = Math.floor((difference / 1000) % 60);
+      
+      setEarlyBirdTimeLeft({ days, hours, minutes, seconds });
     }, 1000);
     
     return () => clearInterval(interval);
@@ -1475,66 +1508,278 @@ const SummitPage = () => {
                 <div className="space-y-6">
                   {/* Mobile Ticket Cards */}
                   <div className="grid grid-cols-1 gap-4">
-                    {/* Members Ticket */}
-                    <div className="bg-gradient-to-r from-paan-blue to-paan-dark-blue rounded-2xl p-6 text-white shadow-xl">
+                    {/* Early Bird Pass */}
+                    <div className="bg-gradient-to-r from-green-500 to-green-600 rounded-2xl p-6 text-white shadow-xl">
                       <div className="flex justify-between items-start mb-4">
                         <div>
-                          <h4 className="text-lg font-bold mb-1">PAAN Members</h4>
-                          <p className="text-sm opacity-90">Special pricing for members</p>
+                          <h4 className="text-lg font-bold mb-1">Early Bird Pass</h4>
+                          <p className="text-sm opacity-90">Only 100 slots available</p>
                         </div>
                         <div className="text-right">
-                          <div className="text-3xl font-bold">$100</div>
+                          <div className="text-3xl font-bold">$65</div>
                           <div className="text-xs opacity-75">per ticket</div>
                         </div>
                       </div>
+                      
+                      {/* Early Bird Countdown Timer */}
+                      {earlyBirdTimeLeft.days > 0 || earlyBirdTimeLeft.hours > 0 || earlyBirdTimeLeft.minutes > 0 || earlyBirdTimeLeft.seconds > 0 ? (
+                        <div className="mb-4 p-3 bg-white/20 rounded-lg">
+                          <div className="text-center">
+                            <p className="text-xs font-medium mb-2 opacity-90">Early Bird Offer Ends In:</p>
+                            <div className="flex justify-center gap-2 text-sm">
+                              <div className="bg-white/30 rounded px-2 py-1 min-w-[40px]">
+                                <div className="font-bold">{earlyBirdTimeLeft.days}</div>
+                                <div className="text-xs opacity-75">Days</div>
+                              </div>
+                              <div className="bg-white/30 rounded px-2 py-1 min-w-[40px]">
+                                <div className="font-bold">{earlyBirdTimeLeft.hours}</div>
+                                <div className="text-xs opacity-75">Hrs</div>
+                              </div>
+                              <div className="bg-white/30 rounded px-2 py-1 min-w-[40px]">
+                                <div className="font-bold">{earlyBirdTimeLeft.minutes}</div>
+                                <div className="text-xs opacity-75">Min</div>
+                              </div>
+                              <div className="bg-white/30 rounded px-2 py-1 min-w-[40px]">
+                                <div className="font-bold">{earlyBirdTimeLeft.seconds}</div>
+                                <div className="text-xs opacity-75">Sec</div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      ) : (
+                        <div className="mb-4 p-3 bg-red-500/30 rounded-lg">
+                          <p className="text-center text-sm font-medium">Early Bird Offer Has Ended</p>
+                        </div>
+                      )}
                       <div className="space-y-2 text-sm">
                         <div className="flex items-center gap-2">
-                          <Icon icon="mdi:check" className="text-paan-yellow" width="16" height="16" />
-                          <span>Access to all sessions & workshops</span>
+                          <Icon icon="mdi:check" className="text-yellow-300" width="16" height="16" />
+                          <span>Full 2-day summit access</span>
                         </div>
                         <div className="flex items-center gap-2">
-                          <Icon icon="mdi:check" className="text-paan-yellow" width="16" height="16" />
-                          <span>Deal Rooms priority access</span>
+                          <Icon icon="mdi:check" className="text-yellow-300" width="16" height="16" />
+                          <span>Exhibition showcase & networking lounge</span>
                         </div>
                         <div className="flex items-center gap-2">
-                          <Icon icon="mdi:check" className="text-paan-yellow" width="16" height="16" />
-                          <span>Networking events & Creator Crawl</span>
+                          <Icon icon="mdi:check" className="text-yellow-300" width="16" height="16" />
+                          <span>Digital speaker presentations post-event</span>
                         </div>
                         <div className="flex items-center gap-2">
-                          <Icon icon="mdi:check" className="text-paan-yellow" width="16" height="16" />
-                          <span>Post-event recordings</span>
+                          <Icon icon="mdi:check" className="text-yellow-300" width="16" height="16" />
+                          <span>Save 30% before November 1st, 2025</span>
                         </div>
                       </div>
                     </div>
 
-                    {/* Non-Members Ticket */}
+                    {/* General Admission */}
                     <div className="bg-gradient-to-r from-paan-red to-paan-maroon rounded-2xl p-6 text-white shadow-xl">
                       <div className="flex justify-between items-start mb-4">
                         <div>
                           <h4 className="text-lg font-bold mb-1">General Admission</h4>
-                          <p className="text-sm opacity-90">Open to all attendees</p>
+                          <p className="text-sm opacity-90">Most Popular Standard</p>
                         </div>
                         <div className="text-right">
-                          <div className="text-3xl font-bold">$150</div>
+                          <div className="text-3xl font-bold">$95</div>
                           <div className="text-xs opacity-75">per ticket</div>
                         </div>
                       </div>
                       <div className="space-y-2 text-sm">
                         <div className="flex items-center gap-2">
                           <Icon icon="mdi:check" className="text-paan-yellow" width="16" height="16" />
-                          <span>Access to all sessions & workshops</span>
+                          <span>Full 2-day summit access</span>
                         </div>
                         <div className="flex items-center gap-2">
                           <Icon icon="mdi:check" className="text-paan-yellow" width="16" height="16" />
-                          <span>Deal Rooms priority access</span>
+                          <span>Networking app & exhibition</span>
                         </div>
                         <div className="flex items-center gap-2">
                           <Icon icon="mdi:check" className="text-paan-yellow" width="16" height="16" />
-                          <span>Networking events & Creator Crawl</span>
+                          <span>Digital certificate of participation</span>
                         </div>
                         <div className="flex items-center gap-2">
                           <Icon icon="mdi:check" className="text-paan-yellow" width="16" height="16" />
-                          <span>Post-event recordings</span>
+                          <span>Access to all keynotes & panels</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* VIP Delegate Pass */}
+                    <div className="bg-gradient-to-r from-purple-600 to-purple-700 rounded-2xl p-6 text-white shadow-xl">
+                      <div className="flex justify-between items-start mb-4">
+                        <div>
+                          <h4 className="text-lg font-bold mb-1">VIP Delegate Pass</h4>
+                          <p className="text-sm opacity-90">Exclusive Access</p>
+                        </div>
+                        <div className="text-right">
+                          <div className="text-3xl font-bold">$220</div>
+                          <div className="text-xs opacity-75">per ticket</div>
+                        </div>
+                      </div>
+                      <div className="space-y-2 text-sm">
+                        <div className="flex items-center gap-2">
+                          <Icon icon="mdi:check" className="text-yellow-300" width="16" height="16" />
+                          <span>All Agency Growth benefits</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <Icon icon="mdi:check" className="text-yellow-300" width="16" height="16" />
+                          <span>VIP Networking Cocktail</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <Icon icon="mdi:check" className="text-yellow-300" width="16" height="16" />
+                          <span>Premium lounge w/ WiFi & refreshments</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <Icon icon="mdi:check" className="text-yellow-300" width="16" height="16" />
+                          <span>Reserved front-row seating</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <Icon icon="mdi:check" className="text-yellow-300" width="16" height="16" />
+                          <span>PAAN Awards Gala</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Student & Young Creatives */}
+                    <div className="bg-gradient-to-r from-blue-500 to-blue-600 rounded-2xl p-6 text-white shadow-xl">
+                      <div className="flex justify-between items-start mb-4">
+                        <div>
+                          <h4 className="text-lg font-bold mb-1">Student & Young Creatives</h4>
+                          <p className="text-sm opacity-90">For students and young professionals</p>
+                        </div>
+                        <div className="text-right">
+                          <div className="text-3xl font-bold">$50</div>
+                          <div className="text-xs opacity-75">per ticket</div>
+                        </div>
+                      </div>
+                      <div className="space-y-2 text-sm">
+                        <div className="flex items-center gap-2">
+                          <Icon icon="mdi:check" className="text-yellow-300" width="16" height="16" />
+                          <span>Full 2 Day access</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <Icon icon="mdi:check" className="text-yellow-300" width="16" height="16" />
+                          <span>Exhibition & networking sessions</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <Icon icon="mdi:check" className="text-yellow-300" width="16" height="16" />
+                          <span>Student-only networking with recruiters</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <Icon icon="mdi:check" className="text-yellow-300" width="16" height="16" />
+                          <span>Certificate of participation</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Virtual Access */}
+                    <div className="bg-gradient-to-r from-gray-600 to-gray-700 rounded-2xl p-6 text-white shadow-xl">
+                      <div className="flex justify-between items-start mb-4">
+                        <div>
+                          <h4 className="text-lg font-bold mb-1">Virtual Access Pass</h4>
+                          <p className="text-sm opacity-90">Join from anywhere</p>
+                        </div>
+                        <div className="text-right">
+                          <div className="text-3xl font-bold">$15</div>
+                          <div className="text-xs opacity-75">per ticket</div>
+                        </div>
+                      </div>
+                      <div className="space-y-2 text-sm">
+                        <div className="flex items-center gap-2">
+                          <Icon icon="mdi:check" className="text-yellow-300" width="16" height="16" />
+                          <span>Live streaming of keynotes & panels</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <Icon icon="mdi:check" className="text-yellow-300" width="16" height="16" />
+                          <span>Access to a networking platform</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <Icon icon="mdi:check" className="text-yellow-300" width="16" height="16" />
+                          <span>30-day access to recordings</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <Icon icon="mdi:check" className="text-yellow-300" width="16" height="16" />
+                          <span>Join from anywhere</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Ticket Benefits Overview */}
+                  <div className="bg-white border border-gray-200 rounded-2xl p-6">
+                    <h4 className="text-lg font-bold text-paan-dark-blue mb-6 text-center">What's Included in Your Ticket</h4>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div className="space-y-4">
+                        <div className="flex items-start gap-3">
+                          <Icon icon="mdi:calendar-check" className="w-6 h-6 text-paan-red mt-1 flex-shrink-0" />
+                          <div>
+                            <h5 className="font-semibold text-paan-dark-blue">Full Summit Access</h5>
+                            <p className="text-sm text-gray-600">2-day access to all keynotes, panels, and workshops</p>
+                          </div>
+                        </div>
+                        <div className="flex items-start gap-3">
+                          <Icon icon="mdi:account-group" className="w-6 h-6 text-paan-red mt-1 flex-shrink-0" />
+                          <div>
+                            <h5 className="font-semibold text-paan-dark-blue">Networking Opportunities</h5>
+                            <p className="text-sm text-gray-600">Connect with industry leaders, investors, and fellow creatives</p>
+                          </div>
+                        </div>
+                        <div className="flex items-start gap-3">
+                          <Icon icon="mdi:certificate" className="w-6 h-6 text-paan-red mt-1 flex-shrink-0" />
+                          <div>
+                            <h5 className="font-semibold text-paan-dark-blue">Digital Certificate</h5>
+                            <p className="text-sm text-gray-600">Certificate of participation for your professional portfolio</p>
+                          </div>
+                        </div>
+                        <div className="flex items-start gap-3">
+                          <Icon icon="mdi:store" className="w-6 h-6 text-paan-red mt-1 flex-shrink-0" />
+                          <div>
+                            <h5 className="font-semibold text-paan-dark-blue">Exhibition Access</h5>
+                            <p className="text-sm text-gray-600">Explore innovative projects and connect with exhibitors</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="space-y-4">
+                        <div className="flex items-start gap-3">
+                          <Icon icon="mdi:play-circle" className="w-6 h-6 text-paan-red mt-1 flex-shrink-0" />
+                          <div>
+                            <h5 className="font-semibold text-paan-dark-blue">Post-Event Access</h5>
+                            <p className="text-sm text-gray-600">Digital recordings and speaker presentations</p>
+                          </div>
+                        </div>
+                        <div className="flex items-start gap-3">
+                          <Icon icon="mdi:coffee" className="w-6 h-6 text-paan-red mt-1 flex-shrink-0" />
+                          <div>
+                            <h5 className="font-semibold text-paan-dark-blue">Refreshments</h5>
+                            <p className="text-sm text-gray-600">Lunch and refreshments during the summit</p>
+                          </div>
+                        </div>
+                        <div className="flex items-start gap-3">
+                          <Icon icon="mdi:gift" className="w-6 h-6 text-paan-red mt-1 flex-shrink-0" />
+                          <div>
+                            <h5 className="font-semibold text-paan-dark-blue">Welcome Kit</h5>
+                            <p className="text-sm text-gray-600">Exclusive summit materials and branded items</p>
+                          </div>
+                        </div>
+                        <div className="flex items-start gap-3">
+                          <Icon icon="mdi:handshake" className="w-6 h-6 text-paan-red mt-1 flex-shrink-0" />
+                          <div>
+                            <h5 className="font-semibold text-paan-dark-blue">Business Opportunities</h5>
+                            <p className="text-sm text-gray-600">Access to deal rooms and partnership opportunities</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    {/* Premium Benefits Note */}
+                    <div className="mt-6 p-4 bg-gradient-to-r from-paan-red/10 to-paan-maroon/10 border border-paan-red/20 rounded-xl">
+                      <div className="flex items-center gap-3">
+                        <Icon icon="mdi:crown" className="w-6 h-6 text-paan-red" />
+                        <div>
+                          <h5 className="font-semibold text-paan-dark-blue">Premium Ticket Benefits</h5>
+                          <p className="text-sm text-gray-600">
+                            VIP, Agency Growth, and International Delegate passes include additional perks like priority seating, 
+                            exclusive networking events, premium lounges, and access to the PAAN Awards Gala.
+                          </p>
                         </div>
                       </div>
                     </div>
@@ -1589,14 +1834,22 @@ const SummitPage = () => {
                         <div className="flex-1 text-left pl-2 sm:pl-4 md:pl-6 lg:pl-8 text-white mb-3 sm:mb-4 md:mb-0">
                           <h4 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold mb-1 sm:mb-2 md:mb-3">PAAN SUMMIT 2026</h4>
                           <p className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-semibold mb-3 sm:mb-4 md:mb-6">Ticket Options</p>
-                          <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 md:gap-4 mb-3 sm:mb-4 md:mb-6">
-                            <div className="flex flex-col items-left bg-white/20 border border-white rounded-lg px-2 sm:px-3 md:px-4 py-1 sm:py-2 md:py-3 w-full sm:w-32 md:w-40">
-                              <h4 className="text-xs sm:text-sm font-light">Members: </h4>
-                              <p className="text-xl sm:text-2xl md:text-3xl font-bold">$100</p>
+                          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2 sm:gap-3 md:gap-4 mb-3 sm:mb-4 md:mb-6">
+                            <div className="flex flex-col items-left bg-white/20 border border-white rounded-lg px-2 sm:px-3 md:px-4 py-1 sm:py-2 md:py-3">
+                              <h4 className="text-xs sm:text-sm font-light">Early Bird: </h4>
+                              <p className="text-lg sm:text-xl md:text-2xl font-bold">$65</p>
                             </div>
-                            <div className="flex flex-col items-left bg-white/20 border border-white rounded-lg px-2 sm:px-3 md:px-4 py-1 sm:py-2 md:py-3 w-full sm:w-32 md:w-40">
-                              <h4 className="text-xs sm:text-sm font-light">Non-Members: </h4>
-                              <p className="text-xl sm:text-2xl md:text-3xl font-bold">$150</p>
+                            <div className="flex flex-col items-left bg-white/20 border border-white rounded-lg px-2 sm:px-3 md:px-4 py-1 sm:py-2 md:py-3">
+                              <h4 className="text-xs sm:text-sm font-light">General: </h4>
+                              <p className="text-lg sm:text-xl md:text-2xl font-bold">$95</p>
+                            </div>
+                            <div className="flex flex-col items-left bg-white/20 border border-white rounded-lg px-2 sm:px-3 md:px-4 py-1 sm:py-2 md:py-3">
+                              <h4 className="text-xs sm:text-sm font-light">VIP: </h4>
+                              <p className="text-lg sm:text-xl md:text-2xl font-bold">$220</p>
+                            </div>
+                            <div className="flex flex-col items-left bg-white/20 border border-white rounded-lg px-2 sm:px-3 md:px-4 py-1 sm:py-2 md:py-3">
+                              <h4 className="text-xs sm:text-sm font-light">Student: </h4>
+                              <p className="text-lg sm:text-xl md:text-2xl font-bold">$50</p>
                             </div>
                           </div>
                           <ul className="text-xs sm:text-sm font-light space-y-1 sm:space-y-2">

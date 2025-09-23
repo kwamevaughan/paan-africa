@@ -421,13 +421,13 @@
     "pricing": {
       "agency": {
         "title": "Agency Application",
-        "price": "$300 USD",
-        "description": "Agency Application Fee"
+        "price": "$130 USD per category",
+        "description": "Agency Application Fee per Category"
       },
       "freelancer": {
         "title": "Freelancer Application", 
-        "price": "$50 USD",
-        "description": "Freelancer Application Fee"
+        "price": "$30 USD per category",
+        "description": "Freelancer Application Fee per Category"
       }
     },
     "sections": {

@@ -87,7 +87,9 @@ const SpeakerApplicationPage = () => {
     'IP, Capital & Content Exports',
     'Payments, Market Entry & Nomad Work',
     'AI, Data & Discovery',
-    'Hubs, Talent & Cross-Border Operations'
+    'Hubs, Talent & Cross-Border Operations',
+    'Leadership & Talent Futures in the creative sector',
+    'Agency Growth & Client Partnerships'
   ];
 
   const targetAudienceOptions = [
@@ -938,7 +940,7 @@ const SpeakerLocationAndDate = () => {
       </div>
       <div className="flex items-center gap-2 text-white text-xs sm:text-sm">
         <Icon icon="mdi:users" className="text-red-500 flex-shrink-0" width="20" height="20" />
-        <span className="whitespace-nowrap">300+ Attendees</span>
+        <span className="whitespace-nowrap">500+ Attendees</span>
       </div>
     </div>
   );

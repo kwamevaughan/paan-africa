@@ -31,6 +31,25 @@ export default async function handler(req, res) {
       },
     });
 
+    // Calculate pricing details
+    const calculatePricingDetails = (data, paymentData) => {
+      const isAgency = data.applicantType === 'agency';
+      const pricePerCategory = isAgency ? 130 : 30;
+      const categoryCount = data.selectedCategories.length;
+      const baseAmount = pricePerCategory * categoryCount;
+      const discountAmount = categoryCount > 1 ? baseAmount * 0.25 : 0;
+      const finalAmount = baseAmount - discountAmount;
+      
+      return {
+        pricePerCategory,
+        categoryCount,
+        baseAmount,
+        discountAmount,
+        finalAmount,
+        currency: paymentData.currency
+      };
+    };
+
     // Format application data for email
     const formatApplicationData = (data) => {
       let formatted = '';
@@ -97,6 +116,9 @@ export default async function handler(req, res) {
       return formatted;
     };
 
+    // Calculate pricing details
+    const pricingDetails = calculatePricingDetails(applicationData, paymentData);
+
     // Create email content
     const emailSubject = `PAAN Awards Application - ${applicationData.applicantType} - ${applicationData.fullName}`;
     
@@ -110,7 +132,11 @@ ${formatApplicationData(applicationData)}
 
 PAYMENT DETAILS
 ===============
-Amount: ${paymentData.currency} ${(paymentData.amount / 100).toLocaleString()}
+Applicant Type: ${applicationData.applicantType}
+Price per Category: ${pricingDetails.currency} ${pricingDetails.pricePerCategory}
+Categories Selected: ${pricingDetails.categoryCount}
+Base Amount: ${pricingDetails.currency} ${pricingDetails.baseAmount.toLocaleString()}
+${pricingDetails.discountAmount > 0 ? `Multi-Category Discount (25%): -${pricingDetails.currency} ${pricingDetails.discountAmount.toLocaleString()}\n` : ''}Final Amount: ${pricingDetails.currency} ${pricingDetails.finalAmount.toLocaleString()}
 Status: ${paymentData.status}
 Paid At: ${paymentData.paidAt ? new Date(paymentData.paidAt).toLocaleString() : 'N/A'}
 
@@ -195,7 +221,12 @@ PAAN Awards System
 
                 <div class="payment-details">
                     <h3>Payment Details</h3>
-                    <div class="field"><strong>Amount:</strong> ${paymentData.currency} ${(paymentData.amount / 100).toLocaleString()}</div>
+                    <div class="field"><strong>Applicant Type:</strong> ${applicationData.applicantType}</div>
+                    <div class="field"><strong>Price per Category:</strong> ${pricingDetails.currency} ${pricingDetails.pricePerCategory}</div>
+                    <div class="field"><strong>Categories Selected:</strong> ${pricingDetails.categoryCount}</div>
+                    <div class="field"><strong>Base Amount:</strong> ${pricingDetails.currency} ${pricingDetails.baseAmount.toLocaleString()}</div>
+                    ${pricingDetails.discountAmount > 0 ? `<div class="field" style="color: #4CAF50;"><strong>Multi-Category Discount (25%):</strong> -${pricingDetails.currency} ${pricingDetails.discountAmount.toLocaleString()}</div>` : ''}
+                    <div class="field" style="font-size: 1.1em; font-weight: bold; border-top: 1px solid #ccc; padding-top: 10px; margin-top: 10px;"><strong>Final Amount:</strong> ${pricingDetails.currency} ${pricingDetails.finalAmount.toLocaleString()}</div>
                     <div class="field"><strong>Status:</strong> ${paymentData.status}</div>
                     <div class="field"><strong>Paid At:</strong> ${paymentData.paidAt ? new Date(paymentData.paidAt).toLocaleString() : 'N/A'}</div>
                 </div>
@@ -232,13 +263,19 @@ Dear ${applicationData.fullName},
 
 Thank you for submitting your application for the PAAN Awards 2026!
 
-Your application has been successfully received and your payment of ${paymentData.currency} ${(paymentData.amount / 100).toLocaleString()} has been confirmed.
+Your application has been successfully received and your payment has been confirmed.
 
 Application Details:
 - Reference: ${reference}
 - Applicant Type: ${applicationData.applicantType}
 - Selected Categories: ${applicationData.selectedCategories.join(', ')}
 - Application Date: ${new Date().toLocaleString()}
+
+Payment Breakdown:
+- Price per Category: ${pricingDetails.currency} ${pricingDetails.pricePerCategory}
+- Categories Selected: ${pricingDetails.categoryCount}
+- Base Amount: ${pricingDetails.currency} ${pricingDetails.baseAmount.toLocaleString()}
+${pricingDetails.discountAmount > 0 ? `- Multi-Category Discount (25%): -${pricingDetails.currency} ${pricingDetails.discountAmount.toLocaleString()}\n` : ''}- Final Amount Paid: ${pricingDetails.currency} ${pricingDetails.finalAmount.toLocaleString()}
 
 What's Next:
 1. Our team will review your application
@@ -279,7 +316,7 @@ PAAN Awards Team
                   
                   <div class="highlight">
                       <h3>Application Confirmed</h3>
-                      <p>Your application has been successfully received and your payment of <strong>${paymentData.currency} ${(paymentData.amount / 100).toLocaleString()}</strong> has been confirmed.</p>
+                      <p>Your application has been successfully received and your payment has been confirmed.</p>
                   </div>
 
                   <h3>Application Details:</h3>
@@ -289,6 +326,15 @@ PAAN Awards Team
                       <li><strong>Selected Categories:</strong> ${applicationData.selectedCategories.join(', ')}</li>
                       <li><strong>Application Date:</strong> ${new Date().toLocaleString()}</li>
                   </ul>
+
+                  <h3>Payment Breakdown:</h3>
+                  <div style="background: #f5f5f5; padding: 15px; border-radius: 5px; margin: 10px 0;">
+                      <div style="margin-bottom: 8px;"><strong>Price per Category:</strong> ${pricingDetails.currency} ${pricingDetails.pricePerCategory}</div>
+                      <div style="margin-bottom: 8px;"><strong>Categories Selected:</strong> ${pricingDetails.categoryCount}</div>
+                      <div style="margin-bottom: 8px;"><strong>Base Amount:</strong> ${pricingDetails.currency} ${pricingDetails.baseAmount.toLocaleString()}</div>
+                      ${pricingDetails.discountAmount > 0 ? `<div style="margin-bottom: 8px; color: #4CAF50;"><strong>Multi-Category Discount (25%):</strong> -${pricingDetails.currency} ${pricingDetails.discountAmount.toLocaleString()}</div>` : ''}
+                      <div style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #ccc; font-weight: bold; font-size: 1.1em;"><strong>Final Amount Paid:</strong> ${pricingDetails.currency} ${pricingDetails.finalAmount.toLocaleString()}</div>
+                  </div>
 
                   <h3>What's Next:</h3>
                   <ol>

@@ -26,14 +26,14 @@ export const PAYSTACK_CONFIG = {
 export const PAYMENT_TYPES = {
   AWARDS_APPLICATION: {
     agency: {
-      amount: 300,
+      amountPerCategory: 130,
       currency: 'USD',
-      description: 'PAAN Awards Agency Application Fee'
+      description: 'PAAN Awards Agency Application Fee per Category'
     },
     freelancer: {
-      amount: 50,
+      amountPerCategory: 30,
       currency: 'USD',
-      description: 'PAAN Awards Freelancer Application Fee'
+      description: 'PAAN Awards Freelancer Application Fee per Category'
     }
   },
   SUMMIT_TICKET: {
