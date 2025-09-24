@@ -80,7 +80,7 @@ const SummitPage = () => {
 
   // Speakers carousel state
   const [currentSpeakerIndex, setCurrentSpeakerIndex] = useState(0);
-  const [visibleSpeakers, setVisibleSpeakers] = useState(3);
+  const [visibleSpeakers, setVisibleSpeakers] = useState(4);
 
   // Sessions carousel state
   const [currentSessionIndex, setCurrentSessionIndex] = useState(0);
