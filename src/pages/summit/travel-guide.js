@@ -1054,7 +1054,7 @@ const TravelGuide = () => {
                  >
                    <div className="relative h-64">
                      <Image
-                       src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/nairobi-town.png"
+                       src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/nairobi-town.jpg"
                        alt="Creative Crawl"
                        fill
                        className="object-cover"

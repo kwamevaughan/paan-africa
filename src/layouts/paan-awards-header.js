@@ -211,11 +211,11 @@ const PAANAwardsHeader = ({ navLinkColor, onApplyNowClick, onJoinSummitClick }) 
             {/* Mobile CTA Buttons */}
             <div className="space-y-2 pt-2">
               {/* Using Link component for mobile Join Summit button */}
-              <Link href="/summit">
+              <button onClink={() => window.location.href = '/summit'} >
                 <span className={ctaButtons.joinSummit.mobileClassName}>
                   {ctaButtons.joinSummit.label}
                 </span>
-              </Link>
+              </button>
               <button
                 onClick={ctaButtons.applyNow.onClick}              
                 className={ctaButtons.applyNow.mobileClassName}

@@ -782,7 +782,7 @@ const SummitPage = () => {
             </section>
         </div>
 
-        {/* Day 1 Section */}
+        {/* Summit Agenda Section */}
         <div className="bg-[#F3F9FB] py-12 sm:py-16 md:py-20" id="agenda" ref={sectionRefs.events} handleScroll={handleScroll} isFixed={isFixed}>          
            <section className="mx-auto max-w-6xl px-4 sm:px-6">            
              <div className="text-center mb-8 sm:mb-12">
@@ -890,7 +890,7 @@ const SummitPage = () => {
                        </div>
                        <div className="ml-6">
                          <div className="text-sm font-bold text-paan-blue mb-1">11:30 - 13:00</div>
-                         <h5 className="text-paan-dark-blue"><span className="font-bold">Deal Rooms:</span> Creative Finance / Venture</h5>
+                         <h5 className="text-paan-dark-blue"><span className="font-bold">Deal Rooms:</span> Creative Finance / Venture</h5>
                        </div>
                      </div>
                      
@@ -914,7 +914,7 @@ const SummitPage = () => {
                        </div>
                        <div className="ml-6">
                          <div className="text-sm font-bold text-paan-blue mb-1">14:00 - 15:15</div>
-                         <h5 className="text-paan-dark-blue"><span className="font-bold">Clinics & Masterclass:</span> Digital Nomad Ops Clinic / Creator Monetization Masterclass</h5>
+                         <h5 className="text-paan-dark-blue"><span className="font-bold">Clinics & Masterclass:</span> Digital Nomad Ops Clinic / Creator Monetization Masterclass</h5>
                        </div>
                      </div>
                      
@@ -938,7 +938,7 @@ const SummitPage = () => {
                        </div>
                        <div className="ml-6">
                          <div className="text-sm font-bold text-paan-blue mb-1">18:30 - Late</div>
-                         <h5 className="text-paan-dark-blue"><span className="font-bold">Creator Crawl:</span> Networking across Nairobi’s creative scene</h5>
+                         <h5 className="text-paan-dark-blue"><span className="font-bold">Creator Crawl:</span> Networking across Nairobi's creative scene</h5>
                        </div>
                      </div>
                    </div>
@@ -1048,6 +1048,130 @@ const SummitPage = () => {
             </div>
           </section>
         </div>
+
+        {/* Who to Join Section */}
+        <div className="bg-white py-12 sm:py-16 md:py-20" id="participants">
+          <section className="mx-auto max-w-6xl px-4 sm:px-6">
+            <div className="text-center mb-8 sm:mb-12">
+              <h2 className="text-2xl sm:text-3xl font-bold text-paan-dark-blue mb-3 sm:mb-4">Who Should Join</h2>
+              <p className="text-base sm:text-lg text-gray-600">Connect with diverse professionals shaping Africa's creative economy</p>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+              {/* Creative Industry Leaders */}
+              <div className="group bg-gradient-to-br from-paan-blue/5 to-paan-red/5 rounded-xl p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border border-paan-blue/10">
+                <div className="w-12 h-12 bg-paan-blue rounded-lg mb-4 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                  </svg>
+                </div>
+                <h3 className="text-lg font-bold text-paan-dark-blue mb-2">Creative Industry Leaders</h3>
+                <p className="text-gray-600 text-sm">Artists, directors, producers, and creative visionaries driving innovation across Africa's entertainment and media landscape.</p>
+              </div>
+
+              {/* Tech & Platform Innovators */}
+              <div className="group bg-gradient-to-br from-paan-red/5 to-paan-blue/5 rounded-xl p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border border-paan-red/10">
+                <div className="w-12 h-12 bg-paan-red rounded-lg mb-4 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
+                  </svg>
+                </div>
+                <h3 className="text-lg font-bold text-paan-dark-blue mb-2">Tech & Platform Innovators</h3>
+                <p className="text-gray-600 text-sm">Technology entrepreneurs, platform builders, and digital innovators creating the infrastructure for creative commerce.</p>
+              </div>
+
+              {/* Policy makers & trade stakeholders */}
+              <div className="group bg-gradient-to-br from-paan-blue/5 to-paan-red/5 rounded-xl p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border border-paan-blue/10">
+                <div className="w-12 h-12 bg-paan-blue rounded-lg mb-4 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                  </svg>
+                </div>
+                <h3 className="text-lg font-bold text-paan-dark-blue mb-2">Policy Makers & Trade Stakeholders</h3>
+                <p className="text-gray-600 text-sm">Government officials, trade representatives, and policy experts shaping regulatory frameworks for creative industries.</p>
+              </div>
+
+              {/* Agencies */}
+              <div className="group bg-gradient-to-br from-paan-red/5 to-paan-blue/5 rounded-xl p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border border-paan-red/10">
+                <div className="w-12 h-12 bg-paan-red rounded-lg mb-4 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                  </svg>
+                </div>
+                <h3 className="text-lg font-bold text-paan-dark-blue mb-2">Agencies & Service Providers</h3>
+                <p className="text-gray-600 text-sm">Marketing, creative, advertising, IT, and tech agencies providing specialized services to creative businesses.</p>
+              </div>
+
+              {/* Freelancers */}
+              <div className="group bg-gradient-to-br from-paan-blue/5 to-paan-red/5 rounded-xl p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border border-paan-blue/10">
+                <div className="w-12 h-12 bg-paan-blue rounded-lg mb-4 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                  </svg>
+                </div>
+                <h3 className="text-lg font-bold text-paan-dark-blue mb-2">Freelancers</h3>
+                <p className="text-gray-600 text-sm">Independent creative professionals, digital nomads, and gig economy participants building scalable creative careers.</p>
+              </div>
+
+              {/* Investors & Financial Institutions */}
+              <div className="group bg-gradient-to-br from-paan-red/5 to-paan-blue/5 rounded-xl p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border border-paan-red/10">
+                <div className="w-12 h-12 bg-paan-red rounded-lg mb-4 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <h3 className="text-lg font-bold text-paan-dark-blue mb-2">Investors & Financial Institutions</h3>
+                <p className="text-gray-600 text-sm">VCs, angel investors, banks, and fintech companies providing capital and financial services to creative ventures.</p>
+              </div>
+
+              {/* Marketing & creative teams */}
+              <div className="group bg-gradient-to-br from-paan-blue/5 to-paan-red/5 rounded-xl p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border border-paan-blue/10">
+                <div className="w-12 h-12 bg-paan-blue rounded-lg mb-4 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 4V2a1 1 0 011-1h8a1 1 0 011 1v2m-9 4v12a2 2 0 002 2h6a2 2 0 002-2V8M7 8H5a2 2 0 00-2 2v8a2 2 0 002 2h2m0-12h10" />
+                  </svg>
+                </div>
+                <h3 className="text-lg font-bold text-paan-dark-blue mb-2">Marketing & Creative Teams</h3>
+                <p className="text-gray-600 text-sm">In-house marketing departments and creative teams from brands and corporations seeking innovative partnerships.</p>
+              </div>
+
+              {/* Hubs & Ecosystem Builders */}
+              <div className="group bg-gradient-to-br from-paan-red/5 to-paan-blue/5 rounded-xl p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border border-paan-red/10">
+                <div className="w-12 h-12 bg-paan-red rounded-lg mb-4 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                  </svg>
+                </div>
+                <h3 className="text-lg font-bold text-paan-dark-blue mb-2">Hubs & Ecosystem Builders</h3>
+                <p className="text-gray-600 text-sm">Innovation hubs, incubators, accelerators, and community builders fostering creative entrepreneurship across Africa.</p>
+              </div>
+
+              {/* Academia & research */}
+              <div className="group bg-gradient-to-br from-paan-blue/5 to-paan-red/5 rounded-xl p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border border-paan-blue/10">
+                <div className="w-12 h-12 bg-paan-blue rounded-lg mb-4 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                  </svg>
+                </div>
+                <h3 className="text-lg font-bold text-paan-dark-blue mb-2">Academia & Research</h3>
+                <p className="text-gray-600 text-sm">Researchers, academics, and educational institutions studying and teaching creative economy, digital transformation, and innovation.</p>
+              </div>
+
+              {/* Corporate & Brand Partners */}
+              <div className="group bg-gradient-to-br from-paan-red/5 to-paan-blue/5 rounded-xl p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border border-paan-red/10">
+                <div className="w-12 h-12 bg-paan-red rounded-lg mb-4 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2-2v2m8 0V2a2 2 0 00-2-2H6a2 2 0 00-2 2v4h16z" />
+                  </svg>
+                </div>
+                <h3 className="text-lg font-bold text-paan-dark-blue mb-2">Corporate & Brand Partners</h3>
+                <p className="text-gray-600 text-sm">Large corporations, multinational brands, and enterprise clients seeking to engage with Africa's creative talent and markets.</p>
+              </div>
+            </div>
+          </section>
+        </div>
+
+
 
         <div className="bg-white relative mt-10 py-20" isFixed={isFixed}>
           <section className="relative mx-auto max-w-6xl">
@@ -1444,7 +1568,7 @@ const SummitPage = () => {
                 </button>
                        </div>
           </section>
-                     </div>
+         </div>
           {/* Parallax Section */}
           <div className="relative py-6 sm:py-8 md:py-12 lg:py-16 xl:py-20 overflow-hidden h-[320px] sm:h-[400px] md:h-[450px] lg:h-[500px] xl:h-[550px]" id="parallax-section" isFixed={isFixed}>
             {/* Parallax Background Image */}
@@ -1967,15 +2091,13 @@ const SummitPage = () => {
                        </div>
                        
                        {/* Penguin Agency Logo */}
-                       <div className="bg-white w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden relative flex items-center justify-center flex-shrink-0 border border-gray-100" style={{ backgroundColor: '#1a1a1a' }}>
-                         <img src="/assets/images/partners/penguin-agency.png" alt="Penguin Agency Logo" className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 object-contain" />
+                       <div className="bg-white w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden relative flex items-center justify-center flex-shrink-0 border border-gray-100">
+                         <img src="/assets/images/partners/penquin.png" alt="Penguin Agency Logo" className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 object-contain" />
                        </div>
                        
                        {/* CEvent Text Logo */}
                        <div className="bg-white w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden relative flex items-center justify-center flex-shrink-0 border border-gray-100">
-                         <div className="text-center px-2">
-                           <div className="text-paan-dark-blue font-bold text-lg sm:text-xl md:text-2xl leading-tight">CEvent</div>
-                         </div>
+                         <img src="/assets/images/partners/cevent.png" alt="Penguin Agency Logo" className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 object-contain" />
                        </div>
                      </div>
                    ))}
