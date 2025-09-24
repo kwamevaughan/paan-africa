@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import { useFixedHeader, handleScroll } from "../../utils/scrollUtils";
 import LanguageSwitch from "../components/LanguageSwitch";
 
-const PAANAwardsHeader = ({ navLinkColor, onApplyNowClick }) => {
+const PAANAwardsHeader = ({ navLinkColor, onApplyNowClick, onJoinSummitClick }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
   const isFixed = useFixedHeader();
@@ -19,12 +19,21 @@ const PAANAwardsHeader = ({ navLinkColor, onApplyNowClick }) => {
     { href: '#categories-section', label: 'Why Apply' },
   ];
 
-  const ctaButton = {
-    href: '#',
-    label: 'Apply Now',
-    className: 'bg-[#F25849] text-white px-4 py-3 rounded-full text-sm font-bold hover:bg-[#D6473C] transition duration-300',
-    mobileClassName: 'bg-[#F25849] text-white block px-3 py-2 rounded-full text-sm font-bold hover:bg-[#D6473C] transition duration-300',
-    onClick: onApplyNowClick
+  const ctaButtons = {
+    applyNow: {
+      href: '#',
+      label: 'Apply Now',
+      className: 'bg-[#F25849] text-white px-4 py-3 rounded-full text-sm font-bold hover:bg-[#D6473C] transition duration-300',
+      mobileClassName: 'bg-[#F25849] text-white block px-3 py-2 rounded-full text-sm font-bold hover:bg-[#D6473C] transition duration-300',
+      onClick: onApplyNowClick
+    },
+    joinSummit: {
+      href: '/summit',
+      label: 'Join the Summit',
+      className: 'bg-transparent border-2 border-white text-white px-4 py-3 rounded-full text-sm font-bold hover:bg-[#F25849] hover:border-paan-red transition duration-300',
+      mobileClassName: 'bg-transparent border-2 border-[#F25849] text-[#F25849] block px-3 py-2 rounded-full text-sm font-bold hover:bg-[#F25849] hover:text-white transition duration-300',
+      onClick: onJoinSummitClick
+    }
   };
   
   // Use PAAN dark blue color for text when fixed, navLinkColor when not fixed
@@ -59,6 +68,16 @@ const PAANAwardsHeader = ({ navLinkColor, onApplyNowClick }) => {
     }
     
     return `${currentTextColor} hover:text-white hover:bg-[#172840] px-2 sm:px-3 py-1.5 rounded-full transition-all duration-300 cursor-pointer text-xs sm:text-sm font-medium`;
+  };
+
+  // Handle join summit click
+  const handleJoinSummitClick = () => {
+    if (onJoinSummitClick) {
+      onJoinSummitClick();
+    } else {
+      // Fallback to direct navigation
+      window.location.href = '/summit';
+    }
   };
 
   return (
@@ -135,12 +154,21 @@ const PAANAwardsHeader = ({ navLinkColor, onApplyNowClick }) => {
             {/* Language Switcher */}
             <LanguageSwitch className="mr-3" />
             
-            <button
-              onClick={ctaButton.onClick}              
-              className={ctaButton.className}
-            >
-              {ctaButton.label}
-            </button>
+            {/* CTA Buttons */}
+            <div className="flex space-x-2">
+              {/* Using Link component for Join Summit button */}
+              <button onClick={() => window.location.href = '/summit'} >
+                <span className={ctaButtons.joinSummit.className}>
+                  {ctaButtons.joinSummit.label}
+                </span>
+              </button>
+              <button
+                onClick={ctaButtons.applyNow.onClick}              
+                className={ctaButtons.applyNow.className}
+              >
+                {ctaButtons.applyNow.label}
+              </button>
+            </div>
           </div>
         </div>
 
@@ -179,12 +207,22 @@ const PAANAwardsHeader = ({ navLinkColor, onApplyNowClick }) => {
                 </a>
               );
             })}
-            <button
-              onClick={ctaButton.onClick}              
-              className={ctaButton.mobileClassName}
-            >
-              {ctaButton.label}
-            </button>
+            
+            {/* Mobile CTA Buttons */}
+            <div className="space-y-2 pt-2">
+              {/* Using Link component for mobile Join Summit button */}
+              <Link href="/summit">
+                <span className={ctaButtons.joinSummit.mobileClassName}>
+                  {ctaButtons.joinSummit.label}
+                </span>
+              </Link>
+              <button
+                onClick={ctaButtons.applyNow.onClick}              
+                className={ctaButtons.applyNow.mobileClassName}
+              >
+                {ctaButtons.applyNow.label}
+              </button>
+            </div>
           </div>
         </div>
       </div>
