@@ -2075,10 +2075,10 @@ const SummitPage = () => {
                          <img src="/assets/images/partners/PRCA.png" alt="PRCA Logo" className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 object-contain" />
                        </div>
                        
-                       {/* Uber Logo */}
+                       {/* Uber Logo
                        <div className="bg-white w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden relative flex items-center justify-center flex-shrink-0 border border-gray-100">
                          <img src="/assets/images/partners/uber.svg" alt="Uber Logistics Logo" className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 object-contain" />
-                       </div>
+                       </div> */}
                        
                        {/* Viamo Logo */}
                        <div className="bg-white w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden relative flex items-center justify-center flex-shrink-0 border border-gray-100" style={{ backgroundColor: '#1a1a1a' }}>
