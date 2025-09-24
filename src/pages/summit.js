@@ -80,7 +80,7 @@ const SummitPage = () => {
 
   // Speakers carousel state
   const [currentSpeakerIndex, setCurrentSpeakerIndex] = useState(0);
-  const [visibleSpeakers, setVisibleSpeakers] = useState(4);
+  const [visibleSpeakers, setVisibleSpeakers] = useState(3);
 
   // Sessions carousel state
   const [currentSessionIndex, setCurrentSessionIndex] = useState(0);
@@ -126,31 +126,31 @@ const SummitPage = () => {
   const speakers = [
     {
       id: 1,
-      name: "Clive Mishon",
-      title: "Founder, Alliance of Independent Agencies. UK",
-      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/summit/speakers/clive.jpeg",
-      linkedin: "https://www.linkedin.com/in/clive-mishon-33b5318?originalSubdomain=uk"
-    },
-    {
-      id: 2,
       name: "Anna Ceesay",
       title: "Founder & CEO, Fabella, The Gambia",
       image: "https://ik.imagekit.io/nkmvdjnna/PAAN/summit/speakers/Anna.png",
       linkedin: "https://www.linkedin.com/in/annaceesay/?originalSubdomain=gm"
     },
     {
-      id: 3,
+      id: 2,
       name: "Yannick Lefang",
       title: "CEO & Founder - Kasi Insight, Africa",
       image: "https://ik.imagekit.io/nkmvdjnna/PAAN/summit/speakers/Yannick.jpeg",
       linkedin: "https://www.linkedin.com/in/yannicklefang?originalSubdomain=ca"
     },
     {
-      id: 4,
+      id: 3,
       name: "Magdalene Kariuki",
       title: "Associate director, Africa Practice. Kenya",
       image: "https://ik.imagekit.io/nkmvdjnna/PAAN/summit/speakers/Magdalene.jpeg",
       linkedin: "https://www.linkedin.com/in/magdalene-kariuki-mppa"
+    },
+    {
+      id: 4,
+      name: "Clive Mishon",
+      title: "Founder, Alliance of Independent Agencies. UK",
+      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/summit/speakers/clive.jpeg",
+      linkedin: "https://www.linkedin.com/in/clive-mishon-33b5318?originalSubdomain=uk"
     },
     {
       id: 5,
@@ -1205,7 +1205,7 @@ const SummitPage = () => {
                  </button>
                </div>
              </div>
-             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
                {getVisibleSpeakers().map((speaker) => (
                  <div key={speaker.id} className="relative rounded-xl shadow-xl overflow-hidden group cursor-pointer h-80 sm:h-96">
                    <Image
