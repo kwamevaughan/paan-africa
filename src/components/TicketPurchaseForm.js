@@ -102,7 +102,6 @@ const TicketPurchaseForm = ({ onClose }) => {
       name: "Early Bird Pass",
       price: 65,
       currency: "USD",
-      priceKes: 8450, // 65 USD * 130 KES
       description: "Only 100 slots, until Nov 1st 2025",
       validUntil: "November 1st, 2025",
       features: [
@@ -117,7 +116,6 @@ const TicketPurchaseForm = ({ onClose }) => {
       name: "VIP Delegate Pass",
       price: 220,
       currency: "USD",
-      priceKes: 28600, // 220 USD * 130 KES
       description: "Exclusive Access",
       features: [
         "All Agency Growth benefits",
@@ -133,7 +131,6 @@ const TicketPurchaseForm = ({ onClose }) => {
       name: "Agency Growth Pass",
       price: 145,
       currency: "USD",
-      priceKes: 18850, // 145 USD * 130 KES
       description: "For Leaders & Teams",
       features: [
         "All General Admission benefits",
@@ -148,7 +145,6 @@ const TicketPurchaseForm = ({ onClose }) => {
       name: "General Admission",
       price: 95,
       currency: "USD",
-      priceKes: 12350, // 95 USD * 130 KES
       description: "Most Popular Standard",
       features: [
         "Full 2-day summit access",
@@ -162,10 +158,8 @@ const TicketPurchaseForm = ({ onClose }) => {
       name: "Corporate Group Pass",
       price: 390,
       currency: "USD",
-      priceKes: 50700, // 390 USD * 130 KES
       description: "5+ delegates",
       extraPrice: 70,
-      extraPriceKes: 9100, // 70 USD * 130 KES
       features: [
         "5 Full General Admission tickets",
         "Reserved team seating",
@@ -178,7 +172,6 @@ const TicketPurchaseForm = ({ onClose }) => {
       name: "Student & Young Creatives Pass",
       price: 50,
       currency: "USD",
-      priceKes: 6500, // 50 USD * 130 KES
       description: "For students and young professionals",
       features: [
         "Full 2 Day access",
@@ -192,7 +185,6 @@ const TicketPurchaseForm = ({ onClose }) => {
       name: "International Delegate Pass",
       price: 250,
       currency: "USD",
-      priceKes: 32500, // 250 USD * 130 KES
       description: "For international attendees",
       features: [
         "All General Admission benefits",
@@ -205,9 +197,8 @@ const TicketPurchaseForm = ({ onClose }) => {
     {
       id: "virtual-access",
       name: "Virtual Access Pass",
-      price: 15,
+      price: 10,
       currency: "USD",
-      priceKes: 1950, // 15 USD * 130 KES
       description: "Join from anywhere",
       features: [
         "Live streaming of keynotes & panels",
@@ -308,23 +299,14 @@ const TicketPurchaseForm = ({ onClose }) => {
     // Get selected ticket
     const selectedTicket = ticketOptions.find(ticket => ticket.id === formData.ticketType);
     
-    // Support both USD and KES currencies
-    const currency = formData.country === "Kenya" ? "KES" : "USD";
+    // Use USD currency for all payments
+    const currency = "USD";
     
     // Calculate total amount including extra delegates for corporate group
-    let totalAmount;
-    if (currency === "KES") {
-      totalAmount = selectedTicket.priceKes;
-      if (formData.ticketType === "corporate-group" && formData.teamSize > 5) {
-        const extraMembers = formData.teamSize - 5;
-        totalAmount += (selectedTicket.extraPriceKes * extraMembers);
-      }
-    } else {
-      totalAmount = selectedTicket.price;
-      if (formData.ticketType === "corporate-group" && formData.teamSize > 5) {
-        const extraMembers = formData.teamSize - 5;
-        totalAmount += (selectedTicket.extraPrice * extraMembers);
-      }
+    let totalAmount = selectedTicket.price;
+    if (formData.ticketType === "corporate-group" && formData.teamSize > 5) {
+      const extraMembers = formData.teamSize - 5;
+      totalAmount += (selectedTicket.extraPrice * extraMembers);
     }
     
     // Convert to cents
@@ -593,13 +575,10 @@ const TicketPurchaseForm = ({ onClose }) => {
                     <h4 className="font-bold text-paan-dark-blue mb-2">{ticket.name}</h4>
                     <div className="mb-3">
                       <span className="text-3xl font-bold text-paan-red">
-                        {formData.country === "Kenya" 
-                          ? `KSh ${ticket.priceKes?.toLocaleString()}` 
-                          : `$${ticket.price}`
-                        }
+                        ${ticket.price}
                       </span>
                       <span className="text-gray-500 ml-1">
-                        {formData.country === "Kenya" ? "KES" : "USD"}
+                        USD
                       </span>
                     </div>
                     <p className="text-sm text-gray-600 mb-3">{ticket.description}</p>
@@ -1247,22 +1226,12 @@ const TicketPurchaseForm = ({ onClose }) => {
                   <Icon icon="mdi:credit-card" className="w-5 h-5" />
                   Pay {(() => {
                     const selectedTicket = ticketOptions.find(t => t.id === formData.ticketType);
-                    let totalAmount;
-                    if (formData.country === "Kenya") {
-                      totalAmount = selectedTicket.priceKes;
-                      if (formData.ticketType === "corporate-group" && formData.teamSize > 5) {
-                        const extraMembers = formData.teamSize - 5;
-                        totalAmount += (selectedTicket.extraPriceKes * extraMembers);
-                      }
-                      return `KSh ${totalAmount.toLocaleString()}`;
-                    } else {
-                      totalAmount = selectedTicket.price;
-                      if (formData.ticketType === "corporate-group" && formData.teamSize > 5) {
-                        const extraMembers = formData.teamSize - 5;
-                        totalAmount += (selectedTicket.extraPrice * extraMembers);
-                      }
-                      return `$${totalAmount} USD`;
+                    let totalAmount = selectedTicket.price;
+                    if (formData.ticketType === "corporate-group" && formData.teamSize > 5) {
+                      const extraMembers = formData.teamSize - 5;
+                      totalAmount += (selectedTicket.extraPrice * extraMembers);
                     }
+                    return `$${totalAmount} USD`;
                   })()}
                 </>
               )}

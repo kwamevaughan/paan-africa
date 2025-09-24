@@ -912,6 +912,14 @@ const SummitPage = () => {
                  >
                    Download Guidelines
                  </button>
+                 <a 
+                   href="/paan-awards-terms"
+                   target="_blank"
+                   className="bg-white/10 border border-white/30 text-white px-8 py-4 rounded-full hover:bg-white/20 transition-all duration-300 font-medium text-base shadow-lg flex items-center justify-center gap-2 hover:shadow-xl transform hover:-translate-y-1"
+                 >
+                   <Icon icon="mdi:gavel" className="w-5 h-5" />
+                   Terms & Conditions
+                 </a>
                </div>
              </div>
            </section>

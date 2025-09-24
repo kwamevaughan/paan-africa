@@ -583,7 +583,7 @@ const CategoryNominationModal = ({ isOpen, onClose }) => {
                     className="mt-1 w-4 h-4 text-paan-red border-gray-300 rounded focus:ring-paan-red"
                   />
                   <span className="text-sm text-gray-700">
-                    I agree to the <a href="/terms" className="text-paan-red hover:underline">Terms and Conditions</a> and understand that my nomination will be reviewed by the PAAN Awards committee.
+                    I agree to the <a href="/paan-awards-terms" target="_blank" className="text-paan-red hover:underline">Terms and Conditions</a> and understand that my nomination will be reviewed by the PAAN Awards committee.
                     <span className="text-red-500">*</span>
                   </span>
                 </label>

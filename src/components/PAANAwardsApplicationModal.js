@@ -882,7 +882,7 @@ const PAANAwardsApplicationModal = ({ isOpen, onClose }) => {
                     className="mt-1"
                   />
                   <label className="text-sm text-gray-700">
-                    I agree to the <a href="#" className="text-paan-red hover:underline">Terms and Conditions</a> and <a href="#" className="text-paan-red hover:underline">Award Guidelines</a> *
+                    I agree to the <a href="/paan-awards-terms" target="_blank" className="text-paan-red hover:underline">Terms and Conditions</a> and <a href="/paan-awards-terms" target="_blank" className="text-paan-red hover:underline">Award Guidelines</a> *
                   </label>
                 </div>
                 {errors.agreeToTerms && <p className="text-red-500 text-xs">{errors.agreeToTerms}</p>}
