@@ -655,7 +655,7 @@ const SummitPage = () => {
                       />
                     </div>
                   </div>
-                  <h4 className="text-2xl sm:text-3xl md:text-4xl font-bold text-left">1,000+</h4> 
+                  <h4 className="text-2xl sm:text-3xl md:text-4xl font-bold text-left">2,000+</h4> 
                   <h5 className="text-sm sm:text-base font-normal text-left">Streaming Attendees</h5>
                 </div>
                 <div className="bg-white rounded-lg shadow-lg p-3 sm:p-4"> 
@@ -1848,8 +1848,8 @@ const SummitPage = () => {
                               <p className="text-lg sm:text-xl md:text-2xl font-bold">$220</p>
                             </div>
                             <div className="flex flex-col items-left bg-white/20 border border-white rounded-lg px-2 sm:px-3 md:px-4 py-1 sm:py-2 md:py-3">
-                              <h4 className="text-xs sm:text-sm font-light">Student: </h4>
-                              <p className="text-lg sm:text-xl md:text-2xl font-bold">$50</p>
+                              <h4 className="text-xs sm:text-sm font-light">Virtual: </h4>
+                              <p className="text-lg sm:text-xl md:text-2xl font-bold">$10</p>
                             </div>
                           </div>
                           <ul className="text-xs sm:text-sm font-light space-y-1 sm:space-y-2">
@@ -1895,7 +1895,7 @@ const SummitPage = () => {
 
                         <div className="flex flex-col gap-1 sm:gap-2 md:gap-3 mt-3 sm:mt-4 md:mt-6">
                           <button className="bg-paan-yellow text-paan-dark-blue px-2 sm:px-3 py-1 sm:py-2 rounded-full hover:bg-paan-yellow/90 transition-all duration-300 font-medium text-xs sm:text-sm shadow-lg flex items-center justify-center w-fit">April 21-22, 2026</button>
-                          <button className="bg-transparent border border-white text-white px-2 sm:px-3 py-1 sm:py-2 rounded-full hover:bg-white hover:text-paan-dark-blue transition-all duration-300 font-medium text-xs sm:text-sm shadow-lg flex items-center justify-center w-fit">Nairobi, Kenya</button>
+                          <button className="bg-transparent border border-white text-white px-2 sm:px-3 py-1 sm:py-2 rounded-full hover:bg-white hover:text-paan-dark-blue transition-all duration-300 font-medium text-xs sm:text-sm shadow-lg flex items-center justify-center w-fit">Sarit Center, Nairobi, Kenya</button>
                         </div>
                       </div>
                     </div>
@@ -2087,7 +2087,7 @@ const SummitPage = () => {
                        },
                        {
                          title: "Safety & Security",
-                         content: "Nairobi is generally safe for visitors, especially in the central business district where our venue is located. We work with local security partners to ensure a safe environment. Basic safety precautions are recommended as in any major city."
+                         content: "Nairobi is generally safe for visitors, especially in Westands where our venue is located. We work with local security partners to ensure a safe environment. Basic safety precautions are recommended as in any major city."
                        }
                      ]}
                    />
@@ -2220,7 +2220,7 @@ const SeminarLocationAndDate = ()=> {
       </div>
       <div className="flex items-center gap-2 text-white text-xs sm:text-sm">
         <Icon icon="mdi:globe" className="text-red-500 flex-shrink-0" width="20" height="20" />
-        <span className="whitespace-nowrap">1,000+ Streaming</span>
+        <span className="whitespace-nowrap">2,000+ Streaming</span>
       </div>
     </div>
   );
