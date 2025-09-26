@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import SEO from "@/components/SEO";
-import Header from "../layouts/header";
+import Header from "@/layouts/standard-header";
 import Footer from "@/layouts/footer";
 import EventCard from "@/components/EventCard";
 import { eventsData, eventCategories, eventLocations } from "@/data/eventsData";

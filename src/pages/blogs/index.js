@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { Icon } from '@iconify/react';
-import Header from '@/layouts/blogs-header';
+import Header from '@/layouts/standard-header';
 import Footer from '@/layouts/footer';
 import { usePublicBlog } from '@/hooks/usePublicBlog';
 import { toast } from 'react-hot-toast';

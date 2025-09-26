@@ -1,5 +1,5 @@
 import SEO from "@/components/SEO";
-import Header from "../layouts/partners-header"; 
+import Header from "@/layouts/standard-header"; 
 import Footer from "@/layouts/footer";
 import { useEffect, useRef, useState } from "react";
 import { useFixedHeader } from '../../utils/scrollUtils';

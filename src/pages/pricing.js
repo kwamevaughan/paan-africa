@@ -1,6 +1,6 @@
 // pages/index.js
 import SEO from "@/components/SEO";
-import Header from "../layouts/header";
+import Header from "@/layouts/standard-header";
 import Footer from "@/layouts/footer";
 import { useEffect, useRef } from "react";
 import { useFixedHeader, handleScroll } from '../../utils/scrollUtils';

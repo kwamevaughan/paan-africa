@@ -358,34 +358,7 @@ const PAANAwardsTermsPage = () => {
                 </div>
               </motion.div>
 
-              {/* Contact Information */}
-              <motion.div variants={fadeInUp} className="mb-12">
-                <div className="bg-gradient-to-r from-paan-dark-blue to-paan-maroon text-white rounded-xl p-8">
-                  <h2 className="text-2xl font-bold mb-4 flex items-center gap-3">
-                    <Icon icon="mdi:email" className="w-6 h-6" />
-                    Questions or Clarifications?
-                  </h2>
-                  <p className="text-white/90 mb-4">
-                    If you have any questions about these Terms & Conditions or need clarification on any aspect of the PAAN Awards, please don't hesitate to contact us.
-                  </p>
-                  <div className="flex flex-col sm:flex-row gap-4">
-                    <a 
-                      href="mailto:secretariat@paan.africa"
-                      className="bg-paan-red hover:bg-paan-red/90 text-white px-6 py-3 rounded-lg transition-colors font-medium flex items-center justify-center gap-2"
-                    >
-                      <Icon icon="mdi:email" className="w-5 h-5" />
-                      Contact Secretariat
-                    </a>
-                    <a 
-                      href="/paan-awards"
-                      className="bg-white/20 hover:bg-white/30 text-white px-6 py-3 rounded-lg transition-colors font-medium flex items-center justify-center gap-2"
-                    >
-                      <Icon icon="mdi:arrow-left" className="w-5 h-5" />
-                      Back to Awards
-                    </a>
-                  </div>
-                </div>
-              </motion.div>
+      
             </motion.div>
           </div>
         </section>

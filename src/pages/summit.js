@@ -1171,8 +1171,6 @@ const SummitPage = () => {
           </section>
         </div>
 
-
-
         <div className="bg-white relative mt-10 py-20" isFixed={isFixed}>
           <section className="relative mx-auto max-w-6xl">
               <div className="text-left mb-12 space-y-4">

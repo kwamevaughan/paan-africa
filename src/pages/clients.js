@@ -1,5 +1,5 @@
 import SEO from "@/components/SEO";
-import Header from "../layouts/clients-header";
+import Header from "@/layouts/standard-header";
 import Image from "next/image";
 import Footer from "@/layouts/footer";
 import { useEffect, useRef, useState } from "react";

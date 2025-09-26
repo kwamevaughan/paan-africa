@@ -4,7 +4,7 @@ import toast from 'react-hot-toast';
 import Image from 'next/image';
 import Link from 'next/link';
 import SEO from "@/components/SEO";
-import Header from "../layouts/clients-header";
+import Header from "@/layouts/standard-header";
 import Footer from "@/layouts/footer";
 import ScrollToTop from "@/components/ScrollToTop";
 import jsPDF from 'jspdf';

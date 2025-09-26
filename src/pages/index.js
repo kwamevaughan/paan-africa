@@ -1,6 +1,6 @@
 // pages/index.js
 import SEO from "@/components/SEO";
-import Header from "../layouts/header";
+import Header from "../layouts/standard-header";
 import CustomSlider from "../components/CustomSlider";
 import Image from "next/image";
 import Link from "next/link";
@@ -658,8 +658,7 @@ const HomePage = () => {
           id="membership"
           ref={sectionRefs.membership}
         >
-          <div className="absolute -bottom-8 right-32 w-16 h-16 bg-[#84C1D9] rounded-full z-0"></div>
-          <div className="absolute -top-8 left-32 w-20 h-20 bg-[#F25849] rounded-full z-0"></div>
+          <div className="absolute -bottom-8 right-32 w-16 h-16 bg-[#84C1D9] rounded-full z-0"></div>          
           <section className="mx-auto max-w-6xl py-12 sm:py-20 px-4 sm:px-6">
             <div className="flex flex-col mb-8 sm:mb-10 mx-auto w-full sm:w-3/4">
               <h2 className="text-xl sm:text-2xl text-center mb-3 sm:mb-4">

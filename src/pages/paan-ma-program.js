@@ -1,5 +1,5 @@
 import SEO from "@/components/SEO";
-import PaanMaHeader from "../layouts/paan-ma-header";
+import PaanMaHeader from "@/layouts/standard-header";
 import Image from "next/image";
 import Footer from "@/layouts/footer";
 import { useEffect, useRef, useState } from "react";
