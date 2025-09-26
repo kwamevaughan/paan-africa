@@ -62,7 +62,8 @@ const Header = () => {
       { label: 'PAAN Academy', href: '/academy' },
     ],
     'Events': [
-      { label: 'Summit', href: '/summit' },
+      { label: '2026 Summit', href: '/summit' },
+      { label: 'PAAN Awards', href: '/paan-awards' },
       { label: 'Webinars', href: '/events' },
     ],
     'Resources': [
@@ -264,10 +265,10 @@ const Header = () => {
 
               {/* Awards */}
               <a 
-                href="/paan-awards" 
-                className={getMenuItemClasses('/paan-awards')}
+                href="/summit" 
+                className={getMenuItemClasses('/summit')}
               >
-                Awards
+                2026 Summit
               </a>
 
               {/* Contact Us */}
