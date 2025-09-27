@@ -349,14 +349,14 @@ const TravelGuide = () => {
   return (
     <>
       <SEO
-        title="PAAN Summit 2025 Travel Guide | Nairobi, Kenya - Visa, Hotels & Transport"
-        description="Complete travel guide for PAAN Summit 2025 in Nairobi, Kenya. Get visa requirements, accommodation options, transport details, and essential travel tips for your visit to Africa's premier creative and tech conference."
+        title="PAAN Summit 2026 Travel Guide | Nairobi, Kenya - Visa, Hotels & Transport"
+        description="Complete travel guide for PAAN Summit 2026 in Nairobi, Kenya. Get visa requirements, accommodation options, transport details, and essential travel tips for your visit to Africa's premier creative and tech conference."
         keywords="PAAN Summit travel guide, Nairobi travel guide, Kenya visa requirements, Nairobi accommodation, PAAN Summit hotels, Nairobi transport, Kenya travel tips, African conference travel, business travel Kenya, Nairobi conference guide"
         image="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/travel-guide-parallax-image.png"
-        ogTitle="PAAN Summit 2025 Travel Guide | Nairobi, Kenya - Visa, Hotels & Transport"
-        ogDescription="Complete travel guide for PAAN Summit 2025 in Nairobi, Kenya. Get visa requirements, accommodation options, transport details, and essential travel tips for your visit to Africa's premier creative and tech conference."
-        twitterTitle="PAAN Summit 2025 Travel Guide | Nairobi, Kenya - Visa, Hotels & Transport"
-        twitterDescription="Complete travel guide for PAAN Summit 2025 in Nairobi, Kenya. Get visa requirements, accommodation options, transport details, and essential travel tips for your visit to Africa's premier creative and tech conference."
+        ogTitle="PAAN Summit 2026 Travel Guide | Nairobi, Kenya - Visa, Hotels & Transport"
+        ogDescription="Complete travel guide for PAAN Summit 2026 in Nairobi, Kenya. Get visa requirements, accommodation options, transport details, and essential travel tips for your visit to Africa's premier creative and tech conference."
+        twitterTitle="PAAN Summit 2026 Travel Guide | Nairobi, Kenya - Visa, Hotels & Transport"
+        twitterDescription="Complete travel guide for PAAN Summit 2026 in Nairobi, Kenya. Get visa requirements, accommodation options, transport details, and essential travel tips for your visit to Africa's premier creative and tech conference."
       />
       <Head>
         <script
@@ -365,8 +365,8 @@ const TravelGuide = () => {
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "WebPage",
-              "name": "PAAN Summit 2025 Travel Guide | Nairobi, Kenya - Visa, Hotels & Transport",
-              "description": "Complete travel guide for PAAN Summit 2025 in Nairobi, Kenya. Get visa requirements, accommodation options, transport details, and essential travel tips for your visit to Africa's premier creative and tech conference.",
+              "name": "PAAN Summit 2026 Travel Guide | Nairobi, Kenya - Visa, Hotels & Transport",
+              "description": "Complete travel guide for PAAN Summit 2026 in Nairobi, Kenya. Get visa requirements, accommodation options, transport details, and essential travel tips for your visit to Africa's premier creative and tech conference.",
               "url": "https://paan.africa/summit/travel-guide",
               "image": [
                 "https://ik.imagekit.io/nkmvdjnna/PAAN/summit/travel-guide-parallax-image.png",
@@ -374,9 +374,9 @@ const TravelGuide = () => {
               ],
               "mainEntity": {
               "@type": "Event",
-                "name": "PAAN Summit 2025 - Africa's Premier Creative & Tech Leadership Conference",
-              "startDate": "2025-10-22T09:00:00+03:00",
-              "endDate": "2025-10-24T17:00:00+03:00",
+                "name": "PAAN Summit 2026 - Africa's Premier Creative & Tech Leadership Conference",
+              "startDate": "2026-10-22T09:00:00+03:00",
+              "endDate": "2026-10-24T17:00:00+03:00",
               "eventAttendanceMode": "https://schema.org/MixedEventAttendanceMode",
               "eventStatus": "https://schema.org/EventScheduled",
               "location": {
@@ -552,7 +552,7 @@ const TravelGuide = () => {
                     Apply for eTA
                   </motion.button>
                   <motion.button 
-                    onClick={() => window.location.href = 'mailto:secretariat@paan.africa?subject=PAAN Summit 2025 - Visa Invitation Letter Request&body=Hello,%0D%0A%0D%0AI am planning to attend the PAAN Summit 2025 in Nairobi and would like to request a visa invitation letter.%0D%0A%0D%0APlease provide the following information:%0D%0A- Full Name:%0D%0A- Passport Number:%0D%0A- Nationality:%0D%0A- Date of Birth:%0D%0A- Arrival Date:%0D%0A- Departure Date:%0D%0A- Hotel/Accommodation Details:%0D%0A%0D%0AThank you for your assistance.%0D%0A%0D%0ABest regards'}
+                    onClick={() => window.location.href = 'mailto:secretariat@paan.africa?subject=PAAN Summit 2026 - Visa Invitation Letter Request&body=Hello,%0D%0A%0D%0AI am planning to attend the PAAN Summit 2026 in Nairobi and would like to request a visa invitation letter.%0D%0A%0D%0APlease provide the following information:%0D%0A- Full Name:%0D%0A- Passport Number:%0D%0A- Nationality:%0D%0A- Date of Birth:%0D%0A- Arrival Date:%0D%0A- Departure Date:%0D%0A- Hotel/Accommodation Details:%0D%0A%0D%0AThank you for your assistance.%0D%0A%0D%0ABest regards'}
                     className="bg-transparent border-2 border-paan-dark-blue text-paan-dark-blue px-6 sm:px-8 py-3 sm:py-4 rounded-full hover:bg-paan-dark-blue hover:text-white transition-all duration-300 font-medium text-sm sm:text-base shadow-lg flex items-center justify-center gap-2 hover:shadow-xl transform hover:-translate-y-1"
                     whileHover={{ scale: 1.05, y: -2 }}
                     whileTap={{ scale: 0.95 }}
@@ -1116,7 +1116,7 @@ const TravelGuide = () => {
                </div>
                <div className="flex flex-col sm:flex-row gap-4 sm:gap-8 justify-center">
                  <button 
-                   onClick={() => window.location.href = 'mailto:secretariat@paan.africa?subject=PAAN Summit 2025 - Travel Assistance Request&body=Hello PAAN Travel Team,%0D%0A%0D%0AI need assistance with my travel arrangements for the PAAN Summit 2025 in Nairobi.%0D%0A%0D%0APlease help me with:%0D%0A- [ ] Visa requirements and application%0D%0A- [ ] Hotel recommendations and bookings%0D%0A- [ ] Transportation arrangements%0D%0A- [ ] General travel advice%0D%0A- [ ] Other: _________________%0D%0A%0D%0AAdditional details:%0D%0A%0D%0A%0D%0AThank you for your assistance.%0D%0A%0D%0ABest regards'}
+                   onClick={() => window.location.href = 'mailto:secretariat@paan.africa?subject=PAAN Summit 2026 - Travel Assistance Request&body=Hello PAAN Travel Team,%0D%0A%0D%0AI need assistance with my travel arrangements for the PAAN Summit 2026 in Nairobi.%0D%0A%0D%0APlease help me with:%0D%0A- [ ] Visa requirements and application%0D%0A- [ ] Hotel recommendations and bookings%0D%0A- [ ] Transportation arrangements%0D%0A- [ ] General travel advice%0D%0A- [ ] Other: _________________%0D%0A%0D%0AAdditional details:%0D%0A%0D%0A%0D%0AThank you for your assistance.%0D%0A%0D%0ABest regards'}
                    className="bg-paan-blue text-paan-dark-blue px-6 sm:px-8 py-3 rounded-full hover:bg-paan-blue/90 transition-all duration-300 font-medium text-sm sm:text-base shadow-lg flex items-center justify-center gap-2"
                  >
                    Talk to Us
