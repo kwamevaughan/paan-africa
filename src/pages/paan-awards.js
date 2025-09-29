@@ -677,20 +677,7 @@ const SummitPage = () => {
                      <p className="text-white font-light text-xs leading-relaxed">{award.description}</p>
                    </div>
                  </div>
-               ))}
-                {/* Add a new category */}
-                <div className="bg-white border-2 border-paan-dark-blue w-80 h-80 rounded-full shadow-xl overflow-hidden relative flex items-center justify-center hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
-                  <div className="text-center relative max-w-48 px-4">
-                    <h4 className="text-md font-bold text-paan-dark-blue mb-3">Your Voice Matters</h4>
-                    <p className="text-paan-dark-blue font-light text-xs leading-relaxed mb-4">Suggest a new category that reflects Africa's evolving creative landscape.</p>
-                    <button 
-                      onClick={() => setIsNominationModalOpen(true)}
-                      className="bg-paan-red text-white px-6 py-2 rounded-full hover:bg-paan-red/90 transition-all duration-300 font-medium text-sm shadow-lg hover:shadow-xl transform hover:-translate-y-1"
-                    >
-                      Nominate a Category
-                    </button>
-                  </div>
-                </div>
+               ))}                
              </div>
           </section>
         </div>

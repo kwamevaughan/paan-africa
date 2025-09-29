@@ -150,7 +150,7 @@ const PAANAwardsApplicationModal = ({ isOpen, onClose }) => {
   // Pricing configuration
   const pricing = {
     agency: {
-      pricePerCategory: 130,
+      pricePerCategory: 200,
       currency: 'USD',
       description: 'Agency Application Fee per Category'
     },
@@ -494,7 +494,7 @@ const PAANAwardsApplicationModal = ({ isOpen, onClose }) => {
                 <div className="text-center">
                   <Icon icon="mdi:office-building" className="w-8 h-8 mx-auto mb-2" />
                   <h3 className="font-semibold">Agency</h3>
-                  <p className="text-sm text-gray-600">$130 USD per category</p>
+                  <p className="text-sm text-gray-600">$200 USD per category</p>
                 </div>
               </button>
               <button
@@ -513,6 +513,59 @@ const PAANAwardsApplicationModal = ({ isOpen, onClose }) => {
                 </div>
               </button>
             </div>
+          </div>
+
+          {/* Conversion Boosters */}
+          <div className="bg-gradient-to-r from-green-50 to-blue-50 border border-green-200 rounded-xl p-6">
+              <h3 className="text-lg font-semibold text-gray-900 mb-4">Why Apply for PAAN Awards?</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="space-y-3">
+                  <div className="flex items-start gap-3">
+                    <Icon icon="mdi:trophy-variant" className="w-6 h-6 text-yellow-600 mt-0.5 flex-shrink-0" />
+                    <div>
+                      <h4 className="font-semibold text-gray-900">Pan African Recognition</h4>
+                      <p className="text-sm text-gray-600">Opportunity for Pan African recognition of your work</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <Icon icon="mdi:newspaper" className="w-6 h-6 text-blue-600 mt-0.5 flex-shrink-0" />
+                    <div>
+                      <h4 className="font-semibold text-gray-900">Media Coverage</h4>
+                      <p className="text-sm text-gray-600">Winning work will be featured on PAAN Publications</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <Icon icon="mdi:glass-cocktail" className="w-6 h-6 text-pink-600 mt-0.5 flex-shrink-0" />
+                    <div>
+                      <h4 className="font-semibold text-gray-900">Gala Awards Dinner</h4>
+                      <p className="text-sm text-gray-600">Access to prestigious Gala Awards Dinner</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="space-y-3">
+                  <div className="flex items-start gap-3">
+                    <Icon icon="mdi:handshake" className="w-6 h-6 text-green-600 mt-0.5 flex-shrink-0" />
+                    <div>
+                      <h4 className="font-semibold text-gray-900">Dual Recognition</h4>
+                      <p className="text-sm text-gray-600">Every win = 1 award for your agency + 1 award for your client</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <Icon icon="mdi:earth" className="w-6 h-6 text-purple-600 mt-0.5 flex-shrink-0" />
+                    <div>
+                      <h4 className="font-semibold text-gray-900">Pan African Reach</h4>
+                      <p className="text-sm text-gray-600">Entries coming from over 25+ African countries</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <Icon icon="mdi:account-group" className="w-6 h-6 text-indigo-600 mt-0.5 flex-shrink-0" />
+                    <div>
+                      <h4 className="font-semibold text-gray-900">Premium Networking</h4>
+                      <p className="text-sm text-gray-600">Network with leading brands in Africa</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
           </div>
 
           <form className="space-y-6">
@@ -912,46 +965,7 @@ const PAANAwardsApplicationModal = ({ isOpen, onClose }) => {
                   onChange={handleRecaptchaChange}
                 />
               </div>
-            )}
-
-            {/* Conversion Boosters */}
-            <div className="bg-gradient-to-r from-green-50 to-blue-50 border border-green-200 rounded-xl p-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">Why Apply for PAAN Awards?</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="space-y-3">
-                  <div className="flex items-start gap-3">
-                    <Icon icon="mdi:trophy-variant" className="w-6 h-6 text-yellow-600 mt-0.5 flex-shrink-0" />
-                    <div>
-                      <h4 className="font-semibold text-gray-900">Pan African Recognition</h4>
-                      <p className="text-sm text-gray-600">Opportunity for Pan African recognition of your work</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <Icon icon="mdi:newspaper" className="w-6 h-6 text-blue-600 mt-0.5 flex-shrink-0" />
-                    <div>
-                      <h4 className="font-semibold text-gray-900">Media Coverage</h4>
-                      <p className="text-sm text-gray-600">Winning work featured across leading African media</p>
-                    </div>
-                  </div>
-                </div>
-                <div className="space-y-3">
-                  <div className="flex items-start gap-3">
-                    <Icon icon="mdi:handshake" className="w-6 h-6 text-green-600 mt-0.5 flex-shrink-0" />
-                    <div>
-                      <h4 className="font-semibold text-gray-900">Dual Recognition</h4>
-                      <p className="text-sm text-gray-600">Every win = 1 award for your agency + 1 award for your client</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <Icon icon="mdi:earth" className="w-6 h-6 text-purple-600 mt-0.5 flex-shrink-0" />
-                    <div>
-                      <h4 className="font-semibold text-gray-900">Pan African Reach</h4>
-                      <p className="text-sm text-gray-600">Entries coming from over 25+ African countries</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            )}            
 
             {/* Payment Summary */}
             <div className="bg-paan-dark-blue text-white p-6 rounded-xl">
