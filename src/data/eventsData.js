@@ -9,7 +9,7 @@ export const eventsData = {
       location: "Virtual Event",
       venue: "Online",
       description: "Africa’s creative and marketing industry is booming — but growth often stalls at the national level. How can agencies break beyond borders to win regional and global opportunities? In this webinar, hosted by the Pan-African Agency Network (PAAN), leading agency founders and executives will share practical lessons on expanding across Africa. This is your chance to learn directly from peers who are already conquering markets beyond their own borders, and to position your agency for Pan-African growth.",
-      image: "/assets/images/webinar2.webp",
+      image: "/assets/images/webinar2.png",
       category: "Webinar",
       price: "Free Webinar",
       registrationUrl: "https://us06web.zoom.us/webinar/register/WN_9wqm201ATnG3nH1mdJgwbA#/registration",
