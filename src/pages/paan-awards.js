@@ -620,6 +620,176 @@ const SummitPage = () => {
           />
         </div>
 
+        {/* New Detailed Information Section */}
+        <div className="bg-white relative py-20" id="detailed-info-section">
+          <section className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl lg:text-5xl text-paan-dark-blue uppercase font-bold leading-tight mb-6">
+                Celebrating Africa's Independent Agencies, Creativity & Innovation
+              </h2>
+              <p className="text-lg text-paan-dark-blue font-light leading-relaxed max-w-4xl mx-auto">
+                The Pan-African Agency Network (PAAN) proudly invites entries for the PAAN Awards 2026 — the premier platform celebrating the creativity, innovation, and impact of Africa's independent agencies.
+              </p>
+              <p className="text-lg text-paan-dark-blue font-light leading-relaxed max-w-4xl mx-auto mt-4">
+                This is your chance to showcase your agency's best work, gain continental recognition, and position your brand as a leader shaping Africa's creative economy.
+              </p>
+            </div>
+
+            <div className="grid lg:grid-cols-2 gap-12 mb-16">
+              {/* Why Enter Section */}
+              <div className="bg-gradient-to-br from-paan-blue/10 to-paan-red/10 rounded-2xl p-8">
+                <h3 className="text-2xl font-bold text-paan-dark-blue mb-6">Why Enter?</h3>
+                <div className="space-y-4">
+                  <div className="flex items-start gap-4">
+                    <div className="w-8 h-8 bg-paan-red rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                      <Icon icon="mdi:trophy" className="w-5 h-5 text-white" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-paan-dark-blue mb-1">Credibility & Recognition</h4>
+                      <p className="text-gray-600 text-sm">Stand out as a top-performing agency on a continental stage.</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-start gap-4">
+                    <div className="w-8 h-8 bg-paan-blue rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                      <Icon icon="mdi:handshake" className="w-5 h-5 text-white" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-paan-dark-blue mb-1">Client Attraction</h4>
+                      <p className="text-gray-600 text-sm">Strengthen your pitch power with award-winning credentials.</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-start gap-4">
+                    <div className="w-8 h-8 bg-paan-yellow rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                      <Icon icon="mdi:account-group" className="w-5 h-5 text-paan-dark-blue" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-paan-dark-blue mb-1">Talent Magnet</h4>
+                      <p className="text-gray-600 text-sm">Attract top creative talent eager to join award-winning teams.</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-start gap-4">
+                    <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                      <Icon icon="mdi:eye" className="w-5 h-5 text-white" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-paan-dark-blue mb-1">Visibility</h4>
+                      <p className="text-gray-600 text-sm">Get featured across PAAN's platforms, media partners, and industry events.</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-start gap-4">
+                    <div className="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                      <Icon icon="mdi:network" className="w-5 h-5 text-white" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-paan-dark-blue mb-1">Networking</h4>
+                      <p className="text-gray-600 text-sm">Gain access to brand leaders, decision-makers, and fellow innovators.</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-start gap-4">
+                    <div className="w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                      <Icon icon="mdi:medal" className="w-5 h-5 text-white" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-paan-dark-blue mb-1">Prestige</h4>
+                      <p className="text-gray-600 text-sm">Winners receive the official PAAN Award badge — a seal of excellence for all communications.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Who Can Enter Section */}
+              <div className="bg-gradient-to-br from-paan-yellow/10 to-paan-blue/10 rounded-2xl p-8">
+                <h3 className="text-2xl font-bold text-paan-dark-blue mb-6">Who Can Enter?</h3>
+                <div className="space-y-4">
+                  <div className="flex items-center gap-3">
+                    <Icon icon="mdi:check-circle" className="w-6 h-6 text-green-500 flex-shrink-0" />
+                    <span className="text-gray-700">Independent agencies across Africa</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <Icon icon="mdi:check-circle" className="w-6 h-6 text-green-500 flex-shrink-0" />
+                    <span className="text-gray-700">PR, advertising, media, digital, design, branding, and specialist agencies</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <Icon icon="mdi:check-circle" className="w-6 h-6 text-green-500 flex-shrink-0" />
+                    <span className="text-gray-700">Production houses, content creators, and communication consultancies</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <Icon icon="mdi:check-circle" className="w-6 h-6 text-green-500 flex-shrink-0" />
+                    <span className="text-gray-700">Agencies working in both local and regional markets</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+
+         {/* Award Categories Overview */}
+        <section className="bg-paan-dark-blue py-12" id="award-categories-section">
+          <div className="max-w-7xl mx-auto p-8 text-white">
+              <h3 className="text-2xl font-bold mb-6 text-center">Award Categories</h3>
+              <p className="text-white/90 text-center mb-8 max-w-3xl mx-auto">
+                The PAAN Awards recognize excellence across five major clusters:
+              </p>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="bg-white/10 rounded-xl p-6 backdrop-blur-sm">
+                  <div className="w-12 h-12 bg-paan-red rounded-full flex items-center justify-center mb-4">
+                    <Icon icon="mdi:bullhorn" className="w-6 h-6 text-white" />
+                  </div>
+                  <h4 className="font-semibold mb-2">Campaign Excellence Awards</h4>
+                  <p className="text-white/80 text-sm">PR, Communication, OOH, Social Media, Content, Influencer, CSR/Impact, Integrated, B2B, and Experiential campaigns.</p>
+                </div>
+                
+                <div className="bg-white/10 rounded-xl p-6 backdrop-blur-sm">
+                  <div className="w-12 h-12 bg-paan-blue rounded-full flex items-center justify-center mb-4">
+                    <Icon icon="mdi:office-building" className="w-6 h-6 text-white" />
+                  </div>
+                  <h4 className="font-semibold mb-2">Agency Excellence Awards</h4>
+                  <p className="text-white/80 text-sm">Digital, Creative, Design & Branding, Media Buying, Production, Specialist, Rising, Regional, and Independent agencies.</p>
+                </div>
+                
+                <div className="bg-white/10 rounded-xl p-6 backdrop-blur-sm">
+                  <div className="w-12 h-12 bg-paan-yellow rounded-full flex items-center justify-center mb-4">
+                    <Icon icon="mdi:lightbulb" className="w-6 h-6 text-paan-dark-blue" />
+                  </div>
+                  <h4 className="font-semibold mb-2">Innovation & Technology Awards</h4>
+                  <p className="text-white/80 text-sm">Tech Innovation, Creative Use of Data, and E-Commerce Marketing.</p>
+                </div>
+                
+                <div className="bg-white/10 rounded-xl p-6 backdrop-blur-sm">
+                  <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center mb-4">
+                    <Icon icon="mdi:bank" className="w-6 h-6 text-white" />
+                  </div>
+                  <h4 className="font-semibold mb-2">Sector Excellence Awards</h4>
+                  <p className="text-white/80 text-sm">Public Sector and Financial Services campaigns.</p>
+                </div>
+                
+                <div className="bg-white/10 rounded-xl p-6 backdrop-blur-sm md:col-span-2 lg:col-span-1">
+                  <div className="w-12 h-12 bg-gradient-to-r from-paan-red to-paan-yellow rounded-full flex items-center justify-center mb-4">
+                    <Icon icon="mdi:crown" className="w-6 h-6 text-white" />
+                  </div>
+                  <h4 className="font-semibold mb-2">Special Honors</h4>
+                  <p className="text-white/80 text-sm">Agency Leader of the Year and the Grand Prix: Agency of the Year.</p>
+                </div>
+              </div>
+              
+              <div className="text-center mt-8">
+                <button
+                  className="bg-paan-red text-white px-8 py-4 rounded-full hover:bg-paan-red/90 transition-all duration-300 font-medium text-base shadow-lg flex items-center justify-center gap-2 hover:shadow-xl transform hover:-translate-y-1 mx-auto"
+                  onClick={() => setIsApplicationModalOpen(true)}
+                >
+                  <Icon icon="mdi:trophy" className="w-5 h-5" />
+                  Apply for Awards
+                </button>
+              </div>
+            </div>
+        </section>
+
         {/* PAAN AWARDS SECTION */}
         <div className="bg-white relative py-20" id="paan-awards-section" isFixed={isFixed}>
            <section className="relative mx-auto max-w-6xl">
