@@ -50,8 +50,8 @@ const Header = () => {
 
   const menuItems = {
     'Join Us': [
-      { label: 'Agency Membership', href: 'https://membership.paan.africa/' },
-      { label: 'Freelancer Membership', href: 'https://membership.paan.africa/freelancers' },
+      { label: 'Full Agency Membership', href: '/pricing' },
+      { label: 'For Freelancers', href: '/freelancers' },
       { label: 'For Clients', href: '/clients' },
       { label: 'For Partners', href: '/partners' },
       { label: 'Careers', href: '/careers' },
