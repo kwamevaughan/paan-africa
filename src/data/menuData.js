@@ -15,6 +15,7 @@ export const menuItems = [
     { href: '/freelancers', label: 'For Freelancers' },
     { href: '/clients', label: 'For Clients' },
     { href: '/partners', label: 'For Partners' },
+    { href: '/masterclasses', label: 'Masterclasses' },
     // { href: '/events', label: 'Events' },
     // { href: '/summit', label: '2025 Summit' },
   ];

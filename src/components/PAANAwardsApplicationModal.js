@@ -59,75 +59,167 @@ const PAANAwardsApplicationModal = ({ isOpen, onClose }) => {
     );
   }
 
-  // Award categories
-  const agencyCategories = [
+  // Award categories - New structure with grouped categories
+  const awardCategories = [
     {
-      id: 'continental-crown',
-      name: 'The Continental Crown: Pan-African Agency of the Year',
-      description: 'The highest honor celebrating the agency that set the creative standard across Africa.'
+      id: 'campaign-excellence',
+      name: 'Campaign Excellence Awards',
+      description: 'Celebrating the power of ideas, creativity, and execution across Africa\'s most impactful campaigns. These categories honor the campaigns that moved audiences, shaped perceptions, and delivered results across PR, communications, digital, and brand activations.',
+      subcategories: [
+        {
+          id: 'pr-campaign-year',
+          name: 'PR Campaign of the Year',
+          description: 'Outstanding public relations campaigns that shaped public perception and delivered measurable impact.'
+        },
+        {
+          id: 'communication-campaign-year',
+          name: 'Communication Campaign of the Year',
+          description: 'Exceptional communication strategies that effectively reached and engaged target audiences.'
+        },
+        {
+          id: 'ooh-campaign-year',
+          name: 'OOH (Out-of-Home) Campaign of the Year',
+          description: 'Creative and impactful outdoor advertising campaigns that captured attention and drove results.'
+        },
+        {
+          id: 'social-media-campaign-year',
+          name: 'Social Media Campaign of the Year',
+          description: 'Innovative social media campaigns that engaged communities and achieved remarkable reach.'
+        },
+        {
+          id: 'content-marketing-campaign-year',
+          name: 'Content Marketing Campaign of the Year',
+          description: 'Strategic content campaigns that educated, entertained, and converted audiences effectively.'
+        },
+        {
+          id: 'influencer-marketing-campaign-year',
+          name: 'Influencer Marketing Campaign of the Year',
+          description: 'Successful influencer partnerships that authentically connected brands with their audiences.'
+        },
+        {
+          id: 'csr-impact-campaign-year',
+          name: 'CSR/Impact Campaign of the Year',
+          description: 'Purpose-driven campaigns that created positive social or environmental impact.'
+        },
+        {
+          id: 'integrated-marketing-campaign-year',
+          name: 'Integrated Marketing Campaign of the Year',
+          description: 'Seamlessly coordinated multi-channel campaigns that delivered consistent messaging and results.'
+        },
+        {
+          id: 'b2b-marketing-campaign-year',
+          name: 'B2B Marketing Campaign of the Year',
+          description: 'Business-to-business campaigns that effectively reached and converted professional audiences.'
+        },
+        {
+          id: 'experiential-brand-activation-year',
+          name: 'Experiential/Brand Activation of the Year',
+          description: 'Immersive brand experiences that created memorable connections with consumers.'
+        }
+      ]
     },
     {
-      id: 'purpose-impact',
-      name: 'The Purpose & Impact Award',
-      description: 'For agencies and clients leading in CSR, sustainability, and purpose-driven campaigns.'
+      id: 'agency-excellence',
+      name: 'Agency Excellence Awards',
+      description: 'Recognizing the agencies that set the benchmark for innovation, growth, and client success. These awards spotlight agencies of all sizes and specialties that have demonstrated vision, creativity, and measurable impact in building brands across Africa.',
+      subcategories: [
+        {
+          id: 'digital-agency-year',
+          name: 'Digital Agency of the Year',
+          description: 'Leading digital agencies that excel in online strategy, execution, and innovation.'
+        },
+        {
+          id: 'creative-agency-year',
+          name: 'Creative Agency of the Year',
+          description: 'Creative agencies that consistently deliver outstanding creative solutions and campaigns.'
+        },
+        {
+          id: 'design-branding-agency-year',
+          name: 'Design & Branding Agency of the Year',
+          description: 'Agencies specializing in visual identity, brand design, and creative brand development.'
+        },
+        {
+          id: 'media-planning-buying-agency-year',
+          name: 'Media Planning & Buying Agency of the Year',
+          description: 'Agencies that excel in strategic media planning, buying, and optimization.'
+        },
+        {
+          id: 'production-house-year',
+          name: 'Production House of the Year',
+          description: 'Production companies delivering exceptional video, audio, and multimedia content.'
+        },
+        {
+          id: 'specialist-agency-year',
+          name: 'Specialist Agency of the Year',
+          description: 'Agencies with specialized expertise in sectors like healthcare, fintech, agriculture, etc.'
+        },
+        {
+          id: 'rising-agency-year',
+          name: 'Rising Agency of the Year',
+          description: 'Emerging agencies showing exceptional growth, innovation, and potential.'
+        },
+        {
+          id: 'regional-agency-year',
+          name: 'Regional Agency of the Year',
+          description: 'Outstanding agencies representing East, West, Southern, or North Africa regions.'
+        }
+      ]
     },
     {
-      id: 'borderless-collaboration',
-      name: 'The Borderless Collaboration Award',
-      description: 'Honoring seamless cross-country campaigns that prove creativity knows no borders.'
+      id: 'innovation-technology',
+      name: 'Innovation & Technology Awards',
+      description: 'Celebrating the pioneers redefining the future of marketing through data, technology, and new platforms. These categories honor agencies that harness innovation to deliver smarter, more engaging, and more measurable results.',
+      subcategories: [
+        {
+          id: 'tech-innovation-marketing',
+          name: 'Tech Innovation in Marketing Award',
+          description: 'Groundbreaking use of technology to create innovative marketing solutions and experiences.'
+        },
+        {
+          id: 'creative-use-data',
+          name: 'Creative Use of Data Award',
+          description: 'Innovative application of data analytics and insights to drive creative and strategic decisions.'
+        },
+        {
+          id: 'ecommerce-marketing-campaign-year',
+          name: 'E-Commerce Marketing Campaign of the Year',
+          description: 'Outstanding marketing campaigns that drove e-commerce growth and online sales success.'
+        }
+      ]
     },
     {
-      id: 'creative-campaign',
-      name: 'The Creative Campaign Masterpiece Award',
-      description: 'Recognizing the year\'s most original and impactful creative campaign.'
+      id: 'sector-excellence',
+      name: 'Sector Excellence Awards',
+      description: 'Honoring outstanding campaigns in industries that play a vital role in Africa\'s growth and development. These awards highlight work that has transformed communication in specific, high-impact sectors.',
+      subcategories: [
+        {
+          id: 'public-sector-campaign-year',
+          name: 'Public Sector Campaign of the Year',
+          description: 'Exceptional campaigns for government and public sector organizations that served the public interest.'
+        },
+        {
+          id: 'financial-services-campaign-year',
+          name: 'Financial Services Campaign of the Year',
+          description: 'Outstanding marketing campaigns in banking, insurance, fintech, and financial services.'
+        }
+      ]
     },
     {
-      id: 'visionary-leadership',
-      name: 'The Visionary Leadership Award: Pan-African CEO of the Year',
-      description: 'Celebrating bold leadership shaping Africa\'s creative economy.'
-    },
-    {
-      id: 'ai-excellence',
-      name: 'The Innovation & AI Excellence Award',
-      description: 'For groundbreaking and ethical use of AI in marketing and creativity.'
-    },
-    {
-      id: 'brand-disruptor',
-      name: 'The Bold Brand Disruptor Award',
-      description: 'Recognizing a brand campaign that redefined the rules and sparked conversation.'
-    }
-  ];
-
-  const freelancerCategories = [
-    {
-      id: 'freelancer-year',
-      name: 'Freelancer of the Year',
-      description: 'Celebrating exceptional individual creative talent and impact.'
-    },
-    {
-      id: 'rising-star',
-      name: 'Rising Creative Star',
-      description: 'Recognizing emerging talent with outstanding potential and growth.'
-    },
-    {
-      id: 'cross-border-collaborator',
-      name: 'Cross-Border Collaborator',
-      description: 'Honoring freelancers who excel in international partnerships.'
-    },
-    {
-      id: 'creative-entrepreneur',
-      name: 'Creative Entrepreneur',
-      description: 'Celebrating freelancers who have built successful creative businesses.'
-    },
-    {
-      id: 'digital-innovation',
-      name: 'Digital Innovation Leader',
-      description: 'Recognizing freelancers at the forefront of digital creative innovation.'
-    },
-    {
-      id: 'community-impact',
-      name: 'Community Impact Creator',
-      description: 'Honoring freelancers who use their skills to create positive social impact.'
+      id: 'special-honors',
+      name: 'Special Honors',
+      description: 'Reserved for the highest level of recognition, these awards celebrate visionary leadership and overall excellence. These honors recognize the individuals and agencies that embody the best of Africa\'s independent creative ecosystem.',
+      subcategories: [
+        {
+          id: 'agency-leader-year',
+          name: 'Agency Leader of the Year',
+          description: 'Visionary leaders who have driven exceptional growth, innovation, and industry impact.'
+        },
+        {
+          id: 'grand-prix-agency-year',
+          name: 'Grand Prix: Agency of the Year',
+          description: 'The highest honor - recognizing the top overall agency demonstrating excellence across all areas.'
+        }
+      ]
     }
   ];
 
@@ -436,7 +528,7 @@ const PAANAwardsApplicationModal = ({ isOpen, onClose }) => {
 
   if (!isOpen) return null;
 
-  const currentCategories = formData.applicantType === 'agency' ? agencyCategories : freelancerCategories;
+  // All categories are now available to both agencies and freelancers
   const currentPricing = pricing[formData.applicantType];
 
   return (
@@ -516,7 +608,9 @@ const PAANAwardsApplicationModal = ({ isOpen, onClose }) => {
           </div>
 
           {/* Conversion Boosters */}
-          <div className="bg-gradient-to-r from-green-50 to-blue-50 border border-green-200 rounded-xl p-6">
+          {
+             formData.applicantType === 'agency' && (
+              <div className="bg-gradient-to-r from-green-50 to-blue-50 border border-green-200 rounded-xl p-6">
               <h3 className="text-lg font-semibold text-gray-900 mb-4">Why Apply for PAAN Awards?</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-3">
@@ -567,6 +661,9 @@ const PAANAwardsApplicationModal = ({ isOpen, onClose }) => {
                 </div>
               </div>
           </div>
+             )
+          }
+          
 
           <form className="space-y-6">
             {/* Personal Information */}
@@ -713,32 +810,49 @@ const PAANAwardsApplicationModal = ({ isOpen, onClose }) => {
               <h3 className="text-lg font-semibold text-gray-900 mb-4">
                 Select Award Categories * (Choose all that apply)
               </h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {currentCategories.map(category => (
-                  <div
-                    key={category.id}
-                    className={`p-4 border-2 rounded-lg cursor-pointer transition-all ${
-                      formData.selectedCategories.includes(category.id)
-                        ? 'border-paan-red bg-paan-red/10'
-                        : 'border-gray-300 hover:border-paan-red/50'
-                    }`}
-                    onClick={() => handleCategoryToggle(category.id)}
-                  >
-                    <div className="flex items-start gap-3">
-                      <input
-                        type="checkbox"
-                        checked={formData.selectedCategories.includes(category.id)}
-                        onChange={() => handleCategoryToggle(category.id)}
-                        className="mt-1"
-                      />
-                      <div>
-                        <h4 className="font-medium text-gray-900">{category.name}</h4>
-                        <p className="text-sm text-gray-600 mt-1">{category.description}</p>
-                      </div>
+              
+              <div className="space-y-6">
+                {awardCategories.map(categoryGroup => (
+                  <div key={categoryGroup.id} className="border border-gray-200 rounded-lg p-4">
+                    <div className="mb-4">
+                      <h4 className="text-lg font-semibold text-paan-dark-blue mb-2">
+                        {categoryGroup.name}
+                      </h4>
+                      <p className="text-sm text-gray-600 leading-relaxed">
+                        {categoryGroup.description}
+                      </p>
+                    </div>
+                    
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                      {categoryGroup.subcategories.map(subcategory => (
+                        <div
+                          key={subcategory.id}
+                          className={`p-3 border-2 rounded-lg cursor-pointer transition-all ${
+                            formData.selectedCategories.includes(subcategory.id)
+                              ? 'border-paan-red bg-paan-red/10'
+                              : 'border-gray-300 hover:border-paan-red/50'
+                          }`}
+                          onClick={() => handleCategoryToggle(subcategory.id)}
+                        >
+                          <div className="flex items-start gap-3">
+                            <input
+                              type="checkbox"
+                              checked={formData.selectedCategories.includes(subcategory.id)}
+                              onChange={() => handleCategoryToggle(subcategory.id)}
+                              className="mt-1"
+                            />
+                            <div>
+                              <h5 className="font-medium text-gray-900 text-sm">{subcategory.name}</h5>
+                              <p className="text-xs text-gray-600 mt-1 leading-relaxed">{subcategory.description}</p>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
                     </div>
                   </div>
                 ))}
               </div>
+              
               {errors.selectedCategories && <p className="text-red-500 text-xs mt-2">{errors.selectedCategories}</p>}
               
               {/* Important Award Information */}
@@ -748,7 +862,7 @@ const PAANAwardsApplicationModal = ({ isOpen, onClose }) => {
                   <div>
                     <h4 className="font-semibold text-blue-900 mb-2">Important Award Information</h4>
                     <p className="text-sm text-blue-800">
-                      <strong>In every category, both the agency and client are honored with their own award as a mark of shared achievement.</strong> 
+                      <strong>In every category, both the agency and client are honored with their own award as a mark of shared achievement.</strong>
                       This means when you win, both your organization and your client receive recognition, celebrating the collaborative success of your partnership.
                     </p>
                   </div>
