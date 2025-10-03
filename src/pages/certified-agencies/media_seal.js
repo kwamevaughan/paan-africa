@@ -529,7 +529,7 @@ const HomePage = () => {
         {/* Clients They Have Worked With Section */}
         <div className="bg-white py-16 sm:py-20 relative z-10">
           <section className="relative mx-auto max-w-6xl px-4 sm:px-6">
-            <h2 className="text-3xl sm:text-4xl font-bold text-paan-dark-blue text-center mb-10">{t('certifiedAgencies.liftup.clients.title')}</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold text-paan-dark-blue text-center mb-10">Clients Media Seal Has Worked With</h2>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 md:gap-10 items-center justify-center">
               {[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,].map((num) => (
                 <div key={num} className="flex items-center justify-center p-4 bg-gray-50 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-200">
@@ -573,7 +573,7 @@ const HomePage = () => {
                       <div className="w-16 h-px bg-gradient-to-r from-paan-dark-blue to-paan-purple"></div>
                       <cite className="not-italic">
                         <div className="font-semibold text-lg text-gray-900">Maureen Ngwu</div>
-                        {/* <div className="text-gray-600 text-sm">Managing Director</div> */}
+                        <div className="text-gray-600 text-sm">Managing Director</div>
                       </cite>
                     </div>
                   </div>
@@ -701,8 +701,8 @@ const HomePage = () => {
             {/* Modal content */}
             <div className="p-8">
               <div className="text-center mb-8">
-                <h2 className="text-2xl font-semibold text-[#172840] mb-2">{t('certifiedAgencies.liftup.contactModal.title')}</h2>
-                <p className="text-gray-600">{t('certifiedAgencies.liftup.contactModal.description')}</p>
+                <h2 className="text-2xl font-semibold text-[#172840] mb-2">Contact Media Seal</h2>
+                <p className="text-gray-600">Get in touch with our team for your strategic marketing needs</p>
               </div>
 
               <form onSubmit={handleContactSubmit} className="space-y-6">
