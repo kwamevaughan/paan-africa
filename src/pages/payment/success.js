@@ -75,6 +75,7 @@ const PaymentSuccessPage = () => {
       
       <Header />
       
+      <div className='relative'>
       <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 pt-32 pb-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-white rounded-lg shadow-sm overflow-hidden border border-gray-200">
@@ -203,6 +204,7 @@ const PaymentSuccessPage = () => {
       </div>
 
       <Footer />
+      </div>
     </>
   );
 };

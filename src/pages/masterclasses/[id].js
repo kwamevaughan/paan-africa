@@ -72,11 +72,13 @@ const MasterclassDetailPage = () => {
       date: "November 25th, 2025",
       time: "2 pm EAT",
       memberPrice: 60,
+      memberOriginalPrice: 80,
       nonMemberPrice: 80,
+      nonMemberOriginalPrice: 120,
       currency: "USD",
       category: "Business Development",
       level: "Intermediate",
-      image: "/assets/images/masterclass/bid-t0-win.webp",
+      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/bid-to-win-min.jpg",
       instructor: {
         name: "Ms. Muthoni",
         title: "Procurement Specialist with 14+ years experience",
@@ -126,11 +128,13 @@ const MasterclassDetailPage = () => {
       date: "October 15th, 2025",
       time: "10 am GMT / 12 pm EAT",
       memberPrice: 174,
+      memberOriginalPrice: 220,
       nonMemberPrice: 250,
+      nonMemberOriginalPrice: 320,
       currency: "USD",
       category: "Client Management",
       level: "All Levels",
-      image: "/assets/images/masterclass/challenging-clients.webp",
+      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/challenging-clients-min.jpg",
       partnership: "PAAN, in collaboration with the Alliance of Independent Agencies, UK",
       instructor: {
         name: "Niki Hurst Smith",
@@ -184,11 +188,13 @@ const MasterclassDetailPage = () => {
       date: "October 23rd, 2025",
       time: "2 pm EAT",
       memberPrice: 60,
+      memberOriginalPrice: 80,
       nonMemberPrice: 80,
+      nonMemberOriginalPrice: 120,
       currency: "USD",
       category: "Financial Management",
       level: "Intermediate",
-      image: "/assets/images/masterclass/financial-management.webp",
+      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/finance-management-min.jpg",
       series: "Agency Growth & Leadership Masterclass Series",
       moduleNumber: 1,
       instructor: {
@@ -237,11 +243,13 @@ const MasterclassDetailPage = () => {
       date: "November 13th, 2025",
       time: "2 pm EAT",
       memberPrice: 60,
+      memberOriginalPrice: 80,
       nonMemberPrice: 80,
+      nonMemberOriginalPrice: 120,
       currency: "USD",
       category: "Business Development",
       level: "Intermediate",
-      image: "/assets/images/masterclass/proposal-writing.webp",
+      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/proposal-writing-min.jpg",
       series: "Agency Growth & Leadership Masterclass Series",
       moduleNumber: 2,
       instructor: {
@@ -290,11 +298,13 @@ const MasterclassDetailPage = () => {
       date: "December 10th, 2025",
       time: "2 pm EAT",
       memberPrice: 60,
+      memberOriginalPrice: 80,
       nonMemberPrice: 80,
+      nonMemberOriginalPrice: 120,
       currency: "USD",
       category: "Leadership",
       level: "Intermediate",
-      image: "/assets/images/masterclass/leadership-talent.webp",
+      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/agency-leadership-min.jpg",
       series: "Agency Growth & Leadership Masterclass Series",
       moduleNumber: 3,
       instructor: {
@@ -344,11 +354,13 @@ const MasterclassDetailPage = () => {
       date: "October 23rd, 2025",
       time: "10 am GMT / 12 pm EAT",
       memberPrice: 174,
+      memberOriginalPrice: 220,
       nonMemberPrice: 250,
+      nonMemberOriginalPrice: 320,
       currency: "USD",
       category: "Business Development",
       level: "Intermediate",
-      image: "/assets/images/masterclass/winning-pitches.webp",
+      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/winning-pitches-min.jpg",
       partnership: "PAAN, in collaboration with the Alliance of Independent Agencies, UK",
       instructor: {
         name: "Abigail Dixon",
@@ -398,11 +410,13 @@ const MasterclassDetailPage = () => {
       date: "November 6th, 2025",
       time: "10 am GMT / 12 pm EAT",
       memberPrice: 174,
+      memberOriginalPrice: 220,
       nonMemberPrice: 250,
+      nonMemberOriginalPrice: 320,
       currency: "USD",
       category: "Account Management",
       level: "Junior to Mid-Level",
-      image: "/assets/images/masterclass/account-handler.webp",
+      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/account-handler-min.jpg",
       partnership: "PAAN, in collaboration with the Alliance of Independent Agencies, UK",
       instructor: {
         name: "Paul Burns",
@@ -756,6 +770,7 @@ const MasterclassDetailPage = () => {
     <>
     <PaystackScript />
     <Header navLinkColor="text-gray-950" />
+    <div className="relative">
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-slate-800 via-slate-700 to-slate-900 pt-40 pb-12">
@@ -838,16 +853,16 @@ const MasterclassDetailPage = () => {
                 <button
                   onClick={() => setSelectedPricing('member')}
                   className={`p-5 rounded-lg border-2 transition-all text-left ${
-                    selectedPricing === 'member' 
-                      ? 'border-red-500 bg-red-50' 
+                    selectedPricing === 'member'
+                      ? 'border-red-500 bg-red-50'
                       : 'border-gray-200 hover:border-red-300'
                   }`}
                 >
                   <div className="flex items-start justify-between mb-3">
                     <h3 className="text-base font-semibold text-slate-900">PAAN Members</h3>
                     <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${
-                      selectedPricing === 'member' 
-                        ? 'border-red-500 bg-red-500' 
+                      selectedPricing === 'member'
+                        ? 'border-red-500 bg-red-500'
                         : 'border-gray-300'
                     }`}>
                       {selectedPricing === 'member' && (
@@ -855,27 +870,41 @@ const MasterclassDetailPage = () => {
                       )}
                     </div>
                   </div>
-                  <div className="text-3xl font-bold text-slate-900 mb-1">
-                    ${masterclass.memberPrice}
+                  <div className="flex items-center gap-3 mb-1">
+                    <div className="text-3xl font-bold text-slate-900">
+                      ${masterclass.memberPrice}
+                    </div>
+                    {masterclass.memberOriginalPrice && (
+                      <div className="text-lg text-gray-500 line-through">
+                        ${masterclass.memberOriginalPrice}
+                      </div>
+                    )}
                   </div>
-                  <p className="text-gray-600 text-sm">
-                    Exclusive member pricing
-                  </p>
+                  <div className="flex items-center gap-2">
+                    <p className="text-gray-600 text-sm">
+                      Exclusive member pricing
+                    </p>
+                    {masterclass.memberOriginalPrice && (
+                      <span className="bg-green-100 text-green-800 px-2 py-1 rounded text-xs font-semibold">
+                        Save ${masterclass.memberOriginalPrice - masterclass.memberPrice}
+                      </span>
+                    )}
+                  </div>
                 </button>
 
                 <button
                   onClick={() => setSelectedPricing('non-member')}
                   className={`p-5 rounded-lg border-2 transition-all text-left ${
-                    selectedPricing === 'non-member' 
-                      ? 'border-red-500 bg-red-50' 
+                    selectedPricing === 'non-member'
+                      ? 'border-red-500 bg-red-50'
                       : 'border-gray-200 hover:border-red-300'
                   }`}
                 >
                   <div className="flex items-start justify-between mb-3">
                     <h3 className="text-base font-semibold text-slate-900">Non-Members</h3>
                     <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${
-                      selectedPricing === 'non-member' 
-                        ? 'border-red-500 bg-red-500' 
+                      selectedPricing === 'non-member'
+                        ? 'border-red-500 bg-red-500'
                         : 'border-gray-300'
                     }`}>
                       {selectedPricing === 'non-member' && (
@@ -883,12 +912,26 @@ const MasterclassDetailPage = () => {
                       )}
                     </div>
                   </div>
-                  <div className="text-3xl font-bold text-slate-900 mb-1">
-                    ${masterclass.nonMemberPrice}
+                  <div className="flex items-center gap-3 mb-1">
+                    <div className="text-3xl font-bold text-slate-900">
+                      ${masterclass.nonMemberPrice}
+                    </div>
+                    {masterclass.nonMemberOriginalPrice && (
+                      <div className="text-lg text-gray-500 line-through">
+                        ${masterclass.nonMemberOriginalPrice}
+                      </div>
+                    )}
                   </div>
-                  <p className="text-gray-600 text-sm">
-                    Standard pricing
-                  </p>
+                  <div className="flex items-center gap-2">
+                    <p className="text-gray-600 text-sm">
+                      Standard pricing
+                    </p>
+                    {masterclass.nonMemberOriginalPrice && (
+                      <span className="bg-green-100 text-green-800 px-2 py-1 rounded text-xs font-semibold">
+                        Save ${masterclass.nonMemberOriginalPrice - masterclass.nonMemberPrice}
+                      </span>
+                    )}
+                  </div>
                 </button>
               </div>
 
@@ -1006,13 +1049,13 @@ const MasterclassDetailPage = () => {
             </div>
 
             {/* Why Attend */}
-            <div className="bg-white rounded-xl shadow-lg p-6 lg:p-8">
+            {/* <div className="bg-white rounded-xl shadow-lg p-6 lg:p-8">
               <h2 className="text-2xl font-bold text-slate-900 mb-6">Why Attend?</h2>
               <div className="space-y-3">
                 {masterclass.whyAttend.map((reason, index) => (
                   <div key={index} className="flex items-start gap-3 p-4 bg-gradient-to-r from-red-50 to-orange-50 rounded-lg border-l-4 border-red-500">
                     <Icon icon="mdi:star" className="text-red-500 w-5 h-5 mt-0.5 flex-shrink-0" />
-            {/* Course Objectives (for Managing Challenging Clients) */}
+            
             {masterclass.courseObjectives && (
               <div className="bg-white rounded-xl shadow-lg p-6 lg:p-8">
                 <h2 className="text-2xl font-bold text-slate-900 mb-6">Course Objectives</h2>
@@ -1031,7 +1074,7 @@ const MasterclassDetailPage = () => {
                   </div>
                 ))}
               </div>
-            </div>
+            </div> */}
 
             {/* Who Should Attend */}
             <div className="bg-white rounded-xl shadow-lg p-6 lg:p-8">
@@ -1134,6 +1177,7 @@ const MasterclassDetailPage = () => {
       </div>
     </div>
     <Footer />
+    </div>
     </>
   );
 };

@@ -37,13 +37,15 @@ const MasterclassesPage = () => {
       date: "November 25th, 2025",
       time: "2 pm EAT",
       memberPrice: 60,
+      memberOriginalPrice: 80,
       nonMemberPrice: 80,
+      nonMemberOriginalPrice: 120,
       currency: "USD",
       category: "Business Development",
       level: "Intermediate",
       instructor: "Ms. Muthoni",
       instructorTitle: "Procurement Specialist with 14+ years experience",
-      image: "/assets/images/masterclass/bid-t0-win.webp",
+      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/bid-to-win-min.jpg",
       benefits: [
         "5% off on PAAN Summit 2026 tickets",
         "10% off Africa Creative Excellence Awards entry"
@@ -77,13 +79,15 @@ const MasterclassesPage = () => {
       date: "October 15th, 2025",
       time: "10 am GMT / 12 pm EAT",
       memberPrice: 174,
+      memberOriginalPrice: 220,
       nonMemberPrice: 250,
+      nonMemberOriginalPrice: 320,
       currency: "USD",
       category: "Client Management",
       level: "All Levels",
       instructor: "Niki Hurst Smith",
       instructorTitle: "HR Consultant & Former Agency Leader with 15+ years experience",
-      image: "/assets/images/masterclass/challenging-clients.webp",
+      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/challenging-clients-min.jpg",
       benefits: [
         "5% off on PAAN Summit 2026 tickets",
         "6% off Africa Creative Excellence Awards entry"
@@ -119,13 +123,15 @@ const MasterclassesPage = () => {
       date: "October 23rd, 2025",
       time: "2 pm EAT",
       memberPrice: 60,
+      memberOriginalPrice: 80,
       nonMemberPrice: 80,
+      nonMemberOriginalPrice: 120,
       currency: "USD",
       category: "Financial Management",
       level: "Intermediate",
       instructor: "Jotham Wadongo",
       instructorTitle: "Financial Management & Business Advisory Professional",
-      image: "/assets/images/masterclass/financial-management.webp",
+      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/finance-management-min.jpg",
       benefits: [
         "5% off on PAAN Summit 2026 tickets",
         "10% off Africa Creative Excellence Awards entry"
@@ -156,13 +162,15 @@ const MasterclassesPage = () => {
       date: "November 13th, 2025",
       time: "2 pm EAT",
       memberPrice: 60,
+      memberOriginalPrice: 80,
       nonMemberPrice: 80,
+      nonMemberOriginalPrice: 120,
       currency: "USD",
       category: "Business Development",
       level: "Intermediate",
       instructor: "Expert Trainer",
       instructorTitle: "International Business Development Specialist",
-      image: "/assets/images/masterclass/proposal-writing.webp",
+      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/proposal-writing-min.jpg",
       benefits: [
         "5% off on PAAN Summit 2026 tickets",
         "10% off Africa Creative Excellence Awards entry"
@@ -193,13 +201,15 @@ const MasterclassesPage = () => {
       date: "December 10th, 2025",
       time: "2 pm EAT",
       memberPrice: 60,
+      memberOriginalPrice: 80,
       nonMemberPrice: 80,
+      nonMemberOriginalPrice: 120,
       currency: "USD",
       category: "Leadership",
       level: "Intermediate",
       instructor: "Mercy Murigi",
       instructorTitle: "Organizational Capacity & People Development Expert",
-      image: "/assets/images/masterclass/leadership-talent.webp",
+      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/agency-leadership-min.jpg",
       benefits: [
         "5% off on PAAN Summit 2026 tickets",
         "10% off Africa Creative Excellence Awards entry"
@@ -231,13 +241,15 @@ const MasterclassesPage = () => {
       date: "October 23rd, 2025",
       time: "10 am GMT / 12 pm EAT",
       memberPrice: 174,
+      memberOriginalPrice: 220,
       nonMemberPrice: 250,
+      nonMemberOriginalPrice: 320,
       currency: "USD",
       category: "Business Development",
       level: "Intermediate",
       instructor: "Abigail Dixon",
       instructorTitle: "Chartered Marketer and Fellow, CIM Consultant & Trainer",
-      image: "/assets/images/masterclass/winning-pitches.webp",
+      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/winning-pitches-min.jpg",
       benefits: [
         "5% off on PAAN Summit 2026 tickets",
         "6% off Africa Creative Excellence Awards entry"
@@ -269,13 +281,15 @@ const MasterclassesPage = () => {
       date: "November 6th, 2025",
       time: "10 am GMT / 12 pm EAT",
       memberPrice: 174,
+      memberOriginalPrice: 220,
       nonMemberPrice: 250,
+      nonMemberOriginalPrice: 320,
       currency: "USD",
       category: "Account Management",
       level: "Junior to Mid-Level",
       instructor: "Paul Burns",
       instructorTitle: "Former Training Director at Saatchi & Saatchi, Co-founder of Rock and a Hardplace",
-      image: "/assets/images/masterclass/account-handler.webp",
+      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/account-handler-min.jpg",
       benefits: [
         "5% off on PAAN Summit 2026 tickets",
         "6% off Africa Creative Excellence Awards entry"
@@ -327,9 +341,9 @@ const MasterclassesPage = () => {
         description="Join expert-led masterclasses designed specifically for African agencies. Learn from industry leaders, gain practical skills, and accelerate your agency's growth with PAAN's professional development programs."
         keywords="PAAN masterclasses, agency training, professional development Africa, business skills, tender training, RFP masterclass, agency growth, African agencies"
       />
-      
-      <div className="relative">
-        <Header />
+
+      <Header />
+      <div className="relative">       
         
         {/* Hero Section */}
         <section className="relative bg-gradient-to-br from-[#172840] via-[#2a4a6b] to-[#172840] pt-32 sm:pt-40 pb-16 overflow-hidden">
@@ -436,7 +450,7 @@ const MasterclassesPage = () => {
               <div key={masterclass.id} className="bg-white rounded-2xl shadow-xl overflow-hidden">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
                   {/* Image Section */}
-                  <div className="relative h-64 lg:h-full min-h-[400px]">
+                  <div className="relative h-48 lg:h-full min-h-[300px]">
                     <Image
                       src={masterclass.image}
                       fill
@@ -444,34 +458,34 @@ const MasterclassesPage = () => {
                       className="object-cover"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-                    <div className="absolute top-6 left-6">
-                      <span className="bg-[#F2B706] text-[#172840] px-4 py-2 rounded-full text-sm font-bold">
+                    <div className="absolute top-4 left-4">
+                      <span className="bg-[#F2B706] text-[#172840] px-3 py-1.5 rounded-full text-sm font-bold">
                         {masterclass.status === 'upcoming' ? 'UPCOMING' : 'LIVE'}
                       </span>
                     </div>
                   </div>
 
                   {/* Content Section */}
-                  <div className="p-8 lg:p-12">
-                    <div className="mb-6">
-                      <div className="flex items-center gap-4 mb-4">
+                  <div className="p-6 lg:p-8">
+                    <div className="mb-4">
+                      <div className="flex items-center gap-3 mb-3">
                         <span className="bg-[#84C1D9] text-white px-3 py-1 rounded-full text-sm font-medium">
                           {masterclass.category}
                         </span>
                         <span className="text-gray-500 text-sm">{masterclass.level}</span>
                       </div>
                       
-                      <h3 className="text-2xl lg:text-3xl font-bold text-[#172840] mb-4 leading-tight">
+                      <h3 className="text-xl lg:text-2xl font-bold text-[#172840] mb-3 leading-tight">
                         {masterclass.title}
                       </h3>
                       
-                      <p className="text-gray-600 mb-6 leading-relaxed">
-                        {masterclass.description}
+                      <p className="text-gray-600 mb-4 leading-relaxed text-sm">
+                        {masterclass.description.substring(0, 150)}...
                       </p>
                     </div>
 
                     {/* Session Details */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
                       <div className="flex items-center gap-3">
                         <Icon icon="mdi:calendar" className="text-[#F25849] w-5 h-5" />
                         <span className="text-gray-700">{masterclass.date}</span>
@@ -491,28 +505,52 @@ const MasterclassesPage = () => {
                     </div>
 
                     {/* Pricing */}
-                    <div className="bg-gray-50 rounded-xl p-6 mb-6">
+                    <div className="bg-gray-50 rounded-xl p-4 mb-4">
                       <div className="flex items-center justify-between mb-4">
                         <div>
                           <div className="text-sm text-gray-500 mb-1">Members</div>
-                          <div className="text-2xl font-bold text-[#172840]">
-                            ${masterclass.memberPrice}
+                          <div className="flex items-center gap-2">
+                            <div className="text-2xl font-bold text-[#172840]">
+                              ${masterclass.memberPrice}
+                            </div>
+                            {masterclass.memberOriginalPrice && (
+                              <div className="text-lg text-gray-500 line-through">
+                                ${masterclass.memberOriginalPrice}
+                              </div>
+                            )}
                           </div>
+                          {masterclass.memberOriginalPrice && (
+                            <div className="text-xs text-green-600 font-semibold mt-1">
+                              Save ${masterclass.memberOriginalPrice - masterclass.memberPrice}
+                            </div>
+                          )}
                         </div>
                         <div>
                           <div className="text-sm text-gray-500 mb-1">Non-Members</div>
-                          <div className="text-2xl font-bold text-[#172840]">
-                            ${masterclass.nonMemberPrice}
+                          <div className="flex items-center gap-2">
+                            <div className="text-2xl font-bold text-[#172840]">
+                              ${masterclass.nonMemberPrice}
+                            </div>
+                            {masterclass.nonMemberOriginalPrice && (
+                              <div className="text-lg text-gray-500 line-through">
+                                ${masterclass.nonMemberOriginalPrice}
+                              </div>
+                            )}
                           </div>
+                          {masterclass.nonMemberOriginalPrice && (
+                            <div className="text-xs text-green-600 font-semibold mt-1">
+                              Save ${masterclass.nonMemberOriginalPrice - masterclass.nonMemberPrice}
+                            </div>
+                          )}
                         </div>
                       </div>
                       
                       {masterclass.benefits && (
-                        <div className="border-t pt-4">
-                          <div className="text-sm font-semibold text-gray-700 mb-2">Bonus Benefits:</div>
-                          {masterclass.benefits.map((benefit, index) => (
-                            <div key={index} className="flex items-center gap-2 text-sm text-gray-600">
-                              <Icon icon="mdi:check-circle" className="text-green-500 w-4 h-4" />
+                        <div className="border-t pt-3">
+                          <div className="text-xs font-semibold text-gray-700 mb-2">Bonus Benefits:</div>
+                          {masterclass.benefits.slice(0, 2).map((benefit, index) => (
+                            <div key={index} className="flex items-center gap-2 text-xs text-gray-600">
+                              <Icon icon="mdi:check-circle" className="text-green-500 w-3 h-3" />
                               {benefit}
                             </div>
                           ))}
@@ -521,16 +559,16 @@ const MasterclassesPage = () => {
                     </div>
 
                     {/* CTA Buttons */}
-                    <div className="flex flex-col sm:flex-row gap-4">
-                      <Link 
+                    <div className="flex flex-col sm:flex-row gap-3">
+                      <Link
                         href={`/masterclasses/${masterclass.id}`}
-                        className="flex-1 bg-[#F25849] text-white px-6 py-4 rounded-full font-semibold text-center hover:bg-[#D6473C] transition-all duration-300 shadow-lg hover:shadow-xl"
+                        className="flex-1 bg-[#F25849] text-white px-4 py-3 rounded-full font-semibold text-center hover:bg-[#D6473C] transition-all duration-300 shadow-lg hover:shadow-xl text-sm"
                       >
                         Register Now
                       </Link>
-                      <Link 
+                      <Link
                         href={`/masterclasses/${masterclass.id}`}
-                        className="flex-1 bg-transparent border-2 border-[#172840] text-[#172840] px-6 py-4 rounded-full font-semibold text-center hover:bg-[#172840] hover:text-white transition-all duration-300"
+                        className="flex-1 bg-transparent border-2 border-[#172840] text-[#172840] px-4 py-3 rounded-full font-semibold text-center hover:bg-[#172840] hover:text-white transition-all duration-300 text-sm"
                       >
                         Learn More
                       </Link>
@@ -543,124 +581,138 @@ const MasterclassesPage = () => {
         </section>
 
         {/* All Masterclasses */}
-<section id="masterclasses-grid" className="bg-white py-20">
-  <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <div className="text-center mb-12">
-      <h2 className="text-3xl md:text-4xl font-bold text-[#172840] mb-4">
-        All Masterclasses
-      </h2>
-      <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-        Explore our comprehensive library of professional development programs
-      </p>
-    </div>
+        <section id="masterclasses-grid" className="bg-white py-20">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-[#172840] mb-4">
+                All Masterclasses
+              </h2>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                Explore our comprehensive library of professional development programs
+              </p>
+            </div>
 
-    {/* Filters */}
-    <div className="mb-12">
-      <div className="flex flex-col gap-6">
-        {/* Search */}
-        <div className="relative w-full max-w-2xl mx-auto">
-          <Icon icon="mdi:magnify" className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
-          <input
-            type="text"
-            placeholder="Search masterclasses..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-full focus:ring-2 focus:ring-[#F25849] focus:border-transparent outline-none"
-          />
-        </div>
+            {/* Filters */}
+            <div className="mb-12">
+              <div className="flex flex-col gap-6">
+                {/* Search */}
+                <div className="relative w-full max-w-2xl mx-auto">
+                  <Icon icon="mdi:magnify" className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                  <input
+                    type="text"
+                    placeholder="Search masterclasses..."
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                    className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-full focus:ring-2 focus:ring-[#F25849] focus:border-transparent outline-none"
+                  />
+                </div>
 
-        {/* Category Filter */}
-        <div className="flex flex-wrap gap-3 justify-center">
-          {categories.map(category => (
-            <button
-              key={category.id}
-              onClick={() => setSelectedCategory(category.id)}
-              className={`px-6 py-2.5 rounded-full font-medium transition-all duration-300 ${
-                selectedCategory === category.id
-                  ? 'bg-[#F25849] text-white shadow-lg'
-                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-              }`}
-            >
-              {category.name} ({category.count})
-            </button>
-          ))}
-        </div>
-      </div>
-    </div>
-
-    {/* Masterclasses Grid */}
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      {filteredMasterclasses.length > 0 ? (
-        filteredMasterclasses.map(masterclass => (
-          <div key={masterclass.id} className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group flex flex-col">
-            <div className="relative h-48 flex-shrink-0">
-              <Image
-                src={masterclass.image}
-                fill
-                alt={masterclass.title}
-                className="object-cover group-hover:scale-105 transition-transform duration-300"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-              <div className="absolute top-4 left-4">
-                <span className="bg-[#F2B706] text-[#172840] px-3 py-1 rounded-full text-xs font-bold">
-                  {masterclass.status === 'upcoming' ? 'UPCOMING' : 'LIVE'}
-                </span>
-              </div>
-              <div className="absolute bottom-4 left-4 right-4">
-                <div className="flex items-center justify-between text-white text-sm">
-                  <span className="font-medium">{masterclass.date}</span>
-                  <span className="font-medium">{masterclass.time}</span>
+                {/* Category Filter */}
+                <div className="flex flex-wrap gap-3 justify-center">
+                  {categories.map(category => (
+                    <button
+                      key={category.id}
+                      onClick={() => setSelectedCategory(category.id)}
+                      className={`px-6 py-2.5 rounded-full font-medium transition-all duration-300 ${
+                        selectedCategory === category.id
+                          ? 'bg-[#F25849] text-white shadow-lg'
+                          : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                      }`}
+                    >
+                      {category.name} ({category.count})
+                    </button>
+                  ))}
                 </div>
               </div>
             </div>
 
-            <div className="p-6 flex flex-col flex-grow">
-              <div className="flex items-center gap-2 mb-3 flex-wrap">
-                <span className="bg-[#84C1D9] text-white px-3 py-1 rounded text-xs font-medium">
-                  {masterclass.category}
-                </span>
-                <span className="text-gray-500 text-xs font-medium">{masterclass.level}</span>
-              </div>
+            {/* Masterclasses Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {filteredMasterclasses.length > 0 ? (
+                filteredMasterclasses.map(masterclass => (
+                  <div key={masterclass.id} className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group flex flex-col">
+                    <div className="relative h-48 flex-shrink-0">
+                      <Image
+                        src={masterclass.image}
+                        fill
+                        alt={masterclass.title}
+                        className="object-cover group-hover:scale-105 transition-transform duration-300"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                      <div className="absolute top-4 left-4">
+                        <span className="bg-[#F2B706] text-[#172840] px-3 py-1 rounded-full text-xs font-bold">
+                          {masterclass.status === 'upcoming' ? 'UPCOMING' : 'LIVE'}
+                        </span>
+                      </div>
+                      <div className="absolute bottom-4 left-4 right-4">
+                        <div className="flex items-center justify-between text-white text-sm">
+                          <span className="font-medium">{masterclass.date}</span>
+                          <span className="font-medium">{masterclass.time}</span>
+                        </div>
+                      </div>
+                    </div>
 
-              <h3 className="text-lg font-bold text-[#172840] mb-3 line-clamp-2 group-hover:text-[#F25849] transition-colors duration-300 min-h-[3.5rem]">
-                {masterclass.title}
-              </h3>
+                    <div className="p-6 flex flex-col flex-grow">
+                      <div className="flex items-center gap-2 mb-3 flex-wrap">
+                        <span className="bg-[#84C1D9] text-white px-3 py-1 rounded text-xs font-medium">
+                          {masterclass.category}
+                        </span>
+                        <span className="text-gray-500 text-xs font-medium">{masterclass.level}</span>
+                      </div>
 
-              <p className="text-gray-600 text-sm mb-4 line-clamp-3 flex-grow">
-                {masterclass.description}
-              </p>
+                      <h3 className="text-lg font-bold text-[#172840] mb-3 line-clamp-2 group-hover:text-[#F25849] transition-colors duration-300 min-h-[3.5rem]">
+                        {masterclass.title}
+                      </h3>
 
-              <div className="flex items-center justify-between mb-4 pt-2 border-t border-gray-100">
-                <div className="text-sm text-gray-600 font-medium">
-                  By {masterclass.instructor}
-                </div>
-                <div className="text-right">
-                  <div className="text-xl font-bold text-[#172840]">
-                    ${masterclass.memberPrice}
+                      <p className="text-gray-600 text-sm mb-4 line-clamp-3 flex-grow">
+                        {masterclass.description}
+                      </p>
+
+                      <div className="flex items-center justify-between mb-4 pt-2 border-t border-gray-100">
+                        <div className="text-sm text-gray-600 font-medium">
+                          By {masterclass.instructor}
+                        </div>
+                        <div className="text-right">
+                          <div className="flex items-center gap-2 justify-end">
+                            <div className="text-xl font-bold text-[#172840]">
+                              ${masterclass.memberPrice}
+                            </div>
+                            {masterclass.memberOriginalPrice && (
+                              <div className="text-sm text-gray-500 line-through">
+                                ${masterclass.memberOriginalPrice}
+                              </div>
+                            )}
+                          </div>
+                          <div className="flex items-center gap-2 justify-end">
+                            <div className="text-xs text-gray-500">Members</div>
+                            {masterclass.memberOriginalPrice && (
+                              <div className="text-xs text-green-600 font-semibold">
+                                Save ${masterclass.memberOriginalPrice - masterclass.memberPrice}
+                              </div>
+                            )}
+                          </div>
+                        </div>
+                      </div>
+
+                      <Link 
+                        href={`/masterclasses/${masterclass.id}`}
+                        className="block w-full bg-[#F25849] text-white text-center py-3 rounded-full font-semibold hover:bg-[#D6473C] transition-all duration-300 shadow-md hover:shadow-lg"
+                      >
+                        View Details
+                      </Link>
+                    </div>
                   </div>
-                  <div className="text-xs text-gray-500">Members</div>
+                ))
+              ) : (
+                <div className="col-span-full text-center py-16">
+                  <Icon icon="mdi:book-open-variant" className="w-16 h-16 text-gray-300 mx-auto mb-4" />
+                  <h3 className="text-xl font-semibold text-gray-600 mb-2">No masterclasses found</h3>
+                  <p className="text-gray-500">Try adjusting your search or filter criteria</p>
                 </div>
-              </div>
-
-              <Link 
-                href={`/masterclasses/${masterclass.id}`}
-                className="block w-full bg-[#F25849] text-white text-center py-3 rounded-full font-semibold hover:bg-[#D6473C] transition-all duration-300 shadow-md hover:shadow-lg"
-              >
-                View Details
-              </Link>
+              )}
             </div>
           </div>
-        ))
-      ) : (
-        <div className="col-span-full text-center py-16">
-          <Icon icon="mdi:book-open-variant" className="w-16 h-16 text-gray-300 mx-auto mb-4" />
-          <h3 className="text-xl font-semibold text-gray-600 mb-2">No masterclasses found</h3>
-          <p className="text-gray-500">Try adjusting your search or filter criteria</p>
-        </div>
-      )}
-    </div>
-  </div>
-</section>
+        </section>
 
         {/* Why Choose PAAN Masterclasses */}
         <section className="bg-[#172840] py-20">
