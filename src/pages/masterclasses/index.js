@@ -110,16 +110,206 @@ const MasterclassesPage = () => {
       partnership: "PAAN, in collaboration with the Alliance of Independent Agencies, UK",
       featured: false,
       status: "upcoming"
+    },
+    {
+      id: 3,
+      title: "Financial Management, Tax & Transfer Pricing for Agencies",
+      description: "Creative agencies often struggle with irregular income, multi-currency projects, and tax complexity. This session equips agency leaders and finance managers with the tools to stabilize growth, remain compliant, and make informed financial decisions.",
+      format: "3-Hour Interactive Online Workshop",
+      date: "October 23rd, 2025",
+      time: "2 pm EAT",
+      memberPrice: 60,
+      nonMemberPrice: 80,
+      currency: "USD",
+      category: "Financial Management",
+      level: "Intermediate",
+      instructor: "Jotham Wadongo",
+      instructorTitle: "Financial Management & Business Advisory Professional",
+      image: "/assets/images/masterclass/financial-management.webp",
+      benefits: [
+        "5% off on PAAN Summit 2026 tickets",
+        "10% off Africa Creative Excellence Awards entry"
+      ],
+      whoShouldAttend: [
+        "Agency founders & partners",
+        "Finance managers & business leads",
+        "Account directors & business development leads",
+        "HR & operations managers in agencies"
+      ],
+      learningOutcomes: [
+        "Build robust agency budgets and cash flow systems",
+        "Understand corporate tax, VAT, withholding, and digital service tax obligations",
+        "Gain practical insight into transfer pricing for cross-border assignments",
+        "Apply smart pricing models (hourly, retainers, value-based)"
+      ],
+      takeawayToolkit: "Budgeting template + Tax & Transfer Pricing cheat sheet",
+      series: "Agency Growth & Leadership Masterclass Series",
+      moduleNumber: 1,
+      featured: false,
+      status: "upcoming"
+    },
+    {
+      id: 4,
+      title: "Proposal Writing & Bidding for Global Clients",
+      description: "Winning international contracts requires more than great ideas—it requires compelling proposals that showcase professionalism and global readiness. This session helps agencies sharpen their proposal writing and bidding strategies.",
+      format: "2.5-Hour Interactive Online Workshop",
+      date: "November 13th, 2025",
+      time: "2 pm EAT",
+      memberPrice: 60,
+      nonMemberPrice: 80,
+      currency: "USD",
+      category: "Business Development",
+      level: "Intermediate",
+      instructor: "Expert Trainer",
+      instructorTitle: "International Business Development Specialist",
+      image: "/assets/images/masterclass/proposal-writing.webp",
+      benefits: [
+        "5% off on PAAN Summit 2026 tickets",
+        "10% off Africa Creative Excellence Awards entry"
+      ],
+      whoShouldAttend: [
+        "Agency founders & partners",
+        "Finance managers & business leads",
+        "Account directors & business development leads",
+        "HR & operations managers in agencies"
+      ],
+      learningOutcomes: [
+        "Structure winning proposals that stand out in competitive RFPs",
+        "Use storytelling to position African creativity on the global stage",
+        "Price proposals strategically for profitability and competitiveness",
+        "Peer-review and refine proposals with expert guidance"
+      ],
+      takeawayToolkit: "Proposal template + Proposal evaluation checklist",
+      series: "Agency Growth & Leadership Masterclass Series",
+      moduleNumber: 2,
+      featured: false,
+      status: "upcoming"
+    },
+    {
+      id: 5,
+      title: "Agency Leadership & Talent Retention",
+      description: "Great agencies depend on great people—but retaining them is tough. This session develops leadership capacity while equipping managers to inspire, grow, and retain top creative talent.",
+      format: "2.5-Hour Interactive Online Workshop",
+      date: "December 10th, 2025",
+      time: "2 pm EAT",
+      memberPrice: 60,
+      nonMemberPrice: 80,
+      currency: "USD",
+      category: "Leadership",
+      level: "Intermediate",
+      instructor: "Mercy Murigi",
+      instructorTitle: "Organizational Capacity & People Development Expert",
+      image: "/assets/images/masterclass/leadership-talent.webp",
+      benefits: [
+        "5% off on PAAN Summit 2026 tickets",
+        "10% off Africa Creative Excellence Awards entry"
+      ],
+      whoShouldAttend: [
+        "Agency founders & partners",
+        "Finance managers & business leads",
+        "Account directors & business development leads",
+        "HR & operations managers in agencies"
+      ],
+      learningOutcomes: [
+        "Identify leadership styles that fit creative industries",
+        "Develop strategies for attracting and retaining high-performing teams",
+        "Build succession plans and nurture next-generation leaders",
+        "Share talent retention challenges and solutions with peers",
+        "Plan your talent pipeline for 2026 growth"
+      ],
+      takeawayToolkit: "Leadership self-assessment + Talent retention strategy canvas",
+      series: "Agency Growth & Leadership Masterclass Series",
+      moduleNumber: 3,
+      featured: false,
+      status: "upcoming"
+    },
+    {
+      id: 6,
+      title: "How To Develop Winning Pitches and Retain Clients",
+      description: "In today's competitive agency landscape, winning a pitch is only half the battle — retaining the client and growing the relationship is where agencies truly thrive. Too often, weak or incomplete briefs set agencies up for failure, leading to missed opportunities and frustrated clients.",
+      format: "90-minute Interactive Training Course",
+      date: "October 23rd, 2025",
+      time: "10 am GMT / 12 pm EAT",
+      memberPrice: 174,
+      nonMemberPrice: 250,
+      currency: "USD",
+      category: "Business Development",
+      level: "Intermediate",
+      instructor: "Abigail Dixon",
+      instructorTitle: "Chartered Marketer and Fellow, CIM Consultant & Trainer",
+      image: "/assets/images/masterclass/winning-pitches.webp",
+      benefits: [
+        "5% off on PAAN Summit 2026 tickets",
+        "6% off Africa Creative Excellence Awards entry"
+      ],
+      whoShouldAttend: [
+        "Account Managers",
+        "Business Development professionals",
+        "Planners",
+        "Agency leaders"
+      ],
+      learningOutcomes: [
+        "Clarity on the quality of the brief that should be received, including briefing template examples",
+        "Client-side perspective of what the brief indicates and author interpretation",
+        "'Red pen' methodology to interrogate brief and draft Q&A questions",
+        "How to draft 'Push back' questions for comprehensive client information",
+        "Structure proposals to demonstrate understanding of brand/business challenges",
+        "Empowerment on questions to ask for clarity in proposal development",
+        "Structure and flow to demonstrate understanding and proposed approach"
+      ],
+      partnership: "PAAN, in collaboration with the Alliance of Independent Agencies, UK",
+      featured: false,
+      status: "upcoming"
+    },
+    {
+      id: 7,
+      title: "How To Be The Best Account Handler In Your Agency",
+      description: "Account Handlers are a positive and competitive lot by nature. But the transition from lively pup to 'Top Dog' often seems a difficult and frustrating process. The problem is that 'on the job training' is only as good as 'that particular job'. This course provides an ideal opportunity to really focus on what makes a good Account Handler GREAT.",
+      format: "90-minute Interactive Training Course",
+      date: "November 6th, 2025",
+      time: "10 am GMT / 12 pm EAT",
+      memberPrice: 174,
+      nonMemberPrice: 250,
+      currency: "USD",
+      category: "Account Management",
+      level: "Junior to Mid-Level",
+      instructor: "Paul Burns",
+      instructorTitle: "Former Training Director at Saatchi & Saatchi, Co-founder of Rock and a Hardplace",
+      image: "/assets/images/masterclass/account-handler.webp",
+      benefits: [
+        "5% off on PAAN Summit 2026 tickets",
+        "6% off Africa Creative Excellence Awards entry"
+      ],
+      whoShouldAttend: [
+        "Junior-level agency Account Handlers with 1-3 years of experience",
+        "Account Managers looking to step up",
+        "Client service professionals",
+        "Agency team leads"
+      ],
+      learningOutcomes: [
+        "How to take control of your time with practical tools to prioritize, plan, and deliver without overwhelm",
+        "How to lead with confidence — inspiring colleagues, guiding teams, and keeping projects on track",
+        "How to balance client demands with agency realities — understanding what clients truly value",
+        "Master the art of saying 'no' professionally and constructively",
+        "Techniques for planning workload and avoiding procrastination traps",
+        "Practical tools to inspire colleagues and collaborate across teams",
+        "Navigate client relationships and handle difficult conversations confidently"
+      ],
+      partnership: "PAAN, in collaboration with the Alliance of Independent Agencies, UK",
+      featured: false,
+      status: "upcoming"
     }
   ];
 
   const categories = [
     { id: 'all', name: 'All Masterclasses', count: masterclasses.length },
-    { id: 'business-development', name: 'Business Development', count: 1 },
+    { id: 'business-development', name: 'Business Development', count: 3 },
     { id: 'client-management', name: 'Client Management', count: 1 },
+    { id: 'account-management', name: 'Account Management', count: 1 },
+    { id: 'financial-management', name: 'Financial Management', count: 1 },
+    { id: 'leadership', name: 'Leadership', count: 1 },
     { id: 'creative-strategy', name: 'Creative Strategy', count: 0 },
-    { id: 'digital-marketing', name: 'Digital Marketing', count: 0 },
-    { id: 'leadership', name: 'Leadership', count: 0 }
+    { id: 'digital-marketing', name: 'Digital Marketing', count: 0 }
   ];
 
   const filteredMasterclasses = masterclasses.filter(masterclass => {

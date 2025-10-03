@@ -59,6 +59,7 @@ const Header = () => {
     'Programs': [
       { label: 'M&A', href: '/paan-ma-program' },
       { label: 'Ambassadors', href: '/paan-ambassador' },
+      { label: 'Masterclasses', href: '/masterclasses' },
       { label: 'PAAN Academy', href: '/academy' },
     ],
     'Events': [
