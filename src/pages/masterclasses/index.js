@@ -27,50 +27,53 @@ const MasterclassesPage = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [searchTerm, setSearchTerm] = useState('');
 
+  // Featured masterclass data - separate from regular masterclasses
+  const featuredMasterclass = {
+    id: 2,
+    title: "Managing Challenging Clients",
+    description: "Managing client relationships is at the heart of every successful agency. Yet, even the most seasoned teams encounter difficult clients, shifting expectations, or tense conversations — especially in today's fast-paced hybrid and remote work environments.",
+    format: "90-minute Interactive Training Course",
+    date: "October 15th, 2025",
+    time: "10 am GMT / 12 pm EAT",
+    memberPrice: 174,
+    memberOriginalPrice: 220,
+    nonMemberPrice: 250,
+    nonMemberOriginalPrice: 320,
+    currency: "USD",
+    category: "Client Management",
+    level: "All Levels",
+    instructor: "Niki Hurst Smith",
+    instructorTitle: "HR Consultant & Former Agency Leader with 15+ years experience",
+    image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/featured.jpg",
+    benefits: [
+      "5% off on PAAN Summit 2026 tickets",
+      "6% off Africa Creative Excellence Awards entry"
+    ],
+    whoShouldAttend: [
+      "Client-facing professionals in agencies",
+      "Junior to mid-level staff who interact directly with clients",
+      "Agency leaders and managers",
+      "Account managers and project managers"
+    ],
+    learningOutcomes: [
+      "Raising the Standard: What clients truly expect from agencies",
+      "Decoding Difficult Clients: Why some clients seem challenging",
+      "Client-Centric Thinking: Practical frameworks for uncovering client needs",
+      "Turning Tension into Trust: Approaches for navigating tough conversations",
+      "From Dissatisfaction to Loyalty: Strategies to manage dissatisfied clients"
+    ],
+    courseObjectives: [
+      "Confidently recognize and respond to the root causes of client dissatisfaction",
+      "Apply practical strategies for transforming challenging situations into positive outcomes",
+      "Strengthen client relationships through proactive communication and trust-building",
+      "Gain a ready-to-use toolkit of tips, scripts, and techniques for managing difficult clients"
+    ],
+    partnership: "PAAN, in collaboration with the Alliance of Independent Agencies, UK",
+    status: "upcoming"
+  };
+
   // Sample masterclasses data - this would come from your database
-  const masterclasses = [
-    {
-      id: 1,
-      title: "Bid to Win: The Agency Masterclass on Tenders & RFPs",
-      description: "For agencies in Africa, tendering and responding to RFPs can be game-changing pathways to winning bigger clients, securing multi-year contracts, and proving credibility in a competitive marketplace.",
-      format: "2.5-Hour Live Interactive Masterclass",
-      date: "November 25th, 2025",
-      time: "2 pm EAT",
-      memberPrice: 60,
-      memberOriginalPrice: 80,
-      nonMemberPrice: 80,
-      nonMemberOriginalPrice: 120,
-      currency: "USD",
-      category: "Business Development",
-      level: "Intermediate",
-      instructor: "Ms. Muthoni",
-      instructorTitle: "Procurement Specialist with 14+ years experience",
-      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/bid-to-win-min.jpg",
-      benefits: [
-        "5% off on PAAN Summit 2026 tickets",
-        "10% off Africa Creative Excellence Awards entry"
-      ],
-      whoShouldAttend: [
-        "Agency founders & partners",
-        "Finance managers & business leads",
-        "Account directors & business development leads",
-        "HR & operations managers in agencies"
-      ],
-      learningOutcomes: [
-        "Understanding Tendering Basics",
-        "Finding the Right Tenders",
-        "Analyzing Tender Documents",
-        "Planning Your Bid Response",
-        "Compliance and Documentation",
-        "Writing a Winning Proposal",
-        "Pricing Strategies",
-        "Post-Submission Process",
-        "Dealing with Unsuccessful Bids",
-        "Building a Tendering Strategy"
-      ],
-      featured: true,
-      status: "upcoming"
-    },
+  const masterclassesData = [
     {
       id: 2,
       title: "Managing Challenging Clients",
@@ -87,7 +90,7 @@ const MasterclassesPage = () => {
       level: "All Levels",
       instructor: "Niki Hurst Smith",
       instructorTitle: "HR Consultant & Former Agency Leader with 15+ years experience",
-      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/challenging-clients-min.jpg",
+      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/challenging-clients.webp",
       benefits: [
         "5% off on PAAN Summit 2026 tickets",
         "6% off Africa Creative Excellence Awards entry"
@@ -151,85 +154,6 @@ const MasterclassesPage = () => {
       takeawayToolkit: "Budgeting template + Tax & Transfer Pricing cheat sheet",
       series: "Agency Growth & Leadership Masterclass Series",
       moduleNumber: 1,
-      featured: false,
-      status: "upcoming"
-    },
-    {
-      id: 4,
-      title: "Proposal Writing & Bidding for Global Clients",
-      description: "Winning international contracts requires more than great ideas—it requires compelling proposals that showcase professionalism and global readiness. This session helps agencies sharpen their proposal writing and bidding strategies.",
-      format: "2.5-Hour Interactive Online Workshop",
-      date: "November 13th, 2025",
-      time: "2 pm EAT",
-      memberPrice: 60,
-      memberOriginalPrice: 80,
-      nonMemberPrice: 80,
-      nonMemberOriginalPrice: 120,
-      currency: "USD",
-      category: "Business Development",
-      level: "Intermediate",
-      instructor: "Expert Trainer",
-      instructorTitle: "International Business Development Specialist",
-      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/proposal-writing-min.jpg",
-      benefits: [
-        "5% off on PAAN Summit 2026 tickets",
-        "10% off Africa Creative Excellence Awards entry"
-      ],
-      whoShouldAttend: [
-        "Agency founders & partners",
-        "Finance managers & business leads",
-        "Account directors & business development leads",
-        "HR & operations managers in agencies"
-      ],
-      learningOutcomes: [
-        "Structure winning proposals that stand out in competitive RFPs",
-        "Use storytelling to position African creativity on the global stage",
-        "Price proposals strategically for profitability and competitiveness",
-        "Peer-review and refine proposals with expert guidance"
-      ],
-      takeawayToolkit: "Proposal template + Proposal evaluation checklist",
-      series: "Agency Growth & Leadership Masterclass Series",
-      moduleNumber: 2,
-      featured: false,
-      status: "upcoming"
-    },
-    {
-      id: 5,
-      title: "Agency Leadership & Talent Retention",
-      description: "Great agencies depend on great people—but retaining them is tough. This session develops leadership capacity while equipping managers to inspire, grow, and retain top creative talent.",
-      format: "2.5-Hour Interactive Online Workshop",
-      date: "December 10th, 2025",
-      time: "2 pm EAT",
-      memberPrice: 60,
-      memberOriginalPrice: 80,
-      nonMemberPrice: 80,
-      nonMemberOriginalPrice: 120,
-      currency: "USD",
-      category: "Leadership",
-      level: "Intermediate",
-      instructor: "Mercy Murigi",
-      instructorTitle: "Organizational Capacity & People Development Expert",
-      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/agency-leadership-min.jpg",
-      benefits: [
-        "5% off on PAAN Summit 2026 tickets",
-        "10% off Africa Creative Excellence Awards entry"
-      ],
-      whoShouldAttend: [
-        "Agency founders & partners",
-        "Finance managers & business leads",
-        "Account directors & business development leads",
-        "HR & operations managers in agencies"
-      ],
-      learningOutcomes: [
-        "Identify leadership styles that fit creative industries",
-        "Develop strategies for attracting and retaining high-performing teams",
-        "Build succession plans and nurture next-generation leaders",
-        "Share talent retention challenges and solutions with peers",
-        "Plan your talent pipeline for 2026 growth"
-      ],
-      takeawayToolkit: "Leadership self-assessment + Talent retention strategy canvas",
-      series: "Agency Growth & Leadership Masterclass Series",
-      moduleNumber: 3,
       featured: false,
       status: "upcoming"
     },
@@ -312,8 +236,156 @@ const MasterclassesPage = () => {
       partnership: "PAAN, in collaboration with the Alliance of Independent Agencies, UK",
       featured: false,
       status: "upcoming"
+    },
+    {
+      id: 4,
+      title: "Proposal Writing & Bidding for Global Clients",
+      description: "Winning international contracts requires more than great ideas—it requires compelling proposals that showcase professionalism and global readiness. This session helps agencies sharpen their proposal writing and bidding strategies.",
+      format: "2.5-Hour Interactive Online Workshop",
+      date: "November 13th, 2025",
+      time: "2 pm EAT",
+      memberPrice: 60,
+      memberOriginalPrice: 80,
+      nonMemberPrice: 80,
+      nonMemberOriginalPrice: 120,
+      currency: "USD",
+      category: "Business Development",
+      level: "Intermediate",
+      instructor: "Expert Trainer",
+      instructorTitle: "International Business Development Specialist",
+      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/proposal-writing-min.jpg",
+      benefits: [
+        "5% off on PAAN Summit 2026 tickets",
+        "10% off Africa Creative Excellence Awards entry"
+      ],
+      whoShouldAttend: [
+        "Agency founders & partners",
+        "Finance managers & business leads",
+        "Account directors & business development leads",
+        "HR & operations managers in agencies"
+      ],
+      learningOutcomes: [
+        "Structure winning proposals that stand out in competitive RFPs",
+        "Use storytelling to position African creativity on the global stage",
+        "Price proposals strategically for profitability and competitiveness",
+        "Peer-review and refine proposals with expert guidance"
+      ],
+      takeawayToolkit: "Proposal template + Proposal evaluation checklist",
+      series: "Agency Growth & Leadership Masterclass Series",
+      moduleNumber: 2,
+      featured: false,
+      status: "upcoming"
+    },
+    {
+      id: 1,
+      title: "Bid to Win: The Agency Masterclass on Tenders & RFPs",
+      description: "For agencies in Africa, tendering and responding to RFPs can be game-changing pathways to winning bigger clients, securing multi-year contracts, and proving credibility in a competitive marketplace.",
+      format: "2.5-Hour Live Interactive Masterclass",
+      date: "November 25th, 2025",
+      time: "2 pm EAT",
+      memberPrice: 60,
+      memberOriginalPrice: 80,
+      nonMemberPrice: 80,
+      nonMemberOriginalPrice: 120,
+      currency: "USD",
+      category: "Business Development",
+      level: "Intermediate",
+      instructor: "Ms. Muthoni",
+      instructorTitle: "Procurement Specialist with 14+ years experience",
+      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/bid-to-win-min.jpg",
+      benefits: [
+        "5% off on PAAN Summit 2026 tickets",
+        "10% off Africa Creative Excellence Awards entry"
+      ],
+      whoShouldAttend: [
+        "Agency founders & partners",
+        "Finance managers & business leads",
+        "Account directors & business development leads",
+        "HR & operations managers in agencies"
+      ],
+      learningOutcomes: [
+        "Understanding Tendering Basics",
+        "Finding the Right Tenders",
+        "Analyzing Tender Documents",
+        "Planning Your Bid Response",
+        "Compliance and Documentation",
+        "Writing a Winning Proposal",
+        "Pricing Strategies",
+        "Post-Submission Process",
+        "Dealing with Unsuccessful Bids",
+        "Building a Tendering Strategy"
+      ],
+      featured: false,
+      status: "upcoming"
+    },
+    {
+      id: 5,
+      title: "Agency Leadership & Talent Retention",
+      description: "Great agencies depend on great people—but retaining them is tough. This session develops leadership capacity while equipping managers to inspire, grow, and retain top creative talent.",
+      format: "2.5-Hour Interactive Online Workshop",
+      date: "December 10th, 2025",
+      time: "2 pm EAT",
+      memberPrice: 60,
+      memberOriginalPrice: 80,
+      nonMemberPrice: 80,
+      nonMemberOriginalPrice: 120,
+      currency: "USD",
+      category: "Leadership",
+      level: "Intermediate",
+      instructor: "Mercy Murigi",
+      instructorTitle: "Organizational Capacity & People Development Expert",
+      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/agency-leadership-min.jpg",
+      benefits: [
+        "5% off on PAAN Summit 2026 tickets",
+        "10% off Africa Creative Excellence Awards entry"
+      ],
+      whoShouldAttend: [
+        "Agency founders & partners",
+        "Finance managers & business leads",
+        "Account directors & business development leads",
+        "HR & operations managers in agencies"
+      ],
+      learningOutcomes: [
+        "Identify leadership styles that fit creative industries",
+        "Develop strategies for attracting and retaining high-performing teams",
+        "Build succession plans and nurture next-generation leaders",
+        "Share talent retention challenges and solutions with peers",
+        "Plan your talent pipeline for 2026 growth"
+      ],
+      takeawayToolkit: "Leadership self-assessment + Talent retention strategy canvas",
+      series: "Agency Growth & Leadership Masterclass Series",
+      moduleNumber: 3,
+      featured: false,
+      status: "upcoming"
     }
   ];
+
+  // Helper function to parse dates for sorting
+  const parseDate = (dateString) => {
+    const months = {
+      'January': 0, 'February': 1, 'March': 2, 'April': 3, 'May': 4, 'June': 5,
+      'July': 6, 'August': 7, 'September': 8, 'October': 9, 'November': 10, 'December': 11
+    };
+    try {
+      const parts = dateString.match(/(\w+)\s+(\d+)(?:st|nd|rd|th),\s+(\d+)/);
+      if (parts && months[parts[1]] !== undefined) {
+        const month = months[parts[1]];
+        const day = parseInt(parts[2], 10);
+        const year = parseInt(parts[3], 10);
+        return new Date(year, month, day);
+      }
+    } catch (error) {
+      console.error('Error parsing date:', dateString, error);
+    }
+    return new Date(); // fallback to current date
+  };
+
+  // Sort masterclasses by date (earliest first) - create a new array to avoid mutation
+  const masterclasses = [...masterclassesData].sort((a, b) => {
+    const dateA = parseDate(a.date);
+    const dateB = parseDate(b.date);
+    return dateA.getTime() - dateB.getTime();
+  });
 
   const categories = [
     { id: 'all', name: 'All Masterclasses', count: masterclasses.length },
@@ -412,11 +484,11 @@ const MasterclassesPage = () => {
           <div className="mx-auto max-w-6xl px-4 sm:px-6">
             <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
               <div className="bg-gradient-to-br from-[#F25849]/10 to-[#F25849]/5 rounded-xl p-6">
-                <div className="text-3xl font-bold text-[#F25849] mb-2">50+</div>
+                <div className="text-3xl font-bold text-[#F25849] mb-2">20+</div>
                 <div className="text-gray-600">Expert Instructors</div>
               </div>
               <div className="bg-gradient-to-br from-[#84C1D9]/10 to-[#84C1D9]/5 rounded-xl p-6">
-                <div className="text-3xl font-bold text-[#84C1D9] mb-2">1,200+</div>
+                <div className="text-3xl font-bold text-[#84C1D9] mb-2">100+</div>
                 <div className="text-gray-600">Agencies Trained</div>
               </div>
               <div className="bg-gradient-to-br from-[#F2B706]/10 to-[#F2B706]/5 rounded-xl p-6">
@@ -432,153 +504,144 @@ const MasterclassesPage = () => {
         </section>
 
         {/* Featured Masterclass */}
-        <section id="upcoming-masterclass" className="bg-gray-50 py-20">
-          <div className="mx-auto max-w-6xl px-4 sm:px-6">
-            <div className="text-center mb-12">
-              <span className="inline-block bg-[#F25849] text-white px-6 py-2 rounded-full text-sm font-semibold mb-4">
-                Featured Masterclass
+       <section id="upcoming-masterclass" className="bg-gray-50 py-20">
+  <div className="mx-auto max-w-6xl px-4 sm:px-6">
+    <div className="text-center mb-12">
+      <span className="inline-block bg-[#F25849] text-white px-6 py-2 rounded-full text-sm font-semibold mb-4">
+        Featured Masterclass
+      </span>
+      <h2 className="text-3xl md:text-4xl font-bold text-[#172840] mb-4">
+        Don't Miss Our Next Session
+      </h2>
+      <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+        Join our upcoming masterclass and take your agency to the next level
+      </p>
+    </div>
+
+    <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
+        {/* Image Section */}
+        <Link 
+          href={`/masterclasses/${featuredMasterclass.id}`} 
+          className="relative lg:aspect-auto lg:h-full cursor-pointer overflow-hidden bg-gray-100"
+        >
+          <Image
+            src={featuredMasterclass.image}
+            fill
+            alt={featuredMasterclass.title}
+            className="object-fit object-center w-auto hover:scale-105 transition-transform duration-300"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+          <div className="absolute top-4 left-4">
+            <span className="bg-[#F2B706] text-[#172840] px-3 py-1.5 rounded-full text-sm font-bold">
+              {featuredMasterclass.status === 'upcoming' ? 'UPCOMING' : 'LIVE'}
+            </span>
+          </div>
+        </Link>
+
+        {/* Content Section */}
+        <div className="p-6 lg:p-8 flex flex-col justify-center">
+          <div className="mb-4">
+            <div className="flex items-center gap-3 mb-3">
+              <span className="bg-[#84C1D9] text-white px-3 py-1 rounded-full text-sm font-medium">
+                {featuredMasterclass.category}
               </span>
-              <h2 className="text-3xl md:text-4xl font-bold text-[#172840] mb-4">
-                Don't Miss Our Next Session
-              </h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Join our upcoming masterclass and take your agency to the next level
-              </p>
+              <span className="text-gray-500 text-sm">{featuredMasterclass.level}</span>
             </div>
+            
+            <h3 className="text-xl lg:text-2xl font-bold text-[#172840] mb-3 leading-tight">
+              {featuredMasterclass.title}
+            </h3>
+            
+            <p className="text-gray-600 mb-4 leading-relaxed text-sm">
+              {featuredMasterclass.description.substring(0, 150)}...
+            </p>
+          </div>
 
-            {masterclasses.filter(m => m.featured).map(masterclass => (
-              <div key={masterclass.id} className="bg-white rounded-2xl shadow-xl overflow-hidden">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
-                  {/* Image Section */}
-                  <div className="relative h-48 lg:h-full min-h-[300px]">
-                    <Image
-                      src={masterclass.image}
-                      fill
-                      alt={masterclass.title}
-                      className="object-cover"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-                    <div className="absolute top-4 left-4">
-                      <span className="bg-[#F2B706] text-[#172840] px-3 py-1.5 rounded-full text-sm font-bold">
-                        {masterclass.status === 'upcoming' ? 'UPCOMING' : 'LIVE'}
-                      </span>
-                    </div>
+          {/* Session Details */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
+            <div className="flex items-center gap-3">
+              <Icon icon="mdi:calendar" className="text-[#F25849] w-5 h-5" />
+              <span className="text-gray-700 text-sm">{featuredMasterclass.date}</span>
+            </div>
+            <div className="flex items-center gap-3">
+              <Icon icon="mdi:clock" className="text-[#F25849] w-5 h-5" />
+              <span className="text-gray-700 text-sm">{featuredMasterclass.time}</span>
+            </div>
+            <div className="flex items-center gap-3">
+              <Icon icon="mdi:play-circle" className="text-[#F25849] w-5 h-5" />
+              <span className="text-gray-700 text-sm">{featuredMasterclass.format}</span>
+            </div>
+            <div className="flex items-center gap-3">
+              <Icon icon="mdi:account-tie" className="text-[#F25849] w-5 h-5" />
+              <span className="text-gray-700 text-sm">{featuredMasterclass.instructor}</span>
+            </div>
+          </div>
+
+          {/* Pricing */}
+          <div className="bg-gray-50 rounded-xl p-4 mb-4">
+            <div className="flex items-center justify-between mb-3">
+              <div>
+                <div className="text-xs text-gray-500 mb-1">Members</div>
+                <div className="flex items-center gap-2">
+                  <div className="text-xl font-bold text-[#172840]">
+                    ${featuredMasterclass.memberPrice}
                   </div>
-
-                  {/* Content Section */}
-                  <div className="p-6 lg:p-8">
-                    <div className="mb-4">
-                      <div className="flex items-center gap-3 mb-3">
-                        <span className="bg-[#84C1D9] text-white px-3 py-1 rounded-full text-sm font-medium">
-                          {masterclass.category}
-                        </span>
-                        <span className="text-gray-500 text-sm">{masterclass.level}</span>
-                      </div>
-                      
-                      <h3 className="text-xl lg:text-2xl font-bold text-[#172840] mb-3 leading-tight">
-                        {masterclass.title}
-                      </h3>
-                      
-                      <p className="text-gray-600 mb-4 leading-relaxed text-sm">
-                        {masterclass.description.substring(0, 150)}...
-                      </p>
+                  {featuredMasterclass.memberOriginalPrice && (
+                    <div className="text-sm text-gray-500 line-through">
+                      ${featuredMasterclass.memberOriginalPrice}
                     </div>
-
-                    {/* Session Details */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
-                      <div className="flex items-center gap-3">
-                        <Icon icon="mdi:calendar" className="text-[#F25849] w-5 h-5" />
-                        <span className="text-gray-700">{masterclass.date}</span>
-                      </div>
-                      <div className="flex items-center gap-3">
-                        <Icon icon="mdi:clock" className="text-[#F25849] w-5 h-5" />
-                        <span className="text-gray-700">{masterclass.time}</span>
-                      </div>
-                      <div className="flex items-center gap-3">
-                        <Icon icon="mdi:play-circle" className="text-[#F25849] w-5 h-5" />
-                        <span className="text-gray-700">{masterclass.format}</span>
-                      </div>
-                      <div className="flex items-center gap-3">
-                        <Icon icon="mdi:account-tie" className="text-[#F25849] w-5 h-5" />
-                        <span className="text-gray-700">{masterclass.instructor}</span>
-                      </div>
-                    </div>
-
-                    {/* Pricing */}
-                    <div className="bg-gray-50 rounded-xl p-4 mb-4">
-                      <div className="flex items-center justify-between mb-4">
-                        <div>
-                          <div className="text-sm text-gray-500 mb-1">Members</div>
-                          <div className="flex items-center gap-2">
-                            <div className="text-2xl font-bold text-[#172840]">
-                              ${masterclass.memberPrice}
-                            </div>
-                            {masterclass.memberOriginalPrice && (
-                              <div className="text-lg text-gray-500 line-through">
-                                ${masterclass.memberOriginalPrice}
-                              </div>
-                            )}
-                          </div>
-                          {masterclass.memberOriginalPrice && (
-                            <div className="text-xs text-green-600 font-semibold mt-1">
-                              Save ${masterclass.memberOriginalPrice - masterclass.memberPrice}
-                            </div>
-                          )}
-                        </div>
-                        <div>
-                          <div className="text-sm text-gray-500 mb-1">Non-Members</div>
-                          <div className="flex items-center gap-2">
-                            <div className="text-2xl font-bold text-[#172840]">
-                              ${masterclass.nonMemberPrice}
-                            </div>
-                            {masterclass.nonMemberOriginalPrice && (
-                              <div className="text-lg text-gray-500 line-through">
-                                ${masterclass.nonMemberOriginalPrice}
-                              </div>
-                            )}
-                          </div>
-                          {masterclass.nonMemberOriginalPrice && (
-                            <div className="text-xs text-green-600 font-semibold mt-1">
-                              Save ${masterclass.nonMemberOriginalPrice - masterclass.nonMemberPrice}
-                            </div>
-                          )}
-                        </div>
-                      </div>
-                      
-                      {masterclass.benefits && (
-                        <div className="border-t pt-3">
-                          <div className="text-xs font-semibold text-gray-700 mb-2">Bonus Benefits:</div>
-                          {masterclass.benefits.slice(0, 2).map((benefit, index) => (
-                            <div key={index} className="flex items-center gap-2 text-xs text-gray-600">
-                              <Icon icon="mdi:check-circle" className="text-green-500 w-3 h-3" />
-                              {benefit}
-                            </div>
-                          ))}
-                        </div>
-                      )}
-                    </div>
-
-                    {/* CTA Buttons */}
-                    <div className="flex flex-col sm:flex-row gap-3">
-                      <Link
-                        href={`/masterclasses/${masterclass.id}`}
-                        className="flex-1 bg-[#F25849] text-white px-4 py-3 rounded-full font-semibold text-center hover:bg-[#D6473C] transition-all duration-300 shadow-lg hover:shadow-xl text-sm"
-                      >
-                        Register Now
-                      </Link>
-                      <Link
-                        href={`/masterclasses/${masterclass.id}`}
-                        className="flex-1 bg-transparent border-2 border-[#172840] text-[#172840] px-4 py-3 rounded-full font-semibold text-center hover:bg-[#172840] hover:text-white transition-all duration-300 text-sm"
-                      >
-                        Learn More
-                      </Link>
-                    </div>
-                  </div>
+                  )}
                 </div>
               </div>
-            ))}
+              <div>
+                <div className="text-xs text-gray-500 mb-1">Non-Members</div>
+                <div className="flex items-center gap-2">
+                  <div className="text-xl font-bold text-[#172840]">
+                    ${featuredMasterclass.nonMemberPrice}
+                  </div>
+                  {featuredMasterclass.nonMemberOriginalPrice && (
+                    <div className="text-sm text-gray-500 line-through">
+                      ${featuredMasterclass.nonMemberOriginalPrice}
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+            
+            {featuredMasterclass.benefits && (
+              <div className="border-t pt-3">
+                <div className="text-xs font-semibold text-gray-700 mb-2">Bonus Benefits:</div>
+                {featuredMasterclass.benefits.slice(0, 2).map((benefit, index) => (
+                  <div key={index} className="flex items-center gap-2 text-xs text-gray-600 mb-1">
+                    <Icon icon="mdi:check-circle" className="text-green-500 w-3 h-3 flex-shrink-0" />
+                    {benefit}
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
-        </section>
+
+          {/* CTA Buttons */}
+          <div className="flex flex-col sm:flex-row gap-3">
+            <Link
+              href={`/masterclasses/${featuredMasterclass.id}`}
+              className="flex-1 bg-[#F25849] text-white px-4 py-3 rounded-full font-semibold text-center hover:bg-[#D6473C] transition-all duration-300 shadow-lg hover:shadow-xl text-sm"
+            >
+              Register Now
+            </Link>
+            <Link
+              href={`/masterclasses/${featuredMasterclass.id}`}
+              className="flex-1 bg-transparent border-2 border-[#172840] text-[#172840] px-4 py-3 rounded-full font-semibold text-center hover:bg-[#172840] hover:text-white transition-all duration-300 text-sm"
+            >
+              Learn More
+            </Link>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
         {/* All Masterclasses */}
         <section id="masterclasses-grid" className="bg-white py-20">
@@ -631,7 +694,7 @@ const MasterclassesPage = () => {
               {filteredMasterclasses.length > 0 ? (
                 filteredMasterclasses.map(masterclass => (
                   <div key={masterclass.id} className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group flex flex-col">
-                    <div className="relative h-48 flex-shrink-0">
+                    <Link href={`/masterclasses/${masterclass.id}`} className="relative h-48 flex-shrink-0 cursor-pointer">
                       <Image
                         src={masterclass.image}
                         fill
@@ -650,7 +713,7 @@ const MasterclassesPage = () => {
                           <span className="font-medium">{masterclass.time}</span>
                         </div>
                       </div>
-                    </div>
+                    </Link>
 
                     <div className="p-6 flex flex-col flex-grow">
                       <div className="flex items-center gap-2 mb-3 flex-wrap">
@@ -664,9 +727,9 @@ const MasterclassesPage = () => {
                         {masterclass.title}
                       </h3>
 
-                      <p className="text-gray-600 text-sm mb-4 line-clamp-3 flex-grow">
+                      {/* <p className="text-gray-600 text-sm mb-4 line-clamp-3 flex-grow">
                         {masterclass.description}
-                      </p>
+                      </p> */}
 
                       <div className="flex items-center justify-between mb-4 pt-2 border-t border-gray-100">
                         <div className="text-sm text-gray-600 font-medium">
