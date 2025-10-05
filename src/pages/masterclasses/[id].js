@@ -305,7 +305,7 @@ const MasterclassDetailPage = () => {
       currency: "USD",
       category: "Leadership",
       level: "Intermediate",
-      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/agency-leadership-min.jpg",
+      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/scale-agency.jpg",
       series: "Agency Growth & Leadership Masterclass Series",
       moduleNumber: 3,
       instructor: {
@@ -889,7 +889,7 @@ const MasterclassDetailPage = () => {
             </div>
 
             {/* Why Attend */}
-            {/* <div className="bg-white rounded-xl shadow-lg p-6 lg:p-8">
+            <div className="bg-white rounded-xl shadow-lg p-6 lg:p-8">
               <h2 className="text-2xl font-bold text-slate-900 mb-6">Why Attend?</h2>
               <div className="space-y-3">
                 {masterclass.whyAttend.map((reason, index) => (
@@ -914,7 +914,7 @@ const MasterclassDetailPage = () => {
                   </div>
                 ))}
               </div>
-            </div> */}
+            </div>
 
             {/* Who Should Attend */}
             <div className="bg-white rounded-xl shadow-lg p-6 lg:p-8">

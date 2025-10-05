@@ -292,7 +292,7 @@ const MasterclassesPage = () => {
       level: "Intermediate",
       instructor: "Ms. Muthoni",
       instructorTitle: "Procurement Specialist with 14+ years experience",
-      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/bid-to-win-min.jpg",
+      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/bid-to-win.jpg",
       benefits: [
         "5% off on PAAN Summit 2026 tickets",
         "10% off Africa Creative Excellence Awards entry"
@@ -334,7 +334,7 @@ const MasterclassesPage = () => {
       level: "Intermediate",
       instructor: "Mercy Murigi",
       instructorTitle: "Organizational Capacity & People Development Expert",
-      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/agency-leadership-min.jpg",
+      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/scale-agency.jpg",
       benefits: [
         "5% off on PAAN Summit 2026 tickets",
         "10% off Africa Creative Excellence Awards entry"
