@@ -173,7 +173,7 @@ const MasterclassesPage = () => {
       level: "Intermediate",
       instructor: "Abigail Dixon",
       instructorTitle: "Chartered Marketer and Fellow, CIM Consultant & Trainer",
-      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/winning-pitches-min.jpg",
+      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/winning-pitches.jpg",
       benefits: [
         "5% off on PAAN Summit 2026 tickets",
         "6% off Africa Creative Excellence Awards entry"
@@ -213,7 +213,7 @@ const MasterclassesPage = () => {
       level: "Junior to Mid-Level",
       instructor: "Paul Burns",
       instructorTitle: "Former Training Director at Saatchi & Saatchi, Co-founder of Rock and a Hardplace",
-      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/account-handler-min.jpg",
+      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/account-handler.jpg",
       benefits: [
         "5% off on PAAN Summit 2026 tickets",
         "6% off Africa Creative Excellence Awards entry"
@@ -529,7 +529,7 @@ const MasterclassesPage = () => {
             src={featuredMasterclass.image}
             fill
             alt={featuredMasterclass.title}
-            className="object-fit object-center w-auto hover:scale-105 transition-transform duration-300"
+            className="object-contain object-center w-auto hover:scale-105 transition-transform duration-300"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
           <div className="absolute top-4 left-4">

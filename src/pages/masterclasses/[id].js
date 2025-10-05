@@ -79,7 +79,7 @@ const MasterclassDetailPage = () => {
       currency: "USD",
       category: "Business Development",
       level: "Intermediate",
-      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/bid-to-win-min.jpg",
+      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/bid-to-win.jpg",
       instructor: {
         name: "Ms. Muthoni",
         title: "Procurement Specialist with 14+ years experience",
@@ -135,7 +135,7 @@ const MasterclassDetailPage = () => {
       currency: "USD",
       category: "Client Management",
       level: "All Levels",
-      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/challenging-clients-min.jpg",
+      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/featured.jpg",
       partnership: "PAAN, in collaboration with the Alliance of Independent Agencies, UK",
       instructor: {
         name: "Niki Hurst Smith",
@@ -361,7 +361,7 @@ const MasterclassDetailPage = () => {
       currency: "USD",
       category: "Business Development",
       level: "Intermediate",
-      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/winning-pitches-min.jpg",
+      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/winning-pitches.jpg",
       partnership: "PAAN, in collaboration with the Alliance of Independent Agencies, UK",
       instructor: {
         name: "Abigail Dixon",
@@ -417,7 +417,7 @@ const MasterclassDetailPage = () => {
       currency: "USD",
       category: "Account Management",
       level: "Junior to Mid-Level",
-      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/account-handler-min.jpg",
+      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/account-handler.jpg",
       partnership: "PAAN, in collaboration with the Alliance of Independent Agencies, UK",
       instructor: {
         name: "Paul Burns",
