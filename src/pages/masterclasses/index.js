@@ -134,7 +134,7 @@ const MasterclassesPage = () => {
       level: "Intermediate",
       instructor: "Jotham Wadongo",
       instructorTitle: "Financial Management & Business Advisory Professional",
-      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/finance-management-min.jpg",
+      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/finance-management.jpg",
       benefits: [
         "5% off on PAAN Summit 2026 tickets",
         "10% off Africa Creative Excellence Awards entry"
@@ -253,7 +253,7 @@ const MasterclassesPage = () => {
       level: "Intermediate",
       instructor: "Expert Trainer",
       instructorTitle: "International Business Development Specialist",
-      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/proposal-writing-min.jpg",
+      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/proposal-writing.jpg",
       benefits: [
         "5% off on PAAN Summit 2026 tickets",
         "10% off Africa Creative Excellence Awards entry"
@@ -276,48 +276,48 @@ const MasterclassesPage = () => {
       featured: false,
       status: "upcoming"
     },
-    {
-      id: 1,
-      title: "Bid to Win: The Agency Masterclass on Tenders & RFPs",
-      description: "For agencies in Africa, tendering and responding to RFPs can be game-changing pathways to winning bigger clients, securing multi-year contracts, and proving credibility in a competitive marketplace.",
-      format: "2.5-Hour Live Interactive Masterclass",
-      date: "November 25th, 2025",
-      time: "2 pm EAT",
-      memberPrice: 60,
-      memberOriginalPrice: 80,
-      nonMemberPrice: 80,
-      nonMemberOriginalPrice: 120,
-      currency: "USD",
-      category: "Business Development",
-      level: "Intermediate",
-      instructor: "Ms. Muthoni",
-      instructorTitle: "Procurement Specialist with 14+ years experience",
-      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/bid-to-win.jpg",
-      benefits: [
-        "5% off on PAAN Summit 2026 tickets",
-        "10% off Africa Creative Excellence Awards entry"
-      ],
-      whoShouldAttend: [
-        "Agency founders & partners",
-        "Finance managers & business leads",
-        "Account directors & business development leads",
-        "HR & operations managers in agencies"
-      ],
-      learningOutcomes: [
-        "Understanding Tendering Basics",
-        "Finding the Right Tenders",
-        "Analyzing Tender Documents",
-        "Planning Your Bid Response",
-        "Compliance and Documentation",
-        "Writing a Winning Proposal",
-        "Pricing Strategies",
-        "Post-Submission Process",
-        "Dealing with Unsuccessful Bids",
-        "Building a Tendering Strategy"
-      ],
-      featured: false,
-      status: "upcoming"
-    },
+    // {
+    //   id: 1,
+    //   title: "Bid to Win: The Agency Masterclass on Tenders & RFPs",
+    //   description: "For agencies in Africa, tendering and responding to RFPs can be game-changing pathways to winning bigger clients, securing multi-year contracts, and proving credibility in a competitive marketplace.",
+    //   format: "2.5-Hour Live Interactive Masterclass",
+    //   date: "November 25th, 2025",
+    //   time: "2 pm EAT",
+    //   memberPrice: 60,
+    //   memberOriginalPrice: 80,
+    //   nonMemberPrice: 80,
+    //   nonMemberOriginalPrice: 120,
+    //   currency: "USD",
+    //   category: "Business Development",
+    //   level: "Intermediate",
+    //   instructor: "Ms. Muthoni",
+    //   instructorTitle: "Procurement Specialist with 14+ years experience",
+    //   image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/bid-to-win.jpg",
+    //   benefits: [
+    //     "5% off on PAAN Summit 2026 tickets",
+    //     "10% off Africa Creative Excellence Awards entry"
+    //   ],
+    //   whoShouldAttend: [
+    //     "Agency founders & partners",
+    //     "Finance managers & business leads",
+    //     "Account directors & business development leads",
+    //     "HR & operations managers in agencies"
+    //   ],
+    //   learningOutcomes: [
+    //     "Understanding Tendering Basics",
+    //     "Finding the Right Tenders",
+    //     "Analyzing Tender Documents",
+    //     "Planning Your Bid Response",
+    //     "Compliance and Documentation",
+    //     "Writing a Winning Proposal",
+    //     "Pricing Strategies",
+    //     "Post-Submission Process",
+    //     "Dealing with Unsuccessful Bids",
+    //     "Building a Tendering Strategy"
+    //   ],
+    //   featured: false,
+    //   status: "upcoming"
+    // },
     {
       id: 5,
       title: "Agency Leadership & Talent Retention",
@@ -334,7 +334,7 @@ const MasterclassesPage = () => {
       level: "Intermediate",
       instructor: "Mercy Murigi",
       instructorTitle: "Organizational Capacity & People Development Expert",
-      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/scale-agency.jpg",
+      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/agency-leadership.jpg",
       benefits: [
         "5% off on PAAN Summit 2026 tickets",
         "10% off Africa Creative Excellence Awards entry"
@@ -418,18 +418,17 @@ const MasterclassesPage = () => {
       <div className="relative">       
         
         {/* Hero Section */}
-        <section className="relative bg-gradient-to-br from-[#172840] via-[#2a4a6b] to-[#172840] pt-32 sm:pt-40 pb-16 overflow-hidden">
-          {/* Background Pattern */}
-          <div className="absolute inset-0 opacity-10">
-            <Image
-              src="/assets/images/bg-pattern.svg"
-              fill
-              alt=""
-              className="object-cover"
-            />
-          </div>
-          
-          
+        <section className="relative bg-gradient-to-br from-[#172840] via-[#2a4a6b] to-[#172840] pt-32 sm:pt-40 pb-20 overflow-hidden">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-10">
+          <Image
+            src="/assets/images/bg-pattern.svg"
+            fill
+            alt=""
+            className="object-cover"
+          />
+        </div> 
+  
           <div className="relative mx-auto max-w-6xl px-4 sm:px-6">
             <motion.div 
               className="text-center"
@@ -459,7 +458,7 @@ const MasterclassesPage = () => {
               </motion.p>
               
               <motion.div 
-                className="flex flex-col sm:flex-row gap-4 justify-center"
+                className="flex flex-col sm:flex-row gap-4 justify-center mb-16"
                 variants={fadeInUp}
               >
                 <button 
@@ -474,6 +473,31 @@ const MasterclassesPage = () => {
                 >
                   View Featured
                 </button>
+              </motion.div>
+
+              {/* Collaboration Section */}
+              <motion.div 
+                className="border-t border-white/20 pt-12"
+                variants={fadeInUp}
+              >
+                <p className="text-gray-400 text-sm uppercase tracking-wider mb-6 font-medium">
+                  In Collaboration With
+                </p>
+                <div className="flex items-center justify-center">
+                  <div className="bg-white backdrop-blur-sm rounded-2xl p-4 border border-white/20 hover:bg-white/50 transition-all duration-300">
+                    <div className="flex items-center gap-4">
+                      <div className="group relative">
+                        <div className="relative w-full h-32 flex items-center justify-center group-hover:-translate-y-1 transition-transform duration-300">
+                          <img 
+                            src="/assets/images/partners/aia-2.png" 
+                            alt="AIA Logo" 
+                            className="w-48 h-48 object-contain group-hover:scale-105 transition-transform duration-300" 
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </motion.div>
             </motion.div>
           </div>

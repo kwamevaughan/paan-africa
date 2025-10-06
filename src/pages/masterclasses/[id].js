@@ -64,62 +64,62 @@ const MasterclassDetailPage = () => {
 
   // Masterclasses data - this would come from database
   const masterclasses = {
-    1: {
-      id: 1,
-      title: "Bid to Win: The Agency Masterclass on Tenders & RFPs",
-      description: "For agencies in Africa, tendering and responding to RFPs can be game-changing pathways to winning bigger clients, securing multi-year contracts, and proving credibility in a competitive marketplace.",
-      fullDescription: "This 2.5-hour intensive masterclass, hosted by PAAN, is designed to equip agencies with the clarity, strategy, and confidence to master tendering and RFP responses — turning what feels like a complex process into a repeatable business growth engine.",
-      format: "2.5-Hour Live Interactive Masterclass",
-      date: "November 25th, 2025",
-      time: "2 pm EAT",
-      memberPrice: 60,
-      memberOriginalPrice: 80,
-      nonMemberPrice: 80,
-      nonMemberOriginalPrice: 120,
-      currency: "USD",
-      category: "Business Development",
-      level: "Intermediate",
-      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/bid-to-win.jpg",
-      instructor: {
-        name: "Ms. Muthoni",
-        title: "Procurement Specialist with 14+ years experience",
-        bio: "Ms. Muthoni is a seasoned Procurement Specialist with over 14 years experience in senior managerial roles spanning the private sector, foundations, and international non-governmental organizations.",
-        expertise: [
-          "Procurement Systems",
-          "Tender Evaluation",
-          "Compliance & Risk Management",
-          "Contract Management"
-        ]
-      },
-      benefits: [
-        "5% off on PAAN Summit 2026 tickets",
-        "10% off Africa Creative Excellence Awards entry"
-      ],
-      whoShouldAttend: [
-        "Agency founders & partners",
-        "Finance managers & business leads",
-        "Account directors & business development leads",
-        "HR & operations managers in agencies"
-      ],
-      learningOutcomes: [
-        "Understanding Tendering Basics – breaking down the language and flow of tenders and RFPs",
-        "Finding the Right Tenders – identifying opportunities aligned with your agency's strengths",
-        "Analyzing Tender Documents – extracting critical client needs and evaluation criteria",
-        "Planning Your Bid Response – structuring clear, strategic, and compelling responses",
-        "Compliance and Documentation – avoiding common mistakes that instantly disqualify bids",
-        "Writing a Winning Proposal – positioning your agency as the obvious choice",
-        "Pricing Strategies – being competitive without undercutting your value",
-        "Post-Submission Process – engaging with clients and staying visible beyond submission"
-      ],
-      whyAttend: [
-        "Business Growth Advantage: Learn how to consistently win bigger contracts and diversify revenue streams",
-        "Agency-Specific Focus: Tailored to the realities of African agencies competing in local and cross-border markets",
-        "Hands-On Learning: Practical frameworks, checklists, and examples you can apply immediately",
-        "Expert Guidance: Delivered by seasoned practitioners with proven success in winning tenders and RFPs across Africa"
-      ],
-      outcome: "By the end of this session, agencies will have a clear roadmap to confidently approach tenders and RFPs, improve win rates, and embed tendering into their long-term growth strategy.",
-      status: "upcoming"
-    },
+    // 1: {
+    //   id: 1,
+    //   title: "Bid to Win: The Agency Masterclass on Tenders & RFPs",
+    //   description: "For agencies in Africa, tendering and responding to RFPs can be game-changing pathways to winning bigger clients, securing multi-year contracts, and proving credibility in a competitive marketplace.",
+    //   fullDescription: "This 2.5-hour intensive masterclass, hosted by PAAN, is designed to equip agencies with the clarity, strategy, and confidence to master tendering and RFP responses — turning what feels like a complex process into a repeatable business growth engine.",
+    //   format: "2.5-Hour Live Interactive Masterclass",
+    //   date: "November 25th, 2025",
+    //   time: "2 pm EAT",
+    //   memberPrice: 60,
+    //   memberOriginalPrice: 80,
+    //   nonMemberPrice: 80,
+    //   nonMemberOriginalPrice: 120,
+    //   currency: "USD",
+    //   category: "Business Development",
+    //   level: "Intermediate",
+    //   image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/bid-to-win.jpg",
+    //   instructor: {
+    //     name: "Ms. Muthoni",
+    //     title: "Procurement Specialist with 14+ years experience",
+    //     bio: "Ms. Muthoni is a seasoned Procurement Specialist with over 14 years experience in senior managerial roles spanning the private sector, foundations, and international non-governmental organizations.",
+    //     expertise: [
+    //       "Procurement Systems",
+    //       "Tender Evaluation",
+    //       "Compliance & Risk Management",
+    //       "Contract Management"
+    //     ]
+    //   },
+    //   benefits: [
+    //     "5% off on PAAN Summit 2026 tickets",
+    //     "10% off Africa Creative Excellence Awards entry"
+    //   ],
+    //   whoShouldAttend: [
+    //     "Agency founders & partners",
+    //     "Finance managers & business leads",
+    //     "Account directors & business development leads",
+    //     "HR & operations managers in agencies"
+    //   ],
+    //   learningOutcomes: [
+    //     "Understanding Tendering Basics – breaking down the language and flow of tenders and RFPs",
+    //     "Finding the Right Tenders – identifying opportunities aligned with your agency's strengths",
+    //     "Analyzing Tender Documents – extracting critical client needs and evaluation criteria",
+    //     "Planning Your Bid Response – structuring clear, strategic, and compelling responses",
+    //     "Compliance and Documentation – avoiding common mistakes that instantly disqualify bids",
+    //     "Writing a Winning Proposal – positioning your agency as the obvious choice",
+    //     "Pricing Strategies – being competitive without undercutting your value",
+    //     "Post-Submission Process – engaging with clients and staying visible beyond submission"
+    //   ],
+    //   whyAttend: [
+    //     "Business Growth Advantage: Learn how to consistently win bigger contracts and diversify revenue streams",
+    //     "Agency-Specific Focus: Tailored to the realities of African agencies competing in local and cross-border markets",
+    //     "Hands-On Learning: Practical frameworks, checklists, and examples you can apply immediately",
+    //     "Expert Guidance: Delivered by seasoned practitioners with proven success in winning tenders and RFPs across Africa"
+    //   ],
+    //   outcome: "By the end of this session, agencies will have a clear roadmap to confidently approach tenders and RFPs, improve win rates, and embed tendering into their long-term growth strategy.",
+    //   status: "upcoming"
+    // },
     2: {
       id: 2,
       title: "Managing Challenging Clients",
@@ -195,7 +195,7 @@ const MasterclassDetailPage = () => {
       currency: "USD",
       category: "Financial Management",
       level: "Intermediate",
-      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/finance-management-min.jpg",
+      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/finance-management.jpg",
       series: "Agency Growth & Leadership Masterclass Series",
       moduleNumber: 1,
       instructor: {
@@ -250,7 +250,7 @@ const MasterclassDetailPage = () => {
       currency: "USD",
       category: "Business Development",
       level: "Intermediate",
-      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/proposal-writing-min.jpg",
+      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/proposal-writing.jpg",
       series: "Agency Growth & Leadership Masterclass Series",
       moduleNumber: 2,
       instructor: {
@@ -305,7 +305,7 @@ const MasterclassDetailPage = () => {
       currency: "USD",
       category: "Leadership",
       level: "Intermediate",
-      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/scale-agency.jpg",
+      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/agency-leadership.jpg",
       series: "Agency Growth & Leadership Masterclass Series",
       moduleNumber: 3,
       instructor: {
