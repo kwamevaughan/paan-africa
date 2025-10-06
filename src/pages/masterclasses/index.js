@@ -90,7 +90,7 @@ const MasterclassesPage = () => {
       level: "All Levels",
       instructor: "Niki Hurst Smith",
       instructorTitle: "HR Consultant & Former Agency Leader with 15+ years experience",
-      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/challenging-clients.webp",
+      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/challenging-clients.jpg",
       benefits: [
         "5% off on PAAN Summit 2026 tickets",
         "6% off Africa Creative Excellence Awards entry"
