@@ -104,15 +104,16 @@ const PAANAwardsHeader = ({ navLinkColor, onApplyNowClick, onJoinSummitClick }) 
   };
 
   return (
+    <>
     <nav
       className={`w-full z-50 transition-all duration-300 ${
         isFixed
-          ? "lg:fixed absolute top-0 left-0 right-0 shadow-lg backdrop-blur-md bg-paan-dark-blue mx-auto px-2 sm:px-4 mt-2 sm:mt-4 max-w-7xl rounded-lg"
-          : "absolute top-0 left-0 right-0 bg-transparent mx-auto px-2 sm:px-4 mt-2 sm:mt-4 max-w-7xl"
+          ? "lg:fixed absolute top-0 left-0 right-0 shadow-lg backdrop-blur-md bg-paan-dark-blue lg:mx-auto px-3 sm:px-4 mt-0 lg:mt-4 lg:max-w-7xl lg:rounded-lg"
+          : "absolute top-0 left-0 right-0 bg-transparent lg:mx-auto px-3 sm:px-4 mt-0 lg:mt-4 lg:max-w-7xl"
       }`}
     >
-      <div className="w-full px-2 sm:px-4 md:px-6 lg:px-8">
-        <div className="flex items-center justify-between py-2 sm:py-3 md:py-4">
+      <div className="w-full px-2 sm:px-4 md:px-6 lg:px-8 overflow-hidden">
+        <div className="flex items-center justify-between py-3 sm:py-3 md:py-4">
           {/* Logo - Left Side */}
           <div className="flex-shrink-0 z-50">
             <Link href="/" passHref>
@@ -122,7 +123,7 @@ const PAANAwardsHeader = ({ navLinkColor, onApplyNowClick, onJoinSummitClick }) 
                   alt="PAAN Logo"
                   width={200}
                   height={70}
-                  className="w-16 sm:w-20 md:w-24 lg:w-28 xl:w-32 h-auto"
+                  className="w-20 sm:w-24 md:w-28 lg:w-32 xl:w-36 h-auto"
                   priority
                 />
               </div>
@@ -133,7 +134,9 @@ const PAANAwardsHeader = ({ navLinkColor, onApplyNowClick, onJoinSummitClick }) 
           <div className="lg:hidden flex items-center z-50">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className={`p-2 rounded-md ${currentTextColor} focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white`}
+              className={`p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white ${
+                isFixed ? 'text-white' : currentTextColor
+              }`}
               aria-label="Toggle menu"
               aria-expanded={isMenuOpen}
             >
@@ -200,7 +203,7 @@ const PAANAwardsHeader = ({ navLinkColor, onApplyNowClick, onJoinSummitClick }) 
         {/* Mobile Menu Overlay */}
         {isMenuOpen && (
           <div 
-            className="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden"
+            className="fixed inset-0 bg-black bg-opacity-50 z-[100] lg:hidden"
             onClick={() => setIsMenuOpen(false)}
           />
         )}
@@ -209,7 +212,7 @@ const PAANAwardsHeader = ({ navLinkColor, onApplyNowClick, onJoinSummitClick }) 
         <div 
           className={`${
             isMenuOpen ? "translate-x-0" : "translate-x-full"
-          } lg:hidden fixed top-0 right-0 h-full w-full sm:w-80 bg-white shadow-2xl transition-transform duration-300 ease-in-out z-40 overflow-y-auto`}
+          } lg:hidden fixed top-0 right-0 h-full w-[85%] max-w-sm bg-white shadow-2xl transition-transform duration-300 ease-in-out z-[110] overflow-y-auto`}
         >
           <div className="flex flex-col h-full">
             {/* Mobile Menu Header */}
@@ -295,6 +298,7 @@ const PAANAwardsHeader = ({ navLinkColor, onApplyNowClick, onJoinSummitClick }) 
         </div>
       </div>
     </nav>
+    </>
   );
 };
 
