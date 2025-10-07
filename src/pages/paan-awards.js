@@ -219,40 +219,61 @@ const SummitPage = () => {
 
   const freelancerAwards = [
     {
-      id: 1,
-      title: "Freelancer of the Year",
-      description: "Celebrating exceptional individual creative talent and impact.",
-      icon: "https://ik.imagekit.io/nkmvdjnna/PAAN/awards/icons/heroicons_user-solid.svg"
+      id: 'individual-excellence',
+      name: 'Individual Excellence Awards',
+      description: 'Recognizing outstanding individual freelancers across various disciplines.',
+      subcategories: [
+        {
+          id: 'freelancer-year',
+          title: 'Freelancer of the Year',
+          description: 'Celebrating exceptional individual creative talent and impact.',
+          icon: "https://ik.imagekit.io/nkmvdjnna/PAAN/awards/icons/heroicons_user-solid.svg"
+        },
+        {
+          id: 'rising-star',
+          title: 'Rising Creative Star',
+          description: 'Recognizing emerging talent with outstanding potential and growth.',
+          icon: "https://ik.imagekit.io/nkmvdjnna/PAAN/awards/icons/material-symbols_target.svg"
+        }
+      ]
     },
     {
-      id: 2,
-      title: "Rising Creative Star",
-      description: "Recognizing emerging talent with outstanding potential and growth.",
-      icon: "https://ik.imagekit.io/nkmvdjnna/PAAN/awards/icons/material-symbols_target.svg"
+      id: 'collaboration-innovation',
+      name: 'Collaboration & Innovation Awards',
+      description: 'Honoring freelancers who excel in partnerships and innovative approaches.',
+      subcategories: [
+        {
+          id: 'cross-border',
+          title: 'Cross-Border Collaborator',
+          description: 'Honoring freelancers who excel in international partnerships.',
+          icon: "https://ik.imagekit.io/nkmvdjnna/PAAN/awards/icons/ix_handshake.svg"
+        },
+        {
+          id: 'digital-innovation',
+          title: 'Digital Innovation Leader',
+          description: 'Recognizing freelancers at the forefront of digital creative innovation.',
+          icon: "https://ik.imagekit.io/nkmvdjnna/PAAN/awards/icons/ri_speak-ai-fill.svg"
+        }
+      ]
     },
     {
-      id: 3,
-      title: "Cross-Border Collaborator",
-      description: "Honoring freelancers who excel in international partnerships.",
-      icon: "https://ik.imagekit.io/nkmvdjnna/PAAN/awards/icons/ix_handshake.svg"
-    },
-    {
-      id: 4,
-      title: "Creative Entrepreneur",
-      description: "Celebrating freelancers who have built successful creative businesses.",
-      icon: "https://ik.imagekit.io/nkmvdjnna/PAAN/awards/icons/healthicons_award-trophy.svg"
-    },
-    {
-      id: 5,
-      title: "Digital Innovation Leader",
-      description: "Recognizing freelancers at the forefront of digital creative innovation.",
-      icon: "https://ik.imagekit.io/nkmvdjnna/PAAN/awards/icons/ri_speak-ai-fill.svg"
-    },
-    {
-      id: 6,
-      title: "Community Impact Creator",
-      description: "Honoring freelancers who use their skills to create positive social impact.",
-      icon: "https://ik.imagekit.io/nkmvdjnna/PAAN/awards/icons/mdi_leaf-circle.svg"
+      id: 'business-impact',
+      name: 'Business & Impact Awards',
+      description: 'Celebrating freelancers who build successful businesses and create positive impact.',
+      subcategories: [
+        {
+          id: 'creative-entrepreneur',
+          title: 'Creative Entrepreneur',
+          description: 'Celebrating freelancers who have built successful creative businesses.',
+          icon: "https://ik.imagekit.io/nkmvdjnna/PAAN/awards/icons/healthicons_award-trophy.svg"
+        },
+        {
+          id: 'community-impact',
+          title: 'Community Impact Creator',
+          description: 'Honoring freelancers who use their skills to create positive social impact.',
+          icon: "https://ik.imagekit.io/nkmvdjnna/PAAN/awards/icons/mdi_leaf-circle.svg"
+        }
+      ]
     }
   ];
 
@@ -807,14 +828,14 @@ const SummitPage = () => {
                    {/* Agency Label */}
                    <span className={`absolute left-6 text-sm font-medium transition-colors duration-300 z-10 ${
                      awardType === 'agency' ? 'text-white' : 'text-[#172840]'
-                   }`}>
+                   }`} style={{ pointerEvents: 'none' }}>
                      Agency Awards
                    </span>
-                   
+
                    {/* Freelancer Label */}
                    <span className={`absolute right-6 text-sm font-medium transition-colors duration-300 z-10 ${
                      awardType === 'freelancer' ? 'text-white' : 'text-[#172840]'
-                   }`}>
+                   }`} style={{ pointerEvents: 'none' }}>
                      Freelancer Awards
                    </span>
                    
@@ -831,23 +852,23 @@ const SummitPage = () => {
              </div>
              
              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
-               {(awardType === 'agency' ? agencyAwards : freelancerAwards).map((award) => (
+               {(awardType === 'agency' ? agencyAwards : freelancerAwards.flatMap(award => award.subcategories)).map((award) => (
                  <div key={award.id} className="bg-paan-dark-blue w-80 h-80 rounded-full shadow-xl overflow-hidden relative flex items-center justify-center hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
                    {/* Ring image inside the circle with padding */}
                    <div className="absolute inset-4 flex items-center justify-center">
-                     <img 
-                       src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/awards-ring.svg?updatedAt=1757757368902" 
-                       alt="Awards Ring" 
+                     <img
+                       src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/awards-ring.svg?updatedAt=1757757368902"
+                       alt="Awards Ring"
                        className="w-full h-full object-contain"
                      />
                    </div>
-                   
+
                    <div className="text-center relative mt-12 max-w-48">
                      <h4 className="text-md font-bold text-white mb-3">{award.title}</h4>
                      <p className="text-white font-light text-xs leading-relaxed">{award.description}</p>
                    </div>
                  </div>
-               ))}                
+               ))}
              </div>
           </section>
         </div>

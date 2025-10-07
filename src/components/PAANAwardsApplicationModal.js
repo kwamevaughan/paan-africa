@@ -205,6 +205,43 @@ const PAANAwardsApplicationModal = ({ isOpen, onClose }) => {
       ]
     },
     {
+      id: 'freelancer-excellence',
+      name: 'Freelancer Excellence Awards',
+      description: 'Celebrating the exceptional talent and innovation of individual freelancers who are shaping the creative landscape across Africa. These awards recognize freelancers who demonstrate outstanding creativity, technical skill, and business acumen in their independent work.',
+      subcategories: [
+        {
+          id: 'freelancer-year',
+          name: 'Freelancer of the Year',
+          description: 'Outstanding freelancer demonstrating excellence across multiple disciplines and consistent high-quality work.'
+        },
+        {
+          id: 'creative-freelancer-year',
+          name: 'Creative Freelancer of the Year',
+          description: 'Freelancer excelling in creative fields like design, copywriting, and visual communication.'
+        },
+        {
+          id: 'digital-freelancer-year',
+          name: 'Digital Freelancer of the Year',
+          description: 'Freelancer specializing in digital marketing, social media, SEO, and online strategies.'
+        },
+        {
+          id: 'freelance-campaign-year',
+          name: 'Freelance Campaign of the Year',
+          description: 'Exceptional campaign work delivered by an individual freelancer for a client.'
+        },
+        {
+          id: 'rising-freelancer-year',
+          name: 'Rising Freelancer of the Year',
+          description: 'Emerging freelancer showing exceptional talent, growth, and potential in the industry.'
+        },
+        {
+          id: 'freelance-innovator-year',
+          name: 'Freelance Innovator of the Year',
+          description: 'Freelancer who has pioneered new approaches, tools, or methodologies in their field.'
+        }
+      ]
+    },
+    {
       id: 'special-honors',
       name: 'Special Honors',
       description: 'Reserved for the highest level of recognition, these awards celebrate visionary leadership and overall excellence. These honors recognize the individuals and agencies that embody the best of Africa\'s independent creative ecosystem.',
@@ -222,6 +259,17 @@ const PAANAwardsApplicationModal = ({ isOpen, onClose }) => {
       ]
     }
   ];
+
+  // Define category IDs for each applicant type
+  const agencyCategoryIds = ['campaign-excellence', 'agency-excellence', 'innovation-technology', 'sector-excellence', 'special-honors'];
+  const freelancerCategoryIds = ['freelancer-excellence'];
+
+  // Filter categories based on applicant type
+  const filteredAwardCategories = awardCategories.filter(category =>
+    formData.applicantType === 'agency'
+      ? agencyCategoryIds.includes(category.id)
+      : freelancerCategoryIds.includes(category.id)
+  );
 
   const countries = [
     'Nigeria', 'Kenya', 'South Africa', 'Ghana', 'Egypt', 'Morocco', 
@@ -243,11 +291,13 @@ const PAANAwardsApplicationModal = ({ isOpen, onClose }) => {
   const pricing = {
     agency: {
       pricePerCategory: 200,
+      slashedPrice: 250,
       currency: 'USD',
       description: 'Agency Application Fee per Category'
     },
     freelancer: {
       pricePerCategory: 30,
+      slashedPrice: 50,
       currency: 'USD',
       description: 'Freelancer Application Fee per Category'
     }
@@ -528,7 +578,7 @@ const PAANAwardsApplicationModal = ({ isOpen, onClose }) => {
 
   if (!isOpen) return null;
 
-  // All categories are now available to both agencies and freelancers
+  // Categories are filtered based on applicant type
   const currentPricing = pricing[formData.applicantType];
 
   return (
@@ -546,7 +596,12 @@ const PAANAwardsApplicationModal = ({ isOpen, onClose }) => {
             <div>
               <h2 className="text-2xl font-bold">PAAN Awards Application</h2>
               <p className="text-white/80 mt-1">
-                {formData.applicantType === 'agency' ? 'Agency Application' : 'Freelancer Application'} - ${currentPricing.pricePerCategory} USD per category
+                {formData.applicantType === 'agency' ? 'Agency Application' : 'Freelancer Application'} -
+                {currentPricing.slashedPrice ? (
+                  <span> <s>${currentPricing.slashedPrice}</s> ${currentPricing.pricePerCategory} USD per category - Save $${currentPricing.slashedPrice - currentPricing.pricePerCategory}</span>
+                ) : (
+                  <span> ${currentPricing.pricePerCategory} USD per category</span>
+                )}
                 {formData.selectedCategories.length > 1 && (
                   <span className="text-yellow-400 ml-2">(25% discount applied!)</span>
                 )}
@@ -586,7 +641,13 @@ const PAANAwardsApplicationModal = ({ isOpen, onClose }) => {
                 <div className="text-center">
                   <Icon icon="mdi:office-building" className="w-8 h-8 mx-auto mb-2" />
                   <h3 className="font-semibold">Agency</h3>
-                  <p className="text-sm text-gray-600">$200 USD per category</p>
+                  <p className="text-sm text-gray-600">
+                    {pricing.agency.slashedPrice ? (
+                      <><s>${pricing.agency.slashedPrice}</s> ${pricing.agency.pricePerCategory} USD per category - Save ${pricing.agency.slashedPrice - pricing.agency.pricePerCategory}</>
+                    ) : (
+                      `${pricing.agency.pricePerCategory} USD per category`
+                    )}
+                  </p>
                 </div>
               </button>
               <button
@@ -601,7 +662,9 @@ const PAANAwardsApplicationModal = ({ isOpen, onClose }) => {
                 <div className="text-center">
                   <Icon icon="mdi:account" className="w-8 h-8 mx-auto mb-2" />
                   <h3 className="font-semibold">Freelancer</h3>
-                  <p className="text-sm text-gray-600">$30 USD per category</p>
+                  <p className="text-sm text-gray-600">
+                    <s>$50</s> $30 USD per category - Save $20
+                  </p>
                 </div>
               </button>
             </div>
@@ -812,7 +875,7 @@ const PAANAwardsApplicationModal = ({ isOpen, onClose }) => {
               </h3>
               
               <div className="space-y-6">
-                {awardCategories.map(categoryGroup => (
+                {filteredAwardCategories.map(categoryGroup => (
                   <div key={categoryGroup.id} className="border border-gray-200 rounded-lg p-4">
                     <div className="mb-4">
                       <h4 className="text-lg font-semibold text-paan-dark-blue mb-2">
@@ -856,18 +919,20 @@ const PAANAwardsApplicationModal = ({ isOpen, onClose }) => {
               {errors.selectedCategories && <p className="text-red-500 text-xs mt-2">{errors.selectedCategories}</p>}
               
               {/* Important Award Information */}
-              <div className="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
-                <div className="flex items-start gap-3">
-                  <Icon icon="mdi:trophy" className="w-6 h-6 text-blue-600 mt-0.5 flex-shrink-0" />
-                  <div>
-                    <h4 className="font-semibold text-blue-900 mb-2">Important Award Information</h4>
-                    <p className="text-sm text-blue-800">
-                      <strong>In every category, both the agency and client are honored with their own award as a mark of shared achievement.</strong>
-                      This means when you win, both your organization and your client receive recognition, celebrating the collaborative success of your partnership.
-                    </p>
+              {formData.applicantType === 'agency' && (
+                <div className="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+                  <div className="flex items-start gap-3">
+                    <Icon icon="mdi:trophy" className="w-6 h-6 text-blue-600 mt-0.5 flex-shrink-0" />
+                    <div>
+                      <h4 className="font-semibold text-blue-900 mb-2">Important Award Information</h4>
+                      <p className="text-sm text-blue-800">
+                        <strong>In every category, both the agency and client are honored with their own award as a mark of shared achievement.</strong>
+                        This means when you win, both your organization and your client receive recognition, celebrating the collaborative success of your partnership.
+                      </p>
+                    </div>
                   </div>
                 </div>
-              </div>
+              )}
             </div>
 
             {/* Project Information */}
@@ -1091,11 +1156,21 @@ const PAANAwardsApplicationModal = ({ isOpen, onClose }) => {
                       {formData.applicantType === 'agency' ? 'Agency Application Fee' : 'Freelancer Application Fee'}
                     </p>
                     <p className="text-sm text-white/60">
-                      {formData.selectedCategories.length} category(ies) × ${currentPricing.pricePerCategory} USD
+                      {formData.selectedCategories.length} category(ies) ×
+                      {currentPricing.slashedPrice ? (
+                        <span> <s>${currentPricing.slashedPrice}</s> ${currentPricing.pricePerCategory} USD</span>
+                      ) : (
+                        <span> ${currentPricing.pricePerCategory} USD</span>
+                      )}
                     </p>
                   </div>
                   <div className="text-right">
-                    <p className="text-lg font-semibold">${currentPricing.pricePerCategory * formData.selectedCategories.length} USD</p>
+                    <p className="text-lg font-semibold">
+                      {formData.applicantType === 'freelancer' && currentPricing.slashedPrice ? (
+                        <span><s>${currentPricing.slashedPrice * formData.selectedCategories.length}</s> </span>
+                      ) : null}
+                      ${currentPricing.pricePerCategory * formData.selectedCategories.length} USD
+                    </p>
                   </div>
                 </div>
                 
