@@ -4,7 +4,7 @@ export const eventsData = {
     {
       id: 2,
       title: "Trend-Driven, Tech-Powered: Practical Event Management Solutions for 2025",
-      date: "2025-07-15",
+      date: "2025-10-15",
       time: "12:00 PM - 1:00 PM",
       location: "Virtual Event",
       venue: "Online",
