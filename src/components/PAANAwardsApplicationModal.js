@@ -642,7 +642,7 @@ const PAANAwardsApplicationModal = ({ isOpen, onClose }) => {
               <p className="text-white/80 mt-1">
                 {formData.applicantType === 'agency' ? 'Agency Application' : 'Freelancer Application'} -
                 {currentPricing.slashedPrice ? (
-                  <span> <s>${currentPricing.slashedPrice}</s> ${currentPricing.pricePerCategory} USD per category - Save $${currentPricing.slashedPrice - currentPricing.pricePerCategory}</span>
+                  <span> <s>${currentPricing.slashedPrice}</s> ${currentPricing.pricePerCategory} USD per category - Save ${currentPricing.slashedPrice - currentPricing.pricePerCategory}</span>
                 ) : (
                   <span> ${currentPricing.pricePerCategory} USD per category</span>
                 )}
