@@ -105,7 +105,7 @@ const EventDetailPage = () => {
                       src={relatedEvent.image}
                       alt={relatedEvent.title}
                       fill
-                      className="object-cover"
+                      className="object-contain"
                     />
                   </div>
                   <div className="p-6">
