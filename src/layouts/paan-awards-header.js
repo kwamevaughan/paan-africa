@@ -107,7 +107,7 @@ const PAANAwardsHeader = ({ navLinkColor, onApplyNowClick, onJoinSummitClick }) 
     <nav
       className={`w-full z-50 transition-all duration-300 ${
         isFixed
-          ? "fixed top-0 left-0 right-0 shadow-lg backdrop-blur-md bg-paan-dark-blue mx-auto px-2 sm:px-4 mt-2 sm:mt-4 max-w-7xl rounded-lg"
+          ? "lg:fixed absolute top-0 left-0 right-0 shadow-lg backdrop-blur-md bg-paan-dark-blue mx-auto px-2 sm:px-4 mt-2 sm:mt-4 max-w-7xl rounded-lg"
           : "absolute top-0 left-0 right-0 bg-transparent mx-auto px-2 sm:px-4 mt-2 sm:mt-4 max-w-7xl"
       }`}
     >
