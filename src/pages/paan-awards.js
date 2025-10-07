@@ -175,103 +175,133 @@ const SummitPage = () => {
   const agencyAwards = [
     {
       id: 1,
-      title: "The Continental Crown: Pan-African Agency of the Year",
-      description: "The highest honor celebrating the agency that set the creative standard across Africa.",
+      title: "PR Campaign of the Year",
+      description: "Outstanding public relations campaigns that shaped public perception and delivered measurable impact.",
       icon: "https://ik.imagekit.io/nkmvdjnna/PAAN/awards/icons/healthicons_award-trophy.svg"
     },
     {
       id: 2,
-      title: "The Purpose & Impact Award",
-      description: "For agencies and clients leading in CSR, sustainability, and purpose-driven campaigns.",
+      title: "Communication Campaign of the Year",
+      description: "Exceptional communication strategies that effectively reached and engaged target audiences.",
       icon: "https://ik.imagekit.io/nkmvdjnna/PAAN/awards/icons/mdi_leaf-circle.svg"
     },
     {
       id: 3,
-      title: "The Borderless Collaboration Award",
-      description: "Honoring seamless cross-country campaigns that prove creativity knows no borders.",
+      title: "Digital Agency of the Year",
+      description: "Leading digital agencies that excel in online strategy, execution, and innovation.",
       icon: "https://ik.imagekit.io/nkmvdjnna/PAAN/awards/icons/ri_speak-ai-fill.svg"
     },
     {
       id: 4,
-      title: "The Creative Campaign Masterpiece Award",
-      description: "Recognizing the year’s most original and impactful creative campaign.",
+      title: "Creative Agency of the Year",
+      description: "Creative agencies that consistently deliver outstanding creative solutions and campaigns.",
       icon: "https://ik.imagekit.io/nkmvdjnna/PAAN/awards/icons/material-symbols_target.svg"
     },
     {
       id: 5,
-      title: "The Visionary Leadership Award: Pan-African CEO of the Year",
-      description: "Celebrating bold leadership shaping Africa’s creative economy.",
+      title: "Tech Innovation in Marketing Award",
+      description: "Groundbreaking use of technology to create innovative marketing solutions and experiences.",
       icon: "https://ik.imagekit.io/nkmvdjnna/PAAN/awards/icons/ix_handshake.svg"
     },
     {
       id: 6,
-      title: "The Innovation & AI Excellence Award",
-      description: "For groundbreaking and ethical use of AI in marketing and creativity.",
+      title: "Agency Leader of the Year",
+      description: "Visionary leaders who have driven exceptional growth, innovation, and industry impact.",
       icon: "https://ik.imagekit.io/nkmvdjnna/PAAN/awards/icons/mdi_leaf-circle.svg"
     },
-    {
-      id: 7,
-      title: "The Bold Brand Disruptor Award",
-      description: "Recognizing a brand campaign that redefined the rules and sparked conversation.",
-      icon: "https://ik.imagekit.io/nkmvdjnna/PAAN/awards/icons/mdi_leaf-circle.svg"
-    }
   ];
 
   const freelancerAwards = [
     {
-      id: 'individual-excellence',
-      name: 'Individual Excellence Awards',
-      description: 'Recognizing outstanding individual freelancers across various disciplines.',
+      id: 'creative-excellence',
+      name: 'Creative Excellence Awards',
+      description: 'Celebrating mastery in design, branding, and visual storytelling.',
       subcategories: [
         {
           id: 'freelancer-year',
-          title: 'Freelancer of the Year',
-          description: 'Celebrating exceptional individual creative talent and impact.',
-          icon: "https://ik.imagekit.io/nkmvdjnna/PAAN/awards/icons/heroicons_user-solid.svg"
+          title: 'Freelancer of the Year Award',
+          description: 'The highest individual honour, celebrating an outstanding freelancer who demonstrated creativity, leadership, and measurable business impact across multiple projects.',
+          icon: "https://ik.imagekit.io/nkmvdjnna/PAAN/awards/icons/healthicons_award-trophy.svg"
         },
         {
-          id: 'rising-star',
-          title: 'Rising Creative Star',
-          description: 'Recognizing emerging talent with outstanding potential and growth.',
+          id: 'brand-identity',
+          title: 'Excellence in Brand Identity & Visual Design Award',
+          description: 'For exceptional brand, graphic, or visual design work that elevated client positioning, storytelling, and recognition.',
+          icon: "https://ik.imagekit.io/nkmvdjnna/PAAN/awards/icons/mdi_leaf-circle.svg"
+        },
+        {
+          id: 'ui-ux',
+          title: 'UI/UX & Product Design Innovation Award',
+          description: 'Recognizing exceptional freelancers in app, web, or product experience design that enhanced usability and digital engagement.',
+          icon: "https://ik.imagekit.io/nkmvdjnna/PAAN/awards/icons/ri_speak-ai-fill.svg"
+        },
+        {
+          id: 'photography',
+          title: 'Photography & Visual Storytelling Award',
+          description: 'For photographers and visual storytellers whose imagery powerfully communicates emotion, culture, and brand narrative.',
           icon: "https://ik.imagekit.io/nkmvdjnna/PAAN/awards/icons/material-symbols_target.svg"
         }
       ]
     },
     {
-      id: 'collaboration-innovation',
-      name: 'Collaboration & Innovation Awards',
-      description: 'Honoring freelancers who excel in partnerships and innovative approaches.',
+      id: 'digital-performance',
+      name: 'Digital Performance Awards',
+      description: 'Recognizing freelancers driving measurable results and ROI for brands in the digital economy.',
       subcategories: [
         {
-          id: 'cross-border',
-          title: 'Cross-Border Collaborator',
-          description: 'Honoring freelancers who excel in international partnerships.',
+          id: 'website-dev',
+          title: 'Website & No-Code Development Excellence Award',
+          description: 'Celebrating freelancers who have delivered high-performance websites or e-commerce platforms using modern or no-code tools.',
+          icon: "https://ik.imagekit.io/nkmvdjnna/PAAN/awards/icons/heroicons_user-solid.svg"
+        },
+        {
+          id: 'seo-content',
+          title: 'SEO Content & Copywriting Excellence Award',
+          description: 'Honouring writers whose strategic, high-quality content drives visibility, engagement, and organic growth.',
           icon: "https://ik.imagekit.io/nkmvdjnna/PAAN/awards/icons/ix_handshake.svg"
         },
         {
-          id: 'digital-innovation',
-          title: 'Digital Innovation Leader',
-          description: 'Recognizing freelancers at the forefront of digital creative innovation.',
+          id: 'performance-marketing',
+          title: 'Performance Marketing Specialist Award',
+          description: 'For freelancers who excel in digital ad strategy, campaign optimization, and conversion-focused creative execution.',
+          icon: "https://ik.imagekit.io/nkmvdjnna/PAAN/awards/icons/mdi_leaf-circle.svg"
+        },
+        {
+          id: 'email-crm',
+          title: 'Email, CRM & Lifecycle Marketing Award',
+          description: 'Recognizing top freelancers crafting high-performing retention and automation campaigns through email, SMS, or WhatsApp.',
           icon: "https://ik.imagekit.io/nkmvdjnna/PAAN/awards/icons/ri_speak-ai-fill.svg"
         }
       ]
     },
     {
-      id: 'business-impact',
-      name: 'Business & Impact Awards',
-      description: 'Celebrating freelancers who build successful businesses and create positive impact.',
+      id: 'innovation-storytelling',
+      name: 'Innovation & Storytelling Awards',
+      description: 'Showcasing freelancers leading the way in modern storytelling, video, and digital innovation.',
       subcategories: [
         {
-          id: 'creative-entrepreneur',
-          title: 'Creative Entrepreneur',
-          description: 'Celebrating freelancers who have built successful creative businesses.',
+          id: 'short-form-video',
+          title: 'Short-Form Video & Editing Mastery Award',
+          description: 'For creative editors and storytellers mastering short-form platforms like TikTok, YouTube Shorts, and Reels.',
+          icon: "https://ik.imagekit.io/nkmvdjnna/PAAN/awards/icons/material-symbols_target.svg"
+        },
+        {
+          id: 'motion-graphics',
+          title: 'Motion Graphics & 3D Creativity Award',
+          description: 'Honouring motion designers and 3D/AR specialists who elevate visual storytelling through technology and innovation.',
           icon: "https://ik.imagekit.io/nkmvdjnna/PAAN/awards/icons/healthicons_award-trophy.svg"
         },
         {
-          id: 'community-impact',
-          title: 'Community Impact Creator',
-          description: 'Honoring freelancers who use their skills to create positive social impact.',
-          icon: "https://ik.imagekit.io/nkmvdjnna/PAAN/awards/icons/mdi_leaf-circle.svg"
+          id: 'ugc-creator',
+          title: 'UGC Creator of the Year Award',
+          description: 'For independent creators producing authentic, high-impact user-generated content that amplifies brands across Africa.',
+          icon: "https://ik.imagekit.io/nkmvdjnna/PAAN/awards/icons/heroicons_user-solid.svg"
+        },
+        {
+          id: 'social-media',
+          title: 'Social Media Strategy & Community Growth Award',
+          description: 'Recognizing freelancers who\'ve built thriving, engaged digital communities through smart content strategy and audience insight.',
+          icon: "https://ik.imagekit.io/nkmvdjnna/PAAN/awards/icons/ix_handshake.svg"
         }
       ]
     }
@@ -567,7 +597,7 @@ const SummitPage = () => {
           <div className="grid lg:grid-cols-2 gap-4 py-20 items-center">
             <div className="flex flex-col gap-8 z-0">
               <div className="flex flex-col gap-6">
-                <h2 className="text-4xl lg:text-5xl text-[#172840] uppercase font-bold leading-tight">11 Categories. One Continental Stage.</h2>
+                <h2 className="text-4xl lg:text-5xl text-[#172840] uppercase font-bold leading-tight">20+ Categories. One Continental Stage.</h2>
                 <p className="text-lg text-[#172840] font-light leading-relaxed">From Agency of the Year to Best Use of AI, these awards celebrate the people, brands, and ideas driving Africa's creative future.</p>
               </div>
               
@@ -816,7 +846,9 @@ const SummitPage = () => {
            <section className="relative mx-auto max-w-6xl">
              <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-12">
                <div className="text-left mb-6 lg:mb-0">
-                 <h3 className="text-3xl text-paan-dark-blue font-bold uppercase">Awards Category</h3>
+                 <h3 className="text-3xl text-paan-dark-blue font-bold uppercase">
+                   {awardType === 'freelancer' ? 'PAAN Freelancer Excellence Awards 2026' : 'PAAN Agency Awards 2026'}
+                 </h3>
                </div>
                
                {/* Toggle Switch */}
@@ -850,7 +882,13 @@ const SummitPage = () => {
                  </button>
                </div>
              </div>
-             
+
+             {awardType === 'freelancer' && (
+               <p className="text-lg text-paan-dark-blue font-light leading-relaxed max-w-4xl mx-auto mt-4">
+                 Honouring Africa's top independent creative talent redefining work, creativity, and innovation across borders.
+               </p>
+             )}
+
              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
                {(awardType === 'agency' ? agencyAwards : freelancerAwards.flatMap(award => award.subcategories)).map((award) => (
                  <div key={award.id} className="bg-paan-dark-blue w-80 h-80 rounded-full shadow-xl overflow-hidden relative flex items-center justify-center hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">

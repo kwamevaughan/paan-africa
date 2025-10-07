@@ -2,7 +2,7 @@
 export const eventsData = {
   upcoming: [ 
     {
-      id: 2,
+      id: 1,
       title: "Trend-Driven, Tech-Powered: Practical Event Management Solutions for 2025",
       date: "2025-10-15",
       time: "12:00 PM - 1:00 PM",

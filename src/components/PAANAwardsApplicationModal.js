@@ -205,39 +205,83 @@ const PAANAwardsApplicationModal = ({ isOpen, onClose }) => {
       ]
     },
     {
-      id: 'freelancer-excellence',
-      name: 'Freelancer Excellence Awards',
-      description: 'Celebrating the exceptional talent and innovation of individual freelancers who are shaping the creative landscape across Africa. These awards recognize freelancers who demonstrate outstanding creativity, technical skill, and business acumen in their independent work.',
+      id: 'creative-excellence',
+      name: 'Creative Excellence Awards',
+      description: 'Celebrating mastery in design, branding, and visual storytelling.',
       subcategories: [
         {
           id: 'freelancer-year',
-          name: 'Freelancer of the Year',
-          description: 'Outstanding freelancer demonstrating excellence across multiple disciplines and consistent high-quality work.'
+          name: 'Freelancer of the Year Award',
+          description: 'The highest individual honour, celebrating an outstanding freelancer who demonstrated creativity, leadership, and measurable business impact across multiple projects.'
         },
         {
-          id: 'creative-freelancer-year',
-          name: 'Creative Freelancer of the Year',
-          description: 'Freelancer excelling in creative fields like design, copywriting, and visual communication.'
+          id: 'brand-identity',
+          name: 'Excellence in Brand Identity & Visual Design Award',
+          description: 'For exceptional brand, graphic, or visual design work that elevated client positioning, storytelling, and recognition.'
         },
         {
-          id: 'digital-freelancer-year',
-          name: 'Digital Freelancer of the Year',
-          description: 'Freelancer specializing in digital marketing, social media, SEO, and online strategies.'
+          id: 'ui-ux',
+          name: 'UI/UX & Product Design Innovation Award',
+          description: 'Recognizing exceptional freelancers in app, web, or product experience design that enhanced usability and digital engagement.'
         },
         {
-          id: 'freelance-campaign-year',
-          name: 'Freelance Campaign of the Year',
-          description: 'Exceptional campaign work delivered by an individual freelancer for a client.'
+          id: 'photography',
+          name: 'Photography & Visual Storytelling Award',
+          description: 'For photographers and visual storytellers whose imagery powerfully communicates emotion, culture, and brand narrative.'
+        }
+      ]
+    },
+    {
+      id: 'digital-performance',
+      name: 'Digital Performance Awards',
+      description: 'Recognizing freelancers driving measurable results and ROI for brands in the digital economy.',
+      subcategories: [
+        {
+          id: 'website-dev',
+          name: 'Website & No-Code Development Excellence Award',
+          description: 'Celebrating freelancers who have delivered high-performance websites or e-commerce platforms using modern or no-code tools.'
         },
         {
-          id: 'rising-freelancer-year',
-          name: 'Rising Freelancer of the Year',
-          description: 'Emerging freelancer showing exceptional talent, growth, and potential in the industry.'
+          id: 'seo-content',
+          name: 'SEO Content & Copywriting Excellence Award',
+          description: 'Honouring writers whose strategic, high-quality content drives visibility, engagement, and organic growth.'
         },
         {
-          id: 'freelance-innovator-year',
-          name: 'Freelance Innovator of the Year',
-          description: 'Freelancer who has pioneered new approaches, tools, or methodologies in their field.'
+          id: 'performance-marketing',
+          name: 'Performance Marketing Specialist Award',
+          description: 'For freelancers who excel in digital ad strategy, campaign optimization, and conversion-focused creative execution.'
+        },
+        {
+          id: 'email-crm',
+          name: 'Email, CRM & Lifecycle Marketing Award',
+          description: 'Recognizing top freelancers crafting high-performing retention and automation campaigns through email, SMS, or WhatsApp.'
+        }
+      ]
+    },
+    {
+      id: 'innovation-storytelling',
+      name: 'Innovation & Storytelling Awards',
+      description: 'Showcasing freelancers leading the way in modern storytelling, video, and digital innovation.',
+      subcategories: [
+        {
+          id: 'short-form-video',
+          name: 'Short-Form Video & Editing Mastery Award',
+          description: 'For creative editors and storytellers mastering short-form platforms like TikTok, YouTube Shorts, and Reels.'
+        },
+        {
+          id: 'motion-graphics',
+          name: 'Motion Graphics & 3D Creativity Award',
+          description: 'Honouring motion designers and 3D/AR specialists who elevate visual storytelling through technology and innovation.'
+        },
+        {
+          id: 'ugc-creator',
+          name: 'UGC Creator of the Year Award',
+          description: 'For independent creators producing authentic, high-impact user-generated content that amplifies brands across Africa.'
+        },
+        {
+          id: 'social-media',
+          name: 'Social Media Strategy & Community Growth Award',
+          description: 'Recognizing freelancers who\'ve built thriving, engaged digital communities through smart content strategy and audience insight.'
         }
       ]
     },
@@ -262,7 +306,7 @@ const PAANAwardsApplicationModal = ({ isOpen, onClose }) => {
 
   // Define category IDs for each applicant type
   const agencyCategoryIds = ['campaign-excellence', 'agency-excellence', 'innovation-technology', 'sector-excellence', 'special-honors'];
-  const freelancerCategoryIds = ['freelancer-excellence'];
+  const freelancerCategoryIds = ['creative-excellence', 'digital-performance', 'innovation-storytelling'];
 
   // Filter categories based on applicant type
   const filteredAwardCategories = awardCategories.filter(category =>

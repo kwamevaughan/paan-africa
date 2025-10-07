@@ -70,18 +70,75 @@ const PAANAmbassador = () => {
       image: "https://ik.imagekit.io/nkmvdjnna/PAAN/lehong.jpeg",
       flag: "https://flagcdn.com/w40/za.png",
       linkedin: "https://www.linkedin.com/in/williamlehong",
-      description: "Seasoned media and communications professional with 15+ years of experience leading strategic campaigns that shape brand narratives and drive measurable success.",
-      fullDescription: "William Lehong is a seasoned media and communications professional with more than 15 years of experience leading strategic campaigns that shape brand narratives and drive measurable success. As Founder and Managing Director of Lehong Media Communications, he specialises in marketing strategy, public relations, and digital storytelling that elevate brand visibility and influence consumer behaviour. His leadership blends creativity with strategic insight, guiding teams to deliver innovative, high-impact media solutions.",
+      description:
+        "Seasoned media and communications professional with 15+ years of experience leading strategic campaigns that shape brand narratives and drive measurable success.",
+      fullDescription:
+        "William Lehong is a seasoned media and communications professional with more than 15 years of experience leading strategic campaigns that shape brand narratives and drive measurable success. As Founder and Managing Director of Lehong Media Communications, he specialises in marketing strategy, public relations, and digital storytelling that elevate brand visibility and influence consumer behaviour. His leadership blends creativity with strategic insight, guiding teams to deliver innovative, high-impact media solutions.",
       achievements: [
         "Founded and leads Lehong Media Communications",
         "15+ years in media and communications strategy",
         "Expert in brand narrative development and consumer behavior influence",
         "Specialized in high-impact digital storytelling and PR campaigns"
       ],
-      expertise: ["Media Strategy", "Public Relations", "Digital Storytelling", "Brand Development", "Marketing Communications"],
+      expertise: [
+        "Media Strategy",
+        "Public Relations",
+        "Digital Storytelling",
+        "Brand Development",
+        "Marketing Communications"
+      ],
       color: "blue"
+    },
+    {
+      name: "Aramide Pearce",
+      title: "Public Relations & Communications Professional",
+      country: "Nigeria",
+      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/aramide.jpg",
+      flag: "https://flagcdn.com/w40/ng.png",
+      linkedin: "https://www.linkedin.com/in/aramide-pearce-3bb6b2a1",
+      description: "Public relations and communications professional passionate about bringing stories to life and connecting audiences with African creativity.",
+      fullDescription:"Aramide Pearce is a public relations and communications professional who loves bringing stories to life. At Filmhouse Group, she creates and executes PR, digital, and experiential campaigns that connect audiences with African creativity across film, culture, and brands. With experience spanning entertainment, lifestyle, and social impact, she champions local voices, sparks conversation, and builds collaborations that help African talent shine on both local and global stages.",
+      achievements: [
+        "Developed impactful PR and experiential campaigns at Filmhouse Group",
+        "Promotes African creativity and storytelling across film and culture",
+        "Advocates for local voices and collaborations within the African creative industry"
+      ],
+      expertise: [
+        "Public Relations",
+        "Digital Marketing",
+        "Brand Communications",
+        "Event Campaigns",
+        "Creative Strategy"
+      ],
+      color: "green"
+    },
+    {
+      name: "Lydia Shangu",
+      title: "CEO, SBS Clean Energy | Petroleum Africa Liaison (Well Integrity Section)",
+      country: "South Africa",
+      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/lydia.jpg",
+      flag: "https://flagcdn.com/w40/za.png",
+      linkedin: "https://www.linkedin.com/in/queen-lydia-55972b1aa",
+      description:
+        "Experienced leader with a background in communication, marketing, events, petroleum, and mining sectors; currently CEO of SBS Clean Energy.",
+      fullDescription:
+        "My name is Lydia Shangu. I have a background in communication, marketing, event organization, the petroleum sector, and mining. I am currently the CEO of SBS Clean Energy, located in Cape Town, South Africa. I also serve as the Society Petroleum Africa liaison in the Well Integrity section, driving collaboration and innovation within the energy and petroleum sectors.",
+      achievements: [
+        "CEO of SBS Clean Energy in Cape Town, South Africa",
+        "Serves as Petroleum Africa Liaison (Well Integrity Section)",
+        "Extensive experience across communication, marketing, and energy industries"
+      ],
+      expertise: [
+        "Energy Leadership",
+        "Petroleum & Mining",
+        "Corporate Communication",
+        "Event Organization",
+        "Marketing Strategy"
+      ],
+      color: "teal"
     }
   ];
+  
 
   // Calculate total slides based on number of ambassadors (2 per slide)
   const slidesPerView = 2;

@@ -39,11 +39,11 @@ const EventCard = ({ event, isPast = false }) => {
     <div className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group event-card-hover">
       {/* Event Image */}
       <div className="relative h-40 sm:h-48 overflow-hidden">
-        <Image
+      <Image
           src={event.image}
           alt={event.title}
           fill
-          className="object-cover group-hover:scale-105 transition-transform duration-300"
+          className="object-contain group-hover:scale-105 transition-transform duration-300"
         />
         {event.featured && (
           <div className="absolute top-2 sm:top-4 left-2 sm:left-4">
