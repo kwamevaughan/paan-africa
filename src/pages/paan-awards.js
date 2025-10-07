@@ -11,6 +11,7 @@ import { motion } from "framer-motion";
 import PAANAwardsApplicationModal from "@/components/PAANAwardsApplicationModal";
 import CategoryNominationModal from "@/components/CategoryNominationModal";
 import PaystackScript from "@/components/PaystackScript";
+import Hero from "@/components/PaanAwardsHero";
 
 // Animation variants - defined outside component for global access
 const fadeInUp = {
@@ -528,7 +529,7 @@ const SummitPage = () => {
         />
       </Head>
 
-      <main className="px-3 pt-6 sm:px-0 sm:pt-0 relative">
+      <main className="relative">
         <PAANAwardsHeader 
           navLinkColor='text-white' 
           onApplyNowClick={() => setIsApplicationModalOpen(true)}
@@ -1217,115 +1218,5 @@ const SummitPage = () => {
   );
 };
 
-const Hero = ({ sectionRefs, handleScroll, isFixed, scrollToSection, timeLeft, onApplyNowClick }) => {
-
-  return (
-    <>
-      <div
-        className="relative min-h-screen w-full bg-[#172840] overflow-visible pt-16 sm:pt-18 lg-custom:pt-20" 
-        id="home"
-        ref={sectionRefs.home}
-      >
-        {/* Background pattern */}
-        <div className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat opacity-10"
-          style={{
-            backgroundImage: "url('/assets/images/bg-pattern.svg')"
-          }}
-        />
-
-        <div className="relative min-h-screen flex mx-auto max-w-7xl">
-          <div className="w-full px-4 sm:px-6 md:px-8 pb-8 sm:pb-44 flex flex-col lg:flex-row items-center justify-center gap-6 sm:gap-8 lg:gap-12 py-8 sm:py-12 lg:py-16">
-            {/* Text Content */}
-            <motion.div 
-              className="flex-1 max-w-3xl text-left space-y-4 sm:space-y-6 lg:space-y-8 w-full"
-              variants={staggerContainer}
-              initial="initial"
-              animate="animate"
-            >
-              <motion.div 
-                className="space-y-3 sm:space-y-4"
-                variants={fadeInUp}
-              >
-                <h1 className="text-xs sm:text-sm text-white relative uppercase tracking-wide font-light">
-                    The Pan-African Creative Excellence Awards
-                </h1>
-                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl relative font-bold leading-tight bg-gradient-to-r from-[#A57C23] via-[#EBD679] via-[#F9EFA3] via-[#F2E085] to-[#A57C23] bg-clip-text text-transparent">
-                    Celebrating Africa's Creative Excellence
-                </h2>
-                <p className="text-white text-sm sm:text-base md:text-lg lg:text-xl mb-4 sm:mb-6 lg:mb-8 font-light w-full leading-relaxed">
-                    The PAAN Awards honor the boldest agencies, visionary brands, and exceptional freelancers shaping a borderless creative Africa.
-                </p>  
-              </motion.div>
-              
-              <motion.div 
-                className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full sm:w-auto"
-                variants={scaleIn}
-              >
-                <button 
-                  onClick={onApplyNowClick}
-                  className="bg-[#F25849] border border-[#F25849] text-white py-3 sm:py-4 px-4 sm:px-6 md:px-8 lg:px-10 rounded-full hover:bg-[#D6473C] transition-all duration-300 transform ease-in-out hover:translate-y-[-2px] font-semibold text-sm sm:text-base w-full sm:w-auto min-h-[44px]"
-                >
-                  Apply Now
-                </button>
-                <button 
-                  onClick={() => scrollToSection('categories-section')}
-                  className="bg-transparent border border-white text-white py-3 sm:py-4 px-4 sm:px-6 md:px-8 lg:px-10 rounded-full hover:bg-white hover:text-[#172840] transition-all duration-300 transform ease-in-out hover:translate-y-[-2px] font-semibold text-sm sm:text-base w-full sm:w-auto min-h-[44px]"
-                >
-                  Explore Categories
-                </button>
-              </motion.div>
-              <motion.div 
-                className="flex gap-2 text-white text-sm"
-                variants={fadeInUp}
-              >
-                    <div className="flex items-center gap-1">
-                        <div className="w-2.5 h-2.5 bg-[#F25849] rounded-full"></div>
-                        Pan-African Jurors
-                    </div>
-                    <div className="flex items-center gap-1">
-                        <div className="w-2.5 h-2.5 bg-paan-yellow rounded-full"></div>
-                        Transparent Criteria
-                    </div>
-                    <div className="flex items-center gap-1">
-                        <div className="w-2.5 h-2.5 bg-paan-blue rounded-full"></div>
-                        Continental Recognition
-                    </div>
-              </motion.div>
-            </motion.div>
-
-            {/* Hero Image */}
-            <div className="flex-1 max-w-sm sm:max-w-md lg:max-w-lg xl:max-w-xl mt-6 sm:mt-4 lg:mt-0 w-full">
-              <div className="relative">
-                <Image
-                  src="https://ik.imagekit.io/nkmvdjnna/PAAN/awards/hero.png"
-                  alt="PAAN Team - Join Our Dynamic Team"
-                  width={600}
-                  height={400}
-                  className="w-full h-auto rounded-xl object-cover shadow-2xl max-h-[300px] sm:max-h-[400px] lg:max-h-none"
-                  priority
-                  sizes="(max-width: 640px) 100vw, (max-width: 768px) 80vw, (max-width: 1024px) 50vw, 600px"
-                />
-                
-                {/* Yellow Info Card */}
-                <div className="absolute -bottom-2 left-4 bg-[#F2B706] rounded-lg p-4 shadow-lg max-w-[280px]">
-                  <div className="flex items-center gap-3">
-                    <Icon icon="mdi:trophy" className="text-[#172840] flex-shrink-0" width="32" height="32" />
-                    <div className="flex flex-col">
-                      <h3 className="text-[#172840] font-bold text-sm">Award Categories</h3>
-                      <p className="text-[#172840] text-xs font-medium leading-relaxed">
-                        11 categories across agencies & freelancers
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </>
-  );
-};
 
 export default SummitPage;
