@@ -1,21 +1,21 @@
 // data/eventsData.js
 export const eventsData = {
-  upcoming: [
+  upcoming: [ 
     {
-      id: 6,
-      title: "Cross-Border Growth: How African Agencies Can Conquer Markets Beyond Their Country Borders",
-      date: "2025-10-1",
-      time: "12 PM - 1 PM EAT",
+      id: 2,
+      title: "Trend-Driven, Tech-Powered: Practical Event Management Solutions for 2025",
+      date: "2025-07-15",
+      time: "12:00 PM - 1:00 PM",
       location: "Virtual Event",
       venue: "Online",
-      description: "Africa’s creative and marketing industry is booming — but growth often stalls at the national level. How can agencies break beyond borders to win regional and global opportunities? In this webinar, hosted by the Pan-African Agency Network (PAAN), leading agency founders and executives will share practical lessons on expanding across Africa. This is your chance to learn directly from peers who are already conquering markets beyond their own borders, and to position your agency for Pan-African growth.",
-      image: "/assets/images/webinar2.png",
+      description: "What’s shaping event management in 2025? From AI-powered personalisation to ROI-focused strategies, the next wave of events is smarter, data-driven, and more impactful. Learn how to apply these trends with practical tech solutions in our free webinar with Cvent.",
+      image: "/assets/images/practical-event-management-webinar.png",
       category: "Webinar",
-      price: "Free Webinar",
-      registrationUrl: "https://us06web.zoom.us/webinar/register/WN_9wqm201ATnG3nH1mdJgwbA#/registration",
+      price: "Free for All Members",
+      registrationUrl: "https://us06web.zoom.us/webinar/register/WN_SAT_50s-Spm24UcdFxdi-A#/registration",
       status: "upcoming",
-      featured: false
-    },
+      featured: true
+    },   
     {
       id: 2,
       title: "PAAN Creative Summit 2026",
@@ -33,6 +33,23 @@ export const eventsData = {
     }
   ],
   past: [
+    {
+      id: 6,
+      title: "Cross-Border Growth: How African Agencies Can Conquer Markets Beyond Their Country Borders",
+      date: "2025-10-1",
+      time: "12 PM - 1 PM EAT",
+      location: "Virtual Event",
+      venue: "Online",
+      description: "Africa’s creative and marketing industry is booming — but growth often stalls at the national level. How can agencies break beyond borders to win regional and global opportunities? In this webinar, hosted by the Pan-African Agency Network (PAAN), leading agency founders and executives will share practical lessons on expanding across Africa. This is your chance to learn directly from peers who are already conquering markets beyond their own borders, and to position your agency for Pan-African growth.",
+      image: "/assets/images/webinar2.png",
+      category: "Webinar",
+      price: "Completed",
+      registrationUrl: "https://youtube.com/watch?v=ndoRhDpz-20&feature=youtu.be",
+      status: "past",
+      featured: true,
+      attendees: 120,
+      speakers: 2
+    },
     {
       id: 1,
       title: "Hard-Won Lessons for the Next Generation of Agency Founders",
