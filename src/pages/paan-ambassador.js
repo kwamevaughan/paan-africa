@@ -97,7 +97,7 @@ const PAANAmbassador = () => {
       flag: "https://flagcdn.com/w40/ng.png",
       linkedin: "https://www.linkedin.com/in/aramide-pearce-3bb6b2a1",
       description: "Public relations and communications professional passionate about bringing stories to life and connecting audiences with African creativity.",
-      fullDescription:"Aramide Pearce is a public relations and communications professional who loves bringing stories to life. At Filmhouse Group, she creates and executes PR, digital, and experiential campaigns that connect audiences with African creativity across film, culture, and brands. With experience spanning entertainment, lifestyle, and social impact, she champions local voices, sparks conversation, and builds collaborations that help African talent shine on both local and global stages.",
+      fullDescription: "Aramide Pearce is a public relations and communications professional who loves bringing stories to life. At Filmhouse Group, she creates and executes PR, digital, and experiential campaigns that connect audiences with African creativity across film, culture, and brands. With experience spanning entertainment, lifestyle, and social impact, she champions local voices, sparks conversation, and builds collaborations that help African talent shine on both local and global stages.",
       achievements: [
         "Developed impactful PR and experiential campaigns at Filmhouse Group",
         "Promotes African creativity and storytelling across film and culture",
@@ -136,8 +136,36 @@ const PAANAmbassador = () => {
         "Marketing Strategy"
       ],
       color: "teal"
+    },
+    {
+      name: "Isaac Tumelo Kgosiyareng",
+      title: "CEO, Malakana Enterprises | International Trade Analyst, TradeAtlas GmbH",
+      country: "Botswana",
+      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/Isaac.png",
+      flag: "https://flagcdn.com/w40/bw.png",
+      linkedin: "https://www.linkedin.com/in/isaac-tumelo-kgosiyareng-599754138",
+      description:
+        "Dynamic business leader and international trade analyst leveraging over a decade of expertise in sales, marketing, and strategic business expansion.",
+      fullDescription:
+        "Isaac Tumelo Kgosiyareng is a dynamic business leader, mentor, and international trade analyst based in Gaborone, Botswana. He is the CEO of Malakana Enterprises, where he focuses on spearheading innovative strategies for business expansion, contract negotiation, and profitability, leveraging over a decade of expertise in sales and marketing. In parallel with his CEO role, Isaac serves as an International Trade Analyst for TradeAtlas GmbH in Germany, providing valuable market intelligence for strategic international alignments. His commitment to economic growth extends to his role as a Business Mentor at the CEDA (Citizen Entrepreneurial Development Agency), where he coaches and consults emerging enterprises. Isaac holds an Executive Master of Business Administration (EMBA) with a focus on Business Analytics from Eaton Business School and a Bachelor of Business Administration (BBA) in Marketing from the University of Botswana. He also possesses numerous professional certifications, including expertise in Satellite Communication (Intelsat Global VSAT Training) and various topics on leadership, governance, and analytics.",
+      achievements: [
+        "CEO of Malakana Enterprises in Gaborone, Botswana",
+        "International Trade Analyst for TradeAtlas GmbH, Germany",
+        "Business Mentor at CEDA (Citizen Entrepreneurial Development Agency)",
+        "Holds an EMBA in Business Analytics and a BBA in Marketing",
+        "Certified in Satellite Communication, Leadership, and Governance"
+      ],
+      expertise: [
+        "International Trade Analysis",
+        "Business Development",
+        "Sales & Marketing Strategy",
+        "Leadership & Mentorship",
+        "Data-Driven Decision Making"
+      ],
+      color: "orange"
     }
   ];
+  
   
 
   // Calculate total slides based on number of ambassadors (2 per slide)
