@@ -420,11 +420,7 @@ const HomePage = () => {
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                         <div className="flex items-center space-x-3">
                           <div className="w-2 h-2 bg-paan-dark-blue rounded-full"></div>
-                          <span className="text-paan-dark-blue/90">Digital Media Solutions</span>
-                        </div>
-                        <div className="flex items-center space-x-3">
-                          <div className="w-2 h-2 bg-paan-dark-blue rounded-full"></div>
-                          <span className="text-paan-dark-blue/90">Marketing Consulting</span>
+                          <span className="text-paan-dark-blue/90">Insight-Driven Media Planning</span>
                         </div>
                         <div className="flex items-center space-x-3">
                           <div className="w-2 h-2 bg-paan-dark-blue rounded-full"></div>
@@ -432,7 +428,11 @@ const HomePage = () => {
                         </div>
                         <div className="flex items-center space-x-3">
                           <div className="w-2 h-2 bg-paan-dark-blue rounded-full"></div>
-                          <span className="text-paan-dark-blue/90">Campaign Conceptualization</span>
+                          <span className="text-paan-dark-blue/90">Media Strategy Development</span>
+                        </div>
+                        <div className="flex items-center space-x-3">
+                          <div className="w-2 h-2 bg-paan-dark-blue rounded-full"></div>
+                          <span className="text-paan-dark-blue/90">End-to-End Digital Media Solutions</span>
                         </div>
                         <div className="flex items-center space-x-3">
                           <div className="w-2 h-2 bg-paan-dark-blue rounded-full"></div>
@@ -440,15 +440,19 @@ const HomePage = () => {
                         </div>
                         <div className="flex items-center space-x-3">
                           <div className="w-2 h-2 bg-paan-dark-blue rounded-full"></div>
-                          <span className="text-paan-dark-blue/90">Data as a service (DAAS)</span>
+                          <span className="text-paan-dark-blue/90">Location Intelligence – Data as a service (DAAS)</span>
                         </div>
                         <div className="flex items-center space-x-3">
                           <div className="w-2 h-2 bg-paan-dark-blue rounded-full"></div>
-                          <span className="text-paan-dark-blue/90">Media Relations</span>
+                          <span className="text-paan-dark-blue/90">Creative Strategy, Ideation & Execution</span>
                         </div>
                         <div className="flex items-center space-x-3">
                           <div className="w-2 h-2 bg-paan-dark-blue rounded-full"></div>
-                          <span className="text-paan-dark-blue/90">Events & Activations</span>
+                          <span className="text-paan-dark-blue/90">Brand Strategy Development and Execution</span>
+                        </div>
+                        <div className="flex items-center space-x-3">
+                          <div className="w-2 h-2 bg-paan-dark-blue rounded-full"></div>
+                          <span className="text-paan-dark-blue/90">Events and Activations</span>
                         </div>
                       </div>
                     </div>
