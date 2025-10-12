@@ -86,11 +86,13 @@ export default function ParallaxSection({ openModal }) {
               </h3>
                 <div className='flex gap-4'>
                     <button 
+                    onClick={()=>window.href='https://membership.paan.africa/'}
                     className="bg-paan-red font-semibold border border-red-500 text-white py-3 px-8 rounded-full hover:bg-red-600 transition-all duration-300 transform ease-in-out hover:translate-y-[-2px] font-medium text-sm"
                     >
                         Join PAAN
                     </button> 
                     <button 
+                    onClick={()=>window.location.href='/pricing'}
                     className="bg-paan-blue font-semibold border border-paan-blue text-paan-dark-blue py-3 px-8 rounded-full hover:bg-white hover:border-white transition-all duration-300 transform ease-in-out hover:translate-y-[-2px] font-medium text-sm"
                     >
                         Explore Programs
