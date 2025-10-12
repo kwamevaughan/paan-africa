@@ -13,15 +13,12 @@ import Footer from "@/layouts/footer";
 import { useEffect, useRef, useState } from "react";
 import { useFixedHeader, handleScroll } from '../../utils/scrollUtils';
 import { useAppTranslations } from '../hooks/useTranslations';
-import { usePopupBanner } from '../hooks/usePopupBanner';
 import ContactSection from "@/components/ContactSection";
 import AgencyEnquiryModal from "@/components/AgencyEnquiryModal";
 import AgenciesMarquee from "@/components/AgenciesMarquee";
 import AgencyLogosGrid from "@/components/AgencyLogosGrid";
 import ScrollToTop from "@/components/ScrollToTop";
 import ConnectingDots from "@/components/ConnectingDots";
-import AcademyConsultationModal from "@/components/AcademyConsultationModal";
-import PaanAmbassadorProgramModal from "@/components/PaanAmbassadorProgramModal";
 import ProgramCard from "@/components/ProgramCard";
 import StrategicPartners from "@/components/StrategicPartners";
 
@@ -72,13 +69,6 @@ const HomePage = () => {
   const isFixed = useFixedHeader();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const canvasRef = useRef(null);
-  
-  // Use popup banner hooks with 7-day cooldown
-  const { shouldShow: shouldShowConsultModal, markAsShown: markConsultModalAsShown } = usePopupBanner('consultation-modal', 7);
-  const { shouldShow: shouldShowAmbassadorModal, markAsShown: markAmbassadorModalAsShown } = usePopupBanner('ambassador-modal', 7);
-  
-  const [showConsultModal, setShowConsultModal] = useState(false);
-  const [showAmbassadorModal, setShowAmbassadorModal] = useState(false);
 
   // Video controls: refs and playing state
   const videoRefs = useRef([]);
@@ -98,88 +88,6 @@ const HomePage = () => {
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
 
-  // Add scroll event listener to detect when user reaches bottom
-  useEffect(() => {
-    const handleScrollToBottom = () => {
-      // Calculate if user has scrolled to bottom (with some tolerance)
-      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-      const windowHeight = window.innerHeight;
-      const documentHeight = document.documentElement.scrollHeight;
-      
-      // Trigger when user is within 100px of the bottom
-      const isNearBottom = scrollTop + windowHeight >= documentHeight - 100;
-      
-      if (isNearBottom && shouldShowConsultModal && !showConsultModal) {
-        setShowConsultModal(true);
-        markConsultModalAsShown(); // Mark as shown and start 7-day cooldown
-      }
-    };
-
-    window.addEventListener('scroll', handleScrollToBottom);
-    
-    // Cleanup
-    return () => {
-      window.removeEventListener('scroll', handleScrollToBottom);
-    };
-  }, [shouldShowConsultModal, showConsultModal, markConsultModalAsShown]);
-
-  // Add exit-intent detection for Ambassador Program Modal
-  useEffect(() => {
-    let exitIntentTimeout;
-
-    const handleExitIntent = (e) => {
-      // Only trigger if user hasn't seen the modal yet and it should be shown
-      if (!shouldShowAmbassadorModal || showAmbassadorModal) return;
-
-      // Check if mouse is leaving from the top of the page (exit intent)
-      if (e.clientY <= 0) {
-        // Add a small delay to avoid false triggers
-        exitIntentTimeout = setTimeout(() => {
-          setShowAmbassadorModal(true);
-          markAmbassadorModalAsShown(); // Mark as shown and start 7-day cooldown
-        }, 100);
-      }
-    };
-
-    const handleMouseEnter = () => {
-      // Clear timeout if user moves mouse back into the page quickly
-      if (exitIntentTimeout) {
-        clearTimeout(exitIntentTimeout);
-      }
-    };
-
-    // Only add event listeners on desktop (avoid mobile false triggers)
-    const isDesktop = window.innerWidth >= 1024;
-    
-    if (isDesktop) {
-      document.addEventListener('mouseleave', handleExitIntent);
-      document.addEventListener('mouseenter', handleMouseEnter);
-    }
-
-    // Alternative: beforeunload event for mobile/tablet
-    const handleBeforeUnload = (e) => {
-      if (shouldShowAmbassadorModal && !showAmbassadorModal && !isDesktop) {
-        setShowAmbassadorModal(true);
-        markAmbassadorModalAsShown(); // Mark as shown and start 7-day cooldown
-        // Note: Modern browsers ignore custom messages in beforeunload
-        e.preventDefault();
-        e.returnValue = '';
-      }
-    };
-
-    if (!isDesktop) {
-      window.addEventListener('beforeunload', handleBeforeUnload);
-    }
-
-    return () => {
-      if (exitIntentTimeout) {
-        clearTimeout(exitIntentTimeout);
-      }
-      document.removeEventListener('mouseleave', handleExitIntent);
-      document.removeEventListener('mouseenter', handleMouseEnter);
-      window.removeEventListener('beforeunload', handleBeforeUnload);
-    };
-  }, [shouldShowAmbassadorModal, showAmbassadorModal, markAmbassadorModalAsShown]);
 
   // Remove IntersectionObserver effect (lines 70-100)
   // useEffect(() => {
@@ -429,9 +337,7 @@ const HomePage = () => {
               />
               <div className="">
                 <button
-                  onClick={(e) => {
-                    handleScroll(e, "#our-mission", isFixed);
-                  }}
+                  onClick={() => window.location.href = '/about'}
                   className="absolute -bottom-1 bg-[#F25849] text-white px-4 py-2 sm:px-10 sm:py-4 rounded-full font-bold text-xs sm:text-lg hover:bg-[#D6473C] transition duration-300 shadow-lg"
                 >
                   {t('homepage.aboutUs.discoverMore')}
@@ -1146,8 +1052,6 @@ const HomePage = () => {
         </div>
         <AgencyEnquiryModal isOpen={isModalOpen} onClose={closeModal} />
         <ScrollToTop />
-        <AcademyConsultationModal isOpen={showConsultModal} onClose={() => setShowConsultModal(false)} />
-        <PaanAmbassadorProgramModal isOpen={showAmbassadorModal} onClose={() => setShowAmbassadorModal(false)} />
       </main>
       <Footer />
       </div>

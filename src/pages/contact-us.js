@@ -6,9 +6,12 @@ import Parallax from "@/components/ContactParallax";
 import ScrollToTop from "@/components/ScrollToTop";
 import { motion } from "framer-motion";
 import ReCAPTCHA from "react-google-recaptcha";
+import { useRouter } from "next/router";
+import { toast } from "react-hot-toast";
 
 
 const contact = () => {
+    const router = useRouter();
     const recaptchaRef = useRef(null);
     const sectionRefs = {
         home: useRef(null),
@@ -25,6 +28,19 @@ const contact = () => {
     const videoRef = useRef(null);
     const [errors, setErrors] = useState({});
     const [recaptchaToken, setRecaptchaToken] = useState(null);
+    
+    // Form state management
+    const [formData, setFormData] = useState({
+        firstName: "",
+        secondName: "",
+        email: "",
+        phone: "",
+        organization: "",
+        helpWith: "",
+        hearAbout: "",
+        message: ""
+    });
+    const [isSubmitting, setIsSubmitting] = useState(false);
     
     // FIXED: Add missing state variables
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -47,6 +63,111 @@ const contact = () => {
             ...prevErrors,
             recaptcha: "",
         }));
+    };
+
+    // Handle input changes
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setFormData(prev => ({
+            ...prev,
+            [name]: value
+        }));
+        // Clear error for this field when user starts typing
+        if (errors[name]) {
+            setErrors(prev => ({
+                ...prev,
+                [name]: ""
+            }));
+        }
+    };
+
+    // Form validation
+    const validateForm = () => {
+        const newErrors = {};
+        
+        if (!formData.firstName.trim()) {
+            newErrors.firstName = "First name is required";
+        }
+        if (!formData.email.trim()) {
+            newErrors.email = "Email is required";
+        } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+            newErrors.email = "Email is invalid";
+        }
+        if (!formData.organization.trim()) {
+            newErrors.organization = "Organization is required";
+        }
+        if (!formData.helpWith.trim()) {
+            newErrors.helpWith = "Please describe what you need help with";
+        }
+        if (!recaptchaToken) {
+            newErrors.recaptcha = "Please complete the reCAPTCHA verification";
+        }
+        
+        return newErrors;
+    };
+
+    // Handle form submission
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        
+        // Validate form
+        const validationErrors = validateForm();
+        if (Object.keys(validationErrors).length > 0) {
+            setErrors(validationErrors);
+            return;
+        }
+
+        setIsSubmitting(true);
+        const toastId = toast.loading("Sending message...");
+
+        try {
+            const response = await fetch("/api/send-email", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    firstName: formData.firstName,
+                    secondName: formData.secondName || "",
+                    email: formData.email,
+                    phone: formData.phone || "",
+                    organization: formData.organization,
+                    message: formData.message || formData.helpWith,
+                    recaptchaToken,
+                }),
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                toast.success("Message sent successfully!", { id: toastId });
+                // Reset form
+                setFormData({
+                    firstName: "",
+                    secondName: "",
+                    email: "",
+                    phone: "",
+                    organization: "",
+                    helpWith: "",
+                    hearAbout: "",
+                    message: ""
+                });
+                setRecaptchaToken(null);
+                recaptchaRef.current?.reset();
+                // Redirect to thank you page
+                router.push("/thank-you");
+            } else {
+                toast.error(data.message || "Failed to send message.", { id: toastId });
+                setRecaptchaToken(null);
+                recaptchaRef.current?.reset();
+            }
+        } catch (error) {
+            toast.error("An error occurred. Please try again.", { id: toastId });
+            setRecaptchaToken(null);
+            recaptchaRef.current?.reset();
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     // Restore IntersectionObserver for section transitions
@@ -169,7 +290,7 @@ const contact = () => {
                             {/* Contact Form - Takes up 2 columns (more space) */}
                             <div className="lg:col-span-2 bg-transparent rounded-lg p-6 sm:p-8">
                                 <h3 className="text-2xl sm:text-3xl font-bold text-[#172840] mb-6">Send us a message</h3>
-                                <form className="space-y-6">
+                                <form onSubmit={handleSubmit} className="space-y-6">
                                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                         <div>
                                             <label htmlFor="firstName" className="block text-[#172840] text-sm font-medium mb-2">
@@ -179,9 +300,16 @@ const contact = () => {
                                                 type="text"
                                                 id="firstName"
                                                 name="firstName"
-                                                className="w-full px-4 py-3 border border-gray-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-[#F25849] focus:border-transparent transition-all duration-300"
+                                                value={formData.firstName}
+                                                onChange={handleInputChange}
+                                                className={`w-full px-4 py-3 border rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-[#F25849] focus:border-transparent transition-all duration-300 ${
+                                                    errors.firstName ? 'border-red-500' : 'border-gray-300'
+                                                }`}
                                                 placeholder="Enter your full name"
                                             />
+                                            {errors.firstName && (
+                                                <p className="text-red-500 text-sm mt-1">{errors.firstName}</p>
+                                            )}
                                         </div>
                                         <div>
                                             <label htmlFor="email" className="block text-[#172840] text-sm font-medium mb-2">
@@ -191,9 +319,16 @@ const contact = () => {
                                                 type="email"
                                                 id="email"
                                                 name="email"
-                                                className="w-full px-4 py-3 border border-gray-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-[#F25849] focus:border-transparent transition-all duration-300"
+                                                value={formData.email}
+                                                onChange={handleInputChange}
+                                                className={`w-full px-4 py-3 border rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-[#F25849] focus:border-transparent transition-all duration-300 ${
+                                                    errors.email ? 'border-red-500' : 'border-gray-300'
+                                                }`}
                                                 placeholder="Enter your email"
                                             />
+                                            {errors.email && (
+                                                <p className="text-red-500 text-sm mt-1">{errors.email}</p>
+                                            )}
                                         </div>
                                     </div>
 
@@ -206,9 +341,16 @@ const contact = () => {
                                                 type="text"
                                                 id="organization"
                                                 name="organization"
-                                                className="w-full px-4 py-3 border border-gray-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-[#F25849] focus:border-transparent transition-all duration-300"
+                                                value={formData.organization}
+                                                onChange={handleInputChange}
+                                                className={`w-full px-4 py-3 border rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-[#F25849] focus:border-transparent transition-all duration-300 ${
+                                                    errors.organization ? 'border-red-500' : 'border-gray-300'
+                                                }`}
                                                 placeholder="Enter your organization"
                                             />
+                                            {errors.organization && (
+                                                <p className="text-red-500 text-sm mt-1">{errors.organization}</p>
+                                            )}
                                         </div>
                                         <div>
                                             <label htmlFor="phone" className="block text-[#172840] text-sm font-medium mb-2">
@@ -218,6 +360,8 @@ const contact = () => {
                                                 type="tel"
                                                 id="phone"
                                                 name="phone"
+                                                value={formData.phone}
+                                                onChange={handleInputChange}
                                                 className="w-full px-4 py-3 border border-gray-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-[#F25849] focus:border-transparent transition-all duration-300"
                                                 placeholder="Enter your phone number"
                                             />
@@ -233,9 +377,16 @@ const contact = () => {
                                                 type="text"
                                                 id="helpWith"
                                                 name="helpWith"
-                                                className="w-full px-4 py-3 border border-gray-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-[#F25849] focus:border-transparent transition-all duration-300"
+                                                value={formData.helpWith}
+                                                onChange={handleInputChange}
+                                                className={`w-full px-4 py-3 border rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-[#F25849] focus:border-transparent transition-all duration-300 ${
+                                                    errors.helpWith ? 'border-red-500' : 'border-gray-300'
+                                                }`}
                                                 placeholder="Describe what you need help with"
                                             />
+                                            {errors.helpWith && (
+                                                <p className="text-red-500 text-sm mt-1">{errors.helpWith}</p>
+                                            )}
                                         </div>
                                         <div>
                                             <label htmlFor="hearAbout" className="block text-[#172840] text-sm font-medium mb-2">
@@ -245,6 +396,8 @@ const contact = () => {
                                                 type="text"
                                                 id="hearAbout"
                                                 name="hearAbout"
+                                                value={formData.hearAbout}
+                                                onChange={handleInputChange}
                                                 className="w-full px-4 py-3 border border-gray-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-[#F25849] focus:border-transparent transition-all duration-300"
                                                 placeholder="How did you hear about us?"
                                             />
@@ -259,6 +412,8 @@ const contact = () => {
                                             id="message"
                                             name="message"
                                             rows="4"
+                                            value={formData.message}
+                                            onChange={handleInputChange}
                                             className="w-full px-4 py-3 border border-gray-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-[#F25849] focus:border-transparent transition-all duration-300 resize-none"
                                             placeholder="Enter your message here..."
                                         />
@@ -281,9 +436,14 @@ const contact = () => {
                                         <div className="text-left">
                                             <button
                                                 type="submit"
-                                                className="bg-[#F25849] hover:bg-[#E04538] text-white px-8 py-4 rounded-full font-medium text-sm transition-all duration-300 transform hover:scale-105 shadow-lg"
+                                                disabled={isSubmitting}
+                                                className={`px-8 py-4 rounded-full font-medium text-sm transition-all duration-300 transform shadow-lg ${
+                                                    isSubmitting 
+                                                        ? 'bg-gray-400 cursor-not-allowed' 
+                                                        : 'bg-[#F25849] hover:bg-[#E04538] hover:scale-105'
+                                                } text-white`}
                                             >
-                                                Send Message
+                                                {isSubmitting ? 'Sending...' : 'Send Message'}
                                             </button>
                                         </div>
                                         <p className="text-sm">We aim to respond within 2 business days.</p>

@@ -1,5 +1,5 @@
 import SEO from "@/components/SEO";
-import TravelGuideHeader from "../../layouts/travel-guide-header";
+import TravelGuideHeader from "@/layouts/travel-guide-header";
 import Image from "next/image";
 import { Icon } from "@iconify/react";
 import SummitFooter from "@/layouts/summit-footer";

@@ -90,7 +90,7 @@ const TravelGuideHeader = ({ navLinkColor }) => {
         <div className="flex items-center justify-between py-2 sm:py-3">
           {/* Logo - Left Side */}
           <div className="flex-shrink-0">
-            <Link href="/" passHref>
+            <Link href="/summit" passHref>
               <Image
                 src="/assets/images/paan-summit-logo.svg"
                 alt="Logo"
