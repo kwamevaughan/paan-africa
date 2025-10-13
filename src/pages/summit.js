@@ -748,7 +748,7 @@ const SummitPage = () => {
                      src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/tracks/1.png"
                      alt="Track 1"
                      fill
-                     className="object-cover"
+                     className="object-cover hidden sm:block"
                    />
                    <div className="absolute bottom-0 left-0 right-0 bg-white rounded-t-lg p-4 sm:p-6">
                      <h4 className="text-base sm:text-lg md:text-xl font-bold text-paan-dark-blue mb-1 sm:mb-2">AI, Technology &<br/>The Future of Creative Work</h4>
@@ -778,7 +778,7 @@ const SummitPage = () => {
                      src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/tracks/2.png"
                      alt="Track 2"
                      fill
-                     className="object-cover"
+                     className="object-cover hidden sm:block"
                    />
                    <div className="absolute bottom-0 left-0 right-0 bg-white rounded-t-lg p-4 sm:p-6">
                      <h4 className="text-base sm:text-lg md:text-xl font-bold text-paan-dark-blue mb-1 sm:mb-2">Creative Effectiveness,<br/>Design & Media Performance</h4>
@@ -808,7 +808,7 @@ const SummitPage = () => {
                      src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/tracks/3.png"
                      alt="Track 3"
                      fill
-                     className="object-cover"
+                     className="object-cover hidden sm:block"
                    />
                    <div className="absolute bottom-0 left-0 right-0 bg-white rounded-t-lg p-4 sm:p-6">
                      <h4 className="text-base sm:text-lg md:text-xl font-bold text-paan-dark-blue mb-1 sm:mb-2">Data, Analytics &<br/>Measurement for Growth</h4>
@@ -834,7 +834,7 @@ const SummitPage = () => {
                      src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/tracks/4.png"
                      alt="Track 4"
                      fill
-                     className="object-cover"
+                     className="object-cover hidden sm:block"
                    />
                    <div className="absolute bottom-0 left-0 right-0 bg-white rounded-t-lg p-4 sm:p-6">
                      <h4 className="text-base sm:text-lg md:text-xl font-bold text-paan-dark-blue mb-1 sm:mb-2">The Creator &<br/>Freelance Economy</h4>
@@ -860,7 +860,7 @@ const SummitPage = () => {
                      src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/tracks/5.png"
                      alt="Track 5"
                      fill
-                     className="object-cover"
+                     className="object-cover hidden sm:block"
                    />
                    <div className="absolute bottom-0 left-0 right-0 bg-white rounded-t-lg p-4 sm:p-6">
                      <h4 className="text-base sm:text-lg md:text-xl font-bold text-paan-dark-blue mb-1 sm:mb-2">Communication, PR &<br/>Brand Trust</h4>
@@ -886,7 +886,7 @@ const SummitPage = () => {
                      src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/tracks/6.png"
                      alt="Track 6"
                      fill
-                     className="object-cover"
+                     className="object-cover hidden sm:block"
                    />
                    <div className="absolute bottom-0 left-0 right-0 bg-white rounded-t-lg p-4 sm:p-6">
                      <h4 className="text-base sm:text-lg md:text-xl font-bold text-paan-dark-blue mb-1 sm:mb-2">Commerce, Platforms &<br/>Marketing Business</h4>
@@ -916,7 +916,7 @@ const SummitPage = () => {
                      src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/tracks/7.png"
                      alt="Track 7"
                      fill
-                     className="object-cover"
+                     className="object-cover hidden sm:block"
                    />
                    <div className="absolute bottom-0 left-0 right-0 bg-white rounded-t-lg p-4 sm:p-6">
                      <h4 className="text-base sm:text-lg md:text-l font-bold text-paan-dark-blue mb-1 sm:mb-2">Cross-Border Collaboration &<br/>Ecosystem Growth</h4>
