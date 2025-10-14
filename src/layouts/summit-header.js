@@ -6,7 +6,6 @@ import { useState, useEffect } from "react";
 import { menuItems, ctaButton } from "../data/summitMenu";
 import { useFixedHeader, handleScroll } from "../../utils/scrollUtils";
 import LanguageSwitch from "../components/LanguageSwitch";
-import TicketPurchaseButton from "../components/TicketPurchaseButton";
 
 const Header = ({ navLinkColor }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -119,13 +118,12 @@ const Header = ({ navLinkColor }) => {
             {/* Language Switcher */}
             <LanguageSwitch className="mr-2 xl:mr-3" />
             
-            <TicketPurchaseButton 
-              variant="primary" 
-              size="sm"
-              className={ctaButton.className}
+            <button 
+              onClick={() => window.location.href = '/summit/purchase-ticket'}
+              className="bg-paan-red text-white px-4 py-2 text-sm rounded-full hover:bg-paan-red/90 transition-all duration-300 font-medium shadow-lg flex items-center justify-center gap-2"
             >
               {ctaButton.label}
-            </TicketPurchaseButton>
+            </button>
           </div>
         </div>
 
@@ -159,13 +157,12 @@ const Header = ({ navLinkColor }) => {
               );
             })}
             <div className="px-3 sm:px-4 py-3 mt-4">
-              <TicketPurchaseButton 
-                variant="primary" 
-                size="sm"
-                className={ctaButton.mobileClassName}
+              <button 
+                onClick={() => window.location.href = '/summit/purchase-ticket'}
+                className="bg-paan-red text-white px-4 py-2 text-sm rounded-full hover:bg-paan-red/90 transition-all duration-300 font-medium shadow-lg flex items-center justify-center gap-2 w-full"
               >
                 {ctaButton.label}
-              </TicketPurchaseButton>
+              </button>
             </div>
           </div>
         </div>

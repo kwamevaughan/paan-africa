@@ -50,27 +50,27 @@ const SummitFooter = () => {
               <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
               <ul className="space-y-2">
                 <li>
-                  <a href="#about" className="text-white/80 hover:text-paan-red transition-colors">
+                  <a href="/about" className="text-white/80 hover:text-paan-red transition-colors">
                     About PAAN
                   </a>
                 </li>
                 <li>
-                  <a href="#agenda" className="text-white/80 hover:text-paan-red transition-colors">
+                  <a href="/pricing" className="text-white/80 hover:text-paan-red transition-colors">
                     Membership
                   </a>
                 </li>
                 <li>
-                  <a href="#speakers" className="text-white/80 hover:text-paan-red transition-colors">
-                    Services
+                  <a href="/paan-awards" className="text-white/80 hover:text-paan-red transition-colors">
+                    PAAN Awards
                   </a>
                 </li>
                 <li>
-                  <a href="#tickets" className="text-white/80 hover:text-paan-red transition-colors">
-                    Resources
+                  <a href="https://membership.paan.africa/" className="text-white/80 hover:text-paan-red transition-colors">
+                    Join PAAN
                   </a>
                 </li>
                 <li>
-                  <a href="#plan-your-trip" className="text-white/80 hover:text-paan-red transition-colors">
+                  <a href="/summit/travel-guide" className="text-white/80 hover:text-paan-red transition-colors">
                     Plan Your Trip
                   </a>
                 </li>

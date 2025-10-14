@@ -450,8 +450,8 @@ const SummitPage = () => {
   
   // Countdown timer effect
   useEffect(() => {
-    // Set the target date (November 1st, 2025)
-    const targetDate = new Date('2025-11-01T00:00:00').getTime();
+    // Set the target date (November 14th, 2025)
+    const targetDate = new Date('2025-11-14T00:00:00').getTime();
     
     const updateCountdown = () => {
       const now = new Date().getTime();
@@ -976,7 +976,7 @@ const Tickets = ({ selectedTickets, setSelectedTickets, onNext, errors }) => {
                 <div className="flex items-baseline gap-2">
                   <h3 className="text-2xl sm:text-3xl font-bold text-paan-dark-blue">${ticket.price}</h3>
                 </div>
-                <p className="text-xs text-paan-red mt-1">Early bird pricing (until Nov 1st 2025)</p>
+                <p className="text-xs text-paan-red mt-1">Early bird pricing (until Nov 14th 2025)</p>
               </motion.div>
               <motion.div 
                 className="mb-4 sm:mb-6"
@@ -1406,7 +1406,7 @@ const Attendees = ({ onNext, onPrev, purchaserInfo, handlePurchaserChange, atten
                                 className={`mr-3 mt-1 ${errors.terms ? 'border-red-500' : ''}`}
                               />
                               <label htmlFor="terms" className="text-sm text-gray-700">
-                                I accept the <a href="#" className="text-paan-blue hover:underline">terms & conditions</a> and <a href="#" className="text-paan-blue hover:underline">privacy policy</a> <span className="text-red-500">*</span>
+                                I accept the <a href="/terms-and-conditions" className="text-paan-blue hover:underline">terms & conditions</a> and <a href="/privacy-policy" className="text-paan-blue hover:underline">privacy policy</a> <span className="text-red-500">*</span>
                               </label>
                             </div>
                             {errors.terms && (

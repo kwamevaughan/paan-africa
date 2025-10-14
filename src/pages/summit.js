@@ -555,7 +555,7 @@ const SummitPage = () => {
                 variants={scaleIn}
               >
                 <button 
-                  onClick={(e) => handleScroll(e, '#tickets-section')}
+                  onClick={() => window.location.href = '/summit/purchase-ticket'}
                   className="px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base font-semibold bg-paan-red text-white hover:bg-paan-red/90 rounded-full shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 cursor-pointer relative z-20 w-full sm:w-auto"
                 >
                   Register Now
@@ -700,13 +700,12 @@ const SummitPage = () => {
                 </div>
             </div>
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-2 pt-4">
-              <TicketPurchaseButton 
-                variant="primary" 
-                size="md"
-                className="px-6 sm:px-8 py-3 text-sm sm:text-base font-medium w-full sm:w-auto"
+              <button 
+                onClick={() => window.location.href = '/summit/purchase-ticket'}
+                className="bg-paan-red text-white px-6 sm:px-8 py-3 text-sm sm:text-base font-medium w-full sm:w-auto rounded-full hover:bg-paan-red/90 transition-all duration-300 shadow-lg flex items-center justify-center gap-2"
               >
                 Register Now
-              </TicketPurchaseButton>
+              </button>
               <button 
                 onClick={() => setShowPartnerModal(true)}
                 className="bg-transparent border border-paan-dark-blue text-paan-dark-blue px-6 sm:px-8 py-3 rounded-full hover:bg-paan-dark-blue hover:text-white transition-all duration-300 font-medium text-sm sm:text-base shadow-lg flex items-center justify-center gap-2 w-full sm:w-auto"
@@ -748,7 +747,7 @@ const SummitPage = () => {
                      src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/tracks/1.png"
                      alt="Track 1"
                      fill
-                     className="object-cover hidden sm:block"
+                     className="object-contain object-center -mt-20"
                    />
                    <div className="absolute bottom-0 left-0 right-0 bg-white rounded-t-lg p-4 sm:p-6">
                      <h4 className="text-base sm:text-lg md:text-xl font-bold text-paan-dark-blue mb-1 sm:mb-2">AI, Technology &<br/>The Future of Creative Work</h4>
@@ -778,7 +777,7 @@ const SummitPage = () => {
                      src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/tracks/2.png"
                      alt="Track 2"
                      fill
-                     className="object-cover hidden sm:block"
+                     className="object-contain object-center -mt-20"
                    />
                    <div className="absolute bottom-0 left-0 right-0 bg-white rounded-t-lg p-4 sm:p-6">
                      <h4 className="text-base sm:text-lg md:text-xl font-bold text-paan-dark-blue mb-1 sm:mb-2">Creative Effectiveness,<br/>Design & Media Performance</h4>
@@ -808,7 +807,7 @@ const SummitPage = () => {
                      src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/tracks/3.png"
                      alt="Track 3"
                      fill
-                     className="object-cover hidden sm:block"
+                     className="object-contain object-center -mt-20"
                    />
                    <div className="absolute bottom-0 left-0 right-0 bg-white rounded-t-lg p-4 sm:p-6">
                      <h4 className="text-base sm:text-lg md:text-xl font-bold text-paan-dark-blue mb-1 sm:mb-2">Data, Analytics &<br/>Measurement for Growth</h4>
@@ -834,7 +833,7 @@ const SummitPage = () => {
                      src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/tracks/4.png"
                      alt="Track 4"
                      fill
-                     className="object-cover hidden sm:block"
+                     className="object-contain object-center -mt-20"
                    />
                    <div className="absolute bottom-0 left-0 right-0 bg-white rounded-t-lg p-4 sm:p-6">
                      <h4 className="text-base sm:text-lg md:text-xl font-bold text-paan-dark-blue mb-1 sm:mb-2">The Creator &<br/>Freelance Economy</h4>
@@ -860,7 +859,7 @@ const SummitPage = () => {
                      src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/tracks/5.png"
                      alt="Track 5"
                      fill
-                     className="object-cover hidden sm:block"
+                     className="object-contain object-center -mt-20"
                    />
                    <div className="absolute bottom-0 left-0 right-0 bg-white rounded-t-lg p-4 sm:p-6">
                      <h4 className="text-base sm:text-lg md:text-xl font-bold text-paan-dark-blue mb-1 sm:mb-2">Communication, PR &<br/>Brand Trust</h4>
@@ -886,7 +885,7 @@ const SummitPage = () => {
                      src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/tracks/6.png"
                      alt="Track 6"
                      fill
-                     className="object-cover hidden sm:block"
+                     className="object-contain object-center -mt-20"
                    />
                    <div className="absolute bottom-0 left-0 right-0 bg-white rounded-t-lg p-4 sm:p-6">
                      <h4 className="text-base sm:text-lg md:text-xl font-bold text-paan-dark-blue mb-1 sm:mb-2">Commerce, Platforms &<br/>Marketing Business</h4>
@@ -916,7 +915,7 @@ const SummitPage = () => {
                      src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/tracks/7.png"
                      alt="Track 7"
                      fill
-                     className="object-cover hidden sm:block"
+                     className="object-contain object-center -mt-20"
                    />
                    <div className="absolute bottom-0 left-0 right-0 bg-white rounded-t-lg p-4 sm:p-6">
                      <h4 className="text-base sm:text-lg md:text-l font-bold text-paan-dark-blue mb-1 sm:mb-2">Cross-Border Collaboration &<br/>Ecosystem Growth</h4>
@@ -1315,7 +1314,7 @@ const SummitPage = () => {
                  <div className="flex space-x-4 sm:space-x-6 md:space-x-8 whitespace-nowrap">
                    {[...Array(4)].map((_, i) => (
                      <div key={`left-${i}`} className="flex items-center space-x-4 sm:space-x-6 md:space-x-8">
-                       <span className="text-lg sm:text-xl md:text-2xl font-semibold text-paan-dark-blue whitespace-nowrap">Film Directors</span>
+                       <span className="text-lg sm:text-xl md:text-2xl font-semibold text-paan-dark-blue whitespace-nowrap">Brand Owners</span>
                        <span className="text-2xl sm:text-3xl text-paan-red">•</span>
                        <span className="text-lg sm:text-xl md:text-2xl font-semibold text-paan-dark-blue whitespace-nowrap">Brand Strategists</span>
                        <span className="text-2xl sm:text-3xl text-paan-blue">•</span>
@@ -1823,14 +1822,13 @@ const SummitPage = () => {
 
                   {/* Registration Button */}
                   <div className="pt-4">
-                    <TicketPurchaseButton 
-                      variant="primary" 
-                      size="lg"
-                      className="w-full py-4 text-lg font-semibold"
+                    <button 
+                      onClick={() => window.location.href = '/summit/purchase-ticket'}
+                      className="bg-paan-red text-white w-full py-4 text-lg font-semibold rounded-full hover:bg-paan-red/90 transition-all duration-300 shadow-lg flex items-center justify-center gap-2"
                     >
                       <Icon icon="mdi:ticket" width="20" height="20" />
                       Register Now
-                    </TicketPurchaseButton>
+                    </button>
                   </div>
                 </div>
               </div>
@@ -1927,7 +1925,7 @@ const SummitPage = () => {
                   className="bg-paan-red text-white px-6 sm:px-8 md:px-12 py-2 sm:py-3 md:py-4 text-sm sm:text-base md:text-lg w-full sm:w-auto rounded-full hover:bg-paan-red/90 transition-all duration-300 font-medium shadow-lg flex items-center justify-center gap-2"
                 >
                   <Icon icon="mdi:ticket" width="16" height="16" className="sm:w-5 sm:h-5" />
-                  Register Now
+                  View Tickets
                 </button>
              </div>
           </section>
@@ -2192,7 +2190,7 @@ const Hero = ({ sectionRefs, handleScroll, isFixed, timeLeft, onPartnerClick }) 
                 variants={scaleIn}
               >
                 <button 
-                  onClick={(e) => handleScroll(e, '#tickets-section')}
+                  onClick={() => window.location.href = '/summit/purchase-ticket'}
                   className="bg-paan-red text-white px-6 sm:px-8 py-3 rounded-full hover:bg-paan-red/90 transition-all duration-300 font-medium text-sm sm:text-base shadow-lg flex items-center justify-center gap-2 w-full sm:w-auto"
                 >
                   Register Now
