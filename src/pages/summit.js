@@ -543,10 +543,10 @@ const SummitPage = () => {
                 variants={fadeInLeft}
               >
                 <p>
-                  The Africa Borderless Creative Economy Summit 2026, hosted by the Pan-African Agency Network (PAAN), is the continent's leading deal-first gathering for creators, agencies, studios, tech innovators, investors, and policymakers.
+                The Africa Borderless Creative Economy Summit 2026 brings together the continent’s most forward-thinking agencies, brands, freelancers, marketing teams, and technology partners to reimagine how Africa’s creative industry can scale - together.
                 </p>
                 <p>
-                  Unlike inspiration-only events, the Summit is built for action: curated deal rooms, live simulations, and partner-funded clinics that turn conversations into MoUs, pilots, term sheets, and contracts. We're not just imagining Africa's creative future — we're building it in real time.
+                Over two days of keynotes, data-led panels, strategy labs, awards, showcases, and partnership deal rooms, the summit will unpack how innovation, technology, collaboration, and talent mobility can turn Africa’s creativity into a multi-billion-dollar borderless economy.
                 </p>
               </motion.div>
 
