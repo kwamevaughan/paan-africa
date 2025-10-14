@@ -1070,7 +1070,7 @@ const SummitPage = () => {
           <section className="relative mx-auto max-w-6xl">
               <div className="text-left mb-12 space-y-4">
                <h2 className="text-xs w-fit text-paan-dark-blue mb-4 bg-paan-blue text-white rounded-full px-4 py-2">Why Attend</h2>
-               <h3 className="text-3xl text-paan-dark-blue font-bold uppercase">Do business, not just talk.</h3>
+               <h3 className="text-3xl text-paan-dark-blue font-bold uppercase">Crossboader Connections</h3>
                <p className="text-xl font-normal text-paan-dark-blue mb-4">Walk away with meaningful connections, matched partners, and real deals.</p>
              </div>
              <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -1085,7 +1085,7 @@ const SummitPage = () => {
                         className="w-20 h-20"
                       />
                     </div>
-                    <h4 className="text-xl font-bold text-white mb-2">Do Business, Not Just Talk</h4>
+                    <h4 className="text-xl font-bold text-white mb-2">Connect with continental leaders</h4>
                     <p className="text-white mb-8">Investor connections, signed NDAs, and draft term sheets.</p>
                   </div>
                   <div className="w-full h-[20px] sm:h-[30px] md:h-[40px]">
