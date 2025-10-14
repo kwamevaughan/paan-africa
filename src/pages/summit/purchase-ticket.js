@@ -787,8 +787,8 @@ const Tickets = ({ selectedTickets, setSelectedTickets, onNext, errors }) => {
     {
       name: 'General Admission',
       description: 'Access all keynotes, panels, exhibition & networking app.',
-      price: 95,
-      originalPrice: 119,
+      price: 65,
+      originalPrice: 95,
       bg: 'bg-gradient-to-r from-paan-yellow to-paan-red',
       border: 'border-paan-yellow',
       features: ['Full 2-day access', 'Exhibitions & keynotes', 'Digital certificate'],
