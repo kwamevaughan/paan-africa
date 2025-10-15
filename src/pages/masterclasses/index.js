@@ -29,44 +29,46 @@ const MasterclassesPage = () => {
 
   // Featured masterclass data - separate from regular masterclasses
   const featuredMasterclass = {
-    id: 2,
-    title: "Managing Challenging Clients",
-    description: "Managing client relationships is at the heart of every successful agency. Yet, even the most seasoned teams encounter difficult clients, shifting expectations, or tense conversations — especially in today's fast-paced hybrid and remote work environments.",
+    id: 6,
+    title: "How To Develop Winning Pitches and Retain Clients",
+    description: "In today's competitive agency landscape, winning a pitch is only half the battle — retaining the client and growing the relationship is where agencies truly thrive. Too often, weak or incomplete briefs set agencies up for failure, leading to missed opportunities and frustrated clients.",
     format: "90-minute Interactive Training Course",
-    date: "October 15th, 2025",
+    date: "October 23rd, 2025",
     time: "10 am GMT / 12 pm EAT",
     memberPrice: 174,
     memberOriginalPrice: 220,
     nonMemberPrice: 250,
     nonMemberOriginalPrice: 320,
     currency: "USD",
-    category: "Client Management",
-    level: "All Levels",
-    instructor: "Niki Hurst Smith",
-    instructorTitle: "HR Consultant & Former Agency Leader with 15+ years experience",
-    image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/featured.jpg",
+    category: "Business Development",
+    level: "Intermediate",
+    instructor: "Abigail Dixon",
+    instructorTitle: "Chartered Marketer and Fellow, CIM Consultant & Trainer",
+    image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/winning-pitches.jpg",
     benefits: [
       "5% off on PAAN Summit 2026 tickets",
       "6% off Africa Creative Excellence Awards entry"
     ],
     whoShouldAttend: [
-      "Client-facing professionals in agencies",
-      "Junior to mid-level staff who interact directly with clients",
-      "Agency leaders and managers",
-      "Account managers and project managers"
+      "Account Managers",
+      "Business Development professionals",
+      "Planners",
+      "Agency leaders"
     ],
     learningOutcomes: [
-      "Raising the Standard: What clients truly expect from agencies",
-      "Decoding Difficult Clients: Why some clients seem challenging",
-      "Client-Centric Thinking: Practical frameworks for uncovering client needs",
-      "Turning Tension into Trust: Approaches for navigating tough conversations",
-      "From Dissatisfaction to Loyalty: Strategies to manage dissatisfied clients"
+      "Clarity on the quality of the brief that should be received, including briefing template examples",
+      "Client-side perspective of what the brief indicates and author interpretation",
+      "'Red pen' methodology to interrogate brief and draft Q&A questions",
+      "How to draft 'Push back' questions for comprehensive client information",
+      "Structure proposals to demonstrate understanding of brand/business challenges",
+      "Empowerment on questions to ask for clarity in proposal development",
+      "Structure and flow to demonstrate understanding and proposed approach"
     ],
     courseObjectives: [
-      "Confidently recognize and respond to the root causes of client dissatisfaction",
-      "Apply practical strategies for transforming challenging situations into positive outcomes",
-      "Strengthen client relationships through proactive communication and trust-building",
-      "Gain a ready-to-use toolkit of tips, scripts, and techniques for managing difficult clients"
+      "Master the art of winning pitches through strategic brief analysis",
+      "Develop skills to retain clients and grow long-term relationships",
+      "Learn to identify and address weak briefs before they become problems",
+      "Build confidence in client communication and proposal development"
     ],
     partnership: "PAAN, in collaboration with the Alliance of Independent Agencies, UK",
     status: "upcoming"
@@ -75,55 +77,11 @@ const MasterclassesPage = () => {
   // Sample masterclasses data - this would come from your database
   const masterclassesData = [
     {
-      id: 2,
-      title: "Managing Challenging Clients",
-      description: "Managing client relationships is at the heart of every successful agency. Yet, even the most seasoned teams encounter difficult clients, shifting expectations, or tense conversations — especially in today's fast-paced hybrid and remote work environments.",
-      format: "90-minute Interactive Training Course",
-      date: "October 15th, 2025",
-      time: "10 am GMT / 12 pm EAT",
-      memberPrice: 174,
-      memberOriginalPrice: 220,
-      nonMemberPrice: 250,
-      nonMemberOriginalPrice: 320,
-      currency: "USD",
-      category: "Client Management",
-      level: "All Levels",
-      instructor: "Niki Hurst Smith",
-      instructorTitle: "HR Consultant & Former Agency Leader with 15+ years experience",
-      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/challenging-clients.jpg",
-      benefits: [
-        "5% off on PAAN Summit 2026 tickets",
-        "6% off Africa Creative Excellence Awards entry"
-      ],
-      whoShouldAttend: [
-        "Client-facing professionals in agencies",
-        "Junior to mid-level staff who interact directly with clients",
-        "Agency leaders and managers",
-        "Account managers and project managers"
-      ],
-      learningOutcomes: [
-        "Raising the Standard: What clients truly expect from agencies",
-        "Decoding Difficult Clients: Why some clients seem challenging",
-        "Client-Centric Thinking: Practical frameworks for uncovering client needs",
-        "Turning Tension into Trust: Approaches for navigating tough conversations",
-        "From Dissatisfaction to Loyalty: Strategies to manage dissatisfied clients"
-      ],
-      courseObjectives: [
-        "Confidently recognize and respond to the root causes of client dissatisfaction",
-        "Apply practical strategies for transforming challenging situations into positive outcomes",
-        "Strengthen client relationships through proactive communication and trust-building",
-        "Gain a ready-to-use toolkit of tips, scripts, and techniques for managing difficult clients"
-      ],
-      partnership: "PAAN, in collaboration with the Alliance of Independent Agencies, UK",
-      featured: false,
-      status: "upcoming"
-    },
-    {
       id: 3,
       title: "Financial Management, Tax & Transfer Pricing for Agencies",
       description: "Creative agencies often struggle with irregular income, multi-currency projects, and tax complexity. This session equips agency leaders and finance managers with the tools to stabilize growth, remain compliant, and make informed financial decisions.",
       format: "3-Hour Interactive Online Workshop",
-      date: "October 23rd, 2025",
+      date: "November 26th, 2025",
       time: "2 pm EAT",
       memberPrice: 60,
       memberOriginalPrice: 80,
@@ -154,46 +112,6 @@ const MasterclassesPage = () => {
       takeawayToolkit: "Budgeting template + Tax & Transfer Pricing cheat sheet",
       series: "Agency Growth & Leadership Masterclass Series",
       moduleNumber: 1,
-      featured: false,
-      status: "upcoming"
-    },
-    {
-      id: 6,
-      title: "How To Develop Winning Pitches and Retain Clients",
-      description: "In today's competitive agency landscape, winning a pitch is only half the battle — retaining the client and growing the relationship is where agencies truly thrive. Too often, weak or incomplete briefs set agencies up for failure, leading to missed opportunities and frustrated clients.",
-      format: "90-minute Interactive Training Course",
-      date: "October 23rd, 2025",
-      time: "10 am GMT / 12 pm EAT",
-      memberPrice: 174,
-      memberOriginalPrice: 220,
-      nonMemberPrice: 250,
-      nonMemberOriginalPrice: 320,
-      currency: "USD",
-      category: "Business Development",
-      level: "Intermediate",
-      instructor: "Abigail Dixon",
-      instructorTitle: "Chartered Marketer and Fellow, CIM Consultant & Trainer",
-      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/winning-pitches.jpg",
-      benefits: [
-        "5% off on PAAN Summit 2026 tickets",
-        "6% off Africa Creative Excellence Awards entry"
-      ],
-      whoShouldAttend: [
-        "Account Managers",
-        "Business Development professionals",
-        "Planners",
-        "Agency leaders"
-      ],
-      learningOutcomes: [
-        "Clarity on the quality of the brief that should be received, including briefing template examples",
-        "Client-side perspective of what the brief indicates and author interpretation",
-        "'Red pen' methodology to interrogate brief and draft Q&A questions",
-        "How to draft 'Push back' questions for comprehensive client information",
-        "Structure proposals to demonstrate understanding of brand/business challenges",
-        "Empowerment on questions to ask for clarity in proposal development",
-        "Structure and flow to demonstrate understanding and proposed approach"
-      ],
-      partnership: "PAAN, in collaboration with the Alliance of Independent Agencies, UK",
       featured: false,
       status: "upcoming"
     },
@@ -357,6 +275,50 @@ const MasterclassesPage = () => {
       moduleNumber: 3,
       featured: false,
       status: "upcoming"
+    },
+    {
+      id: 2,
+      title: "Managing Challenging Clients",
+      description: "Managing client relationships is at the heart of every successful agency. Yet, even the most seasoned teams encounter difficult clients, shifting expectations, or tense conversations — especially in today's fast-paced hybrid and remote work environments.",
+      format: "90-minute Interactive Training Course",
+      date: "December 15th, 2025",
+      time: "10 am GMT / 12 pm EAT",
+      memberPrice: 174,
+      memberOriginalPrice: 220,
+      nonMemberPrice: 250,
+      nonMemberOriginalPrice: 320,
+      currency: "USD",
+      category: "Client Management",
+      level: "All Levels",
+      instructor: "Niki Hurst Smith",
+      instructorTitle: "HR Consultant & Former Agency Leader with 15+ years experience",
+      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/challenging-clients.jpg",
+      benefits: [
+        "5% off on PAAN Summit 2026 tickets",
+        "6% off Africa Creative Excellence Awards entry"
+      ],
+      whoShouldAttend: [
+        "Client-facing professionals in agencies",
+        "Junior to mid-level staff who interact directly with clients",
+        "Agency leaders and managers",
+        "Account managers and project managers"
+      ],
+      learningOutcomes: [
+        "Raising the Standard: What clients truly expect from agencies",
+        "Decoding Difficult Clients: Why some clients seem challenging",
+        "Client-Centric Thinking: Practical frameworks for uncovering client needs",
+        "Turning Tension into Trust: Approaches for navigating tough conversations",
+        "From Dissatisfaction to Loyalty: Strategies to manage dissatisfied clients"
+      ],
+      courseObjectives: [
+        "Confidently recognize and respond to the root causes of client dissatisfaction",
+        "Apply practical strategies for transforming challenging situations into positive outcomes",
+        "Strengthen client relationships through proactive communication and trust-building",
+        "Gain a ready-to-use toolkit of tips, scripts, and techniques for managing difficult clients"
+      ],
+      partnership: "PAAN, in collaboration with the Alliance of Independent Agencies, UK",
+      featured: false,
+      status: "not-accepting-bookings"
     }
   ];
 
@@ -717,7 +679,7 @@ const MasterclassesPage = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {filteredMasterclasses.length > 0 ? (
                 filteredMasterclasses.map(masterclass => (
-                  <div key={masterclass.id} className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group flex flex-col">
+                  <div key={masterclass.id} className={`bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group flex flex-col ${masterclass.status === 'not-accepting-bookings' ? 'opacity-60' : ''}`}>
                     <Link href={`/masterclasses/${masterclass.id}`} className="relative h-48 flex-shrink-0 cursor-pointer">
                       <Image
                         src={masterclass.image}
@@ -727,8 +689,13 @@ const MasterclassesPage = () => {
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                       <div className="absolute top-4 left-4">
-                        <span className="bg-[#F2B706] text-[#172840] px-3 py-1 rounded-full text-xs font-bold">
-                          {masterclass.status === 'upcoming' ? 'UPCOMING' : 'LIVE'}
+                        <span className={`px-3 py-1 rounded-full text-xs font-bold ${
+                          masterclass.status === 'upcoming' ? 'bg-[#F2B706] text-[#172840]' :
+                          masterclass.status === 'not-accepting-bookings' ? 'bg-gray-500 text-white' :
+                          'bg-[#F2B706] text-[#172840]'
+                        }`}>
+                          {masterclass.status === 'upcoming' ? 'UPCOMING' : 
+                           masterclass.status === 'not-accepting-bookings' ? 'NOT ACCEPTING BOOKINGS' : 'LIVE'}
                         </span>
                       </div>
                       <div className="absolute bottom-4 left-4 right-4">
@@ -783,9 +750,13 @@ const MasterclassesPage = () => {
 
                       <Link 
                         href={`/masterclasses/${masterclass.id}`}
-                        className="block w-full bg-[#F25849] text-white text-center py-3 rounded-full font-semibold hover:bg-[#D6473C] transition-all duration-300 shadow-md hover:shadow-lg"
+                        className={`block w-full text-center py-3 rounded-full font-semibold transition-all duration-300 shadow-md hover:shadow-lg ${
+                          masterclass.status === 'not-accepting-bookings' 
+                            ? 'bg-gray-400 text-white cursor-not-allowed' 
+                            : 'bg-[#F25849] text-white hover:bg-[#D6473C]'
+                        }`}
                       >
-                        View Details
+                        {masterclass.status === 'not-accepting-bookings' ? 'Not Accepting Bookings' : 'View Details'}
                       </Link>
                     </div>
                   </div>
