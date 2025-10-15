@@ -283,6 +283,22 @@
             "Specialist in cross-cultural brand positioning"
           ],
           "expertise": ["Business Development", "Digital Marketing", "Strategic Management", "Market Analysis", "Brand Positioning"]
+        },
+        "khensani": {
+          "name": "KHENSANI-WONDER MABUNDA",
+          "title": "Founder & CEO",
+          "country": "South Africa",
+          "description": "Khensani-Wonder Mabunda is the visionary founder and CEO of KW Kreatives, an innovative marketing, media, advertising and PR agency that has redefined brand development and strategy. With a background in labour and trademark law, she seamlessly blends strategic business insight with creative flair.",
+          "fullDescription": "Khensani-Wonder Mabunda is the visionary founder and CEO of KW Kreatives, an innovative marketing, media, advertising and PR agency that has redefined brand development and strategy. With a background in labour and trademark law, Khensani's early corporate career provided a solid foundation for her transition into the world of branding and marketing, where she seamlessly blends strategic business insight with creative flair. As a dynamic and forward-thinking leader, Khensani excels in business and brand development, negotiations, marketing, and communications. Her passion for the ever-evolving branding landscape led to the creation of KW Kreatives, a company dedicated to helping organisations build authentic, relevant, and impactful brands. Khensani has earned prestigious recognition including AdForum PHNX Awards Jury Member (2024 & 2025), Effie Awards Panel Judge (2025), Y20 Member - G20 Work Force for the Youth, Global CEO Excellence Award (UK, 2024) as Marketing and Media CEO of the Year (South Africa), and Middle East CEO of the Year Awards (2024) as Best Emerging Marketing & PR CEO (South Africa). Under Khensani's guidance, KW Kreatives is redefining the landscape of branding, championing the belief that effective marketing transcends traditional campaigns and brand identity—it's about crafting meaningful, unforgettable experiences that build enduring relationships with audiences.",
+          "achievements": [
+            "Founder & CEO of KW Kreatives - innovative marketing, media, advertising and PR agency",
+            "AdForum PHNX Awards Jury Member (2024 & 2025)",
+            "Effie Awards Panel Judge (2025)",
+            "Y20 Member - G20 Work Force for the Youth",
+            "Global CEO Excellence Award (UK, 2024) - Marketing and Media CEO of the Year (South Africa)",
+            "Middle East CEO of the Year Awards (2024) - Best Emerging Marketing & PR CEO (South Africa)"
+          ],
+          "expertise": ["Brand Development", "Marketing Strategy", "Business Development", "Negotiations", "Communications", "Creative Leadership"]
         }
       },
       "getStarted": {

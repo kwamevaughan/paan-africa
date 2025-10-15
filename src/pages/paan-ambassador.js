@@ -163,6 +163,19 @@ const PAANAmbassador = () => {
         "Data-Driven Decision Making"
       ],
       color: "orange"
+    },
+    {
+      name: t('homepage.ambassador.ambassadors.khensani.name'),
+      title: t('homepage.ambassador.ambassadors.khensani.title'),
+      country: t('homepage.ambassador.ambassadors.khensani.country'),
+      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/Mabunda.jpg",
+      flag: "https://flagcdn.com/w40/za.png",
+      linkedin: "https://www.linkedin.com/in/khensani-mabunda-4967181a0?originalSubdomain=za",
+      description: t('homepage.ambassador.ambassadors.khensani.description'),
+      fullDescription: t('homepage.ambassador.ambassadors.khensani.fullDescription'),
+      achievements: t('homepage.ambassador.ambassadors.khensani.achievements'),
+      expertise: t('homepage.ambassador.ambassadors.khensani.expertise'),
+      color: "purple"
     }
   ];
   
@@ -772,6 +785,14 @@ const AmbassadorCard = ({ ambassador, onViewProfile }) => {
         return 'bg-paan-yellow border-2 border-paan-yellow text-paan-dark-blue hover:bg-paan-yellow/90 hover:border-paan-yellow/90';
       case 'blue':
         return 'bg-paan-blue border-2 border-paan-blue text-white hover:bg-paan-blue/90 hover:border-paan-blue/90';
+      case 'green':
+        return 'bg-paan-green border-2 border-paan-green text-white hover:bg-paan-green/90 hover:border-paan-green/90';
+      case 'teal':
+        return 'bg-paan-green border-2 border-paan-green text-white hover:bg-paan-green/90 hover:border-paan-green/90';
+      case 'orange':
+        return 'bg-paan-yellow border-2 border-paan-yellow text-paan-dark-blue hover:bg-paan-yellow/90 hover:border-paan-yellow/90';
+      case 'purple':
+        return 'bg-paan-purple border-2 border-paan-purple text-white hover:bg-paan-purple/90 hover:border-paan-purple/90';
       default:
         return 'bg-paan-red border-2 border-paan-red text-white hover:bg-paan-red/90 hover:border-paan-red/90';
     }
@@ -785,6 +806,14 @@ const AmbassadorCard = ({ ambassador, onViewProfile }) => {
         return 'border-paan-yellow/20 group-hover:border-paan-yellow/40';
       case 'blue':
         return 'border-paan-blue/20 group-hover:border-paan-blue/40';
+      case 'green':
+        return 'border-paan-green/20 group-hover:border-paan-green/40';
+      case 'teal':
+        return 'border-paan-green/20 group-hover:border-paan-green/40';
+      case 'orange':
+        return 'border-paan-yellow/20 group-hover:border-paan-yellow/40';
+      case 'purple':
+        return 'border-paan-purple/20 group-hover:border-paan-purple/40';
       default:
         return 'border-paan-red/20 group-hover:border-paan-red/40';
     }
@@ -798,6 +827,14 @@ const AmbassadorCard = ({ ambassador, onViewProfile }) => {
         return 'group-hover:text-paan-yellow';
       case 'blue':
         return 'group-hover:text-paan-blue';
+      case 'green':
+        return 'group-hover:text-paan-green';
+      case 'teal':
+        return 'group-hover:text-paan-green';
+      case 'orange':
+        return 'group-hover:text-paan-yellow';
+      case 'purple':
+        return 'group-hover:text-paan-purple';
       default:
         return 'group-hover:text-paan-red';
     }

@@ -283,6 +283,22 @@
             "Spécialiste en positionnement de marque interculturel"
           ],
           "expertise": ["Développement d'Entreprise", "Marketing Numérique", "Gestion Stratégique", "Analyse de Marché", "Positionnement de Marque"]
+        },
+        "khensani": {
+          "name": "KHENSANI-WONDER MABUNDA",
+          "title": "Fondatrice et PDG",
+          "country": "Afrique du Sud",
+          "description": "Khensani-Wonder Mabunda est la fondatrice visionnaire et PDG de KW Kreatives, une agence innovante de marketing, médias, publicité et relations publiques qui a redéfini le développement et la stratégie de marque. Avec une formation en droit du travail et des marques, elle allie parfaitement perspicacité commerciale stratégique et flair créatif.",
+          "fullDescription": "Khensani-Wonder Mabunda est la fondatrice visionnaire et PDG de KW Kreatives, une agence innovante de marketing, médias, publicité et relations publiques qui a redéfini le développement et la stratégie de marque. Avec une formation en droit du travail et des marques, la carrière d'entreprise précoce de Khensani a fourni une base solide pour sa transition dans le monde du branding et du marketing, où elle allie parfaitement perspicacité commerciale stratégique et flair créatif. En tant que leader dynamique et avant-gardiste, Khensani excelle dans le développement d'entreprise et de marque, les négociations, le marketing et les communications. Sa passion pour le paysage de branding en constante évolution a conduit à la création de KW Kreatives, une entreprise dédiée à aider les organisations à construire des marques authentiques, pertinentes et impactantes. Khensani a obtenu une reconnaissance prestigieuse incluant Membre du Jury des AdForum PHNX Awards (2024 & 2025), Juge du Panel des Effie Awards (2025), Membre Y20 - G20 Work Force for the Youth, Global CEO Excellence Award (UK, 2024) en tant que PDG Marketing et Médias de l'Année (Afrique du Sud), et Middle East CEO of the Year Awards (2024) en tant que Meilleur PDG Marketing & RP Émergent (Afrique du Sud). Sous la direction de Khensani, KW Kreatives redéfinit le paysage du branding, défendant la croyance que le marketing efficace transcende les campagnes traditionnelles et l'identité de marque—il s'agit de créer des expériences significatives et inoubliables qui construisent des relations durables avec les audiences.",
+          "achievements": [
+            "Fondatrice et PDG de KW Kreatives - agence innovante de marketing, médias, publicité et RP",
+            "Membre du Jury des AdForum PHNX Awards (2024 & 2025)",
+            "Juge du Panel des Effie Awards (2025)",
+            "Membre Y20 - G20 Work Force for the Youth",
+            "Global CEO Excellence Award (UK, 2024) - PDG Marketing et Médias de l'Année (Afrique du Sud)",
+            "Middle East CEO of the Year Awards (2024) - Meilleur PDG Marketing & RP Émergent (Afrique du Sud)"
+          ],
+          "expertise": ["Développement de Marque", "Stratégie Marketing", "Développement d'Entreprise", "Négociations", "Communications", "Leadership Créatif"]
         }
       },
       "getStarted": {
