@@ -36,7 +36,7 @@ const MasterclassesPage = () => {
     date: "October 23rd, 2025",
     time: "10 am GMT / 12 pm EAT",
     memberPrice: 174,
-    memberOriginalPrice: 220,
+    memberOriginalPrice: 250,
     nonMemberPrice: 250,
     nonMemberOriginalPrice: 320,
     currency: "USD",
@@ -84,8 +84,8 @@ const MasterclassesPage = () => {
       date: "November 26th, 2025",
       time: "2 pm EAT",
       memberPrice: 60,
-      memberOriginalPrice: 80,
-      nonMemberPrice: 80,
+      memberOriginalPrice: 100,
+      nonMemberPrice: 100,
       nonMemberOriginalPrice: 120,
       currency: "USD",
       category: "Financial Management",
@@ -123,7 +123,7 @@ const MasterclassesPage = () => {
       date: "November 6th, 2025",
       time: "10 am GMT / 12 pm EAT",
       memberPrice: 174,
-      memberOriginalPrice: 220,
+      memberOriginalPrice: 250,
       nonMemberPrice: 250,
       nonMemberOriginalPrice: 320,
       currency: "USD",
@@ -163,8 +163,8 @@ const MasterclassesPage = () => {
       date: "November 13th, 2025",
       time: "2 pm EAT",
       memberPrice: 60,
-      memberOriginalPrice: 80,
-      nonMemberPrice: 80,
+      memberOriginalPrice: 100,
+      nonMemberPrice: 100,
       nonMemberOriginalPrice: 120,
       currency: "USD",
       category: "Business Development",
@@ -244,8 +244,8 @@ const MasterclassesPage = () => {
       date: "December 10th, 2025",
       time: "2 pm EAT",
       memberPrice: 60,
-      memberOriginalPrice: 80,
-      nonMemberPrice: 80,
+      memberOriginalPrice: 100,
+      nonMemberPrice: 100,
       nonMemberOriginalPrice: 120,
       currency: "USD",
       category: "Leadership",
@@ -284,7 +284,7 @@ const MasterclassesPage = () => {
       date: "December 15th, 2025",
       time: "10 am GMT / 12 pm EAT",
       memberPrice: 174,
-      memberOriginalPrice: 220,
+      memberOriginalPrice: 250,
       nonMemberPrice: 250,
       nonMemberOriginalPrice: 320,
       currency: "USD",
@@ -451,19 +451,26 @@ const MasterclassesPage = () => {
                   In Collaboration With
                 </p>
                 <div className="flex items-center justify-center">
-                  <div className="bg-white backdrop-blur-sm rounded-2xl p-4 border border-white/20 hover:bg-white/50 transition-all duration-300">
-                    <div className="flex items-center gap-4">
-                      <div className="group relative">
-                        <div className="relative w-full h-32 flex items-center justify-center group-hover:-translate-y-1 transition-transform duration-300">
-                          <img 
-                            src="/assets/images/partners/aia-2.png" 
-                            alt="AIA Logo" 
-                            className="w-48 h-48 object-contain group-hover:scale-105 transition-transform duration-300" 
-                          />
+                  <Link 
+                    href="https://publicisteastafrica.com/alliance-of-independent-agencies-forges-landmark-partnership-with-paan-to-elevate-africas-creative-ecosystem/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block"
+                  >
+                    <div className="bg-white backdrop-blur-sm rounded-2xl p-4 border border-white/20 hover:bg-white/50 transition-all duration-300 cursor-pointer">
+                      <div className="flex items-center gap-4">
+                        <div className="group relative">
+                          <div className="relative w-full h-32 flex items-center justify-center group-hover:-translate-y-1 transition-transform duration-300">
+                            <img 
+                              src="/assets/images/partners/aia-2.png" 
+                              alt="AIA Logo" 
+                              className="w-48 h-48 object-contain group-hover:scale-105 transition-transform duration-300" 
+                            />
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </Link>
                 </div>
               </motion.div>
             </motion.div>
