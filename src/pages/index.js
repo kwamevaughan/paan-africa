@@ -21,6 +21,7 @@ import ScrollToTop from "@/components/ScrollToTop";
 import ConnectingDots from "@/components/ConnectingDots";
 import ProgramCard from "@/components/ProgramCard";
 import StrategicPartners from "@/components/StrategicPartners";
+import CookieConsentBanner from "@/components/CookieConsentBanner";
 
 // Add PasscodeCopy component definition before HomePage
 function PasscodeCopy({ passcode }) {
@@ -832,6 +833,7 @@ const HomePage = () => {
         </div>
         {/* Past Webinar */}
         <div>
+
         <section className="bg-paan-dark-blue py-8 sm:py-12 lg:py-16 relative overflow-hidden">
           <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
             <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 items-center">
@@ -907,10 +909,34 @@ const HomePage = () => {
           <div className="absolute bottom-12 sm:bottom-16 lg:bottom-20 left-1/4 w-1.5 h-1.5 sm:w-2 sm:h-2 bg-paan-blue/50 rounded-full"></div>
         </section>
         </div>
+
+
+        {/* Join Network */}
         <div className="network-bg relative" id="join-network">
           <div className="absolute -top-3 left-4 w-6 h-6 bg-[#84C1D9] rounded-full z-0"></div>
           <div className="absolute -top-8 right-4 w-16 h-16 bg-yellow-400 rounded-full z-0"></div>
           <div className="absolute bottom-6 right-4 w-20 h-20 bg-red-500 rounded-full z-0"></div>
+          
+          {/* Floating YouTube Video */}
+          <div className="absolute top-8 right-8 z-10 hidden lg:block">
+            <div className="relative">
+              <div className="">
+                <div className="w-96 h-56 bg-black rounded-lg overflow-hidden">
+                  <iframe
+                    width="100%"
+                    height="100%"
+                    src="https://www.youtube.com/embed/zJd1akSivAw?autoplay=1&mute=1&controls=1&showinfo=0&rel=0&modestbranding=1"
+                    title="PAAN Network Video"
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    className="rounded-lg"
+                  ></iframe>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <section className="relative mx-auto max-w-6xl py-28 px-6">
             <div className="flex flex-col mb-10 w-full md:w-3/4">
               <h2 className="text-3xl font-medium mb-4 text-[#F2B706]">
@@ -941,6 +967,7 @@ const HomePage = () => {
             </div>
           </section>
         </div>
+        
         <section className="bg-[#D1D3D4] py-10">
           <div className="mx-auto max-w-6xl px-6 lg:px-8">
             <div className="text-center space-y-4">
@@ -1052,6 +1079,7 @@ const HomePage = () => {
         </div>
         <AgencyEnquiryModal isOpen={isModalOpen} onClose={closeModal} />
         <ScrollToTop />
+        <CookieConsentBanner />
       </main>
       <Footer />
       </div>
