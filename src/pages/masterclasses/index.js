@@ -368,6 +368,11 @@ const MasterclassesPage = () => {
     return matchesCategory && matchesSearch;
   });
 
+  // When "all" category is selected, add the featured masterclass at the beginning
+  const finalFilteredMasterclasses = selectedCategory === 'all' && searchTerm === '' 
+    ? [featuredMasterclass, ...filteredMasterclasses]
+    : filteredMasterclasses;
+
   return (
     <>
       <SEO
@@ -677,8 +682,8 @@ const MasterclassesPage = () => {
 
             {/* Masterclasses Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {filteredMasterclasses.length > 0 ? (
-                filteredMasterclasses.map(masterclass => (
+              {finalFilteredMasterclasses.length > 0 ? (
+                finalFilteredMasterclasses.map(masterclass => (
                   <div key={masterclass.id} className={`bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group flex flex-col ${masterclass.status === 'not-accepting-bookings' ? 'opacity-60' : ''}`}>
                     <Link href={`/masterclasses/${masterclass.id}`} className="relative h-48 flex-shrink-0 cursor-pointer">
                       <Image
@@ -698,6 +703,13 @@ const MasterclassesPage = () => {
                            masterclass.status === 'not-accepting-bookings' ? 'NOT ACCEPTING BOOKINGS' : 'LIVE'}
                         </span>
                       </div>
+                      {masterclass.id === featuredMasterclass.id && (
+                        <div className="absolute top-4 right-4">
+                          <span className="bg-[#F25849] text-white px-3 py-1 rounded-full text-xs font-bold">
+                            FEATURED
+                          </span>
+                        </div>
+                      )}
                       <div className="absolute bottom-4 left-4 right-4">
                         <div className="flex items-center justify-between text-white text-sm">
                           <span className="font-medium">{masterclass.date}</span>

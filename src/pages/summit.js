@@ -734,8 +734,8 @@ const SummitPage = () => {
             <section className="mx-auto max-w-6xl py-8 sm:py-12 md:py-16 lg:py-20 px-3 sm:px-4 md:px-6">
               <div className="flex flex-col sm:flex-row justify-between gap-4 sm:gap-6 md:gap-8 mb-8 sm:mb-12">
                 <div className="text-left">
-                    <h2 className="text-xs sm:text-sm border w-fit border-white text-white rounded-full px-3 sm:px-4 py-1 sm:py-2 text-center mb-2 sm:mb-3">Summit Program</h2>
-                    <h3 className="text-xl sm:text-2xl md:text-3xl font-bold uppercase text-paan-yellow">Program</h3>
+                    <h2 className="text-xs sm:text-sm border w-fit border-white text-white rounded-full px-3 sm:px-4 py-1 sm:py-2 text-center mb-2 sm:mb-3">Summit Tracks</h2>
+                    <h3 className="text-xl sm:text-2xl md:text-3xl font-bold uppercase text-paan-yellow">Tracks</h3>
                 </div>
                 <div className="mt-2 sm:mt-0">
                   <p className="text-white text-lg sm:text-xl md:text-2xl lg:text-3xl leading-tight">Tracks and the two-day<br className="hidden sm:block"/> agenda snapshot.</p>
