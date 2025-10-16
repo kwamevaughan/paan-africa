@@ -129,7 +129,7 @@ export const eventsData = {
       image: "/assets/images/practical-event-management-webinar.png",
       category: "Webinar",
       price: "Completed",
-      registrationUrl: "https://us06web.zoom.us/webinar/register/WN_SAT_50s-Spm24UcdFxdi-A#/registration",
+      registrationUrl: "https://www.youtube.com/watch?v=r_oVHKSj3xQ&feature=youtu.be",
       status: "past",
       featured: true,
       attendees: 120,
