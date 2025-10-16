@@ -1,21 +1,6 @@
 // data/eventsData.js
 export const eventsData = {
-  upcoming: [ 
-    {
-      id: 1,
-      title: "Trend-Driven, Tech-Powered: Practical Event Management Solutions for 2025",
-      date: "2025-10-15",
-      time: "12:00 PM - 1:00 PM",
-      location: "Virtual Event",
-      venue: "Online",
-      description: "What’s shaping event management in 2025? From AI-powered personalisation to ROI-focused strategies, the next wave of events is smarter, data-driven, and more impactful. Learn how to apply these trends with practical tech solutions in our free webinar with Cvent.",
-      image: "/assets/images/practical-event-management-webinar.png",
-      category: "Webinar",
-      price: "Free for All Members",
-      registrationUrl: "https://us06web.zoom.us/webinar/register/WN_SAT_50s-Spm24UcdFxdi-A#/registration",
-      status: "upcoming",
-      featured: true
-    },   
+  upcoming: [
     {
       id: 2,
       title: "PAAN Creative Summit 2026",
@@ -30,6 +15,37 @@ export const eventsData = {
       registrationUrl: "/summit",
       status: "upcoming",
       featured: true
+    },
+    {
+      id: 8,
+      title: "The Agency Growth Blueprint: Acquiring More Clients",
+      date: "2025-11-05",
+      time: "12:00 PM - 1:15 PM EAT",
+      location: "Virtual Event",
+      venue: "Zoom",
+      description: "Growing an agency in Africa requires more than just talent — it takes systems, strategy, and the right mindset. In this exclusive PAAN webinar, renowned industry leaders share proven frameworks and lessons on building and scaling agencies around the world.",
+      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/webinars/agency-growth-blueprint.png",
+      category: "Webinar",
+      price: "Free for All Members",
+      registrationUrl: "https://tinyurl.com/45ub5tpa",
+      status: "upcoming",
+      featured: true
+    },
+    {
+      id: 9,
+      title: "Agency Journey to AI: Building Future-Ready Agency Models",
+      date: "2025-11-26",
+      time: "12:00 PM - 1:00 PM EAT",
+      location: "Virtual Event",
+      venue: "Zoom",
+      description: "In this interactive session, Spencer Gallagher, Founding Partner at Bluhalo, and Joanne Reid, Founder of The Reid Collective, bring together their combined expertise in agency operations, leadership, and transformation to explore how agencies can evolve beyond digital-first models into truly AI-native businesses.",
+      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/webinars/agency-joueney-to-ai.png",
+      category: "Webinar",
+      price: "Free for All Members",
+      registrationUrl: "https://tinyurl.com/4f6p33az",
+      status: "upcoming",
+      featured: true,
+      speakers: ["Spencer Gallagher", "Joanne Reid"]
     }
   ],
   past: [
@@ -97,6 +113,23 @@ export const eventsData = {
       category: "Webinar",
       price: "Completed",
       registrationUrl: "https://www.youtube.com/watch?v=2nLzUfzx008&feature=youtu.be",
+      status: "past",
+      featured: true,
+      attendees: 120,
+      speakers: 1
+    },
+    {
+      id: 7,
+      title: "Trend-Driven, Tech-Powered: Practical Event Management Solutions for 2025",
+      date: "2025-10-15",
+      time: "12:00 PM - 1:00 PM",
+      location: "Virtual Event",
+      venue: "Online",
+      description: "What’s shaping event management in 2025? From AI-powered personalisation to ROI-focused strategies, the next wave of events is smarter, data-driven, and more impactful. Learn how to apply these trends with practical tech solutions in our free webinar with Cvent.",
+      image: "/assets/images/practical-event-management-webinar.png",
+      category: "Webinar",
+      price: "Completed",
+      registrationUrl: "https://us06web.zoom.us/webinar/register/WN_SAT_50s-Spm24UcdFxdi-A#/registration",
       status: "past",
       featured: true,
       attendees: 120,
