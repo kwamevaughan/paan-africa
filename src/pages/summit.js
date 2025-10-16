@@ -1069,7 +1069,7 @@ const SummitPage = () => {
           <section className="relative mx-auto max-w-6xl">
               <div className="text-left mb-12 space-y-4">
                <h2 className="text-xs w-fit text-paan-dark-blue mb-4 bg-paan-blue text-white rounded-full px-4 py-2">Why Attend</h2>
-               <h3 className="text-3xl text-paan-dark-blue font-bold uppercase">Crossboader Connections</h3>
+               <h3 className="text-3xl text-paan-dark-blue font-bold uppercase">Crossborder  Connections</h3>
                <p className="text-xl font-normal text-paan-dark-blue mb-4">Walk away with meaningful connections, matched partners, and real deals.</p>
              </div>
              <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
