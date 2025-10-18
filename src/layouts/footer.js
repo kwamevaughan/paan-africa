@@ -13,6 +13,12 @@ const Footer = () => {
   const { t } = useAppTranslations();
   const currentYear = useMemo(() => new Date().getFullYear(), []);
   const [isHeaderFixed, setIsHeaderFixed] = useState(false);
+  const [isClient, setIsClient] = useState(false);
+
+  // Ensure we're on the client side to prevent hydration issues
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   // Optimized scroll handler with throttling
   useEffect(() => {
@@ -103,11 +109,11 @@ const Footer = () => {
       <div className="max-w-6xl mx-auto px-3 sm:px-0">
         {/* Top Section: Collaborate, Innovate, Dominate */}
         <div className="grid grid-cols-1 md:grid-cols-6 justify-items-center gap-4 text-center md:text-left">
-          <p className="text-4xl font-medium">{t('homepage.footer.motto.collaborate')}</p>
+          <p className="text-4xl font-medium">{isClient ? t('homepage.footer.motto.collaborate') : 'Collaborate'}</p>
           <span className="flex bg-[#F2B706] rounded-full w-8 h-8"></span>
-          <p className="text-4xl font-medium">{t('homepage.footer.motto.innovate')}</p>
+          <p className="text-4xl font-medium">{isClient ? t('homepage.footer.motto.innovate') : 'Innovate'}</p>
           <span className="flex bg-[#84C1D9] rounded-full w-8 h-8"></span>
-          <p className="text-4xl font-medium">{t('homepage.footer.motto.dominate')}</p>
+          <p className="text-4xl font-medium">{isClient ? t('homepage.footer.motto.dominate') : 'Dominate'}</p>
           <span className="flex bg-[#F25849] rounded-full w-8 h-8"></span>
         </div>
       </div>
@@ -171,7 +177,7 @@ const Footer = () => {
 
           {/* Center: Tools Section */}
           <div className="flex flex-col gap-4">
-            <h3 className="text-lg font-semibold text-white mb-2">{t('homepage.footer.tools')}</h3>
+            <h3 className="text-lg font-semibold text-white mb-2">{isClient ? t('homepage.footer.tools') : 'Tools'}</h3>
             <ul className="space-y-2">
               <li>
                 <Link
@@ -179,7 +185,16 @@ const Footer = () => {
                   className="font-normal text-gray-200 hover:text-white hover:underline transition-all duration-300 cursor-pointer flex items-center gap-2"
                 >
                   <Icon icon="fa-solid:magic" className="w-4 h-4" />
-                  {t('homepage.footer.aiBriefBuilder')}
+                  {isClient ? t('homepage.footer.aiBriefBuilder') : 'AI Brief Builder'}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/ai-invoice-generator"
+                  className="font-normal text-gray-200 hover:text-white hover:underline transition-all duration-300 cursor-pointer flex items-center gap-2"
+                >
+                  <Icon icon="fa-solid:file-invoice-dollar" className="w-4 h-4" />
+                  AI Invoice Generator
                 </Link>
               </li>
               {/* <li>
@@ -212,7 +227,7 @@ const Footer = () => {
 
           {/* Right: Vertical Menu */}
           <div className="flex flex-col gap-4">
-            <h3 className="text-lg font-semibold text-white mb-2">{t('homepage.footer.quickLinks')}</h3>
+            <h3 className="text-lg font-semibold text-white mb-2">{isClient ? t('homepage.footer.quickLinks') : 'Quick Links'}</h3>
             <ul className="space-y-2">
               {menuItems.map((item) => (
                 <li key={item.href}>
@@ -237,12 +252,12 @@ const Footer = () => {
       {/* Footer Bottom Section */}
       <div className="max-w-6xl mx-auto px-3 sm:px-0">
         <p className="pt-10 pb-24 border-t border-gray-400 text-center text-gray-200 text-sm relative z-10">
-          © {currentYear} PAAN. {t('homepage.footer.copyright')} |
+          © {currentYear} PAAN. {isClient ? t('homepage.footer.copyright') : 'All rights reserved'} |
           <Link
             href="/privacy-policy"
             className="ml-2 text-white hover:text-[#84c1d9] transition-colors duration-300"
           >
-            {t('homepage.footer.privacyPolicy')}
+            {isClient ? t('homepage.footer.privacyPolicy') : 'Privacy Policy'}
           </Link>
         </p>
       </div>

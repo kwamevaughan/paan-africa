@@ -12,7 +12,7 @@ const messages = {
 
 export const useAppTranslations = () => {
   const router = useRouter();
-  const locale = router.locale || 'en';
+  const locale = router?.locale || 'en';
   
   const t = useMemo(() => {
     return (key) => {

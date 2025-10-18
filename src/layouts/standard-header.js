@@ -72,6 +72,7 @@ const Header = () => {
       { label: 'Apply to Join Us', href: 'https://membership.paan.africa/' },
       { label: 'Full Member Benefits', href: '/pricing' },
       { label: 'AI Brief Builder', href: '/ai-brief-builder' },
+      { label: 'AI Invoice Generator', href: '/ai-invoice-generator' },
       { label: 'FAQs', href: '/faqs' },
       { label: 'PAAN Insights', href: '/blogs' },
     ],
