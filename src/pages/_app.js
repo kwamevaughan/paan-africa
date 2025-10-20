@@ -188,6 +188,22 @@ function MyApp({ Component, pageProps }) {
       <noscript>
         <img height="1" width="1" style={{display: 'none'}} src="https://www.facebook.com/tr?id=706159915533812&ev=PageView&noscript=1" />
       </noscript>
+      {/* Apollo Tracking Script */}
+      <Script
+        id="apollo-tracking"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+            function initApollo(){
+              var n=Math.random().toString(36).substring(7),o=document.createElement("script");
+              o.src="https://assets.apollo.io/micro/website-tracker/tracker.iife.js?nocache="+n,o.async=!0,o.defer=!0,
+              o.onload=function(){window.trackingFunctions.onLoad({appId:"68f509976bc244002162261f"})},
+              document.head.appendChild(o)
+            }
+            initApollo();
+          `,
+        }}
+      />
       <Component {...pageProps} />
 
       <Toaster position="top-right" toastOptions={{
