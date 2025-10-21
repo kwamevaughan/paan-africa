@@ -188,7 +188,7 @@ function MyApp({ Component, pageProps }) {
       <noscript>
         <img height="1" width="1" style={{display: 'none'}} src="https://www.facebook.com/tr?id=706159915533812&ev=PageView&noscript=1" />
       </noscript>
-      {/* Apollo Tracking Script */}
+      {/* Apollo Tracking Script updated */}
       <Script
         id="apollo-tracking"
         strategy="afterInteractive"
