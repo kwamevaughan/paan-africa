@@ -70,7 +70,6 @@ const Header = () => {
     'Resources': [
       { label: 'Portal', href: 'https://member-portal.paan.africa/' },
       { label: 'Apply to Join Us', href: 'https://membership.paan.africa/' },
-      { label: 'Full Member Benefits', href: '/pricing' },
       { label: 'AI Brief Builder', href: '/ai-brief-builder' },
       { label: 'AI Invoice Generator', href: '/ai-invoice-generator' },
       { label: 'FAQs', href: '/faqs' },
@@ -117,7 +116,15 @@ const Header = () => {
   };
 
   // Helper function to check if we're on the home page
-  const isHomePage = currentPath === '/';
+  let isHomePage;
+  
+  if(currentPath === '/'){
+    isHomePage = true;
+  } else if(currentPath === '/freelancers'){
+    isHomePage = true;
+  } else if(currentPath === '/pricing'){
+    isHomePage = true;
+  }
 
   // Helper function to check if a menu item is active
   const isMenuActive = (href) => {

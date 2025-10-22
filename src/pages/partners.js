@@ -130,7 +130,7 @@ const FreelancersPage = () => {
     <div className="relative">      
       <main className="px-3 pt-6 sm:px-0 sm:pt-0 relative">
         <Header />
-        <Hero openModal={openModal} />
+        <Hero />
 
         <div className="mx-auto max-w-6xl mt-20 relative">
           <div className="absolute top-80 right-0 w-16 h-16 bg-paan-yellow rounded-full z-0"></div>
@@ -157,7 +157,7 @@ const FreelancersPage = () => {
                     {t('partners.mainSection.audience.description')}
                   </p>
                   <button 
-                    onClick={openModal}
+                    onClick={()=>window.location.href='/contact-us'}
                     className="bg-paan-red text-white py-3 px-8 rounded-full hover:bg-paan-red transition-all duration-300 transform ease-in-out hover:translate-y-[-5px] font-medium text-sm w-fit"
                   >
                     {t('partners.mainSection.audience.ctaButton')}
@@ -241,7 +241,7 @@ const FreelancersPage = () => {
   );
 };
 
-const Hero = ({ openModal }) => {
+const Hero = () => {
   const { t } = useAppTranslations();
   return (
     <div
@@ -274,7 +274,7 @@ const Hero = ({ openModal }) => {
                 {t('partners.hero.subtitle')}
             </p>  
             <button 
-              onClick={openModal}
+              onClick={()=>window.location.href='/contact-us'}
               className="bg-paan-red text-white py-3 px-10 rounded-full hover:bg-paan-red transition-all duration-300 transform ease-in-out hover:translate-y-[-5px] font-medium text-sm"
             >
               {t('partners.hero.ctaButton')}

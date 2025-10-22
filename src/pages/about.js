@@ -368,7 +368,7 @@ const about = () => {
                   <h4 className="text-xl font-bold text-white mb-2">Clients</h4>
                   <p className="text-white mb-4">Trusted, scalable solutions across markets.</p>
                 </div>
-                <div className="absolute bottom-0 mb-2 left-0 right-0 w-full h-[20px] sm:h-[30px] md:h-[40px]">
+                <div className="absolute bottom-0 left-0 right-0 w-full h-[20px] sm:h-[30px] md:h-[40px]">
                   <Image
                     src="https://ik.imagekit.io/nkmvdjnna/PAAN/footer-pattern.svg"
                     width={400}
@@ -386,7 +386,7 @@ const about = () => {
                   <h4 className="text-xl font-bold text-white mb-2">Partners</h4>
                   <p className="text-white mb-4">Tech, education & innovation enablers strengthening the landscape.</p>
                 </div>
-                <div className="absolute bottom-0 mb-2 left-0 right-0 w-full h-[20px] sm:h-[30px] md:h-[40px]">
+                <div className="absolute bottom-0 left-0 right-0 w-full h-[20px] sm:h-[30px] md:h-[40px]">
                   <Image
                     src="https://ik.imagekit.io/nkmvdjnna/PAAN/footer-pattern.svg"
                     width={400}
@@ -409,6 +409,7 @@ const about = () => {
                 <div className="flex justify-between">
                     <p className="text-lg">We collaborate with organizations across Africa and beyond to<br/> strengthen the creative economy.</p>
                     <button 
+                    onClick={()=>window.location.href='partners'}
                     className="bg-paan-red border border-paan-red text-white py-3 px-8 sm:px-10 rounded-full hover:bg-orange-600 transition-all duration-300 transform ease-in-out hover:translate-y-[-5px] font-medium text-sm w-full sm:w-auto"
                     >
                         Become a Partner

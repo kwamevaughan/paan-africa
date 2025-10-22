@@ -471,12 +471,12 @@ const HomePage = () => {
           <div className="hidden md:block absolute -top-14 right-52 w-16 h-16 bg-[#84C1D9] rounded-full z-0"></div>
           <div className="absolute -bottom-14 right-4 w-11 h-11 bg-[#172840] rounded-full z-0"></div>
           <section className="relative z-10">
-            <p className="uppercase font-semibold mb-4">{t('homepage.whyJoinUs.title')}</p>
+            <p className="uppercase font-semibold mb-4">3. Why Join PAAN?</p>
           </section>
           <section className="relative z-10 grid grid-cols-1 sm:grid-cols-2 gap-8 items-center">
             <div className="flex flex-col gap-20">
               <p className="text-2xl">
-                {t('homepage.whyJoinUs.description')}
+                  <a href="/pricing">PAAN membership</a> opens doors to global opportunities, exclusive resources, and a thriving network of Africa's top creative and tech minds.
               </p>
               <Image
                   src="/assets/images/recently-added.webp"

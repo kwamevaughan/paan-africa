@@ -234,7 +234,7 @@ const HomePage = () => {
             <section className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 items-center px-4 sm:px-8 lg:px-16 pt-0 relative z-10 max-w-6xl mx-auto min-h-screen flex items-center">
                 <div className="flex flex-col gap-4 sm:gap-8 text-center sm:text-left w-full">
                 <h1 className="text-2xl sm:text-3xl md:text-5xl nunito-bold text-white leading-tight nunito-bold">
-                    Upskill Your Marketing & Comms Teams with Africa's Top Creative Minds
+                    Upskill your Marketing & Comms Teams with Africa's Top Creative Minds
                 </h1>
                 <p className="text-gray-300 font-normal text-sm sm:text-base nunito-regular nunito-regular">
                     PAAN Academy offers practical, African-context training for brand teams, helping your in-house talent sharpen their skills, stay ahead of trends, and deliver breakthrough campaigns.

@@ -1461,10 +1461,6 @@ const Attendees = ({ onNext, onPrev, purchaserInfo, handlePurchaserChange, atten
                           {promoCodeValidation?.valid ? `-$${promoCodeValidation.promoCode.discountAmount}` : '-$0'}
                         </span>
                     </div>
-                    <div className="flex justify-between text-sm sm:text-base">
-                        <span>Taxes & Fees</span>
-                        <span>$0</span>
-                    </div>
                       <div className="flex justify-between font-bold text-base sm:text-lg">
                         <span>Total</span>
                         <span>${promoCodeValidation?.valid 
@@ -1978,10 +1974,6 @@ const Payment = ({ onNext, onPrev, paymentInfo, handlePaymentChange, selectedTic
               <span className="text-green-600">
                 {promoCodeValidation?.valid ? `-$${promoCodeValidation.promoCode.discountAmount}` : '-$0'}
               </span>
-            </div>
-            <div className="flex justify-between text-sm sm:text-base">
-              <span>Taxes & Fees</span>
-              <span>$0</span>
             </div>
             <div className="flex justify-between font-bold text-base sm:text-lg">
               <span>Total</span>
