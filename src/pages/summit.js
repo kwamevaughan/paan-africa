@@ -730,7 +730,7 @@ const SummitPage = () => {
          </div>
       
         {/* Program Section */}
-        <div className="bg-paan-dark-blue relative" id="program" ref={sectionRefs.program} handleScroll={handleScroll} isFixed={isFixed}>
+        <div className="bg-paan-dark-blue relative" id="program" sectionRefs={sectionRefs} handleScroll={handleScroll} isFixed={isFixed}>
             <section className="mx-auto max-w-6xl py-8 sm:py-12 md:py-16 lg:py-20 px-3 sm:px-4 md:px-6">
               <div className="flex flex-col sm:flex-row justify-between gap-4 sm:gap-6 md:gap-8 mb-8 sm:mb-12">
                 <div className="text-left">
@@ -1462,7 +1462,7 @@ const SummitPage = () => {
           </section>
          </div>
           {/* Parallax Section */}
-          <div className="relative py-6 sm:py-8 md:py-12 lg:py-16 xl:py-20 overflow-hidden h-[320px] sm:h-[400px] md:h-[450px] lg:h-[500px] xl:h-[550px]" id="parallax-section" isFixed={isFixed}>
+          <div className="relative py-6 sm:py-8 md:py-12 lg:py-16 xl:py-20 overflow-hidden h-[320px] sm:h-[400px] md:h-[450px] lg:h-[500px] xl:h-[550px]" id="parallax-section" isFixed={isFixed} id="exhibition">
             {/* Parallax Background Image */}
             <div 
               className="absolute inset-0 bg-cover bg-center sm:bg-fixed bg-scroll"

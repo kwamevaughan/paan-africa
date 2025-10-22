@@ -2,12 +2,13 @@
 export const menuItems = [
     { href: '#home', label: 'Home' },
     { href: '#about-us', label: 'About Summit' },
+    { href: '#program', label: 'Sessions' },
     { href: '#agenda', label: 'Programme' },
+    { href: '#participants', label: 'Wha can attend' },
     { href: '#speakers-section', label: 'Speakers' },
-    { href: '#sessions-section', label: 'Sessions' },
-    { href: '#paan-awards-section', label: 'Awards' },
     { href: '#tickets-section', label: 'Tickets' },
     { href: '#plan-your-trip', label: 'Plan' },
+    { href: '#exhibition', label: 'Exhibit' },
   ];
   
   export const ctaButton = {

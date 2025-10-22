@@ -192,11 +192,13 @@ const Header = () => {
         <div className="flex justify-between items-center h-16 sm:h-20 lg:h-24">
           {/* Logo */}
           <div className="flex-shrink-0 z-50">
+            <a href='/'>
             <img 
               src="https://ik.imagekit.io/nkmvdjnna/PAAN/paan-final-logo.svg" 
               alt="PAAN Logo" 
               className={getLogoClasses()}
             />
+            </a>
           </div>
 
           {/* Desktop Navigation Menu */}
