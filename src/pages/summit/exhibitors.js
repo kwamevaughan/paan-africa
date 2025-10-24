@@ -459,14 +459,14 @@ const Exhibitors = () => {
   return (
     <>
       <SEO
-        title="PAAN Summit 2026 Travel Guide | Nairobi, Kenya - Visa, Hotels & Transport"
-        description="Complete travel guide for PAAN Summit 2026 in Nairobi, Kenya. Get visa requirements, accommodation options, transport details, and essential travel tips for your visit to Africa's premier creative and tech conference."
-        keywords="PAAN Summit travel guide, Nairobi travel guide, Kenya visa requirements, Nairobi accommodation, PAAN Summit hotels, Nairobi transport, Kenya travel tips, African conference travel, business travel Kenya, Nairobi conference guide"
-        image="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/travel-guide-parallax-image.png"
-        ogTitle="PAAN Summit 2026 Travel Guide | Nairobi, Kenya - Visa, Hotels & Transport"
-        ogDescription="Complete travel guide for PAAN Summit 2026 in Nairobi, Kenya. Get visa requirements, accommodation options, transport details, and essential travel tips for your visit to Africa's premier creative and tech conference."
-        twitterTitle="PAAN Summit 2026 Travel Guide | Nairobi, Kenya - Visa, Hotels & Transport"
-        twitterDescription="Complete travel guide for PAAN Summit 2026 in Nairobi, Kenya. Get visa requirements, accommodation options, transport details, and essential travel tips for your visit to Africa's premier creative and tech conference."
+        title="PAAN Summit 2026 Exhibition Floor Plan | Book Your Booth Space"
+        description="Explore the PAAN Summit 2026 exhibition floor plan with live booth availability. Book standard 3×3m booths (USD 1,000), 3×6m booths (USD 1,800), or custom pavilions. Connect with 500+ industry leaders at Africa's premier creative and tech conference."
+        keywords="PAAN Summit exhibition, exhibition floor plan, booth booking, PAAN Summit 2026 exhibitors, Nairobi conference exhibition, creative tech conference, African business exhibition, summit booth space, exhibition packages, PAAN Summit booths"
+        image="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/exhibition.png"
+        ogTitle="PAAN Summit 2026 Exhibition Floor Plan | Book Your Booth Space"
+        ogDescription="Explore the PAAN Summit 2026 exhibition floor plan with live booth availability. Book standard 3×3m booths (USD 1,000), 3×6m booths (USD 1,800), or custom pavilions. Connect with 500+ industry leaders at Africa's premier creative and tech conference."
+        twitterTitle="PAAN Summit 2026 Exhibition Floor Plan | Book Your Booth Space"
+        twitterDescription="Explore the PAAN Summit 2026 exhibition floor plan with live booth availability. Book standard 3×3m booths (USD 1,000), 3×6m booths (USD 1,800), or custom pavilions. Connect with 500+ industry leaders at Africa's premier creative and tech conference."
       />
       <Head>
         <script
@@ -475,11 +475,11 @@ const Exhibitors = () => {
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "WebPage",
-              "name": "PAAN Summit 2026 Travel Guide | Nairobi, Kenya - Visa, Hotels & Transport",
-              "description": "Complete travel guide for PAAN Summit 2026 in Nairobi, Kenya. Get visa requirements, accommodation options, transport details, and essential travel tips for your visit to Africa's premier creative and tech conference.",
-              "url": "https://paan.africa/summit/travel-guide",
+              "name": "PAAN Summit 2026 Exhibition Floor Plan | Book Your Booth Space",
+              "description": "Explore the PAAN Summit 2026 exhibition floor plan with live booth availability. Book standard 3×3m booths (USD 1,000), 3×6m booths (USD 1,800), or custom pavilions. Connect with 500+ industry leaders at Africa's premier creative and tech conference.",
+              "url": "https://paan.africa/summit/exhibitors",
               "image": [
-                "https://ik.imagekit.io/nkmvdjnna/PAAN/summit/travel-guide-parallax-image.png",
+                "https://ik.imagekit.io/nkmvdjnna/PAAN/summit/exhibition.png",
                 "https://ik.imagekit.io/nkmvdjnna/PAAN/summit/summit-hero.webp?updatedAt=1757505455932"
               ],
               "mainEntity": {
@@ -530,29 +530,29 @@ const Exhibitors = () => {
                   {
                     "@type": "ListItem",
                     "position": 3,
-                    "name": "Travel Guide",
-                    "item": "https://paan.africa/summit/travel-guide"
+                    "name": "Exhibitors",
+                    "item": "https://paan.africa/summit/exhibitors"
                   }
                 ]
               },
               "about": [
                 {
                   "@type": "Thing",
-                  "name": "Nairobi Travel Information",
-                  "description": "Essential travel information for visiting Nairobi, Kenya"
+                  "name": "Exhibition Floor Plan",
+                  "description": "Interactive floor plan showing booth availability and pricing"
                 },
                 {
                   "@type": "Thing", 
-                  "name": "Kenya Visa Requirements",
-                  "description": "Visa and entry requirements for Kenya"
+                  "name": "Booth Booking",
+                  "description": "Standard and premium booth packages for PAAN Summit 2026"
                 },
                 {
                   "@type": "Thing",
-                  "name": "Nairobi Accommodation",
-                  "description": "Hotel and accommodation options in Nairobi"
+                  "name": "Exhibition Packages",
+                  "description": "Physical and virtual exhibition options with pricing"
                 }
               ],
-              "keywords": "PAAN Summit travel guide, Nairobi travel guide, Kenya visa requirements, Nairobi accommodation, PAAN Summit hotels, Nairobi transport, Kenya travel tips, African conference travel, business travel Kenya, Nairobi conference guide"
+              "keywords": "PAAN Summit exhibition, exhibition floor plan, booth booking, PAAN Summit 2026 exhibitors, Nairobi conference exhibition, creative tech conference, African business exhibition, summit booth space, exhibition packages, PAAN Summit booths"
             }),
           }}
         />
@@ -635,133 +635,6 @@ const Exhibitors = () => {
                 ENTRANCE
               </div>
               
-               {/* Realistic footsteps around the floor plan */}
-               <div className="absolute inset-0 pointer-events-none">
-                 {/* Top walkway footsteps */}
-                 <div className="absolute top-4 left-1/2 transform -translate-x-1/2 flex gap-4">
-                   <div className="flex gap-1">
-                     <div className="w-3 h-5 bg-gray-500 rounded-lg opacity-70 shadow-sm" style={{transform: 'rotate(-15deg)'}}></div>
-                     <div className="w-3 h-5 bg-gray-500 rounded-lg opacity-70 shadow-sm" style={{transform: 'rotate(15deg)'}}></div>
-                   </div>
-                   <div className="flex gap-1">
-                     <div className="w-3 h-5 bg-gray-500 rounded-lg opacity-70 shadow-sm" style={{transform: 'rotate(15deg)'}}></div>
-                     <div className="w-3 h-5 bg-gray-500 rounded-lg opacity-70 shadow-sm" style={{transform: 'rotate(-15deg)'}}></div>
-                   </div>
-                   <div className="flex gap-1">
-                     <div className="w-3 h-5 bg-gray-500 rounded-lg opacity-70 shadow-sm" style={{transform: 'rotate(-15deg)'}}></div>
-                     <div className="w-3 h-5 bg-gray-500 rounded-lg opacity-70 shadow-sm" style={{transform: 'rotate(15deg)'}}></div>
-                   </div>
-                 </div>
-                 
-                 {/* Bottom walkway footsteps */}
-                 <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-4">
-                   <div className="flex gap-1">
-                     <div className="w-3 h-5 bg-gray-500 rounded-lg opacity-70 shadow-sm" style={{transform: 'rotate(15deg)'}}></div>
-                     <div className="w-3 h-5 bg-gray-500 rounded-lg opacity-70 shadow-sm" style={{transform: 'rotate(-15deg)'}}></div>
-                   </div>
-                   <div className="flex gap-1">
-                     <div className="w-3 h-5 bg-gray-500 rounded-lg opacity-70 shadow-sm" style={{transform: 'rotate(-15deg)'}}></div>
-                     <div className="w-3 h-5 bg-gray-500 rounded-lg opacity-70 shadow-sm" style={{transform: 'rotate(15deg)'}}></div>
-                   </div>
-                   <div className="flex gap-1">
-                     <div className="w-3 h-5 bg-gray-500 rounded-lg opacity-70 shadow-sm" style={{transform: 'rotate(15deg)'}}></div>
-                     <div className="w-3 h-5 bg-gray-500 rounded-lg opacity-70 shadow-sm" style={{transform: 'rotate(-15deg)'}}></div>
-                   </div>
-                 </div>
-                 
-                 {/* Left side walkway footsteps */}
-                 <div className="absolute left-4 top-1/2 transform -translate-y-1/2 flex flex-col gap-4">
-                   <div className="flex flex-col gap-1">
-                     <div className="w-5 h-3 bg-gray-500 rounded-lg opacity-70 shadow-sm" style={{transform: 'rotate(15deg)'}}></div>
-                     <div className="w-5 h-3 bg-gray-500 rounded-lg opacity-70 shadow-sm" style={{transform: 'rotate(-15deg)'}}></div>
-                   </div>
-                   <div className="flex flex-col gap-1">
-                     <div className="w-5 h-3 bg-gray-500 rounded-lg opacity-70 shadow-sm" style={{transform: 'rotate(-15deg)'}}></div>
-                     <div className="w-5 h-3 bg-gray-500 rounded-lg opacity-70 shadow-sm" style={{transform: 'rotate(15deg)'}}></div>
-                   </div>
-                   <div className="flex flex-col gap-1">
-                     <div className="w-5 h-3 bg-gray-500 rounded-lg opacity-70 shadow-sm" style={{transform: 'rotate(15deg)'}}></div>
-                     <div className="w-5 h-3 bg-gray-500 rounded-lg opacity-70 shadow-sm" style={{transform: 'rotate(-15deg)'}}></div>
-                   </div>
-                 </div>
-                 
-                 {/* Right side walkway footsteps */}
-                 <div className="absolute right-4 top-1/2 transform -translate-y-1/2 flex flex-col gap-4">
-                   <div className="flex flex-col gap-1">
-                     <div className="w-5 h-3 bg-gray-500 rounded-lg opacity-70 shadow-sm" style={{transform: 'rotate(-15deg)'}}></div>
-                     <div className="w-5 h-3 bg-gray-500 rounded-lg opacity-70 shadow-sm" style={{transform: 'rotate(15deg)'}}></div>
-                   </div>
-                   <div className="flex flex-col gap-1">
-                     <div className="w-5 h-3 bg-gray-500 rounded-lg opacity-70 shadow-sm" style={{transform: 'rotate(15deg)'}}></div>
-                     <div className="w-5 h-3 bg-gray-500 rounded-lg opacity-70 shadow-sm" style={{transform: 'rotate(-15deg)'}}></div>
-                   </div>
-                   <div className="flex flex-col gap-1">
-                     <div className="w-5 h-3 bg-gray-500 rounded-lg opacity-70 shadow-sm" style={{transform: 'rotate(-15deg)'}}></div>
-                     <div className="w-5 h-3 bg-gray-500 rounded-lg opacity-70 shadow-sm" style={{transform: 'rotate(15deg)'}}></div>
-                   </div>
-                 </div>
-                 
-                 {/* Center walkway footsteps (between left and right sections) */}
-                 <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col gap-4">
-                   <div className="flex flex-col gap-1">
-                     <div className="w-5 h-3 bg-gray-500 rounded-lg opacity-70 shadow-sm" style={{transform: 'rotate(15deg)'}}></div>
-                     <div className="w-5 h-3 bg-gray-500 rounded-lg opacity-70 shadow-sm" style={{transform: 'rotate(-15deg)'}}></div>
-                   </div>
-                   <div className="flex flex-col gap-1">
-                     <div className="w-5 h-3 bg-gray-500 rounded-lg opacity-70 shadow-sm" style={{transform: 'rotate(-15deg)'}}></div>
-                     <div className="w-5 h-3 bg-gray-500 rounded-lg opacity-70 shadow-sm" style={{transform: 'rotate(15deg)'}}></div>
-                   </div>
-                   <div className="flex flex-col gap-1">
-                     <div className="w-5 h-3 bg-gray-500 rounded-lg opacity-70 shadow-sm" style={{transform: 'rotate(15deg)'}}></div>
-                     <div className="w-5 h-3 bg-gray-500 rounded-lg opacity-70 shadow-sm" style={{transform: 'rotate(-15deg)'}}></div>
-                   </div>
-                 </div>
-                 
-                 {/* Diagonal footsteps for natural flow */}
-                 <div className="absolute top-1/4 left-1/4 flex gap-3">
-                   <div className="flex gap-1">
-                     <div className="w-2 h-4 bg-gray-400 rounded-lg opacity-60 shadow-sm" style={{transform: 'rotate(-20deg)'}}></div>
-                     <div className="w-2 h-4 bg-gray-400 rounded-lg opacity-60 shadow-sm" style={{transform: 'rotate(20deg)'}}></div>
-                   </div>
-                   <div className="flex gap-1">
-                     <div className="w-2 h-4 bg-gray-400 rounded-lg opacity-60 shadow-sm" style={{transform: 'rotate(20deg)'}}></div>
-                     <div className="w-2 h-4 bg-gray-400 rounded-lg opacity-60 shadow-sm" style={{transform: 'rotate(-20deg)'}}></div>
-                   </div>
-                 </div>
-                 
-                 <div className="absolute top-1/4 right-1/4 flex gap-3">
-                   <div className="flex gap-1">
-                     <div className="w-2 h-4 bg-gray-400 rounded-lg opacity-60 shadow-sm" style={{transform: 'rotate(20deg)'}}></div>
-                     <div className="w-2 h-4 bg-gray-400 rounded-lg opacity-60 shadow-sm" style={{transform: 'rotate(-20deg)'}}></div>
-                   </div>
-                   <div className="flex gap-1">
-                     <div className="w-2 h-4 bg-gray-400 rounded-lg opacity-60 shadow-sm" style={{transform: 'rotate(-20deg)'}}></div>
-                     <div className="w-2 h-4 bg-gray-400 rounded-lg opacity-60 shadow-sm" style={{transform: 'rotate(20deg)'}}></div>
-                   </div>
-                 </div>
-                 
-                 <div className="absolute bottom-1/4 left-1/4 flex gap-3">
-                   <div className="flex gap-1">
-                     <div className="w-2 h-4 bg-gray-400 rounded-lg opacity-60 shadow-sm" style={{transform: 'rotate(-20deg)'}}></div>
-                     <div className="w-2 h-4 bg-gray-400 rounded-lg opacity-60 shadow-sm" style={{transform: 'rotate(20deg)'}}></div>
-                   </div>
-                   <div className="flex gap-1">
-                     <div className="w-2 h-4 bg-gray-400 rounded-lg opacity-60 shadow-sm" style={{transform: 'rotate(20deg)'}}></div>
-                     <div className="w-2 h-4 bg-gray-400 rounded-lg opacity-60 shadow-sm" style={{transform: 'rotate(-20deg)'}}></div>
-                   </div>
-                 </div>
-                 
-                 <div className="absolute bottom-1/4 right-1/4 flex gap-3">
-                   <div className="flex gap-1">
-                     <div className="w-2 h-4 bg-gray-400 rounded-lg opacity-60 shadow-sm" style={{transform: 'rotate(20deg)'}}></div>
-                     <div className="w-2 h-4 bg-gray-400 rounded-lg opacity-60 shadow-sm" style={{transform: 'rotate(-20deg)'}}></div>
-                   </div>
-                   <div className="flex gap-1">
-                     <div className="w-2 h-4 bg-gray-400 rounded-lg opacity-60 shadow-sm" style={{transform: 'rotate(-20deg)'}}></div>
-                     <div className="w-2 h-4 bg-gray-400 rounded-lg opacity-60 shadow-sm" style={{transform: 'rotate(20deg)'}}></div>
-                   </div>
-                 </div>
-              </div>
               
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
                 {/* Left Section - Standard Booths */}
@@ -1175,9 +1048,85 @@ const Exhibitors = () => {
         </motion.div>
 
         {/* Booths Marquee */}
-        <div>
+        <motion.div 
+          className="bg-white py-12 sm:py-16 md:py-20 overflow-hidden"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          viewport={{ once: true, margin: "-100px" }}
+        >
+          <section className="relative mx-auto max-w-6xl px-4 sm:px-6">
+            <motion.div 
+              className="text-center mb-12 sm:mb-16"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+              viewport={{ once: true, margin: "-50px" }}
+            >
+              <h2 className="text-3xl sm:text-4xl font-bold text-paan-dark-blue mb-4 sm:mb-6">
+                Featured Exhibitors
+              </h2>
+              <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+                Discover innovative companies and organizations showcasing their latest products and services at PAAN Summit 2026.
+              </p>
+            </motion.div>
 
-        </div>
+            {/* Marquee Container */}
+            <div className="relative">
+              {/* First Marquee */}
+              <div className="flex animate-marquee-left">
+                {[
+                  "https://ik.imagekit.io/nkmvdjnna/PAAN/exhibitors/exhibitor-1.png",
+                  "https://ik.imagekit.io/nkmvdjnna/PAAN/exhibitors/exhibitor-2.png",
+                  "https://ik.imagekit.io/nkmvdjnna/PAAN/exhibitors/exhibitor-3.png",
+                  "https://ik.imagekit.io/nkmvdjnna/PAAN/exhibitors/exhibitor-1.png",
+                  "https://ik.imagekit.io/nkmvdjnna/PAAN/exhibitors/exhibitor-2.png",
+                  "https://ik.imagekit.io/nkmvdjnna/PAAN/exhibitors/exhibitor-3.png",
+                  "https://ik.imagekit.io/nkmvdjnna/PAAN/exhibitors/exhibitor-1.png",
+                  "https://ik.imagekit.io/nkmvdjnna/PAAN/exhibitors/exhibitor-2.png"
+                ].map((image, index) => (
+                  <div key={`first-${index}`} className="flex-shrink-0 mx-4">
+                    <div className="w-72 h-48 bg-gray-100 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+                      <Image
+                        src={image}
+                        alt={`Exhibitor ${index + 1}`}
+                        width={300}
+                        height={200}
+                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                      />
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Second Marquee (Reverse Direction) */}
+              <div className="flex animate-marquee-right mt-8">
+                {[
+                  "https://ik.imagekit.io/nkmvdjnna/PAAN/exhibitors/exhibitor-3.png",
+                  "https://ik.imagekit.io/nkmvdjnna/PAAN/exhibitors/exhibitor-1.png",
+                  "https://ik.imagekit.io/nkmvdjnna/PAAN/exhibitors/exhibitor-2.png",
+                  "https://ik.imagekit.io/nkmvdjnna/PAAN/exhibitors/exhibitor-3.png",
+                  "https://ik.imagekit.io/nkmvdjnna/PAAN/exhibitors/exhibitor-1.png",
+                  "https://ik.imagekit.io/nkmvdjnna/PAAN/exhibitors/exhibitor-2.png",
+                  "https://ik.imagekit.io/nkmvdjnna/PAAN/exhibitors/exhibitor-3.png",
+                  "https://ik.imagekit.io/nkmvdjnna/PAAN/exhibitors/exhibitor-1.png"
+                ].map((image, index) => (
+                  <div key={`second-${index}`} className="flex-shrink-0 mx-4">
+                    <div className="w-72 h-48 bg-gray-100 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+                      <Image
+                        src={image}
+                        alt={`Exhibitor ${index + 9}`}
+                        width={300}
+                        height={200}
+                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                      />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        </motion.div>
 
         {/* Pricing & Information Cards */}
         <div 
@@ -1459,7 +1408,7 @@ const Exhibitors = () => {
            <div 
              className="absolute inset-0 bg-cover bg-center bg-fixed"
              style={{
-              backgroundImage: "url('https://ik.imagekit.io/nkmvdjnna/PAAN/summit/exhibition.png')",
+              backgroundImage: "url('https://ik.imagekit.io/nkmvdjnna/PAAN/summit/travel-guide-parallax-image.png')",
                filter: "brightness(0.8)"
              }}
            />
@@ -1532,7 +1481,7 @@ const Hero = ({ sectionRefs }) => {
         <div 
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: "url('https://ik.imagekit.io/nkmvdjnna/PAAN/summit/nairobi-area.jpg')",
+            backgroundImage: "url('https://ik.imagekit.io/nkmvdjnna/PAAN/exhibitors/hero-exhibitors.png')",
             filter: "brightness(0.5)" // Darkening the image
           }}
         />
