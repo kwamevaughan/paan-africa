@@ -1049,7 +1049,7 @@ const Exhibitors = () => {
 
         {/* Booths Marquee */}
         <motion.div 
-          className="bg-white py-12 sm:py-16 md:py-20 overflow-hidden"
+          className="bg-[#DAECF3] overflow-hidden"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
@@ -1063,12 +1063,7 @@ const Exhibitors = () => {
               transition={{ duration: 0.6, ease: "easeOut" }}
               viewport={{ once: true, margin: "-50px" }}
             >
-              <h2 className="text-3xl sm:text-4xl font-bold text-paan-dark-blue mb-4 sm:mb-6">
-                Featured Exhibitors
-              </h2>
-              <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                Discover innovative companies and organizations showcasing their latest products and services at PAAN Summit 2026.
-              </p>
+              
             </motion.div>
 
             {/* Marquee Container */}
