@@ -88,6 +88,10 @@ const Exhibitors = () => {
   const isFixed = useFixedHeader();
   const [activeDay, setActiveDay] = useState('day1');
   
+  // Modal state
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedBooth, setSelectedBooth] = useState(null);
+  
   // Count up animation state
   const [isVisible, setIsVisible] = useState(false);
   const [counts, setCounts] = useState({
@@ -138,6 +142,112 @@ const Exhibitors = () => {
   // Get visible sessions
   const getVisibleSessions = () => {
     return sessions.slice(currentSessionIndex, currentSessionIndex + visibleSessions);
+  };
+
+  // Booth data
+  const boothData = {
+    1: { id: 1, number: 1, status: 'Available', size: '3×3', price: 'USD 1,000', type: 'Standard' },
+    2: { id: 2, number: 2, status: 'Available', size: '3×3', price: 'USD 1,000', type: 'Standard' },
+    3: { id: 3, number: 3, status: 'Reserved', size: '3×3', price: 'USD 1,000', type: 'Standard' },
+    4: { id: 4, number: 4, status: 'Available', size: '3×3', price: 'USD 1,000', type: 'Standard' },
+    5: { id: 5, number: 5, status: 'Available', size: '3×3', price: 'USD 1,000', type: 'Standard' },
+    6: { id: 6, number: 6, status: 'Available', size: '3×6', price: 'USD 1,800', type: 'Standard' },
+    7: { id: 7, number: 7, status: 'Available', size: '3×3', price: 'USD 1,000', type: 'Standard' },
+    8: { id: 8, number: 8, status: 'Available', size: '3×3', price: 'USD 1,000', type: 'Standard' },
+    9: { id: 9, number: 9, status: 'Available', size: '3×3', price: 'USD 1,000', type: 'Standard' },
+    10: { id: 10, number: 10, status: 'Available', size: 'Pavilion', price: 'RFQ', type: 'Pavilion' },
+    11: { id: 11, number: 11, status: 'Booked', size: '3×3', price: 'USD 1,000', type: 'Standard' },
+    12: { id: 12, number: 12, status: 'Available', size: '3×3', price: 'USD 1,000', type: 'Standard' },
+    13: { id: 13, number: 13, status: 'Available', size: '3×3', price: 'USD 1,000', type: 'Standard' },
+    14: { id: 14, number: 14, status: 'Available', size: '3×6', price: 'USD 1,800', type: 'Standard' },
+    15: { id: 15, number: 15, status: 'Available', size: '3×3', price: 'USD 1,000', type: 'Standard' },
+    16: { id: 16, number: 16, status: 'Booked', size: '3×6', price: 'USD 1,800', type: 'Standard' },
+    17: { id: 17, number: 17, status: 'Available', size: '3×3', price: 'USD 1,000', type: 'Standard' },
+    18: { id: 18, number: 18, status: 'Available', size: '3×6', price: 'USD 1,800', type: 'Standard' },
+    19: { id: 19, number: 19, status: 'Available', size: '3×3', price: 'USD 1,000', type: 'Standard' },
+    20: { id: 20, number: 20, status: 'Available', size: '3×3', price: 'USD 1,000', type: 'Standard' },
+    21: { id: 21, number: 21, status: 'Available', size: '3×3', price: 'USD 1,000', type: 'Standard' },
+    22: { id: 22, number: 22, status: 'Available', size: '3×3', price: 'USD 1,000', type: 'Standard' },
+    23: { id: 23, number: 23, status: 'Reserved', size: '3×3', price: 'USD 1,000', type: 'Standard' },
+    24: { id: 24, number: 24, status: 'Available', size: '3×3', price: 'USD 1,000', type: 'Standard' },
+    25: { id: 25, number: 25, status: 'Available', size: '3×3', price: 'USD 1,000', type: 'Standard' },
+    26: { id: 26, number: 26, status: 'Booked', size: '3×3', price: 'USD 1,000', type: 'Standard' },
+    27: { id: 27, number: 27, status: 'Available', size: '3×3', price: 'USD 1,000', type: 'Standard' },
+    28: { id: 28, number: 28, status: 'Available', size: '3×3', price: 'USD 1,000', type: 'Standard' },
+    29: { id: 29, number: 29, status: 'Available', size: '3×3', price: 'USD 1,000', type: 'Standard' },
+    30: { id: 30, number: 30, status: 'Available', size: '3×3', price: 'USD 1,000', type: 'Standard' },
+    31: { id: 31, number: 31, status: 'Booked', size: '3×3', price: 'USD 1,000', type: 'Standard' },
+    32: { id: 32, number: 32, status: 'Available', size: '3×3', price: 'USD 1,000', type: 'Standard' },
+    33: { id: 33, number: 33, status: 'Available', size: 'Pavilion', price: 'RFQ', type: 'Pavilion' },
+    34: { id: 34, number: 34, status: 'Available', size: '3×3', price: 'USD 1,000', type: 'Standard' },
+    35: { id: 35, number: 35, status: 'Available', size: '3×3', price: 'USD 1,000', type: 'Standard' },
+    36: { id: 36, number: 36, status: 'Booked', size: '3×6', price: 'USD 1,800', type: 'Standard' },
+    37: { id: 37, number: 37, status: 'Available', size: 'Pavilion', price: 'RFQ', type: 'Pavilion' },
+    38: { id: 38, number: 38, status: 'Available', size: '3×3', price: 'USD 1,000', type: 'Standard' },
+    39: { id: 39, number: 39, status: 'Available', size: '3×3', price: 'USD 1,000', type: 'Standard' },
+    40: { id: 40, number: 40, status: 'Available', size: '3×3', price: 'USD 1,000', type: 'Standard' }
+  };
+
+  // Play click sound
+  const playClickSound = () => {
+    try {
+      // Create a simple click sound using Web Audio API
+      const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+      const oscillator = audioContext.createOscillator();
+      const gainNode = audioContext.createGain();
+      
+      oscillator.connect(gainNode);
+      gainNode.connect(audioContext.destination);
+      
+      oscillator.frequency.setValueAtTime(800, audioContext.currentTime);
+      oscillator.frequency.exponentialRampToValueAtTime(400, audioContext.currentTime + 0.1);
+      
+      gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
+      gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.1);
+      
+      oscillator.start(audioContext.currentTime);
+      oscillator.stop(audioContext.currentTime + 0.1);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
+  // Handle booth click
+  const handleBoothClick = (boothNumber) => {
+    playClickSound();
+    const booth = boothData[boothNumber];
+    if (booth) {
+      setSelectedBooth(booth);
+      setIsModalOpen(true);
+    }
+  };
+
+  // Close modal
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedBooth(null);
+  };
+
+  // Booth Button Component
+  const BoothButton = ({ boothNumber, className, children }) => {
+    const booth = boothData[boothNumber];
+    const getButtonClass = (status) => {
+      switch (status) {
+        case 'Available': return 'bg-white border-2 border-gray-300 hover:bg-gray-50 hover:scale-105';
+        case 'Reserved': return 'bg-paan-yellow border-2 border-paan-yellow hover:bg-paan-yellow/80 hover:scale-105';
+        case 'Booked': return 'bg-paan-red border-2 border-paan-red hover:bg-paan-red/80 hover:scale-105';
+        default: return 'bg-white border-2 border-gray-300 hover:bg-gray-50 hover:scale-105';
+      }
+    };
+
+    return (
+      <button 
+        onClick={() => handleBoothClick(boothNumber)}
+        className={`${getButtonClass(booth?.status)} rounded-lg p-2 transition-all duration-200 aspect-square w-full h-20 sm:h-24 ${className || ''}`}
+      >
+        {children}
+      </button>
+    );
   };
 
   // Speakers data
@@ -454,10 +564,10 @@ const Exhibitors = () => {
         <Hero sectionRefs={sectionRefs} handleScroll={handleScroll} isFixed={isFixed} scrollToSection={scrollToSection} timeLeft={timeLeft} />
 
         {/* Spacer to maintain layout flow */}
-        <div className="h-screen"></div>
+        <div className="h-[75vh]"></div>
 
 
-         {/* Visa requirements section */}
+         {/* Floor plan section */}
          <motion.div 
            className="bg-[#DAECF3] relative py-12 sm:py-16 md:py-20 pt-20 sm:pt-24 md:pt-32" 
            id="visa-requirements" 
@@ -475,632 +585,881 @@ const Exhibitors = () => {
               transition={{ duration: 0.6, ease: "easeOut" }}
               viewport={{ once: true, margin: "-50px" }}
             >
-                <motion.h2 
-                  className="text-2xl sm:text-3xl lg:text-4xl uppercase font-bold leading-tight mb-4 sm:mb-6"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
-                  viewport={{ once: true, margin: "-50px" }}
-                >
-                  Visa & Entry Requirements
-                </motion.h2>
-                <motion.p 
-                  className="text-base sm:text-lg font-light leading-relaxed mb-6 sm:mb-8"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
-                  viewport={{ once: true, margin: "-50px" }}
-                >
-                  Most international visitors require an Electronic Travel Authorization (eTA) to enter Kenya.
-                </motion.p>
-            </motion.div>
-            <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 items-center">
-              {/* Content Section */}
-              <div className="flex flex-col justify-center space-y-8">                                
-                <div className="space-y-4">            
-                  <ul className="space-y-3 font-light">
-                    <li className="flex items-start gap-3">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" className="text-paan-red mt-1 flex-shrink-0">
-                        <path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2m-2 15l-5-5l1.41-1.41L10 14.17l7.59-7.59L19 8z"/>
-                      </svg>
-                      <span>Passport valid for at least 6 months</span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" className="text-paan-red mt-1 flex-shrink-0">
-                        <path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2m-2 15l-5-5l1.41-1.41L10 14.17l7.59-7.59L19 8z"/>
-                      </svg>
-                      <span>Recent passport photo (digital)</span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" className="text-paan-red mt-1 flex-shrink-0">
-                        <path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2m-2 15l-5-5l1.41-1.41L10 14.17l7.59-7.59L19 8z"/>
-                      </svg>
-                      <span>Return/onward flight ticket</span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" className="text-paan-red mt-1 flex-shrink-0">
-                        <path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2m-2 15l-5-5l1.41-1.41L10 14.17l7.59-7.59L19 8z"/>
-                      </svg>
-                      <span>Proof of accommodation (hotel booking or invitation)</span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" className="text-paan-red mt-1 flex-shrink-0">
-                        <path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2m-2 15l-5-5l1.41-1.41L10 14.17l7.59-7.59L19 8z"/>
-                      </svg>
-                      <span>Visa invitation letter (if needed — request from <a href="mailto:travel@paan.africa" className="font-bold hover:text-paan-red transition-colors font-medium">travel@paan.africa</a>)</span>
-                    </li>
-                  </ul>
+
+            {/* Filter and Legend Section */}
+            <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4 mb-8">
+              {/* Booth Filter */}
+              <div className="flex flex-wrap gap-2">
+                <button className="bg-paan-blue text-white px-4 py-2 rounded-lg text-sm font-medium">
+                  All Booths
+                </button>
+                <button className="bg-gray-200 text-gray-700 px-4 py-2 rounded-lg text-sm font-medium hover:bg-gray-300">
+                  Available
+                </button>
+                <button className="bg-gray-200 text-gray-700 px-4 py-2 rounded-lg text-sm font-medium hover:bg-gray-300">
+                  Reserved
+                </button>
+                <button className="bg-gray-200 text-gray-700 px-4 py-2 rounded-lg text-sm font-medium hover:bg-gray-300">
+                  Booked
+                </button>
+              </div>
+
+              {/* Legend */}
+              <div className="flex flex-wrap gap-4 text-sm">
+                <div className="flex items-center gap-2">
+                  <div className="w-4 h-4 bg-white border border-gray-300 rounded-full"></div>
+                  <span>Available</span>
                 </div>
-                <div>
-                    <p>Applications are processed in <span className="font-bold">3–5 working days</span>. Apply at least <span className="font-bold">2–3 weeks</span> before travel.</p>
+                <div className="flex items-center gap-2">
+                  <div className="w-4 h-4 bg-paan-yellow rounded-full"></div>
+                  <span>Reserved</span>
                 </div>
-                
-                <motion.div 
-                  className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-4"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
-                  viewport={{ once: true, margin: "-50px" }}
-                >
-                  <motion.button 
-                    onClick={() => window.open('https://www.etakenya.go.ke/', '_blank')}
-                    className="bg-paan-red text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full hover:bg-paan-red/90 transition-all duration-300 font-medium text-sm sm:text-base shadow-lg flex items-center justify-center gap-2 hover:shadow-xl transform hover:-translate-y-1"
-                    whileHover={{ scale: 1.05, y: -2 }}
-                    whileTap={{ scale: 0.95 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    Apply for eTA
-                  </motion.button>
-                  <motion.button 
-                    onClick={() => window.location.href = 'mailto:secretariat@paan.africa?subject=PAAN Summit 2026 - Visa Invitation Letter Request&body=Hello,%0D%0A%0D%0AI am planning to attend the PAAN Summit 2026 in Nairobi and would like to request a visa invitation letter.%0D%0A%0D%0APlease provide the following information:%0D%0A- Full Name:%0D%0A- Passport Number:%0D%0A- Nationality:%0D%0A- Date of Birth:%0D%0A- Arrival Date:%0D%0A- Departure Date:%0D%0A- Hotel/Accommodation Details:%0D%0A%0D%0AThank you for your assistance.%0D%0A%0D%0ABest regards'}
-                    className="bg-transparent border-2 border-paan-dark-blue text-paan-dark-blue px-6 sm:px-8 py-3 sm:py-4 rounded-full hover:bg-paan-dark-blue hover:text-white transition-all duration-300 font-medium text-sm sm:text-base shadow-lg flex items-center justify-center gap-2 hover:shadow-xl transform hover:-translate-y-1"
-                    whileHover={{ scale: 1.05, y: -2 }}
-                    whileTap={{ scale: 0.95 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    Request Invitation Letter
-                  </motion.button>
-                </motion.div>
+                <div className="flex items-center gap-2">
+                  <div className="w-4 h-4 bg-paan-red rounded-full"></div>
+                  <span>Booked</span>
+                </div>
+              </div>
+            </div>
+            
+            {/* Floor Plan Container */}
+            <div className="bg-white border border-paan-dark-blue rounded-lg p-6 relative">
+              {/* Exit Indicator - Top Middle */}
+              <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-paan-red text-white px-4 py-1 rounded-full text-sm font-medium flex items-center gap-2">
+                <Icon icon="mdi:exit-run" className="w-4 h-4" />
+                EXIT
               </div>
               
-              {/* Image Section */}
-              <motion.div 
-                className="flex justify-center lg:justify-end order-first lg:order-last"
-                initial={{ opacity: 0, x: 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-                viewport={{ once: true, margin: "-50px" }}
-              >
-                <motion.div 
-                  className="relative overflow-hidden rounded-2xl shadow-2xl max-w-lg w-full"
-                  whileHover={{ scale: 1.02, y: -5 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <Image 
-                    src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/visa-req.png" 
-                    alt="PAAN Awards Categories" 
-                    width={500} 
-                    height={500}
-                    className="w-full h-auto object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
-                </motion.div>
-              </motion.div>
+              {/* Entrance Indicator - Bottom Middle */}
+              <div className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 bg-paan-blue text-white px-4 py-1 rounded-full text-sm font-medium flex items-center gap-2">
+                <Icon icon="mdi:login" className="w-4 h-4" />
+                ENTRANCE
+              </div>
+              
+               {/* Realistic footsteps around the floor plan */}
+               <div className="absolute inset-0 pointer-events-none">
+                 {/* Top walkway footsteps */}
+                 <div className="absolute top-4 left-1/2 transform -translate-x-1/2 flex gap-4">
+                   <div className="flex gap-1">
+                     <div className="w-3 h-5 bg-gray-500 rounded-lg opacity-70 shadow-sm" style={{transform: 'rotate(-15deg)'}}></div>
+                     <div className="w-3 h-5 bg-gray-500 rounded-lg opacity-70 shadow-sm" style={{transform: 'rotate(15deg)'}}></div>
+                   </div>
+                   <div className="flex gap-1">
+                     <div className="w-3 h-5 bg-gray-500 rounded-lg opacity-70 shadow-sm" style={{transform: 'rotate(15deg)'}}></div>
+                     <div className="w-3 h-5 bg-gray-500 rounded-lg opacity-70 shadow-sm" style={{transform: 'rotate(-15deg)'}}></div>
+                   </div>
+                   <div className="flex gap-1">
+                     <div className="w-3 h-5 bg-gray-500 rounded-lg opacity-70 shadow-sm" style={{transform: 'rotate(-15deg)'}}></div>
+                     <div className="w-3 h-5 bg-gray-500 rounded-lg opacity-70 shadow-sm" style={{transform: 'rotate(15deg)'}}></div>
+                   </div>
+                 </div>
+                 
+                 {/* Bottom walkway footsteps */}
+                 <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-4">
+                   <div className="flex gap-1">
+                     <div className="w-3 h-5 bg-gray-500 rounded-lg opacity-70 shadow-sm" style={{transform: 'rotate(15deg)'}}></div>
+                     <div className="w-3 h-5 bg-gray-500 rounded-lg opacity-70 shadow-sm" style={{transform: 'rotate(-15deg)'}}></div>
+                   </div>
+                   <div className="flex gap-1">
+                     <div className="w-3 h-5 bg-gray-500 rounded-lg opacity-70 shadow-sm" style={{transform: 'rotate(-15deg)'}}></div>
+                     <div className="w-3 h-5 bg-gray-500 rounded-lg opacity-70 shadow-sm" style={{transform: 'rotate(15deg)'}}></div>
+                   </div>
+                   <div className="flex gap-1">
+                     <div className="w-3 h-5 bg-gray-500 rounded-lg opacity-70 shadow-sm" style={{transform: 'rotate(15deg)'}}></div>
+                     <div className="w-3 h-5 bg-gray-500 rounded-lg opacity-70 shadow-sm" style={{transform: 'rotate(-15deg)'}}></div>
+                   </div>
+                 </div>
+                 
+                 {/* Left side walkway footsteps */}
+                 <div className="absolute left-4 top-1/2 transform -translate-y-1/2 flex flex-col gap-4">
+                   <div className="flex flex-col gap-1">
+                     <div className="w-5 h-3 bg-gray-500 rounded-lg opacity-70 shadow-sm" style={{transform: 'rotate(15deg)'}}></div>
+                     <div className="w-5 h-3 bg-gray-500 rounded-lg opacity-70 shadow-sm" style={{transform: 'rotate(-15deg)'}}></div>
+                   </div>
+                   <div className="flex flex-col gap-1">
+                     <div className="w-5 h-3 bg-gray-500 rounded-lg opacity-70 shadow-sm" style={{transform: 'rotate(-15deg)'}}></div>
+                     <div className="w-5 h-3 bg-gray-500 rounded-lg opacity-70 shadow-sm" style={{transform: 'rotate(15deg)'}}></div>
+                   </div>
+                   <div className="flex flex-col gap-1">
+                     <div className="w-5 h-3 bg-gray-500 rounded-lg opacity-70 shadow-sm" style={{transform: 'rotate(15deg)'}}></div>
+                     <div className="w-5 h-3 bg-gray-500 rounded-lg opacity-70 shadow-sm" style={{transform: 'rotate(-15deg)'}}></div>
+                   </div>
+                 </div>
+                 
+                 {/* Right side walkway footsteps */}
+                 <div className="absolute right-4 top-1/2 transform -translate-y-1/2 flex flex-col gap-4">
+                   <div className="flex flex-col gap-1">
+                     <div className="w-5 h-3 bg-gray-500 rounded-lg opacity-70 shadow-sm" style={{transform: 'rotate(-15deg)'}}></div>
+                     <div className="w-5 h-3 bg-gray-500 rounded-lg opacity-70 shadow-sm" style={{transform: 'rotate(15deg)'}}></div>
+                   </div>
+                   <div className="flex flex-col gap-1">
+                     <div className="w-5 h-3 bg-gray-500 rounded-lg opacity-70 shadow-sm" style={{transform: 'rotate(15deg)'}}></div>
+                     <div className="w-5 h-3 bg-gray-500 rounded-lg opacity-70 shadow-sm" style={{transform: 'rotate(-15deg)'}}></div>
+                   </div>
+                   <div className="flex flex-col gap-1">
+                     <div className="w-5 h-3 bg-gray-500 rounded-lg opacity-70 shadow-sm" style={{transform: 'rotate(-15deg)'}}></div>
+                     <div className="w-5 h-3 bg-gray-500 rounded-lg opacity-70 shadow-sm" style={{transform: 'rotate(15deg)'}}></div>
+                   </div>
+                 </div>
+                 
+                 {/* Center walkway footsteps (between left and right sections) */}
+                 <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col gap-4">
+                   <div className="flex flex-col gap-1">
+                     <div className="w-5 h-3 bg-gray-500 rounded-lg opacity-70 shadow-sm" style={{transform: 'rotate(15deg)'}}></div>
+                     <div className="w-5 h-3 bg-gray-500 rounded-lg opacity-70 shadow-sm" style={{transform: 'rotate(-15deg)'}}></div>
+                   </div>
+                   <div className="flex flex-col gap-1">
+                     <div className="w-5 h-3 bg-gray-500 rounded-lg opacity-70 shadow-sm" style={{transform: 'rotate(-15deg)'}}></div>
+                     <div className="w-5 h-3 bg-gray-500 rounded-lg opacity-70 shadow-sm" style={{transform: 'rotate(15deg)'}}></div>
+                   </div>
+                   <div className="flex flex-col gap-1">
+                     <div className="w-5 h-3 bg-gray-500 rounded-lg opacity-70 shadow-sm" style={{transform: 'rotate(15deg)'}}></div>
+                     <div className="w-5 h-3 bg-gray-500 rounded-lg opacity-70 shadow-sm" style={{transform: 'rotate(-15deg)'}}></div>
+                   </div>
+                 </div>
+                 
+                 {/* Diagonal footsteps for natural flow */}
+                 <div className="absolute top-1/4 left-1/4 flex gap-3">
+                   <div className="flex gap-1">
+                     <div className="w-2 h-4 bg-gray-400 rounded-lg opacity-60 shadow-sm" style={{transform: 'rotate(-20deg)'}}></div>
+                     <div className="w-2 h-4 bg-gray-400 rounded-lg opacity-60 shadow-sm" style={{transform: 'rotate(20deg)'}}></div>
+                   </div>
+                   <div className="flex gap-1">
+                     <div className="w-2 h-4 bg-gray-400 rounded-lg opacity-60 shadow-sm" style={{transform: 'rotate(20deg)'}}></div>
+                     <div className="w-2 h-4 bg-gray-400 rounded-lg opacity-60 shadow-sm" style={{transform: 'rotate(-20deg)'}}></div>
+                   </div>
+                 </div>
+                 
+                 <div className="absolute top-1/4 right-1/4 flex gap-3">
+                   <div className="flex gap-1">
+                     <div className="w-2 h-4 bg-gray-400 rounded-lg opacity-60 shadow-sm" style={{transform: 'rotate(20deg)'}}></div>
+                     <div className="w-2 h-4 bg-gray-400 rounded-lg opacity-60 shadow-sm" style={{transform: 'rotate(-20deg)'}}></div>
+                   </div>
+                   <div className="flex gap-1">
+                     <div className="w-2 h-4 bg-gray-400 rounded-lg opacity-60 shadow-sm" style={{transform: 'rotate(-20deg)'}}></div>
+                     <div className="w-2 h-4 bg-gray-400 rounded-lg opacity-60 shadow-sm" style={{transform: 'rotate(20deg)'}}></div>
+                   </div>
+                 </div>
+                 
+                 <div className="absolute bottom-1/4 left-1/4 flex gap-3">
+                   <div className="flex gap-1">
+                     <div className="w-2 h-4 bg-gray-400 rounded-lg opacity-60 shadow-sm" style={{transform: 'rotate(-20deg)'}}></div>
+                     <div className="w-2 h-4 bg-gray-400 rounded-lg opacity-60 shadow-sm" style={{transform: 'rotate(20deg)'}}></div>
+                   </div>
+                   <div className="flex gap-1">
+                     <div className="w-2 h-4 bg-gray-400 rounded-lg opacity-60 shadow-sm" style={{transform: 'rotate(20deg)'}}></div>
+                     <div className="w-2 h-4 bg-gray-400 rounded-lg opacity-60 shadow-sm" style={{transform: 'rotate(-20deg)'}}></div>
+                   </div>
+                 </div>
+                 
+                 <div className="absolute bottom-1/4 right-1/4 flex gap-3">
+                   <div className="flex gap-1">
+                     <div className="w-2 h-4 bg-gray-400 rounded-lg opacity-60 shadow-sm" style={{transform: 'rotate(20deg)'}}></div>
+                     <div className="w-2 h-4 bg-gray-400 rounded-lg opacity-60 shadow-sm" style={{transform: 'rotate(-20deg)'}}></div>
+                   </div>
+                   <div className="flex gap-1">
+                     <div className="w-2 h-4 bg-gray-400 rounded-lg opacity-60 shadow-sm" style={{transform: 'rotate(-20deg)'}}></div>
+                     <div className="w-2 h-4 bg-gray-400 rounded-lg opacity-60 shadow-sm" style={{transform: 'rotate(20deg)'}}></div>
+                   </div>
+                 </div>
+              </div>
+              
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
+                {/* Left Section - Standard Booths */}
+                <div>
+                  <div>
+                    <div className="grid grid-cols-2 sm:grid-cols-5 gap-2 mb-20">
+                          {/* Booth 1 */}
+                        <button 
+                          onClick={() => handleBoothClick(1)}
+                          className="bg-white border-2 border-gray-300 rounded-lg p-2 hover:bg-gray-50 transition-colors aspect-square w-full h-20 sm:h-24"
+                        >
+                          <div className="flex flex-col items-center justify-center text-center h-full">
+                            <h4 className="font-bold text-paan-dark-blue text-xs sm:text-sm">Booth 1</h4>
+                            <p className="text-xs text-gray-600">USD 1,000</p>
+                            <p className="text-xs font-bold text-paan-dark-blue">3×3</p>
+                          </div>
+                        </button>
+                        
+                        {/* Booth 2 */}
+                        <button 
+                          onClick={() => handleBoothClick(2)}
+                          className="bg-white border-2 border-gray-300 rounded-lg p-2 hover:bg-gray-50 transition-colors aspect-square w-full h-20 sm:h-24"
+                        >
+                          <div className="flex flex-col items-center justify-center text-center h-full">
+                            <h4 className="font-bold text-paan-dark-blue text-xs sm:text-sm">Booth 2</h4>
+                            <p className="text-xs text-gray-600">USD 1,000</p>
+                            <p className="text-xs font-bold text-paan-dark-blue">3×3</p>
+                          </div>
+                        </button>
+                        
+                        {/* Booth 3 */}
+                        <button 
+                          onClick={() => handleBoothClick(3)}
+                          className="bg-paan-yellow border-2 border-paan-yellow rounded-lg p-2 hover:bg-paan-yellow/80 transition-colors aspect-square w-full h-20 sm:h-24"
+                        >
+                          <div className="flex flex-col items-center justify-center text-center h-full">
+                            <h4 className="font-bold text-paan-dark-blue text-xs sm:text-sm">Booth 3</h4>
+                            <p className="text-xs text-gray-600">USD 1,000</p>
+                            <p className="text-xs font-bold text-paan-dark-blue">3×3</p>
+                          </div>
+                        </button>
+                        
+                        {/* Booth 4 */}
+                        <button 
+                          onClick={() => handleBoothClick(4)}
+                          className="bg-white border-2 border-gray-300 rounded-lg p-2 hover:bg-gray-50 transition-colors aspect-square w-full h-20 sm:h-24"
+                        >
+                          <div className="flex flex-col items-center justify-center text-center h-full">
+                            <h4 className="font-bold text-paan-dark-blue text-xs sm:text-sm">Booth 4</h4>
+                            <p className="text-xs text-gray-600">USD 1,000</p>
+                            <p className="text-xs font-bold text-paan-dark-blue">3×3</p>
+                          </div>
+                        </button>
+
+                        {/* Booth 5 */}
+                        <button 
+                          onClick={() => handleBoothClick(5)}
+                          className="bg-white border-2 border-gray-300 rounded-lg p-2 hover:bg-gray-50 transition-colors aspect-square w-full h-20 sm:h-24"
+                        >
+                          <div className="flex flex-col items-center justify-center text-center h-full">
+                            <h4 className="font-bold text-paan-dark-blue text-xs sm:text-sm">Booth 5</h4>
+                            <p className="text-xs text-gray-600">USD 1,000</p>
+                            <p className="text-xs font-bold text-paan-dark-blue">3×3</p>
+                          </div>
+                        </button>
+                    </div>
+                    
+                    <div className="grid grid-cols-2 sm:grid-cols-5 gap-2 mb-20">
+                      {/* Booth 6 */}
+                    <BoothButton boothNumber={6}>
+                      <div className="flex flex-col items-center text-center">
+                        <h4 className="font-bold text-paan-dark-blue">Booth 6</h4>
+                        <p className="text-sm text-gray-600">USD 1,800</p>
+                        <p className="text-sm font-bold text-paan-dark-blue">3×6</p>
+                      </div>
+                    </BoothButton>
+                    
+                    {/* Booth 7 */}
+                    <BoothButton boothNumber={7}>
+                      <div className="flex flex-col items-center text-center">
+                        <h4 className="font-bold text-paan-dark-blue">Booth 7</h4>
+                        <p className="text-sm text-gray-600">USD 1,000</p>
+                        <p className="text-sm font-bold text-paan-dark-blue">3×3</p>
+                      </div>
+                    </BoothButton>
+
+                    {/* Booth 8 */}
+                    <BoothButton boothNumber={8}>
+                      <div className="flex flex-col items-center text-center">
+                        <h4 className="font-bold text-paan-dark-blue">Booth 8</h4>
+                        <p className="text-sm text-gray-600">USD 1,000</p>
+                        <p className="text-sm font-bold text-paan-dark-blue">3×3</p>
+                      </div>
+                    </BoothButton>
+
+                    {/* Booth 9 */}
+                    <BoothButton boothNumber={9}>
+                      <div className="flex flex-col items-center text-center">
+                        <h4 className="font-bold text-paan-dark-blue">Booth 9</h4>
+                        <p className="text-sm text-gray-600">USD 1,000</p>
+                        <p className="text-sm font-bold text-paan-dark-blue">3×3</p>
+                      </div>
+                    </BoothButton>
+
+                    {/* Booth 10 */}
+                    <BoothButton boothNumber={10}>
+                      <div className="flex flex-col items-center text-center">
+                        <h4 className="font-bold text-paan-dark-blue">Booth 10</h4>
+                        <p className="text-sm text-gray-600">USD 1,000</p>
+                        <p className="text-sm font-bold text-paan-dark-blue">Pavilion</p>
+                      </div>
+                    </BoothButton>
+                    </div>
+
+                    <div className="grid grid-cols-2 sm:grid-cols-5 gap-2 mb-20">
+                      {/* Booth 11 */}
+                    <BoothButton boothNumber={11}>
+                      <div className="flex flex-col items-center text-center">
+                        <h4 className="font-bold text-paan-dark-blue">Booth 11</h4>
+                        <p className="text-sm text-gray-600">USD 1,000</p>
+                        <p className="text-sm font-bold text-paan-dark-blue">3×3</p>
+                      </div>
+                    </BoothButton>
+                    
+                    {/* Booth 12 */}
+                    <BoothButton boothNumber={12}>
+                      <div className="flex flex-col items-center text-center">
+                        <h4 className="font-bold text-paan-dark-blue">Booth 12</h4>
+                        <p className="text-sm text-gray-600">USD 1,000</p>
+                        <p className="text-sm font-bold text-paan-dark-blue">3×3</p>
+                      </div>
+                    </BoothButton>
+
+                    {/* Booth 13 */}
+                    <BoothButton boothNumber={13}>
+                      <div className="flex flex-col items-center text-center">
+                        <h4 className="font-bold text-paan-dark-blue">Booth 13</h4>
+                        <p className="text-sm text-gray-600">USD 1,000</p>
+                        <p className="text-sm font-bold text-paan-dark-blue">3×3</p>
+                      </div>
+                    </BoothButton>
+
+                    {/* Booth 14 */}
+                    <BoothButton boothNumber={14}>
+                      <div className="flex flex-col items-center text-center">
+                        <h4 className="font-bold text-paan-dark-blue">Booth 14</h4>
+                        <p className="text-sm text-gray-600">USD 1,000</p>
+                        <p className="text-sm font-bold text-paan-dark-blue">3×6</p>
+                      </div>
+                    </BoothButton>
+
+                    {/* Booth 15 */}
+                    <BoothButton boothNumber={15}>
+                      <div className="flex flex-col items-center text-center">
+                        <h4 className="font-bold text-paan-dark-blue">Booth 15</h4>
+                        <p className="text-sm text-gray-600">USD 1,000</p>
+                        <p className="text-sm font-bold text-paan-dark-blue">3×3</p>
+                      </div>
+                    </BoothButton>
+                    </div>
+
+                    <div className="grid grid-cols-2 sm:grid-cols-5 gap-2 mb-10">
+                      {/* Booth 16 */}
+                    <BoothButton boothNumber={16}>
+                      <div className="flex flex-col items-center text-center">
+                        <h4 className="font-bold text-paan-dark-blue">Booth 16</h4>
+                        <p className="text-sm text-gray-600">USD 1,800</p>
+                        <p className="text-sm font-bold text-paan-dark-blue">3×6</p>
+                      </div>
+                    </BoothButton>
+                    
+                    {/* Booth 17 */}
+                    <BoothButton boothNumber={17}>
+                      <div className="flex flex-col items-center text-center">
+                        <h4 className="font-bold text-paan-dark-blue">Booth 17</h4>
+                        <p className="text-sm text-gray-600">USD 1,000</p>
+                        <p className="text-sm font-bold text-paan-dark-blue">3×3</p>
+                      </div>
+                    </BoothButton>
+
+                    {/* Booth 18 */}
+                    <BoothButton boothNumber={18}>
+                      <div className="flex flex-col items-center text-center">
+                        <h4 className="font-bold text-paan-dark-blue">Booth 18</h4>
+                        <p className="text-sm text-gray-600">USD 1,800</p>
+                        <p className="text-sm font-bold text-paan-dark-blue">3×6</p>
+                      </div>
+                    </BoothButton>
+
+                    {/* Booth 19 */}
+                    <BoothButton boothNumber={19}>
+                      <div className="flex flex-col items-center text-center">
+                        <h4 className="font-bold text-paan-dark-blue">Booth 19</h4>
+                        <p className="text-sm text-gray-600">USD 1,000</p>
+                        <p className="text-sm font-bold text-paan-dark-blue">3×3</p>
+                      </div>
+                    </BoothButton>
+
+                    {/* Booth 20 */}
+                    <BoothButton boothNumber={20}>
+                      <div className="flex flex-col items-center text-center">
+                        <h4 className="font-bold text-paan-dark-blue">Booth 20</h4>
+                        <p className="text-sm text-gray-600">USD 1,000</p>
+                        <p className="text-sm font-bold text-paan-dark-blue">3×3</p>
+                      </div>
+                    </BoothButton>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Right Section - Premium Booths & Pavilions */}
+                <div>
+                <div>
+                  <div>
+                    <div className="grid grid-cols-2 sm:grid-cols-5 gap-2 mb-20">
+                          {/* Booth 21 */}
+                        <BoothButton boothNumber={21}>
+                          <div className="flex flex-col items-center justify-center text-center h-full">
+                            <h4 className="font-bold text-paan-dark-blue text-xs sm:text-sm">Booth 21</h4>
+                            <p className="text-xs text-gray-600">USD 1,000</p>
+                            <p className="text-xs font-bold text-paan-dark-blue">3×3</p>
+                          </div>
+                        </BoothButton>
+                        
+                        {/* Booth 22 */}
+                        <BoothButton boothNumber={22}>
+                          <div className="flex flex-col items-center justify-center text-center h-full">
+                            <h4 className="font-bold text-paan-dark-blue text-xs sm:text-sm">Booth 22</h4>
+                            <p className="text-xs text-gray-600">USD 1,000</p>
+                            <p className="text-xs font-bold text-paan-dark-blue">3×3</p>
+                          </div>
+                        </BoothButton>
+                        
+                        {/* Booth 23 */}
+                        <BoothButton boothNumber={23}>
+                          <div className="flex flex-col items-center justify-center text-center h-full">
+                            <h4 className="font-bold text-paan-dark-blue text-xs sm:text-sm">Booth 23</h4>
+                            <p className="text-xs text-gray-600">USD 1,000</p>
+                            <p className="text-xs font-bold text-paan-dark-blue">3×3</p>
+                          </div>
+                        </BoothButton>
+                        
+                        {/* Booth 24 */}
+                        <BoothButton boothNumber={24}>
+                          <div className="flex flex-col items-center justify-center text-center h-full">
+                            <h4 className="font-bold text-paan-dark-blue text-xs sm:text-sm">Booth 24</h4>
+                            <p className="text-xs text-gray-600">USD 1,000</p>
+                            <p className="text-xs font-bold text-paan-dark-blue">3×3</p>
+                          </div>
+                        </BoothButton>
+
+                        {/* Booth 25 */}
+                        <BoothButton boothNumber={25}>
+                          <div className="flex flex-col items-center justify-center text-center h-full">
+                            <h4 className="font-bold text-paan-dark-blue text-xs sm:text-sm">Booth 25</h4>
+                            <p className="text-xs text-gray-600">USD 1,000</p>
+                            <p className="text-xs font-bold text-paan-dark-blue">3×3</p>
+                          </div>
+                        </BoothButton>
+                    </div>
+                    
+                    <div className="grid grid-cols-2 sm:grid-cols-5 gap-2 mb-20">
+                      {/* Booth 26 */}
+                    <BoothButton boothNumber={26}>
+                      <div className="flex flex-col items-center text-center">
+                        <h4 className="font-bold text-paan-dark-blue">Booth 26</h4>
+                        <p className="text-sm text-gray-600">USD 1,000</p>
+                        <p className="text-sm font-bold text-paan-dark-blue">3×3</p>
+                      </div>
+                    </BoothButton>
+                    
+                    {/* Booth 27 */}
+                    <BoothButton boothNumber={27}>
+                      <div className="flex flex-col items-center text-center">
+                        <h4 className="font-bold text-paan-dark-blue">Booth 27</h4>
+                        <p className="text-sm text-gray-600">USD 1,000</p>
+                        <p className="text-sm font-bold text-paan-dark-blue">3×3</p>
+                      </div>
+                    </BoothButton>
+
+                    {/* Booth 28 */}
+                    <BoothButton boothNumber={28}>
+                      <div className="flex flex-col items-center text-center">
+                        <h4 className="font-bold text-paan-dark-blue">Booth 28</h4>
+                        <p className="text-sm text-gray-600">USD 1,000</p>
+                        <p className="text-sm font-bold text-paan-dark-blue">3×3</p>
+                      </div>
+                    </BoothButton>
+
+                    {/* Booth 29 */}
+                    <BoothButton boothNumber={29}>
+                      <div className="flex flex-col items-center text-center">
+                        <h4 className="font-bold text-paan-dark-blue">Booth 29</h4>
+                        <p className="text-sm text-gray-600">USD 1,000</p>
+                        <p className="text-sm font-bold text-paan-dark-blue">3×3</p>
+                      </div>
+                    </BoothButton>
+
+                    {/* Booth 30 */}
+                    <BoothButton boothNumber={30}>
+                      <div className="flex flex-col items-center text-center">
+                        <h4 className="font-bold text-paan-dark-blue">Booth 30</h4>
+                        <p className="text-sm text-gray-600">USD 1,000</p>
+                        <p className="text-sm font-bold text-paan-dark-blue">3×3</p>
+                      </div>
+                    </BoothButton>
+                    </div>
+
+                    <div className="grid grid-cols-2 sm:grid-cols-5 gap-2 mb-20">
+                      {/* Booth 31 */}
+                    <BoothButton boothNumber={31}>
+                      <div className="flex flex-col items-center text-center">
+                        <h4 className="font-bold text-paan-dark-blue">Booth 31</h4>
+                        <p className="text-sm text-gray-600">USD 1,000</p>
+                        <p className="text-sm font-bold text-paan-dark-blue">3×3</p>
+                      </div>
+                    </BoothButton>
+                    
+                    {/* Booth 32 */}
+                    <BoothButton boothNumber={32}>
+                      <div className="flex flex-col items-center text-center">
+                        <h4 className="font-bold text-paan-dark-blue">Booth 32</h4>
+                        <p className="text-sm text-gray-600">USD 1,000</p>
+                        <p className="text-sm font-bold text-paan-dark-blue">3×3</p>
+                      </div>
+                    </BoothButton>
+
+                    {/* Booth 33 */}
+                    <BoothButton boothNumber={33}>
+                      <div className="flex flex-col items-center text-center">
+                        <h4 className="font-bold text-paan-dark-blue">Booth 33</h4>
+                        <p className="text-sm text-gray-600">USD 1,000</p>
+                        <p className="text-sm font-bold text-paan-dark-blue">Pavillion</p>
+                      </div>
+                    </BoothButton>
+
+                    {/* Booth 34 */}
+                    <BoothButton boothNumber={34}>
+                      <div className="flex flex-col items-center text-center">
+                        <h4 className="font-bold text-paan-dark-blue">Booth 34</h4>
+                        <p className="text-sm text-gray-600">USD 1,000</p>
+                        <p className="text-sm font-bold text-paan-dark-blue">3×3</p>
+                      </div>
+                    </BoothButton>
+
+                    {/* Booth 35 */}
+                    <BoothButton boothNumber={35}>
+                      <div className="flex flex-col items-center text-center">
+                        <h4 className="font-bold text-paan-dark-blue">Booth 35</h4>
+                        <p className="text-sm text-gray-600">USD 1,000</p>
+                        <p className="text-sm font-bold text-paan-dark-blue">3×3</p>
+                      </div>
+                    </BoothButton>
+                    </div>
+
+                    <div className="grid grid-cols-2 sm:grid-cols-5 gap-2 mb-10">
+                      {/* Booth 36 */}
+                    <BoothButton boothNumber={36}>
+                      <div className="flex flex-col items-center text-center">
+                        <h4 className="font-bold text-paan-dark-blue">Booth 36</h4>
+                        <p className="text-sm text-gray-600">USD 1,800</p>
+                        <p className="text-sm font-bold text-paan-dark-blue">3×6</p>
+                      </div>
+                    </BoothButton>
+                    
+                    {/* Booth 37 */}
+                    <BoothButton boothNumber={37}>
+                      <div className="flex flex-col items-center text-center">
+                        <h4 className="font-bold text-paan-dark-blue">Booth 37</h4>
+                        <p className="text-sm text-gray-600">USD 1,000</p>
+                        <p className="text-sm font-bold text-paan-dark-blue">Pavilion</p>
+                      </div>
+                    </BoothButton>
+
+                    {/* Booth 38 */}
+                    <BoothButton boothNumber={38}>
+                      <div className="flex flex-col items-center text-center">
+                        <h4 className="font-bold text-paan-dark-blue">Booth 38</h4>
+                        <p className="text-sm text-gray-600">USD 1,000</p>
+                        <p className="text-sm font-bold text-paan-dark-blue">3×3</p>
+                      </div>
+                    </BoothButton>
+
+                    {/* Booth 39 */}
+                    <BoothButton boothNumber={39}>
+                      <div className="flex flex-col items-center text-center">
+                        <h4 className="font-bold text-paan-dark-blue">Booth 39</h4>
+                        <p className="text-sm text-gray-600">USD 1,000</p>
+                        <p className="text-sm font-bold text-paan-dark-blue">3×3</p>
+                      </div>
+                    </BoothButton>
+
+                    {/* Booth 40 */}
+                    <BoothButton boothNumber={40}>
+                      <div className="flex flex-col items-center text-center">
+                        <h4 className="font-bold text-paan-dark-blue">Booth 40</h4>
+                        <p className="text-sm text-gray-600">USD 1,000</p>
+                        <p className="text-sm font-bold text-paan-dark-blue">3×3</p>
+                      </div>
+                    </BoothButton>
+                    </div>
+                  </div>
+                </div>
+                </div>
+              </div>
             </div>
+
+              
+            </motion.div>
           </section>
         </motion.div>
 
-         {/* Accommodation section */}
-         <motion.div 
-           className="bg-white py-12 sm:py-16 md:py-20 pt-16 sm:pt-20 md:pt-24" 
-           id="accommodation"
-           initial={{ opacity: 0, y: 50 }}
-           whileInView={{ opacity: 1, y: 0 }}
-           transition={{ duration: 0.8, ease: "easeOut" }}
-           viewport={{ once: true, margin: "-100px" }}
-         >
-            <section className="mx-auto max-w-6xl px-4 sm:px-6">
-                <div className="text-left mb-12 sm:mb-16">
-                    <h2 className="text-2xl sm:text-3xl lg:text-4xl uppercase font-bold leading-tight mb-4 sm:mb-6 text-paan-dark-blue">Accommodation</h2>
-                    <p className="text-base sm:text-lg font-light leading-relaxed mb-6 sm:mb-8 text-gray-600 max-w-3xl">
-                        We've secured special rates at partner hotels near the venue. Options range from luxury hotels to budget-friendly accommodations.
-                    </p>
-                </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
-                    <div className="relative rounded-xl shadow-lg overflow-hidden bg-white hover:shadow-xl transition-shadow duration-300">
-                        <div className="relative h-64">
-                            <Image
-                                src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/sankara.png"
-                                alt="Sankara Nairobi"
-                                fill
-                                className="object-cover"
-                            />
-                        </div>
-                        <div className="p-6">
-                            <h4 className="text-xl font-bold text-paan-dark-blue mb-2">Sankara Nairobi</h4>
-                            <p className="text-gray-600">Luxury • 6 min drive</p>
-                        </div>
-                    </div>
-                    
-                    <div className="relative rounded-xl shadow-lg overflow-hidden bg-white hover:shadow-xl transition-shadow duration-300">
-                        <div className="relative h-64">
-                            <Image
-                                src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/park-inn.png"
-                                alt="Park Inn by Radisson"
-                                fill
-                                className="object-cover"
-                            />
-                        </div>
-                        <div className="p-6">
-                            <h4 className="text-xl font-bold text-paan-dark-blue mb-2">Park Inn by Radisson</h4>
-                            <p className="text-gray-600">Mid-range • 5 min drive</p>
-                        </div>
-                    </div>
-                    
-                    <div className="relative rounded-xl shadow-lg overflow-hidden bg-white hover:shadow-xl transition-shadow duration-300">
-                        <div className="relative h-64">
-                            <Image
-                                src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/ibis.png"
-                                alt="Ibis Styles Nairobi"
-                                fill
-                                className="object-cover"
-                            />
-                        </div>
-                        <div className="p-6">
-                            <h4 className="text-xl font-bold text-paan-dark-blue mb-2">Ibis Styles Nairobi</h4>
-                            <p className="text-gray-600">Budget • 10 min drive</p>
-                        </div>
-                    </div>
-                    
-                    <div className="relative rounded-xl shadow-lg overflow-hidden bg-white hover:shadow-xl transition-shadow duration-300">
-                        <div className="relative h-64">
-                            <Image
-                                src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/trademark.png"
-                                alt="Trademark Hotel"
-                                fill
-                                className="object-cover"
-                            />
-                        </div>
-                        <div className="p-6">
-                            <h4 className="text-xl font-bold text-paan-dark-blue mb-2">Trademark Hotel</h4>
-                            <p className="text-gray-600">Village Market • 12 min drive</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </motion.div>
+        {/* Booths Marquee */}
+        <div>
 
-         {/* Arrival & Transport */}
+        </div>
+
+        {/* Pricing & Information Cards */}
+        <div 
+          className="bg-[#DAECF3] py-12 sm:py-16 md:py-20"
+        >
+            <div className="mx-auto max-w-6xl px-4 sm:px-6">
+            <motion.div 
+              className="text-center mb-12 sm:mb-16"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+              viewport={{ once: true, margin: "-50px" }}
+            >
+              <h2 className="text-3xl sm:text-4xl font-bold text-paan-dark-blue mb-4 sm:mb-6">
+                Exhibition Packages & Pricing
+              </h2>
+              <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+                Choose the perfect exhibition package for your business needs and budget.
+              </p>
+            </motion.div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
+              {/* Standard Pricing Card */}
+              <motion.div 
+                className="bg-white rounded-xl shadow-lg p-6 sm:p-8"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
+                viewport={{ once: true, margin: "-50px" }}
+              >
+                <div className="text-center mb-6">
+                  <div className="w-16 h-16 bg-paan-blue rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Icon icon="mdi:currency-usd" className="w-8 h-8 text-white" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-paan-dark-blue mb-2">Standard Pricing</h3>
+                  <p className="text-gray-600">Physical booth spaces</p>
+                      </div>
+                
+                <div className="space-y-4">
+                  <div className="flex justify-between items-center py-3 border-b border-gray-200">
+                    <div>
+                      <h4 className="font-semibold text-paan-dark-blue">3×3 m Booth</h4>
+                      <p className="text-sm text-gray-600">Standard size</p>
+                      </div>
+                    <span className="text-xl font-bold text-paan-blue">USD 1,000</span>
+                      </div>
+                  
+                  <div className="flex justify-between items-center py-3 border-b border-gray-200">
+                    <div>
+                      <h4 className="font-semibold text-paan-dark-blue">3×6 m Booth</h4>
+                      <p className="text-sm text-gray-600">Double size</p>
+                  </div>
+                    <span className="text-xl font-bold text-paan-blue">USD 1,800</span>
+                </div>
+
+                  <div className="flex justify-between items-center py-3">
+                    <div>
+                      <h4 className="font-semibold text-paan-dark-blue">Pavilion</h4>
+                      <p className="text-sm text-gray-600">Custom size</p>
+                  </div>
+                    <span className="text-lg font-semibold text-gray-600">RFQ</span>
+                  </div>
+                  </div>
+              </motion.div>
+
+              {/* What's Included Card */}
+              <motion.div 
+                className="bg-white rounded-xl shadow-lg p-6 sm:p-8"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
+                viewport={{ once: true, margin: "-50px" }}
+              >
+                <div className="text-center mb-6">
+                  <div className="w-16 h-16 bg-paan-blue rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Icon icon="mdi:check-circle" className="w-8 h-8 text-white" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-paan-dark-blue mb-2">What's Included</h3>
+                  <p className="text-gray-600">Standard package features</p>
+                </div>
+
+                <div className="space-y-4">
+                  <div className="mb-6">
+                    <h4 className="font-semibold text-paan-dark-blue mb-3">Standard Package</h4>
+                    <ul className="space-y-2">
+                      <li className="flex items-center gap-2">
+                        <Icon icon="mdi:check" className="w-5 h-5 text-green-500" />
+                        <span className="text-gray-700">Standard table setup</span>
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <Icon icon="mdi:check" className="w-5 h-5 text-green-500" />
+                        <span className="text-gray-700">Brand logo printing</span>
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <Icon icon="mdi:check" className="w-5 h-5 text-green-500" />
+                        <span className="text-gray-700">Two seats</span>
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <Icon icon="mdi:check" className="w-5 h-5 text-green-500" />
+                        <span className="text-gray-700">Power provision</span>
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <Icon icon="mdi:check" className="w-5 h-5 text-green-500" />
+                        <span className="text-gray-700">Basic lighting</span>
+                      </li>
+                    </ul>
+                  </div>
+                  
+                  <div>
+                    <h4 className="font-semibold text-paan-dark-blue mb-3">Popular Add-ons</h4>
+                    <ul className="space-y-2">
+                      <li className="flex items-center gap-2">
+                        <Icon icon="mdi:plus" className="w-4 h-4 text-paan-blue" />
+                        <span className="text-gray-700">Potted plant</span>
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <Icon icon="mdi:plus" className="w-4 h-4 text-paan-blue" />
+                        <span className="text-gray-700">55" LED screen</span>
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <Icon icon="mdi:plus" className="w-4 h-4 text-paan-blue" />
+                        <span className="text-gray-700">Full branding</span>
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <Icon icon="mdi:plus" className="w-4 h-4 text-paan-blue" />
+                        <span className="text-gray-700">Custom booth design</span>
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <Icon icon="mdi:plus" className="w-4 h-4 text-paan-blue" />
+                        <span className="text-gray-700">Interactive screens</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* Virtual Exhibition Card */}
+              <motion.div 
+                className="bg-paan-blue rounded-xl shadow-lg p-6 sm:p-8 text-paan-dark-blue"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, ease: "easeOut", delay: 0.3 }}
+                viewport={{ once: true, margin: "-50px" }}
+              >
+                <div className="text-center mb-6">
+                  <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Icon icon="mdi:monitor" className="w-8 h-8 text-paan-dark-blue" />
+            </div>
+                  <h3 className="text-2xl font-bold mb-2">Virtual Exhibition</h3>
+                  <p className="text-dark-blue">Digital showcase option</p>
+            </div>
+                
+                <div className="mb-6">
+                  <div className="text-center mb-4">
+                    <span className="text-3xl font-bold">USD 200</span>
+                    <span className="text-dark-blue ml-2">per brand</span>
+        </div>
+
+                  <p className="text-dark-blue mb-4">
+                    Showcase to remote attendees with your logo, image, description, website link, and contact button. Optional 30-60s video.
+                  </p>
+                  
+                  <ul className="space-y-2 mb-6">
+                    <li className="flex items-center gap-2">
+                      <Icon icon="mdi:check" className="w-5 h-5 text-paan-dark-blue" />
+                      <span className="text-sm">Company logo display</span>
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <Icon icon="mdi:check" className="w-5 h-5 text-paan-dark-blue" />
+                      <span className="text-sm">Product image showcase</span>
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <Icon icon="mdi:check" className="w-5 h-5 text-paan-dark-blue" />
+                      <span className="text-sm">Company description</span>
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <Icon icon="mdi:check" className="w-5 h-5 text-paan-dark-blue" />
+                      <span className="text-sm">Website link</span>
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <Icon icon="mdi:check" className="w-5 h-5 text-paan-dark-blue" />
+                      <span className="text-sm">Contact button</span>
+                    </li>
+                  </ul>
+        </div>
+
+                <button 
+                  onClick={() => window.location.href = 'mailto:secretariat@paan.africa?subject=PAAN Summit 2026 - Virtual Exhibition Booking&body=Hello PAAN Team,%0D%0A%0D%0AI would like to book a virtual exhibition slot for the PAAN Summit 2026.%0D%0A%0D%0ACompany details:%0D%0A- Company name: _________________%0D%0A- Contact person: _________________%0D%0A- Email: _________________%0D%0A- Phone: _________________%0D%0A%0D%0AAdditional requirements:%0D%0A- [ ] Video content (30-60s)%0D%0A- [ ] Special branding requests%0D%0A%0D%0AThank you.%0D%0A%0D%0ABest regards'}
+                  className="w-full bg-paan-red text-white py-3 px-6 rounded-full hover:bg-gray-100 transition-all hover:text-paan-dark-blue duration-300 font-semibold flex items-center justify-center gap-2"
+                >
+                  <Icon icon="mdi:calendar-check" className="w-5 h-5" />
+                  Book Virtual Slot
+                </button>
+              </motion.div>
+            </div>
+          </div>
+        </div>
+
+        {/* Exhibition Benefits Section */}
         <motion.div 
-          className="bg-paan-dark-blue py-12 sm:py-16 md:py-20"
+          className="bg-white py-12 sm:py-16 md:py-20" 
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
           viewport={{ once: true, margin: "-100px" }}
         >
-            <section className="mx-auto max-w-6xl px-4 sm:px-6">
-                <div className="text-left mb-6 sm:mb-8">
-                    <h2 className="text-2xl sm:text-3xl lg:text-4xl uppercase font-bold leading-tight text-white">Arrival & Transport</h2>                    
+          <section className="relative mx-auto max-w-6xl px-4 sm:px-6">
+            <motion.div 
+              className="text-center mb-12 sm:mb-16"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+              viewport={{ once: true, margin: "-50px" }}
+            >
+              <h2 className="text-3xl sm:text-4xl font-bold text-paan-dark-blue mb-4 sm:mb-6">
+                Why Exhibit at PAAN Summit 2026?
+              </h2>
+              <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+                Connect with Africa's leading creative and tech professionals, showcase your innovations, and build lasting partnerships in the continent's premier industry gathering.
+              </p>
+            </motion.div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+              <motion.div 
+                className="bg-paan-blue/10 rounded-lg p-6 text-center"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
+                viewport={{ once: true, margin: "-50px" }}
+              >
+                <div className="w-16 h-16 bg-paan-blue rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Icon icon="mdi:account-group" className="w-8 h-8 text-white" />
                 </div>
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12">
-                    <div className="p-4 sm:p-6 md:p-8 transition-all duration-300">
-                        <div className="relative h-48 sm:h-56 md:h-64 mb-4 sm:mb-6 rounded-lg overflow-hidden">
-                            <Image
-                                src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/airport.png"
-                                alt="Airport to Sarit Center"
-                                fill
-                                className="object-cover"
-                            />
-                        </div>
-                        <div className="space-y-3 sm:space-y-4">
-                            <h3 className="text-xl sm:text-2xl font-bold text-white mb-2 sm:mb-3">Airport → Sarit Center</h3>
-                            <p className="text-white text-sm sm:text-base">Arrive via Jomo Kenyatta International (NBO). The venue is 25–40 minutes by car. Options include Uber, Bolt, Little Cab, or hotel transfers. Complimentary shuttles will run at set times.</p>
-                        </div>
-                    </div>
-                    
-                    <div className="p-4 sm:p-6 md:p-8 transition-all duration-300">
-                        <div className="relative h-48 sm:h-56 md:h-64 mb-4 sm:mb-6 rounded-lg overflow-hidden">
-                            <Image
-                                src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/city.png"
-                                alt="Around the City"
-                                fill
-                                className="object-cover"
-                            />
-                        </div>
-                        <div className="space-y-3 sm:space-y-4">
-                            <h3 className="text-xl sm:text-2xl font-bold text-white mb-2 sm:mb-3">Around the City</h3>
-                            <p className="text-white text-sm sm:text-base">Ride-hailing is the easiest way to move around Nairobi. Hotel concierges can arrange taxis or private transfers for VIPs and speakers.</p>
-                        </div>
-                    </div>
+                <h3 className="text-xl font-bold text-paan-dark-blue mb-3">Network with Leaders</h3>
+                <p className="text-gray-600">Connect with 500+ industry leaders, investors, and decision-makers from across Africa.</p>
+              </motion.div>
+
+              <motion.div 
+                className="bg-paan-blue/10 rounded-lg p-6 text-center"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
+                viewport={{ once: true, margin: "-50px" }}
+              >
+                <div className="w-16 h-16 bg-paan-blue rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Icon icon="mdi:bullhorn" className="w-8 h-8 text-white" />
                 </div>
-            </section>
-        </motion.div>
-      
-         {/* Travel Essentials section */}
-         <motion.div 
-           className="bg-white py-12 sm:py-16 md:py-20 pt-16 sm:pt-20 md:pt-24" 
-           id="travel-essentials"
-           initial={{ opacity: 0, y: 50 }}
-           whileInView={{ opacity: 1, y: 0 }}
-           transition={{ duration: 0.8, ease: "easeOut" }}
-           viewport={{ once: true, margin: "-100px" }}
-         >
-            <section className="mx-auto max-w-6xl px-4 sm:px-6">
-                <div className="text-left mb-8 sm:mb-12">
-                    <h2 className="text-2xl sm:text-3xl lg:text-4xl uppercase font-bold leading-tight text-paan-dark-blue">Travel Essentials</h2>
-                    <p className="text-base sm:text-lg font-light leading-relaxed mb-6 sm:mb-8 text-gray-600 max-w-3xl">
-                        Everything you need to know for a smooth trip to Nairobi.
-                    </p>
+                <h3 className="text-xl font-bold text-paan-dark-blue mb-3">Showcase Innovation</h3>
+                <p className="text-gray-600">Present your latest products and services to a highly engaged audience of industry professionals.</p>
+              </motion.div>
+
+              <motion.div 
+                className="bg-paan-blue/10 rounded-lg p-6 text-center"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, ease: "easeOut", delay: 0.3 }}
+                viewport={{ once: true, margin: "-50px" }}
+              >
+                <div className="w-16 h-16 bg-paan-blue rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Icon icon="mdi:handshake" className="w-8 h-8 text-white" />
                 </div>
-                <motion.div 
-                  className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"
-                  variants={staggerContainer}
-                  initial="initial"
-                  whileInView="animate"
-                  viewport={{ once: true, margin: "-50px" }}
-                >
-                    {/* Currency Card */}
-                    <motion.div 
-                      className="bg-gradient-to-br from-[#DAECF3] to-[#F3F9FB] rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300"
-                      variants={fadeInUp}
-                      whileHover={{ scale: 1.02, y: -5 }}
-                      transition={{ duration: 0.3 }}
-                    >
-                        <div className="flex items-center justify-end mb-6">
-                            <Image
-                                src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/icons/ksh(1).svg"
-                                alt="Currency"
-                                width={72}
-                                height={72}
-                                className="w-18 h-18"
-                            />
-                        </div>
-                        <h3 className="text-xl font-bold text-paan-dark-blue mb-4">Currency</h3>
-                        <p className="text-gray-600 leading-relaxed">
-                            Kenyan Shilling (KES). ATMs are common. Cards accepted in hotels and restaurants. Carry small cash for taxis and tips.
-                        </p>
-                    </motion.div>
-
-                    {/* Weather Card */}
-                    <motion.div 
-                      className="bg-gradient-to-br from-[#F3F9FB] to-[#DAECF3] rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300"
-                      variants={fadeInUp}
-                      whileHover={{ scale: 1.02, y: -5 }}
-                      transition={{ duration: 0.3 }}
-                    >
-                        <div className="flex items-center justify-end mb-6">
-                            <Image
-                                src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/icons/weather.svg"
-                                alt="Weather"
-                                width={72}
-                                height={72}
-                                className="w-18 h-18"
-                            />
-                        </div>
-                        <h3 className="text-xl font-bold text-paan-dark-blue mb-4">Weather</h3>
-                        <p className="text-gray-600 leading-relaxed">
-                            April is warm and dry. Pack light layers, comfortable shoes, and a light jacket for evenings. Sunscreen recommended.
-                        </p>
-                    </motion.div>
-
-                    {/* Connectivity Card */}
-                    <motion.div 
-                      className="bg-gradient-to-br from-[#DAECF3] to-[#F3F9FB] rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300"
-                      variants={fadeInUp}
-                      whileHover={{ scale: 1.02, y: -5 }}
-                      transition={{ duration: 0.3 }}
-                    >
-                        <div className="flex items-center justify-end mb-6">
-                            <Image
-                                src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/icons/sim(1).svg"
-                                alt="Connectivity"
-                                width={72}
-                                height={72}
-                                className="w-18 h-18"
-                            />
-                        </div>
-                        <h3 className="text-xl font-bold text-paan-dark-blue mb-4">Connectivity</h3>
-                        <p className="text-gray-600 leading-relaxed">
-                            Free WiFi at venue and most hotels. Local SIM cards available at airport. Mobile money (M-Pesa) widely accepted.
-                        </p>
-                    </motion.div>
-
-                    {/* Language Card */}
-                    <motion.div 
-                      className="bg-gradient-to-br from-[#F3F9FB] to-[#DAECF3] rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300"
-                      variants={fadeInUp}
-                      whileHover={{ scale: 1.02, y: -5 }}
-                      transition={{ duration: 0.3 }}
-                    >
-                        <div className="flex items-center justify-end mb-6">
-                            <Image
-                                src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/icons/chat(1).svg"
-                                alt="Language"
-                                width={48}
-                                height={48}
-                                className="w-12 h-12"
-                            />
-                        </div>
-                        <h3 className="text-xl font-bold text-paan-dark-blue mb-4">Language</h3>
-                        <p className="text-gray-600 leading-relaxed">
-                            English is widely spoken. Local languages include Swahili and Kiswahili.
-                        </p>
-                    </motion.div>
-
-                    {/* Time Zone Card */}
-                    <motion.div 
-                      className="bg-gradient-to-br from-[#DAECF3] to-[#F3F9FB] rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300"
-                      variants={fadeInUp}
-                      whileHover={{ scale: 1.02, y: -5 }}
-                      transition={{ duration: 0.3 }}
-                    >
-                        <div className="flex items-center justify-end mb-6">
-                            <Image
-                                src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/icons/clock(1).svg"
-                                alt="Time Zone"
-                                width={48}
-                                height={48}
-                                className="w-12 h-12"
-                            />
-                        </div>
-                        <h3 className="text-xl font-bold text-paan-dark-blue mb-4">Time Zone</h3>
-                        <p className="text-gray-600 leading-relaxed">
-                            East Africa Time (EAT). UTC+3.
-                        </p>
-                    </motion.div>
-
-                    {/* Safety Card */}
-                    <motion.div 
-                      className="bg-gradient-to-br from-[#F3F9FB] to-[#DAECF3] rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300"
-                      variants={fadeInUp}
-                      whileHover={{ scale: 1.02, y: -5 }}
-                      transition={{ duration: 0.3 }}
-                    >
-                        <div className="flex items-center justify-end mb-6">
-                            <Image
-                                src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/icons/lock.svg"
-                                alt="Visa"
-                                width={48}
-                                height={48}
-                                className="w-12 h-12"
-                            />
-                        </div>
-                        <h3 className="text-xl font-bold text-paan-dark-blue mb-4">Safety</h3>
-                        <p className="text-gray-600 leading-relaxed">
-                          Nairobi is safe in busy areas. Use ride apps, avoid empty streets at night, keep valuables secure.
-                        </p>
-                    </motion.div>
-                </motion.div>
-            </section>
-        </motion.div>
-
-         {/* pack smart section */}
-         <motion.div 
-           className="bg-white py-12 sm:py-16 md:py-20 pt-16 sm:pt-20 md:pt-24" 
-           id="pack-smart"
-           initial={{ opacity: 0, y: 50 }}
-           whileInView={{ opacity: 1, y: 0 }}
-           transition={{ duration: 0.8, ease: "easeOut" }}
-           viewport={{ once: true, margin: "-100px" }}
-         >
-            <section className="mx-auto max-w-6xl px-4 sm:px-6">
-                <div className="text-left mb-8 sm:mb-12">
-                    <h2 className="text-2xl sm:text-3xl lg:text-4xl uppercase font-bold leading-tight text-paan-dark-blue">Pack Smart</h2>
-                    <p className="text-base sm:text-lg font-light leading-relaxed mb-6 sm:mb-8 text-gray-600 max-w-3xl">
-                        Pack light, stay comfortable, and enjoy your trip to Nairobi.
-                    </p>
-                </div>
-                <motion.div 
-                  className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8"
-                  variants={staggerContainer}
-                  initial="initial"
-                  whileInView="animate"
-                  viewport={{ once: true, margin: "-50px" }}
-                >
-                    {/* Delegates Card */}
-                    <motion.div 
-                      className="bg-gradient-to-br from-[#DAECF3] to-[#F3F9FB] rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300"
-                      variants={fadeInUp}
-                      whileHover={{ scale: 1.02, y: -5 }}
-                      transition={{ duration: 0.3 }}
-                    >
-                        <div className="flex items-center justify-end mb-6">
-                            <Image
-                                src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/icons/delegates.svg"
-                                alt="Currency"
-                                width={72}
-                                height={72}
-                                className="w-18 h-18"
-                            />
-                        </div>
-                        <h3 className="text-xl font-bold text-paan-dark-blue mb-4">All Delegates</h3>
-                        <ol className="text-gray-600 leading-relaxed">
-                            <li>Passport + e-Visa</li>
-                            <li>Summit badge confirmation</li>
-                            <li>Business cards</li>
-                            <li>Type G plug adapter</li>
-                            <li>Light clothes + jackets + umbrella</li>
-                        </ol>
-                    </motion.div>
-
-                    {/* Speakers Card */}
-                    <motion.div 
-                      className="bg-gradient-to-br from-[#F3F9FB] to-[#DAECF3] rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300"
-                      variants={fadeInUp}
-                      whileHover={{ scale: 1.02, y: -5 }}
-                      transition={{ duration: 0.3 }}
-                    >
-                        <div className="flex items-center justify-end mb-6">
-                            <Image
-                                src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/icons/microphone.svg"
-                                alt="Weather"
-                                width={72}
-                                height={72}
-                                className="w-18 h-18"
-                            />
-                        </div>
-                        <h3 className="text-xl font-bold text-paan-dark-blue mb-4">Speakers</h3>
-                        <ol className="text-gray-600 leading-relaxed"> <li>Passport + e-Visa</li>
-                            <li>All delegate items</li>
-                            <li>Presentation slides + USB backup</li>
-                            <li>Clicker & HDMI adapter</li>
-                            <li>Formal attir for stage presentations</li>
-                        </ol>
-                    </motion.div>
-
-                    {/* Exhibitors Card */}
-                    <motion.div 
-                      className="bg-gradient-to-br from-[#DAECF3] to-[#F3F9FB] rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300"
-                      variants={fadeInUp}
-                      whileHover={{ scale: 1.02, y: -5 }}
-                      transition={{ duration: 0.3 }}
-                    >
-                        <div className="flex items-center justify-end mb-6">
-                            <Image
-                                src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/icons/exhibitor.svg"
-                                alt="Connectivity"
-                                width={72}
-                                height={72}
-                                className="w-18 h-18"
-                            />
-                        </div>
-                        <h3 className="text-xl font-bold text-paan-dark-blue mb-4">Exhibitors</h3>
-                        <ol className="text-gray-600 leading-relaxed">
-                            <li>All delegate items</li>
-                            <li>Booth Signage & promo materials</li>
-                            <li>Extension cables/ power strips</li>
-                            <li>Demo kits / samples</li>
-                        </ol>
-                    </motion.div>
-
-                    {/* Digital Nomads Card */}
-                    <motion.div 
-                      className="bg-gradient-to-br from-[#F3F9FB] to-[#DAECF3] rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300"
-                      variants={fadeInUp}
-                      whileHover={{ scale: 1.02, y: -5 }}
-                      transition={{ duration: 0.3 }}
-                    >
-                        <div className="flex items-center justify-end mb-6">
-                            <Image
-                                src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/icons/laptop.svg"
-                                alt="Language"
-                                width={72}
-                                height={72}
-                                className="w-18 h-18"
-                            />
-                        </div>
-                        <h3 className="text-xl font-bold text-paan-dark-blue mb-4">Digital Nomads</h3>
-                        <ol className="text-gray-600 leading-relaxed">
-                            <li>All delegate items</li>
-                            <li>Portable WIFI/eSIM</li>
-                            <li>Laptop stand + mouse</li>
-                            <li>Travel insurance</li>
-                            <li>Coworking Pass</li>
-                        </ol>
-                    </motion.div>
-
-                </motion.div>
-            </section>
-        </motion.div>
-
-         <motion.div 
-           className="bg-paan-dark-blue relative pt-16 sm:pt-20 md:pt-24" 
-           id="explore-nairobi"
-           initial={{ opacity: 0, y: 50 }}
-           whileInView={{ opacity: 1, y: 0 }}
-           transition={{ duration: 0.8, ease: "easeOut" }}
-           viewport={{ once: true, margin: "-100px" }}
-         >
-             <section className="mx-auto max-w-6xl py-12 sm:py-16 md:py-20 justify-start px-4 sm:px-6">
-              <div className="flex justify-between gap-4 sm:gap-8">
-                <div className="text-left">
-                    <h2 className="text-2xl sm:text-3xl font-bold mx-auto uppercase text-white mb-2 sm:mb-3">EXPLORE NAIROBI</h2>
-                    <h3 className="text-lg sm:text-xl md:text-2xl font-light text-white">Make the most of your stay before or after the Summit.</h3>
-                </div>
-              </div>
-               <motion.div 
-                 className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mt-8 sm:mt-12"
-                 variants={staggerContainer}
-                 initial="initial"
-                 whileInView="animate"
-                 viewport={{ once: true, margin: "-50px" }}
-               >
-                 <motion.div 
-                   className="relative rounded-xl shadow-xl overflow-hidden bg-white hover:shadow-2xl transition-shadow duration-300"
-                   variants={fadeInUp}
-                   whileHover={{ scale: 1.02, y: -5 }}
-                   transition={{ duration: 0.3 }}
-                 >
-                   <div className="relative h-64">
-                     <Image
-                       src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/rhinos.png"
-                       alt="Morning Safari"
-                       fill
-                       className="object-cover"
-                     />
-                     <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
-                   </div>
-                   <div className="p-6">
-                     <h4 className="text-xl font-bold text-paan-dark-blue mb-3">Morning Safari</h4>
-                     <p className="text-gray-600 leading-relaxed">Nairobi National Park — wildlife just 20 minutes from the city.</p>
-                   </div>
-                 </motion.div>
-
-                 <motion.div 
-                   className="relative rounded-xl shadow-xl overflow-hidden bg-white hover:shadow-2xl transition-shadow duration-300"
-                   variants={fadeInUp}
-                   whileHover={{ scale: 1.02, y: -5 }}
-                   transition={{ duration: 0.3 }}
-                 >
-                   <div className="relative h-64">
-                     <Image
-                       src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/nairobi-town.jpg"
-                       alt="Creative Crawl"
-                       fill
-                       className="object-cover"
-                     />
-                     <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
-                   </div>
-                   <div className="p-6">
-                     <h4 className="text-xl font-bold text-paan-dark-blue mb-3">Creative Crawl</h4>
-                     <p className="text-gray-600 leading-relaxed">Explore galleries, pop-ups, and music in Westlands.</p>
-                   </div>
-                 </motion.div>
-
-                 <motion.div 
-                   className="relative rounded-xl shadow-xl overflow-hidden bg-white hover:shadow-2xl transition-shadow duration-300"
-                   variants={fadeInUp}
-                   whileHover={{ scale: 1.02, y: -5 }}
-                   transition={{ duration: 0.3 }}
-                 >
-                   <div className="relative h-64">
-                     <Image
-                       src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/nairobi.png"
-                       alt="Dining & Rooftops"
-                       fill
-                       className="object-cover"
-                     />
-                     <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
-                   </div>
-                   <div className="p-6">
-                     <h4 className="text-xl font-bold text-paan-dark-blue mb-3">Dining & Rooftops</h4>
-                     <p className="text-gray-600 leading-relaxed">Award-winning restaurants and vibrant nightlife.</p>
-                   </div>
-                 </motion.div>
-               </motion.div>
+                <h3 className="text-xl font-bold text-paan-dark-blue mb-3">Build Partnerships</h3>
+                <p className="text-gray-600">Forge strategic partnerships and explore collaboration opportunities with like-minded organizations.</p>
+              </motion.div>
+            </div>
           </section>
-         </motion.div>
+        </motion.div>
 
-         {/* Parallax Section */}
-         <div 
+        {/* Call to Action Section */}
+        <motion.div 
            className="relative py-12 sm:py-16 md:py-20 overflow-hidden h-[400px] sm:h-[450px] md:h-[500px]" 
-           id="parallax-section" 
+          id="cta-section" 
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          viewport={{ once: true, margin: "-100px" }}
          >
            {/* Parallax Background Image */}
            <div 
              className="absolute inset-0 bg-cover bg-center bg-fixed"
              style={{
-               backgroundImage: "url('https://ik.imagekit.io/nkmvdjnna/PAAN/summit/travel-guide-parallax-image.png')",
+              backgroundImage: "url('https://ik.imagekit.io/nkmvdjnna/PAAN/summit/exhibition.png')",
                filter: "brightness(0.8)"
              }}
            />
@@ -1111,26 +1470,28 @@ const Exhibitors = () => {
            <section className="relative mx-auto max-w-6xl px-4 sm:px-6 h-full flex items-center justify-center">
              <div className="text-center w-full max-w-4xl">
                <div className="mb-8 sm:mb-12">
-                 <h3 className="text-2xl sm:text-3xl text-white font-bold uppercase mb-4 sm:mb-6">Need Assistance?</h3>
-                 <p className="text-lg sm:text-xl font-normal text-white">Our logistics team can help with visas, hotels, and transport.</p>
+                <h3 className="text-2xl sm:text-3xl text-white font-bold uppercase mb-4 sm:mb-6">Ready to Exhibit?</h3>
+                <p className="text-lg sm:text-xl font-normal text-white">Secure your booth space and join Africa's premier creative and tech conference.</p>
                </div>
                <div className="flex flex-col sm:flex-row gap-4 sm:gap-8 justify-center">
                  <button 
-                   onClick={() => window.location.href = 'mailto:secretariat@paan.africa?subject=PAAN Summit 2026 - Travel Assistance Request&body=Hello PAAN Travel Team,%0D%0A%0D%0AI need assistance with my travel arrangements for the PAAN Summit 2026 in Nairobi.%0D%0A%0D%0APlease help me with:%0D%0A- [ ] Visa requirements and application%0D%0A- [ ] Hotel recommendations and bookings%0D%0A- [ ] Transportation arrangements%0D%0A- [ ] General travel advice%0D%0A- [ ] Other: _________________%0D%0A%0D%0AAdditional details:%0D%0A%0D%0A%0D%0AThank you for your assistance.%0D%0A%0D%0ABest regards'}
+                  onClick={() => window.location.href = 'mailto:secretariat@paan.africa?subject=PAAN Summit 2026 - Exhibition Booth Inquiry&body=Hello PAAN Team,%0D%0A%0D%0AI am interested in exhibiting at the PAAN Summit 2026 in Nairobi.%0D%0A%0D%0APlease provide information about:%0D%0A- [ ] Available booth spaces%0D%0A- [ ] Pricing and packages%0D%0A- [ ] Exhibition guidelines%0D%0A- [ ] Setup and logistics%0D%0A- [ ] Marketing opportunities%0D%0A%0D%0ACompany: _________________%0D%0AContact: _________________%0D%0A%0D%0AThank you for your assistance.%0D%0A%0D%0ABest regards'}
                    className="bg-paan-blue text-paan-dark-blue px-6 sm:px-8 py-3 rounded-full hover:bg-paan-blue/90 transition-all duration-300 font-medium text-sm sm:text-base shadow-lg flex items-center justify-center gap-2"
                  >
-                   Talk to Us
+                  <Icon icon="mdi:email" className="w-5 h-5" />
+                  Request Information
                  </button>
                  <button 
-                   onClick={() => window.open('https://www.etakenya.go.ke/check-requirements', '_blank')}
+                  onClick={() => window.location.href = 'mailto:secretariat@paan.africa?subject=PAAN Summit 2026 - Booth Booking&body=Hello PAAN Team,%0D%0A%0D%0AI would like to book a booth for the PAAN Summit 2026.%0D%0A%0D%0ABooth preferences:%0D%0A- Preferred booth number: _________________%0D%0A- Booth size: [ ] 3x3m (USD 1,000) [ ] 3x6m (USD 1,800) [ ] Pavilion (RFQ)%0D%0A- Company name: _________________%0D%0A- Contact person: _________________%0D%0A- Email: _________________%0D%0A- Phone: _________________%0D%0A%0D%0AAdditional requirements:%0D%0A%0D%0A%0D%0AThank you.%0D%0A%0D%0ABest regards'}
                    className="bg-transparent border border-white text-white px-6 sm:px-8 py-3 rounded-full hover:bg-paan-blue/90 transition-all duration-300 font-medium text-sm sm:text-base shadow-lg flex items-center justify-center gap-2"
                  >
-                   Visa Quick Check
+                  <Icon icon="mdi:calendar-check" className="w-5 h-5" />
+                  Book Your Booth
                  </button>
                </div>
              </div>
            </section>
-         </div>
+        </motion.div>
          <div className="bg-paan-dark-blue relative">
            <div className="w-full h-[30px] sm:h-[40px] md:h-[50px] relative">
               <Image
@@ -1145,17 +1506,25 @@ const Exhibitors = () => {
          </div>
         <SummitFooter />
         <ScrollToTop />
+        
+        {/* Booth Info Modal */}
+        {isModalOpen && selectedBooth && (
+          <BoothInfoModal 
+            booth={selectedBooth} 
+            onClose={closeModal} 
+          />
+        )}
       </main>
     </>
   );
 };
 
-const Hero = ({ sectionRefs, handleScroll, isFixed, timeLeft }) => {
+const Hero = ({ sectionRefs }) => {
 
   return (
     <>
       <div
-        className="absolute top-0 left-0 h-screen w-full" 
+        className="absolute top-0 left-0 h-[75vh] w-full" 
         id="home"
         ref={sectionRefs.home}
       >
@@ -1169,55 +1538,25 @@ const Hero = ({ sectionRefs, handleScroll, isFixed, timeLeft }) => {
         />
                
         {/* Content overlay */}
-        <div className="relative h-full flex items-end pb-16 sm:pb-24 md:pb-48">
+        <div className="relative h-full flex items-center justify-center pt-16 sm:pt-24 md:pt-32">
           <div className="mx-auto max-w-6xl w-full px-4">
             <motion.div 
               className="max-w-2xl"
               variants={staggerContainer}
               initial="initial"
               animate="animate"
-            >
-              <motion.p 
-                className="bg-white/20 text-white px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-medium mb-4 w-fit border border-white"
-                variants={fadeInUp}
-              >
-                Travel Guide
-              </motion.p>
-              
+            >              
               <motion.h1 
                 className="text-2xl sm:text-3xl md:text-4xl font-semibold uppercase text-yellow-400 mb-6 sm:mb-8 leading-tight"
                 variants={fadeInUp}
               >
-                Travel Guide — Nairobi 2026
+                PAAN Summit - Exhibition Floor Plan
               </motion.h1>
               <motion.div 
                 className="flex flex-col sm:flex-row gap-2 sm:gap-4 mb-6 sm:mb-10"
                 variants={fadeInUp}
               >
-                <SeminarLocationAndDate />
-              </motion.div>
-              <motion.div 
-                className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-6 md:gap-8"
-                variants={scaleIn}
-              >
-                <button 
-                  onClick={() => window.location.href = '/summit'}
-                  className="bg-paan-red text-white px-6 sm:px-8 py-3 rounded-full hover:bg-paan-red/90 transition-all duration-300 font-medium text-sm sm:text-base shadow-lg flex items-center justify-center gap-2 w-full sm:w-auto"
-                >
-                  Register Now
-                </button>
-                <button 
-                  onClick={() => window.location.href = '/summit/travel-guide#visa-requirements'}
-                  className="bg-transparent border border-white text-white px-6 sm:px-8 py-3 rounded-full hover:bg-white hover:text-paan-red transition-all duration-300 font-medium text-sm sm:text-base shadow-lg flex items-center justify-center gap-2 w-full sm:w-auto"
-                >
-                  Visa Requirements
-                </button>
-                <button 
-                  onClick={() => window.location.href = '/summit/travel-guide#accommodation'}
-                  className="bg-transparent border border-white text-white px-6 sm:px-8 py-3 rounded-full hover:bg-white hover:text-paan-red transition-all duration-300 font-medium text-sm sm:text-base shadow-lg flex items-center justify-center gap-2 w-full sm:w-auto"
-                >
-                  Accommodation
-                </button>             
+                <p className="text-white">Explore live booth availability. Standard shell schemes (3×3 at USD 1,000, 3×6 at USD 1,800) and Pavilions (RFQ). Click a booth to see details, inclusions, and add‑ons, then request a booking.</p>
               </motion.div>
             </motion.div>
           </div>
@@ -1228,23 +1567,172 @@ const Hero = ({ sectionRefs, handleScroll, isFixed, timeLeft }) => {
   );
 };
 
-const SeminarLocationAndDate = ()=> {
+const BoothInfoModal = ({ booth, onClose }) => {
+  const getStatusColor = (status) => {
+    switch (status) {
+      case 'Available': return 'text-green-600 bg-green-100';
+      case 'Reserved': return 'text-yellow-600 bg-yellow-100';
+      case 'Booked': return 'text-red-600 bg-red-100';
+      default: return 'text-gray-600 bg-gray-100';
+    }
+  };
+
+  const getStatusIcon = (status) => {
+    switch (status) {
+      case 'Available': return 'mdi:check-circle';
+      case 'Reserved': return 'mdi:clock-outline';
+      case 'Booked': return 'mdi:close-circle';
+      default: return 'mdi:help-circle';
+    }
+  };
     
   return (
-    <div className="flex flex-col sm:flex-row gap-2 sm:gap-4">
-      <div className="flex items-center gap-2 text-white text-xs sm:text-sm">
-        <Icon icon="mdi:map-marker" className="text-red-500 flex-shrink-0" width="20" height="20" />
-        <span className="break-words sm:whitespace-nowrap">Sarit Centre, Nairobi, Kenya - <strong>23–24 April 2026</strong></span>
-      </div>
-      
-      <div className="flex items-center gap-2 text-white text-xs sm:text-sm">
-        <Icon icon="mdi:user-group" className="text-red-500 flex-shrink-0" width="20" height="20" />
-        <span className="whitespace-nowrap">500+ In Person</span>
-      </div>
-      <div className="flex items-center gap-2 text-white text-xs sm:text-sm">
-        <Icon icon="mdi:globe" className="text-red-500 flex-shrink-0" width="20" height="20" />
-        <span className="whitespace-nowrap">1,000+ Streaming</span>
-      </div>
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+      <motion.div 
+        className="bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto"
+        initial={{ opacity: 0, scale: 0.9, y: 20 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        transition={{ duration: 0.3, ease: "easeOut" }}
+      >
+            {/* Header */}
+        <div className="bg-gradient-to-r from-paan-blue to-paan-dark-blue text-white p-6 rounded-t-2xl">
+          <div className="flex justify-between items-start">
+            <div>
+              <h2 className="text-2xl font-bold mb-2">Booth #{booth.number}</h2>
+              <div className="flex items-center gap-2">
+                <Icon icon={getStatusIcon(booth.status)} className="w-5 h-5" />
+                <span className={`px-3 py-1 rounded-full text-sm font-medium ${getStatusColor(booth.status)}`}>
+                  {booth.status}
+                </span>
+                </div>
+                </div>
+            <button 
+              onClick={onClose}
+              className="text-white hover:text-gray-200 transition-colors"
+            >
+              <Icon icon="mdi:close" className="w-6 h-6" />
+            </button>
+                </div>
+                </div>
+
+        {/* Content */}
+        <div className="p-6 space-y-6">
+          {/* Booth Details */}
+          <div className="grid grid-cols-2 gap-4">
+            <div className="bg-gray-50 rounded-lg p-4">
+              <div className="flex items-center gap-2 mb-2">
+                <Icon icon="mdi:ruler" className="w-5 h-5 text-paan-blue" />
+                <h3 className="font-semibold text-paan-dark-blue">Size</h3>
+              </div>
+              <p className="text-lg font-bold text-gray-800">{booth.size}</p>
+            </div>
+
+            <div className="bg-gray-50 rounded-lg p-4">
+              <div className="flex items-center gap-2 mb-2">
+                <Icon icon="mdi:currency-usd" className="w-5 h-5 text-paan-blue" />
+                <h3 className="font-semibold text-paan-dark-blue">Price</h3>
+              </div>
+              <p className="text-lg font-bold text-gray-800">{booth.price}</p>
+            </div>
+          </div>
+
+          {/* What's Included */}
+            <div>
+            <h3 className="text-xl font-bold text-paan-dark-blue mb-4 flex items-center gap-2">
+              <Icon icon="mdi:check-circle" className="w-6 h-6 text-green-500" />
+              What's Included
+            </h3>
+            <div className="grid grid-cols-2 gap-3">
+              {[
+                'Standard table setup',
+                'Brand logo printing',
+                'Two seats',
+                'Power provision',
+                'Basic lighting',
+                'WiFi access'
+              ].map((item, index) => (
+                <div key={index} className="flex items-center gap-2">
+                  <Icon icon="mdi:check" className="w-4 h-4 text-green-500" />
+                  <span className="text-gray-700">{item}</span>
+                </div>
+              ))}
+              </div>
+            </div>
+
+          {/* Popular Add-ons */}
+            <div>
+            <h3 className="text-xl font-bold text-paan-dark-blue mb-4 flex items-center gap-2">
+              <Icon icon="mdi:plus-circle" className="w-6 h-6 text-paan-blue" />
+              Popular Add-ons
+            </h3>
+            <div className="flex flex-wrap gap-2">
+              {[
+                'Potted plant',
+                '55" LED screen',
+                'Full branding',
+                'Interactive screen',
+                'Custom design',
+                'Cube/Tall boxes',
+                'Additional seating',
+                'Premium lighting'
+              ].map((addon, index) => (
+                <span 
+                  key={index}
+                  className="bg-paan-blue/10 text-paan-dark-blue px-3 py-2 rounded-full text-sm font-medium"
+                >
+                  {addon}
+                </span>
+              ))}
+              </div>
+            </div>
+
+          {/* Action Buttons */}
+          <div className="flex flex-col sm:flex-row gap-3 pt-4 border-t border-gray-200">
+            <button 
+              onClick={onClose}
+              className="flex-1 px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors font-medium"
+            >
+                  Close
+              </button>
+            {booth.status === 'Available' && (
+              <button 
+                onClick={() => {
+                  window.location.href = `/summit/exhibition-application?booth=${booth.number}&size=${booth.size}&price=${booth.price}&type=${booth.type}`;
+                  onClose();
+                }}
+                className="flex-1 px-6 py-3 bg-paan-blue text-white rounded-lg hover:bg-paan-blue/90 transition-colors font-medium flex items-center justify-center gap-2"
+              >
+                <Icon icon="mdi:calendar-check" className="w-5 h-5" />
+                Request to Book
+              </button>
+            )}
+            {booth.status === 'Reserved' && (
+              <button 
+                onClick={() => {
+                  window.location.href = `mailto:secretariat@paan.africa?subject=PAAN Summit 2026 - Booth ${booth.number} Waitlist Request&body=Hello PAAN Team,%0D%0A%0D%0AI am interested in Booth ${booth.number} which is currently reserved.%0D%0A%0D%0APlease add me to the waitlist in case it becomes available.%0D%0A%0D%0ABooth Details:%0D%0A- Booth Number: ${booth.number}%0D%0A- Size: ${booth.size}%0D%0A- Price: ${booth.price}%0D%0A%0D%0ACompany Details:%0D%0A- Company name: _________________%0D%0A- Contact person: _________________%0D%0A- Email: _________________%0D%0A- Phone: _________________%0D%0A%0D%0AThank you.%0D%0A%0D%0ABest regards`; 
+                  onClose();
+                }}
+                className="flex-1 px-6 py-3 bg-yellow-500 text-white rounded-lg hover:bg-yellow-600 transition-colors font-medium flex items-center justify-center gap-2"
+              >
+                <Icon icon="mdi:clock-outline" className="w-5 h-5" />
+                Join Waitlist
+              </button>
+            )}
+            {booth.status === 'Booked' && (
+              <button 
+                onClick={() => {
+                  window.location.href = `mailto:secretariat@paan.africa?subject=PAAN Summit 2026 - Alternative Booth Request&body=Hello PAAN Team,%0D%0A%0D%0AI am interested in exhibiting at the PAAN Summit 2026.%0D%0A%0D%0APreferred booth size: ${booth.size}%0D%0APreferred price range: ${booth.price}%0D%0A%0D%0APlease suggest alternative available booths.%0D%0A%0D%0ACompany Details:%0D%0A- Company name: _________________%0D%0A- Contact person: _________________%0D%0A- Email: _________________%0D%0A- Phone: _________________%0D%0A%0D%0AThank you.%0D%0A%0D%0ABest regards`; 
+                  onClose();
+                }}
+                className="flex-1 px-6 py-3 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors font-medium flex items-center justify-center gap-2"
+              >
+                <Icon icon="mdi:search" className="w-5 h-5" />
+                Find Alternatives
+              </button>
+            )}
+            </div>
+        </div>
+      </motion.div>
     </div>
   );
 }

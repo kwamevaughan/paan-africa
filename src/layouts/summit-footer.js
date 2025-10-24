@@ -132,10 +132,10 @@ const SummitFooter = () => {
                 </span>
               </div>
               <div className="flex gap-6 text-sm">
-                <a href="#" className="text-white/80 hover:text-paan-red transition-colors">
+                <a href="/privacy-policy" className="text-white/80 hover:text-paan-red transition-colors">
                   Privacy Policy
                 </a>
-                <a href="#" className="text-white/80 hover:text-paan-red transition-colors">
+                <a href="/terms-and-conditions" className="text-white/80 hover:text-paan-red transition-colors">
                   Terms of Service
                 </a>
               </div>

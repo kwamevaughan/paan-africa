@@ -1498,7 +1498,7 @@ const SummitPage = () => {
                 {/* CTA Button */}
                 <div className="flex justify-center sm:justify-start mt-6 sm:mt-8 md:mt-10">
                   <button 
-                    onClick={() => setShowExhibitionModal(true)} 
+                    onClick={()=>window.location.href='/summit/exhibitors'} 
                     className="bg-paan-red hover:bg-paan-red/90 text-white px-6 sm:px-8 md:px-10 py-3 sm:py-4 rounded-full transition-all duration-300 font-medium text-sm sm:text-base shadow-lg hover:shadow-xl flex items-center justify-center gap-2 w-full max-w-xs sm:max-w-sm md:w-auto min-h-[48px] active:scale-95"
                   >
                     <span>Apply to Exhibit</span>
