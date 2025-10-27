@@ -29,41 +29,63 @@ const MasterclassesPage = () => {
 
   // Featured masterclass data - separate from regular masterclasses
   const featuredMasterclass = {
-    id: 4,
-    title: "Proposal Writing & Bidding for Global Clients",
-    description: "Winning international contracts requires more than great ideas—it requires compelling proposals that showcase professionalism and global readiness. This session helps agencies sharpen their proposal writing and bidding strategies.",
-    format: "2.5-Hour Interactive Online Workshop",
-    date: "November 13th, 2025",
-    time: "2 pm EAT",
-    memberPrice: 60,
-    memberOriginalPrice: 100,
-    nonMemberPrice: 100,
-    nonMemberOriginalPrice: 120,
+    id: 7,
+    title: "How To Be The Best Account Handler In Your Agency",
+    description: "Account Handlers are a positive and competitive lot by nature. But the transition from lively pup to 'Top Dog' often seems a difficult and frustrating process. The problem is that 'on the job training' is only as good as 'that particular job'. This course provides an ideal opportunity to really focus on what makes a good Account Handler GREAT.",
+    fullDescription: "This 90-minute training course is aimed at developing tried and trusted methods of the art of Account Handling, a timely refresher for some, a lifesaver for others. Designed specifically for junior-level agency Account Handlers with 1-3 years of experience who now know how to do the basics but want to step up a level. Learn how to take control of your time, lead with confidence, and balance client demands with agency realities.",
+    format: "90-minute Interactive Training Course",
+    date: "November 6th, 2025",
+    time: "10 am GMT / 12 pm EAT",
+    memberPrice: 174,
+    memberOriginalPrice: 250,
+    nonMemberPrice: 250,
+    nonMemberOriginalPrice: 320,
     currency: "USD",
-    category: "Business Development",
-    level: "Intermediate",
-    instructor: "Expert Trainer",
-    instructorTitle: "International Business Development Specialist",
-    image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/proposal-writing.jpg",
+    category: "Account Management",
+    level: "Junior to Mid-Level",
+    image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/account-handler.jpg",
+    partnership: "PAAN, in collaboration with the Alliance of Independent Agencies, UK",
+    instructor: "Paul Burns",
+    instructorTitle: "Former Training Director at Saatchi & Saatchi, Co-founder of Rock and a Hardplace",
+    instructorBio: "Paul Burns spent 25 very successful and exciting years at Saatchi & Saatchi, looking after client business. He became their Training Director and first Director of Knowledge Practices, sitting on the main Management Board of the Agency. He is recognised to have passion and skill in developing people and has won several industry awards for Learning and Development. He has run accounts across a wide variety of businesses, from the hugely successful bid and launch of the National Lottery, to fast turnaround business on News International. He has led teams on large and complex financial brands and has run countless Blue Chip FMCG brands. In 2015, he became a co-founder of Rock and a Hardplace, a new and award-winning eLearning program for the Marcoms industry.",
+    instructorExpertise: [
+      "Account Management & Client Relations",
+      "Team Leadership & Development",
+      "Training & Knowledge Management",
+      "Agency Operations & Strategy"
+    ],
     benefits: [
       "5% off on PAAN Summit 2026 tickets",
-      "10% off Africa Creative Excellence Awards entry"
+      "6% off Africa Creative Excellence Awards entry"
     ],
     whoShouldAttend: [
-      "Agency founders & partners",
-      "Finance managers & business leads",
-      "Account directors & business development leads",
-      "HR & operations managers in agencies"
+      "Junior-level agency Account Handlers with 1-3 years of experience",
+      "Account Managers looking to step up",
+      "Client service professionals",
+      "Agency team leads"
     ],
     learningOutcomes: [
-      "Structure winning proposals that stand out in competitive RFPs",
-      "Use storytelling to position African creativity on the global stage",
-      "Price proposals strategically for profitability and competitiveness",
-      "Peer-review and refine proposals with expert guidance"
+      "How to take control of your time with practical tools to prioritize, plan, and deliver without overwhelm",
+      "How to lead with confidence — inspiring colleagues, guiding teams, and keeping projects on track",
+      "How to balance client demands with agency realities — understanding what clients truly value",
+      "Master the art of saying 'no' professionally and constructively",
+      "Techniques for planning workload and avoiding procrastination traps",
+      "Practical tools to inspire colleagues and collaborate across teams",
+      "Navigate client relationships and handle difficult conversations confidently"
     ],
-    takeawayToolkit: "Proposal template + Proposal evaluation checklist",
-    series: "Agency Growth & Leadership Masterclass Series",
-    moduleNumber: 2,
+    courseObjectives: [
+      "Master time management and productivity techniques for account handlers",
+      "Develop leadership skills to inspire colleagues and guide teams effectively",
+      "Learn to balance client expectations with agency capabilities professionally",
+      "Gain confidence in handling difficult client conversations and situations"
+    ],
+    whyAttend: [
+      "Proven Experience: Learn from 25+ years of successful agency account management",
+      "Practical Tools: Get actionable techniques for time management and leadership",
+      "Industry Recognition: Training from an award-winning Learning & Development expert",
+      "Career Development: Perfect for account handlers ready to step up to the next level"
+    ],
+    outcome: "This course provides an ideal opportunity to really focus on what makes a good Account Handler GREAT, with tried and trusted methods of the art of Account Handling.",
     status: "upcoming"
   };
 
@@ -320,8 +342,8 @@ const MasterclassesPage = () => {
   });
 
   const categories = [
-    { id: 'all', name: 'All Masterclasses', count: masterclasses.length },
-    { id: 'business-development', name: 'Business Development', count: 3 },
+    { id: 'all', name: 'All Masterclasses', count: masterclasses.length + 1 }, // +1 for featured
+    { id: 'business-development', name: 'Business Development', count: 2 },
     { id: 'client-management', name: 'Client Management', count: 1 },
     { id: 'account-management', name: 'Account Management', count: 1 },
     { id: 'financial-management', name: 'Financial Management', count: 1 },
