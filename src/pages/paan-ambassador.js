@@ -176,6 +176,19 @@ const PAANAmbassador = () => {
       achievements: t('homepage.ambassador.ambassadors.khensani.achievements'),
       expertise: t('homepage.ambassador.ambassadors.khensani.expertise'),
       color: "purple"
+    },
+    {
+      name: t('homepage.ambassador.ambassadors.honest.name'),
+      title: t('homepage.ambassador.ambassadors.honest.title'),
+      country: t('homepage.ambassador.ambassadors.honest.country'),
+      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masiya.jpg",
+      flag: "https://flagcdn.com/w40/za.png",
+      linkedin: "https://www.linkedin.com/in/honestmasiya/",
+      description: t('homepage.ambassador.ambassadors.honest.description'),
+      fullDescription: t('homepage.ambassador.ambassadors.honest.fullDescription'),
+      achievements: t('homepage.ambassador.ambassadors.honest.achievements'),
+      expertise: t('homepage.ambassador.ambassadors.honest.expertise'),
+      color: "indigo"
     }
   ];
   

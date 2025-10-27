@@ -299,6 +299,21 @@
             "Middle East CEO of the Year Awards (2024) - Best Emerging Marketing & PR CEO (South Africa)"
           ],
           "expertise": ["Brand Development", "Marketing Strategy", "Business Development", "Negotiations", "Communications", "Creative Leadership"]
+        },
+        "honest": {
+          "name": "HONEST MASIYA",
+          "title": "Founder & Director",
+          "country": "South Africa",
+          "description": "Honest Masiya is the founder and director of Brand Audacity Africa Group, a pan-African firm specializing in digital strategy, content creation, and management of influence. He brings over a decade of media experience with a focus on digital innovation and marketing.",
+          "fullDescription": "Honest Masiya is the founder and director of Brand Audacity Africa Group, a pan-African firm that specializes in digital strategy, content creation, and management of influence. Honest brings over a decade of media experience, having worked in Print Advertising and Advertising Agencies with a significant focus on digital innovation and marketing. His commitment to amplifying African voices extends beyond media, as he is deeply passionate about promoting African tourism and showcasing the continent's vibrant culture and heritage to a global audience.",
+          "achievements": [
+            "Founder and Director of Brand Audacity Africa Group",
+            "Over a decade of media experience in Print Advertising and Advertising Agencies",
+            "Specializes in digital strategy, content creation, and influence management",
+            "Passionate advocate for African tourism and cultural heritage promotion",
+            "Expert in digital innovation and marketing across African markets"
+          ],
+          "expertise": ["Digital Strategy", "Content Creation", "Influence Management", "Digital Marketing", "African Tourism Promotion", "Brand Development"]
         }
       },
       "getStarted": {

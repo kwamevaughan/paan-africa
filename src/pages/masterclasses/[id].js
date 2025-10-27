@@ -180,7 +180,7 @@ const MasterclassDetailPage = () => {
         "Professional Development: Reduce client churn and strengthen your agency's reputation for professionalism"
       ],
       outcome: "By the end of this masterclass, participants will be able to confidently handle challenging client situations and transform them into opportunities for stronger, more profitable relationships.",
-      status: "upcoming"
+      status: "completed"
     },
     3: {
       id: 3,
@@ -406,7 +406,7 @@ const MasterclassDetailPage = () => {
         "Industry Recognition: Training from an accredited CIM consultant and trainer"
       ],
       outcome: "Through practical exercises and proven methodologies, you'll leave with a clear playbook for winning new business and deepening client trust.",
-      status: "upcoming"
+      status: "completed"
     },
     7: {
       id: 7,
