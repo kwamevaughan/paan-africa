@@ -4,7 +4,7 @@ export const menuItems = [
     { href: '#about-us', label: 'About Summit' },
     { href: '#program', label: 'Sessions' },
     { href: '#agenda', label: 'Programme' },
-    { href: '#participants', label: 'Wha can attend' },
+    { href: '#participants', label: 'Who can attend' },
     { href: '#speakers-section', label: 'Speakers' },
     { href: '#tickets-section', label: 'Tickets' },
     { href: '#plan-your-trip', label: 'Plan' },
