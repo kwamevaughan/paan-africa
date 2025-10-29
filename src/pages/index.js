@@ -918,10 +918,10 @@ const HomePage = () => {
           <div className="absolute bottom-6 right-4 w-20 h-20 bg-red-500 rounded-full z-0"></div>
           
           {/* Floating YouTube Video */}
-          <div className="absolute top-8 right-8 z-10 hidden lg:block">
+          <div className="absolute top-16 right-12 z-10 hidden xl:block">
             <div className="relative">
-              <div className="">
-                <div className="w-96 h-56 bg-black rounded-lg overflow-hidden">
+              <div className="transform hover:scale-105 transition-transform duration-300 ease-in-out">
+                <div className="w-80 h-48 bg-black rounded-xl overflow-hidden shadow-2xl border-2 border-white/20">
                   <iframe
                     width="100%"
                     height="100%"
@@ -930,7 +930,7 @@ const HomePage = () => {
                     frameBorder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
-                    className="rounded-lg"
+                    className="rounded-xl"
                   ></iframe>
                 </div>
               </div>

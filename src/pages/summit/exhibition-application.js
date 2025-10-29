@@ -23,11 +23,7 @@ const ExhibitionApplication = () => {
     companySize: '',
     boothSize: '',
     exhibitionGoals: '',
-    previousExhibitions: '',
-    specialRequirements: '',
-    budget: '',
-    marketingMaterials: '',
-    demoEquipment: '',
+    addons: [],
     consent: false
   });
 
@@ -53,7 +49,6 @@ const ExhibitionApplication = () => {
         setFormData(prev => ({
           ...prev,
           boothSize: size || '',
-          budget: price || '',
           exhibitionGoals: `I am interested in booking Booth ${booth} (${size || ''} - ${price || ''}) for the PAAN Summit 2026. ${type ? `This is a ${type} booth.` : ''}`
         }));
       }
@@ -103,14 +98,37 @@ const ExhibitionApplication = () => {
     'Botswana', 'Namibia', 'Mauritius', 'Seychelles', 'Other'
   ];
 
+  const addons = [
+    { id: 'power', label: 'Power Supply', icon: 'mdi:power' },
+    { id: 'internet', label: 'Internet Connection / WiFi', icon: 'mdi:wifi' },
+    { id: 'display', label: 'Display Equipment', icon: 'mdi:monitor' },
+    { id: 'audio', label: 'Audio/Visual Equipment', icon: 'mdi:speaker' },
+    { id: 'furniture', label: 'Furniture Rental', icon: 'mdi:sofa' },
+    { id: 'printing', label: 'Printing Services', icon: 'mdi:printer' },
+    { id: 'demo', label: 'Demo Equipment', icon: 'mdi:presentation-play' },
+    { id: 'storage', label: 'Storage Space', icon: 'mdi:archive' },
+    { id: 'lighting', label: 'Extra Lighting', icon: 'mdi:lightbulb' },
+    { id: 'accessibility', label: 'Accessibility Accommodations', icon: 'mdi:wheelchair-accessibility' }
+  ];
+
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     
     if (type === 'checkbox') {
-      setFormData(prev => ({
-        ...prev,
-        [name]: checked
-      }));
+      if (name === 'consent') {
+        setFormData(prev => ({
+          ...prev,
+          [name]: checked
+        }));
+      } else {
+        // Handle addons checkboxes
+        setFormData(prev => ({
+          ...prev,
+          addons: checked
+            ? [...prev.addons, name]
+            : prev.addons.filter(addon => addon !== name)
+        }));
+      }
     } else {
       setFormData(prev => ({
         ...prev,
@@ -205,11 +223,7 @@ const ExhibitionApplication = () => {
           companySize: '',
           boothSize: '',
           exhibitionGoals: '',
-          previousExhibitions: '',
-          specialRequirements: '',
-          budget: '',
-          marketingMaterials: '',
-          demoEquipment: '',
+          addons: [],
           consent: false
         });
         setRecaptchaToken(null);
@@ -642,28 +656,7 @@ const ExhibitionApplication = () => {
                     {errors.boothSize && <p className="text-red-500 text-sm mt-1">{errors.boothSize}</p>}
                   </div>
 
-                  <div>
-                    <label htmlFor="budget" className="block text-sm font-medium text-paan-dark-blue mb-2">
-                      Budget Range
-                    </label>
-                    <select
-                      id="budget"
-                      name="budget"
-                      value={formData.budget}
-                      onChange={handleChange}
-                      disabled={isSubmitting}
-                      className={`w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-paan-blue focus:border-transparent transition-colors ${
-                        isSubmitting ? 'opacity-50' : ''
-                      }`}
-                    >
-                      <option value="">Select budget range</option>
-                      <option value="Under $5,000">Under $5,000</option>
-                      <option value="$5,000 - $10,000">$5,000 - $10,000</option>
-                      <option value="$10,000 - $25,000">$10,000 - $25,000</option>
-                      <option value="$25,000 - $50,000">$25,000 - $50,000</option>
-                      <option value="Over $50,000">Over $50,000</option>
-                    </select>
-                  </div>
+                
                 </div>
 
                 <div>
@@ -692,65 +685,53 @@ const ExhibitionApplication = () => {
                 </div>
               </div>
 
-              {/* Additional Information */}
+              {/* Additional Information - Addons */}
               <div className="space-y-6">
                 <h3 className="text-xl font-bold text-paan-dark-blue border-b border-gray-200 pb-2 flex items-center gap-2">
                   <Icon icon="mdi:information" className="w-5 h-5" />
-                  Additional Information
+                  Additional Services & Addons
                 </h3>
+                <p className="text-sm text-gray-600 mb-4">
+                  Select any additional services or addons you would like for your booth:
+                </p>
                 
-                <div>
-                  <label htmlFor="previousExhibitions" className="block text-sm font-medium text-paan-dark-blue mb-2">
-                    Previous Exhibition Experience
-                  </label>
-                  <textarea
-                    id="previousExhibitions"
-                    name="previousExhibitions"
-                    value={formData.previousExhibitions}
-                    onChange={handleChange}
-                    disabled={isSubmitting}
-                    rows="3"
-                    className={`w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-paan-blue focus:border-transparent transition-colors resize-none ${
-                      isSubmitting ? 'opacity-50' : ''
-                    }`}
-                    placeholder="Tell us about your previous exhibition experience, if any"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="marketingMaterials" className="block text-sm font-medium text-paan-dark-blue mb-2">
-                    Marketing Materials & Demos
-                  </label>
-                  <textarea
-                    id="marketingMaterials"
-                    name="marketingMaterials"
-                    value={formData.marketingMaterials}
-                    onChange={handleChange}
-                    disabled={isSubmitting}
-                    rows="3"
-                    className={`w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-paan-blue focus:border-transparent transition-colors resize-none ${
-                      isSubmitting ? 'opacity-50' : ''
-                    }`}
-                    placeholder="Describe any marketing materials, demos, or interactive displays you plan to showcase"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="specialRequirements" className="block text-sm font-medium text-paan-dark-blue mb-2">
-                    Special Requirements
-                  </label>
-                  <textarea
-                    id="specialRequirements"
-                    name="specialRequirements"
-                    value={formData.specialRequirements}
-                    onChange={handleChange}
-                    disabled={isSubmitting}
-                    rows="3"
-                    className={`w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-paan-blue focus:border-transparent transition-colors resize-none ${
-                      isSubmitting ? 'opacity-50' : ''
-                    }`}
-                    placeholder="Any special requirements for your booth (power, internet, space, accessibility, etc.)"
-                  />
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {addons.map((addon) => (
+                    <div
+                      key={addon.id}
+                      className={`flex items-start space-x-3 p-4 border-2 rounded-lg transition-all cursor-pointer ${
+                        formData.addons.includes(addon.id)
+                          ? 'border-paan-blue bg-paan-blue/5'
+                          : 'border-gray-200 hover:border-gray-300'
+                      } ${isSubmitting ? 'opacity-50' : ''}`}
+                      onClick={() => !isSubmitting && handleChange({
+                        target: {
+                          name: addon.id,
+                          type: 'checkbox',
+                          checked: !formData.addons.includes(addon.id)
+                        }
+                      })}
+                    >
+                      <input
+                        type="checkbox"
+                        id={addon.id}
+                        name={addon.id}
+                        checked={formData.addons.includes(addon.id)}
+                        onChange={handleChange}
+                        disabled={isSubmitting}
+                        className="w-5 h-5 text-paan-blue border-gray-300 rounded focus:ring-paan-blue mt-0.5"
+                      />
+                      <div className="flex-1">
+                        <label
+                          htmlFor={addon.id}
+                          className="flex items-center gap-2 text-sm font-medium text-paan-dark-blue cursor-pointer"
+                        >
+                          <Icon icon={addon.icon} className="w-5 h-5 text-paan-blue" />
+                          {addon.label}
+                        </label>
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
 

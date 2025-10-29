@@ -16,11 +16,7 @@ export default async function handler(req, res) {
     companySize,
     boothSize,
     exhibitionGoals,
-    previousExhibitions,
-    specialRequirements,
-    budget,
-    marketingMaterials,
-    demoEquipment,
+    addons,
     recaptchaToken,
   } = req.body;
 
@@ -84,11 +80,22 @@ export default async function handler(req, res) {
       <h3>Exhibition Details:</h3>
       <ul>
         <li><strong>Preferred Booth Size:</strong> ${boothSize}</li>
-        <li><strong>Budget Range:</strong> ${budget || 'Not specified'}</li>
         <li><strong>Exhibition Goals:</strong> ${exhibitionGoals}</li>
-        <li><strong>Previous Exhibitions:</strong> ${previousExhibitions || 'None mentioned'}</li>
-        <li><strong>Marketing Materials:</strong> ${marketingMaterials || 'Not specified'}</li>
-        <li><strong>Special Requirements:</strong> ${specialRequirements || 'None'}</li>
+        <li><strong>Selected Addons:</strong> ${addons && addons.length > 0 ? addons.map(addon => {
+          const addonLabels = {
+            'power': 'Power Supply',
+            'internet': 'Internet Connection / WiFi',
+            'display': 'Display Equipment',
+            'audio': 'Audio/Visual Equipment',
+            'furniture': 'Furniture Rental',
+            'printing': 'Printing Services',
+            'demo': 'Demo Equipment',
+            'storage': 'Storage Space',
+            'lighting': 'Extra Lighting',
+            'accessibility': 'Accessibility Accommodations'
+          };
+          return addonLabels[addon] || addon;
+        }).join(', ') : 'None selected'}</li>
       </ul>
 
       <p><strong>Application Date:</strong> ${new Date().toLocaleString()}</p>
