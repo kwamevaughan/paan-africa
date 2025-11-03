@@ -1169,22 +1169,22 @@ const SummitPage = () => {
                 </thead>
                 <tbody>
                   <tr className="border-t border-paan-dark-blue/20">
-                    <td className="py-6 px-6 text-paan-dark-blue font-medium">10 October 2025</td>
+                    <td className="py-6 px-6 text-paan-dark-blue font-medium">5 November 2025</td>
                     <td className="py-6 px-6 text-paan-red font-medium">Entries Open</td>
-                    <td className="py-6 px-6 text-paan-dark-blue font-light">Submit your entries starting March 10. Showcase your agency, brand, or freelance work to a continental jury.</td>
+                    <td className="py-6 px-6 text-paan-dark-blue font-light">Submit your entries starting November 5. Showcase your agency, brand, or freelance work to a continental jury.</td>
                   </tr>
                   <tr className="border-t border-paan-dark-blue/20">
-                    <td className="py-6 px-6 text-paan-dark-blue font-medium">15 November 2025</td>
+                    <td className="py-6 px-6 text-paan-dark-blue font-medium">25 November 2025</td>
                     <td className="py-6 px-6 text-paan-red font-medium">Early Bird Deadline</td>
                     <td className="py-6 px-6 text-paan-dark-blue font-light">Take advantage of reduced entry fees and priority review for submissions received by this date.</td>
                   </tr>
                   <tr className="border-t border-paan-dark-blue/20">
-                    <td className="py-6 px-6 text-paan-dark-blue font-medium">30 November 2025</td>
+                    <td className="py-6 px-6 text-paan-dark-blue font-medium">10 February 2026</td>
                     <td className="py-6 px-6 text-paan-red font-medium">Final Entry Deadline</td>
                     <td className="py-6 px-6 text-paan-dark-blue font-light">All award entries must be submitted by midnight EAT. Late submissions will not be accepted.</td>
                   </tr>
                   <tr className="border-t border-paan-dark-blue/20">
-                    <td className="py-6 px-6 text-paan-dark-blue font-medium">15 January 2026</td>
+                    <td className="py-6 px-6 text-paan-dark-blue font-medium">15 March 2026</td>
                     <td className="py-6 px-6 text-paan-red font-medium">Finalists Announced</td>
                     <td className="py-6 px-6 text-paan-dark-blue font-light">The shortlisted entries will be revealed across all categories. Finalists will be notified directly.</td>
                   </tr>
