@@ -85,20 +85,47 @@ const contact = () => {
     const validateForm = () => {
         const newErrors = {};
         
+        // Validate first name
         if (!formData.firstName.trim()) {
             newErrors.firstName = "First name is required";
         }
+        
+        // Validate second name
+        if (!formData.secondName.trim()) {
+            newErrors.secondName = "Last name is required";
+        }
+        
+        // Validate email
         if (!formData.email.trim()) {
             newErrors.email = "Email is required";
-        } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-            newErrors.email = "Email is invalid";
+        } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+            newErrors.email = "Please enter a valid email address";
         }
+        
+        // Validate organization
         if (!formData.organization.trim()) {
             newErrors.organization = "Organization is required";
         }
-        if (!formData.helpWith.trim()) {
-            newErrors.helpWith = "Please describe what you need help with";
+        
+        // Validate message - either helpWith or message should be filled
+        const messageContent = (formData.message || formData.helpWith || "").trim();
+        if (!messageContent) {
+            if (formData.helpWith) {
+                newErrors.helpWith = "Please describe what you need help with";
+            } else {
+                newErrors.message = "Please provide a message";
+            }
         }
+        
+        // Validate phone if provided (optional but should be valid format)
+        if (formData.phone && formData.phone.trim()) {
+            const phoneRegex = /^[\+]?[(]?[0-9]{1,4}[)]?[-\s\.]?[(]?[0-9]{1,4}[)]?[-\s\.]?[0-9]{1,9}$/;
+            if (!phoneRegex.test(formData.phone.trim())) {
+                newErrors.phone = "Please enter a valid phone number";
+            }
+        }
+        
+        // Validate reCAPTCHA
         if (!recaptchaToken) {
             newErrors.recaptcha = "Please complete the reCAPTCHA verification";
         }
@@ -114,6 +141,17 @@ const contact = () => {
         const validationErrors = validateForm();
         if (Object.keys(validationErrors).length > 0) {
             setErrors(validationErrors);
+            // Scroll to first error field (skip reCAPTCHA as it's not a regular input)
+            const errorFields = Object.keys(validationErrors).filter(field => field !== 'recaptcha');
+            if (errorFields.length > 0) {
+                const firstErrorField = errorFields[0];
+                const errorElement = document.getElementById(firstErrorField);
+                if (errorElement) {
+                    errorElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    errorElement.focus();
+                }
+            }
+            toast.error("Please fix the errors in the form before submitting.");
             return;
         }
 
@@ -121,18 +159,21 @@ const contact = () => {
         const toastId = toast.loading("Sending message...");
 
         try {
+            // Prepare message content - use helpWith if message is empty
+            const messageContent = (formData.message || formData.helpWith || "").trim();
+            
             const response = await fetch("/api/send-email", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify({
-                    firstName: formData.firstName,
-                    secondName: formData.secondName || "",
-                    email: formData.email,
-                    phone: formData.phone || "",
-                    organization: formData.organization,
-                    message: formData.message || formData.helpWith,
+                    firstName: formData.firstName.trim(),
+                    secondName: formData.secondName.trim() || "",
+                    email: formData.email.trim(),
+                    phone: formData.phone.trim() || "",
+                    organization: formData.organization.trim(),
+                    message: messageContent,
                     recaptchaToken,
                 }),
             });
@@ -140,7 +181,7 @@ const contact = () => {
             const data = await response.json();
 
             if (response.ok) {
-                toast.success("Message sent successfully!", { id: toastId });
+                toast.success("Message sent successfully! We'll get back to you soon.", { id: toastId });
                 // Reset form
                 setFormData({
                     firstName: "",
@@ -152,19 +193,41 @@ const contact = () => {
                     hearAbout: "",
                     message: ""
                 });
+                setErrors({});
                 setRecaptchaToken(null);
-                recaptchaRef.current?.reset();
-                // Redirect to thank you page
-                router.push("/thank-you");
+                if (recaptchaRef.current) {
+                    recaptchaRef.current.reset();
+                }
+                // Redirect to thank you page after a short delay
+                setTimeout(() => {
+                    router.push("/thank-you");
+                }, 1500);
             } else {
-                toast.error(data.message || "Failed to send message.", { id: toastId });
+                // Handle specific error cases
+                let errorMessage = data.message || "Failed to send message. Please try again.";
+                
+                // If reCAPTCHA failed, reset it
+                if (errorMessage.toLowerCase().includes("recaptcha")) {
+                    setRecaptchaToken(null);
+                    if (recaptchaRef.current) {
+                        recaptchaRef.current.reset();
+                    }
+                    setErrors((prev) => ({ ...prev, recaptcha: "reCAPTCHA verification failed. Please try again." }));
+                }
+                
+                toast.error(errorMessage, { id: toastId });
                 setRecaptchaToken(null);
-                recaptchaRef.current?.reset();
+                if (recaptchaRef.current) {
+                    recaptchaRef.current.reset();
+                }
             }
         } catch (error) {
-            toast.error("An error occurred. Please try again.", { id: toastId });
+            console.error("Form submission error:", error);
+            toast.error("An error occurred. Please check your connection and try again.", { id: toastId });
             setRecaptchaToken(null);
-            recaptchaRef.current?.reset();
+            if (recaptchaRef.current) {
+                recaptchaRef.current.reset();
+            }
         } finally {
             setIsSubmitting(false);
         }
@@ -294,7 +357,7 @@ const contact = () => {
                                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                         <div>
                                             <label htmlFor="firstName" className="block text-[#172840] text-sm font-medium mb-2">
-                                                Full Name <span className="text-red-500">*</span>
+                                                First Name <span className="text-red-500">*</span>
                                             </label>
                                             <input
                                                 type="text"
@@ -302,15 +365,39 @@ const contact = () => {
                                                 name="firstName"
                                                 value={formData.firstName}
                                                 onChange={handleInputChange}
+                                                disabled={isSubmitting}
                                                 className={`w-full px-4 py-3 border rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-[#F25849] focus:border-transparent transition-all duration-300 ${
                                                     errors.firstName ? 'border-red-500' : 'border-gray-300'
-                                                }`}
-                                                placeholder="Enter your full name"
+                                                } ${isSubmitting ? 'opacity-50 cursor-not-allowed' : ''}`}
+                                                placeholder="Enter your first name"
                                             />
                                             {errors.firstName && (
                                                 <p className="text-red-500 text-sm mt-1">{errors.firstName}</p>
                                             )}
                                         </div>
+                                        <div>
+                                            <label htmlFor="secondName" className="block text-[#172840] text-sm font-medium mb-2">
+                                                Last Name <span className="text-red-500">*</span>
+                                            </label>
+                                            <input
+                                                type="text"
+                                                id="secondName"
+                                                name="secondName"
+                                                value={formData.secondName}
+                                                onChange={handleInputChange}
+                                                disabled={isSubmitting}
+                                                className={`w-full px-4 py-3 border rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-[#F25849] focus:border-transparent transition-all duration-300 ${
+                                                    errors.secondName ? 'border-red-500' : 'border-gray-300'
+                                                } ${isSubmitting ? 'opacity-50 cursor-not-allowed' : ''}`}
+                                                placeholder="Enter your last name"
+                                            />
+                                            {errors.secondName && (
+                                                <p className="text-red-500 text-sm mt-1">{errors.secondName}</p>
+                                            )}
+                                        </div>
+                                    </div>
+
+                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                         <div>
                                             <label htmlFor="email" className="block text-[#172840] text-sm font-medium mb-2">
                                                 Email <span className="text-red-500">*</span>
@@ -321,35 +408,14 @@ const contact = () => {
                                                 name="email"
                                                 value={formData.email}
                                                 onChange={handleInputChange}
+                                                disabled={isSubmitting}
                                                 className={`w-full px-4 py-3 border rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-[#F25849] focus:border-transparent transition-all duration-300 ${
                                                     errors.email ? 'border-red-500' : 'border-gray-300'
-                                                }`}
+                                                } ${isSubmitting ? 'opacity-50 cursor-not-allowed' : ''}`}
                                                 placeholder="Enter your email"
                                             />
                                             {errors.email && (
                                                 <p className="text-red-500 text-sm mt-1">{errors.email}</p>
-                                            )}
-                                        </div>
-                                    </div>
-
-                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                        <div>
-                                            <label htmlFor="organization" className="block text-[#172840] text-sm font-medium mb-2">
-                                                Organization <span className="text-red-500">*</span>
-                                            </label>
-                                            <input
-                                                type="text"
-                                                id="organization"
-                                                name="organization"
-                                                value={formData.organization}
-                                                onChange={handleInputChange}
-                                                className={`w-full px-4 py-3 border rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-[#F25849] focus:border-transparent transition-all duration-300 ${
-                                                    errors.organization ? 'border-red-500' : 'border-gray-300'
-                                                }`}
-                                                placeholder="Enter your organization"
-                                            />
-                                            {errors.organization && (
-                                                <p className="text-red-500 text-sm mt-1">{errors.organization}</p>
                                             )}
                                         </div>
                                         <div>
@@ -362,10 +428,37 @@ const contact = () => {
                                                 name="phone"
                                                 value={formData.phone}
                                                 onChange={handleInputChange}
-                                                className="w-full px-4 py-3 border border-gray-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-[#F25849] focus:border-transparent transition-all duration-300"
+                                                disabled={isSubmitting}
+                                                className={`w-full px-4 py-3 border rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-[#F25849] focus:border-transparent transition-all duration-300 ${
+                                                    errors.phone ? 'border-red-500' : 'border-gray-300'
+                                                } ${isSubmitting ? 'opacity-50 cursor-not-allowed' : ''}`}
                                                 placeholder="Enter your phone number"
                                             />
+                                            {errors.phone && (
+                                                <p className="text-red-500 text-sm mt-1">{errors.phone}</p>
+                                            )}
                                         </div>
+                                    </div>
+
+                                    <div>
+                                        <label htmlFor="organization" className="block text-[#172840] text-sm font-medium mb-2">
+                                            Organization <span className="text-red-500">*</span>
+                                        </label>
+                                        <input
+                                            type="text"
+                                            id="organization"
+                                            name="organization"
+                                            value={formData.organization}
+                                            onChange={handleInputChange}
+                                            disabled={isSubmitting}
+                                            className={`w-full px-4 py-3 border rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-[#F25849] focus:border-transparent transition-all duration-300 ${
+                                                errors.organization ? 'border-red-500' : 'border-gray-300'
+                                            } ${isSubmitting ? 'opacity-50 cursor-not-allowed' : ''}`}
+                                            placeholder="Enter your organization"
+                                        />
+                                        {errors.organization && (
+                                            <p className="text-red-500 text-sm mt-1">{errors.organization}</p>
+                                        )}
                                     </div>
 
                                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -379,9 +472,10 @@ const contact = () => {
                                                 name="helpWith"
                                                 value={formData.helpWith}
                                                 onChange={handleInputChange}
+                                                disabled={isSubmitting}
                                                 className={`w-full px-4 py-3 border rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-[#F25849] focus:border-transparent transition-all duration-300 ${
                                                     errors.helpWith ? 'border-red-500' : 'border-gray-300'
-                                                }`}
+                                                } ${isSubmitting ? 'opacity-50 cursor-not-allowed' : ''}`}
                                                 placeholder="Describe what you need help with"
                                             />
                                             {errors.helpWith && (
@@ -398,7 +492,10 @@ const contact = () => {
                                                 name="hearAbout"
                                                 value={formData.hearAbout}
                                                 onChange={handleInputChange}
-                                                className="w-full px-4 py-3 border border-gray-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-[#F25849] focus:border-transparent transition-all duration-300"
+                                                disabled={isSubmitting}
+                                                className={`w-full px-4 py-3 border border-gray-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-[#F25849] focus:border-transparent transition-all duration-300 ${
+                                                    isSubmitting ? 'opacity-50 cursor-not-allowed' : ''
+                                                }`}
                                                 placeholder="How did you hear about us?"
                                             />
                                         </div>
@@ -414,20 +511,26 @@ const contact = () => {
                                             rows="4"
                                             value={formData.message}
                                             onChange={handleInputChange}
-                                            className="w-full px-4 py-3 border border-gray-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-[#F25849] focus:border-transparent transition-all duration-300 resize-none"
+                                            disabled={isSubmitting}
+                                            className={`w-full px-4 py-3 border rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-[#F25849] focus:border-transparent transition-all duration-300 resize-none ${
+                                                errors.message ? 'border-red-500' : 'border-gray-300'
+                                            } ${isSubmitting ? 'opacity-50 cursor-not-allowed' : ''}`}
                                             placeholder="Enter your message here..."
                                         />
+                                        {errors.message && (
+                                            <p className="text-red-500 text-sm mt-1">{errors.message}</p>
+                                        )}
                                     </div>
 
                                     {/* reCAPTCHA */}
-                                    <div className="flex justify-center">
+                                    <div className="flex flex-col items-center">
                                         <ReCAPTCHA
                                             ref={recaptchaRef}
                                             sitekey={recaptchaSiteKey}
                                             onChange={handleRecaptchaChange}
                                         />
                                         {errors.recaptcha && (
-                                            <p className="text-red-500 text-sm mt-1">{errors.recaptcha}</p>
+                                            <p className="text-red-500 text-sm mt-2">{errors.recaptcha}</p>
                                         )}
                                     </div>
 
