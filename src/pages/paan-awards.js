@@ -172,45 +172,203 @@ const SummitPage = () => {
     },
   ];
 
-  // Awards data
-  const agencyAwards = [
+  // Award categories - Matching structure from PAANAwardsApplicationModal
+  const awardCategories = [
     {
-      id: 1,
-      title: "PR Campaign of the Year",
-      description: "Outstanding public relations campaigns that shaped public perception and delivered measurable impact.",
-      icon: "https://ik.imagekit.io/nkmvdjnna/PAAN/awards/icons/healthicons_award-trophy.svg"
+      id: 'campaign-excellence',
+      name: 'Campaign Excellence Awards',
+      description: 'Celebrating the power of ideas, creativity, and execution across Africa\'s most impactful campaigns. These categories honor the campaigns that moved audiences, shaped perceptions, and delivered results across PR, communications, digital, and brand activations.',
+      subcategories: [
+        {
+          id: 'pr-campaign-year',
+          name: 'PR Campaign of the Year',
+          description: 'Outstanding public relations campaigns that shaped public perception and delivered measurable impact.'
+        },
+        {
+          id: 'communication-campaign-year',
+          name: 'Communication Campaign of the Year',
+          description: 'Exceptional communication strategies that effectively reached and engaged target audiences.'
+        },
+        {
+          id: 'ooh-campaign-year',
+          name: 'OOH (Out-of-Home) Campaign of the Year',
+          description: 'Creative and impactful outdoor advertising campaigns that captured attention and drove results.'
+        },
+        {
+          id: 'social-media-campaign-year',
+          name: 'Social Media Campaign of the Year',
+          description: 'Innovative social media campaigns that engaged communities and achieved remarkable reach.'
+        },
+        {
+          id: 'content-marketing-campaign-year',
+          name: 'Content Marketing Campaign of the Year',
+          description: 'Strategic content campaigns that educated, entertained, and converted audiences effectively.'
+        },
+        {
+          id: 'influencer-marketing-campaign-year',
+          name: 'Influencer Marketing Campaign of the Year',
+          description: 'Successful influencer partnerships that authentically connected brands with their audiences.'
+        },
+        {
+          id: 'csr-impact-campaign-year',
+          name: 'CSR/Impact Campaign of the Year',
+          description: 'Purpose-driven campaigns that created positive social or environmental impact.'
+        },
+        {
+          id: 'integrated-marketing-campaign-year',
+          name: 'Integrated Marketing Campaign of the Year',
+          description: 'Seamlessly coordinated multi-channel campaigns that delivered consistent messaging and results.'
+        },
+        {
+          id: 'b2b-marketing-campaign-year',
+          name: 'B2B Marketing Campaign of the Year',
+          description: 'Business-to-business campaigns that effectively reached and converted professional audiences.'
+        },
+        {
+          id: 'experiential-brand-activation-year',
+          name: 'Experiential/Brand Activation of the Year',
+          description: 'Immersive brand experiences that created memorable connections with consumers.'
+        }
+      ]
     },
     {
-      id: 2,
-      title: "Communication Campaign of the Year",
-      description: "Exceptional communication strategies that effectively reached and engaged target audiences.",
-      icon: "https://ik.imagekit.io/nkmvdjnna/PAAN/awards/icons/mdi_leaf-circle.svg"
+      id: 'agency-excellence',
+      name: 'Agency Excellence Awards',
+      description: 'Recognizing the agencies that set the benchmark for innovation, growth, and client success. These awards spotlight agencies of all sizes and specialties that have demonstrated vision, creativity, and measurable impact in building brands across Africa.',
+      subcategories: [
+        {
+          id: 'digital-agency-year',
+          name: 'Digital Agency of the Year',
+          description: 'Leading digital agencies that excel in online strategy, execution, and innovation.'
+        },
+        {
+          id: 'creative-agency-year',
+          name: 'Creative Agency of the Year',
+          description: 'Creative agencies that consistently deliver outstanding creative solutions and campaigns.'
+        },
+        {
+          id: 'design-branding-agency-year',
+          name: 'Design & Branding Agency of the Year',
+          description: 'Agencies specializing in visual identity, brand design, and creative brand development.'
+        },
+        {
+          id: 'media-planning-buying-agency-year',
+          name: 'Media Planning & Buying Agency of the Year',
+          description: 'Agencies that excel in strategic media planning, buying, and optimization.'
+        },
+        {
+          id: 'production-house-year',
+          name: 'Production House of the Year',
+          description: 'Production companies delivering exceptional video, audio, and multimedia content.'
+        },
+        {
+          id: 'specialist-agency-year',
+          name: 'Specialist Agency of the Year',
+          description: 'Agencies with specialized expertise in sectors like healthcare, fintech, agriculture, etc.'
+        },
+        {
+          id: 'rising-agency-year',
+          name: 'Rising Agency of the Year',
+          description: 'Emerging agencies showing exceptional growth, innovation, and potential.'
+        },
+        {
+          id: 'regional-agency-year',
+          name: 'Regional Agency of the Year',
+          description: 'Outstanding agencies representing East, West, Southern, or North Africa regions.'
+        }
+      ]
     },
     {
-      id: 3,
-      title: "Digital Agency of the Year",
-      description: "Leading digital agencies that excel in online strategy, execution, and innovation.",
-      icon: "https://ik.imagekit.io/nkmvdjnna/PAAN/awards/icons/ri_speak-ai-fill.svg"
+      id: 'innovation-technology',
+      name: 'Innovation & Technology Awards',
+      description: 'Celebrating the pioneers redefining the future of marketing through data, technology, and new platforms. These categories honor agencies that harness innovation to deliver smarter, more engaging, and more measurable results.',
+      subcategories: [
+        {
+          id: 'tech-innovation-marketing',
+          name: 'Tech Innovation in Marketing Award',
+          description: 'Groundbreaking use of technology to create innovative marketing solutions and experiences.'
+        },
+        {
+          id: 'creative-use-data',
+          name: 'Creative Use of Data Award',
+          description: 'Innovative application of data analytics and insights to drive creative and strategic decisions.'
+        },
+        {
+          id: 'ecommerce-marketing-campaign-year',
+          name: 'E-Commerce Marketing Campaign of the Year',
+          description: 'Outstanding marketing campaigns that drove e-commerce growth and online sales success.'
+        }
+      ]
     },
     {
-      id: 4,
-      title: "Creative Agency of the Year",
-      description: "Creative agencies that consistently deliver outstanding creative solutions and campaigns.",
-      icon: "https://ik.imagekit.io/nkmvdjnna/PAAN/awards/icons/material-symbols_target.svg"
+      id: 'sector-excellence',
+      name: 'Sector Excellence Awards',
+      description: 'Honoring outstanding campaigns in industries that play a vital role in Africa\'s growth and development. These awards highlight work that has transformed communication in specific, high-impact sectors.',
+      subcategories: [
+        {
+          id: 'public-sector-campaign-year',
+          name: 'Public Sector Campaign of the Year',
+          description: 'Exceptional campaigns for government and public sector organizations that served the public interest.'
+        },
+        {
+          id: 'financial-services-campaign-year',
+          name: 'Financial Services Campaign of the Year',
+          description: 'Outstanding marketing campaigns in banking, insurance, fintech, and financial services.'
+        }
+      ]
     },
     {
-      id: 5,
-      title: "Tech Innovation in Marketing Award",
-      description: "Groundbreaking use of technology to create innovative marketing solutions and experiences.",
-      icon: "https://ik.imagekit.io/nkmvdjnna/PAAN/awards/icons/ix_handshake.svg"
-    },
-    {
-      id: 6,
-      title: "Agency Leader of the Year",
-      description: "Visionary leaders who have driven exceptional growth, innovation, and industry impact.",
-      icon: "https://ik.imagekit.io/nkmvdjnna/PAAN/awards/icons/mdi_leaf-circle.svg"
-    },
+      id: 'special-honors',
+      name: 'Special Honors',
+      description: 'Reserved for the highest level of recognition, these awards celebrate visionary leadership and overall excellence. These honors recognize the individuals and agencies that embody the best of Africa\'s independent creative ecosystem.',
+      subcategories: [
+        {
+          id: 'agency-leader-year',
+          name: 'Agency Leader of the Year',
+          description: 'Visionary leaders who have driven exceptional growth, innovation, and industry impact.'
+        },
+        {
+          id: 'grand-prix-agency-year',
+          name: 'Grand Prix: Agency of the Year',
+          description: 'The highest honor - recognizing the top overall agency demonstrating excellence across all areas.'
+        }
+      ]
+    }
   ];
+
+  // Define category IDs for agency awards
+  const agencyCategoryIds = ['campaign-excellence', 'agency-excellence', 'innovation-technology', 'sector-excellence', 'special-honors'];
+  
+  // Select 9 specific agency award categories from different parent categories
+  const selectedAgencyCategoryIds = [
+    // Campaign Excellence (3)
+    'pr-campaign-year',
+    'social-media-campaign-year',
+    'integrated-marketing-campaign-year',
+    // Agency Excellence (3)
+    'digital-agency-year',
+    'creative-agency-year',
+    'design-branding-agency-year',
+    // Innovation & Technology (1)
+    'tech-innovation-marketing',
+    // Sector Excellence (1)
+    'financial-services-campaign-year',
+    // Special Honors (1)
+    'agency-leader-year'
+  ];
+  
+  // Filter agency categories and extract selected subcategories
+  const agencyAwards = awardCategories
+    .filter(category => agencyCategoryIds.includes(category.id))
+    .flatMap(category => 
+      category.subcategories
+        .filter(subcat => selectedAgencyCategoryIds.includes(subcat.id))
+        .map(subcat => ({
+          id: subcat.id,
+          title: subcat.name,
+          description: subcat.description
+        }))
+    );
 
   const freelancerAwards = [
     {
@@ -307,6 +465,28 @@ const SummitPage = () => {
       ]
     }
   ];
+
+  // Select 9 specific freelancer award categories from different parent categories
+  const selectedFreelancerCategoryIds = [
+    // Creative Excellence (3)
+    'freelancer-year',
+    'brand-identity',
+    'ui-ux',
+    // Digital Performance (3)
+    'website-dev',
+    'seo-content',
+    'performance-marketing',
+    // Innovation & Storytelling (3)
+    'short-form-video',
+    'motion-graphics',
+    'ugc-creator'
+  ];
+
+  // Filter freelancer awards to only include selected categories
+  const filteredFreelancerAwards = freelancerAwards.flatMap(award => 
+    award.subcategories
+      .filter(subcat => selectedFreelancerCategoryIds.includes(subcat.id))
+  );
 
   // Count up animation effect
   useEffect(() => {
@@ -891,7 +1071,7 @@ const SummitPage = () => {
           )}
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 justify-items-center mt-8 sm:mt-10 lg:mt-12">
-            {(awardType === 'agency' ? agencyAwards : freelancerAwards.flatMap(award => award.subcategories)).map((award) => (
+            {(awardType === 'agency' ? agencyAwards : filteredFreelancerAwards).map((award) => (
               <div key={award.id} className="bg-paan-dark-blue w-64 h-64 sm:w-72 sm:h-72 lg:w-80 lg:h-80 rounded-full shadow-xl overflow-hidden relative flex items-center justify-center hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
                 {/* Ring image inside the circle with padding */}
                 <div className="absolute inset-3 sm:inset-4 flex items-center justify-center">
@@ -903,7 +1083,7 @@ const SummitPage = () => {
                 </div>
 
                 <div className="text-center relative mt-8 sm:mt-10 lg:mt-12 max-w-[11rem] sm:max-w-[12rem] px-4">
-                  <h4 className="text-sm sm:text-md font-bold text-white mb-2 sm:mb-3">{award.title}</h4>
+                  <h4 className="text-sm sm:text-md font-bold text-white mb-2 sm:mb-3">{award.title || award.name}</h4>
                   <p className="text-white font-light text-xs leading-relaxed">{award.description}</p>
                 </div>
               </div>

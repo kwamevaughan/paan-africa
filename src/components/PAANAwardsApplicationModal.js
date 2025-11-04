@@ -331,13 +331,21 @@ const PAANAwardsApplicationModal = ({ isOpen, onClose }) => {
     '16+ years'
   ];
 
+  // Check if early bird deadline is still active (November 25, 2025)
+  const isEarlyBird = () => {
+    const earlyBirdDeadline = new Date('2025-11-25T23:59:59+03:00'); // November 25, 2025 at 11:59 PM EAT
+    const now = new Date();
+    return now <= earlyBirdDeadline;
+  };
+
   // Pricing configuration
   const pricing = {
     agency: {
-      pricePerCategory: 200,
-      slashedPrice: 250,
+      pricePerCategory: isEarlyBird() ? 130 : 200,
+      slashedPrice: isEarlyBird() ? 200 : 250,
       currency: 'USD',
-      description: 'Agency Application Fee per Category'
+      description: 'Agency Application Fee per Category',
+      earlyBirdDeadline: 'November 25, 2025'
     },
     freelancer: {
       pricePerCategory: 30,
@@ -649,6 +657,9 @@ const PAANAwardsApplicationModal = ({ isOpen, onClose }) => {
                 {formData.selectedCategories.length > 1 && (
                   <span className="text-yellow-400 ml-2">(25% discount applied!)</span>
                 )}
+                {formData.applicantType === 'agency' && isEarlyBird() && (
+                  <span className="text-yellow-400 ml-2 font-semibold"> Early Bird Pricing (Until Nov 25, 2025)</span>
+                )}
               </p>
               {!paystackReady && (
                 <div className="flex items-center gap-2 mt-2">
@@ -690,6 +701,9 @@ const PAANAwardsApplicationModal = ({ isOpen, onClose }) => {
                       <><s>${pricing.agency.slashedPrice}</s> ${pricing.agency.pricePerCategory} USD per category - Save ${pricing.agency.slashedPrice - pricing.agency.pricePerCategory}</>
                     ) : (
                       `${pricing.agency.pricePerCategory} USD per category`
+                    )}
+                    {isEarlyBird() && (
+                      <span className="block text-yellow-600 font-semibold mt-1">Early Bird: Until Nov 25, 2025</span>
                     )}
                   </p>
                 </div>
@@ -1198,6 +1212,9 @@ const PAANAwardsApplicationModal = ({ isOpen, onClose }) => {
                   <div>
                     <p className="text-white/80">
                       {formData.applicantType === 'agency' ? 'Agency Application Fee' : 'Freelancer Application Fee'}
+                      {formData.applicantType === 'agency' && isEarlyBird() && (
+                        <span className="ml-2 text-yellow-400 text-xs font-semibold">🎉 Early Bird</span>
+                      )}
                     </p>
                     <p className="text-sm text-white/60">
                       {formData.selectedCategories.length} category(ies) ×
@@ -1210,7 +1227,7 @@ const PAANAwardsApplicationModal = ({ isOpen, onClose }) => {
                   </div>
                   <div className="text-right">
                     <p className="text-lg font-semibold">
-                      {formData.applicantType === 'freelancer' && currentPricing.slashedPrice ? (
+                      {currentPricing.slashedPrice && (formData.applicantType === 'agency' || formData.applicantType === 'freelancer') ? (
                         <span><s>${currentPricing.slashedPrice * formData.selectedCategories.length}</s> </span>
                       ) : null}
                       ${currentPricing.pricePerCategory * formData.selectedCategories.length} USD
