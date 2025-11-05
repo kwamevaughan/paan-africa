@@ -1400,7 +1400,7 @@ const Hero = ({ sectionRefs }) => {
         <div 
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: "url('https://ik.imagekit.io/nkmvdjnna/PAAN/exhibitors/hero-exhibitors.png')",
+            backgroundImage: "url('https://ik.imagekit.io/nkmvdjnna/PAAN/exhibitors/paan-summit-2026-exhibitors.png')",
             filter: "brightness(0.5)" // Darkening the image
           }}
         />
