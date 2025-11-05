@@ -142,14 +142,22 @@ export const completePurchase = async (purchaseData) => {
     const taxAmount = 0; // Implement tax calculation here
     const finalAmount = subtotal - discountAmount + taxAmount;
 
+    // Map payment method to database enum values
+    // Database enum: 'card' or 'bank_transfer'
+    // For mpesa, we'll use 'card' since it's processed through Paystack like card payments
+    const dbPaymentMethod = paymentMethod === 'bank' || paymentMethod === 'bank_transfer' 
+      ? 'bank_transfer' 
+      : 'card'; // 'card' or 'mpesa' both map to 'card' for database
+    
     // Create purchase record
+    // Always store amounts in USD (base currency), even if payment is made in KES
     const purchaseRecord = {
       purchaser_id: purchaser.id,
       total_amount: subtotal,
-      currency: 'USD',
-      status: paymentMethod === 'bank_transfer' ? 'pending' : 'pending',
-      payment_method: paymentMethod === 'bank' ? 'bank_transfer' : paymentMethod,
-      payment_status: paymentMethod === 'bank_transfer' ? 'pending' : 'pending',
+      currency: 'USD', // Always USD for purchase records
+      status: paymentMethod === 'bank' || paymentMethod === 'bank_transfer' ? 'pending' : 'pending',
+      payment_method: dbPaymentMethod,
+      payment_status: paymentMethod === 'bank' || paymentMethod === 'bank_transfer' ? 'pending' : 'pending',
       promo_code: promoCode,
       discount_amount: discountAmount,
       tax_amount: taxAmount,
@@ -227,14 +235,20 @@ export const verifyAndCompletePayment = async (purchaseId, paymentReference) => 
       throw new Error('Payment verification failed');
     }
 
+    // Convert amount from Paystack response
+    // Paystack returns all amounts in the smallest unit (cents)
+    // So we need to divide by 100 for both USD and KES to get the actual amount
+    const currency = verificationResult.data.currency || 'USD';
+    const amount = verificationResult.data.amount / 100; // Convert from cents to dollars/shillings
+
     // Save payment transaction
     await savePaymentTransaction({
       purchaseId,
       paystackReference: paymentReference,
-      amount: verificationResult.data.amount / 100, // Convert from kobo/cents
-      currency: verificationResult.data.currency,
+      amount: amount,
+      currency: currency,
       status: 'completed',
-      paymentMethod: 'card',
+      paymentMethod: 'card', // Both card and mpesa map to 'card' in database
       gatewayResponse: verificationResult
     });
 

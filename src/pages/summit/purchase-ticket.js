@@ -16,6 +16,7 @@ import { toast } from "react-hot-toast";
 import { completePurchase, verifyAndCompletePayment } from '../../lib/ticketService';
 import { initializePayment, generatePaymentReference } from '../../lib/paystack';
 import { validatePromoCode } from '../../lib/promoCodeService';
+import { convertUSDToKES, formatCurrency } from '../../utils/currencyConverter';
 
 // Animation variants - defined outside component for global access
 const fadeInUp = {
@@ -298,22 +299,35 @@ const SummitPage = () => {
           setErrors({});
         }, 3000);
       } else {
-        // For card payments, proceed with Paystack
+        // For card or mpesa payments, proceed with Paystack
         toast.dismiss(toastId);
         toast.loading("Initializing payment...", { id: 'payment-init' });
 
         // Initialize payment with Paystack
         const paymentReference = generatePaymentReference();
         
+        // Determine currency and amount based on payment method
+        let currency = 'USD';
+        let paymentAmount = finalAmount;
+        
+        if (paymentInfo.method === 'mpesa') {
+          // Convert USD to KES for Mpesa payments
+          currency = 'KES';
+          paymentAmount = convertUSDToKES(finalAmount);
+        }
+        
         const paymentHandler = await initializePayment({
           email: purchaserInfo.email,
-          amount: finalAmount,
-          currency: 'USD',
+          amount: paymentAmount,
+          currency: currency,
           reference: paymentReference,
           metadata: {
             purchase_id: purchase.id,
             purchaser_id: purchaser.id,
-            ticket_count: selectedTickets.reduce((sum, ticket) => sum + ticket.quantity, 0)
+            ticket_count: selectedTickets.reduce((sum, ticket) => sum + ticket.quantity, 0),
+            payment_method: paymentInfo.method,
+            original_amount_usd: paymentInfo.method === 'mpesa' ? finalAmount : null,
+            converted_amount_kes: paymentInfo.method === 'mpesa' ? paymentAmount : null
           },
           onSuccess: async (response) => {
             try {
@@ -694,7 +708,7 @@ const SummitPage = () => {
 
                 {/* Step Content */}
                 {currentStep === 1 && <Tickets selectedTickets={selectedTickets} setSelectedTickets={setSelectedTickets} onNext={handleNext} errors={errors} />}
-                {currentStep === 2 && <Attendees onNext={handleNext} onPrev={handlePrev} purchaserInfo={purchaserInfo} handlePurchaserChange={handlePurchaserChange} attendees={attendees} handleAttendeeChange={handleAttendeeChange} errors={errors} selectedTickets={selectedTickets} promoCodeValidation={promoCodeValidation} termsAccepted={termsAccepted} setTermsAccepted={setTermsAccepted} />}
+                {currentStep === 2 && <Attendees onNext={handleNext} onPrev={handlePrev} purchaserInfo={purchaserInfo} handlePurchaserChange={handlePurchaserChange} attendees={attendees} handleAttendeeChange={handleAttendeeChange} errors={errors} selectedTickets={selectedTickets} promoCodeValidation={promoCodeValidation} termsAccepted={termsAccepted} setTermsAccepted={setTermsAccepted} paymentInfo={paymentInfo} handlePaymentChange={handlePaymentChange} />}
                 {currentStep === 3 && <Payment onNext={handleNext} onPrev={handlePrev} paymentInfo={paymentInfo} handlePaymentChange={handlePaymentChange} selectedTickets={selectedTickets} errors={errors} isSubmitting={isSubmitting} promoCode={promoCode} setPromoCode={setPromoCode} promoCodeValidation={promoCodeValidation} setPromoCodeValidation={setPromoCodeValidation} handlePromoCodeValidation={handlePromoCodeValidation} isValidatingPromo={isValidatingPromo} />}
                 
               </div>
@@ -1119,7 +1133,7 @@ const Tickets = ({ selectedTickets, setSelectedTickets, onNext, errors }) => {
   );
 };
 
-const Attendees = ({ onNext, onPrev, purchaserInfo, handlePurchaserChange, attendees, handleAttendeeChange, errors, selectedTickets, promoCodeValidation, termsAccepted, setTermsAccepted }) => {
+const Attendees = ({ onNext, onPrev, purchaserInfo, handlePurchaserChange, attendees, handleAttendeeChange, errors, selectedTickets, promoCodeValidation, termsAccepted, setTermsAccepted, paymentInfo, handlePaymentChange }) => {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 pt-4 sm:pt-6 pb-8 sm:pb-10 max-w-7xl mx-auto px-3 sm:px-4">
         <div>
@@ -1473,13 +1487,61 @@ const Attendees = ({ onNext, onPrev, purchaserInfo, handlePurchaserChange, atten
                       <h3 className="font-semibold text-paan-dark-blue mb-2">Payment Method</h3>
                       <div className="space-y-2">
                         <div className="flex items-center">
-                          <input type="radio" id="card" name="payment" value="card" className="mr-2" defaultChecked />
-                          <label htmlFor="card" className="text-sm">Credit/Debit Card</label>
+                          <input 
+                            type="radio" 
+                            id="card-attendees" 
+                            name="method" 
+                            value="card" 
+                            checked={paymentInfo.method === 'card'}
+                            onChange={handlePaymentChange}
+                            className="mr-2" 
+                          />
+                          <label htmlFor="card-attendees" className="text-sm">Credit/Debit Card</label>
                     </div>
                         <div className="flex items-center">
-                          <input type="radio" id="bank" name="payment" value="bank" className="mr-2" />
-                          <label htmlFor="bank" className="text-sm">Bank Transfer/Invoice</label>
+                          <input 
+                            type="radio" 
+                            id="bank-attendees" 
+                            name="method" 
+                            value="bank" 
+                            checked={paymentInfo.method === 'bank'}
+                            onChange={handlePaymentChange}
+                            className="mr-2" 
+                          />
+                          <label htmlFor="bank-attendees" className="text-sm">Bank Transfer/Invoice</label>
                         </div>
+                        <div className="flex items-center">
+                          <input 
+                            type="radio" 
+                            id="mpesa-attendees" 
+                            name="method" 
+                            value="mpesa" 
+                            checked={paymentInfo.method === 'mpesa'}
+                            onChange={handlePaymentChange}
+                            className="mr-2" 
+                          />
+                          <label htmlFor="mpesa-attendees" className="text-sm">Mobile Money (Mpesa)</label>
+                        </div>
+                        {paymentInfo.method === 'mpesa' && (
+                          <div className="ml-6 mt-2 p-3 bg-blue-50 border border-blue-200 rounded-lg">
+                            <p className="text-xs text-blue-700">
+                              <strong>Note:</strong> Payment will be processed in Kenyan Shillings (KES). 
+                              The amount will be automatically converted from USD to KES.
+                            </p>
+                            {selectedTickets.length > 0 && (
+                              <p className="text-xs text-blue-700 mt-2">
+                                <strong>Amount in KES:</strong> {formatCurrency(
+                                  convertUSDToKES(
+                                    promoCodeValidation?.valid 
+                                      ? selectedTickets.reduce((sum, ticket) => sum + (ticket.price * ticket.quantity), 0) - promoCodeValidation.promoCode.discountAmount
+                                      : selectedTickets.reduce((sum, ticket) => sum + (ticket.price * ticket.quantity), 0)
+                                  ),
+                                  'KES'
+                                )}
+                              </p>
+                            )}
+                          </div>
+                        )}
                       </div>
                     </div>
             </div>
@@ -1947,6 +2009,31 @@ const Payment = ({ onNext, onPrev, paymentInfo, handlePaymentChange, selectedTic
                 </div>
                 )}
               </div>
+              <div>
+                <input 
+                  type="radio" 
+                  id="mpesa" 
+                  name="method" 
+                  value="mpesa" 
+                  checked={paymentInfo.method === 'mpesa'}
+                  onChange={handlePaymentChange}
+                  className="mr-2" 
+                />
+                <label htmlFor="mpesa" className="font-medium text-paan-dark-blue text-sm sm:text-base">Mobile Money (Mpesa)</label>
+                {paymentInfo.method === 'mpesa' && (
+                <div className="ml-4 sm:ml-6 mt-2 space-y-2">
+                  <div className="p-3 bg-blue-50 border border-blue-200 rounded-lg">
+                    <p className="text-xs sm:text-sm text-blue-700 mb-2">
+                      <strong>Note:</strong> Payment will be processed in Kenyan Shillings (KES) via Mpesa. 
+                      The amount will be automatically converted from USD to KES.
+                    </p>
+                    <p className="text-xs sm:text-sm text-blue-700">
+                      You will be redirected to Paystack's secure payment page to complete the Mpesa transaction.
+                    </p>
+                  </div>
+                </div>
+                )}
+              </div>
             </div>
           </form>
         </div>
@@ -1977,8 +2064,25 @@ const Payment = ({ onNext, onPrev, paymentInfo, handlePaymentChange, selectedTic
             </div>
             <div className="flex justify-between font-bold text-base sm:text-lg">
               <span>Total</span>
-              <span>${promoCodeValidation?.valid ? totalAmount - promoCodeValidation.promoCode.discountAmount : totalAmount}</span>
+              <span>
+                {paymentInfo.method === 'mpesa' 
+                  ? formatCurrency(
+                      convertUSDToKES(
+                        promoCodeValidation?.valid 
+                          ? totalAmount - promoCodeValidation.promoCode.discountAmount 
+                          : totalAmount
+                      ),
+                      'KES'
+                    )
+                  : `$${promoCodeValidation?.valid ? totalAmount - promoCodeValidation.promoCode.discountAmount : totalAmount}`
+                }
+              </span>
             </div>
+            {paymentInfo.method === 'mpesa' && (
+              <div className="mt-2 p-2 bg-blue-50 border border-blue-200 rounded text-xs text-blue-700">
+                <p>Original amount: ${promoCodeValidation?.valid ? totalAmount - promoCodeValidation.promoCode.discountAmount : totalAmount} USD</p>
+              </div>
+            )}
           </div>
           
           {/* Promo Code Section */}

@@ -64,10 +64,15 @@ export const initializePayment = async (paymentData) => {
       throw new Error('Paystack not properly loaded');
     }
 
+    // Paystack expects all amounts in the smallest unit (cents)
+    // For USD: amount * 100 (dollars to cents)
+    // For KES: amount * 100 (shillings to cents)
+    const amountInSmallestUnit = Math.round(amount * 100);
+
     const handler = PaystackPop.setup({
       key: PAYSTACK_PUBLIC_KEY,
       email,
-      amount: amount * 100, // Convert to kobo/cents
+      amount: amountInSmallestUnit,
       currency,
       ref: reference,
       metadata,
