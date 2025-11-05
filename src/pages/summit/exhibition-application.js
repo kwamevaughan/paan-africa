@@ -99,8 +99,6 @@ const ExhibitionApplication = () => {
   ];
 
   const addons = [
-    { id: 'power', label: 'Power Supply', icon: 'mdi:power' },
-    { id: 'internet', label: 'Internet Connection / WiFi', icon: 'mdi:wifi' },
     { id: 'display', label: 'Display Equipment', icon: 'mdi:monitor' },
     { id: 'audio', label: 'Audio/Visual Equipment', icon: 'mdi:speaker' },
     { id: 'furniture', label: 'Furniture Rental', icon: 'mdi:sofa' },
