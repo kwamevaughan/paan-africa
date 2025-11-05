@@ -21,7 +21,8 @@ const AIInvoiceGenerator = () => {
     discount: 0,
     notes: '',
     paymentTerms: 'Net 30',
-    paymentMethods: []
+    paymentMethods: [],
+    logo: null
   });
 
   const [isGenerating, setIsGenerating] = useState(false);
@@ -163,6 +164,39 @@ const AIInvoiceGenerator = () => {
     }
   };
 
+  const handleLogoChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      // Validate file type
+      if (!file.type.startsWith('image/')) {
+        toast.error('Please upload an image file');
+        return;
+      }
+      
+      // Validate file size (max 5MB)
+      if (file.size > 5 * 1024 * 1024) {
+        toast.error('Image size should be less than 5MB');
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setFormData(prev => ({
+          ...prev,
+          logo: reader.result
+        }));
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const handleLogoRemove = () => {
+    setFormData(prev => ({
+      ...prev,
+      logo: null
+    }));
+  };
+
   const handleReset = () => {
     setFormData({
       businessName: '',
@@ -181,7 +215,8 @@ const AIInvoiceGenerator = () => {
       discount: 0,
       notes: '',
       paymentTerms: 'Net 30',
-      paymentMethods: []
+      paymentMethods: [],
+      logo: null
     });
     setGeneratedInvoice(null);
     setActiveTab('form');
@@ -291,6 +326,57 @@ ${generatedInvoice.invoice}`;
                 <Icon icon="fa-solid:building" className="w-5 h-5 mr-2 text-[#F25849]" />
                 Your Business Information
               </h3>
+              
+              {/* Logo Upload Section */}
+              <div className="mb-4">
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Business Logo
+                </label>
+                <div className="flex items-center gap-4">
+                  {formData.logo ? (
+                    <div className="relative">
+                      <div className="w-[150px] h-[150px] border-2 border-gray-300 rounded-lg overflow-hidden bg-white flex items-center justify-center">
+                        <img
+                          src={formData.logo}
+                          alt="Business Logo"
+                          className="object-contain max-w-full max-h-full"
+                          style={{ width: '150px', height: '150px' }}
+                        />
+                      </div>
+                      <button
+                        type="button"
+                        onClick={handleLogoRemove}
+                        className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full p-1 hover:bg-red-600 transition-colors"
+                        title="Remove logo"
+                      >
+                        <Icon icon="fa-solid:times" className="w-4 h-4" />
+                      </button>
+                    </div>
+                  ) : (
+                    <div className="w-[150px] h-[150px] border-2 border-dashed border-gray-300 rounded-lg flex items-center justify-center bg-gray-50">
+                      <Icon icon="fa-solid:image" className="w-8 h-8 text-gray-400" />
+                    </div>
+                  )}
+                  <div className="flex-1">
+                    <label className="cursor-pointer inline-flex items-center px-4 py-2 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">
+                      <Icon icon="fa-solid:upload" className="w-4 h-4 mr-2 text-gray-600" />
+                      <span className="text-sm text-gray-700">
+                        {formData.logo ? 'Change Logo' : 'Upload Logo'}
+                      </span>
+                      <input
+                        type="file"
+                        accept="image/*"
+                        onChange={handleLogoChange}
+                        className="hidden"
+                      />
+                    </label>
+                    <p className="text-xs text-gray-500 mt-2">
+                      Recommended size: 150x150px. Max file size: 5MB
+                    </p>
+                  </div>
+                </div>
+              </div>
+
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">

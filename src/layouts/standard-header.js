@@ -71,7 +71,6 @@ const Header = () => {
       { label: 'Portal', href: 'https://member-portal.paan.africa/' },
       { label: 'Apply to Join Us', href: 'https://membership.paan.africa/' },
       { label: 'AI Brief Builder', href: '/ai-brief-builder' },
-      { label: 'AI Invoice Generator', href: '/ai-invoice-generator' },
       { label: 'FAQs', href: '/faqs' },
       { label: 'PAAN Insights', href: '/blogs' },
     ],

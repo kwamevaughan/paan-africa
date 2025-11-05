@@ -197,6 +197,15 @@ const Footer = () => {
                   AI Invoice Generator
                 </Link>
               </li>
+              <li>
+                <Link
+                  href="/ai-business-plan-generator"
+                  className="font-normal text-gray-200 hover:text-white hover:underline transition-all duration-300 cursor-pointer flex items-center gap-2"
+                >
+                  <Icon icon="fa-solid:briefcase" className="w-4 h-4" />
+                  AI Business Plan Generator
+                </Link>
+              </li>
               {/* <li>
                 <Link
                   href="/talent-discovery"

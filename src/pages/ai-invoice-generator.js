@@ -27,7 +27,8 @@ const AIInvoiceGeneratorPage = () => {
     discount: 0,
     notes: '',
     paymentTerms: 'Net 30',
-    paymentMethods: []
+    paymentMethods: [],
+    logo: null
   });
 
   const [isGenerating, setIsGenerating] = useState(false);
@@ -180,6 +181,41 @@ const AIInvoiceGeneratorPage = () => {
     }
   };
 
+  const handleLogoChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      // Validate file type
+      if (!file.type.startsWith('image/')) {
+        toast.error('Please upload an image file');
+        return;
+      }
+      
+      // Validate file size (max 5MB)
+      if (file.size > 5 * 1024 * 1024) {
+        toast.error('Image size should be less than 5MB');
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setFormData(prev => ({
+          ...prev,
+          logo: reader.result
+        }));
+        toast.success('Logo uploaded successfully!');
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const handleLogoRemove = () => {
+    setFormData(prev => ({
+      ...prev,
+      logo: null
+    }));
+    toast.success('Logo removed');
+  };
+
   const handleReset = () => {
     setFormData({
       businessName: '',
@@ -198,7 +234,8 @@ const AIInvoiceGeneratorPage = () => {
       discount: 0,
       notes: '',
       paymentTerms: 'Net 30',
-      paymentMethods: []
+      paymentMethods: [],
+      logo: null
     });
     setGeneratedInvoice(null);
     setActiveTab('form');
@@ -242,11 +279,89 @@ ${generatedInvoice.invoice}`;
     URL.revokeObjectURL(url);
   };
 
-  const exportAsPDF = () => {
+  const exportAsPDF = async () => {
     if (!generatedInvoice) return;
     const doc = new jsPDF();
     const lineHeight = 8;
     let y = 20;
+
+    // Add logo if available
+    if (formData.logo) {
+      try {
+        // Detect image format from data URL
+        let imageFormat = 'PNG';
+        if (formData.logo.includes('data:image/jpeg') || formData.logo.includes('data:image/jpg')) {
+          imageFormat = 'JPEG';
+        } else if (formData.logo.includes('data:image/png')) {
+          imageFormat = 'PNG';
+        }
+
+        // Create an image element to get actual dimensions for aspect ratio
+        const getImageDimensions = () => {
+          return new Promise((resolve) => {
+            // Use window.Image to avoid conflict with Next.js Image component
+            const img = new window.Image();
+            let resolved = false;
+            
+            const resolveDimensions = (width, height) => {
+              if (!resolved) {
+                resolved = true;
+                resolve({ width: width || 150, height: height || 150 });
+              }
+            };
+            
+            img.onload = () => {
+              resolveDimensions(img.naturalWidth, img.naturalHeight);
+            };
+            img.onerror = () => {
+              // If image fails to load, use default square dimensions
+              resolveDimensions(150, 150);
+            };
+            
+            // Set timeout to prevent waiting forever
+            setTimeout(() => {
+              if (!resolved) {
+                resolveDimensions(150, 150);
+              }
+            }, 1000);
+            
+            img.src = formData.logo;
+            
+            // If image is already loaded, resolve immediately
+            if (img.complete && img.naturalWidth > 0) {
+              resolveDimensions(img.naturalWidth, img.naturalHeight);
+            }
+          });
+        };
+
+        const dimensions = await getImageDimensions();
+        
+        // Logo dimensions: 35mm width max, maintain aspect ratio
+        const maxWidth = 35; // mm
+        const maxHeight = 35; // mm
+        
+        // Calculate dimensions maintaining aspect ratio
+        const aspectRatio = dimensions.width / dimensions.height;
+        let logoWidth, logoHeight;
+        
+        if (aspectRatio > 1) {
+          // Landscape: width is limiting factor
+          logoWidth = maxWidth;
+          logoHeight = maxWidth / aspectRatio;
+        } else {
+          // Portrait or square: height is limiting factor
+          logoHeight = maxHeight;
+          logoWidth = maxHeight * aspectRatio;
+        }
+        
+        // Add logo to PDF
+        doc.addImage(formData.logo, imageFormat, 20, y, logoWidth, logoHeight);
+        y += logoHeight + lineHeight;
+      } catch (error) {
+        console.error('Error adding logo to PDF:', error);
+        // Continue without logo if there's an error
+      }
+    }
 
     // Header
     doc.setFontSize(24);
@@ -559,6 +674,57 @@ Generated with PAAN AI Invoice Generator | paan.africa`;
                       <Icon icon="fa-solid:building" className="w-6 h-6 md:w-7 md:h-7 mr-3 text-[#F25849]" />
                       Your Business Information
                     </h3>
+                    
+                    {/* Logo Upload Section */}
+                    <div className="mb-6 md:mb-8">
+                      <label className="block text-lg md:text-xl font-semibold text-gray-800 mb-3 md:mb-4">
+                        Business Logo
+                      </label>
+                      <div className="flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-6">
+                        {formData.logo ? (
+                          <div className="relative">
+                            <div className="w-[150px] h-[150px] border-2 border-gray-300 rounded-2xl overflow-hidden bg-white flex items-center justify-center shadow-md">
+                              <img
+                                src={formData.logo}
+                                alt="Business Logo"
+                                className="object-contain max-w-full max-h-full"
+                                style={{ width: '150px', height: '150px' }}
+                              />
+                            </div>
+                            <button
+                              type="button"
+                              onClick={handleLogoRemove}
+                              className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full p-2 hover:bg-red-600 transition-colors shadow-lg"
+                              title="Remove logo"
+                            >
+                              <Icon icon="fa-solid:times" className="w-4 h-4" />
+                            </button>
+                          </div>
+                        ) : (
+                          <div className="w-[150px] h-[150px] border-2 border-dashed border-gray-300 rounded-2xl flex items-center justify-center bg-gray-50">
+                            <Icon icon="fa-solid:image" className="w-10 h-10 text-gray-400" />
+                          </div>
+                        )}
+                        <div className="flex-1 w-full md:w-auto">
+                          <label className="cursor-pointer inline-flex items-center px-5 md:px-6 py-3 md:py-4 bg-white border-2 border-gray-200 rounded-2xl hover:bg-gray-50 hover:border-[#F25849] transition-all duration-300 shadow-md hover:shadow-lg">
+                            <Icon icon="fa-solid:upload" className="w-5 h-5 mr-2 md:mr-3 text-gray-600" />
+                            <span className="text-base md:text-lg font-medium text-gray-700">
+                              {formData.logo ? 'Change Logo' : 'Upload Logo'}
+                            </span>
+                            <input
+                              type="file"
+                              accept="image/*"
+                              onChange={handleLogoChange}
+                              className="hidden"
+                            />
+                          </label>
+                          <p className="text-sm md:text-base text-gray-500 mt-2 md:mt-3">
+                            Recommended size: 150x150px. Max file size: 5MB
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                       <div className="relative group">
                         <label className="block text-lg md:text-xl font-semibold text-gray-800 mb-2 md:mb-4 flex items-center">
