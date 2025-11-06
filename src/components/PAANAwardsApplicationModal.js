@@ -696,16 +696,6 @@ const PAANAwardsApplicationModal = ({ isOpen, onClose }) => {
                 <div className="text-center">
                   <Icon icon="mdi:office-building" className="w-8 h-8 mx-auto mb-2" />
                   <h3 className="font-semibold">Agency</h3>
-                  <p className="text-sm text-gray-600">
-                    {pricing.agency.slashedPrice ? (
-                      <><s>${pricing.agency.slashedPrice}</s> ${pricing.agency.pricePerCategory} USD per category - Save ${pricing.agency.slashedPrice - pricing.agency.pricePerCategory}</>
-                    ) : (
-                      `${pricing.agency.pricePerCategory} USD per category`
-                    )}
-                    {isEarlyBird() && (
-                      <span className="block text-yellow-600 font-semibold mt-1">Early Bird: Until Nov 25, 2025</span>
-                    )}
-                  </p>
                 </div>
               </button>
               <button
@@ -720,9 +710,6 @@ const PAANAwardsApplicationModal = ({ isOpen, onClose }) => {
                 <div className="text-center">
                   <Icon icon="mdi:account" className="w-8 h-8 mx-auto mb-2" />
                   <h3 className="font-semibold">Freelancer</h3>
-                  <p className="text-sm text-gray-600">
-                    <s>$50</s> $30 USD per category - Save $20
-                  </p>
                 </div>
               </button>
             </div>
@@ -1162,6 +1149,43 @@ const PAANAwardsApplicationModal = ({ isOpen, onClose }) => {
             {/* Terms and Conditions */}
             <div className="bg-gray-50 p-6 rounded-xl">
               <h3 className="text-lg font-semibold text-gray-900 mb-4">Terms and Conditions</h3>
+              
+              {/* Pricing Information */}
+              <div className="mb-6 p-4 bg-white border border-gray-200 rounded-lg">
+                <h4 className="font-semibold text-gray-900 mb-3">Application Fees</h4>
+                <div className="space-y-3">
+                  {formData.applicantType === 'agency' ? (
+                    <div>
+                      <p className="text-sm text-gray-700">
+                        <strong>Agency Application:</strong>{' '}
+                        {pricing.agency.slashedPrice ? (
+                          <><s>{`$${pricing.agency.slashedPrice}`}</s> <span className="text-paan-red font-semibold">{`$${pricing.agency.pricePerCategory} USD`}</span> per category - Save {`$${pricing.agency.slashedPrice - pricing.agency.pricePerCategory}`}</>
+                        ) : (
+                          <><span className="text-paan-red font-semibold">{`$${pricing.agency.pricePerCategory} USD`}</span> per category</>
+                        )}
+                      </p>
+                      {isEarlyBird() && (
+                        <p className="text-sm text-yellow-600 font-semibold mt-1">
+                          🎉 Early Bird Pricing (Until Nov 25, 2025)
+                        </p>
+                      )}
+                    </div>
+                  ) : (
+                    <div>
+                      <p className="text-sm text-gray-700">
+                        <strong>Freelancer Application:</strong>{' '}
+                        <s>$50</s> <span className="text-paan-red font-semibold">$30 USD</span> per category - Save $20
+                      </p>
+                    </div>
+                  )}
+                  {formData.selectedCategories.length > 1 && (
+                    <p className="text-sm text-green-600 font-semibold">
+                      ✓ 25% multi-category discount applied!
+                    </p>
+                  )}
+                </div>
+              </div>
+              
               <div className="space-y-4">
                 <div className="flex items-start gap-3">
                   <input

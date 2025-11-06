@@ -17,21 +17,6 @@ export const eventsData = {
       featured: true
     },
     {
-      id: 8,
-      title: "The Agency Growth Blueprint: Acquiring More Clients",
-      date: "2025-11-05",
-      time: "12:00 PM - 1:15 PM EAT",
-      location: "Virtual Event",
-      venue: "Zoom",
-      description: "Growing an agency in Africa requires more than just talent — it takes systems, strategy, and the right mindset. In this exclusive PAAN webinar, renowned industry leaders share proven frameworks and lessons on building and scaling agencies around the world.",
-      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/webinars/agency-growth-blueprint.png",
-      category: "Webinar",
-      price: "Free for All Members",
-      registrationUrl: "https://tinyurl.com/45ub5tpa",
-      status: "upcoming",
-      featured: true
-    },
-    {
       id: 9,
       title: "Agency Journey to AI: Building Future-Ready Agency Models",
       date: "2025-11-26",
@@ -125,7 +110,7 @@ export const eventsData = {
       time: "12:00 PM - 1:00 PM",
       location: "Virtual Event",
       venue: "Online",
-      description: "What’s shaping event management in 2025? From AI-powered personalisation to ROI-focused strategies, the next wave of events is smarter, data-driven, and more impactful. Learn how to apply these trends with practical tech solutions in our free webinar with Cvent.",
+      description: "What's shaping event management in 2025? From AI-powered personalisation to ROI-focused strategies, the next wave of events is smarter, data-driven, and more impactful. Learn how to apply these trends with practical tech solutions in our free webinar with Cvent.",
       image: "/assets/images/practical-event-management-webinar.png",
       category: "Webinar",
       price: "Completed",
@@ -134,6 +119,23 @@ export const eventsData = {
       featured: true,
       attendees: 120,
       speakers: 1
+    },
+    {
+      id: 8,
+      title: "The Agency Growth Blueprint: Acquiring More Clients",
+      date: "2025-11-05",
+      time: "12:00 PM - 1:15 PM EAT",
+      location: "Virtual Event",
+      venue: "Zoom",
+      description: "Growing an agency in Africa requires more than just talent — it takes systems, strategy, and the right mindset. In this exclusive PAAN webinar, renowned industry leaders share proven frameworks and lessons on building and scaling agencies around the world.",
+      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/webinars/agency-growth-blueprint.png",
+      category: "Webinar",
+      price: "Completed",
+      registrationUrl: "https://www.youtube.com/watch?v=gGgEPrXr8vM",
+      status: "past",
+      attendees: 115,
+      speakers: 1,
+      featured: true
     }
   ]
 };
