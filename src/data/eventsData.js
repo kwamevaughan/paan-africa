@@ -134,7 +134,7 @@ export const eventsData = {
       registrationUrl: "https://www.youtube.com/watch?v=gGgEPrXr8vM",
       status: "past",
       attendees: 115,
-      speakers: 1,
+      speakers: 2,
       featured: true
     }
   ]

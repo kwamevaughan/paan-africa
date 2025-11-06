@@ -648,18 +648,7 @@ const PAANAwardsApplicationModal = ({ isOpen, onClose }) => {
             <div>
               <h2 className="text-2xl font-bold">PAAN Awards Application</h2>
               <p className="text-white/80 mt-1">
-                {formData.applicantType === 'agency' ? 'Agency Application' : 'Freelancer Application'} -
-                {currentPricing.slashedPrice ? (
-                  <span> <s>${currentPricing.slashedPrice}</s> ${currentPricing.pricePerCategory} USD per category - Save ${currentPricing.slashedPrice - currentPricing.pricePerCategory}</span>
-                ) : (
-                  <span> ${currentPricing.pricePerCategory} USD per category</span>
-                )}
-                {formData.selectedCategories.length > 1 && (
-                  <span className="text-yellow-400 ml-2">(25% discount applied!)</span>
-                )}
-                {formData.applicantType === 'agency' && isEarlyBird() && (
-                  <span className="text-yellow-400 ml-2 font-semibold"> Early Bird Pricing (Until Nov 25, 2025)</span>
-                )}
+                {formData.applicantType === 'agency' ? 'Agency Application' : 'Freelancer Application'}
               </p>
               {!paystackReady && (
                 <div className="flex items-center gap-2 mt-2">
