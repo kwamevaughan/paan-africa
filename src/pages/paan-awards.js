@@ -1023,74 +1023,116 @@ const SummitPage = () => {
         </section>
 
         {/* PAAN AWARDS SECTION */}
-      <div className="bg-white relative py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8" id="paan-awards-section" isFixed={isFixed}>
-        <section className="relative mx-auto max-w-6xl">
-          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-8 sm:mb-10 lg:mb-12 gap-4 lg:gap-6">
-            <div className="text-left">
-              <h3 className="text-xl sm:text-2xl lg:text-3xl text-paan-dark-blue font-bold uppercase leading-tight">
-                {awardType === 'freelancer' ? 'PAAN Freelancer Excellence Awards 2026' : 'PAAN Agency Awards 2026'}
-              </h3>
+      <div className="bg-white relative py-12 md:py-16 lg:py-20" id="paan-awards-section">
+        <section className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12 md:mb-16">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl text-paan-dark-blue font-bold leading-tight mb-4 md:mb-6 px-4">
+                Explore Award Categories & Criteria
+            </h2>
+            <p className="text-base sm:text-lg text-paan-dark-blue font-light leading-relaxed max-w-4xl mx-auto px-4">
+              Two paths. Same stage. Choose your track and see the full list.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+          <div className="bg-paan-dark-blue rounded-xl shadow-lg p-5 md:p-6 flex flex-col text-center hover:shadow-xl transition-all duration-300 hover:-translate-y-1 max-w-2xl">
+            <div className="flex gap-4 items-start">
+              <img 
+                src="https://ik.imagekit.io/nkmvdjnna/PAAN/awards/award.svg" 
+                alt="Campaign Excellence Awards" 
+                width={32} 
+                height={32}
+                className="flex-shrink-0"
+              />
+              <div className="flex flex-col text-white text-left">
+                <h3 className="font-bold text-xl mb-1">Agency Awards</h3>
+                <p className="text-white font-light text-xs md:text-sm leading-relaxed">
+                  For independent agencies across Africa—campaigns, craft, innovation, sectors, and top honours.
+                </p>
+              </div>
             </div>
             
-            {/* Toggle Switch */}
-            <div className="flex items-center justify-start lg:justify-end">
-              <button
-                onClick={() => setAwardType(awardType === 'agency' ? 'freelancer' : 'agency')}
-                className="relative inline-flex h-10 sm:h-12 w-full max-w-[280px] sm:max-w-[320px] lg:w-80 items-center rounded-full bg-[#C2E0EC] transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-paan-blue focus:ring-offset-2 overflow-hidden"
-              >
-                {/* Agency Label */}
-                <span className={`absolute left-3 sm:left-4 lg:left-6 text-xs sm:text-sm font-medium transition-colors duration-300 z-10 ${
-                  awardType === 'agency' ? 'text-white' : 'text-[#172840]'
-                }`} style={{ pointerEvents: 'none' }}>
-                  Agency Awards
-                </span>
-
-                {/* Freelancer Label */}
-                <span className={`absolute right-3 sm:right-4 lg:right-6 text-xs sm:text-sm font-medium transition-colors duration-300 z-10 ${
-                  awardType === 'freelancer' ? 'text-white' : 'text-[#172840]'
-                }`} style={{ pointerEvents: 'none' }}>
-                  Freelancer Awards
-                </span>
-                
-                {/* Sliding Background */}
-                <span
-                  className={`absolute h-8 sm:h-10 transform rounded-full bg-[#172840] transition-all duration-300 ${
-                    awardType === 'freelancer' 
-                      ? 'w-[45%] translate-x-[calc(100%-8px)] sm:translate-x-[calc(112%-8px)] lg:w-[200px] lg:translate-x-[120px]' 
-                      : 'w-[42%] translate-x-2 sm:w-[140px]'
-                  }`}
-                />
+            <div className="flex flex-wrap gap-2 mt-8 mb-6 justify-center">
+              <div className="bg-white py-2 px-4 rounded-full">
+                <p className="text-sm text-gray-800">Campaign Excellence</p>
+              </div>
+              <div className="bg-white py-2 px-4 rounded-full">
+                <p className="text-sm text-gray-800">Agency of the Year</p>
+              </div>
+              <div className="bg-white py-2 px-4 rounded-full">
+                <p className="text-sm text-gray-800">Innovation & Technology</p>
+              </div>
+              <div className="bg-white py-2 px-4 rounded-full">
+                <p className="text-sm text-gray-800">Sector Excellence</p>
+              </div>
+              <div className="bg-white py-2 px-4 rounded-full">
+                <p className="text-sm text-gray-800">Creative Strategy</p>
+              </div>
+              <div className="bg-white py-2 px-4 rounded-full">
+                <p className="text-sm text-gray-800">Special Honours</p>
+              </div>
+              <div className="bg-white py-2 px-4 rounded-full">
+                <p className="text-sm text-gray-800">+20 more</p>
+              </div>
+            </div>
+            
+            <div className="mt-8 mx-auto">
+              <button onClick={() => window.location.href = '/paan-awards/categories'} className="bg-paan-red text-white px-6 py-2 rounded-full hover:bg-red-700 transition-colors flex items-center justify-center gap-2">
+                Browse Agency Categories
+                <Icon icon="mdi:arrow-right" className="w-5 h-5" />
               </button>
             </div>
           </div>
-
-          {awardType === 'freelancer' && (
-            <p className="text-base sm:text-lg text-paan-dark-blue font-light leading-relaxed max-w-4xl mx-auto mt-4 mb-8 sm:mb-10 text-center lg:text-left px-2">
-              Honouring Africa's top independent creative talent redefining work, creativity, and innovation across borders.
-            </p>
-          )}
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 justify-items-center mt-8 sm:mt-10 lg:mt-12">
-            {(awardType === 'agency' ? agencyAwards : filteredFreelancerAwards).map((award) => (
-              <div key={award.id} className="bg-paan-dark-blue w-64 h-64 sm:w-72 sm:h-72 lg:w-80 lg:h-80 rounded-full shadow-xl overflow-hidden relative flex items-center justify-center hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
-                {/* Ring image inside the circle with padding */}
-                <div className="absolute inset-3 sm:inset-4 flex items-center justify-center">
-                  <img
-                    src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/awards-ring.svg?updatedAt=1757757368902"
-                    alt="Awards Ring"
-                    className="w-full h-full object-contain"
-                  />
-                </div>
-
-                <div className="text-center relative mt-8 sm:mt-10 lg:mt-12 max-w-[11rem] sm:max-w-[12rem] px-4">
-                  <h4 className="text-sm sm:text-md font-bold text-white mb-2 sm:mb-3">{award.title || award.name}</h4>
-                  <p className="text-white font-light text-xs leading-relaxed">{award.description}</p>
-                </div>
+          <div className="bg-paan-dark-blue rounded-xl shadow-lg p-5 md:p-6 flex flex-col text-center hover:shadow-xl transition-all duration-300 hover:-translate-y-1 max-w-2xl">
+            <div className="flex gap-4 items-start">
+              <img 
+                src="https://ik.imagekit.io/nkmvdjnna/PAAN/awards/award.svg" 
+                alt="Campaign Excellence Awards" 
+                width={32} 
+                height={32}
+                className="flex-shrink-0"
+              />
+              <div className="flex flex-col text-white text-left">
+                <h3 className="font-bold text-xl mb-1">Freelancer Awards</h3>
+                <p className="text-white font-light text-xs md:text-sm leading-relaxed">
+                   For Africa’s independent creators—design, performance, and modern storytelling.
+                </p>
               </div>
-            ))}
+            </div>
+            
+            <div className="flex flex-wrap gap-2 mt-8 mb-6 justify-center">
+              <div className="bg-white py-2 px-4 rounded-full">
+                <p className="text-sm text-gray-800">Creative Excellence</p>
+              </div>
+              <div className="bg-white py-2 px-4 rounded-full">
+                <p className="text-sm text-gray-800">Digital Performance</p>
+              </div>
+              <div className="bg-white py-2 px-4 rounded-full">
+                <p className="text-sm text-gray-800">UI/UX & Product Design</p>
+              </div>
+              <div className="bg-white py-2 px-4 rounded-full">
+                <p className="text-sm text-gray-800">Motion & Video</p>
+              </div>
+              <div className="bg-white py-2 px-4 rounded-full">
+                <p className="text-sm text-gray-800">Social Storytelling</p>
+              </div>
+              <div className="bg-white py-2 px-4 rounded-full">
+                <p className="text-sm text-gray-800">Innovation & Content</p>
+              </div>
+              <div className="bg-white py-2 px-4 rounded-full">
+                <p className="text-sm text-gray-800">+10 more</p>
+              </div>
+            </div>
+            
+            <div className="mt-8 mx-auto">
+              <button onClick={() => window.location.href='/paan-awards/categories'} className="bg-paan-red text-white px-6 py-2 rounded-full hover:bg-red-700 transition-colors flex items-center justify-center gap-2">
+                Browse Freelancer Categories
+                <Icon icon="mdi:arrow-right" className="w-5 h-5" />
+              </button>
+            </div>
+          </div>
           </div>
         </section>
-      </div>
+        </div>
         
         {/* Transparency Section */}
         <div className="bg-[#FEEEED] relative py-12 md:py-16 lg:py-20" id="transparency-section">

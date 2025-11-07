@@ -112,7 +112,7 @@ const Hero = ({ sectionRefs, handleScroll, isFixed, scrollToSection, timeLeft, o
               <div className="relative w-full">
                 <div className="relative w-full aspect-[4/3] sm:aspect-auto">
                   <Image
-                    src="https://ik.imagekit.io/nkmvdjnna/PAAN/awards/hero.png"
+                    src="https://ik.imagekit.io/nkmvdjnna/PAAN/awards/hero.jpg"
                     alt="PAAN Team - Join Our Dynamic Team"
                     width={600}
                     height={450}

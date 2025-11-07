@@ -1,7 +1,7 @@
 // data/menuData.js
 export const menuItems = [
     { href: '#home', label: 'Home' },
-    { href: '#about-us', label: 'About Summit' },
+    { href: '/paan-awards', label: 'Awards' },
     { href: '#program', label: 'Sessions' },
     { href: '#agenda', label: 'Programme' },
     { href: '#participants', label: 'Who can attend' },

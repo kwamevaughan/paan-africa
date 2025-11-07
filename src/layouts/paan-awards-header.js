@@ -119,7 +119,7 @@ const PAANAwardsHeader = ({ navLinkColor, onApplyNowClick, onJoinSummitClick }) 
             <Link href="/" passHref>
               <div className="flex items-center">
                 <Image
-                  src="https://ik.imagekit.io/nkmvdjnna/PAAN/awards/awards-logo.svg"
+                  src="https://ik.imagekit.io/nkmvdjnna/PAAN/awards/paan-awrds-logo.svg"
                   alt="PAAN Logo"
                   width={200}
                   height={70}
