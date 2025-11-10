@@ -1,14 +1,14 @@
 // data/menuData.js
 export const menuItems = [
     { href: '#home', label: 'Home' },
-    { href: '/paan-awards', label: 'Awards' },
     { href: '#program', label: 'Sessions' },
     { href: '#agenda', label: 'Programme' },
     { href: '#participants', label: 'Who can attend' },
     { href: '#speakers-section', label: 'Speakers' },
+    { href: '#paan-awards-section', label: 'Awards' },
+    { href: '#exhibition', label: 'Exhibit' },
     { href: '#tickets-section', label: 'Tickets' },
     { href: '#plan-your-trip', label: 'Plan' },
-    { href: '#exhibition', label: 'Exhibit' },
   ];
   
   export const ctaButton = {
