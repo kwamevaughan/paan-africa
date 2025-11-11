@@ -336,9 +336,9 @@ const contact = () => {
     return (
         <>
             <SEO
-                title="PAAN Ambassador Program | Become a Leader in Africa's Creative Economy | Pan-African Agency Network"
-                description="Join the exclusive PAAN Ambassador Program and become a trusted leader in Africa's creative, digital, and strategic industries. Represent the future of African agencies and unlock exclusive benefits, VIP access, and thought leadership opportunities across 20+ African countries."
-                keywords="PAAN Ambassador Program, African creative leaders, African marketing ambassadors, African digital leaders, African strategic leadership, PAAN network ambassadors, African creative economy, African marketing network leadership, African agency representatives, African industry leaders, African creative professionals, African digital professionals, African strategic professionals, African marketing leadership, African creative leadership, African digital leadership, African strategic leadership, African industry ambassadors, African creative ambassadors, African digital ambassadors, African strategic ambassadors, African marketing ambassadors, African creative economy leaders, African digital economy leaders, African strategic economy leaders, African marketing economy leaders, African creative industry leaders, African digital industry leaders, African strategic industry leaders, African marketing industry leaders"
+                title="Contact Us | Get in Touch with PAAN | Pan-African Agency Network"
+                description="Contact the Pan-African Agency Network (PAAN) for inquiries, partnerships, membership information, and support. Reach out to our team to learn how we can help your agency grow and connect with Africa's creative and tech community."
+                keywords="contact PAAN, PAAN contact, Pan-African Agency Network contact, reach out to PAAN, PAAN support, PAAN inquiry, PAAN partnership, PAAN membership inquiry, contact African agencies network, PAAN customer service, get in touch with PAAN, PAAN help, PAAN assistance, African agency network contact"
             />
             <main className="sm:px-0 sm:pt-0 relative">
                 <Header />
