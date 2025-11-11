@@ -20,8 +20,21 @@ export default async function handler(req, res) {
       });
     }
 
+    // Validate SMTP configuration
+    if (!process.env.SMTP_HOST || !process.env.SMTP_EMAIL || !process.env.SMTP_PASSWORD) {
+      console.error('Missing SMTP configuration:', {
+        SMTP_HOST: !!process.env.SMTP_HOST,
+        SMTP_EMAIL: !!process.env.SMTP_EMAIL,
+        SMTP_PASSWORD: !!process.env.SMTP_PASSWORD
+      });
+      return res.status(500).json({
+        success: false,
+        message: 'Email service not configured properly'
+      });
+    }
+
     // Create email transporter
-    const transporter = nodemailer.createTransporter({
+    const transporter = nodemailer.createTransport({
       host: process.env.SMTP_HOST || 'smtp.gmail.com',
       port: process.env.SMTP_PORT || 587,
       secure: process.env.EMAIL_SECURE === "true",
@@ -29,7 +42,22 @@ export default async function handler(req, res) {
         user: process.env.SMTP_EMAIL,
         pass: process.env.SMTP_PASSWORD,
       },
+      debug: true, // Enable debug mode
+      logger: true // Enable logging
     });
+
+    // Test SMTP connection
+    try {
+      await transporter.verify();
+      console.log('SMTP connection verified successfully');
+    } catch (verifyError) {
+      console.error('SMTP connection verification failed:', verifyError);
+      return res.status(500).json({
+        success: false,
+        message: 'Email service connection failed',
+        error: verifyError.message
+      });
+    }
 
     // Format masterclass data for email
     const formatMasterclassData = (data) => {
@@ -148,13 +176,24 @@ PAAN Masterclasses Team
     const mailOptions = {
       from: process.env.SMTP_FROM || process.env.SMTP_EMAIL,
       to: 'secretariat@paan.africa',
-      cc: masterclassData.email, // Send copy to participant
+      cc: masterclassData.email, 
       subject: emailSubject,
       text: emailText,
       html: emailHtml,
     };
 
-    await transporter.sendMail(mailOptions);
+    // Send email to secretariat
+    try {
+      await transporter.sendMail(mailOptions);
+      console.log('Administrative email sent successfully to secretariat@paan.africa');
+    } catch (adminEmailError) {
+      console.error('Failed to send administrative email:', adminEmailError);
+      return res.status(500).json({
+        success: false,
+        message: 'Failed to send administrative email',
+        error: adminEmailError.message
+      });
+    }
 
     // Send confirmation email to participant
     const confirmationEmailOptions = {
@@ -261,7 +300,18 @@ PAAN Masterclasses Team
       `
     };
 
-    await transporter.sendMail(confirmationEmailOptions);
+    // Send confirmation email to participant
+    try {
+      await transporter.sendMail(confirmationEmailOptions);
+      console.log('Confirmation email sent successfully to participant:', masterclassData.email);
+    } catch (confirmationEmailError) {
+      console.error('Failed to send confirmation email to participant:', confirmationEmailError);
+      return res.status(500).json({
+        success: false,
+        message: 'Failed to send confirmation email to participant',
+        error: confirmationEmailError.message
+      });
+    }
 
     console.log('Masterclass registration emails sent successfully:', {
       reference,

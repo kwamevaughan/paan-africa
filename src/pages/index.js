@@ -13,17 +13,15 @@ import Footer from "@/layouts/footer";
 import { useEffect, useRef, useState } from "react";
 import { useFixedHeader, handleScroll } from '../../utils/scrollUtils';
 import { useAppTranslations } from '../hooks/useTranslations';
-import { usePopupBanner } from '../hooks/usePopupBanner';
 import ContactSection from "@/components/ContactSection";
 import AgencyEnquiryModal from "@/components/AgencyEnquiryModal";
 import AgenciesMarquee from "@/components/AgenciesMarquee";
 import AgencyLogosGrid from "@/components/AgencyLogosGrid";
 import ScrollToTop from "@/components/ScrollToTop";
 import ConnectingDots from "@/components/ConnectingDots";
-import AcademyConsultationModal from "@/components/AcademyConsultationModal";
-import PaanAmbassadorProgramModal from "@/components/PaanAmbassadorProgramModal";
 import ProgramCard from "@/components/ProgramCard";
 import StrategicPartners from "@/components/StrategicPartners";
+import CookieConsentBanner from "@/components/CookieConsentBanner";
 
 // Add PasscodeCopy component definition before HomePage
 function PasscodeCopy({ passcode }) {
@@ -72,13 +70,6 @@ const HomePage = () => {
   const isFixed = useFixedHeader();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const canvasRef = useRef(null);
-  
-  // Use popup banner hooks with 7-day cooldown
-  const { shouldShow: shouldShowConsultModal, markAsShown: markConsultModalAsShown } = usePopupBanner('consultation-modal', 7);
-  const { shouldShow: shouldShowAmbassadorModal, markAsShown: markAmbassadorModalAsShown } = usePopupBanner('ambassador-modal', 7);
-  
-  const [showConsultModal, setShowConsultModal] = useState(false);
-  const [showAmbassadorModal, setShowAmbassadorModal] = useState(false);
 
   // Video controls: refs and playing state
   const videoRefs = useRef([]);
@@ -98,88 +89,6 @@ const HomePage = () => {
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
 
-  // Add scroll event listener to detect when user reaches bottom
-  useEffect(() => {
-    const handleScrollToBottom = () => {
-      // Calculate if user has scrolled to bottom (with some tolerance)
-      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-      const windowHeight = window.innerHeight;
-      const documentHeight = document.documentElement.scrollHeight;
-      
-      // Trigger when user is within 100px of the bottom
-      const isNearBottom = scrollTop + windowHeight >= documentHeight - 100;
-      
-      if (isNearBottom && shouldShowConsultModal && !showConsultModal) {
-        setShowConsultModal(true);
-        markConsultModalAsShown(); // Mark as shown and start 7-day cooldown
-      }
-    };
-
-    window.addEventListener('scroll', handleScrollToBottom);
-    
-    // Cleanup
-    return () => {
-      window.removeEventListener('scroll', handleScrollToBottom);
-    };
-  }, [shouldShowConsultModal, showConsultModal, markConsultModalAsShown]);
-
-  // Add exit-intent detection for Ambassador Program Modal
-  useEffect(() => {
-    let exitIntentTimeout;
-
-    const handleExitIntent = (e) => {
-      // Only trigger if user hasn't seen the modal yet and it should be shown
-      if (!shouldShowAmbassadorModal || showAmbassadorModal) return;
-
-      // Check if mouse is leaving from the top of the page (exit intent)
-      if (e.clientY <= 0) {
-        // Add a small delay to avoid false triggers
-        exitIntentTimeout = setTimeout(() => {
-          setShowAmbassadorModal(true);
-          markAmbassadorModalAsShown(); // Mark as shown and start 7-day cooldown
-        }, 100);
-      }
-    };
-
-    const handleMouseEnter = () => {
-      // Clear timeout if user moves mouse back into the page quickly
-      if (exitIntentTimeout) {
-        clearTimeout(exitIntentTimeout);
-      }
-    };
-
-    // Only add event listeners on desktop (avoid mobile false triggers)
-    const isDesktop = window.innerWidth >= 1024;
-    
-    if (isDesktop) {
-      document.addEventListener('mouseleave', handleExitIntent);
-      document.addEventListener('mouseenter', handleMouseEnter);
-    }
-
-    // Alternative: beforeunload event for mobile/tablet
-    const handleBeforeUnload = (e) => {
-      if (shouldShowAmbassadorModal && !showAmbassadorModal && !isDesktop) {
-        setShowAmbassadorModal(true);
-        markAmbassadorModalAsShown(); // Mark as shown and start 7-day cooldown
-        // Note: Modern browsers ignore custom messages in beforeunload
-        e.preventDefault();
-        e.returnValue = '';
-      }
-    };
-
-    if (!isDesktop) {
-      window.addEventListener('beforeunload', handleBeforeUnload);
-    }
-
-    return () => {
-      if (exitIntentTimeout) {
-        clearTimeout(exitIntentTimeout);
-      }
-      document.removeEventListener('mouseleave', handleExitIntent);
-      document.removeEventListener('mouseenter', handleMouseEnter);
-      window.removeEventListener('beforeunload', handleBeforeUnload);
-    };
-  }, [shouldShowAmbassadorModal, showAmbassadorModal, markAmbassadorModalAsShown]);
 
   // Remove IntersectionObserver effect (lines 70-100)
   // useEffect(() => {
@@ -429,9 +338,7 @@ const HomePage = () => {
               />
               <div className="">
                 <button
-                  onClick={(e) => {
-                    handleScroll(e, "#our-mission", isFixed);
-                  }}
+                  onClick={() => window.location.href = '/about'}
                   className="absolute -bottom-1 bg-[#F25849] text-white px-4 py-2 sm:px-10 sm:py-4 rounded-full font-bold text-xs sm:text-lg hover:bg-[#D6473C] transition duration-300 shadow-lg"
                 >
                   {t('homepage.aboutUs.discoverMore')}
@@ -564,12 +471,12 @@ const HomePage = () => {
           <div className="hidden md:block absolute -top-14 right-52 w-16 h-16 bg-[#84C1D9] rounded-full z-0"></div>
           <div className="absolute -bottom-14 right-4 w-11 h-11 bg-[#172840] rounded-full z-0"></div>
           <section className="relative z-10">
-            <p className="uppercase font-semibold mb-4">{t('homepage.whyJoinUs.title')}</p>
+            <p className="uppercase font-semibold mb-4">3. Why Join PAAN?</p>
           </section>
           <section className="relative z-10 grid grid-cols-1 sm:grid-cols-2 gap-8 items-center">
             <div className="flex flex-col gap-20">
               <p className="text-2xl">
-                {t('homepage.whyJoinUs.description')}
+                  <a href="/pricing">PAAN membership</a> opens doors to global opportunities, exclusive resources, and a thriving network of Africa's top creative and tech minds.
               </p>
               <Image
                   src="/assets/images/recently-added.webp"
@@ -926,6 +833,7 @@ const HomePage = () => {
         </div>
         {/* Past Webinar */}
         <div>
+
         <section className="bg-paan-dark-blue py-8 sm:py-12 lg:py-16 relative overflow-hidden">
           <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
             <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 items-center">
@@ -1001,10 +909,34 @@ const HomePage = () => {
           <div className="absolute bottom-12 sm:bottom-16 lg:bottom-20 left-1/4 w-1.5 h-1.5 sm:w-2 sm:h-2 bg-paan-blue/50 rounded-full"></div>
         </section>
         </div>
+
+
+        {/* Join Network */}
         <div className="network-bg relative" id="join-network">
           <div className="absolute -top-3 left-4 w-6 h-6 bg-[#84C1D9] rounded-full z-0"></div>
           <div className="absolute -top-8 right-4 w-16 h-16 bg-yellow-400 rounded-full z-0"></div>
           <div className="absolute bottom-6 right-4 w-20 h-20 bg-red-500 rounded-full z-0"></div>
+          
+          {/* Floating YouTube Video */}
+          <div className="absolute top-16 right-12 z-10 hidden xl:block">
+            <div className="relative">
+              <div className="transform hover:scale-105 transition-transform duration-300 ease-in-out">
+                <div className="w-80 h-48 bg-black rounded-xl overflow-hidden shadow-2xl border-2 border-white/20">
+                  <iframe
+                    width="100%"
+                    height="100%"
+                    src="https://www.youtube.com/embed/zJd1akSivAw?autoplay=1&mute=1&controls=1&showinfo=0&rel=0&modestbranding=1"
+                    title="PAAN Network Video"
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    className="rounded-xl"
+                  ></iframe>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <section className="relative mx-auto max-w-6xl py-28 px-6">
             <div className="flex flex-col mb-10 w-full md:w-3/4">
               <h2 className="text-3xl font-medium mb-4 text-[#F2B706]">
@@ -1035,6 +967,7 @@ const HomePage = () => {
             </div>
           </section>
         </div>
+        
         <section className="bg-[#D1D3D4] py-10">
           <div className="mx-auto max-w-6xl px-6 lg:px-8">
             <div className="text-center space-y-4">
@@ -1146,8 +1079,7 @@ const HomePage = () => {
         </div>
         <AgencyEnquiryModal isOpen={isModalOpen} onClose={closeModal} />
         <ScrollToTop />
-        <AcademyConsultationModal isOpen={showConsultModal} onClose={() => setShowConsultModal(false)} />
-        <PaanAmbassadorProgramModal isOpen={showAmbassadorModal} onClose={() => setShowAmbassadorModal(false)} />
+        <CookieConsentBanner />
       </main>
       <Footer />
       </div>

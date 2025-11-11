@@ -168,7 +168,7 @@ const nextConfig = {
     buildActivityPosition: 'bottom-right',
   }, // Disables the development indicators, including the Next.js logo
   images: {
-    domains: ['ik.imagekit.io', 'flagcdn.com'],
+    domains: ['ik.imagekit.io', 'flagcdn.com', 'images.unsplash.com'],
   },
   reactStrictMode: true,
   experimental: {

@@ -1,11 +1,12 @@
 // data/menuData.js
 export const menuItems = [
     { href: '#home', label: 'Home' },
-    { href: '#about-us', label: 'About Summit' },
+    { href: '#program', label: 'Sessions' },
     { href: '#agenda', label: 'Programme' },
+    { href: '#participants', label: 'Who can attend' },
     { href: '#speakers-section', label: 'Speakers' },
-    { href: '#sessions-section', label: 'Sessions' },
     { href: '#paan-awards-section', label: 'Awards' },
+    { href: '#exhibition', label: 'Exhibit' },
     { href: '#tickets-section', label: 'Tickets' },
     { href: '#plan-your-trip', label: 'Plan' },
   ];

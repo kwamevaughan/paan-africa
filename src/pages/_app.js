@@ -188,11 +188,27 @@ function MyApp({ Component, pageProps }) {
       <noscript>
         <img height="1" width="1" style={{display: 'none'}} src="https://www.facebook.com/tr?id=706159915533812&ev=PageView&noscript=1" />
       </noscript>
+      {/* Apollo Tracking Script updated */}
+      <Script
+        id="apollo-tracking"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+            function initApollo(){
+              var n=Math.random().toString(36).substring(7),o=document.createElement("script");
+              o.src="https://assets.apollo.io/micro/website-tracker/tracker.iife.js?nocache="+n,o.async=!0,o.defer=!0,
+              o.onload=function(){window.trackingFunctions.onLoad({appId:"68f509976bc244002162261f"})},
+              document.head.appendChild(o)
+            }
+            initApollo();
+          `,
+        }}
+      />
       <Component {...pageProps} />
 
       <Toaster position="top-right" toastOptions={{
         duration: 4000,
-        style: { background: '#363636', color: '#fff' },
+        style: { background: '#172840', color: '#fff' },
         success: { duration: 3000, iconTheme: { primary: '#4ade80', secondary: '#fff' } },
         error: { duration: 5000, iconTheme: { primary: '#ef4444', secondary: '#fff' } },
       }}/>

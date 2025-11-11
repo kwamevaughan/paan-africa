@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
+import Head from "next/head";
 import { Icon } from "@iconify/react";
 import Header from "@/layouts/standard-header";
 import Footer from "@/layouts/footer";
@@ -129,7 +130,7 @@ const MasterclassDetailPage = () => {
       date: "October 15th, 2025",
       time: "10 am GMT / 12 pm EAT",
       memberPrice: 174,
-      memberOriginalPrice: 220,
+      memberOriginalPrice: 250,
       nonMemberPrice: 250,
       nonMemberOriginalPrice: 320,
       currency: "USD",
@@ -140,6 +141,7 @@ const MasterclassDetailPage = () => {
       instructor: {
         name: "Niki Hurst Smith",
         title: "HR Consultant & Former Agency Leader with 15+ years experience",
+        image: "https://ik.imagekit.io/nkmvdjnna/PAAN/instructors/niki-hurst-smith.jpg",
         bio: "Niki Hurst Smith spent 15+ years working in a number of highly regarded independent agencies servicing a range of blue chip clients and managing large teams. After this Niki transferred into senior positions within the People Team at two highly regarded agencies. For the last 10 years Niki set up her own consultancy supporting agency and business leaders to create an environment where high performing teams can deliver exceptional work, grow the business and build healthy, happy teams balancing her HR expertise with her knowledge and experience of working as a senior client handler.",
         expertise: [
           "Client Relationship Management",
@@ -178,7 +180,7 @@ const MasterclassDetailPage = () => {
         "Professional Development: Reduce client churn and strengthen your agency's reputation for professionalism"
       ],
       outcome: "By the end of this masterclass, participants will be able to confidently handle challenging client situations and transform them into opportunities for stronger, more profitable relationships.",
-      status: "upcoming"
+      status: "completed"
     },
     3: {
       id: 3,
@@ -189,8 +191,8 @@ const MasterclassDetailPage = () => {
       date: "October 23rd, 2025",
       time: "2 pm EAT",
       memberPrice: 60,
-      memberOriginalPrice: 80,
-      nonMemberPrice: 80,
+      memberOriginalPrice: 100,
+      nonMemberPrice: 100,
       nonMemberOriginalPrice: 120,
       currency: "USD",
       category: "Financial Management",
@@ -201,6 +203,7 @@ const MasterclassDetailPage = () => {
       instructor: {
         name: "Jotham Wadongo",
         title: "Financial Management & Business Advisory Professional",
+        image: "https://ik.imagekit.io/nkmvdjnna/PAAN/instructors/jotham-wadongo.jpg",
         bio: "Jotham Wadongo is an experienced financial management and business advisory professional with a strong track record of supporting private sector organizations to grow sustainably and strengthen their financial operations. He holds a Bachelor of Commerce (Finance) from the University of Nairobi and professional certifications including PRINCE2 (Practitioner) and Lean Six Sigma Yellow Belt. Over the past decade, Jotham has worked with a wide range of businesses, financial institutions, and corporates across Africa, advising them on financial systems design, compliance, pricing strategies, and performance management.",
         expertise: [
           "Tax and compliance management",
@@ -244,8 +247,8 @@ const MasterclassDetailPage = () => {
       date: "November 13th, 2025",
       time: "2 pm EAT",
       memberPrice: 60,
-      memberOriginalPrice: 80,
-      nonMemberPrice: 80,
+      memberOriginalPrice: 100,
+      nonMemberPrice: 100,
       nonMemberOriginalPrice: 120,
       currency: "USD",
       category: "Business Development",
@@ -256,6 +259,7 @@ const MasterclassDetailPage = () => {
       instructor: {
         name: "Expert Trainer",
         title: "International Business Development Specialist",
+        image: "https://ik.imagekit.io/nkmvdjnna/PAAN/instructors/expert-trainer.jpg",
         bio: "Our expert trainer brings extensive experience in international business development, having helped numerous African agencies successfully compete for and win global contracts. With a deep understanding of both African creative strengths and international client expectations, they provide practical guidance for agencies looking to expand their global footprint.",
         expertise: [
           "International Business Development",
@@ -299,8 +303,8 @@ const MasterclassDetailPage = () => {
       date: "December 10th, 2025",
       time: "2 pm EAT",
       memberPrice: 60,
-      memberOriginalPrice: 80,
-      nonMemberPrice: 80,
+      memberOriginalPrice: 100,
+      nonMemberPrice: 100,
       nonMemberOriginalPrice: 120,
       currency: "USD",
       category: "Leadership",
@@ -311,6 +315,7 @@ const MasterclassDetailPage = () => {
       instructor: {
         name: "Mercy Murigi",
         title: "Organizational Capacity & People Development Expert",
+        image: "https://ik.imagekit.io/nkmvdjnna/PAAN/instructors/mercy-murigi.jpg",
         bio: "Mercy Murigi is a highly experienced organizational development and people management professional with over 15 years of practice helping businesses and enterprises across Africa strengthen their structures, teams, and leadership systems. She is passionate about creating workplaces that prioritize ethics, safeguarding, and inclusive growth while enabling organizations to attract and retain top talent. Mercy has advised and trained organizations ranging from start-ups and MSMEs to established enterprises, guiding them in areas such as safeguarding, human capital development, leadership coaching, and organizational strengthening.",
         expertise: [
           "Safeguarding & Workplace Ethics",
@@ -355,7 +360,7 @@ const MasterclassDetailPage = () => {
       date: "October 23rd, 2025",
       time: "10 am GMT / 12 pm EAT",
       memberPrice: 174,
-      memberOriginalPrice: 220,
+      memberOriginalPrice: 250,
       nonMemberPrice: 250,
       nonMemberOriginalPrice: 320,
       currency: "USD",
@@ -366,6 +371,7 @@ const MasterclassDetailPage = () => {
       instructor: {
         name: "Abigail Dixon",
         title: "Chartered Marketer and Fellow, CIM Consultant & Trainer",
+        image: "https://ik.imagekit.io/nkmvdjnna/PAAN/instructors/abigail-dixon.jpg",
         bio: "Abigail Dixon is a Chartered Marketer and Fellow, an approved and accredited CIM (Chartered Institute of Marketing) consultant and trainer. Throughout her 20 year career she has gained an extensive track record for delivering profitable brand growth both client-side at Bosch, Premier Foods, Burger King and Britvic and, latterly, in a consultancy capacity through her consultancy Labyrinth Marketing which strive to step change brands, peoples and agencies growth through consultancy, mentoring, training and coaching. This is done across multiple categories and sectors whose clients GSK, TBK, Ferrero, SHS group to name a few. Abby is passionate about improving the client and agency relationship and works with both relevant professional bodies CIM/IPM to step change the capability and competencies required through training and mentoring.",
         expertise: [
           "Strategic Planning & Brand Growth",
@@ -400,7 +406,7 @@ const MasterclassDetailPage = () => {
         "Industry Recognition: Training from an accredited CIM consultant and trainer"
       ],
       outcome: "Through practical exercises and proven methodologies, you'll leave with a clear playbook for winning new business and deepening client trust.",
-      status: "upcoming"
+      status: "completed"
     },
     7: {
       id: 7,
@@ -411,7 +417,7 @@ const MasterclassDetailPage = () => {
       date: "November 6th, 2025",
       time: "10 am GMT / 12 pm EAT",
       memberPrice: 174,
-      memberOriginalPrice: 220,
+      memberOriginalPrice: 250,
       nonMemberPrice: 250,
       nonMemberOriginalPrice: 320,
       currency: "USD",
@@ -422,6 +428,7 @@ const MasterclassDetailPage = () => {
       instructor: {
         name: "Paul Burns",
         title: "Former Training Director at Saatchi & Saatchi, Co-founder of Rock and a Hardplace",
+        image: "https://ik.imagekit.io/nkmvdjnna/PAAN/instructors/paul-burns.jpg",
         bio: "Paul Burns spent 25 very successful and exciting years at Saatchi & Saatchi, looking after client business. He became their Training Director and first Director of Knowledge Practices, sitting on the main Management Board of the Agency. He is recognised to have passion and skill in developing people and has won several industry awards for Learning and Development. He has run accounts across a wide variety of businesses, from the hugely successful bid and launch of the National Lottery, to fast turnaround business on News International. He has led teams on large and complex financial brands and has run countless Blue Chip FMCG brands. In 2015, he became a co-founder of Rock and a Hardplace, a new and award-winning eLearning program for the Marcoms industry.",
         expertise: [
           "Account Management & Client Relations",
@@ -472,6 +479,68 @@ const MasterclassDetailPage = () => {
   }
 
   const masterclass = masterclasses[id] || masterclasses[1];
+
+  // Generate meta data
+  const pageTitle = `${masterclass.title} - PAAN Masterclass`;
+  const pageDescription = masterclass.description;
+  const pageUrl = `https://paan.africa/masterclasses/${id}`;
+  const pageImage = masterclass.image;
+  const instructorName = masterclass.instructor.name;
+  const instructorTitle = masterclass.instructor.title;
+  const masterclassDate = masterclass.date;
+  const masterclassTime = masterclass.time;
+  const masterclassFormat = masterclass.format;
+  const memberPrice = masterclass.memberPrice;
+  const nonMemberPrice = masterclass.nonMemberPrice;
+  const currency = masterclass.currency;
+
+  // Generate structured data
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Course",
+    "name": masterclass.title,
+    "description": masterclass.description,
+    "provider": {
+      "@type": "Organization",
+      "name": "Pan-African Advertising Network (PAAN)",
+      "url": "https://paan.africa"
+    },
+    "instructor": {
+      "@type": "Person",
+      "name": instructorName,
+      "jobTitle": instructorTitle,
+      "description": masterclass.instructor.bio
+    },
+    "courseMode": "online",
+    "educationalLevel": masterclass.level,
+    "coursePrerequisites": "Professional experience in advertising and marketing",
+    "syllabusSections": masterclass.learningOutcomes?.map(outcome => ({
+      "@type": "Syllabus",
+      "description": outcome
+    })),
+    "offers": [
+      {
+        "@type": "Offer",
+        "name": "PAAN Member Price",
+        "price": memberPrice,
+        "priceCurrency": currency,
+        "availability": "https://schema.org/InStock",
+        "validFrom": new Date().toISOString()
+      },
+      {
+        "@type": "Offer", 
+        "name": "Non-Member Price",
+        "price": nonMemberPrice,
+        "priceCurrency": currency,
+        "availability": "https://schema.org/InStock",
+        "validFrom": new Date().toISOString()
+      }
+    ],
+    "image": pageImage,
+    "url": pageUrl,
+    "datePublished": new Date().toISOString(),
+    "dateModified": new Date().toISOString()
+  };
 
   const handlePaystackPayment = async () => {
     if (!customerInfo.email || !customerInfo.name) {
@@ -793,6 +862,78 @@ const MasterclassDetailPage = () => {
 
   return (
     <>
+      <Head>
+        {/* Basic Meta Tags */}
+        <title>{pageTitle}</title>
+        <meta name="description" content={pageDescription} />
+        <meta name="keywords" content={`PAAN, masterclass, ${masterclass.category}, ${instructorName}, advertising, marketing, professional development, ${masterclass.level}`} />
+        <meta name="author" content="Pan-African Advertising Network" />
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href={pageUrl} />
+
+        {/* Open Graph Meta Tags */}
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content={pageTitle} />
+        <meta property="og:description" content={pageDescription} />
+        <meta property="og:image" content={pageImage} />
+        <meta property="og:url" content={pageUrl} />
+        <meta property="og:site_name" content="PAAN - Pan-African Advertising Network" />
+        <meta property="og:locale" content="en_US" />
+
+        {/* Course-specific Open Graph tags */}
+        <meta property="course:instructor" content={instructorName} />
+        <meta property="course:instructor_title" content={instructorTitle} />
+        <meta property="course:date" content={masterclassDate} />
+        <meta property="course:time" content={masterclassTime} />
+        <meta property="course:format" content={masterclassFormat} />
+        <meta property="course:level" content={masterclass.level} />
+        <meta property="course:category" content={masterclass.category} />
+
+        {/* Twitter Card Meta Tags */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@PAAN_Africa" />
+        <meta name="twitter:creator" content="@PAAN_Africa" />
+        <meta name="twitter:title" content={pageTitle} />
+        <meta name="twitter:description" content={pageDescription} />
+        <meta name="twitter:image" content={pageImage} />
+
+        {/* Additional Meta Tags */}
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="language" content="English" />
+        <meta name="revisit-after" content="7 days" />
+        <meta name="distribution" content="global" />
+        <meta name="rating" content="general" />
+
+        {/* Pricing Information */}
+        <meta name="price:member" content={`${memberPrice} ${currency}`} />
+        <meta name="price:non-member" content={`${nonMemberPrice} ${currency}`} />
+        <meta name="currency" content={currency} />
+
+        {/* Event Information */}
+        <meta name="event:date" content={masterclassDate} />
+        <meta name="event:time" content={masterclassTime} />
+        <meta name="event:format" content={masterclassFormat} />
+
+        {/* Structured Data */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(structuredData)
+          }}
+        />
+
+        {/* Additional SEO Meta Tags */}
+        <meta name="theme-color" content="#172840" />
+        <meta name="msapplication-TileColor" content="#172840" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        <meta name="apple-mobile-web-app-title" content="PAAN Masterclass" />
+
+        {/* Preconnect to external domains for performance */}
+        <link rel="preconnect" href="https://ik.imagekit.io" />
+        <link rel="preconnect" href="https://js.paystack.co" />
+      </Head>
       <PaystackScript />
       <Header navLinkColor="text-gray-950" />
       <div className="relative">
@@ -1175,8 +1316,21 @@ const MasterclassDetailPage = () => {
                 <div className="bg-white rounded-xl shadow-lg p-6">
                   <h3 className="text-lg font-bold text-slate-900 mb-4">Your Instructor</h3>
                   <div className="text-center mb-4">
-                    <div className="w-20 h-20 rounded-full bg-gradient-to-br from-red-400 to-orange-500 mx-auto mb-3 flex items-center justify-center">
-                      <Icon icon="mdi:account" className="w-10 h-10 text-white" />
+                    <div className="w-20 h-20 rounded-full mx-auto mb-3 overflow-hidden border-2 border-red-100">
+                      {masterclass.instructor.image ? (
+                        <img
+                          src={masterclass.instructor.image}
+                          alt={masterclass.instructor.name}
+                          className="w-full h-full object-cover"
+                          onError={(e) => {
+                            e.target.style.display = 'none';
+                            e.target.nextSibling.style.display = 'flex';
+                          }}
+                        />
+                      ) : null}
+                      <div className={`w-full h-full bg-gradient-to-br from-red-400 to-orange-500 flex items-center justify-center ${masterclass.instructor.image ? 'hidden' : 'flex'}`}>
+                        <Icon icon="mdi:account" className="w-10 h-10 text-white" />
+                      </div>
                     </div>
                     <h4 className="font-semibold text-slate-900">{masterclass.instructor.name}</h4>
                     <p className="text-gray-600 text-sm">{masterclass.instructor.title}</p>

@@ -194,20 +194,20 @@
     "ambassador": {
       "hero": {
         "title": "The PAAN Ambassador Program",
-        "subtitle": "Powering Africa's Creative Future — One Leader at a Time",
+        "subtitle": "Powering Africa's Creative Future - One Leader at a Time",
         "ctaButton": "Become an Ambassador"
       },
       "leadership": {
         "badge": "Leadership with Purpose",
         "title": "This isn't a role for everyone. It's a role for changemakers.",
         "description1": "The PAAN Ambassador Program is not open to everyone. It is a carefully curated initiative for a select group of professionals across Africa who stand at the intersection of leadership, connection, and continental growth.",
-        "description2": "As a PAAN Ambassador, you don't just represent a network — you represent the future of Africa's creative, digital, and strategic industries. You are a trusted connector, a voice of credibility, and a champion of excellence.",
+        "description2": "As a PAAN Ambassador, you don't just represent a network - you represent the future of Africa's creative, digital, and strategic industries. You are a trusted connector, a voice of credibility, and a champion of excellence.",
         "ctaButton": "Become an Ambassador"
       },
       "whyMatters": {
-        "badge": "Why This Matters — And Why You Were Chosen",
+        "badge": "Why This Matters - And Why You Were Chosen",
         "title": "Your voice, credibility, and leadership are essential to Africa's growth story.",
-        "description": "Africa's creative economy is on the rise — but remains fragmented. PAAN exists to bridge that gap, and you are a key part of that bridge. As a PAAN Ambassador, you:",
+        "description": "Africa's creative economy is on the rise - but remains fragmented. PAAN exists to bridge that gap, and you are a key part of that bridge. As a PAAN Ambassador, you:",
         "features": {
           "openDoors": "Open doors for local agencies to access opportunities across Africa.",
           "represent": "Represent a trusted brand committed to collaboration, quality, and integrity.",
@@ -283,6 +283,37 @@
             "Specialist in cross-cultural brand positioning"
           ],
           "expertise": ["Business Development", "Digital Marketing", "Strategic Management", "Market Analysis", "Brand Positioning"]
+        },
+        "khensani": {
+          "name": "KHENSANI-WONDER MABUNDA",
+          "title": "Founder & CEO",
+          "country": "South Africa",
+          "description": "Khensani-Wonder Mabunda is the visionary founder and CEO of KW Kreatives, an innovative marketing, media, advertising and PR agency that has redefined brand development and strategy. With a background in labour and trademark law, she seamlessly blends strategic business insight with creative flair.",
+          "fullDescription": "Khensani-Wonder Mabunda is the visionary founder and CEO of KW Kreatives, an innovative marketing, media, advertising and PR agency that has redefined brand development and strategy. With a background in labour and trademark law, Khensani's early corporate career provided a solid foundation for her transition into the world of branding and marketing, where she seamlessly blends strategic business insight with creative flair. As a dynamic and forward-thinking leader, Khensani excels in business and brand development, negotiations, marketing, and communications. Her passion for the ever-evolving branding landscape led to the creation of KW Kreatives, a company dedicated to helping organisations build authentic, relevant, and impactful brands. Khensani has earned prestigious recognition including AdForum PHNX Awards Jury Member (2024 & 2025), Effie Awards Panel Judge (2025), Y20 Member - G20 Work Force for the Youth, Global CEO Excellence Award (UK, 2024) as Marketing and Media CEO of the Year (South Africa), and Middle East CEO of the Year Awards (2024) as Best Emerging Marketing & PR CEO (South Africa). Under Khensani's guidance, KW Kreatives is redefining the landscape of branding, championing the belief that effective marketing transcends traditional campaigns and brand identity—it's about crafting meaningful, unforgettable experiences that build enduring relationships with audiences.",
+          "achievements": [
+            "Founder & CEO of KW Kreatives - innovative marketing, media, advertising and PR agency",
+            "AdForum PHNX Awards Jury Member (2024 & 2025)",
+            "Effie Awards Panel Judge (2025)",
+            "Y20 Member - G20 Work Force for the Youth",
+            "Global CEO Excellence Award (UK, 2024) - Marketing and Media CEO of the Year (South Africa)",
+            "Middle East CEO of the Year Awards (2024) - Best Emerging Marketing & PR CEO (South Africa)"
+          ],
+          "expertise": ["Brand Development", "Marketing Strategy", "Business Development", "Negotiations", "Communications", "Creative Leadership"]
+        },
+        "honest": {
+          "name": "HONEST MASIYA",
+          "title": "Founder & Director",
+          "country": "South Africa",
+          "description": "Honest Masiya is the founder and director of Brand Audacity Africa Group, a pan-African firm specializing in digital strategy, content creation, and management of influence. He brings over a decade of media experience with a focus on digital innovation and marketing.",
+          "fullDescription": "Honest Masiya is the founder and director of Brand Audacity Africa Group, a pan-African firm that specializes in digital strategy, content creation, and management of influence. Honest brings over a decade of media experience, having worked in Print Advertising and Advertising Agencies with a significant focus on digital innovation and marketing. His commitment to amplifying African voices extends beyond media, as he is deeply passionate about promoting African tourism and showcasing the continent's vibrant culture and heritage to a global audience.",
+          "achievements": [
+            "Founder and Director of Brand Audacity Africa Group",
+            "Over a decade of media experience in Print Advertising and Advertising Agencies",
+            "Specializes in digital strategy, content creation, and influence management",
+            "Passionate advocate for African tourism and cultural heritage promotion",
+            "Expert in digital innovation and marketing across African markets"
+          ],
+          "expertise": ["Digital Strategy", "Content Creation", "Influence Management", "Digital Marketing", "African Tourism Promotion", "Brand Development"]
         }
       },
       "getStarted": {
@@ -619,7 +650,7 @@
       },
       "whyPartner": {
         "title": "Why Partner with PAAN?",
-        "description": "Africa's markets are diverse, complex, and ripe with opportunity—but navigating them alone is costly and time-consuming. PAAN's agency network acts as your local accelerator, providing:"
+        "description": "Africa's markets are diverse, complex, and ripe with opportunity - but navigating them alone is costly and time-consuming. PAAN's agency network acts as your local accelerator, providing:"
       }
     },
     "partnerBenefits": {
@@ -830,7 +861,7 @@
       }
     },
     "africanCreativeEconomy": {
-      "title": "The African creative economy is consolidating — fast.",
+      "title": "The African creative economy is consolidating - fast.",
       "description": "Agencies that act now will own the client relationships, capabilities, and market presence others will be chasing in five years.",
       "question": "Will you lead the wave or watch from the sidelines?"
     },

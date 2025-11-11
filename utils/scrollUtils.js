@@ -35,18 +35,17 @@ export const handleScroll = (e, href, isFixed) => {
   const element = document.getElementById(targetId);
   
   if (element) {
-    // Add a slight delay to ensure the header is rendered
-    setTimeout(() => {
-      const header = document.querySelector('nav');
-      const headerHeight = header ? header.offsetHeight : 0;
-      const elementPosition = element.getBoundingClientRect().top + window.scrollY;
-      const offset = isFixed ? headerHeight + 20 : 20; // Always add some buffer for better spacing
-      
-      window.scrollTo({
-        top: elementPosition - offset,
-        behavior: 'smooth',
-      });
-    }, 100); // Small delay to ensure smooth transition
+    // Calculate scroll position with proper offset
+    const header = document.querySelector('nav');
+    const headerHeight = header ? header.offsetHeight : 0;
+    const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+    // Use consistent offset: header height + padding for better visibility
+    const offset = headerHeight + 30;
+    
+    window.scrollTo({
+      top: Math.max(0, elementPosition - offset),
+      behavior: 'smooth',
+    });
   } else {
     // If element doesn't exist, scroll to top as fallback
     console.warn(`Target element with id "${targetId}" not found. Scrolling to top.`);

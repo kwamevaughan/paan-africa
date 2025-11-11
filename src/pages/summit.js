@@ -1,19 +1,14 @@
 import SEO from "@/components/SEO";
 import Header from "../layouts/summit-header";
 import Image from "next/image";
-import BreakoutSessions from "@/components/BreakoutSessions";
+import SummitAgenda from "@/components/SummitAgenda";
 import { Icon } from "@iconify/react";
-import Footer from "@/layouts/footer";
 import SummitFooter from "@/layouts/summit-footer";
 import { useEffect, useRef, useState } from "react";
-import BenefitsToggle from "@/components/BenefitsToggle";
 import { useFixedHeader, handleScroll } from '../../utils/scrollUtils';
-import SeminarRegistration from "@/components/SeminarRegistration";
-import { ctaButton } from "../data/summitMenu";
 import ScrollToTop from "@/components/ScrollToTop";
 import Head from "next/head";
 import Accordion from "@/components/Accordion";
-import TicketPurchaseButton from "@/components/TicketPurchaseButton";
 import PartnerWithUsModal from "@/components/PartnerWithUsModal";
 import ExhibitionApplicationModal from "@/components/ExhibitionApplicationModal";
 import PaystackScript from "@/components/PaystackScript";
@@ -542,10 +537,10 @@ const SummitPage = () => {
                 variants={fadeInLeft}
               >
                 <p>
-                  The Africa Borderless Creative Economy Summit 2026, hosted by the Pan-African Agency Network (PAAN), is the continent's leading deal-first gathering for creators, agencies, studios, tech innovators, investors, and policymakers.
+                The Africa Borderless Creative Economy Summit 2026 brings together the continent’s most forward-thinking agencies, brands, freelancers, marketing teams, and technology partners to reimagine how Africa’s creative industry can scale - together.
                 </p>
                 <p>
-                  Unlike inspiration-only events, the Summit is built for action: curated deal rooms, live simulations, and partner-funded clinics that turn conversations into MoUs, pilots, term sheets, and contracts. We're not just imagining Africa's creative future — we're building it in real time.
+                Over two days of keynotes, data-led panels, strategy labs, awards, showcases, and partnership deal rooms, the summit will unpack how innovation, technology, collaboration, and talent mobility can turn Africa’s creativity into a multi-billion-dollar borderless economy.
                 </p>
               </motion.div>
 
@@ -554,7 +549,7 @@ const SummitPage = () => {
                 variants={scaleIn}
               >
                 <button 
-                  onClick={(e) => handleScroll(e, '#tickets-section')}
+                  onClick={() => window.location.href = '/summit/purchase-ticket'}
                   className="px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base font-semibold bg-paan-red text-white hover:bg-paan-red/90 rounded-full shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 cursor-pointer relative z-20 w-full sm:w-auto"
                 >
                   Register Now
@@ -571,7 +566,7 @@ const SummitPage = () => {
             >
               <div className="relative overflow-hidden w-full max-w-md lg:max-w-none">
                 <img 
-                  src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/about-summit.png?updatedAt=1757608226948" 
+                  src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/about-summit.png?updatedAt=1760366803444" 
                   alt="PAAN Summit" 
                   className="h-64 sm:h-80 md:h-96 lg:h-[45rem] w-full object-cover rounded-lg" 
                 />
@@ -699,13 +694,12 @@ const SummitPage = () => {
                 </div>
             </div>
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-2 pt-4">
-              <TicketPurchaseButton 
-                variant="primary" 
-                size="md"
-                className="px-6 sm:px-8 py-3 text-sm sm:text-base font-medium w-full sm:w-auto"
+              <button 
+                onClick={() => window.location.href = '/summit/purchase-ticket'}
+                className="bg-paan-red text-white px-6 sm:px-8 py-3 text-sm sm:text-base font-medium w-full sm:w-auto rounded-full hover:bg-paan-red/90 transition-all duration-300 shadow-lg flex items-center justify-center gap-2"
               >
                 Register Now
-              </TicketPurchaseButton>
+              </button>
               <button 
                 onClick={() => setShowPartnerModal(true)}
                 className="bg-transparent border border-paan-dark-blue text-paan-dark-blue px-6 sm:px-8 py-3 rounded-full hover:bg-paan-dark-blue hover:text-white transition-all duration-300 font-medium text-sm sm:text-base shadow-lg flex items-center justify-center gap-2 w-full sm:w-auto"
@@ -730,52 +724,210 @@ const SummitPage = () => {
          </div>
       
         {/* Program Section */}
-        <div className="bg-paan-dark-blue relative">
-            <section className="mx-auto max-w-6xl py-12 sm:py-16 md:py-20 px-4 sm:px-6">
+        <div className="bg-paan-dark-blue relative" id="program" sectionRefs={sectionRefs} handleScroll={handleScroll} isFixed={isFixed}>
+            <section className="mx-auto max-w-6xl py-8 sm:py-12 md:py-16 lg:py-20 px-3 sm:px-4 md:px-6">
               <div className="flex flex-col sm:flex-row justify-between gap-4 sm:gap-6 md:gap-8 mb-8 sm:mb-12">
                 <div className="text-left">
-                    <h2 className="text-xs sm:text-sm border w-fit border-white text-white rounded-full px-3 sm:px-4 py-1 sm:py-2 text-center mb-2 sm:mb-3">Summit Program</h2>
-                    <h3 className="text-xl sm:text-2xl md:text-3xl font-bold uppercase text-paan-yellow">Program</h3>
+                    <h2 className="text-xs sm:text-sm border w-fit border-white text-white rounded-full px-3 sm:px-4 py-1 sm:py-2 text-center mb-2 sm:mb-3">Summit Tracks</h2>
+                    <h3 className="text-xl sm:text-2xl md:text-3xl font-bold uppercase text-paan-yellow">Tracks</h3>
                 </div>
                 <div className="mt-2 sm:mt-0">
                   <p className="text-white text-lg sm:text-xl md:text-2xl lg:text-3xl leading-tight">Tracks and the two-day<br className="hidden sm:block"/> agenda snapshot.</p>
                 </div>
               </div>
-               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
-                 <div className="relative rounded-lg shadow-lg overflow-hidden h-64 sm:h-80 md:h-96 lg:h-[34rem]">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6">
+                 <div className="group relative rounded-lg shadow-lg overflow-hidden h-60 sm:h-72 md:h-80 lg:h-96">
                    <Image
-                     src="/assets/images/ip.png"
+                     src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/tracks/1.png"
                      alt="Track 1"
                      fill
-                     className="object-contain object-center"
+                     className="object-contain object-center -mt-20"
                    />
                    <div className="absolute bottom-0 left-0 right-0 bg-white rounded-t-lg p-4 sm:p-6">
-                     <h4 className="text-lg sm:text-xl md:text-2xl font-bold text-paan-dark-blue mb-1 sm:mb-2">IP, Capital & Content Exports</h4>
-                     <p className="text-paan-dark-blue text-sm sm:text-base">Financing film, music, gaming, and fashion IP.</p>
+                     <h4 className="text-base sm:text-lg md:text-xl font-bold text-paan-dark-blue mb-1 sm:mb-2">AI, Technology &<br/>The Future of Creative Work</h4>
+                     <p className="text-paan-dark-blue text-sm sm:text-base">Operationalize AI across creative, media, and ops for real ROI.</p>
+                     <div className="mt-2 flex flex-wrap gap-2">
+                        <div className="flex items-center gap-1">
+                              <div className="w-2 h-2 bg-paan-yellow rounded-full"></div>
+                              <small className="text-xs text-paan-dark-blue">AI Workflows</small>
+                        </div>
+                        <div className="flex items-center gap-1">
+                              <div className="w-2 h-2 bg-paan-yellow rounded-full"></div>
+                              <small className="text-xs text-paan-dark-blue">Governance</small>
+                        </div>
+                        <div className="flex items-center gap-1">
+                              <div className="w-2 h-2 bg-paan-yellow rounded-full"></div>
+                              <small className="text-xs text-paan-dark-blue">Productivity</small>
+                        </div>
+                        <div className="flex items-center gap-1">
+                              <div className="w-2 h-2 bg-paan-yellow rounded-full"></div>
+                              <small className="text-xs text-paan-dark-blue">Tech</small>
+                        </div>
+                     </div>
                    </div>
                  </div>
-                 <div className="relative rounded-lg shadow-lg overflow-hidden h-64 sm:h-80 md:h-96 lg:h-[34rem]">
+                 <div className="group relative rounded-lg shadow-lg overflow-hidden h-60 sm:h-72 md:h-80 lg:h-96">
                    <Image
-                     src="/assets/images/nomad-work.png"
+                     src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/tracks/2.png"
                      alt="Track 2"
                      fill
-                     className="object-contain object-center"
+                     className="object-contain object-center -mt-20"
                    />
                    <div className="absolute bottom-0 left-0 right-0 bg-white rounded-t-lg p-4 sm:p-6">
-                     <h4 className="text-lg sm:text-xl md:text-2xl font-bold text-paan-dark-blue mb-1 sm:mb-2">Payments, Market Entry & Nomad Work</h4>
-                     <p className="text-paan-dark-blue text-sm sm:text-base">Making cross-border work frictionless and borderless.</p>
+                     <h4 className="text-base sm:text-lg md:text-xl font-bold text-paan-dark-blue mb-1 sm:mb-2">Creative Effectiveness,<br/>Design & Media Performance</h4>
+                     <p className="text-paan-dark-blue text-sm sm:text-base">Turn bold ideas into measurable Business outcomes across channels.</p>
+                     <div className="mt-2 flex flex-wrap gap-2">
+                        <div className="flex items-center gap-1">
+                              <div className="w-2 h-2 bg-paan-yellow rounded-full"></div>
+                              <small className="text-xs text-paan-dark-blue">Design Thinking</small>
+                        </div>
+                        <div className="flex items-center gap-1">
+                              <div className="w-2 h-2 bg-paan-yellow rounded-full"></div>
+                              <small className="text-xs text-paan-dark-blue">Brand Lift</small>
+                        </div>
+                        <div className="flex items-center gap-1">
+                              <div className="w-2 h-2 bg-paan-yellow rounded-full"></div>
+                              <small className="text-xs text-paan-dark-blue">Story telling</small>
+                        </div>
+                        <div className="flex items-center gap-1">
+                              <div className="w-2 h-2 bg-paan-yellow rounded-full"></div>
+                              <small className="text-xs text-paan-dark-blue">Attention Metrics</small>
+                        </div>
+                     </div>
                    </div>
                  </div>
-                 <div className="relative rounded-lg shadow-lg overflow-hidden h-64 sm:h-80 md:h-96 lg:h-[34rem] sm:col-span-2 lg:col-span-1">
+                 <div className="group relative rounded-lg shadow-lg overflow-hidden h-60 sm:h-72 md:h-80 lg:h-96">
                    <Image
-                     src="/assets/images/ai-data.png"
+                     src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/tracks/3.png"
                      alt="Track 3"
                      fill
-                     className="object-contain object-center"
+                     className="object-contain object-center -mt-20"
                    />
                    <div className="absolute bottom-0 left-0 right-0 bg-white rounded-t-lg p-4 sm:p-6">
-                     <h4 className="text-lg sm:text-xl md:text-2xl font-bold text-paan-dark-blue mb-1 sm:mb-2">AI, Data, Discovery & <br className="hidden sm:block"/>Innovation</h4>
-                     <p className="text-paan-dark-blue text-sm sm:text-base">Leveraging AI for content, compliance, and monetization.</p>
+                     <h4 className="text-base sm:text-lg md:text-xl font-bold text-paan-dark-blue mb-1 sm:mb-2">Data, Analytics &<br/>Measurement for Growth</h4>
+                     <p className="text-paan-dark-blue text-sm sm:text-base">Build accountable growth with clean data and clear attribution.</p>
+                     <div className="mt-2 flex flex-wrap gap-2">
+                        <div className="flex items-center gap-1">
+                              <div className="w-2 h-2 bg-paan-yellow rounded-full"></div>
+                              <small className="text-xs text-paan-dark-blue">Cookieless attribution</small>
+                        </div>
+                        <div className="flex items-center gap-1">
+                              <div className="w-2 h-2 bg-paan-yellow rounded-full"></div>
+                              <small className="text-xs text-paan-dark-blue">Audience Insights</small>
+                        </div>
+                        <div className="flex items-center gap-1">
+                              <div className="w-2 h-2 bg-paan-yellow rounded-full"></div>
+                              <small className="text-xs text-paan-dark-blue">collaboration</small>
+                        </div>
+                     </div>
+                   </div>
+                 </div>
+                 <div className="group relative rounded-lg shadow-lg overflow-hidden h-60 sm:h-72 md:h-80 lg:h-96">
+                   <Image
+                     src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/tracks/4.png"
+                     alt="Track 4"
+                     fill
+                     className="object-contain object-center -mt-20"
+                   />
+                   <div className="absolute bottom-0 left-0 right-0 bg-white rounded-t-lg p-4 sm:p-6">
+                     <h4 className="text-base sm:text-lg md:text-xl font-bold text-paan-dark-blue mb-1 sm:mb-2">The Creator &<br/>Freelance Economy</h4>
+                     <p className="text-paan-dark-blue text-sm sm:text-base">Power sustainable independent careers and creator-led studios.</p>
+                     <div className="mt-2 flex flex-wrap gap-2">
+                        <div className="flex items-center gap-1">
+                              <div className="w-2 h-2 bg-paan-yellow rounded-full"></div>
+                              <small className="text-xs text-paan-dark-blue">Pricing & IP</small>
+                        </div>
+                        <div className="flex items-center gap-1">
+                              <div className="w-2 h-2 bg-paan-yellow rounded-full"></div>
+                              <small className="text-xs text-paan-dark-blue">Business Ops Martech</small>
+                        </div>
+                        <div className="flex items-center gap-1">
+                              <div className="w-2 h-2 bg-paan-yellow rounded-full"></div>
+                              <small className="text-xs text-paan-dark-blue">agency-freelancer</small>
+                        </div>
+                     </div>
+                   </div>
+                 </div>
+                 <div className="group relative rounded-lg shadow-lg overflow-hidden h-60 sm:h-72 md:h-80 lg:h-96">
+                   <Image
+                     src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/tracks/5.png"
+                     alt="Track 5"
+                     fill
+                     className="object-contain object-center -mt-20"
+                   />
+                   <div className="absolute bottom-0 left-0 right-0 bg-white rounded-t-lg p-4 sm:p-6">
+                     <h4 className="text-base sm:text-lg md:text-xl font-bold text-paan-dark-blue mb-1 sm:mb-2">Communication, PR &<br/>Brand Trust</h4>
+                     <p className="text-paan-dark-blue text-sm sm:text-base">Build credible brands in an era of activism and misinformation.</p>
+                     <div className="mt-2 flex flex-wrap gap-2">
+                        <div className="flex items-center gap-1">
+                              <div className="w-2 h-2 bg-paan-yellow rounded-full"></div>
+                              <small className="text-xs text-paan-dark-blue">Crisis Comms</small>
+                        </div>
+                        <div className="flex items-center gap-1">
+                              <div className="w-2 h-2 bg-paan-yellow rounded-full"></div>
+                              <small className="text-xs text-paan-dark-blue">Media trust</small>
+                        </div>
+                        <div className="flex items-center gap-1">
+                              <div className="w-2 h-2 bg-paan-yellow rounded-full"></div>
+                              <small className="text-xs text-paan-dark-blue">Reputation ESG Storytelling</small>
+                        </div>
+                     </div>
+                   </div>
+                 </div>
+                 <div className="group relative rounded-lg shadow-lg overflow-hidden h-60 sm:h-72 md:h-80 lg:h-96">
+                   <Image
+                     src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/tracks/6.png"
+                     alt="Track 6"
+                     fill
+                     className="object-contain object-center -mt-20"
+                   />
+                   <div className="absolute bottom-0 left-0 right-0 bg-white rounded-t-lg p-4 sm:p-6">
+                     <h4 className="text-base sm:text-lg md:text-xl font-bold text-paan-dark-blue mb-1 sm:mb-2">Commerce, Platforms &<br/>Marketing Business</h4>
+                     <p className="text-paan-dark-blue text-sm sm:text-base">Where retail media, social commerce and fintech converge.</p>
+                     <div className="mt-2 flex flex-wrap gap-2">
+                        <div className="flex items-center gap-1">
+                              <div className="w-2 h-2 bg-paan-yellow rounded-full"></div>
+                              <small className="text-xs text-paan-dark-blue">Retail media</small>
+                        </div>
+                        <div className="flex items-center gap-1">
+                              <div className="w-2 h-2 bg-paan-yellow rounded-full"></div>
+                              <small className="text-xs text-paan-dark-blue">Chat commerce</small>
+                        </div>
+                        <div className="flex items-center gap-1">
+                              <div className="w-2 h-2 bg-paan-yellow rounded-full"></div>
+                              <small className="text-xs text-paan-dark-blue">D2C growth</small>
+                        </div>
+                        <div className="flex items-center gap-1">
+                              <div className="w-2 h-2 bg-paan-yellow rounded-full"></div>
+                              <small className="text-xs text-paan-dark-blue">Conversion tech</small>
+                        </div>
+                     </div>
+                   </div>
+                 </div>
+                 <div className="group relative rounded-lg shadow-lg overflow-hidden h-60 sm:h-72 md:h-80 lg:h-96 sm:col-span-2 lg:col-span-1">
+                   <Image
+                     src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/tracks/7.png"
+                     alt="Track 7"
+                     fill
+                     className="object-contain object-center -mt-20"
+                   />
+                   <div className="absolute bottom-0 left-0 right-0 bg-white rounded-t-lg p-4 sm:p-6">
+                     <h4 className="text-base sm:text-lg md:text-l font-bold text-paan-dark-blue mb-1 sm:mb-2">Cross-Border Collaboration &<br/>Ecosystem Growth</h4>
+                     <p className="text-paan-dark-blue text-sm sm:text-base">Partner across markets to scale Africa's creative economy.</p>
+                     <div className="mt-2 flex flex-wrap gap-2">
+                        <div className="flex items-center gap-1">
+                              <div className="w-2 h-2 bg-paan-yellow rounded-full"></div>
+                              <small className="text-xs text-paan-dark-blue">Multi Market Ops</small>
+                        </div>
+                        <div className="flex items-center gap-1">
+                              <div className="w-2 h-2 bg-paan-yellow rounded-full"></div>
+                              <small className="text-xs text-paan-dark-blue">ip & Billing Martech</small>
+                        </div>
+                        <div className="flex items-center gap-1">
+                              <div className="w-2 h-2 bg-paan-yellow rounded-full"></div>
+                              <small className="text-xs text-paan-dark-blue">Talent Mobility</small>
+                        </div>
+                     </div>
                    </div>
                  </div>
                </div>
@@ -783,271 +935,7 @@ const SummitPage = () => {
         </div>
 
         {/* Summit Agenda Section */}
-        <div className="bg-[#F3F9FB] py-12 sm:py-16 md:py-20" id="agenda" ref={sectionRefs.events} handleScroll={handleScroll} isFixed={isFixed}>          
-           <section className="mx-auto max-w-6xl px-4 sm:px-6">            
-             <div className="text-center mb-8 sm:mb-12">
-               <h2 className="text-2xl sm:text-3xl font-bold text-paan-dark-blue mb-3 sm:mb-4">Summit Agenda</h2>
-               <p className="text-base sm:text-lg text-gray-600">Two days of intensive learning, networking, and deal-making</p>
-             </div>
-             
-             <div className="flex justify-center gap-3 sm:gap-4 mb-8 sm:mb-12">
-               <button 
-                 onClick={() => setActiveDay('day1')}
-                 className={`px-6 sm:px-8 py-2 sm:py-3 rounded-full transition-all duration-300 font-medium text-sm sm:text-base shadow-lg flex items-center gap-2 uppercase ${
-                   activeDay === 'day1' 
-                     ? 'bg-paan-blue border border-paan-blue text-white' 
-                     : 'bg-transparent border border-paan-blue text-paan-blue hover:bg-paan-blue hover:text-white'
-                 }`}
-               >
-                 Day 1
-               </button>
-               <button 
-                 onClick={() => setActiveDay('day2')}
-                 className={`px-6 sm:px-8 py-2 sm:py-3 rounded-full transition-all duration-300 font-medium text-sm sm:text-base shadow-lg flex items-center gap-2 ${
-                   activeDay === 'day2' 
-                     ? 'bg-paan-blue border border-paan-blue text-white' 
-                     : 'bg-transparent border border-paan-blue text-paan-blue hover:bg-paan-blue hover:text-white'
-                 }`}
-               >
-                 Day 2
-               </button>
-            </div>
-             
-             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-start">
-               <div className="space-y-4 sm:space-y-6">
-                 <div className="relative rounded-lg overflow-hidden shadow-lg">
-                   <Image
-                     src="/assets/images/day1-1.png"
-                     alt="Day 1 Morning Sessions"
-                     width={500}
-                     height={400}
-                     className="w-full h-64 sm:h-80 object-cover"
-                   />
-                   <div className="absolute inset-0 bg-black/40"></div>
-                   <div className="absolute bottom-3 sm:bottom-4 left-3 sm:left-4 text-white">
-                     <h3 className="text-lg sm:text-xl font-bold">Morning Sessions</h3>
-                     <p className="text-xs sm:text-sm">Keynotes & Panels</p>
-                   </div>
-                 </div>
-                 <div className="relative rounded-lg overflow-hidden shadow-lg">
-                   <Image
-                     src="/assets/images/day1-2.png"
-                     alt="Day 1 Afternoon Sessions"
-                     width={500}
-                     height={400}
-                     className="w-full h-64 sm:h-80 object-cover"
-                   />
-                   <div className="absolute inset-0 bg-black/40"></div>
-                   <div className="absolute bottom-3 sm:bottom-4 left-3 sm:left-4 text-white">
-                     <h3 className="text-lg sm:text-xl font-bold">Afternoon Sessions</h3>
-                     <p className="text-xs sm:text-sm">Deal Rooms & Clinics</p>
-                   </div>
-                 </div>
-               </div>
-               
-               <div className="bg-white rounded-xl shadow-xl overflow-hidden">
-                 {activeDay === 'day1' ? (
-                   <>
-                     <div className="bg-paan-dark-blue text-white p-4 sm:p-6">
-                       <h4 className="text-lg sm:text-xl font-bold">Day 1 — Building the Borderless Economy</h4>
-                       <p className="text-xs sm:text-sm opacity-90 mt-1">April 21, 2026</p>
-                     </div>
-                 
-                 <div className="p-4 sm:p-6 relative">
-                   {/* Container for timeline items */}
-                   <div className="space-y-4 sm:space-y-6 relative">
-                     {/* Continuous vertical line that runs through the middle of all circles */}
-                     <div className="absolute left-[5px] top-[6px] bottom-[6px] w-0.5 bg-paan-red"></div>
-                     {/* Timeline item 1 */}
-                     <div className="flex items-center relative">
-                       <div className="relative">
-                         <div className="w-3 h-3 bg-paan-red rounded-full shadow-lg shadow-paan-red/50 flex-shrink-0 z-10 relative"></div>
-                         <div className="absolute inset-0 w-3 h-3 bg-paan-red rounded-full opacity-30 animate-ping"></div>
-                       </div>
-                       <div className="ml-4 sm:ml-6">
-                         <div className="text-xs sm:text-sm font-bold text-paan-blue mb-1">09:00 - 09:45</div>
-                         <h5 className="text-paan-dark-blue text-sm sm:text-base">Opening Plenary & Keynotes</h5>
-                       </div>
-                     </div>
-                     
-                     {/* Timeline item 2 */}
-                     <div className="flex items-center relative">
-                       <div className="relative">
-                         <div className="w-3 h-3 bg-paan-red rounded-full shadow-lg shadow-paan-red/50 flex-shrink-0 z-10 relative"></div>
-                         <div className="absolute inset-0 w-3 h-3 bg-paan-red rounded-full opacity-30 animate-ping"></div>
-                       </div>
-                       <div className="ml-4 sm:ml-6">
-                         <div className="text-xs sm:text-sm font-bold text-paan-blue mb-1">10:00 - 11:15</div>
-                         <h5 className="text-paan-dark-blue text-sm sm:text-base"><span className="font-bold">Panels:</span> Creative IP Finance / AfCFTA Digital Trade</h5>
-                       </div>
-                     </div>
-                     
-                     {/* Timeline item 3 */}
-                     <div className="flex items-center relative">
-                       <div className="relative">
-                         <div className="w-3 h-3 bg-paan-red rounded-full shadow-lg shadow-paan-red/50 flex-shrink-0 z-10 relative"></div>
-                         <div className="absolute inset-0 w-3 h-3 bg-paan-red rounded-full opacity-30 animate-ping"></div>
-                       </div>
-                       <div className="ml-6">
-                         <div className="text-sm font-bold text-paan-blue mb-1">11:30 - 13:00</div>
-                         <h5 className="text-paan-dark-blue"><span className="font-bold">Deal Rooms:</span> Creative Finance / Venture</h5>
-                       </div>
-                     </div>
-                     
-                     {/* Timeline item 4 */}
-                     <div className="flex items-center relative">
-                       <div className="relative">
-                         <div className="w-3 h-3 bg-paan-red rounded-full shadow-lg shadow-paan-red/50 flex-shrink-0 z-10 relative"></div>
-                         <div className="absolute inset-0 w-3 h-3 bg-paan-red rounded-full opacity-30 animate-ping"></div>
-                       </div>
-                       <div className="ml-6">
-                         <div className="text-sm font-bold text-paan-blue mb-1">13:00 - 14:00</div>
-                         <h5 className="font-bold text-paan-dark-blue">Networking Lunch</h5>
-                       </div>
-                     </div>
-                     
-                     {/* Timeline item 5 */}
-                     <div className="flex items-center relative">
-                       <div className="relative">
-                         <div className="w-3 h-3 bg-paan-red rounded-full shadow-lg shadow-paan-red/50 flex-shrink-0 z-10 relative"></div>
-                         <div className="absolute inset-0 w-3 h-3 bg-paan-red rounded-full opacity-30 animate-ping"></div>
-                       </div>
-                       <div className="ml-6">
-                         <div className="text-sm font-bold text-paan-blue mb-1">14:00 - 15:15</div>
-                         <h5 className="text-paan-dark-blue"><span className="font-bold">Clinics & Masterclass:</span> Digital Nomad Ops Clinic / Creator Monetization Masterclass</h5>
-                       </div>
-                     </div>
-                     
-                     {/* Timeline item 6 */}
-                     <div className="flex items-center relative">
-                       <div className="relative">
-                         <div className="w-3 h-3 bg-paan-red rounded-full shadow-lg shadow-paan-red/50 flex-shrink-0 z-10 relative"></div>
-                         <div className="absolute inset-0 w-3 h-3 bg-paan-red rounded-full opacity-30 animate-ping"></div>
-                       </div>
-                       <div className="ml-6">
-                         <div className="text-sm font-bold text-paan-blue mb-1">15:30 - 17:00</div>
-                         <h5 className="text-paan-dark-blue"><span className="font-bold">Deal Rooms(continued):</span> Investor & Startup Matchmaking</h5>
-                       </div>
-                     </div>
-                     
-                     {/* Timeline item 7 - Last item */}
-                     <div className="flex items-center relative">
-                       <div className="relative">
-                         <div className="w-3 h-3 bg-paan-red rounded-full shadow-lg shadow-paan-red/50 flex-shrink-0 z-10 relative"></div>
-                         <div className="absolute inset-0 w-3 h-3 bg-paan-red rounded-full opacity-30 animate-ping"></div>
-                       </div>
-                       <div className="ml-6">
-                         <div className="text-sm font-bold text-paan-blue mb-1">18:30 - Late</div>
-                         <h5 className="text-paan-dark-blue"><span className="font-bold">Creator Crawl:</span> Networking across Nairobi's creative scene</h5>
-                       </div>
-                     </div>
-                   </div>
-                 </div>
-                   </>
-                 ) : (
-                   <>
-                     <div className="bg-paan-dark-blue text-white p-4 sm:p-6">
-                       <h4 className="text-lg sm:text-xl font-bold">Day 2 — Scaling & Innovation</h4>
-                       <p className="text-xs sm:text-sm opacity-90 mt-1">April 22, 2026</p>
-                     </div>
-                 
-                     <div className="p-4 sm:p-6 relative">
-                       {/* Container for timeline items */}
-                       <div className="space-y-4 sm:space-y-6 relative">
-                         {/* Continuous vertical line that runs through the middle of all circles */}
-                         <div className="absolute left-[5px] top-[6px] bottom-[6px] w-0.5 bg-paan-red"></div>
-                         
-                         {/* Timeline item 1 */}
-                         <div className="flex items-center relative">
-                           <div className="relative">
-                             <div className="w-3 h-3 bg-paan-red rounded-full shadow-lg shadow-paan-red/50 flex-shrink-0 z-10 relative"></div>
-                             <div className="absolute inset-0 w-3 h-3 bg-paan-red rounded-full opacity-30 animate-ping"></div>
-                           </div>
-                           <div className="ml-6">
-                             <div className="text-sm font-bold text-paan-blue mb-1">09:00 - 10:00</div>
-                             <h5 className="text-paan-dark-blue">Opening Keynote: Future of African Tech</h5>
-                           </div>
-                         </div>
-                         
-                         {/* Timeline item 2 */}
-                         <div className="flex items-center relative">
-                           <div className="relative">
-                             <div className="w-3 h-3 bg-paan-red rounded-full shadow-lg shadow-paan-red/50 flex-shrink-0 z-10 relative"></div>
-                             <div className="absolute inset-0 w-3 h-3 bg-paan-red rounded-full opacity-30 animate-ping"></div>
-                           </div>
-                           <div className="ml-6">
-                             <div className="text-sm font-bold text-paan-blue mb-1">10:15 - 11:30</div>
-                             <h5 className="text-paan-dark-blue"><span className="font-bold">AI & Machine Learning</span> in Creative Industries</h5>
-                           </div>
-                         </div>
-                         
-                         {/* Timeline item 3 */}
-                         <div className="flex items-center relative">
-                           <div className="relative">
-                             <div className="w-3 h-3 bg-paan-red rounded-full shadow-lg shadow-paan-red/50 flex-shrink-0 z-10 relative"></div>
-                             <div className="absolute inset-0 w-3 h-3 bg-paan-red rounded-full opacity-30 animate-ping"></div>
-                           </div>
-                           <div className="ml-6">
-                             <div className="text-sm font-bold text-paan-blue mb-1">11:45 - 13:00</div>
-                             <h5 className="text-paan-dark-blue"><span className="font-bold">Deal Rooms:</span> Tech Partnerships & Investment</h5>
-                           </div>
-                         </div>
-                         
-                         {/* Timeline item 4 */}
-                         <div className="flex items-center relative">
-                           <div className="relative">
-                             <div className="w-3 h-3 bg-paan-red rounded-full shadow-lg shadow-paan-red/50 flex-shrink-0 z-10 relative"></div>
-                             <div className="absolute inset-0 w-3 h-3 bg-paan-red rounded-full opacity-30 animate-ping"></div>
-                           </div>
-                           <div className="ml-6">
-                             <div className="text-sm font-bold text-paan-blue mb-1">13:00 - 14:00</div>
-                             <h5 className="font-bold text-paan-dark-blue">Networking Lunch</h5>
-                           </div>
-                         </div>
-                         
-                         {/* Timeline item 5 */}
-                         <div className="flex items-center relative">
-                           <div className="relative">
-                             <div className="w-3 h-3 bg-paan-red rounded-full shadow-lg shadow-paan-red/50 flex-shrink-0 z-10 relative"></div>
-                             <div className="absolute inset-0 w-3 h-3 bg-paan-red rounded-full opacity-30 animate-ping"></div>
-                           </div>
-                           <div className="ml-6">
-                             <div className="text-sm font-bold text-paan-blue mb-1">14:00 - 15:30</div>
-                             <h5 className="text-paan-dark-blue"><span className="font-bold">Workshops:</span> Digital Transformation</h5>
-                           </div>
-                         </div>
-                         
-                         {/* Timeline item 6 */}
-                         <div className="flex items-center relative">
-                           <div className="relative">
-                             <div className="w-3 h-3 bg-paan-red rounded-full shadow-lg shadow-paan-red/50 flex-shrink-0 z-10 relative"></div>
-                             <div className="absolute inset-0 w-3 h-3 bg-paan-red rounded-full opacity-30 animate-ping"></div>
-                           </div>
-                           <div className="ml-6">
-                             <div className="text-sm font-bold text-paan-blue mb-1">15:45 - 17:00</div>
-                             <h5 className="text-paan-dark-blue">Closing Plenary & Commitments</h5>
-                           </div>
-                         </div>
-                         
-                         {/* Timeline item 7 */}
-                         <div className="flex items-center relative">
-                           <div className="relative">
-                             <div className="w-3 h-3 bg-paan-red rounded-full shadow-lg shadow-paan-red/50 flex-shrink-0 z-10 relative"></div>
-                             <div className="absolute inset-0 w-3 h-3 bg-paan-red rounded-full opacity-30 animate-ping"></div>
-                           </div>
-                           <div className="ml-6">
-                             <div className="text-sm font-bold text-paan-blue mb-1">17:30 - Late</div>
-                             <h5 className="font-bold text-paan-dark-blue">PAAN Awards & Summit Closing Reception</h5>
-                           </div>
-                         </div>
-                       </div>
-                     </div>
-                   </>
-                 )}
-               </div>
-            </div>
-          </section>
-        </div>
+        <SummitAgenda sectionRefs={sectionRefs} handleScroll={handleScroll} isFixed={isFixed} id="agenda" />
 
         {/* Who to Join Section */}
         <div className="bg-white py-12 sm:py-16 md:py-20" id="participants">
@@ -1175,7 +1063,7 @@ const SummitPage = () => {
           <section className="relative mx-auto max-w-6xl">
               <div className="text-left mb-12 space-y-4">
                <h2 className="text-xs w-fit text-paan-dark-blue mb-4 bg-paan-blue text-white rounded-full px-4 py-2">Why Attend</h2>
-               <h3 className="text-3xl text-paan-dark-blue font-bold uppercase">Do business, not just talk.</h3>
+               <h3 className="text-3xl text-paan-dark-blue font-bold uppercase">Crossborder  Connections</h3>
                <p className="text-xl font-normal text-paan-dark-blue mb-4">Walk away with meaningful connections, matched partners, and real deals.</p>
              </div>
              <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -1190,7 +1078,7 @@ const SummitPage = () => {
                         className="w-20 h-20"
                       />
                     </div>
-                    <h4 className="text-xl font-bold text-white mb-2">Do Business, Not Just Talk</h4>
+                    <h4 className="text-xl font-bold text-white mb-2">Connect with continental leaders</h4>
                     <p className="text-white mb-8">Investor connections, signed NDAs, and draft term sheets.</p>
                   </div>
                   <div className="w-full h-[20px] sm:h-[30px] md:h-[40px]">
@@ -1400,13 +1288,13 @@ const SummitPage = () => {
                  <div className="flex space-x-4 sm:space-x-6 md:space-x-8 whitespace-nowrap">
                    {[...Array(4)].map((_, i) => (
                      <div key={`right-${i}`} className="flex items-center space-x-4 sm:space-x-6 md:space-x-8">
-                       <span className="text-lg sm:text-xl md:text-2xl font-semibold text-paan-dark-blue whitespace-nowrap">Music Producers</span>
+                       <span className="text-lg sm:text-xl md:text-2xl font-semibold text-paan-dark-blue whitespace-nowrap">Creative Industry Leaders</span>
                        <span className="text-2xl sm:text-3xl text-paan-red">•</span>
-                       <span className="text-lg sm:text-xl md:text-2xl font-semibold text-paan-dark-blue whitespace-nowrap">Fashion Designers</span>
+                       <span className="text-lg sm:text-xl md:text-2xl font-semibold text-paan-dark-blue whitespace-nowrap">Tech & Platform Innovators</span>
                        <span className="text-2xl sm:text-3xl text-paan-blue">•</span>
-                       <span className="text-lg sm:text-xl md:text-2xl font-semibold text-paan-dark-blue whitespace-nowrap">Gaming Studios</span>
+                       <span className="text-lg sm:text-xl md:text-2xl font-semibold text-paan-dark-blue whitespace-nowrap">Policy Makers</span>
                        <span className="text-2xl sm:text-3xl text-paan-dark-blue">•</span>
-                       <span className="text-lg sm:text-xl md:text-2xl font-semibold text-paan-dark-blue whitespace-nowrap">SaaS Founders</span>
+                       <span className="text-lg sm:text-xl md:text-2xl font-semibold text-paan-dark-blue whitespace-nowrap">Investors </span>
                        <span className="text-2xl sm:text-3xl text-paan-yellow">•</span>
                      </div>
                    ))}
@@ -1420,7 +1308,7 @@ const SummitPage = () => {
                  <div className="flex space-x-4 sm:space-x-6 md:space-x-8 whitespace-nowrap">
                    {[...Array(4)].map((_, i) => (
                      <div key={`left-${i}`} className="flex items-center space-x-4 sm:space-x-6 md:space-x-8">
-                       <span className="text-lg sm:text-xl md:text-2xl font-semibold text-paan-dark-blue whitespace-nowrap">Film Directors</span>
+                       <span className="text-lg sm:text-xl md:text-2xl font-semibold text-paan-dark-blue whitespace-nowrap">Brand Owners</span>
                        <span className="text-2xl sm:text-3xl text-paan-red">•</span>
                        <span className="text-lg sm:text-xl md:text-2xl font-semibold text-paan-dark-blue whitespace-nowrap">Brand Strategists</span>
                        <span className="text-2xl sm:text-3xl text-paan-blue">•</span>
@@ -1568,7 +1456,7 @@ const SummitPage = () => {
           </section>
          </div>
           {/* Parallax Section */}
-          <div className="relative py-6 sm:py-8 md:py-12 lg:py-16 xl:py-20 overflow-hidden h-[320px] sm:h-[400px] md:h-[450px] lg:h-[500px] xl:h-[550px]" id="parallax-section" isFixed={isFixed}>
+          <div className="relative py-6 sm:py-8 md:py-12 lg:py-16 xl:py-20 overflow-hidden h-[320px] sm:h-[400px] md:h-[450px] lg:h-[500px] xl:h-[550px]" id="parallax-section" isFixed={isFixed} id="exhibition">
             {/* Parallax Background Image */}
             <div 
               className="absolute inset-0 bg-cover bg-center sm:bg-fixed bg-scroll"
@@ -1604,7 +1492,7 @@ const SummitPage = () => {
                 {/* CTA Button */}
                 <div className="flex justify-center sm:justify-start mt-6 sm:mt-8 md:mt-10">
                   <button 
-                    onClick={() => setShowExhibitionModal(true)} 
+                    onClick={()=>window.location.href='/summit/exhibitors'} 
                     className="bg-paan-red hover:bg-paan-red/90 text-white px-6 sm:px-8 md:px-10 py-3 sm:py-4 rounded-full transition-all duration-300 font-medium text-sm sm:text-base shadow-lg hover:shadow-xl flex items-center justify-center gap-2 w-full max-w-xs sm:max-w-sm md:w-auto min-h-[48px] active:scale-95"
                   >
                     <span>Apply to Exhibit</span>
@@ -1928,14 +1816,13 @@ const SummitPage = () => {
 
                   {/* Registration Button */}
                   <div className="pt-4">
-                    <TicketPurchaseButton 
-                      variant="primary" 
-                      size="lg"
-                      className="w-full py-4 text-lg font-semibold"
+                    <button 
+                      onClick={() => window.location.href = '/summit/purchase-ticket'}
+                      className="bg-paan-red text-white w-full py-4 text-lg font-semibold rounded-full hover:bg-paan-red/90 transition-all duration-300 shadow-lg flex items-center justify-center gap-2"
                     >
                       <Icon icon="mdi:ticket" width="20" height="20" />
                       Register Now
-                    </TicketPurchaseButton>
+                    </button>
                   </div>
                 </div>
               </div>
@@ -2027,14 +1914,13 @@ const SummitPage = () => {
               
               {/* Desktop Registration Button */}
               <div className="hidden sm:flex justify-center">
-                <TicketPurchaseButton 
-                  variant="primary" 
-                  size="lg"
-                  className="px-6 sm:px-8 md:px-12 py-2 sm:py-3 md:py-4 text-sm sm:text-base md:text-lg w-full sm:w-auto"
+                <button 
+                  onClick={() => window.location.href = '/summit/purchase-ticket'}
+                  className="bg-paan-red text-white px-6 sm:px-8 md:px-12 py-2 sm:py-3 md:py-4 text-sm sm:text-base md:text-lg w-full sm:w-auto rounded-full hover:bg-paan-red/90 transition-all duration-300 font-medium shadow-lg flex items-center justify-center gap-2"
                 >
                   <Icon icon="mdi:ticket" width="16" height="16" className="sm:w-5 sm:h-5" />
-                  Register Now
-                </TicketPurchaseButton>
+                  View Tickets
+                </button>
              </div>
           </section>
         </div>
@@ -2298,7 +2184,7 @@ const Hero = ({ sectionRefs, handleScroll, isFixed, timeLeft, onPartnerClick }) 
                 variants={scaleIn}
               >
                 <button 
-                  onClick={(e) => handleScroll(e, '#tickets-section')}
+                  onClick={() => window.location.href = '/summit/purchase-ticket'}
                   className="bg-paan-red text-white px-6 sm:px-8 py-3 rounded-full hover:bg-paan-red/90 transition-all duration-300 font-medium text-sm sm:text-base shadow-lg flex items-center justify-center gap-2 w-full sm:w-auto"
                 >
                   Register Now
@@ -2310,10 +2196,10 @@ const Hero = ({ sectionRefs, handleScroll, isFixed, timeLeft, onPartnerClick }) 
                   Partner With Us
                 </button>
                 <button 
-                  onClick={(e) => handleScroll(e, '#agenda')}
+                  onClick={(e) => handleScroll(e, '#program')}
                   className="bg-transparent border border-white text-white px-6 sm:px-8 py-3 rounded-full hover:bg-white hover:text-paan-red transition-all duration-300 font-medium text-sm sm:text-base shadow-lg flex items-center justify-center gap-2 w-full sm:w-auto"
                 >
-                  View Agenda
+                  View Track
                 </button>                
               </motion.div>
             </motion.div>

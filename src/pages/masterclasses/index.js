@@ -29,105 +29,78 @@ const MasterclassesPage = () => {
 
   // Featured masterclass data - separate from regular masterclasses
   const featuredMasterclass = {
-    id: 2,
-    title: "Managing Challenging Clients",
-    description: "Managing client relationships is at the heart of every successful agency. Yet, even the most seasoned teams encounter difficult clients, shifting expectations, or tense conversations — especially in today's fast-paced hybrid and remote work environments.",
+    id: 7,
+    title: "How To Be The Best Account Handler In Your Agency",
+    description: "Account Handlers are a positive and competitive lot by nature. But the transition from lively pup to 'Top Dog' often seems a difficult and frustrating process. The problem is that 'on the job training' is only as good as 'that particular job'. This course provides an ideal opportunity to really focus on what makes a good Account Handler GREAT.",
+    fullDescription: "This 90-minute training course is aimed at developing tried and trusted methods of the art of Account Handling, a timely refresher for some, a lifesaver for others. Designed specifically for junior-level agency Account Handlers with 1-3 years of experience who now know how to do the basics but want to step up a level. Learn how to take control of your time, lead with confidence, and balance client demands with agency realities.",
     format: "90-minute Interactive Training Course",
-    date: "October 15th, 2025",
+    date: "November 6th, 2025",
     time: "10 am GMT / 12 pm EAT",
     memberPrice: 174,
-    memberOriginalPrice: 220,
+    memberOriginalPrice: 250,
     nonMemberPrice: 250,
     nonMemberOriginalPrice: 320,
     currency: "USD",
-    category: "Client Management",
-    level: "All Levels",
-    instructor: "Niki Hurst Smith",
-    instructorTitle: "HR Consultant & Former Agency Leader with 15+ years experience",
-    image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/featured.jpg",
+    category: "Account Management",
+    level: "Junior to Mid-Level",
+    image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/account-handler.jpg",
+    partnership: "PAAN, in collaboration with the Alliance of Independent Agencies, UK",
+    instructor: "Paul Burns",
+    instructorTitle: "Former Training Director at Saatchi & Saatchi, Co-founder of Rock and a Hardplace",
+    instructorBio: "Paul Burns spent 25 very successful and exciting years at Saatchi & Saatchi, looking after client business. He became their Training Director and first Director of Knowledge Practices, sitting on the main Management Board of the Agency. He is recognised to have passion and skill in developing people and has won several industry awards for Learning and Development. He has run accounts across a wide variety of businesses, from the hugely successful bid and launch of the National Lottery, to fast turnaround business on News International. He has led teams on large and complex financial brands and has run countless Blue Chip FMCG brands. In 2015, he became a co-founder of Rock and a Hardplace, a new and award-winning eLearning program for the Marcoms industry.",
+    instructorExpertise: [
+      "Account Management & Client Relations",
+      "Team Leadership & Development",
+      "Training & Knowledge Management",
+      "Agency Operations & Strategy"
+    ],
     benefits: [
       "5% off on PAAN Summit 2026 tickets",
       "6% off Africa Creative Excellence Awards entry"
     ],
     whoShouldAttend: [
-      "Client-facing professionals in agencies",
-      "Junior to mid-level staff who interact directly with clients",
-      "Agency leaders and managers",
-      "Account managers and project managers"
+      "Junior-level agency Account Handlers with 1-3 years of experience",
+      "Account Managers looking to step up",
+      "Client service professionals",
+      "Agency team leads"
     ],
     learningOutcomes: [
-      "Raising the Standard: What clients truly expect from agencies",
-      "Decoding Difficult Clients: Why some clients seem challenging",
-      "Client-Centric Thinking: Practical frameworks for uncovering client needs",
-      "Turning Tension into Trust: Approaches for navigating tough conversations",
-      "From Dissatisfaction to Loyalty: Strategies to manage dissatisfied clients"
+      "How to take control of your time with practical tools to prioritize, plan, and deliver without overwhelm",
+      "How to lead with confidence — inspiring colleagues, guiding teams, and keeping projects on track",
+      "How to balance client demands with agency realities — understanding what clients truly value",
+      "Master the art of saying 'no' professionally and constructively",
+      "Techniques for planning workload and avoiding procrastination traps",
+      "Practical tools to inspire colleagues and collaborate across teams",
+      "Navigate client relationships and handle difficult conversations confidently"
     ],
     courseObjectives: [
-      "Confidently recognize and respond to the root causes of client dissatisfaction",
-      "Apply practical strategies for transforming challenging situations into positive outcomes",
-      "Strengthen client relationships through proactive communication and trust-building",
-      "Gain a ready-to-use toolkit of tips, scripts, and techniques for managing difficult clients"
+      "Master time management and productivity techniques for account handlers",
+      "Develop leadership skills to inspire colleagues and guide teams effectively",
+      "Learn to balance client expectations with agency capabilities professionally",
+      "Gain confidence in handling difficult client conversations and situations"
     ],
-    partnership: "PAAN, in collaboration with the Alliance of Independent Agencies, UK",
+    whyAttend: [
+      "Proven Experience: Learn from 25+ years of successful agency account management",
+      "Practical Tools: Get actionable techniques for time management and leadership",
+      "Industry Recognition: Training from an award-winning Learning & Development expert",
+      "Career Development: Perfect for account handlers ready to step up to the next level"
+    ],
+    outcome: "This course provides an ideal opportunity to really focus on what makes a good Account Handler GREAT, with tried and trusted methods of the art of Account Handling.",
     status: "upcoming"
   };
 
   // Sample masterclasses data - this would come from your database
   const masterclassesData = [
     {
-      id: 2,
-      title: "Managing Challenging Clients",
-      description: "Managing client relationships is at the heart of every successful agency. Yet, even the most seasoned teams encounter difficult clients, shifting expectations, or tense conversations — especially in today's fast-paced hybrid and remote work environments.",
-      format: "90-minute Interactive Training Course",
-      date: "October 15th, 2025",
-      time: "10 am GMT / 12 pm EAT",
-      memberPrice: 174,
-      memberOriginalPrice: 220,
-      nonMemberPrice: 250,
-      nonMemberOriginalPrice: 320,
-      currency: "USD",
-      category: "Client Management",
-      level: "All Levels",
-      instructor: "Niki Hurst Smith",
-      instructorTitle: "HR Consultant & Former Agency Leader with 15+ years experience",
-      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/challenging-clients.jpg",
-      benefits: [
-        "5% off on PAAN Summit 2026 tickets",
-        "6% off Africa Creative Excellence Awards entry"
-      ],
-      whoShouldAttend: [
-        "Client-facing professionals in agencies",
-        "Junior to mid-level staff who interact directly with clients",
-        "Agency leaders and managers",
-        "Account managers and project managers"
-      ],
-      learningOutcomes: [
-        "Raising the Standard: What clients truly expect from agencies",
-        "Decoding Difficult Clients: Why some clients seem challenging",
-        "Client-Centric Thinking: Practical frameworks for uncovering client needs",
-        "Turning Tension into Trust: Approaches for navigating tough conversations",
-        "From Dissatisfaction to Loyalty: Strategies to manage dissatisfied clients"
-      ],
-      courseObjectives: [
-        "Confidently recognize and respond to the root causes of client dissatisfaction",
-        "Apply practical strategies for transforming challenging situations into positive outcomes",
-        "Strengthen client relationships through proactive communication and trust-building",
-        "Gain a ready-to-use toolkit of tips, scripts, and techniques for managing difficult clients"
-      ],
-      partnership: "PAAN, in collaboration with the Alliance of Independent Agencies, UK",
-      featured: false,
-      status: "upcoming"
-    },
-    {
       id: 3,
       title: "Financial Management, Tax & Transfer Pricing for Agencies",
       description: "Creative agencies often struggle with irregular income, multi-currency projects, and tax complexity. This session equips agency leaders and finance managers with the tools to stabilize growth, remain compliant, and make informed financial decisions.",
       format: "3-Hour Interactive Online Workshop",
-      date: "October 23rd, 2025",
+      date: "November 26th, 2025",
       time: "2 pm EAT",
       memberPrice: 60,
-      memberOriginalPrice: 80,
-      nonMemberPrice: 80,
+      memberOriginalPrice: 100,
+      nonMemberPrice: 100,
       nonMemberOriginalPrice: 120,
       currency: "USD",
       category: "Financial Management",
@@ -165,7 +138,7 @@ const MasterclassesPage = () => {
       date: "October 23rd, 2025",
       time: "10 am GMT / 12 pm EAT",
       memberPrice: 174,
-      memberOriginalPrice: 220,
+      memberOriginalPrice: 250,
       nonMemberPrice: 250,
       nonMemberOriginalPrice: 320,
       currency: "USD",
@@ -193,88 +166,59 @@ const MasterclassesPage = () => {
         "Empowerment on questions to ask for clarity in proposal development",
         "Structure and flow to demonstrate understanding and proposed approach"
       ],
+      courseObjectives: [
+        "Master the art of winning pitches through strategic brief analysis",
+        "Develop skills to retain clients and grow long-term relationships",
+        "Learn to identify and address weak briefs before they become problems",
+        "Build confidence in client communication and proposal development"
+      ],
       partnership: "PAAN, in collaboration with the Alliance of Independent Agencies, UK",
       featured: false,
-      status: "upcoming"
+      status: "completed"
     },
     {
-      id: 7,
-      title: "How To Be The Best Account Handler In Your Agency",
-      description: "Account Handlers are a positive and competitive lot by nature. But the transition from lively pup to 'Top Dog' often seems a difficult and frustrating process. The problem is that 'on the job training' is only as good as 'that particular job'. This course provides an ideal opportunity to really focus on what makes a good Account Handler GREAT.",
+      id: 2,
+      title: "Managing Challenging Clients",
+      description: "Managing client relationships is at the heart of every successful agency. Yet, even the most seasoned teams encounter difficult clients, shifting expectations, or tense conversations — especially in today's fast-paced hybrid and remote work environments.",
       format: "90-minute Interactive Training Course",
-      date: "November 6th, 2025",
+      date: "October 15th, 2025",
       time: "10 am GMT / 12 pm EAT",
       memberPrice: 174,
-      memberOriginalPrice: 220,
+      memberOriginalPrice: 250,
       nonMemberPrice: 250,
       nonMemberOriginalPrice: 320,
       currency: "USD",
-      category: "Account Management",
-      level: "Junior to Mid-Level",
-      instructor: "Paul Burns",
-      instructorTitle: "Former Training Director at Saatchi & Saatchi, Co-founder of Rock and a Hardplace",
-      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/account-handler.jpg",
+      category: "Client Management",
+      level: "All Levels",
+      instructor: "Niki Hurst Smith",
+      instructorTitle: "HR Consultant & Former Agency Leader with 15+ years experience",
+      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/challenging-clients.jpg",
       benefits: [
         "5% off on PAAN Summit 2026 tickets",
         "6% off Africa Creative Excellence Awards entry"
       ],
       whoShouldAttend: [
-        "Junior-level agency Account Handlers with 1-3 years of experience",
-        "Account Managers looking to step up",
-        "Client service professionals",
-        "Agency team leads"
+        "Client-facing professionals in agencies",
+        "Junior to mid-level staff who interact directly with clients",
+        "Agency leaders and managers",
+        "Account managers and project managers"
       ],
       learningOutcomes: [
-        "How to take control of your time with practical tools to prioritize, plan, and deliver without overwhelm",
-        "How to lead with confidence — inspiring colleagues, guiding teams, and keeping projects on track",
-        "How to balance client demands with agency realities — understanding what clients truly value",
-        "Master the art of saying 'no' professionally and constructively",
-        "Techniques for planning workload and avoiding procrastination traps",
-        "Practical tools to inspire colleagues and collaborate across teams",
-        "Navigate client relationships and handle difficult conversations confidently"
+        "Raising the Standard: What clients truly expect from agencies",
+        "Decoding Difficult Clients: Why some clients seem challenging",
+        "Client-Centric Thinking: Practical frameworks for uncovering client needs",
+        "Turning Tension into Trust: Approaches for navigating tough conversations",
+        "From Dissatisfaction to Loyalty: Strategies to manage dissatisfied clients"
       ],
-      partnership: "PAAN, in collaboration with the Alliance of Independent Agencies, UK",
-      featured: false,
-      status: "upcoming"
-    },
-    {
-      id: 4,
-      title: "Proposal Writing & Bidding for Global Clients",
-      description: "Winning international contracts requires more than great ideas—it requires compelling proposals that showcase professionalism and global readiness. This session helps agencies sharpen their proposal writing and bidding strategies.",
-      format: "2.5-Hour Interactive Online Workshop",
-      date: "November 13th, 2025",
-      time: "2 pm EAT",
-      memberPrice: 60,
-      memberOriginalPrice: 80,
-      nonMemberPrice: 80,
-      nonMemberOriginalPrice: 120,
-      currency: "USD",
-      category: "Business Development",
-      level: "Intermediate",
-      instructor: "Expert Trainer",
-      instructorTitle: "International Business Development Specialist",
-      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/proposal-writing.jpg",
-      benefits: [
-        "5% off on PAAN Summit 2026 tickets",
-        "10% off Africa Creative Excellence Awards entry"
+      courseObjectives: [
+        "Confidently recognize and respond to the root causes of client dissatisfaction",
+        "Apply practical strategies for transforming challenging situations into positive outcomes",
+        "Strengthen client relationships through proactive communication and trust-building",
+        "Gain a ready-to-use toolkit of tips, scripts, and techniques for managing difficult clients"
       ],
-      whoShouldAttend: [
-        "Agency founders & partners",
-        "Finance managers & business leads",
-        "Account directors & business development leads",
-        "HR & operations managers in agencies"
-      ],
-      learningOutcomes: [
-        "Structure winning proposals that stand out in competitive RFPs",
-        "Use storytelling to position African creativity on the global stage",
-        "Price proposals strategically for profitability and competitiveness",
-        "Peer-review and refine proposals with expert guidance"
-      ],
-      takeawayToolkit: "Proposal template + Proposal evaluation checklist",
-      series: "Agency Growth & Leadership Masterclass Series",
-      moduleNumber: 2,
-      featured: false,
-      status: "upcoming"
+       partnership: "PAAN, in collaboration with the Alliance of Independent Agencies, UK",
+       featured: false,
+       status: "completed"
     },
     // {
     //   id: 1,
@@ -326,8 +270,8 @@ const MasterclassesPage = () => {
       date: "December 10th, 2025",
       time: "2 pm EAT",
       memberPrice: 60,
-      memberOriginalPrice: 80,
-      nonMemberPrice: 80,
+      memberOriginalPrice: 100,
+      nonMemberPrice: 100,
       nonMemberOriginalPrice: 120,
       currency: "USD",
       category: "Leadership",
@@ -357,7 +301,8 @@ const MasterclassesPage = () => {
       moduleNumber: 3,
       featured: false,
       status: "upcoming"
-    }
+    },
+    
   ];
 
   // Helper function to parse dates for sorting
@@ -380,16 +325,25 @@ const MasterclassesPage = () => {
     return new Date(); // fallback to current date
   };
 
-  // Sort masterclasses by date (earliest first) - create a new array to avoid mutation
+  // Sort masterclasses by status first (completed last), then by date (earliest first)
   const masterclasses = [...masterclassesData].sort((a, b) => {
+    // First, sort by status: completed masterclasses go to the end
+    if (a.status === 'completed' && b.status !== 'completed') {
+      return 1; // a comes after b
+    }
+    if (a.status !== 'completed' && b.status === 'completed') {
+      return -1; // a comes before b
+    }
+    
+    // If both have the same status, sort by date (earliest first)
     const dateA = parseDate(a.date);
     const dateB = parseDate(b.date);
     return dateA.getTime() - dateB.getTime();
   });
 
   const categories = [
-    { id: 'all', name: 'All Masterclasses', count: masterclasses.length },
-    { id: 'business-development', name: 'Business Development', count: 3 },
+    { id: 'all', name: 'All Masterclasses', count: masterclasses.length + 1 }, // +1 for featured
+    { id: 'business-development', name: 'Business Development', count: 2 },
     { id: 'client-management', name: 'Client Management', count: 1 },
     { id: 'account-management', name: 'Account Management', count: 1 },
     { id: 'financial-management', name: 'Financial Management', count: 1 },
@@ -405,6 +359,11 @@ const MasterclassesPage = () => {
       masterclass.description.toLowerCase().includes(searchTerm.toLowerCase());
     return matchesCategory && matchesSearch;
   });
+
+  // When "all" category is selected, add the featured masterclass at the beginning
+  const finalFilteredMasterclasses = selectedCategory === 'all' && searchTerm === '' 
+    ? [featuredMasterclass, ...filteredMasterclasses]
+    : filteredMasterclasses;
 
   return (
     <>
@@ -484,19 +443,26 @@ const MasterclassesPage = () => {
                   In Collaboration With
                 </p>
                 <div className="flex items-center justify-center">
-                  <div className="bg-white backdrop-blur-sm rounded-2xl p-4 border border-white/20 hover:bg-white/50 transition-all duration-300">
-                    <div className="flex items-center gap-4">
-                      <div className="group relative">
-                        <div className="relative w-full h-32 flex items-center justify-center group-hover:-translate-y-1 transition-transform duration-300">
-                          <img 
-                            src="/assets/images/partners/aia-2.png" 
-                            alt="AIA Logo" 
-                            className="w-48 h-48 object-contain group-hover:scale-105 transition-transform duration-300" 
-                          />
+                  <Link 
+                    href="https://publicisteastafrica.com/alliance-of-independent-agencies-forges-landmark-partnership-with-paan-to-elevate-africas-creative-ecosystem/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block"
+                  >
+                    <div className="bg-white backdrop-blur-sm rounded-2xl p-4 border border-white/20 hover:bg-white/50 transition-all duration-300 cursor-pointer">
+                      <div className="flex items-center gap-4">
+                        <div className="group relative">
+                          <div className="relative w-full h-32 flex items-center justify-center group-hover:-translate-y-1 transition-transform duration-300">
+                            <img 
+                              src="/assets/images/partners/aia-2.png" 
+                              alt="AIA Logo" 
+                              className="w-48 h-48 object-contain group-hover:scale-105 transition-transform duration-300" 
+                            />
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </Link>
                 </div>
               </motion.div>
             </motion.div>
@@ -715,9 +681,9 @@ const MasterclassesPage = () => {
 
             {/* Masterclasses Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {filteredMasterclasses.length > 0 ? (
-                filteredMasterclasses.map(masterclass => (
-                  <div key={masterclass.id} className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group flex flex-col">
+              {finalFilteredMasterclasses.length > 0 ? (
+                finalFilteredMasterclasses.map(masterclass => (
+                  <div key={masterclass.id} className={`bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group flex flex-col ${masterclass.status === 'not-accepting-bookings' || masterclass.status === 'completed' ? 'opacity-60' : ''}`}>
                     <Link href={`/masterclasses/${masterclass.id}`} className="relative h-48 flex-shrink-0 cursor-pointer">
                       <Image
                         src={masterclass.image}
@@ -727,10 +693,24 @@ const MasterclassesPage = () => {
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                       <div className="absolute top-4 left-4">
-                        <span className="bg-[#F2B706] text-[#172840] px-3 py-1 rounded-full text-xs font-bold">
-                          {masterclass.status === 'upcoming' ? 'UPCOMING' : 'LIVE'}
+                        <span className={`px-3 py-1 rounded-full text-xs font-bold ${
+                          masterclass.status === 'upcoming' ? 'bg-[#F2B706] text-[#172840]' :
+                          masterclass.status === 'not-accepting-bookings' ? 'bg-gray-500 text-white' :
+                          masterclass.status === 'completed' ? 'bg-gray-500 text-white' :
+                          'bg-[#F2B706] text-[#172840]'
+                        }`}>
+                          {masterclass.status === 'upcoming' ? 'UPCOMING' : 
+                           masterclass.status === 'not-accepting-bookings' ? 'NOT ACCEPTING BOOKINGS' : 
+                           masterclass.status === 'completed' ? 'COMPLETED' : 'LIVE'}
                         </span>
                       </div>
+                      {masterclass.id === featuredMasterclass.id && (
+                        <div className="absolute top-4 right-4">
+                          <span className="bg-[#F25849] text-white px-3 py-1 rounded-full text-xs font-bold">
+                            FEATURED
+                          </span>
+                        </div>
+                      )}
                       <div className="absolute bottom-4 left-4 right-4">
                         <div className="flex items-center justify-between text-white text-sm">
                           <span className="font-medium">{masterclass.date}</span>
@@ -783,9 +763,14 @@ const MasterclassesPage = () => {
 
                       <Link 
                         href={`/masterclasses/${masterclass.id}`}
-                        className="block w-full bg-[#F25849] text-white text-center py-3 rounded-full font-semibold hover:bg-[#D6473C] transition-all duration-300 shadow-md hover:shadow-lg"
+                        className={`block w-full text-center py-3 rounded-full font-semibold transition-all duration-300 shadow-md hover:shadow-lg ${
+                          masterclass.status === 'not-accepting-bookings' || masterclass.status === 'completed'
+                            ? 'bg-gray-400 text-white cursor-not-allowed' 
+                            : 'bg-[#F25849] text-white hover:bg-[#D6473C]'
+                        }`}
                       >
-                        View Details
+                        {masterclass.status === 'not-accepting-bookings' ? 'Not Accepting Bookings' : 
+                         masterclass.status === 'completed' ? 'Completed' : 'View Details'}
                       </Link>
                     </div>
                   </div>

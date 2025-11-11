@@ -31,10 +31,18 @@ export default async function handler(req, res) {
       },
     });
 
+    // Check if early bird deadline is still active (November 25, 2025)
+    const isEarlyBird = () => {
+      const earlyBirdDeadline = new Date('2025-11-25T23:59:59+03:00'); // November 25, 2025 at 11:59 PM EAT
+      const now = new Date();
+      return now <= earlyBirdDeadline;
+    };
+
     // Calculate pricing details
     const calculatePricingDetails = (data, paymentData) => {
       const isAgency = data.applicantType === 'agency';
-      const pricePerCategory = isAgency ? 130 : 30;
+      // Agency pricing: $130 for early bird (until Nov 25, 2025), $200 regular price
+      const pricePerCategory = isAgency ? (isEarlyBird() ? 130 : 200) : 30;
       const categoryCount = data.selectedCategories.length;
       const baseAmount = pricePerCategory * categoryCount;
       const discountAmount = categoryCount > 1 ? baseAmount * 0.25 : 0;
@@ -46,7 +54,8 @@ export default async function handler(req, res) {
         baseAmount,
         discountAmount,
         finalAmount,
-        currency: paymentData.currency
+        currency: paymentData.currency,
+        isEarlyBird: isEarlyBird()
       };
     };
 

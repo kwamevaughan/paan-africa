@@ -44,7 +44,7 @@ export default function ParallaxSection({ openModal }) {
                 This is your moment to co-create<br/> Africa's strongest agency ecosystem.
               </h2>
               <p className="text-white text-base md:text-lg mb-6 font-light max-w-lg">
-                The PAAN Ambassador Program is your invitation to be part of something bigger — a united force of leaders building the strongest agency ecosystem Africa has ever seen.
+                The PAAN Ambassador Program is your invitation to be part of something bigger, a united force of leaders building the strongest agency ecosystem Africa has ever seen.
               </p>  
               <button 
                 onClick={openModal}

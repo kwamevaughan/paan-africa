@@ -6,7 +6,6 @@ import { useState, useEffect } from "react";
 import { menuItems, ctaButton } from "../data/summitMenu";
 import { useFixedHeader, handleScroll } from "../../utils/scrollUtils";
 import LanguageSwitch from "../components/LanguageSwitch";
-import TicketPurchaseButton from "../components/TicketPurchaseButton";
 
 const Header = ({ navLinkColor }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -18,21 +17,54 @@ const Header = ({ navLinkColor }) => {
 
   // Track active section based on scroll position
   useEffect(() => {
-    const handleScroll = () => {
-      const sections = ['home', 'about-us', 'agenda', 'speakers-section', 'sessions-section', 'paan-awards-section', 'tickets-section', 'plan-your-trip'];
-      const scrollPosition = window.scrollY + 100;
+    const handleScrollEvent = () => {
+      // Get sections from menuItems to ensure they match
+      const sections = menuItems.map(item => item.href.replace('#', ''));
+      const scrollPosition = window.scrollY;
+      
+      // Calculate dynamic offset based on header height
+      const header = document.querySelector('nav');
+      const headerHeight = header ? header.offsetHeight : 0;
+      const headerOffset = headerHeight + 100; // Header height + buffer
 
-      for (let i = sections.length - 1; i >= 0; i--) {
+      let currentSection = 'home'; // Default to home
+
+      // Check sections from top to bottom to find which section is currently in view
+      for (let i = 0; i < sections.length; i++) {
         const section = document.getElementById(sections[i]);
-        if (section && section.offsetTop <= scrollPosition) {
-          setActiveSection(sections[i]);
-          break;
+        if (section) {
+          const sectionTop = section.offsetTop;
+          
+          // If we've scrolled past this section's top (with offset), it's the active one
+          if (scrollPosition + headerOffset >= sectionTop) {
+            currentSection = sections[i];
+          } else {
+            // Once we find a section we haven't reached, stop checking
+            break;
+          }
         }
       }
+
+      setActiveSection(currentSection);
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    // Initial check
+    handleScrollEvent();
+    
+    // Throttle scroll events for better performance
+    let ticking = false;
+    const throttledScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          handleScrollEvent();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+    
+    window.addEventListener('scroll', throttledScroll, { passive: true });
+    return () => window.removeEventListener('scroll', throttledScroll);
   }, []);
 
   // Get navigation item styling based on active state
@@ -119,13 +151,12 @@ const Header = ({ navLinkColor }) => {
             {/* Language Switcher */}
             <LanguageSwitch className="mr-2 xl:mr-3" />
             
-            <TicketPurchaseButton 
-              variant="primary" 
-              size="sm"
-              className={ctaButton.className}
+            <button 
+              onClick={() => window.location.href = '/summit/purchase-ticket'}
+              className="bg-paan-red text-white px-4 py-2 text-sm rounded-full hover:bg-paan-red/90 transition-all duration-300 font-medium shadow-lg flex items-center justify-center gap-2"
             >
               {ctaButton.label}
-            </TicketPurchaseButton>
+            </button>
           </div>
         </div>
 
@@ -159,13 +190,12 @@ const Header = ({ navLinkColor }) => {
               );
             })}
             <div className="px-3 sm:px-4 py-3 mt-4">
-              <TicketPurchaseButton 
-                variant="primary" 
-                size="sm"
-                className={ctaButton.mobileClassName}
+              <button 
+                onClick={() => window.location.href = '/summit/purchase-ticket'}
+                className="bg-paan-red text-white px-4 py-2 text-sm rounded-full hover:bg-paan-red/90 transition-all duration-300 font-medium shadow-lg flex items-center justify-center gap-2 w-full"
               >
                 {ctaButton.label}
-              </TicketPurchaseButton>
+              </button>
             </div>
           </div>
         </div>

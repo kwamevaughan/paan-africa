@@ -205,6 +205,87 @@ const PAANAwardsApplicationModal = ({ isOpen, onClose }) => {
       ]
     },
     {
+      id: 'creative-excellence',
+      name: 'Creative Excellence Awards',
+      description: 'Celebrating mastery in design, branding, and visual storytelling.',
+      subcategories: [
+        {
+          id: 'freelancer-year',
+          name: 'Freelancer of the Year Award',
+          description: 'The highest individual honour, celebrating an outstanding freelancer who demonstrated creativity, leadership, and measurable business impact across multiple projects.'
+        },
+        {
+          id: 'brand-identity',
+          name: 'Excellence in Brand Identity & Visual Design Award',
+          description: 'For exceptional brand, graphic, or visual design work that elevated client positioning, storytelling, and recognition.'
+        },
+        {
+          id: 'ui-ux',
+          name: 'UI/UX & Product Design Innovation Award',
+          description: 'Recognizing exceptional freelancers in app, web, or product experience design that enhanced usability and digital engagement.'
+        },
+        {
+          id: 'photography',
+          name: 'Photography & Visual Storytelling Award',
+          description: 'For photographers and visual storytellers whose imagery powerfully communicates emotion, culture, and brand narrative.'
+        }
+      ]
+    },
+    {
+      id: 'digital-performance',
+      name: 'Digital Performance Awards',
+      description: 'Recognizing freelancers driving measurable results and ROI for brands in the digital economy.',
+      subcategories: [
+        {
+          id: 'website-dev',
+          name: 'Website & No-Code Development Excellence Award',
+          description: 'Celebrating freelancers who have delivered high-performance websites or e-commerce platforms using modern or no-code tools.'
+        },
+        {
+          id: 'seo-content',
+          name: 'SEO Content & Copywriting Excellence Award',
+          description: 'Honouring writers whose strategic, high-quality content drives visibility, engagement, and organic growth.'
+        },
+        {
+          id: 'performance-marketing',
+          name: 'Performance Marketing Specialist Award',
+          description: 'For freelancers who excel in digital ad strategy, campaign optimization, and conversion-focused creative execution.'
+        },
+        {
+          id: 'email-crm',
+          name: 'Email, CRM & Lifecycle Marketing Award',
+          description: 'Recognizing top freelancers crafting high-performing retention and automation campaigns through email, SMS, or WhatsApp.'
+        }
+      ]
+    },
+    {
+      id: 'innovation-storytelling',
+      name: 'Innovation & Storytelling Awards',
+      description: 'Showcasing freelancers leading the way in modern storytelling, video, and digital innovation.',
+      subcategories: [
+        {
+          id: 'short-form-video',
+          name: 'Short-Form Video & Editing Mastery Award',
+          description: 'For creative editors and storytellers mastering short-form platforms like TikTok, YouTube Shorts, and Reels.'
+        },
+        {
+          id: 'motion-graphics',
+          name: 'Motion Graphics & 3D Creativity Award',
+          description: 'Honouring motion designers and 3D/AR specialists who elevate visual storytelling through technology and innovation.'
+        },
+        {
+          id: 'ugc-creator',
+          name: 'UGC Creator of the Year Award',
+          description: 'For independent creators producing authentic, high-impact user-generated content that amplifies brands across Africa.'
+        },
+        {
+          id: 'social-media',
+          name: 'Social Media Strategy & Community Growth Award',
+          description: 'Recognizing freelancers who\'ve built thriving, engaged digital communities through smart content strategy and audience insight.'
+        }
+      ]
+    },
+    {
       id: 'special-honors',
       name: 'Special Honors',
       description: 'Reserved for the highest level of recognition, these awards celebrate visionary leadership and overall excellence. These honors recognize the individuals and agencies that embody the best of Africa\'s independent creative ecosystem.',
@@ -223,6 +304,17 @@ const PAANAwardsApplicationModal = ({ isOpen, onClose }) => {
     }
   ];
 
+  // Define category IDs for each applicant type
+  const agencyCategoryIds = ['campaign-excellence', 'agency-excellence', 'innovation-technology', 'sector-excellence', 'special-honors'];
+  const freelancerCategoryIds = ['creative-excellence', 'digital-performance', 'innovation-storytelling'];
+
+  // Filter categories based on applicant type
+  const filteredAwardCategories = awardCategories.filter(category =>
+    formData.applicantType === 'agency'
+      ? agencyCategoryIds.includes(category.id)
+      : freelancerCategoryIds.includes(category.id)
+  );
+
   const countries = [
     'Nigeria', 'Kenya', 'South Africa', 'Ghana', 'Egypt', 'Morocco', 
     'Tunisia', 'Algeria', 'Ethiopia', 'Uganda', 'Tanzania', 'Rwanda',
@@ -239,15 +331,25 @@ const PAANAwardsApplicationModal = ({ isOpen, onClose }) => {
     '16+ years'
   ];
 
+  // Check if early bird deadline is still active (November 25, 2025)
+  const isEarlyBird = () => {
+    const earlyBirdDeadline = new Date('2025-11-25T23:59:59+03:00'); // November 25, 2025 at 11:59 PM EAT
+    const now = new Date();
+    return now <= earlyBirdDeadline;
+  };
+
   // Pricing configuration
   const pricing = {
     agency: {
-      pricePerCategory: 200,
+      pricePerCategory: isEarlyBird() ? 130 : 200,
+      slashedPrice: isEarlyBird() ? 200 : 250,
       currency: 'USD',
-      description: 'Agency Application Fee per Category'
+      description: 'Agency Application Fee per Category',
+      earlyBirdDeadline: 'November 25, 2025'
     },
     freelancer: {
       pricePerCategory: 30,
+      slashedPrice: 50,
       currency: 'USD',
       description: 'Freelancer Application Fee per Category'
     }
@@ -528,7 +630,7 @@ const PAANAwardsApplicationModal = ({ isOpen, onClose }) => {
 
   if (!isOpen) return null;
 
-  // All categories are now available to both agencies and freelancers
+  // Categories are filtered based on applicant type
   const currentPricing = pricing[formData.applicantType];
 
   return (
@@ -546,10 +648,7 @@ const PAANAwardsApplicationModal = ({ isOpen, onClose }) => {
             <div>
               <h2 className="text-2xl font-bold">PAAN Awards Application</h2>
               <p className="text-white/80 mt-1">
-                {formData.applicantType === 'agency' ? 'Agency Application' : 'Freelancer Application'} - ${currentPricing.pricePerCategory} USD per category
-                {formData.selectedCategories.length > 1 && (
-                  <span className="text-yellow-400 ml-2">(25% discount applied!)</span>
-                )}
+                {formData.applicantType === 'agency' ? 'Agency Application' : 'Freelancer Application'}
               </p>
               {!paystackReady && (
                 <div className="flex items-center gap-2 mt-2">
@@ -586,7 +685,6 @@ const PAANAwardsApplicationModal = ({ isOpen, onClose }) => {
                 <div className="text-center">
                   <Icon icon="mdi:office-building" className="w-8 h-8 mx-auto mb-2" />
                   <h3 className="font-semibold">Agency</h3>
-                  <p className="text-sm text-gray-600">$200 USD per category</p>
                 </div>
               </button>
               <button
@@ -601,7 +699,6 @@ const PAANAwardsApplicationModal = ({ isOpen, onClose }) => {
                 <div className="text-center">
                   <Icon icon="mdi:account" className="w-8 h-8 mx-auto mb-2" />
                   <h3 className="font-semibold">Freelancer</h3>
-                  <p className="text-sm text-gray-600">$30 USD per category</p>
                 </div>
               </button>
             </div>
@@ -812,7 +909,7 @@ const PAANAwardsApplicationModal = ({ isOpen, onClose }) => {
               </h3>
               
               <div className="space-y-6">
-                {awardCategories.map(categoryGroup => (
+                {filteredAwardCategories.map(categoryGroup => (
                   <div key={categoryGroup.id} className="border border-gray-200 rounded-lg p-4">
                     <div className="mb-4">
                       <h4 className="text-lg font-semibold text-paan-dark-blue mb-2">
@@ -856,18 +953,20 @@ const PAANAwardsApplicationModal = ({ isOpen, onClose }) => {
               {errors.selectedCategories && <p className="text-red-500 text-xs mt-2">{errors.selectedCategories}</p>}
               
               {/* Important Award Information */}
-              <div className="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
-                <div className="flex items-start gap-3">
-                  <Icon icon="mdi:trophy" className="w-6 h-6 text-blue-600 mt-0.5 flex-shrink-0" />
-                  <div>
-                    <h4 className="font-semibold text-blue-900 mb-2">Important Award Information</h4>
-                    <p className="text-sm text-blue-800">
-                      <strong>In every category, both the agency and client are honored with their own award as a mark of shared achievement.</strong>
-                      This means when you win, both your organization and your client receive recognition, celebrating the collaborative success of your partnership.
-                    </p>
+              {formData.applicantType === 'agency' && (
+                <div className="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+                  <div className="flex items-start gap-3">
+                    <Icon icon="mdi:trophy" className="w-6 h-6 text-blue-600 mt-0.5 flex-shrink-0" />
+                    <div>
+                      <h4 className="font-semibold text-blue-900 mb-2">Important Award Information</h4>
+                      <p className="text-sm text-blue-800">
+                        <strong>In every category, both the agency and client are honored with their own award as a mark of shared achievement.</strong>
+                        This means when you win, both your organization and your client receive recognition, celebrating the collaborative success of your partnership.
+                      </p>
+                    </div>
                   </div>
                 </div>
-              </div>
+              )}
             </div>
 
             {/* Project Information */}
@@ -1039,6 +1138,43 @@ const PAANAwardsApplicationModal = ({ isOpen, onClose }) => {
             {/* Terms and Conditions */}
             <div className="bg-gray-50 p-6 rounded-xl">
               <h3 className="text-lg font-semibold text-gray-900 mb-4">Terms and Conditions</h3>
+              
+              {/* Pricing Information */}
+              <div className="mb-6 p-4 bg-white border border-gray-200 rounded-lg">
+                <h4 className="font-semibold text-gray-900 mb-3">Application Fees</h4>
+                <div className="space-y-3">
+                  {formData.applicantType === 'agency' ? (
+                    <div>
+                      <p className="text-sm text-gray-700">
+                        <strong>Agency Application:</strong>{' '}
+                        {pricing.agency.slashedPrice ? (
+                          <><s>{`$${pricing.agency.slashedPrice}`}</s> <span className="text-paan-red font-semibold">{`$${pricing.agency.pricePerCategory} USD`}</span> per category - Save {`$${pricing.agency.slashedPrice - pricing.agency.pricePerCategory}`}</>
+                        ) : (
+                          <><span className="text-paan-red font-semibold">{`$${pricing.agency.pricePerCategory} USD`}</span> per category</>
+                        )}
+                      </p>
+                      {isEarlyBird() && (
+                        <p className="text-sm text-yellow-600 font-semibold mt-1">
+                          🎉 Early Bird Pricing (Until Nov 25, 2025)
+                        </p>
+                      )}
+                    </div>
+                  ) : (
+                    <div>
+                      <p className="text-sm text-gray-700">
+                        <strong>Freelancer Application:</strong>{' '}
+                        <s>$50</s> <span className="text-paan-red font-semibold">$30 USD</span> per category - Save $20
+                      </p>
+                    </div>
+                  )}
+                  {formData.selectedCategories.length > 1 && (
+                    <p className="text-sm text-green-600 font-semibold">
+                      ✓ 25% multi-category discount applied!
+                    </p>
+                  )}
+                </div>
+              </div>
+              
               <div className="space-y-4">
                 <div className="flex items-start gap-3">
                   <input
@@ -1089,13 +1225,26 @@ const PAANAwardsApplicationModal = ({ isOpen, onClose }) => {
                   <div>
                     <p className="text-white/80">
                       {formData.applicantType === 'agency' ? 'Agency Application Fee' : 'Freelancer Application Fee'}
+                      {formData.applicantType === 'agency' && isEarlyBird() && (
+                        <span className="ml-2 text-yellow-400 text-xs font-semibold">🎉 Early Bird</span>
+                      )}
                     </p>
                     <p className="text-sm text-white/60">
-                      {formData.selectedCategories.length} category(ies) × ${currentPricing.pricePerCategory} USD
+                      {formData.selectedCategories.length} category(ies) ×
+                      {currentPricing.slashedPrice ? (
+                        <span> <s>${currentPricing.slashedPrice}</s> ${currentPricing.pricePerCategory} USD</span>
+                      ) : (
+                        <span> ${currentPricing.pricePerCategory} USD</span>
+                      )}
                     </p>
                   </div>
                   <div className="text-right">
-                    <p className="text-lg font-semibold">${currentPricing.pricePerCategory * formData.selectedCategories.length} USD</p>
+                    <p className="text-lg font-semibold">
+                      {currentPricing.slashedPrice && (formData.applicantType === 'agency' || formData.applicantType === 'freelancer') ? (
+                        <span><s>${currentPricing.slashedPrice * formData.selectedCategories.length}</s> </span>
+                      ) : null}
+                      ${currentPricing.pricePerCategory * formData.selectedCategories.length} USD
+                    </p>
                   </div>
                 </div>
                 
