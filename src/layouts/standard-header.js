@@ -123,7 +123,19 @@ const Header = () => {
     isHomePage = true;
   } else if(currentPath === '/pricing'){
     isHomePage = true;
+  } else if(currentPath === '/certified-agencies/liftup'){
+    isHomePage = true;
+  } else if(currentPath === '/certified-agencies/penquin'){
+    isHomePage = true;
+  } else if(currentPath === '/certified-agencies/nitro121'){
+    isHomePage = true;
+  } else if(currentPath === '/certified-agencies/xperia_agency'){
+    isHomePage = true;
+  } else if(currentPath === '/certified-agencies/omni_options'){
+    isHomePage = true;
   }
+
+
 
   // Helper function to check if a menu item is active
   const isMenuActive = (href) => {
