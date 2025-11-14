@@ -591,7 +591,7 @@ const SummitPage = () => {
 
         {/* Summit Objectives */}
         <div className="bg-white relative py-12 sm:py-16 md:py-20" id="objectives" ref={sectionRefs.objectives} handleScroll={handleScroll} isFixed={isFixed}>
-          <section className="relative mx-auto max-w-6xl z-10 px-4 sm:px-6">
+          <section className="relative mx-auto max-w-6xl px-4 sm:px-6">
             <div className="text-center mb-8 sm:mb-12">
               <h2 className="text-2xl sm:text-3xl md:text-4xl text-[#172840] uppercase font-bold mb-3 sm:mb-4">Summit Objectives</h2>
               <h3 className="text-base sm:text-lg md:text-xl text-[#172840] font-normal max-w-3xl mx-auto">What we aim to achieve across two days of sessions, clinics, deal rooms, and networking.</h3>
