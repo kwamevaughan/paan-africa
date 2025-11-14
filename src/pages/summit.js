@@ -512,7 +512,8 @@ const SummitPage = () => {
             </div>
           </div>
         </div>
-
+        
+        
         <div className="bg-white relative" id="about-us" ref={sectionRefs.about} handleScroll={handleScroll} isFixed={isFixed}>
         <section className="relative mx-auto max-w-6xl z-10 px-4 sm:px-6">
           <div className="grid md:grid-cols-2 gap-8 py-12 sm:py-16 md:py-20 items-center">
@@ -585,6 +586,43 @@ const SummitPage = () => {
             alt="Background Pattern"
             className="absolute bottom-0 left-0 w-full h-1/3 object-cover z-0 opacity-10 pointer-events-none"
           />
+        </div>
+
+
+        {/* Summit Objectives */}
+        <div className="bg-white relative py-12 sm:py-16 md:py-20" id="objectives" ref={sectionRefs.objectives} handleScroll={handleScroll} isFixed={isFixed}>
+          <section className="relative mx-auto max-w-6xl z-10 px-4 sm:px-6">
+            <div className="text-center mb-8 sm:mb-12">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl text-[#172840] uppercase font-bold mb-3 sm:mb-4">Summit Objectives</h2>
+              <h3 className="text-base sm:text-lg md:text-xl text-[#172840] font-normal max-w-3xl mx-auto">What we aim to achieve across two days of sessions, clinics, deal rooms, and networking.</h3>
+            </div>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6">
+              <div className="bg-paan-dark-blue rounded-lg shadow-lg p-4 sm:p-6 flex flex-col h-full">
+                <div className="flex items-start justify-start mb-4">
+                  <img src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/icons/padlock.svg" alt="Unlock Icon" className="w-10 h-10 sm:w-12 sm:h-12" />
+                </div>
+                <p className="text-white text-sm sm:text-base font-normal text-left mt-auto">Unlock cross‑border collaboration & deal flow</p>
+              </div>
+              <div className="bg-paan-dark-blue rounded-lg shadow-lg p-4 sm:p-6 flex flex-col h-full">
+                <div className="flex items-start justify-start mb-4">
+                  <img src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/icons/chain-link.svg?updatedAt=1763114499609" alt="Connect Icon" className="w-10 h-10 sm:w-12 sm:h-12" />
+                </div>
+                <p className="text-white text-sm sm:text-base font-normal text-left mt-auto">Showcase & commercialise African creative talent</p>
+              </div>
+              <div className="bg-paan-dark-blue rounded-lg shadow-lg p-4 sm:p-6 flex flex-col h-full">
+                <div className="flex items-start justify-start mb-4">
+                  <img src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/icons/user-group.svg" alt="Community Icon" className="w-10 h-10 sm:w-12 sm:h-12" />
+                </div>
+                <p className="text-white text-sm sm:text-base font-normal text-left mt-auto">Advance skills, standards & innovation</p>
+              </div>
+              <div className="bg-paan-dark-blue rounded-lg shadow-lg p-4 sm:p-6 flex flex-col h-full">
+                <div className="flex items-start justify-start mb-4">
+                  <img src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/icons/heart-icon.svg" alt="Impact Icon" className="w-10 h-10 sm:w-12 sm:h-12" />
+                </div>
+                <p className="text-white text-sm sm:text-base font-normal text-left mt-auto">Create opportunities for youth & underrepresented talent</p>
+              </div>
+            </div>
+          </section>
         </div>
 
         <div className="mt-6 sm:mt-10 bg-[#DAECF3] relative">
@@ -1456,7 +1494,7 @@ const SummitPage = () => {
           </section>
          </div>
           {/* Parallax Section */}
-          <div className="relative py-6 sm:py-8 md:py-12 lg:py-16 xl:py-20 overflow-hidden h-[320px] sm:h-[400px] md:h-[450px] lg:h-[500px] xl:h-[550px]" id="parallax-section" isFixed={isFixed} id="exhibition">
+          <div className="relative py-6 sm:py-8 md:py-12 lg:py-16 xl:py-20 overflow-hidden h-[320px] sm:h-[400px] md:h-[450px] lg:h-[500px] xl:h-[550px]" id="exhibition" isFixed={isFixed}>
             {/* Parallax Background Image */}
             <div 
               className="absolute inset-0 bg-cover bg-center sm:bg-fixed bg-scroll"
