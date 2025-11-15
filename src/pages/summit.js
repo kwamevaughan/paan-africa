@@ -304,9 +304,9 @@ const SummitPage = () => {
     return () => clearInterval(interval);
   }, []);
 
-  // Set target date to November 1, 2025 for Early Bird deadline
+  // Set target date to January 25, 2026 for Early Bird deadline
   useEffect(() => {
-    const targetDate = new Date('2025-11-01T23:59:59+03:00'); // November 1, 2025 at 11:59 PM EAT
+    const targetDate = new Date('2026-01-25T23:59:59+03:00'); // January 25, 2026 at 11:59 PM EAT
     
     const interval = setInterval(() => {
       const now = new Date();
@@ -1614,7 +1614,7 @@ const SummitPage = () => {
                         </div>
                         <div className="flex items-center gap-2">
                           <Icon icon="mdi:check" className="text-yellow-300" width="16" height="16" />
-                          <span>Save 30% before November 1st, 2025</span>
+                          <span>Save 30% before January 25th, 2026</span>
                         </div>
                       </div>
                     </div>

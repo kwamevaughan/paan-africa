@@ -464,8 +464,8 @@ const SummitPage = () => {
   
   // Countdown timer effect
   useEffect(() => {
-    // Set the target date (November 14th, 2025)
-    const targetDate = new Date('2025-11-14T00:00:00').getTime();
+    // Set the target date (January 25th, 2026)
+    const targetDate = new Date('2026-01-25T23:59:59+03:00').getTime();
     
     const updateCountdown = () => {
       const now = new Date().getTime();
@@ -797,6 +797,28 @@ const SummitPage = () => {
 };
 
 const Tickets = ({ selectedTickets, setSelectedTickets, onNext, errors }) => {
+  const ticketSummaryRef = useRef(null);
+  const prevSelectedTicketsLength = useRef(selectedTickets.length);
+
+  // Auto-scroll to ticket summary when a ticket is selected
+  useEffect(() => {
+    // Only scroll if tickets were just added (length increased)
+    if (selectedTickets.length > 0 && selectedTickets.length > prevSelectedTicketsLength.current) {
+      // Small delay to ensure the summary section is rendered
+      setTimeout(() => {
+        if (ticketSummaryRef.current) {
+          ticketSummaryRef.current.scrollIntoView({ 
+            behavior: 'smooth', 
+            block: 'start',
+            inline: 'nearest'
+          });
+        }
+      }, 300);
+    }
+    // Update the previous length
+    prevSelectedTicketsLength.current = selectedTickets.length;
+  }, [selectedTickets.length]);
+
   const ticketTypes = [
     {
       name: 'General Admission',
@@ -990,7 +1012,7 @@ const Tickets = ({ selectedTickets, setSelectedTickets, onNext, errors }) => {
                 <div className="flex items-baseline gap-2">
                   <h3 className="text-2xl sm:text-3xl font-bold text-paan-dark-blue">${ticket.price}</h3>
                 </div>
-                <p className="text-xs text-paan-red mt-1">Early bird pricing (until Nov 14th 2025)</p>
+                <p className="text-xs text-paan-red mt-1">Early bird pricing (until Jan 25th 2026)</p>
               </motion.div>
               <motion.div 
                 className="mb-4 sm:mb-6"
@@ -1100,6 +1122,7 @@ const Tickets = ({ selectedTickets, setSelectedTickets, onNext, errors }) => {
 
       {selectedTickets.length > 0 && (
         <motion.div 
+          ref={ticketSummaryRef}
           className="mt-4 sm:mt-6 p-4 sm:p-6 bg-white border border-paan-blue rounded-lg max-w-4xl mx-auto shadow-lg"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -1348,64 +1371,6 @@ const Attendees = ({ onNext, onPrev, purchaserInfo, handlePurchaserChange, atten
                             </motion.div>
                     ))}
                             </div>
-                <div className="p-6 bg-white border border-paan-blue rounded-lg shadow-sm">
-                    <h2 className="text-xl font-semibold text-paan-dark-blue mb-2">Documents & Support (optional)</h2>
-                    <p className="text-gray-600 mb-4">The purchaser receives the receipt and support emails.</p>
-                    <form className="space-y-4">
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                          <div>
-                                <label htmlFor="visaLetter" className="block text-[#172840] text-sm font-medium mb-2">
-                                    Need a visa letter?
-                                </label>
-                                <input
-                                    type="text"
-                                    id="visaLetter"
-                                    name="visaLetter"
-                                    className="w-full px-4 py-3 border border-paan-blue rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-paan-dark-blue focus:border-transparent transition-all duration-300"
-                                    placeholder="Enter your full name"
-                                />
-                            </div>
-                            <div>
-                                <label htmlFor="passportName" className="block text-[#172840] text-sm font-medium mb-2">
-                                    Passport Name
-                                </label>
-                                <input
-                                    type="text"
-                                    id="passportName"
-                                    name="passportName"
-                                    className="w-full px-4 py-3 border border-paan-blue rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-paan-dark-blue focus:border-transparent transition-all duration-300"
-                                    placeholder="Enter passport name"
-                                />
-                            </div>
-                        </div>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                          <div>
-                                <label htmlFor="nationality" className="block text-[#172840] text-sm font-medium mb-2">
-                                    Nationality
-                                </label>
-                                <input
-                                    type="text"
-                                    id="nationality"
-                                    name="nationality"
-                                    className="w-full px-4 py-3 border border-paan-blue rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-paan-dark-blue focus:border-transparent transition-all duration-300"
-                                    placeholder="Enter your nationality"
-                                />
-                            </div>
-                            <div>
-                                <label htmlFor="invoiceDetails" className="block text-[#172840] text-sm font-medium mb-2">
-                                    Invoice details (optional)
-                                </label>
-                                <input
-                                    type="text"
-                                    id="invoiceDetails"
-                                    name="invoiceDetails"
-                                    className="w-full px-4 py-3 border border-paan-blue rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-paan-dark-blue focus:border-transparent transition-all duration-300"
-                                    placeholder="Enter invoice details"
-                                />
-                            </div>
-                        </div>
-                    </form>
-                </div>
                 <div className="p-6 bg-white border border-paan-blue rounded-lg shadow-sm">
                     <h2 className="text-xl font-semibold text-paan-dark-blue mb-4">Terms & Preferences</h2>
                     <form>
