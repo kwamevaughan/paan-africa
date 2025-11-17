@@ -2218,7 +2218,7 @@ const Hero = ({ sectionRefs, handleScroll, isFixed, timeLeft, onPartnerClick }) 
                 <SeminarLocationAndDate />
               </motion.div>
               <motion.div 
-                className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-6 md:gap-8"
+                className="flex flex-col sm:flex-row justify-left gap-4 sm:gap-6 md:gap-8"
                 variants={scaleIn}
               >
                 <button 
@@ -2240,7 +2240,14 @@ const Hero = ({ sectionRefs, handleScroll, isFixed, timeLeft, onPartnerClick }) 
                   View Track
                 </button>                
               </motion.div>
+              
             </motion.div>
+            <motion.p 
+                className="text-white/80 text-xs sm:text-sm text-left mt-4 sm:mt-6"
+                variants={fadeInUp}
+              >
+                Organized & managed by the <span className="font-bold">Pan African Agency Network(PAAN)</span>
+              </motion.p>
           </div>
         </div>
       </div>
@@ -2255,7 +2262,7 @@ const SeminarLocationAndDate = ()=> {
     <div className="flex flex-col sm:flex-row gap-2 sm:gap-4">
       <div className="flex items-center gap-2 text-white text-xs sm:text-sm">
         <Icon icon="mdi:map-marker" className="text-red-500 flex-shrink-0" width="20" height="20" />
-        <span className="break-words sm:whitespace-nowrap">Sarit Centre, Nairobi, Kenya - <strong>21–22 April 2026</strong></span>
+        <span className="break-words sm:whitespace-nowrap">Sarit Centre, Nairobi, Kenya - <strong>21 - 22 April 2026</strong></span>
       </div>
       
       <div className="flex items-center gap-2 text-white text-xs sm:text-sm">
