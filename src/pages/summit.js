@@ -1533,7 +1533,7 @@ const SummitPage = () => {
                     onClick={()=>window.location.href='/summit/exhibitors'} 
                     className="bg-paan-red hover:bg-paan-red/90 text-white px-6 sm:px-8 md:px-10 py-3 sm:py-4 rounded-full transition-all duration-300 font-medium text-sm sm:text-base shadow-lg hover:shadow-xl flex items-center justify-center gap-2 w-full max-w-xs sm:max-w-sm md:w-auto min-h-[48px] active:scale-95"
                   >
-                    <span>Apply to Exhibit</span>
+                    <span>View Exhibition Options</span>
                     <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                     </svg>
