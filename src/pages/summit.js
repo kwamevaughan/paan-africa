@@ -2246,7 +2246,7 @@ const Hero = ({ sectionRefs, handleScroll, isFixed, timeLeft, onPartnerClick }) 
                 className="text-white/80 text-xs sm:text-sm text-left mt-4 sm:mt-6"
                 variants={fadeInUp}
               >
-                Organized & managed by the <span className="font-bold">Pan African Agency Network(PAAN)</span>
+                Organized & managed by the <span className="font-bold text-paan-red"><a href="/" className="hover:text-paan-red transition-colors">Pan African Agency Network(PAAN)</a></span>
               </motion.p>
           </div>
         </div>
