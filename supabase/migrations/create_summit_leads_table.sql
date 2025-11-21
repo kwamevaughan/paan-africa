@@ -34,6 +34,21 @@ CREATE POLICY "Service role has full access to summit_leads"
   USING (true)
   WITH CHECK (true);
 
+-- Create policy to allow anonymous users to insert leads (for ticket purchase flow)
+CREATE POLICY "Allow anonymous users to insert leads"
+  ON summit_leads
+  FOR INSERT
+  TO anon
+  WITH CHECK (true);
+
+-- Create policy to allow anonymous users to update their own leads by email
+CREATE POLICY "Allow anonymous users to update leads by email"
+  ON summit_leads
+  FOR UPDATE
+  TO anon
+  USING (true)
+  WITH CHECK (true);
+
 -- Create policy for authenticated users to read their own data
 CREATE POLICY "Users can read their own lead data"
   ON summit_leads

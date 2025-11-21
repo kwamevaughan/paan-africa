@@ -181,16 +181,24 @@ const SummitPage = () => {
     // Save lead contact on step 1 completion
     if (currentStep === 1) {
       try {
-        await saveLeadContact({
+        const leadData = await saveLeadContact({
           fullName: purchaserInfo.fullName,
           email: purchaserInfo.email,
           phone: purchaserInfo.phone,
           country: purchaserInfo.country
         });
+        console.log('✅ Lead saved successfully:', leadData);
         toast.success("Contact information saved!");
       } catch (error) {
-        console.error('Error saving lead:', error);
+        console.error('❌ Error saving lead:', error);
+        console.error('Error details:', {
+          message: error.message,
+          code: error.code,
+          details: error.details,
+          hint: error.hint
+        });
         // Don't block progression if lead save fails
+        toast.error("Note: Contact info couldn't be saved, but you can continue.");
       }
     }
     
