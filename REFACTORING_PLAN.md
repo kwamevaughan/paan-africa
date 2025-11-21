@@ -1,146 +1,147 @@
-# Complete Refactoring Plan for purchase-ticket.js
+# Summit Page Refactoring Plan
 
-## Current Status
-- **Current file size**: 1,912 lines
-- **Target file size**: ~400-500 lines (main page logic only)
-- **Reduction needed**: ~1,400 lines
+## Current State
+- `src/pages/summit.js` is 2265 lines - too long and hard to maintain
+- Mix of logic, data, and UI in one file
 
-## Components Already Extracted ✅
-1. **ContactInfoStep.js** (~130 lines) - Step 1 contact form
-2. **TicketsStep.js** (~280 lines) - Step 2 ticket selection
-3. **FormInput.js** (~30 lines) - Reusable form input component
+## Existing Components (Already Created)
+- ✅ Hero.js
+- ✅ StepBar.js
+- ✅ ContactInfoStep.js
+- ✅ TicketsStep.js
+- ✅ AttendeesStep.js
+- ✅ PaymentStep.js
 
-## Components to Extract 🔄
+## Components to Create
 
-### High Priority (Large Components)
-1. **AttendeesStep.js** (~514 lines, lines 836-1350)
-   - Purchaser information form
-   - Attendee details forms
-   - Documents & support section
-   - Terms & preferences
-   - Order summary sidebar
+### 1. AboutSection.js ✅ CREATED
+- About the Summit content
+- Image with gradient overlays
+- Register button
 
-2. **PaymentStep.js** (~540 lines, lines 1351-1891)
-   - Payment method selection
-   - Invoice generation
-   - Promo code validation
-   - Order summary
-   - Payment buttons
+### 2. ObjectivesSection.js
+- 4 objective cards with icons
+- Grid layout
 
-3. **Hero.js** (~80 lines)
-   - Hero section with countdown timer
-   - Can be reused across summit pages
+### 3. AtAGlanceSection.js  
+- Stats cards (500+ attendees, 20+ countries, etc.)
+- Countdown timer
 
-### Medium Priority (Reusable Components)
-4. **StepBar.js** (~60 lines, lines 45-105)
-   - Progress indicator
-   - Reusable for any multi-step form
+### 4. TracksSection.js
+- 7 track cards with images
+- Track descriptions and tags
 
-5. **OrderSummary.js** (~100 lines)
-   - Ticket summary display
-   - Total calculation
-   - Promo code display
-   - Used in both Attendees and Payment steps
+### 5. SpeakersSection.js
+- Speaker carousel
+- Speaker cards with hover effects
+- Navigation arrows
 
-6. **FormTextarea.js** (~30 lines)
-   - Reusable textarea component
-   - Similar to FormInput
+### 6. SessionsSection.js
+- Special features carousel
+- Session cards
 
-7. **FormCheckbox.js** (~25 lines)
-   - Reusable checkbox component
+### 7. AwardsSection.js
+- 3 award circles
+- Awards ring SVG
 
-### Low Priority (Utility Components)
-8. **SeminarLocationAndDate.js** (~20 lines, lines 1892-1912)
-   - Location and date display
-   - Reusable across summit pages
+### 8. TicketsSection.js
+- Ticket pricing cards
+- Mobile and desktop views
+- Registration button
 
-9. **CountdownTimer.js** (~40 lines)
-   - Extracted from Hero
-   - Reusable countdown component
+### 9. PartnersSection.js
+- Partner logos marquee
+- Sliding animation
 
-## Estimated Final Structure
+### 10. TravelSection.js
+- Venue information
+- Travel support
+- FAQ accordion
 
-```
-paan-africa/src/pages/summit/purchase-ticket.js (~450 lines)
-├── Imports and setup (~50 lines)
-├── Main SummitPage component (~300 lines)
-│   ├── State management
-│   ├── Validation logic
-│   ├── Event handlers
-│   ├── useEffects
-│   └── JSX structure
-└── Export (~5 lines)
+### 11. WhoShouldJoinSection.js
+- 10 participant type cards
+- Grid layout
 
-paan-africa/src/components/summit/
-├── ContactInfoStep.js (130 lines) ✅
-├── TicketsStep.js (280 lines) ✅
-├── AttendeesStep.js (450 lines) 🔄
-├── PaymentStep.js (480 lines) 🔄
-├── Hero.js (80 lines) 🔄
-├── StepBar.js (60 lines) 🔄
-├── OrderSummary.js (100 lines) 🔄
-└── SeminarLocationAndDate.js (20 lines) 🔄
+### 12. StatsSection.js
+- Count-up animation
+- 4 stat cards
 
-paan-africa/src/components/common/
-├── FormInput.js (30 lines) ✅
-├── FormTextarea.js (30 lines) 🔄
-└── FormCheckbox.js (25 lines) 🔄
+### 13. MarqueeSection.js
+- Two marquees (left and right)
+- Participant types
+
+## Data to Extract
+
+### speakers.js (data file)
+```javascript
+export const speakers = [
+  { id, name, title, image, linkedin },
+  ...
+];
 ```
 
-## Benefits of Full Refactoring
+### sessions.js (data file)
+```javascript
+export const sessions = [
+  { id, title, description, image, icon, category },
+  ...
+];
+```
 
-### Code Organization
-- **Maintainability**: Each component has single responsibility
-- **Testability**: Easier to write unit tests for isolated components
-- **Reusability**: Form components can be used across the app
-- **Readability**: Main file focuses on business logic, not UI details
+### tracks.js (data file)
+```javascript
+export const tracks = [
+  { id, title, description, image, features },
+  ...
+];
+```
 
-### Performance
-- **Code splitting**: Components can be lazy-loaded
-- **Smaller bundles**: Better initial load time
-- **Easier debugging**: Isolated components are easier to debug
+## Refactored Structure
 
-### Developer Experience
-- **Faster development**: Reusable components speed up new features
-- **Less duplication**: DRY principle applied
-- **Better collaboration**: Multiple developers can work on different components
+```
+src/
+├── pages/
+│   └── summit.js (main page - orchestrates components)
+├── components/
+│   └── summit/
+│       ├── Hero.js ✅
+│       ├── AboutSection.js ✅
+│       ├── ObjectivesSection.js
+│       ├── AtAGlanceSection.js
+│       ├── TracksSection.js
+│       ├── SpeakersSection.js
+│       ├── SessionsSection.js
+│       ├── AwardsSection.js
+│       ├── TicketsSection.js
+│       ├── PartnersSection.js
+│       ├── TravelSection.js
+│       ├── WhoShouldJoinSection.js
+│       ├── StatsSection.js
+│       └── MarqueeSection.js
+└── data/
+    └── summit/
+        ├── speakers.js
+        ├── sessions.js
+        └── tracks.js
+```
+
+## Benefits
+1. **Maintainability**: Each section is self-contained
+2. **Reusability**: Components can be reused
+3. **Testing**: Easier to test individual components
+4. **Performance**: Can lazy load sections
+5. **Collaboration**: Multiple devs can work on different sections
 
 ## Implementation Steps
+1. ✅ Create AboutSection.js
+2. Extract data to separate files
+3. Create remaining section components
+4. Update summit.js to import and use components
+5. Test all sections
+6. Remove old code
+7. Commit and push
 
-### Phase 1: Extract Reusable Form Components (30 min)
-1. Create FormTextarea.js
-2. Create FormCheckbox.js
-3. Update existing components to use them
-
-### Phase 2: Extract Large Step Components (1 hour)
-1. Extract AttendeesStep.js
-2. Extract PaymentStep.js
-3. Update imports in main file
-
-### Phase 3: Extract Utility Components (30 min)
-1. Extract StepBar.js
-2. Extract OrderSummary.js
-3. Extract Hero.js
-4. Extract SeminarLocationAndDate.js
-
-### Phase 4: Testing & Cleanup (30 min)
-1. Test all steps work correctly
-2. Remove unused code
-3. Update documentation
-4. Run diagnostics
-
-## Expected Results
-
-- **Main file**: 1,912 → ~450 lines (76% reduction)
-- **New components**: 9 reusable components
-- **Code duplication**: Reduced by ~60%
-- **Maintainability**: Significantly improved
-
-## Next Actions
-
-Run this command to start Phase 2:
-```bash
-# This will be done programmatically
-```
-
-Would you like me to proceed with the full refactoring?
+## Estimated Reduction
+- From: 2265 lines
+- To: ~200 lines (main page) + components
+- Reduction: ~90%
