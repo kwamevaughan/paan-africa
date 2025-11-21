@@ -260,7 +260,7 @@ const AttendeesStep = ({
 
       {/* Order Summary Sidebar */}
       <div>
-        <div className="p-4 sm:p-6 bg-white border border-paan-blue rounded-lg shadow-sm sticky top-4">
+        <div className="p-4 sm:p-6 bg-white border border-paan-blue rounded-lg shadow-sm sticky top-40">
           <div className="flex justify-between mb-3 sm:mb-4">
             <h2 className="text-lg sm:text-xl font-semibold text-paan-dark-blue">Your Selection</h2>
             <p className="font-normal text-paan-red text-xs sm:text-sm">Early Bird active</p>
