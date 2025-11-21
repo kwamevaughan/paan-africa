@@ -301,9 +301,6 @@ const SummitPage = () => {
           onPartnerClick={() => setShowPartnerModal(true)} 
         />
 
-        {/* Spacer to maintain layout flow */}
-        <div className="h-screen"></div>
-
         {/* Countdown Banner with offset - Hidden on mobile */}
         <CountdownBanner timeLeft={timeLeft} />
         
