@@ -285,20 +285,30 @@ const SummitPage = () => {
           id="agenda" 
         />
 
-        <SpeakersSection sectionRef={sectionRefs.speakers} />
+        <WhoShouldJoinSection />
         
-        <SessionsSection sectionRef={sectionRefs.sessions} />
+        {/* TODO: Add CrossborderConnectionsSection - Why Attend section */}
         
         <StatsSection 
           counts={counts} 
           sectionRef={sectionRefs.stats} 
         />
         
-        <WhoShouldJoinSection />
+        <SpeakersSection sectionRef={sectionRefs.speakers} />
+        
+        {/* TODO: Add MarqueeSection - Who's in the room */}
+        
+        <SessionsSection sectionRef={sectionRefs.sessions} />
         
         <AwardsSection sectionRef={sectionRefs.awards} />
         
+        {/* TODO: Add ExhibitionSection - Exhibition Opportunities */}
+        
+        {/* TODO: Add TicketsSection - Secure Your Spot */}
+        
         <PartnersSection />
+        
+        {/* TODO: Add PlanYourTripSection */}
 
         <SummitFooter />
         <ScrollToTop />
