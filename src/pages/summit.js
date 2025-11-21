@@ -13,6 +13,7 @@ import PartnerWithUsModal from "@/components/PartnerWithUsModal";
 import ExhibitionApplicationModal from "@/components/ExhibitionApplicationModal";
 import PaystackScript from "@/components/PaystackScript";
 import { motion } from "framer-motion";
+import { generateEventSchema } from '../../utils/structuredData';
 
 // Animation variants - defined outside component for global access
 const fadeInUp = {
@@ -407,70 +408,54 @@ const SummitPage = () => {
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Event",
-              "name": "PAAN Summit 2026 - Africa's Premier Creative & Tech Leadership Conference",
-              "alternateName": "PAAN Inaugural Summit 2026",
-              "startDate": "2026-04-21T09:00:00+03:00",
-              "endDate": "2026-04-23T17:00:00+03:00",
-              "eventAttendanceMode": "https://schema.org/MixedEventAttendanceMode",
-              "eventStatus": "https://schema.org/EventScheduled",
-              "location": {
-                "@type": "Place",
-                "name": "Sarit Centre",
-                "address": {
-                  "@type": "PostalAddress",
-                  "streetAddress": "Sarit Centre, Westlands",
-                  "addressLocality": "Nairobi",
-                  "addressRegion": "Nairobi County",
-                  "postalCode": "00100",
-                  "addressCountry": "KE"
+            __html: JSON.stringify(
+              generateEventSchema({
+                name: "PAAN Summit 2026 - Africa's Premier Creative & Tech Leadership Conference",
+                alternateName: "PAAN Inaugural Summit 2026",
+                description: "Join the inaugural PAAN Summit in Nairobi, Kenya — a groundbreaking event uniting Africa's top creative and tech leaders for three days of innovation, collaboration, and growth. Connect with industry leaders, explore cutting-edge trends, and shape the future of African creativity and technology.",
+                startDate: "2026-04-21T09:00:00+03:00",
+                endDate: "2026-04-23T17:00:00+03:00",
+                eventAttendanceMode: "https://schema.org/MixedEventAttendanceMode",
+                eventStatus: "https://schema.org/EventScheduled",
+                location: {
+                  name: "Sarit Centre",
+                  streetAddress: "Sarit Centre, Westlands",
+                  city: "Nairobi",
+                  region: "Nairobi County",
+                  postalCode: "00100",
+                  country: "KE",
+                  geo: {
+                    latitude: "-1.2921",
+                    longitude: "36.8219"
+                  }
                 },
-                "geo": {
-                  "@type": "GeoCoordinates",
-                  "latitude": "-1.2921",
-                  "longitude": "36.8219"
-                }
-              },
-              "image": [
-                "https://ik.imagekit.io/nkmvdjnna/PAAN/summit/summit-hero.webp?updatedAt=1757505455932",
-                "https://paan.africa/assets/images/hero.webp"
-              ],
-              "description": "Join the inaugural PAAN Summit in Nairobi, Kenya — a groundbreaking event uniting Africa's top creative and tech leaders for three days of innovation, collaboration, and growth. Connect with industry leaders, explore cutting-edge trends, and shape the future of African creativity and technology.",
-              "offers": {
-                "@type": "Offer",
-                "url": "https://paan.africa/summit",
-                "price": "0",
-                "priceCurrency": "USD",
-                "availability": "https://schema.org/InStock",
-                "validFrom": "2026-09-01T00:00:00+03:00",
-                "description": "Free registration for PAAN Summit 2026"
-              },
-              "performer": { 
-                "@type": "Organization", 
-                "name": "PAAN Africa",
-                "url": "https://paan.africa"
-              },
-              "organizer": { 
-                "@type": "Organization", 
-                "name": "Pan-African Agency Network (PAAN)", 
-                "url": "https://paan.africa",
-                "logo": "https://ik.imagekit.io/nkmvdjnna/PAAN/paan-logo.jpg?updatedAt=1757522406296"
-              },
-              "audience": {
-                "@type": "Audience",
-                "audienceType": "Creative and tech professionals, agency leaders, entrepreneurs, innovators"
-              },
-              "eventSchedule": {
-                "@type": "Schedule",
-                "startTime": "09:00",
-                "endTime": "17:00",
-                "repeatFrequency": "P1D",
-                "duration": "P3D"
-              },
-              "keywords": "PAAN Summit 2026, African creative summit, tech conference Africa, Nairobi summit, Pan-African events, African innovation, creative tech Africa, agency summit Africa"
-            }),
+                images: [
+                  "https://ik.imagekit.io/nkmvdjnna/PAAN/summit/summit-hero.webp?updatedAt=1757505455932",
+                  "https://paan.africa/assets/images/hero.webp"
+                ],
+                offers: {
+                  url: "https://paan.africa/summit/purchase-ticket",
+                  price: "65",
+                  currency: "USD",
+                  availability: "https://schema.org/InStock",
+                  validFrom: "2025-09-01T00:00:00+03:00",
+                  description: "Early bird pricing for PAAN Summit 2026"
+                },
+                performer: {
+                  name: "PAAN Africa",
+                  url: "https://paan.africa"
+                },
+                organizer: {
+                  name: "Pan-African Agency Network (PAAN)",
+                  url: "https://paan.africa",
+                  logo: "https://ik.imagekit.io/nkmvdjnna/PAAN/paan-logo.jpg?updatedAt=1757522406296"
+                },
+                audience: {
+                  audienceType: "Creative and tech professionals, agency leaders, entrepreneurs, innovators"
+                },
+                keywords: "PAAN Summit 2026, African creative summit, tech conference Africa, Nairobi summit, Pan-African events, African innovation, creative tech Africa, agency summit Africa"
+              })
+            ),
           }}
         />
       </Head>
