@@ -13,7 +13,7 @@ import PartnerWithUsModal from "@/components/PartnerWithUsModal";
 import ExhibitionApplicationModal from "@/components/ExhibitionApplicationModal";
 import PaystackScript from "@/components/PaystackScript";
 import { motion } from "framer-motion";
-import { generateEventSchema } from '../../utils/structuredData';
+import { generateEventSchema } from '@/utils/structuredData';
 
 // Animation variants - defined outside component for global access
 const fadeInUp = {
