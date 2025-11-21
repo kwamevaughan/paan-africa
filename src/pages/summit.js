@@ -24,6 +24,11 @@ import StatsSection from '@/components/summit/StatsSection';
 import WhoShouldJoinSection from '@/components/summit/WhoShouldJoinSection';
 import AwardsSection from '@/components/summit/AwardsSection';
 import PartnersSection from '@/components/summit/PartnersSection';
+import CrossborderConnectionsSection from '@/components/summit/CrossborderConnectionsSection';
+import MarqueeSection from '@/components/summit/MarqueeSection';
+import ExhibitionSection from '@/components/summit/ExhibitionSection';
+import TicketsSection from '@/components/summit/TicketsSection';
+import PlanYourTripSection from '@/components/summit/PlanYourTripSection';
 
 const SummitPage = () => {
   const sectionRefs = {
@@ -92,6 +97,14 @@ const SummitPage = () => {
     seconds: 0
   });
 
+  // Early Bird countdown timer state
+  const [earlyBirdTimeLeft, setEarlyBirdTimeLeft] = useState({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0
+  });
+
 
 
   // Set target date to April 21, 2026
@@ -114,6 +127,31 @@ const SummitPage = () => {
       const seconds = Math.floor((difference / 1000) % 60);
       
       setTimeLeft({ days, hours, minutes, seconds });
+    }, 1000);
+    
+    return () => clearInterval(interval);
+  }, []);
+
+  // Set target date to January 25, 2026 for Early Bird deadline
+  useEffect(() => {
+    const targetDate = new Date('2026-01-25T23:59:59+03:00');
+    
+    const interval = setInterval(() => {
+      const now = new Date();
+      const difference = targetDate - now;
+      
+      if (difference <= 0) {
+        clearInterval(interval);
+        setEarlyBirdTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+        return;
+      }
+      
+      const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((difference / (1000 * 60)) % 60);
+      const seconds = Math.floor((difference / 1000) % 60);
+      
+      setEarlyBirdTimeLeft({ days, hours, minutes, seconds });
     }, 1000);
     
     return () => clearInterval(interval);
@@ -287,7 +325,7 @@ const SummitPage = () => {
 
         <WhoShouldJoinSection />
         
-        {/* TODO: Add CrossborderConnectionsSection - Why Attend section */}
+        <CrossborderConnectionsSection />
         
         <StatsSection 
           counts={counts} 
@@ -296,19 +334,19 @@ const SummitPage = () => {
         
         <SpeakersSection sectionRef={sectionRefs.speakers} />
         
-        {/* TODO: Add MarqueeSection - Who's in the room */}
+        <MarqueeSection />
         
         <SessionsSection sectionRef={sectionRefs.sessions} />
         
         <AwardsSection sectionRef={sectionRefs.awards} />
         
-        {/* TODO: Add ExhibitionSection - Exhibition Opportunities */}
+        <ExhibitionSection />
         
-        {/* TODO: Add TicketsSection - Secure Your Spot */}
+        <TicketsSection earlyBirdTimeLeft={earlyBirdTimeLeft} />
         
         <PartnersSection />
         
-        {/* TODO: Add PlanYourTripSection */}
+        <PlanYourTripSection />
 
         <SummitFooter />
         <ScrollToTop />
