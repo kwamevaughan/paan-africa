@@ -34,7 +34,7 @@ export default function SeminarRegistration() {
 
   // Early Bird countdown timer
   useEffect(() => {
-    const targetDate = new Date('2025-11-01T23:59:59+03:00'); // November 1, 2025 at 11:59 PM EAT
+    const targetDate = new Date('2026-01-25T23:59:59+03:00'); // January 25, 2026 at 11:59 PM EAT
     
     const interval = setInterval(() => {
       const now = new Date();

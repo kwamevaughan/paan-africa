@@ -29,107 +29,67 @@ const MasterclassesPage = () => {
 
   // Featured masterclass data - separate from regular masterclasses
   const featuredMasterclass = {
-    id: 7,
-    title: "How To Be The Best Account Handler In Your Agency",
-    description: "Account Handlers are a positive and competitive lot by nature. But the transition from lively pup to 'Top Dog' often seems a difficult and frustrating process. The problem is that 'on the job training' is only as good as 'that particular job'. This course provides an ideal opportunity to really focus on what makes a good Account Handler GREAT.",
-    fullDescription: "This 90-minute training course is aimed at developing tried and trusted methods of the art of Account Handling, a timely refresher for some, a lifesaver for others. Designed specifically for junior-level agency Account Handlers with 1-3 years of experience who now know how to do the basics but want to step up a level. Learn how to take control of your time, lead with confidence, and balance client demands with agency realities.",
-    format: "90-minute Interactive Training Course",
-    date: "November 6th, 2025",
-    time: "10 am GMT / 12 pm EAT",
-    memberPrice: 174,
-    memberOriginalPrice: 250,
-    nonMemberPrice: 250,
-    nonMemberOriginalPrice: 320,
+    id: 3,
+    title: "Financial Management, Tax & Transfer Pricing for Agencies",
+    description: "Creative agencies often struggle with irregular income, multi-currency projects, and tax complexity. This session equips agency leaders and finance managers with the tools to stabilize growth, remain compliant, and make informed financial decisions.",
+    fullDescription: "African agencies are brimming with creativity and innovation, yet they often face challenges in scaling sustainably, competing for global projects, and retaining talent. This module of the Agency Growth & Leadership Masterclass equips agency leaders with practical, Africa-relevant skills to build financially resilient, people-centered, and globally competitive businesses.",
+    format: "3-Hour Interactive Online Workshop",
+    date: "November 26th, 2025",
+    time: "2 pm EAT",
+    memberPrice: 60,
+    memberOriginalPrice: 100,
+    nonMemberPrice: 100,
+    nonMemberOriginalPrice: 120,
     currency: "USD",
-    category: "Account Management",
-    level: "Junior to Mid-Level",
-    image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/account-handler.jpg",
-    partnership: "PAAN, in collaboration with the Alliance of Independent Agencies, UK",
-    instructor: "Paul Burns",
-    instructorTitle: "Former Training Director at Saatchi & Saatchi, Co-founder of Rock and a Hardplace",
-    instructorBio: "Paul Burns spent 25 very successful and exciting years at Saatchi & Saatchi, looking after client business. He became their Training Director and first Director of Knowledge Practices, sitting on the main Management Board of the Agency. He is recognised to have passion and skill in developing people and has won several industry awards for Learning and Development. He has run accounts across a wide variety of businesses, from the hugely successful bid and launch of the National Lottery, to fast turnaround business on News International. He has led teams on large and complex financial brands and has run countless Blue Chip FMCG brands. In 2015, he became a co-founder of Rock and a Hardplace, a new and award-winning eLearning program for the Marcoms industry.",
+    category: "Financial Management",
+    level: "Intermediate",
+    image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/finance-management.jpg",
+    series: "Agency Growth & Leadership Masterclass Series",
+    moduleNumber: 1,
+    instructor: "Jotham Wadongo",
+    instructorTitle: "Financial Management & Business Advisory Professional",
+    instructorBio: "Jotham Wadongo is an experienced financial management and business advisory professional with a strong track record of supporting private sector organizations to grow sustainably and strengthen their financial operations. He holds a Bachelor of Commerce (Finance) from the University of Nairobi and professional certifications including PRINCE2 (Practitioner) and Lean Six Sigma Yellow Belt. Over the past decade, Jotham has worked with a wide range of businesses, financial institutions, and corporates across Africa, advising them on financial systems design, compliance, pricing strategies, and performance management.",
     instructorExpertise: [
-      "Account Management & Client Relations",
-      "Team Leadership & Development",
-      "Training & Knowledge Management",
-      "Agency Operations & Strategy"
+      "Tax and compliance management",
+      "Transfer pricing",
+      "Business financial planning",
+      "Process improvement"
     ],
     benefits: [
       "5% off on PAAN Summit 2026 tickets",
-      "6% off Africa Creative Excellence Awards entry"
+      "10% off Africa Creative Excellence Awards entry"
     ],
     whoShouldAttend: [
-      "Junior-level agency Account Handlers with 1-3 years of experience",
-      "Account Managers looking to step up",
-      "Client service professionals",
-      "Agency team leads"
+      "Agency founders & partners",
+      "Finance managers & business leads",
+      "Account directors & business development leads",
+      "HR & operations managers in agencies"
     ],
     learningOutcomes: [
-      "How to take control of your time with practical tools to prioritize, plan, and deliver without overwhelm",
-      "How to lead with confidence — inspiring colleagues, guiding teams, and keeping projects on track",
-      "How to balance client demands with agency realities — understanding what clients truly value",
-      "Master the art of saying 'no' professionally and constructively",
-      "Techniques for planning workload and avoiding procrastination traps",
-      "Practical tools to inspire colleagues and collaborate across teams",
-      "Navigate client relationships and handle difficult conversations confidently"
+      "Build robust agency budgets and cash flow systems",
+      "Understand corporate tax, VAT, withholding, and digital service tax obligations",
+      "Gain practical insight into transfer pricing for cross-border assignments",
+      "Apply smart pricing models (hourly, retainers, value-based)"
     ],
+    takeawayToolkit: "Budgeting template + Tax & Transfer Pricing cheat sheet",
     courseObjectives: [
-      "Master time management and productivity techniques for account handlers",
-      "Develop leadership skills to inspire colleagues and guide teams effectively",
-      "Learn to balance client expectations with agency capabilities professionally",
-      "Gain confidence in handling difficult client conversations and situations"
+      "Master financial management fundamentals for creative agencies",
+      "Understand tax obligations and compliance requirements",
+      "Learn transfer pricing strategies for cross-border projects",
+      "Develop practical budgeting and cash flow management skills"
     ],
     whyAttend: [
-      "Proven Experience: Learn from 25+ years of successful agency account management",
-      "Practical Tools: Get actionable techniques for time management and leadership",
-      "Industry Recognition: Training from an award-winning Learning & Development expert",
-      "Career Development: Perfect for account handlers ready to step up to the next level"
+      "Practical Application: Get templates and tools you can use immediately in your agency",
+      "Africa-Focused: Tailored specifically for African agencies and their unique challenges",
+      "Expert Guidance: Learn from a seasoned financial professional with extensive African market experience",
+      "Comprehensive Coverage: From basic budgeting to complex transfer pricing scenarios"
     ],
-    outcome: "This course provides an ideal opportunity to really focus on what makes a good Account Handler GREAT, with tried and trusted methods of the art of Account Handling.",
+    outcome: "By attending this masterclass, you will get 5% off on PAAN Summit 2026 tickets & 10% off on the Africa Creative Excellence Awards entry.",
     status: "upcoming"
   };
 
   // Sample masterclasses data - this would come from your database
   const masterclassesData = [
-    {
-      id: 3,
-      title: "Financial Management, Tax & Transfer Pricing for Agencies",
-      description: "Creative agencies often struggle with irregular income, multi-currency projects, and tax complexity. This session equips agency leaders and finance managers with the tools to stabilize growth, remain compliant, and make informed financial decisions.",
-      format: "3-Hour Interactive Online Workshop",
-      date: "November 26th, 2025",
-      time: "2 pm EAT",
-      memberPrice: 60,
-      memberOriginalPrice: 100,
-      nonMemberPrice: 100,
-      nonMemberOriginalPrice: 120,
-      currency: "USD",
-      category: "Financial Management",
-      level: "Intermediate",
-      instructor: "Jotham Wadongo",
-      instructorTitle: "Financial Management & Business Advisory Professional",
-      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/finance-management.jpg",
-      benefits: [
-        "5% off on PAAN Summit 2026 tickets",
-        "10% off Africa Creative Excellence Awards entry"
-      ],
-      whoShouldAttend: [
-        "Agency founders & partners",
-        "Finance managers & business leads",
-        "Account directors & business development leads",
-        "HR & operations managers in agencies"
-      ],
-      learningOutcomes: [
-        "Build robust agency budgets and cash flow systems",
-        "Understand corporate tax, VAT, withholding, and digital service tax obligations",
-        "Gain practical insight into transfer pricing for cross-border assignments",
-        "Apply smart pricing models (hourly, retainers, value-based)"
-      ],
-      takeawayToolkit: "Budgeting template + Tax & Transfer Pricing cheat sheet",
-      series: "Agency Growth & Leadership Masterclass Series",
-      moduleNumber: 1,
-      featured: false,
-      status: "upcoming"
-    },
     {
       id: 6,
       title: "How To Develop Winning Pitches and Retain Clients",
@@ -301,6 +261,46 @@ const MasterclassesPage = () => {
       moduleNumber: 3,
       featured: false,
       status: "upcoming"
+    },
+    {
+      id: 7,
+      title: "How To Be The Best Account Handler In Your Agency",
+      description: "Account Handlers are a positive and competitive lot by nature. But the transition from lively pup to 'Top Dog' often seems a difficult and frustrating process. The problem is that 'on the job training' is only as good as 'that particular job'. This course provides an ideal opportunity to really focus on what makes a good Account Handler GREAT.",
+      format: "90-minute Interactive Training Course",
+      date: "November 6th, 2025",
+      time: "10 am GMT / 12 pm EAT",
+      memberPrice: 174,
+      memberOriginalPrice: 250,
+      nonMemberPrice: 250,
+      nonMemberOriginalPrice: 320,
+      currency: "USD",
+      category: "Account Management",
+      level: "Junior to Mid-Level",
+      instructor: "Paul Burns",
+      instructorTitle: "Former Training Director at Saatchi & Saatchi, Co-founder of Rock and a Hardplace",
+      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/account-handler.jpg",
+      benefits: [
+        "5% off on PAAN Summit 2026 tickets",
+        "6% off Africa Creative Excellence Awards entry"
+      ],
+      whoShouldAttend: [
+        "Junior-level agency Account Handlers with 1-3 years of experience",
+        "Account Managers looking to step up",
+        "Client service professionals",
+        "Agency team leads"
+      ],
+      learningOutcomes: [
+        "How to take control of your time with practical tools to prioritize, plan, and deliver without overwhelm",
+        "How to lead with confidence — inspiring colleagues, guiding teams, and keeping projects on track",
+        "How to balance client demands with agency realities — understanding what clients truly value",
+        "Master the art of saying 'no' professionally and constructively",
+        "Techniques for planning workload and avoiding procrastination traps",
+        "Practical tools to inspire colleagues and collaborate across teams",
+        "Navigate client relationships and handle difficult conversations confidently"
+      ],
+      partnership: "PAAN, in collaboration with the Alliance of Independent Agencies, UK",
+      featured: false,
+      status: "completed"
     },
     
   ];

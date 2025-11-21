@@ -304,9 +304,9 @@ const SummitPage = () => {
     return () => clearInterval(interval);
   }, []);
 
-  // Set target date to November 1, 2025 for Early Bird deadline
+  // Set target date to January 25, 2026 for Early Bird deadline
   useEffect(() => {
-    const targetDate = new Date('2025-11-01T23:59:59+03:00'); // November 1, 2025 at 11:59 PM EAT
+    const targetDate = new Date('2026-01-25T23:59:59+03:00'); // January 25, 2026 at 11:59 PM EAT
     
     const interval = setInterval(() => {
       const now = new Date();
@@ -512,7 +512,8 @@ const SummitPage = () => {
             </div>
           </div>
         </div>
-
+        
+        
         <div className="bg-white relative" id="about-us" ref={sectionRefs.about} handleScroll={handleScroll} isFixed={isFixed}>
         <section className="relative mx-auto max-w-6xl z-10 px-4 sm:px-6">
           <div className="grid md:grid-cols-2 gap-8 py-12 sm:py-16 md:py-20 items-center">
@@ -585,6 +586,43 @@ const SummitPage = () => {
             alt="Background Pattern"
             className="absolute bottom-0 left-0 w-full h-1/3 object-cover z-0 opacity-10 pointer-events-none"
           />
+        </div>
+
+
+        {/* Summit Objectives */}
+        <div className="bg-white relative py-12 sm:py-16 md:py-20" id="objectives" ref={sectionRefs.objectives} handleScroll={handleScroll} isFixed={isFixed}>
+          <section className="relative mx-auto max-w-6xl px-4 sm:px-6">
+            <div className="text-center mb-8 sm:mb-12">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl text-[#172840] uppercase font-bold mb-3 sm:mb-4">Summit Objectives</h2>
+              <h3 className="text-base sm:text-lg md:text-xl text-[#172840] font-normal max-w-3xl mx-auto">What we aim to achieve across two days of sessions, clinics, deal rooms, and networking.</h3>
+            </div>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6">
+              <div className="bg-paan-dark-blue rounded-lg shadow-lg p-4 sm:p-6 flex flex-col h-full">
+                <div className="flex items-start justify-start mb-4">
+                  <img src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/icons/padlock.svg" alt="Unlock Icon" className="w-10 h-10 sm:w-12 sm:h-12" />
+                </div>
+                <p className="text-white text-sm sm:text-base font-normal text-left mt-auto">Unlock cross‑border collaboration & deal flow</p>
+              </div>
+              <div className="bg-paan-dark-blue rounded-lg shadow-lg p-4 sm:p-6 flex flex-col h-full">
+                <div className="flex items-start justify-start mb-4">
+                  <img src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/icons/chain-link.svg?updatedAt=1763114499609" alt="Connect Icon" className="w-10 h-10 sm:w-12 sm:h-12" />
+                </div>
+                <p className="text-white text-sm sm:text-base font-normal text-left mt-auto">Showcase & commercialise African creative talent</p>
+              </div>
+              <div className="bg-paan-dark-blue rounded-lg shadow-lg p-4 sm:p-6 flex flex-col h-full">
+                <div className="flex items-start justify-start mb-4">
+                  <img src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/icons/user-group.svg" alt="Community Icon" className="w-10 h-10 sm:w-12 sm:h-12" />
+                </div>
+                <p className="text-white text-sm sm:text-base font-normal text-left mt-auto">Advance skills, standards & innovation</p>
+              </div>
+              <div className="bg-paan-dark-blue rounded-lg shadow-lg p-4 sm:p-6 flex flex-col h-full">
+                <div className="flex items-start justify-start mb-4">
+                  <img src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/icons/heart-icon.svg" alt="Impact Icon" className="w-10 h-10 sm:w-12 sm:h-12" />
+                </div>
+                <p className="text-white text-sm sm:text-base font-normal text-left mt-auto">Create opportunities for youth & underrepresented talent</p>
+              </div>
+            </div>
+          </section>
         </div>
 
         <div className="mt-6 sm:mt-10 bg-[#DAECF3] relative">
@@ -1456,7 +1494,7 @@ const SummitPage = () => {
           </section>
          </div>
           {/* Parallax Section */}
-          <div className="relative py-6 sm:py-8 md:py-12 lg:py-16 xl:py-20 overflow-hidden h-[320px] sm:h-[400px] md:h-[450px] lg:h-[500px] xl:h-[550px]" id="parallax-section" isFixed={isFixed} id="exhibition">
+          <div className="relative py-6 sm:py-8 md:py-12 lg:py-16 xl:py-20 overflow-hidden h-[320px] sm:h-[400px] md:h-[450px] lg:h-[500px] xl:h-[550px]" id="exhibition" isFixed={isFixed}>
             {/* Parallax Background Image */}
             <div 
               className="absolute inset-0 bg-cover bg-center sm:bg-fixed bg-scroll"
@@ -1495,7 +1533,7 @@ const SummitPage = () => {
                     onClick={()=>window.location.href='/summit/exhibitors'} 
                     className="bg-paan-red hover:bg-paan-red/90 text-white px-6 sm:px-8 md:px-10 py-3 sm:py-4 rounded-full transition-all duration-300 font-medium text-sm sm:text-base shadow-lg hover:shadow-xl flex items-center justify-center gap-2 w-full max-w-xs sm:max-w-sm md:w-auto min-h-[48px] active:scale-95"
                   >
-                    <span>Apply to Exhibit</span>
+                    <span>View Exhibition Options</span>
                     <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                     </svg>
@@ -1576,7 +1614,7 @@ const SummitPage = () => {
                         </div>
                         <div className="flex items-center gap-2">
                           <Icon icon="mdi:check" className="text-yellow-300" width="16" height="16" />
-                          <span>Save 30% before November 1st, 2025</span>
+                          <span>Save 30% before January 25th, 2026</span>
                         </div>
                       </div>
                     </div>
@@ -2180,7 +2218,7 @@ const Hero = ({ sectionRefs, handleScroll, isFixed, timeLeft, onPartnerClick }) 
                 <SeminarLocationAndDate />
               </motion.div>
               <motion.div 
-                className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-6 md:gap-8"
+                className="flex flex-col sm:flex-row justify-left gap-4 sm:gap-6 md:gap-8"
                 variants={scaleIn}
               >
                 <button 
@@ -2202,7 +2240,14 @@ const Hero = ({ sectionRefs, handleScroll, isFixed, timeLeft, onPartnerClick }) 
                   View Track
                 </button>                
               </motion.div>
+              
             </motion.div>
+            <motion.p 
+                className="text-white/80 text-xs sm:text-sm text-left mt-4 sm:mt-6"
+                variants={fadeInUp}
+              >
+                Organized & managed by the <span className="font-bold text-paan-red"><a href="/" className="hover:text-paan-red transition-colors">Pan African Agency Network(PAAN)</a></span>
+              </motion.p>
           </div>
         </div>
       </div>
@@ -2217,7 +2262,7 @@ const SeminarLocationAndDate = ()=> {
     <div className="flex flex-col sm:flex-row gap-2 sm:gap-4">
       <div className="flex items-center gap-2 text-white text-xs sm:text-sm">
         <Icon icon="mdi:map-marker" className="text-red-500 flex-shrink-0" width="20" height="20" />
-        <span className="break-words sm:whitespace-nowrap">Sarit Centre, Nairobi, Kenya - <strong>21–22 April 2026</strong></span>
+        <span className="break-words sm:whitespace-nowrap">Sarit Centre, Nairobi, Kenya - <strong>21 - 22 April 2026</strong></span>
       </div>
       
       <div className="flex items-center gap-2 text-white text-xs sm:text-sm">

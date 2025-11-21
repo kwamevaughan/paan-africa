@@ -188,7 +188,7 @@ const MasterclassDetailPage = () => {
       description: "Creative agencies often struggle with irregular income, multi-currency projects, and tax complexity. This session equips agency leaders and finance managers with the tools to stabilize growth, remain compliant, and make informed financial decisions.",
       fullDescription: "African agencies are brimming with creativity and innovation, yet they often face challenges in scaling sustainably, competing for global projects, and retaining talent. This module of the Agency Growth & Leadership Masterclass equips agency leaders with practical, Africa-relevant skills to build financially resilient, people-centered, and globally competitive businesses.",
       format: "3-Hour Interactive Online Workshop",
-      date: "October 23rd, 2025",
+      date: "November 26th, 2025",
       time: "2 pm EAT",
       memberPrice: 60,
       memberOriginalPrice: 100,
@@ -469,7 +469,7 @@ const MasterclassDetailPage = () => {
         "Career Development: Perfect for account handlers ready to step up to the next level"
       ],
       outcome: "This course provides an ideal opportunity to really focus on what makes a good Account Handler GREAT, with tried and trusted methods of the art of Account Handling.",
-      status: "upcoming"
+      status: "completed"
     }
   };
 
