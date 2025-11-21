@@ -39,7 +39,6 @@ const SummitPage = () => {
   };
 
   const isFixed = useFixedHeader();
-  const [activeDay, setActiveDay] = useState('day1');
   const [showPartnerModal, setShowPartnerModal] = useState(false);
   const [showExhibitionModal, setShowExhibitionModal] = useState(false);
   
@@ -93,13 +92,7 @@ const SummitPage = () => {
     seconds: 0
   });
 
-  // Early Bird countdown timer state
-  const [earlyBirdTimeLeft, setEarlyBirdTimeLeft] = useState({
-    days: 0,
-    hours: 0,
-    minutes: 0,
-    seconds: 0
-  });
+
 
   // Set target date to April 21, 2026
   useEffect(() => {
@@ -126,30 +119,7 @@ const SummitPage = () => {
     return () => clearInterval(interval);
   }, []);
 
-  // Set target date to January 25, 2026 for Early Bird deadline
-  useEffect(() => {
-    const targetDate = new Date('2026-01-25T23:59:59+03:00');
-    
-    const interval = setInterval(() => {
-      const now = new Date();
-      const difference = targetDate - now;
-      
-      if (difference <= 0) {
-        clearInterval(interval);
-        setEarlyBirdTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-        return;
-      }
-      
-      const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
-      const minutes = Math.floor((difference / (1000 * 60)) % 60);
-      const seconds = Math.floor((difference / 1000) % 60);
-      
-      setEarlyBirdTimeLeft({ days, hours, minutes, seconds });
-    }, 1000);
-    
-    return () => clearInterval(interval);
-  }, []);
+
 
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
@@ -296,6 +266,7 @@ const SummitPage = () => {
         {/* Spacer to maintain layout flow */}
         <div className="h-screen"></div>
 
+        {/* Countdown Banner with offset - Hidden on mobile */}
         <CountdownBanner timeLeft={timeLeft} />
         
         <AboutSection sectionRef={sectionRefs.about} />
