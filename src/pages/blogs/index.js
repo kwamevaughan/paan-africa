@@ -11,6 +11,7 @@ import ScrollToTop from "@/components/ScrollToTop";
 import SEO from '@/components/SEO';
 import { supabase } from "@/lib/supabase";
 import { calculateReadTime } from '@/utils/readTime';
+import Pagination from '@/components/common/Pagination';
 
 export async function getServerSideProps() {
   try {
@@ -154,6 +155,8 @@ const Blogs = ({ initialBlogs }) => {
   const [isSearchFocused, setIsSearchFocused] = useState(false);
   const [subscribeForm, setSubscribeForm] = useState({ name: '', email: '' });
   const [subscribeStatus, setSubscribeStatus] = useState({ loading: false, message: '', error: false });
+  const [currentPage, setCurrentPage] = useState(1);
+  const postsPerPage = 9; // 3x3 grid
 
   // Extract unique categories from all posts
   useEffect(() => {
@@ -161,6 +164,11 @@ const Blogs = ({ initialBlogs }) => {
     const categories = [...new Set(allPosts.map(post => post.category))].filter(Boolean);
     setAvailableCategories(categories);
   }, [featuredPost, regularPosts]);
+
+  // Reset to page 1 when filters change
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [selectedCategory, searchQuery, sortBy]);
 
   // Update URL when filters change
   useEffect(() => {
@@ -229,6 +237,18 @@ const Blogs = ({ initialBlogs }) => {
     
     return featuredPost;
   }, [featuredPost, selectedCategory, searchQuery]);
+
+  // Pagination logic
+  const totalPages = Math.ceil(filteredAndSortedPosts.length / postsPerPage);
+  const paginatedPosts = useMemo(() => {
+    const startIndex = (currentPage - 1) * postsPerPage;
+    const endIndex = startIndex + postsPerPage;
+    return filteredAndSortedPosts.slice(startIndex, endIndex);
+  }, [filteredAndSortedPosts, currentPage, postsPerPage]);
+
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+  };
 
   const handleSubscribe = async (e) => {
     e.preventDefault();
@@ -520,7 +540,7 @@ const Blogs = ({ initialBlogs }) => {
           )}
 
           {/* Regular Posts Grid */}
-          <div className="mb-12">
+          <div id="articles-section" className="mb-12">
             <h3 className="text-3xl font-bold text-[#172840] mb-12 text-center capitalize">
               {searchQuery
                 ? 'Search Results'
@@ -530,8 +550,9 @@ const Blogs = ({ initialBlogs }) => {
             </h3>
             
             {filteredAndSortedPosts.length > 0 ? (
+              <>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {filteredAndSortedPosts.map((blog, index) => (
+                {paginatedPosts.map((blog, index) => (
                   <article 
                     key={blog.slug}
                     className="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 group"
@@ -598,6 +619,17 @@ const Blogs = ({ initialBlogs }) => {
                   </article>
                 ))}
               </div>
+
+              {/* Pagination */}
+              <Pagination
+                currentPage={currentPage}
+                totalPages={totalPages}
+                onPageChange={handlePageChange}
+                totalItems={filteredAndSortedPosts.length}
+                itemsPerPage={postsPerPage}
+                scrollToId="articles-section"
+              />
+              </>
             ) : (
               <div className="text-center py-12">
                 <Icon
