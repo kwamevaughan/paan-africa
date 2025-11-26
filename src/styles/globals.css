@@ -1,0 +1,312 @@
+/* Importing Tailwind's default layers */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Mapbox GL JS Styles */
+.mapboxgl-map {
+  font-family: 'Poppins', sans-serif !important;
+}
+
+.mapboxgl-popup {
+  font-family: 'Poppins', sans-serif !important;
+}
+
+.mapboxgl-popup-content {
+  border-radius: 12px !important;
+  padding: 0 !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15) !important;
+}
+
+.mapboxgl-popup-tip {
+  background-color: white !important;
+}
+
+.mapboxgl-ctrl-group {
+  border: none !important;
+  border-radius: 8px !important;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+}
+
+.mapboxgl-ctrl-group button {
+  background-color: white !important;
+  color: #374151 !important;
+  border: none !important;
+  width: 36px !important;
+  height: 36px !important;
+  line-height: 34px !important;
+  font-size: 18px !important;
+  font-weight: bold !important;
+}
+
+.mapboxgl-ctrl-group button:hover {
+  background-color: #f3f4f6 !important;
+}
+
+/* Marquee Animations */
+@keyframes marquee-right {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-25%);
+  }
+}
+
+@keyframes marquee-left {
+  0% {
+    transform: translateX(-25%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.animate-marquee-right {
+  animation: marquee-right 30s linear infinite;
+  will-change: transform;
+}
+
+.animate-marquee-left {
+  animation: marquee-left 30s linear infinite;
+  will-change: transform;
+}
+
+/* Global font settings */
+body {
+    font-family: 'Poppins', sans-serif;
+    color: #172840;
+}
+
+.global-font {
+    font-family: 'Poppins', sans-serif;
+}
+
+
+.nunito-light {
+  font-family: "Nunito", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: normal;
+}
+
+
+.nunito-regular {
+  font-family: "Nunito", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.nunito-bold {
+  font-family: "Nunito", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* globals.css */
+html {
+    scroll-behavior: smooth;
+  }
+
+/* For smooth transitions when changing images */
+.slider-transition {
+    transition: opacity 0.5s ease-in-out;
+  }
+/*   
+  Initial state for sections (hidden) */
+.section {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+/* Visible state when section enters viewport */
+.section-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+  .team-bg{
+    background-image: url('/assets/images/team.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100%;
+  }
+
+  .pattern-bg-1 {
+    background-image: 
+      url('/assets/images/pattern-bg-1.webp'), 
+      linear-gradient(rgba(132, 193, 217, 1), rgba(132, 193, 217, 1));
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100%;
+  }
+
+  .pattern-bg-2 {
+    background-image: 
+      url('/assets/images/pattern-bg-1.webp'), 
+      linear-gradient(rgb(242 88 73 / 1), rgb(242 88 73 / 1));
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100%;
+  }
+  .network-bg {
+    background-image: url('/assets/images/network-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    position: relative;
+  }
+
+    /* Line clamp utilities */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Event card hover effects */
+.event-card-hover {
+  transition: all 0.3s ease;
+}
+
+.event-card-hover:hover {
+  transform: translateY(-4px);
+}
+
+/* Smooth transitions for filters */
+.filter-transition {
+  transition: all 0.2s ease-in-out;
+}
+
+/* Sticky positioning for event details sidebar */
+.sticky-sidebar {
+  position: sticky;
+  top: 6rem;
+}
+
+/* Ensure react-hot-toast appears above fixed header */
+    .react-hot-toast-container {
+      position: fixed !important;
+      top: 20px !important;
+      left: 50% !important;
+      transform: translateX(-50%) !important;
+      z-index: 1000000 !important;
+    }
+
+    .freelance-hero-bg {
+      background-image: url('/assets/images/freelancer-hero.webp');
+      background-size: cover;
+      background-position: center 300px;
+      background-repeat: no-repeat;
+    }
+
+/* Blog Article Typography Styles */
+.prose {
+  @apply text-base leading-relaxed;
+}
+
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4 {
+  @apply font-bold text-[#172840] tracking-tight;
+}
+
+.prose h1 {
+  @apply text-4xl mb-8 mt-12;
+}
+
+.prose h2 {
+  @apply text-3xl mb-6 mt-10;
+}
+
+.prose h3 {
+  @apply text-2xl mb-4 mt-8;
+}
+
+.prose h4 {
+  @apply text-xl mb-4 mt-6;
+}
+
+.prose p {
+  @apply text-gray-600 leading-relaxed mb-6;
+}
+
+.prose a {
+  @apply text-[#F25849] no-underline;
+}
+
+.prose a:hover {
+  @apply underline;
+}
+
+.prose strong {
+  @apply text-[#172840] font-semibold;
+}
+
+.prose img {
+  @apply rounded-xl shadow-lg my-8;
+}
+
+.prose blockquote {
+  @apply border-l-4 border-[#F25849] pl-4 italic;
+}
+
+.prose ul {
+  @apply list-disc pl-6 my-6;
+}
+
+.prose ol {
+  @apply list-decimal pl-6 my-6;
+}
+
+.prose li {
+  @apply mb-2 text-gray-600;
+}
+
+.prose code {
+  @apply text-[#F25849] bg-gray-100 px-1 py-0.5 rounded;
+}
+
+.prose pre {
+  @apply bg-gray-900 text-white p-4 rounded-lg;
+}
+
+.prose hr {
+  @apply my-8 border-gray-200;
+}
+
+
+
+.skiptranslate,
+#goog-gt-tt,
+.goog-te-spinner-pos,
+.goog-te-spinner-animation,
+.goog-te-banner-frame,
+.goog-tooltip,
+.goog-text-highlight,
+.VIpgJd-ZVi9od-aZ2wEe-wOHMyf-ti6hGc {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+}
+
+.goog-te-gadget {
+  font-size: 0 !important;
+}

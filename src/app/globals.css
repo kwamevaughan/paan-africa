@@ -1,0 +1,67 @@
+/* styles/globals.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom CSS */
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.droplet-effect {
+  box-shadow: 0 4px 16px 0 rgba(23, 40, 64, 0.25), 0 0 0 4px rgba(242, 183, 6, 0.08);
+  animation: droplet-bounce 1.2s cubic-bezier(0.4, 0, 0.2, 1) infinite alternate;
+}
+
+@keyframes droplet-bounce {
+  0% {
+    transform: scaleY(1) scaleX(1);
+  }
+  80% {
+    transform: scaleY(1.1) scaleX(0.95);
+  }
+  100% {
+    transform: scaleY(0.95) scaleX(1.05);
+  }
+}
+
+/* Marquee Animations */
+@keyframes marquee-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes marquee-right {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.animate-marquee-left {
+  animation: marquee-left 30s linear infinite;
+}
+
+.animate-marquee-right {
+  animation: marquee-right 30s linear infinite;
+}
