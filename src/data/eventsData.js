@@ -50,22 +50,23 @@ export const eventsData = {
     }
   ],
   past: [
-    // {
-    //   id: 9,
-    //   title: "Agency Journey to AI: Building Future-Ready Agency Models",
-    //   date: "2025-11-26",
-    //   time: "12:00 PM - 1:00 PM EAT",
-    //   location: "Virtual Event",
-    //   venue: "Zoom",
-    //   description: "In this interactive session, Spencer Gallagher, Founding Partner at Bluhalo, and Joanne Reid, Founder of The Reid Collective, bring together their combined expertise in agency operations, leadership, and transformation to explore how agencies can evolve beyond digital-first models into truly AI-native businesses.",
-    //   image: "https://ik.imagekit.io/nkmvdjnna/PAAN/webinars/agency-joueney-to-ai.png",
-    //   category: "Webinar",
-    //   price: "Free for All Members",
-    //   registrationUrl: "https://tinyurl.com/4f6p33az",
-    //   status: "upcoming",
-    //   featured: true,
-    //   speakers: ["Spencer Gallagher", "Joanne Reid"]
-    // },
+    {
+      id: 9,
+      title: "Agency Journey to AI: Building Future-Ready Agency Models",
+      date: "2025-11-26",
+      time: "12:00 PM - 1:00 PM EAT",
+      location: "Virtual Event",
+      venue: "Zoom",
+      description: "In this interactive session, Spencer Gallagher, Founding Partner at Bluhalo, and Joanne Reid, Founder of The Reid Collective, bring together their combined expertise in agency operations, leadership, and transformation to explore how agencies can evolve beyond digital-first models into truly AI-native businesses.",
+      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/webinars/agency-joueney-to-ai.png",
+      category: "Webinar",
+      price: "Free for All Members",
+      registrationUrl: "https://www.youtube.com/watch?v=nurWyz5_c1k&feature=youtu.be",
+      status: "past",
+      featured: true,
+      attendees: 201,
+      speakers: 2
+    },
     {
       id: 6,
       title: "Cross-Border Growth: How African Agencies Can Conquer Markets Beyond Their Country Borders",

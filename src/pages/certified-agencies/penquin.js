@@ -397,14 +397,13 @@ const HomePage = () => {
                   {/* Main Heading */}
                   <div className="space-y-4">
                     <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-paan-dark-blue leading-tight">
-                        PENQUIN
+                        We are Penquin.
                     </h2>
                     <div className="w-16 h-1 bg-gradient-to-r from-paan-dark-blue to-paan-dark-blue/60"></div>
                   </div>
 
                   {/* Description */}
                   <p className="text-lg sm:text-xl leading-relaxed text-paan-dark-blue/90 font-light">
-                    We are Penquin.
                     An independent, mid-sized, 360-degree Integrated Brand and Communication agency based in Johannesburg with a talented team of 80. We craft award-winning brand experiences, working closely with trusted partners to deliver impactful, multi-channel marketing solutions. We help brands create authentic human connections with confidence and clarity, ensuring they stand out.
                     We believe every brand, product, and business decision has a unique story, waiting to be told, our job is to uncover it and bring it to life.
                     We are a level one B-BBEE contributor.
@@ -573,7 +572,6 @@ const HomePage = () => {
                       <div className="w-16 h-px bg-gradient-to-r from-paan-dark-blue to-paan-purple"></div>
                       <cite className="not-italic">
                         <div className="font-semibold text-lg text-gray-900">Penquin Team</div>
-                        <div className="text-gray-600 text-sm">PENQUIN</div>
                       </cite>
                     </div>
                   </div>
