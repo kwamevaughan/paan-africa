@@ -29,62 +29,61 @@ const MasterclassesPage = () => {
 
   // Featured masterclass data - separate from regular masterclasses
   const featuredMasterclass = {
-    id: 3,
-    title: "Financial Management, Tax & Transfer Pricing for Agencies",
-    description: "Creative agencies often struggle with irregular income, multi-currency projects, and tax complexity. This session equips agency leaders and finance managers with the tools to stabilize growth, remain compliant, and make informed financial decisions.",
-    fullDescription: "African agencies are brimming with creativity and innovation, yet they often face challenges in scaling sustainably, competing for global projects, and retaining talent. This module of the Agency Growth & Leadership Masterclass equips agency leaders with practical, Africa-relevant skills to build financially resilient, people-centered, and globally competitive businesses.",
-    format: "3-Hour Interactive Online Workshop",
-    date: "November 26th, 2025",
-    time: "2 pm EAT",
-    memberPrice: 60,
-    memberOriginalPrice: 100,
-    nonMemberPrice: 100,
-    nonMemberOriginalPrice: 120,
+    id: 8,
+    title: "How To Present Creative Work to Clients",
+    description: "Creative presentations are make-or-break moments. Yet most teams rarely pause to consider what the experience feels like on the client side — the pressure, the uncertainty, the fear of making the wrong call in the room. When these dynamics aren't understood, feedback becomes scattered, key decisions happen offline, and strong ideas lose momentum.",
+    fullDescription: "This masterclass helps you reshape how you present creative work by stepping inside your clients' world. Led by former agency MD turned Unilever Global Brand Director James Hayhurst, this session equips you with practical tools to present ideas clearly, build empathy, and create presentation environments where great work can genuinely thrive. Through real-world examples and interactive exercises, you'll learn how to structure presentations that reduce anxiety, improve feedback quality, and increase the chance of clients buying your strongest ideas.",
+    format: "90-minute Interactive Training Course",
+    date: "December 4th, 2025",
+    time: "10:00 am EAT",
+    memberPrice: 174,
+    memberOriginalPrice: 250,
+    nonMemberPrice: 250,
+    nonMemberOriginalPrice: 320,
     currency: "USD",
-    category: "Financial Management",
-    level: "Intermediate",
-    image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/finance-management.jpg",
-    series: "Agency Growth & Leadership Masterclass Series",
-    moduleNumber: 1,
-    instructor: "Jotham Wadongo",
-    instructorTitle: "Financial Management & Business Advisory Professional",
-    instructorBio: "Jotham Wadongo is an experienced financial management and business advisory professional with a strong track record of supporting private sector organizations to grow sustainably and strengthen their financial operations. He holds a Bachelor of Commerce (Finance) from the University of Nairobi and professional certifications including PRINCE2 (Practitioner) and Lean Six Sigma Yellow Belt. Over the past decade, Jotham has worked with a wide range of businesses, financial institutions, and corporates across Africa, advising them on financial systems design, compliance, pricing strategies, and performance management.",
+    category: "Creative Strategy",
+    level: "Junior to Mid-Level",
+    image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/how-to-present-creative-work-to-clients.jpg",
+    instructor: "James Hayhurst",
+    instructorTitle: "Former Agency MD & Unilever Global Brand Director",
+    instructorBio: "James Hayhurst began his career agency-side at BMP DDB (now Adam&Eve DDB), contributing to award-winning work for brands such as Volkswagen, Channel 4, and the Teacher Training Agency. He later became Managing Director at Leagas Delaney, overseeing brands including Glenfiddich, Patek Philippe, and Timberland. In 2014, James moved client-side to Unilever as Global Brand Equity Director for OMO/Persil, gaining firsthand insight into client culture, decision-making, and the often-unspoken challenges agencies rarely see. Recognising the empathy gap between agencies and clients, he created The Magic Sauce, a programme designed to bridge that gap by improving understanding, collaboration, and creative outcomes across both sides of the industry.",
     instructorExpertise: [
-      "Tax and compliance management",
-      "Transfer pricing",
-      "Business financial planning",
-      "Process improvement"
+      "Creative presentation strategy",
+      "Client-agency collaboration",
+      "Brand equity management",
+      "Award-winning creative work"
     ],
     benefits: [
       "5% off on PAAN Summit 2026 tickets",
-      "10% off Africa Creative Excellence Awards entry"
+      "6% off Africa Creative Excellence Awards entry"
     ],
     whoShouldAttend: [
-      "Agency founders & partners",
-      "Finance managers & business leads",
-      "Account directors & business development leads",
-      "HR & operations managers in agencies"
+      "Junior to mid-level agency teams",
+      "Creative professionals presenting to clients",
+      "Account handlers and client-facing staff",
+      "Creative directors and team leads"
     ],
     learningOutcomes: [
-      "Build robust agency budgets and cash flow systems",
-      "Understand corporate tax, VAT, withholding, and digital service tax obligations",
-      "Gain practical insight into transfer pricing for cross-border assignments",
-      "Apply smart pricing models (hourly, retainers, value-based)"
+      "What it feels like to be on the receiving end of creative presentations and the pressures clients face",
+      "How to present ideas clearly - distinguishing the core idea, the execution, and what truly matters",
+      "How to design a gamified presentation format that is engaging, structured, and more enjoyable for all",
+      "How to ask stronger feedback questions that help clients feel heard and lead to better solutions",
+      "How to plan stakeholder management in partnership with your client teams"
     ],
-    takeawayToolkit: "Budgeting template + Tax & Transfer Pricing cheat sheet",
     courseObjectives: [
-      "Master financial management fundamentals for creative agencies",
-      "Understand tax obligations and compliance requirements",
-      "Learn transfer pricing strategies for cross-border projects",
-      "Develop practical budgeting and cash flow management skills"
+      "Master the art of presenting creative work with clarity and confidence",
+      "Build empathy and understanding of client perspectives during presentations",
+      "Create presentation environments where great work can genuinely thrive",
+      "Improve feedback quality and increase the chance of clients buying your strongest ideas"
     ],
     whyAttend: [
-      "Practical Application: Get templates and tools you can use immediately in your agency",
-      "Africa-Focused: Tailored specifically for African agencies and their unique challenges",
-      "Expert Guidance: Learn from a seasoned financial professional with extensive African market experience",
-      "Comprehensive Coverage: From basic budgeting to complex transfer pricing scenarios"
+      "Client Perspective: Step inside your clients' world and understand their pressures and decision-making process",
+      "Expert Guidance: Learn from someone who's been on both sides - agency MD and global brand director",
+      "Practical Tools: Get actionable frameworks and techniques you can apply immediately",
+      "Real-World Examples: Learn through interactive exercises and live creative presentation practice"
     ],
-    outcome: "By attending this masterclass, you will get 5% off on PAAN Summit 2026 tickets & 10% off on the Africa Creative Excellence Awards entry.",
+    outcome: "By attending this masterclass, you will get 5% off on PAAN Summit 2026 tickets & 6% off on the Africa Creative Excellence Awards entry.",
+    partnership: "PAAN, in collaboration with the Alliance of Independent Agencies, UK",
     status: "upcoming"
   };
 
@@ -348,7 +347,7 @@ const MasterclassesPage = () => {
     { id: 'account-management', name: 'Account Management', count: 1 },
     { id: 'financial-management', name: 'Financial Management', count: 1 },
     { id: 'leadership', name: 'Leadership', count: 1 },
-    { id: 'creative-strategy', name: 'Creative Strategy', count: 0 },
+    { id: 'creative-strategy', name: 'Creative Strategy', count: 1 },
     { id: 'digital-marketing', name: 'Digital Marketing', count: 0 }
   ];
 
@@ -360,8 +359,14 @@ const MasterclassesPage = () => {
     return matchesCategory && matchesSearch;
   });
 
-  // When "all" category is selected, add the featured masterclass at the beginning
-  const finalFilteredMasterclasses = selectedCategory === 'all' && searchTerm === '' 
+  // When "all" category is selected or when featured masterclass category matches, add the featured masterclass at the beginning
+  const featuredCategoryMatch = selectedCategory === 'all' || 
+    featuredMasterclass.category.toLowerCase().replace(/\s+/g, '-') === selectedCategory;
+  const featuredMatchesSearch = searchTerm === '' || 
+    featuredMasterclass.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    featuredMasterclass.description.toLowerCase().includes(searchTerm.toLowerCase());
+  
+  const finalFilteredMasterclasses = featuredCategoryMatch && featuredMatchesSearch
     ? [featuredMasterclass, ...filteredMasterclasses]
     : filteredMasterclasses;
 

@@ -470,6 +470,67 @@ const MasterclassDetailPage = () => {
       ],
       outcome: "This course provides an ideal opportunity to really focus on what makes a good Account Handler GREAT, with tried and trusted methods of the art of Account Handling.",
       status: "completed"
+    },
+    8: {
+      id: 8,
+      title: "How To Present Creative Work to Clients",
+      description: "Creative presentations are make-or-break moments. Yet most teams rarely pause to consider what the experience feels like on the client side — the pressure, the uncertainty, the fear of making the wrong call in the room. When these dynamics aren't understood, feedback becomes scattered, key decisions happen offline, and strong ideas lose momentum.",
+      fullDescription: "This masterclass helps you reshape how you present creative work by stepping inside your clients' world. Led by former agency MD turned Unilever Global Brand Director James Hayhurst, this session equips you with practical tools to present ideas clearly, build empathy, and create presentation environments where great work can genuinely thrive. Through real-world examples and interactive exercises, you'll learn how to structure presentations that reduce anxiety, improve feedback quality, and increase the chance of clients buying your strongest ideas.",
+      format: "90-minute Interactive Training Course",
+      date: "December 4th, 2025",
+      time: "10:00 am EAT",
+      memberPrice: 174,
+      memberOriginalPrice: 250,
+      nonMemberPrice: 250,
+      nonMemberOriginalPrice: 320,
+      currency: "USD",
+      category: "Creative Strategy",
+      level: "Junior to Mid-Level",
+      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/how-to-present-creative-work-to-clients.jpg",
+      partnership: "PAAN, in collaboration with the Alliance of Independent Agencies, UK",
+      instructor: {
+        name: "James Hayhurst",
+        title: "Former Agency MD & Unilever Global Brand Director",
+        image: "https://ik.imagekit.io/nkmvdjnna/PAAN/instructors/james-hayhurst.jpg",
+        bio: "James Hayhurst began his career agency-side at BMP DDB (now Adam&Eve DDB), contributing to award-winning work for brands such as Volkswagen, Channel 4, and the Teacher Training Agency. He later became Managing Director at Leagas Delaney, overseeing brands including Glenfiddich, Patek Philippe, and Timberland. In 2014, James moved client-side to Unilever as Global Brand Equity Director for OMO/Persil, gaining firsthand insight into client culture, decision-making, and the often-unspoken challenges agencies rarely see. Recognising the empathy gap between agencies and clients, he created The Magic Sauce, a programme designed to bridge that gap by improving understanding, collaboration, and creative outcomes across both sides of the industry.",
+        expertise: [
+          "Creative presentation strategy",
+          "Client-agency collaboration",
+          "Brand equity management",
+          "Award-winning creative work"
+        ]
+      },
+      benefits: [
+        "5% off on PAAN Summit 2026 tickets",
+        "6% off Africa Creative Excellence Awards entry"
+      ],
+      whoShouldAttend: [
+        "Junior to mid-level agency teams",
+        "Creative professionals presenting to clients",
+        "Account handlers and client-facing staff",
+        "Creative directors and team leads"
+      ],
+      learningOutcomes: [
+        "What it feels like to be on the receiving end of creative presentations and the pressures clients face",
+        "How to present ideas clearly - distinguishing the core idea, the execution, and what truly matters",
+        "How to design a gamified presentation format that is engaging, structured, and more enjoyable for all",
+        "How to ask stronger feedback questions that help clients feel heard and lead to better solutions",
+        "How to plan stakeholder management in partnership with your client teams"
+      ],
+      courseObjectives: [
+        "Master the art of presenting creative work with clarity and confidence",
+        "Build empathy and understanding of client perspectives during presentations",
+        "Create presentation environments where great work can genuinely thrive",
+        "Improve feedback quality and increase the chance of clients buying your strongest ideas"
+      ],
+      whyAttend: [
+        "Client Perspective: Step inside your clients' world and understand their pressures and decision-making process",
+        "Expert Guidance: Learn from someone who's been on both sides - agency MD and global brand director",
+        "Practical Tools: Get actionable frameworks and techniques you can apply immediately",
+        "Real-World Examples: Learn through interactive exercises and live creative presentation practice"
+      ],
+      outcome: "By attending this masterclass, you will get 5% off on PAAN Summit 2026 tickets & 6% off on the Africa Creative Excellence Awards entry.",
+      status: "upcoming"
     }
   };
 
@@ -959,8 +1020,16 @@ const MasterclassDetailPage = () => {
                     <span className="bg-cyan-500 text-white px-3 py-1 rounded-full text-xs font-semibold">
                       {masterclass.level}
                     </span>
-                    <span className="bg-red-500 text-white px-3 py-1 rounded-full text-xs font-semibold">
-                      UPCOMING
+                    <span className={`px-3 py-1 rounded-full text-xs font-semibold ${
+                      masterclass.status === 'upcoming' ? 'bg-red-500 text-white' :
+                      masterclass.status === 'completed' ? 'bg-gray-500 text-white' :
+                      masterclass.status === 'not-accepting-bookings' ? 'bg-gray-500 text-white' :
+                      'bg-red-500 text-white'
+                    }`}>
+                      {masterclass.status === 'upcoming' ? 'UPCOMING' :
+                       masterclass.status === 'completed' ? 'COMPLETED' :
+                       masterclass.status === 'not-accepting-bookings' ? 'NOT ACCEPTING BOOKINGS' :
+                       'UPCOMING'}
                     </span>
                   </div>
                   
