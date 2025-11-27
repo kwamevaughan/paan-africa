@@ -61,7 +61,7 @@ export const eventsData = {
       image: "https://ik.imagekit.io/nkmvdjnna/PAAN/webinars/agency-joueney-to-ai.png",
       category: "Webinar",
       price: "Free for All Members",
-      registrationUrl: "https://www.youtube.com/watch?v=nurWyz5_c1k&feature=youtu.be",
+      registrationUrl: "#",
       status: "past",
       featured: true,
       attendees: 201,
