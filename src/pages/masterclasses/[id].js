@@ -486,7 +486,7 @@ const MasterclassDetailPage = () => {
       currency: "USD",
       category: "Creative Strategy",
       level: "Junior to Mid-Level",
-      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/how-to-present-creative-work-to-clients.jpg",
+      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/how-to-present-creative-work-to-clients-2.jpg",
       partnership: "PAAN, in collaboration with the Alliance of Independent Agencies, UK",
       instructor: {
         name: "James Hayhurst",
