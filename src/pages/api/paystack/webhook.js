@@ -1,10 +1,32 @@
 import { createClient } from '@supabase/supabase-js';
 import { updatePurchaseStatus } from '../../../lib/paystack';
+import crypto from 'crypto';
+
+// Disable body parsing to get raw body for signature verification
+export const config = {
+  api: {
+    bodyParser: false,
+  },
+};
 
 // Initialize Supabase client
 const supabase = process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.SUPABASE_SERVICE_ROLE_KEY
   ? createClient(process.env.NEXT_PUBLIC_SUPABASE_URL, process.env.SUPABASE_SERVICE_ROLE_KEY)
   : null;
+
+// Helper to get raw body from request
+function getRawBody(req) {
+  return new Promise((resolve, reject) => {
+    let data = '';
+    req.on('data', chunk => {
+      data += chunk;
+    });
+    req.on('end', () => {
+      resolve(data);
+    });
+    req.on('error', reject);
+  });
+}
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -12,13 +34,28 @@ export default async function handler(req, res) {
   }
 
   try {
-    const { event, data } = req.body;
+    // Get raw body for signature verification
+    const rawBody = await getRawBody(req);
+    
+    // Verify webhook signature
+    const signature = req.headers['x-paystack-signature'];
+    
+    if (!signature) {
+      console.error('Missing Paystack signature header');
+      return res.status(400).json({ message: 'Missing signature header' });
+    }
 
-    // Verify webhook signature (recommended for production)
-    // const signature = req.headers['x-paystack-signature'];
-    // if (!verifyWebhookSignature(req.body, signature)) {
-    //   return res.status(400).json({ message: 'Invalid signature' });
-    // }
+    // Verify the signature using raw body
+    const isValid = verifyWebhookSignature(rawBody, signature);
+    
+    if (!isValid) {
+      console.error('Invalid Paystack webhook signature');
+      return res.status(400).json({ message: 'Invalid signature' });
+    }
+
+    // Parse the body after verification
+    const body = JSON.parse(rawBody);
+    const { event, data } = body;
 
     switch (event) {
       case 'charge.success':
@@ -189,9 +226,42 @@ async function handleExperienceBookingPaymentFailed(data) {
   }
 }
 
-// Function to verify webhook signature (implement for production)
+// Function to verify webhook signature
 function verifyWebhookSignature(payload, signature) {
-  // Implementation depends on your Paystack webhook secret
-  // This is a placeholder - implement proper signature verification
-  return true;
+  try {
+    const paystackSecretKey = process.env.PAYSTACK_SECRET_KEY;
+    
+    if (!paystackSecretKey) {
+      console.warn('PAYSTACK_SECRET_KEY not configured, skipping signature verification');
+      // In development, you might want to allow this, but in production this should fail
+      // For now, we'll allow it but log a warning
+      return process.env.NODE_ENV !== 'production';
+    }
+
+    // Convert payload to string if it's an object
+    const payloadString = typeof payload === 'string' ? payload : JSON.stringify(payload);
+    
+    // Compute HMAC SHA512 hash
+    const hash = crypto
+      .createHmac('sha512', paystackSecretKey)
+      .update(payloadString)
+      .digest('hex');
+
+    // Compare the computed hash with the signature from header
+    const isValid = hash === signature;
+    
+    if (!isValid) {
+      console.error('Signature mismatch:', {
+        computed: hash.substring(0, 20) + '...',
+        received: signature.substring(0, 20) + '...'
+      });
+    } else {
+      console.log('✅ Webhook signature verified successfully');
+    }
+
+    return isValid;
+  } catch (error) {
+    console.error('Error verifying webhook signature:', error);
+    return false;
+  }
 }
