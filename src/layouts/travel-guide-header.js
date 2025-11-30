@@ -16,7 +16,7 @@ const TravelGuideHeader = ({ navLinkColor }) => {
   // Track active section based on scroll position
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['visa-requirements', 'accommodation', 'travel-essentials', 'pack-smart', 'explore-nairobi'];
+      const sections = ['visa-requirements', 'accommodation', 'travel-essentials', 'pack-smart', 'summit-experiences', 'explore-nairobi'];
       const scrollPosition = window.scrollY + 150; // Increased offset for better detection
 
       for (let i = sections.length - 1; i >= 0; i--) {
@@ -63,6 +63,7 @@ const TravelGuideHeader = ({ navLinkColor }) => {
     { name: 'Accommodation', href: '#accommodation' },
     { name: 'Travel Essentials', href: '#travel-essentials' },
     { name: 'Pack Smart', href: '#pack-smart' },
+    { name: 'Summit Experiences', href: '#summit-experiences' },
     { name: 'Explore Nairobi', href: '#explore-nairobi' },
   ];
 
