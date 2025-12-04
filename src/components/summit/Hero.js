@@ -16,7 +16,7 @@ const Hero = ({ sectionRefs, handleScroll, timeLeft }) => {
         <motion.div 
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: "url('https://ik.imagekit.io/nkmvdjnna/PAAN/summit/summit-hero.png')",
+            backgroundImage: "url('https://ik.imagekit.io/nkmvdjnna/PAAN/summit/purchase-ticket-hero.webp')",
             filter: "brightness(0.5)"
           }}
           transition={{ duration: 1.2, ease: "easeOut" }}
@@ -71,22 +71,46 @@ const Hero = ({ sectionRefs, handleScroll, timeLeft }) => {
               >
                 <p className="mb-2">Early-bird price increases in:</p>
                 <div className="flex flex-wrap gap-2 sm:gap-4">
-                  <div className="bg-paan-dark-blue/80 px-3 py-2 rounded-lg text-center min-w-[60px]">
-                    <div className="text-lg sm:text-xl font-bold">{timeLeft.days}</div>
+                  <motion.div 
+                    className="bg-paan-dark-blue/80 px-3 py-2 rounded-lg text-center min-w-[60px] backdrop-blur-sm"
+                    key={`days-${timeLeft.days}`}
+                    initial={{ scale: 0.8, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <div className="text-lg sm:text-xl font-bold">{timeLeft.days || 0}</div>
                     <div className="text-xs">days</div>
-                  </div>
-                  <div className="bg-paan-dark-blue/80 px-3 py-2 rounded-lg text-center min-w-[60px]">
-                    <div className="text-lg sm:text-xl font-bold">{timeLeft.hours}</div>
+                  </motion.div>
+                  <motion.div 
+                    className="bg-paan-dark-blue/80 px-3 py-2 rounded-lg text-center min-w-[60px] backdrop-blur-sm"
+                    key={`hours-${timeLeft.hours}`}
+                    initial={{ scale: 0.8, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <div className="text-lg sm:text-xl font-bold">{timeLeft.hours || 0}</div>
                     <div className="text-xs">hours</div>
-                  </div>
-                  <div className="bg-paan-dark-blue/80 px-3 py-2 rounded-lg text-center min-w-[60px]">
-                    <div className="text-lg sm:text-xl font-bold">{timeLeft.minutes}</div>
+                  </motion.div>
+                  <motion.div 
+                    className="bg-paan-dark-blue/80 px-3 py-2 rounded-lg text-center min-w-[60px] backdrop-blur-sm"
+                    key={`minutes-${timeLeft.minutes}`}
+                    initial={{ scale: 0.8, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <div className="text-lg sm:text-xl font-bold">{timeLeft.minutes || 0}</div>
                     <div className="text-xs">mins</div>
-                  </div>
-                  <div className="bg-paan-dark-blue/80 px-3 py-2 rounded-lg text-center min-w-[60px]">
-                    <div className="text-lg sm:text-xl font-bold">{timeLeft.seconds}</div>
+                  </motion.div>
+                  <motion.div 
+                    className="bg-paan-dark-blue/80 px-3 py-2 rounded-lg text-center min-w-[60px] backdrop-blur-sm"
+                    key={`seconds-${timeLeft.seconds}`}
+                    initial={{ scale: 0.8, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <div className="text-lg sm:text-xl font-bold">{timeLeft.seconds || 0}</div>
                     <div className="text-xs">secs</div>
-                  </div>
+                  </motion.div>
                 </div>
               </motion.div>
             </motion.div>
@@ -101,17 +125,7 @@ const SeminarLocationAndDate = () => {
   return (
     <div className="flex flex-col sm:flex-row gap-2 sm:gap-4">
       <div className="flex items-center gap-2 text-white text-xs sm:text-sm">
-        <Icon icon="mdi:map-marker" className="text-red-500 flex-shrink-0" width="16" height="16" />
-        <span className="break-words sm:whitespace-nowrap">Sarit Centre, Nairobi, Kenya - <strong>21–22 April 2026</strong></span>
-      </div>
-      
-      <div className="flex items-center gap-2 text-white text-xs sm:text-sm">
-        <Icon icon="mdi:user-group" className="text-red-500 flex-shrink-0" width="16" height="16" />
-        <span className="whitespace-nowrap">500+ In Person</span>
-      </div>
-      <div className="flex items-center gap-2 text-white text-xs sm:text-sm">
-        <Icon icon="mdi:globe" className="text-red-500 flex-shrink-0" width="16" height="16" />
-        <span className="whitespace-nowrap">2,000+ Streaming</span>
+        <span className="break-words sm:whitespace-nowrap"><span className="font-bold">Create. Connect. Commercialize.</span> &nbsp; Sarit Center, Nairobi • 22-23 Apr 2026</span>
       </div>
     </div>
   );

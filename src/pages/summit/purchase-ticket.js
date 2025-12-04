@@ -442,8 +442,8 @@ const SummitPage = () => {
   
   // Countdown timer effect
   useEffect(() => {
-    // Set the target date (November 14th, 2025)
-    const targetDate = new Date('2025-11-14T00:00:00').getTime();
+    // Set the target date (Early-bird deadline: March 22nd, 2026 at midnight UTC)
+    const targetDate = new Date('2026-03-22T00:00:00Z').getTime();
     
     const updateCountdown = () => {
       const now = new Date().getTime();
@@ -554,6 +554,29 @@ const SummitPage = () => {
       return () => observer.unobserve(statsSection);
     }
   }, [isVisible]);
+
+  // Intersection observer for What's Included section animation
+  const [whatsIncludedVisible, setWhatsIncludedVisible] = useState(false);
+  const whatsIncludedRef = useRef(null);
+
+  useEffect(() => {
+    if (whatsIncludedRef.current) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting && !whatsIncludedVisible) {
+              setWhatsIncludedVisible(true);
+            }
+          });
+        },
+        { threshold: 0.2 }
+      );
+      
+      observer.observe(whatsIncludedRef.current);
+      
+      return () => observer.unobserve(whatsIncludedRef.current);
+    }
+  }, [whatsIncludedVisible]);
   
   useEffect(() => {
       let tickets;
@@ -581,7 +604,7 @@ const SummitPage = () => {
         title="Purchase Tickets - PAAN Summit 2026"
         description="Secure your spot at PAAN Summit 2026. Choose from various ticket options including General Admission, VIP Delegate, Agency Pass, and more."
         keywords="PAAN Summit tickets, buy summit tickets, conference registration, PAAN 2026 tickets"
-        image="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/summit-hero.webp?updatedAt=1757505455932"
+        image="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/purchase-ticket-hero.webp"
       />
 
       <main className="px-3 sm:px-0 relative">
@@ -591,6 +614,104 @@ const SummitPage = () => {
 
           {/* Main Section */}
           <div className="bg-[#DAECF3]">
+              {/* What's Included */}
+              <div ref={whatsIncludedRef}>
+                <section className="relative mx-auto max-w-6xl px-4 sm:px-6 py-20">
+                  <motion.div 
+                    className="text-center mb-8 sm:mb-12"
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={whatsIncludedVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+                    transition={{ duration: 0.6, ease: "easeOut" }}
+                  >
+                    <h2 className="text-2xl sm:text-3xl md:text-4xl text-[#172840] font-bold mb-3 sm:mb-4">What's Included</h2>
+                    <h3 className="text-base sm:text-lg md:text-xl text-[#172840] font-normal max-w-3xl mx-auto">Your full access to sessions, networking, and experiences.</h3>
+                  </motion.div>
+                  <motion.div 
+                    className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6"
+                    variants={staggerContainer}
+                    initial="initial"
+                    animate={whatsIncludedVisible ? "animate" : "initial"}
+                  >
+                    {[
+                      {
+                        icon: "https://ik.imagekit.io/nkmvdjnna/PAAN/summit/icons/keynote-panel.svg",
+                        title: "Keynotes & Panels",
+                        description: "Learn from top African and global leaders shaping the creative and business landscape."
+                      },
+                      {
+                        icon: "https://ik.imagekit.io/nkmvdjnna/PAAN/summit/icons/exhibition-hall.svg",
+                        title: "Exhibition Hall",
+                        description: "Explore tools, technologies, agencies, and brands driving innovation across the continent."
+                      },
+                      {
+                        icon: "https://ik.imagekit.io/nkmvdjnna/PAAN/summit/icons/smart-networking.svg",
+                        title: "Smart Networking",
+                        description: "Meet collaborators, clients, agencies, creators, and investors through the Summit app."
+                      },
+                      {
+                        icon: "https://ik.imagekit.io/nkmvdjnna/PAAN/summit/icons/career-lounge.svg",
+                        title: "Career Lounge",
+                        description: "Get career guidance, portfolio reviews, job leads, and mentorship opportunities."
+                      },
+                      {
+                        icon: "https://ik.imagekit.io/nkmvdjnna/PAAN/summit/icons/business-opportunity.svg",
+                        title: "Business Opportunities",
+                        description: "Discover cross-border projects, partnerships, co-bidding options, and new market entry paths."
+                      },
+                      {
+                        icon: "https://ik.imagekit.io/nkmvdjnna/PAAN/summit/icons/certificate.svg",
+                        title: "Certificates",
+                        description: "Receive a digital participation certificate and access session materials (where applicable)."
+                      },
+                      {
+                        icon: "https://ik.imagekit.io/nkmvdjnna/PAAN/summit/icons/creative-experinces.svg",
+                        title: "Creative Experiences",
+                        description: "Enjoy showcases, brand activations, live demos, and curated summit experiences."
+                      },
+                      {
+                        icon: "https://ik.imagekit.io/nkmvdjnna/PAAN/summit/icons/onground-support.svg",
+                        title: "On-Ground Support",
+                        description: "Benefit from visa letters, priority check-in, and help desk support depending on your ticket."
+                      }
+                    ].map((item, index) => (
+                      <motion.div
+                        key={index}
+                        className="group bg-paan-dark-blue rounded-lg shadow-lg p-4 sm:p-6 flex flex-col h-full transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:scale-[1.02] cursor-pointer"
+                        variants={scaleIn}
+                      >
+                        <motion.div 
+                          className="flex items-start justify-start mb-4"
+                          initial={{ opacity: 0, scale: 0 }}
+                          animate={whatsIncludedVisible ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0 }}
+                          transition={{ duration: 0.4, delay: index * 0.1 + 0.2, ease: "easeOut" }}
+                        >
+                          <img 
+                            src={item.icon} 
+                            alt={`${item.title} Icon`} 
+                            className="w-10 h-10 sm:w-12 sm:h-12 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3" 
+                          />
+                        </motion.div>
+                        <motion.h3 
+                          className="text-white text-left my-4 font-bold"
+                          initial={{ opacity: 0, x: -20 }}
+                          animate={whatsIncludedVisible ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
+                          transition={{ duration: 0.5, delay: index * 0.1 + 0.3, ease: "easeOut" }}
+                        >
+                          {item.title}
+                        </motion.h3>
+                        <motion.p 
+                          className="text-white text-sm sm:text-base font-normal text-left mt-auto"
+                          initial={{ opacity: 0, y: 20 }}
+                          animate={whatsIncludedVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                          transition={{ duration: 0.5, delay: index * 0.1 + 0.4, ease: "easeOut" }}
+                        >
+                          {item.description}
+                        </motion.p>
+                      </motion.div>
+                    ))}
+                  </motion.div>
+                </section>
+              </div>
               {/* Progress bar */}
               <StepBar currentStep={currentStep} />
               {/* Main Content Area */}
