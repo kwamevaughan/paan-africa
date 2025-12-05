@@ -14,6 +14,7 @@ import ExhibitionApplicationModal from "@/components/ExhibitionApplicationModal"
 import PaystackScript from "@/components/PaystackScript";
 import { motion } from "framer-motion";
 import { generateEventSchema } from '@/utils/structuredData';
+import CountdownBanner from "@/components/summit/CountdownBanner";
 
 // Animation variants - defined outside component for global access
 const fadeInUp = {
@@ -65,6 +66,10 @@ const SummitPage = () => {
   const [activeDay, setActiveDay] = useState('day1');
   const [showPartnerModal, setShowPartnerModal] = useState(false);
   const [showExhibitionModal, setShowExhibitionModal] = useState(false);
+  
+  // Video state
+  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
+  const videoRef = useRef(null);
   
   // Count up animation state
   const [isVisible, setIsVisible] = useState(false);
@@ -337,6 +342,18 @@ const SummitPage = () => {
     }
   };
 
+  // Video play/pause toggle
+  const toggleVideo = () => {
+    if (videoRef.current) {
+      if (isVideoPlaying) {
+        videoRef.current.pause();
+      } else {
+        videoRef.current.play();
+      }
+      setIsVideoPlaying(!isVideoPlaying);
+    }
+  };
+
   // Restore IntersectionObserver for section transitions
   useEffect(() => {
     const observerOptions = {
@@ -460,48 +477,37 @@ const SummitPage = () => {
         />
       </Head>
 
-      <main className="px-3 pt-20 sm:pt-6 sm:px-0 sm:pt-0 relative">
+      <main className="relative">
         <Header navLinkColor='text-white' />
 
+        {/* Hero section */}
         <Hero sectionRefs={sectionRefs} handleScroll={handleScroll} isFixed={isFixed} scrollToSection={scrollToSection} timeLeft={timeLeft} onPartnerClick={() => setShowPartnerModal(true)} />
-
-        {/* Spacer to maintain layout flow */}
-        <div className="h-screen"></div>
-
-
-        {/* About the Summit */}
-        {/* Countdown Banner with offset - Hidden on mobile */}
-        <div className="hidden sm:block relative -mt-8 sm:-mt-12 md:-mt-16 z-8">
-          <div className="mx-auto max-w-4xl px-4 sm:px-6">
-            <div className="bg-gradient-to-r from-[#F25849] to-[#172840] rounded-lg shadow-2xl py-6 sm:py-8 px-4 sm:px-6">
-              <div className="text-center">
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
-                  <div className="text-center bg-white/20 backdrop-blur-sm rounded-lg p-3 sm:p-4">
-                    <div className="text-xl sm:text-2xl md:text-3xl font-bold text-white">{timeLeft.days}</div>
-                    <div className="text-xs sm:text-sm text-white/80">Days</div>
-                  </div>
-                  <div className="text-center bg-white/20 backdrop-blur-sm rounded-lg p-3 sm:p-4">
-                    <div className="text-xl sm:text-2xl md:text-3xl font-bold text-white">{timeLeft.hours}</div>
-                    <div className="text-xs sm:text-sm text-white/80">Hours</div>
-                  </div>
-                  <div className="text-center bg-white/20 backdrop-blur-sm rounded-lg p-3 sm:p-4">
-                    <div className="text-xl sm:text-2xl md:text-3xl font-bold text-white">{timeLeft.minutes}</div>
-                    <div className="text-xs sm:text-sm text-white/80">Minutes</div>
-                  </div>
-                  <div className="text-center bg-white/20 backdrop-blur-sm rounded-lg p-3 sm:p-4">
-                    <div className="text-xl sm:text-2xl md:text-3xl font-bold text-white">{timeLeft.seconds}</div>
-                    <div className="text-xs sm:text-sm text-white/80">Seconds</div>
-                  </div>
-                </div>
-              </div>
-            </div>
+        
+        {/* Countdown Banner - positioned absolutely at the edge between hero and about sections */}
+        <div className="absolute top-[100vh] left-0 right-0 z-10 pointer-events-none transform -translate-y-1/2">
+          <div className="pointer-events-auto">
+            <CountdownBanner timeLeft={timeLeft} />
           </div>
         </div>
         
-        
-        <div className="bg-white relative" id="about-us" ref={sectionRefs.about} handleScroll={handleScroll} isFixed={isFixed}>
+        {/* About summit section */}
+        <section className="relative overflow-hidden z-5 w-full" id="about-us" ref={sectionRefs.about} handleScroll={handleScroll} isFixed={isFixed}>
+          {/* Pattern overlay */}
+          <div 
+            className="absolute inset-0 z-0"
+            style={{
+              backgroundImage: "url('https://ik.imagekit.io/nkmvdjnna/PAAN/summit/about-summit-pattern.webp')",
+              backgroundRepeat: 'repeat',
+              backgroundPosition: 'center',
+              backgroundSize: '60%',
+              backgroundBlendMode: 'overlay',
+              opacity: 0.7
+            }}
+          ></div>
+          {/* Gradient overlay */}
+          <div className="absolute inset-0 bg-gradient-to-r from-paan-dark-blue to-paan-blue/80 z-0"></div>
         <section className="relative mx-auto max-w-6xl z-10 px-4 sm:px-6">
-          <div className="grid md:grid-cols-2 gap-8 py-12 sm:py-16 md:py-20 items-center">
+          <div className="grid md:grid-cols-2 gap-8 py-12 sm:py-16 md:py-28 items-center">
             <motion.div 
               className="flex flex-col gap-4 sm:gap-6 relative z-10 md:pr-6"
               variants={staggerContainer}
@@ -513,13 +519,12 @@ const SummitPage = () => {
                 className="flex flex-col gap-3 sm:gap-4"
                 variants={fadeInLeft}
               >
-                <span className="bg-paan-blue text-white rounded-full px-4 sm:px-6 py-2 text-xs sm:text-sm font-medium w-fit">About</span>
-                <h2 className="text-2xl sm:text-3xl md:text-4xl text-[#172840] uppercase font-bold">About the Summit</h2>
-                <h3 className="text-lg sm:text-xl md:text-2xl text-[#172840] font-semibold">A deal-first gathering built for action.</h3>
+                <h2 className="text-2xl sm:text-3xl md:text-4xl text-white font-normal">About the Summit</h2>
+                <h3 className="text-lg sm:text-xl md:text-2xl text-white font-normal">A deal-first gathering built for action.</h3>
               </motion.div>
               
               <motion.div 
-                className="space-y-3 sm:space-y-4 text-[#172840] text-sm sm:text-base md:text-lg leading-relaxed"
+                className="space-y-3 sm:space-y-4 text-white text-sm sm:text-base md:text-lg leading-relaxed"
                 variants={fadeInLeft}
               >
                 <p>
@@ -536,7 +541,7 @@ const SummitPage = () => {
               >
                 <button 
                   onClick={() => window.location.href = '/summit/purchase-ticket'}
-                  className="px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base font-semibold bg-paan-red text-white hover:bg-paan-red/90 rounded-full shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 cursor-pointer relative z-20 w-full sm:w-auto"
+                  className="px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base font-semibold bg-gradient-to-r from-paan-yellow to-paan-blue text-white hover:opacity-90 rounded-full shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 cursor-pointer relative z-20 w-full sm:w-auto"
                 >
                   Register Now
                 </button>
@@ -550,16 +555,39 @@ const SummitPage = () => {
               whileInView="animate"
               viewport={{ once: true, amount: 0.3 }}
             >
-              <div className="relative overflow-hidden w-full max-w-md lg:max-w-none">
-                <img 
-                  src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/about-summit.png?updatedAt=1760366803444" 
-                  alt="PAAN Summit" 
-                  className="h-64 sm:h-80 md:h-96 lg:h-[45rem] w-full object-cover rounded-lg" 
-                />
-                {/* Top whitish effect */}
-                <div className="absolute top-0 left-0 right-0 h-16 sm:h-24 md:h-32 bg-gradient-to-b from-white/100 to-transparent"></div>
-                {/* Bottom whitish effect */}
-                <div className="absolute bottom-0 left-0 right-0 h-16 sm:h-24 md:h-32 bg-gradient-to-t from-white/100 to-transparent"></div>
+              <div className="relative overflow-hidden w-full max-w-md lg:max-w-none rounded-lg">
+                <video
+                  ref={videoRef}
+                  className="h-48 sm:h-64 md:h-80 lg:h-96 w-full object-cover rounded-lg"
+                  onPlay={() => setIsVideoPlaying(true)}
+                  onPause={() => setIsVideoPlaying(false)}
+                  loop
+                  muted
+                >
+                  <source src="" type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+                {/* Play/Pause Button */}
+                {!isVideoPlaying && (
+                  <button
+                    onClick={toggleVideo}
+                    className="absolute inset-0 flex items-center justify-center bg-black/20 hover:bg-black/30 transition-all duration-300 rounded-lg group"
+                    aria-label="Play video"
+                  >
+                    <div className="bg-white/90 hover:bg-white rounded-full p-4 sm:p-6 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                      <Icon icon="mdi:play" className="text-paan-dark-blue ml-1" width="32" height="32" />
+                    </div>
+                  </button>
+                )}
+                {isVideoPlaying && (
+                  <button
+                    onClick={toggleVideo}
+                    className="absolute bottom-4 right-4 bg-black/50 hover:bg-black/70 rounded-full p-3 shadow-lg transition-all duration-300 group"
+                    aria-label="Pause video"
+                  >
+                    <Icon icon="mdi:pause" className="text-white" width="24" height="24" />
+                  </button>
+                )}
               </div>
             </motion.div>
           </div>
@@ -571,14 +599,13 @@ const SummitPage = () => {
             alt="Background Pattern"
             className="absolute bottom-0 left-0 w-full h-1/3 object-cover z-0 opacity-10 pointer-events-none"
           />
-        </div>
-
+        </section>
 
         {/* Summit Objectives */}
         <div className="bg-white relative py-12 sm:py-16 md:py-20" id="objectives" ref={sectionRefs.objectives} handleScroll={handleScroll} isFixed={isFixed}>
           <section className="relative mx-auto max-w-6xl px-4 sm:px-6">
             <div className="text-center mb-8 sm:mb-12">
-              <h2 className="text-2xl sm:text-3xl md:text-4xl text-[#172840] uppercase font-bold mb-3 sm:mb-4">Summit Objectives</h2>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl text-[#172840] font-bold mb-3 sm:mb-4">Summit Objectives</h2>
               <h3 className="text-base sm:text-lg md:text-xl text-[#172840] font-normal max-w-3xl mx-auto">What we aim to achieve across two days of sessions, clinics, deal rooms, and networking.</h3>
             </div>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6">
@@ -2162,7 +2189,7 @@ const Hero = ({ sectionRefs, handleScroll, isFixed, timeLeft, onPartnerClick }) 
   return (
     <>
       <div
-        className="absolute top-0 left-0 h-screen w-full" 
+        className="relative h-screen w-full" 
         id="home"
         ref={sectionRefs.home}
       >
@@ -2170,45 +2197,39 @@ const Hero = ({ sectionRefs, handleScroll, isFixed, timeLeft, onPartnerClick }) 
         <div 
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: "url('https://ik.imagekit.io/nkmvdjnna/PAAN/summit/summit-hero.webp?updatedAt=1757505455932')",
+            backgroundImage: "url('https://ik.imagekit.io/nkmvdjnna/PAAN/summit/summit-hero-2.webp')",
             filter: "brightness(0.5)" // Darkening the image
           }}
         />
                
         {/* Content overlay */}
-        <div className="relative h-full flex items-end pb-16 sm:pb-24 md:pb-48">
-          <div className="mx-auto max-w-6xl w-full px-4">
+        <div className="relative h-full flex items-center justify-center pt-16 sm:pt-24 md:pt-32">
+          <div className="mx-auto max-w-6xl w-full px-4 sm:px-6">
             <motion.div 
-              className="max-w-2xl"
+              className="max-w-2xl mx-auto text-center"
               variants={staggerContainer}
               initial="initial"
               animate="animate"
             >
-              <motion.p 
-                className="bg-white/20 text-white px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-medium mb-4 w-fit border border-white"
-                variants={fadeInUp}
-              >
-                Africa Borderless Creative Economy Summit 2026
-              </motion.p>
               <motion.h1 
-                className="text-2xl sm:text-3xl md:text-4xl font-semibold uppercase text-yellow-400 mb-6 sm:mb-8 leading-tight"
+                className="text-2xl sm:text-3xl md:text-4xl font-normal text-yellow-400 mb-6 sm:mb-8 leading-tight"
                 variants={fadeInUp}
               >
                 Create. Connect. Commercialize.
               </motion.h1>
               <motion.div 
-                className="flex flex-col sm:flex-row gap-2 sm:gap-4 mb-6 sm:mb-10"
+                className="flex flex-col sm:flex-row gap-2 sm:gap-4 mb-6 sm:mb-10 justify-center"
                 variants={fadeInUp}
               >
                 <SeminarLocationAndDate />
               </motion.div>
               <motion.div 
-                className="flex flex-col sm:flex-row justify-left gap-4 sm:gap-6 md:gap-8"
+                className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-6 md:gap-8"
                 variants={scaleIn}
               >
                 <button 
                   onClick={() => window.location.href = '/summit/purchase-ticket'}
-                  className="bg-paan-red text-white px-6 sm:px-8 py-3 rounded-full hover:bg-paan-red/90 transition-all duration-300 font-medium text-sm sm:text-base shadow-lg flex items-center justify-center gap-2 w-full sm:w-auto"
+                  className="bg-gradient-to-r from-paan-yellow to-paan-blue text-white px-6 sm:px-8 py-3 rounded-full hover:opacity-90 transition-all duration-300 font-medium text-sm sm:text-base shadow-lg flex items-center justify-center gap-2 w-full sm:w-auto"
                 >
                   Register Now
                 </button>
@@ -2228,7 +2249,7 @@ const Hero = ({ sectionRefs, handleScroll, isFixed, timeLeft, onPartnerClick }) 
               
             </motion.div>
             <motion.p 
-                className="text-white/80 text-xs sm:text-sm text-left mt-4 sm:mt-6"
+                className="text-white/80 text-xs sm:text-sm text-center mt-4 sm:mt-6"
                 variants={fadeInUp}
               >
                 Organized & managed by the <span className="font-bold text-paan-red"><a href="/" className="hover:text-paan-red transition-colors">Pan African Agency Network(PAAN)</a></span>

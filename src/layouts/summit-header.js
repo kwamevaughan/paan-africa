@@ -81,7 +81,7 @@ const Header = ({ navLinkColor }) => {
 
   return (
     <nav
-      className={`w-full z-10 transition-all duration-300 ${
+      className={`w-full z-20 transition-all duration-300 ${
         isFixed
           ? "fixed top-0 left-0 right-0 shadow-lg backdrop-blur-md bg-white rounded-none sm:rounded-lg mx-0 sm:mx-4 mt-0 sm:mt-4 max-w-none sm:max-w-7xl sm:left-1/2 sm:transform sm:-translate-x-1/2"
           : "fixed top-0 left-0 right-0 sm:absolute sm:left-1/2 sm:transform sm:-translate-x-1/2 bg-white rounded-none sm:rounded-lg mx-0 sm:mx-4 mt-0 sm:mt-4 shadow-md max-w-none sm:max-w-7xl"

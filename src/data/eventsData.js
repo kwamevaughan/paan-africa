@@ -17,22 +17,6 @@ export const eventsData = {
       featured: true
     },
     {
-      id: 10,
-      title: "Leveraging AI for Real-World Agency Projects",
-      date: "2025-12-3",
-      time: "12:00 PM - 1:15 PM EAT",
-      location: "Virtual Event",
-      venue: "Zoom",
-      description: "Are you an agency team looking to transition from experimenting with AI tools to building AI-enabled client solutions? This webinar brings together three industry voices who’ve already built, tested, and deployed AI-based solutions in creative, digital, and strategic contexts to help you do just that. Their experience spans innovation, AI chatbots, digital strategy, and purpose-led marketing transformations across Africa.",
-      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/webinars/leveraging-ai-for-agency-projects.png",
-      category: "Webinar",
-      price: "Free for All Members",
-      registrationUrl: "https://tinyurl.com/6dafuv5y",
-      status: "upcoming",
-      featured: true,
-      speakers: ["Musa Kalenga (Brave Group)", "Nyandia Gachago (MintyLime)", "Mpumelelo Tembe (Sotflytic)"]
-    },
-    {
       id: 11,
       title: "Unlocking Agency Growth in 2026: An Introduction to Our Positioning, Pricing & Procurement Masterclasses",
       date: "2025-12-10",
@@ -169,6 +153,22 @@ export const eventsData = {
       attendees: 115,
       speakers: 2,
       featured: true
+    },
+    {
+      id: 10,
+      title: "Leveraging AI for Real-World Agency Projects",
+      date: "2025-12-3",
+      time: "12:00 PM - 1:15 PM EAT",
+      location: "Virtual Event",
+      venue: "Zoom",
+      description: "Are you an agency team looking to transition from experimenting with AI tools to building AI-enabled client solutions? This webinar brings together three industry voices who've already built, tested, and deployed AI-based solutions in creative, digital, and strategic contexts to help you do just that. Their experience spans innovation, AI chatbots, digital strategy, and purpose-led marketing transformations across Africa.",
+      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/webinars/leveraging-ai-for-agency-projects.png",
+      category: "Webinar",
+      price: "Completed",
+      registrationUrl: "https://www.youtube.com/watch?v=IRenN5r-F2w&t=1s",
+      status: "past",
+      featured: true,
+      speakers: ["Musa Kalenga (Brave Group)", "Nyandia Gachago (MintyLime)", "Mpumelelo Tembe (Sotflytic)"]
     }
   ]
 };
