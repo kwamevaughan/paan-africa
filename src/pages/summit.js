@@ -17,6 +17,7 @@ import { generateEventSchema } from '@/utils/structuredData';
 import CountdownBanner from "@/components/summit/CountdownBanner";
 import ObjectivesSection from "@/components/summit/ObjectivesSection";
 import AtAGlanceSection from "@/components/summit/AtAGlanceSection";
+import TracksSection from "@/components/summit/TracksSection";
 
 // Animation variants - defined outside component for global access
 const fadeInUp = {
@@ -59,6 +60,7 @@ const SummitPage = () => {
     highlights: useRef(null),
     themes: useRef(null),
     sessions: useRef(null),
+    program: useRef(null),
     whoShouldAttend: useRef(null),
     tickets: useRef(null),
     events: useRef(null),
@@ -616,215 +618,11 @@ const SummitPage = () => {
       
       
         {/* Program Section */}
-        <div className="bg-paan-dark-blue relative" id="program" sectionRefs={sectionRefs} handleScroll={handleScroll} isFixed={isFixed}>
-            <section className="mx-auto max-w-6xl py-8 sm:py-12 md:py-16 lg:py-20 px-3 sm:px-4 md:px-6">
-              <div className="flex flex-col sm:flex-row justify-between gap-4 sm:gap-6 md:gap-8 mb-8 sm:mb-12">
-                <div className="text-left">
-                    <h2 className="text-xs sm:text-sm border w-fit border-white text-white rounded-full px-3 sm:px-4 py-1 sm:py-2 text-center mb-2 sm:mb-3">Summit Tracks</h2>
-                    <h3 className="text-xl sm:text-2xl md:text-3xl font-bold uppercase text-paan-yellow">Tracks</h3>
-                </div>
-                <div className="mt-2 sm:mt-0">
-                  <p className="text-white text-lg sm:text-xl md:text-2xl lg:text-3xl leading-tight">Tracks and the two-day<br className="hidden sm:block"/> agenda snapshot.</p>
-                </div>
-              </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6">
-                 <div className="group relative rounded-lg shadow-lg overflow-hidden h-60 sm:h-72 md:h-80 lg:h-96">
-                   <Image
-                     src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/tracks/1.png"
-                     alt="Track 1"
-                     fill
-                     className="object-contain object-center -mt-20"
-                   />
-                   <div className="absolute bottom-0 left-0 right-0 bg-white rounded-t-lg p-4 sm:p-6">
-                     <h4 className="text-base sm:text-lg md:text-xl font-bold text-paan-dark-blue mb-1 sm:mb-2">AI, Technology &<br/>The Future of Creative Work</h4>
-                     <p className="text-paan-dark-blue text-sm sm:text-base">Operationalize AI across creative, media, and ops for real ROI.</p>
-                     <div className="mt-2 flex flex-wrap gap-2">
-                        <div className="flex items-center gap-1">
-                              <div className="w-2 h-2 bg-paan-yellow rounded-full"></div>
-                              <small className="text-xs text-paan-dark-blue">AI Workflows</small>
-                        </div>
-                        <div className="flex items-center gap-1">
-                              <div className="w-2 h-2 bg-paan-yellow rounded-full"></div>
-                              <small className="text-xs text-paan-dark-blue">Governance</small>
-                        </div>
-                        <div className="flex items-center gap-1">
-                              <div className="w-2 h-2 bg-paan-yellow rounded-full"></div>
-                              <small className="text-xs text-paan-dark-blue">Productivity</small>
-                        </div>
-                        <div className="flex items-center gap-1">
-                              <div className="w-2 h-2 bg-paan-yellow rounded-full"></div>
-                              <small className="text-xs text-paan-dark-blue">Tech</small>
-                        </div>
-                     </div>
-                   </div>
-                 </div>
-                 <div className="group relative rounded-lg shadow-lg overflow-hidden h-60 sm:h-72 md:h-80 lg:h-96">
-                   <Image
-                     src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/tracks/2.png"
-                     alt="Track 2"
-                     fill
-                     className="object-contain object-center -mt-20"
-                   />
-                   <div className="absolute bottom-0 left-0 right-0 bg-white rounded-t-lg p-4 sm:p-6">
-                     <h4 className="text-base sm:text-lg md:text-xl font-bold text-paan-dark-blue mb-1 sm:mb-2">Creative Effectiveness,<br/>Design & Media Performance</h4>
-                     <p className="text-paan-dark-blue text-sm sm:text-base">Turn bold ideas into measurable Business outcomes across channels.</p>
-                     <div className="mt-2 flex flex-wrap gap-2">
-                        <div className="flex items-center gap-1">
-                              <div className="w-2 h-2 bg-paan-yellow rounded-full"></div>
-                              <small className="text-xs text-paan-dark-blue">Design Thinking</small>
-                        </div>
-                        <div className="flex items-center gap-1">
-                              <div className="w-2 h-2 bg-paan-yellow rounded-full"></div>
-                              <small className="text-xs text-paan-dark-blue">Brand Lift</small>
-                        </div>
-                        <div className="flex items-center gap-1">
-                              <div className="w-2 h-2 bg-paan-yellow rounded-full"></div>
-                              <small className="text-xs text-paan-dark-blue">Story telling</small>
-                        </div>
-                        <div className="flex items-center gap-1">
-                              <div className="w-2 h-2 bg-paan-yellow rounded-full"></div>
-                              <small className="text-xs text-paan-dark-blue">Attention Metrics</small>
-                        </div>
-                     </div>
-                   </div>
-                 </div>
-                 <div className="group relative rounded-lg shadow-lg overflow-hidden h-60 sm:h-72 md:h-80 lg:h-96">
-                   <Image
-                     src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/tracks/3.png"
-                     alt="Track 3"
-                     fill
-                     className="object-contain object-center -mt-20"
-                   />
-                   <div className="absolute bottom-0 left-0 right-0 bg-white rounded-t-lg p-4 sm:p-6">
-                     <h4 className="text-base sm:text-lg md:text-xl font-bold text-paan-dark-blue mb-1 sm:mb-2">Data, Analytics &<br/>Measurement for Growth</h4>
-                     <p className="text-paan-dark-blue text-sm sm:text-base">Build accountable growth with clean data and clear attribution.</p>
-                     <div className="mt-2 flex flex-wrap gap-2">
-                        <div className="flex items-center gap-1">
-                              <div className="w-2 h-2 bg-paan-yellow rounded-full"></div>
-                              <small className="text-xs text-paan-dark-blue">Cookieless attribution</small>
-                        </div>
-                        <div className="flex items-center gap-1">
-                              <div className="w-2 h-2 bg-paan-yellow rounded-full"></div>
-                              <small className="text-xs text-paan-dark-blue">Audience Insights</small>
-                        </div>
-                        <div className="flex items-center gap-1">
-                              <div className="w-2 h-2 bg-paan-yellow rounded-full"></div>
-                              <small className="text-xs text-paan-dark-blue">collaboration</small>
-                        </div>
-                     </div>
-                   </div>
-                 </div>
-                 <div className="group relative rounded-lg shadow-lg overflow-hidden h-60 sm:h-72 md:h-80 lg:h-96">
-                   <Image
-                     src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/tracks/4.png"
-                     alt="Track 4"
-                     fill
-                     className="object-contain object-center -mt-20"
-                   />
-                   <div className="absolute bottom-0 left-0 right-0 bg-white rounded-t-lg p-4 sm:p-6">
-                     <h4 className="text-base sm:text-lg md:text-xl font-bold text-paan-dark-blue mb-1 sm:mb-2">The Creator &<br/>Freelance Economy</h4>
-                     <p className="text-paan-dark-blue text-sm sm:text-base">Power sustainable independent careers and creator-led studios.</p>
-                     <div className="mt-2 flex flex-wrap gap-2">
-                        <div className="flex items-center gap-1">
-                              <div className="w-2 h-2 bg-paan-yellow rounded-full"></div>
-                              <small className="text-xs text-paan-dark-blue">Pricing & IP</small>
-                        </div>
-                        <div className="flex items-center gap-1">
-                              <div className="w-2 h-2 bg-paan-yellow rounded-full"></div>
-                              <small className="text-xs text-paan-dark-blue">Business Ops Martech</small>
-                        </div>
-                        <div className="flex items-center gap-1">
-                              <div className="w-2 h-2 bg-paan-yellow rounded-full"></div>
-                              <small className="text-xs text-paan-dark-blue">agency-freelancer</small>
-                        </div>
-                     </div>
-                   </div>
-                 </div>
-                 <div className="group relative rounded-lg shadow-lg overflow-hidden h-60 sm:h-72 md:h-80 lg:h-96">
-                   <Image
-                     src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/tracks/5.png"
-                     alt="Track 5"
-                     fill
-                     className="object-contain object-center -mt-20"
-                   />
-                   <div className="absolute bottom-0 left-0 right-0 bg-white rounded-t-lg p-4 sm:p-6">
-                     <h4 className="text-base sm:text-lg md:text-xl font-bold text-paan-dark-blue mb-1 sm:mb-2">Communication, PR &<br/>Brand Trust</h4>
-                     <p className="text-paan-dark-blue text-sm sm:text-base">Build credible brands in an era of activism and misinformation.</p>
-                     <div className="mt-2 flex flex-wrap gap-2">
-                        <div className="flex items-center gap-1">
-                              <div className="w-2 h-2 bg-paan-yellow rounded-full"></div>
-                              <small className="text-xs text-paan-dark-blue">Crisis Comms</small>
-                        </div>
-                        <div className="flex items-center gap-1">
-                              <div className="w-2 h-2 bg-paan-yellow rounded-full"></div>
-                              <small className="text-xs text-paan-dark-blue">Media trust</small>
-                        </div>
-                        <div className="flex items-center gap-1">
-                              <div className="w-2 h-2 bg-paan-yellow rounded-full"></div>
-                              <small className="text-xs text-paan-dark-blue">Reputation ESG Storytelling</small>
-                        </div>
-                     </div>
-                   </div>
-                 </div>
-                 <div className="group relative rounded-lg shadow-lg overflow-hidden h-60 sm:h-72 md:h-80 lg:h-96">
-                   <Image
-                     src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/tracks/6.png"
-                     alt="Track 6"
-                     fill
-                     className="object-contain object-center -mt-20"
-                   />
-                   <div className="absolute bottom-0 left-0 right-0 bg-white rounded-t-lg p-4 sm:p-6">
-                     <h4 className="text-base sm:text-lg md:text-xl font-bold text-paan-dark-blue mb-1 sm:mb-2">Commerce, Platforms &<br/>Marketing Business</h4>
-                     <p className="text-paan-dark-blue text-sm sm:text-base">Where retail media, social commerce and fintech converge.</p>
-                     <div className="mt-2 flex flex-wrap gap-2">
-                        <div className="flex items-center gap-1">
-                              <div className="w-2 h-2 bg-paan-yellow rounded-full"></div>
-                              <small className="text-xs text-paan-dark-blue">Retail media</small>
-                        </div>
-                        <div className="flex items-center gap-1">
-                              <div className="w-2 h-2 bg-paan-yellow rounded-full"></div>
-                              <small className="text-xs text-paan-dark-blue">Chat commerce</small>
-                        </div>
-                        <div className="flex items-center gap-1">
-                              <div className="w-2 h-2 bg-paan-yellow rounded-full"></div>
-                              <small className="text-xs text-paan-dark-blue">D2C growth</small>
-                        </div>
-                        <div className="flex items-center gap-1">
-                              <div className="w-2 h-2 bg-paan-yellow rounded-full"></div>
-                              <small className="text-xs text-paan-dark-blue">Conversion tech</small>
-                        </div>
-                     </div>
-                   </div>
-                 </div>
-                 <div className="group relative rounded-lg shadow-lg overflow-hidden h-60 sm:h-72 md:h-80 lg:h-96 sm:col-span-2 lg:col-span-1">
-                   <Image
-                     src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/tracks/7.png"
-                     alt="Track 7"
-                     fill
-                     className="object-contain object-center -mt-20"
-                   />
-                   <div className="absolute bottom-0 left-0 right-0 bg-white rounded-t-lg p-4 sm:p-6">
-                     <h4 className="text-base sm:text-lg md:text-l font-bold text-paan-dark-blue mb-1 sm:mb-2">Cross-Border Collaboration &<br/>Ecosystem Growth</h4>
-                     <p className="text-paan-dark-blue text-sm sm:text-base">Partner across markets to scale Africa's creative economy.</p>
-                     <div className="mt-2 flex flex-wrap gap-2">
-                        <div className="flex items-center gap-1">
-                              <div className="w-2 h-2 bg-paan-yellow rounded-full"></div>
-                              <small className="text-xs text-paan-dark-blue">Multi Market Ops</small>
-                        </div>
-                        <div className="flex items-center gap-1">
-                              <div className="w-2 h-2 bg-paan-yellow rounded-full"></div>
-                              <small className="text-xs text-paan-dark-blue">ip & Billing Martech</small>
-                        </div>
-                        <div className="flex items-center gap-1">
-                              <div className="w-2 h-2 bg-paan-yellow rounded-full"></div>
-                              <small className="text-xs text-paan-dark-blue">Talent Mobility</small>
-                        </div>
-                     </div>
-                   </div>
-                 </div>
-               </div>
-            </section>
-        </div>
+        <TracksSection 
+          sectionRefs={sectionRefs} 
+          handleScroll={handleScroll} 
+          isFixed={isFixed} 
+        />
 
         {/* Summit Agenda Section */}
         <SummitAgenda sectionRefs={sectionRefs} handleScroll={handleScroll} isFixed={isFixed} id="agenda" />
