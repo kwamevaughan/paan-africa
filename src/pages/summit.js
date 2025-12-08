@@ -15,6 +15,8 @@ import PaystackScript from "@/components/PaystackScript";
 import { motion } from "framer-motion";
 import { generateEventSchema } from '@/utils/structuredData';
 import CountdownBanner from "@/components/summit/CountdownBanner";
+import ObjectivesSection from "@/components/summit/ObjectivesSection";
+import AtAGlanceSection from "@/components/summit/AtAGlanceSection";
 
 // Animation variants - defined outside component for global access
 const fadeInUp = {
@@ -53,6 +55,7 @@ const SummitPage = () => {
   const sectionRefs = {
     home: useRef(null),
     about: useRef(null),
+    objectives: useRef(null),
     highlights: useRef(null),
     themes: useRef(null),
     sessions: useRef(null),
@@ -602,176 +605,15 @@ const SummitPage = () => {
         </section>
 
         {/* Summit Objectives */}
-        <div className="bg-white relative py-12 sm:py-16 md:py-20" id="objectives" ref={sectionRefs.objectives} handleScroll={handleScroll} isFixed={isFixed}>
-          <section className="relative mx-auto max-w-6xl px-4 sm:px-6">
-            <div className="text-center mb-8 sm:mb-12">
-              <h2 className="text-2xl sm:text-3xl md:text-4xl text-[#172840] font-bold mb-3 sm:mb-4">Summit Objectives</h2>
-              <h3 className="text-base sm:text-lg md:text-xl text-[#172840] font-normal max-w-3xl mx-auto">What we aim to achieve across two days of sessions, clinics, deal rooms, and networking.</h3>
-            </div>
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6">
-              <div className="bg-paan-dark-blue rounded-lg shadow-lg p-4 sm:p-6 flex flex-col h-full">
-                <div className="flex items-start justify-start mb-4">
-                  <img src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/icons/padlock.svg" alt="Unlock Icon" className="w-10 h-10 sm:w-12 sm:h-12" />
-                </div>
-                <p className="text-white text-sm sm:text-base font-normal text-left mt-auto">Unlock cross‑border collaboration & deal flow</p>
-              </div>
-              <div className="bg-paan-dark-blue rounded-lg shadow-lg p-4 sm:p-6 flex flex-col h-full">
-                <div className="flex items-start justify-start mb-4">
-                  <img src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/icons/chain-link.svg?updatedAt=1763114499609" alt="Connect Icon" className="w-10 h-10 sm:w-12 sm:h-12" />
-                </div>
-                <p className="text-white text-sm sm:text-base font-normal text-left mt-auto">Showcase & commercialise African creative talent</p>
-              </div>
-              <div className="bg-paan-dark-blue rounded-lg shadow-lg p-4 sm:p-6 flex flex-col h-full">
-                <div className="flex items-start justify-start mb-4">
-                  <img src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/icons/user-group.svg" alt="Community Icon" className="w-10 h-10 sm:w-12 sm:h-12" />
-                </div>
-                <p className="text-white text-sm sm:text-base font-normal text-left mt-auto">Advance skills, standards & innovation</p>
-              </div>
-              <div className="bg-paan-dark-blue rounded-lg shadow-lg p-4 sm:p-6 flex flex-col h-full">
-                <div className="flex items-start justify-start mb-4">
-                  <img src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/icons/heart-icon.svg" alt="Impact Icon" className="w-10 h-10 sm:w-12 sm:h-12" />
-                </div>
-                <p className="text-white text-sm sm:text-base font-normal text-left mt-auto">Create opportunities for youth & underrepresented talent</p>
-              </div>
-            </div>
-          </section>
-        </div>
+        <ObjectivesSection 
+          sectionRef={sectionRefs.objectives} 
+          handleScroll={handleScroll} 
+          isFixed={isFixed} 
+        />
 
-        <div className="mt-6 sm:mt-10 bg-[#DAECF3] relative">
-          <section className="relative text-center mx-auto max-w-6xl py-12 sm:py-16 md:py-20 px-4 sm:px-6">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl uppercase font-bold">AT A GLANCE</h2>
-            <h3 className="text-sm sm:text-base md:text-md font-normal py-3 sm:py-4">The scale and reach of the Summit.</h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-               <div className="bg-white rounded-lg shadow-lg p-3 sm:p-4">
-                 <div className="flex justify-end mb-2">
-                   <div className="flex -space-x-1 sm:-space-x-2">
-                     <div className="w-6 h-6 sm:w-8 sm:h-8 bg-[#F25849] rounded-full border-2 border-white flex items-center justify-center">
-                       <Icon icon="mdi:account" className="text-white" width="12" height="12" />
-                     </div>
-                     <div className="w-6 h-6 sm:w-8 sm:h-8 bg-[#84C1D9] rounded-full border-2 border-white flex items-center justify-center">
-                       <Icon icon="mdi:account" className="text-white" width="12" height="12" />
-                     </div>
-                     <div className="w-6 h-6 sm:w-8 sm:h-8 bg-[#172840] rounded-full border-2 border-white flex items-center justify-center">
-                       <Icon icon="mdi:account" className="text-white" width="12" height="12" />
-                     </div>
-                     <div className="w-6 h-6 sm:w-8 sm:h-8 bg-[#D1D3D4] rounded-full border-2 border-white flex items-center justify-center">
-                       <Icon icon="mdi:account" className="text-white" width="12" height="12" />
-                     </div>
-                   </div>
-                 </div>
-                 <h4 className="text-2xl sm:text-3xl md:text-4xl font-bold text-left">500+</h4> 
-                 <h5 className="text-sm sm:text-base font-normal text-left">In-person Attendees</h5>
-               </div>
-               
-               <div className="bg-white rounded-lg shadow-lg p-3 sm:p-4">
-                 <div className="flex justify-end mb-2">
-                   <div className="flex -space-x-1">
-                     <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full border-2 border-white flex items-center justify-center overflow-hidden shadow-sm">
-                       <img src="https://flagcdn.com/w40/ke.png" alt="Kenya" className="w-full h-full object-cover" />
-                     </div>
-                     <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full border-2 border-white flex items-center justify-center overflow-hidden shadow-sm">
-                       <img src="https://flagcdn.com/w40/ng.png" alt="Nigeria" className="w-full h-full object-cover" />
-                     </div>
-                     <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full border-2 border-white flex items-center justify-center overflow-hidden shadow-sm">
-                       <img src="https://flagcdn.com/w40/za.png" alt="South Africa" className="w-full h-full object-cover" />
-                     </div>
-                     <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full border-2 border-white flex items-center justify-center overflow-hidden shadow-sm">
-                       <img src="https://flagcdn.com/w40/tz.png" alt="Tanzania" className="w-full h-full object-cover" />
-                     </div>
-                     <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full border-2 border-white flex items-center justify-center overflow-hidden shadow-sm">
-                       <img src="https://flagcdn.com/w40/ug.png" alt="Uganda" className="w-full h-full object-cover" />
-                     </div>
-                     <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full border-2 border-white flex items-center justify-center overflow-hidden shadow-sm">
-                       <img src="https://flagcdn.com/w40/gh.png" alt="Ghana" className="w-full h-full object-cover" />
-                     </div>
-                   </div>
-                 </div>
-                 <h4 className="text-2xl sm:text-3xl md:text-4xl font-bold text-left">20+</h4> 
-                 <h5 className="text-sm sm:text-base font-normal text-left">Countries Represented</h5>
-               </div>
-
-                <div className="bg-white rounded-lg shadow-lg p-3 sm:p-4">
-                  <div className="flex justify-end mb-2">
-                    <div className="flex items-center justify-center">
-                      <img 
-                        src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/icons/003-videocall%201.svg" 
-                        alt="Video Call Icon" 
-                        className="w-10 h-10 sm:w-12 sm:h-12"
-                      />
-                    </div>
-                  </div>
-                  <h4 className="text-2xl sm:text-3xl md:text-4xl font-bold text-left">2,000+</h4> 
-                  <h5 className="text-sm sm:text-base font-normal text-left">Streaming Attendees</h5>
-                </div>
-                <div className="bg-white rounded-lg shadow-lg p-3 sm:p-4"> 
-                  <div className="flex justify-end mb-2">
-                    <div className="flex items-center justify-center">
-                      <img 
-                        src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/icons/038-microphones%201.svg" 
-                        alt="Microphones Icon" 
-                        className="w-10 h-10 sm:w-12 sm:h-12"
-                      />
-                    </div>
-                  </div>
-                  <h4 className="text-2xl sm:text-3xl md:text-4xl font-bold text-left">30+</h4> 
-                  <h5 className="text-sm sm:text-base font-normal text-left">Industry‑leading speakers</h5>
-                </div>
-                <div className="bg-white rounded-lg shadow-lg p-3 sm:p-4">
-                  <div className="flex justify-end mb-2">
-                    <div className="flex items-center justify-center">
-                      <img 
-                        src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/icons/008-meeting%201.svg" 
-                        alt="Meeting Icon" 
-                        className="w-10 h-10 sm:w-12 sm:h-12"
-                      />
-                    </div>
-                  </div>
-                  <h4 className="text-2xl sm:text-3xl md:text-4xl font-bold text-left">50+</h4> 
-                  <h5 className="text-sm sm:text-base font-normal text-left">Investors & funds</h5>
-                </div>
-                <div className="bg-white rounded-lg shadow-lg p-3 sm:p-4">
-                  <div className="flex justify-end mb-2">
-                    <div className="flex items-center justify-center">
-                      <img 
-                        src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/icons/023-network%201.svg" 
-                        alt="Network Icon" 
-                        className="w-10 h-10 sm:w-12 sm:h-12"
-                      />
-                    </div>
-                  </div>
-                  <h4 className="text-2xl sm:text-3xl md:text-4xl font-bold text-left">40+</h4> 
-                  <h5 className="text-sm sm:text-base font-normal text-left">Sessions & clinics</h5>
-                </div>
-            </div>
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-2 pt-4">
-              <button 
-                onClick={() => window.location.href = '/summit/purchase-ticket'}
-                className="bg-paan-red text-white px-6 sm:px-8 py-3 text-sm sm:text-base font-medium w-full sm:w-auto rounded-full hover:bg-paan-red/90 transition-all duration-300 shadow-lg flex items-center justify-center gap-2"
-              >
-                Register Now
-              </button>
-              <button 
-                onClick={() => setShowPartnerModal(true)}
-                className="bg-transparent border border-paan-dark-blue text-paan-dark-blue px-6 sm:px-8 py-3 rounded-full hover:bg-paan-dark-blue hover:text-white transition-all duration-300 font-medium text-sm sm:text-base shadow-lg flex items-center justify-center gap-2 w-full sm:w-auto"
-              >
-                Partner With Us
-              </button>
-              <button onClick={() => window.location.href = '#agenda'} className="bg-transparent border border-paan-dark-blue text-paan-dark-blue px-6 sm:px-8 py-3 rounded-full hover:bg-paan-dark-blue hover:text-white transition-all duration-300 font-medium text-sm sm:text-base shadow-lg flex items-center justify-center gap-2 w-full sm:w-auto">View Agenda</button>
-            </div>
-          </section>
-        </div>
-        <div className="bg-paan-dark-blue relative">
-           <div className="w-full h-[30px] sm:h-[40px] md:h-[50px] relative">
-              <Image
-                src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/summit-pattern.svg"
-                fill
-                alt=""
-               className="object-cover w-full h-full"
-                loading="lazy"
-                sizes="100vw"
-              />
-            </div>
-         </div>
+        {/* At a glance section */}
+        <AtAGlanceSection onPartnerClick={() => setShowPartnerModal(true)} />
+      
       
         {/* Program Section */}
         <div className="bg-paan-dark-blue relative" id="program" sectionRefs={sectionRefs} handleScroll={handleScroll} isFixed={isFixed}>
