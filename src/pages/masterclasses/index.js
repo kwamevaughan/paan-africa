@@ -29,61 +29,61 @@ const MasterclassesPage = () => {
 
   // Featured masterclass data - separate from regular masterclasses
   const featuredMasterclass = {
-    id: 8,
-    title: "How To Present Creative Work to Clients",
-    description: "Creative presentations are make-or-break moments. Yet most teams rarely pause to consider what the experience feels like on the client side — the pressure, the uncertainty, the fear of making the wrong call in the room. When these dynamics aren't understood, feedback becomes scattered, key decisions happen offline, and strong ideas lose momentum.",
-    fullDescription: "This masterclass helps you reshape how you present creative work by stepping inside your clients' world. Led by former agency MD turned Unilever Global Brand Director James Hayhurst, this session equips you with practical tools to present ideas clearly, build empathy, and create presentation environments where great work can genuinely thrive. Through real-world examples and interactive exercises, you'll learn how to structure presentations that reduce anxiety, improve feedback quality, and increase the chance of clients buying your strongest ideas.",
+    id: 9,
+    title: "Agency Positioning Masterclass",
+    description: "Learn how to position your agency for growth in 2026. This masterclass explores the core pillars every agency must master: positioning, pricing, and procurement. Discover how to improve margin, conversion, and commercial performance.",
+    fullDescription: "This masterclass helps you reshape how you position your agency in competitive markets. Led by agency growth expert Stuart Dunk, who brings 14+ years of global marketing procurement experience (Reckitt, Nike, Danone) and now coaches agencies on improving margin, conversion, and commercial performance. Through real-world examples and interactive exercises, you'll learn how to position your agency strategically, price effectively, and navigate procurement processes with confidence.",
     format: "90-minute Interactive Training Course",
-    date: "December 4th, 2025",
-    time: "10:00 am EAT",
+    date: "January 28th, 2026",
+    time: "TBC",
     memberPrice: 174,
     memberOriginalPrice: 250,
     nonMemberPrice: 250,
     nonMemberOriginalPrice: 320,
     currency: "USD",
-    category: "Creative Strategy",
-    level: "Junior to Mid-Level",
-    image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/how-to-present-creative-work-to-clients.jpg",
-    instructor: "James Hayhurst",
-    instructorTitle: "Former Agency MD & Unilever Global Brand Director",
-    instructorBio: "James Hayhurst began his career agency-side at BMP DDB (now Adam&Eve DDB), contributing to award-winning work for brands such as Volkswagen, Channel 4, and the Teacher Training Agency. He later became Managing Director at Leagas Delaney, overseeing brands including Glenfiddich, Patek Philippe, and Timberland. In 2014, James moved client-side to Unilever as Global Brand Equity Director for OMO/Persil, gaining firsthand insight into client culture, decision-making, and the often-unspoken challenges agencies rarely see. Recognising the empathy gap between agencies and clients, he created The Magic Sauce, a programme designed to bridge that gap by improving understanding, collaboration, and creative outcomes across both sides of the industry.",
+    category: "Business Development",
+    level: "Intermediate",
+    image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/positioning.jpg",
+    instructor: "Stuart Dunk",
+    instructorTitle: "Agency Growth Expert with 14+ years global marketing procurement experience",
+    instructorBio: "Stuart Dunk brings 14+ years of global marketing procurement experience working with major brands including Reckitt, Nike, and Danone. He now coaches agencies on improving margin, conversion, and commercial performance. Stu's unique perspective comes from understanding both sides of the agency-client relationship, having worked in procurement and now helping agencies navigate these challenges effectively.",
     instructorExpertise: [
-      "Creative presentation strategy",
-      "Client-agency collaboration",
-      "Brand equity management",
-      "Award-winning creative work"
+      "Agency Positioning & Strategy",
+      "Pricing Models & Commercial Performance",
+      "Marketing Procurement",
+      "Agency Growth & Development"
     ],
     benefits: [
       "5% off on PAAN Summit 2026 tickets",
       "6% off Africa Creative Excellence Awards entry"
     ],
     whoShouldAttend: [
-      "Junior to mid-level agency teams",
-      "Creative professionals presenting to clients",
-      "Account handlers and client-facing staff",
-      "Creative directors and team leads"
+      "Agency founders & partners",
+      "Business development professionals",
+      "Account directors & agency leaders",
+      "Marketing and strategy professionals"
     ],
     learningOutcomes: [
-      "What it feels like to be on the receiving end of creative presentations and the pressures clients face",
-      "How to present ideas clearly - distinguishing the core idea, the execution, and what truly matters",
-      "How to design a gamified presentation format that is engaging, structured, and more enjoyable for all",
-      "How to ask stronger feedback questions that help clients feel heard and lead to better solutions",
-      "How to plan stakeholder management in partnership with your client teams"
+      "Master the fundamentals of agency positioning in competitive markets",
+      "Learn strategic pricing models that improve margin and conversion",
+      "Understand procurement processes and how to navigate them effectively",
+      "Develop frameworks for improving commercial performance",
+      "Apply practical insights from global marketing procurement experience"
     ],
     courseObjectives: [
-      "Master the art of presenting creative work with clarity and confidence",
-      "Build empathy and understanding of client perspectives during presentations",
-      "Create presentation environments where great work can genuinely thrive",
-      "Improve feedback quality and increase the chance of clients buying your strongest ideas"
+      "Position your agency for sustainable growth in 2026",
+      "Improve margin and conversion rates through strategic pricing",
+      "Navigate procurement processes with confidence",
+      "Build a commercial strategy that drives agency success"
     ],
     whyAttend: [
-      "Client Perspective: Step inside your clients' world and understand their pressures and decision-making process",
-      "Expert Guidance: Learn from someone who's been on both sides - agency MD and global brand director",
-      "Practical Tools: Get actionable frameworks and techniques you can apply immediately",
-      "Real-World Examples: Learn through interactive exercises and live creative presentation practice"
+      "Global Experience: Learn from someone with 14+ years of global marketing procurement experience",
+      "Practical Insights: Get actionable frameworks for positioning, pricing, and procurement",
+      "Commercial Focus: Improve margin, conversion, and overall commercial performance",
+      "Real-World Application: Apply strategies from major brands like Reckitt, Nike, and Danone"
     ],
     outcome: "By attending this masterclass, you will get 5% off on PAAN Summit 2026 tickets & 6% off on the Africa Creative Excellence Awards entry.",
-    partnership: "PAAN, in collaboration with the Alliance of Independent Agencies, UK",
+    partnership: "PAAN, in collaboration with agency growth experts",
     status: "upcoming"
   };
 
@@ -262,6 +262,50 @@ const MasterclassesPage = () => {
       status: "upcoming"
     },
     {
+      id: 9,
+      title: "Agency Positioning Masterclass",
+      description: "Learn how to position your agency for growth in 2026. This masterclass explores the core pillars every agency must master: positioning, pricing, and procurement. Discover how to improve margin, conversion, and commercial performance.",
+      format: "90-minute Interactive Training Course",
+      date: "January 15th, 2026",
+      time: "10:00 am EAT",
+      memberPrice: 174,
+      memberOriginalPrice: 250,
+      nonMemberPrice: 250,
+      nonMemberOriginalPrice: 320,
+      currency: "USD",
+      category: "Business Development",
+      level: "Intermediate",
+      instructor: "Stuart Dunk",
+      instructorTitle: "Agency Growth Expert with 14+ years global marketing procurement experience",
+      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/positioning.jpg",
+      benefits: [
+        "5% off on PAAN Summit 2026 tickets",
+        "6% off Africa Creative Excellence Awards entry"
+      ],
+      whoShouldAttend: [
+        "Agency founders & partners",
+        "Business development professionals",
+        "Account directors & agency leaders",
+        "Marketing and strategy professionals"
+      ],
+      learningOutcomes: [
+        "Master the fundamentals of agency positioning in competitive markets",
+        "Learn strategic pricing models that improve margin and conversion",
+        "Understand procurement processes and how to navigate them effectively",
+        "Develop frameworks for improving commercial performance",
+        "Apply practical insights from global marketing procurement experience"
+      ],
+      courseObjectives: [
+        "Position your agency for sustainable growth in 2026",
+        "Improve margin and conversion rates through strategic pricing",
+        "Navigate procurement processes with confidence",
+        "Build a commercial strategy that drives agency success"
+      ],
+      partnership: "PAAN, in collaboration with agency growth experts",
+      featured: false,
+      status: "upcoming"
+    },
+    {
       id: 7,
       title: "How To Be The Best Account Handler In Your Agency",
       description: "Account Handlers are a positive and competitive lot by nature. But the transition from lively pup to 'Top Dog' often seems a difficult and frustrating process. The problem is that 'on the job training' is only as good as 'that particular job'. This course provides an ideal opportunity to really focus on what makes a good Account Handler GREAT.",
@@ -352,6 +396,10 @@ const MasterclassesPage = () => {
   ];
 
   const filteredMasterclasses = masterclasses.filter(masterclass => {
+    // Exclude the featured masterclass from the regular list to avoid duplicates
+    if (masterclass.id === featuredMasterclass.id) {
+      return false;
+    }
     const matchesCategory = selectedCategory === 'all' || 
       masterclass.category.toLowerCase().replace(/\s+/g, '-') === selectedCategory;
     const matchesSearch = masterclass.title.toLowerCase().includes(searchTerm.toLowerCase()) ||

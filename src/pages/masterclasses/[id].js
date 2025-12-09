@@ -6,6 +6,7 @@ import Header from "@/layouts/standard-header";
 import Footer from "@/layouts/footer";
 import PaystackScript from "@/components/PaystackScript";
 import jsPDF from 'jspdf';
+import { validateMasterclassPromoCode } from "@/lib/masterclassPromoCodeService";
 
 const MasterclassDetailPage = () => {
   const router = useRouter();
@@ -20,6 +21,10 @@ const MasterclassDetailPage = () => {
     phone: '',
     organization: ''
   });
+  const [promoCode, setPromoCode] = useState('');
+  const [promoCodeError, setPromoCodeError] = useState('');
+  const [appliedPromoCode, setAppliedPromoCode] = useState(null);
+  const [isValidatingPromoCode, setIsValidatingPromoCode] = useState(false);
 
   // Check if Paystack is ready
   useEffect(() => {
@@ -531,6 +536,67 @@ const MasterclassDetailPage = () => {
       ],
       outcome: "By attending this masterclass, you will get 5% off on PAAN Summit 2026 tickets & 6% off on the Africa Creative Excellence Awards entry.",
       status: "upcoming"
+    },
+    9: {
+      id: 9,
+      title: "Agency Positioning Masterclass",
+      description: "Learn how to position your agency for growth in 2026. This masterclass explores the core pillars every agency must master: positioning, pricing, and procurement. Discover how to improve margin, conversion, and commercial performance.",
+      fullDescription: "This masterclass helps you reshape how you position your agency in competitive markets. Led by agency growth expert Stuart Dunk, who brings 14+ years of global marketing procurement experience (Reckitt, Nike, Danone) and now coaches agencies on improving margin, conversion, and commercial performance. Through real-world examples and interactive exercises, you'll learn how to position your agency strategically, price effectively, and navigate procurement processes with confidence.",
+      format: "90-minute Interactive Training Course",
+      date: "January 28th, 2026",
+      time: "TBC",
+      memberPrice: 174,
+      memberOriginalPrice: 250,
+      nonMemberPrice: 250,
+      nonMemberOriginalPrice: 320,
+      currency: "USD",
+      category: "Business Development",
+      level: "Intermediate",
+      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/positioning.jpg",
+      partnership: "PAAN, in collaboration with agency growth experts",
+      instructor: {
+        name: "Stuart Dunk",
+        title: "Agency Growth Expert with 14+ years global marketing procurement experience",
+        image: "https://ik.imagekit.io/nkmvdjnna/PAAN/instructors/stuart-dunk.jpg",
+        bio: "Stuart Dunk brings 14+ years of global marketing procurement experience working with major brands including Reckitt, Nike, and Danone. He now coaches agencies on improving margin, conversion, and commercial performance. Stu's unique perspective comes from understanding both sides of the agency-client relationship, having worked in procurement and now helping agencies navigate these challenges effectively.",
+        expertise: [
+          "Agency Positioning & Strategy",
+          "Pricing Models & Commercial Performance",
+          "Marketing Procurement",
+          "Agency Growth & Development"
+        ]
+      },
+      benefits: [
+        "5% off on PAAN Summit 2026 tickets",
+        "6% off Africa Creative Excellence Awards entry"
+      ],
+      whoShouldAttend: [
+        "Agency founders & partners",
+        "Business development professionals",
+        "Account directors & agency leaders",
+        "Marketing and strategy professionals"
+      ],
+      learningOutcomes: [
+        "Master the fundamentals of agency positioning in competitive markets",
+        "Learn strategic pricing models that improve margin and conversion",
+        "Understand procurement processes and how to navigate them effectively",
+        "Develop frameworks for improving commercial performance",
+        "Apply practical insights from global marketing procurement experience"
+      ],
+      courseObjectives: [
+        "Position your agency for sustainable growth in 2026",
+        "Improve margin and conversion rates through strategic pricing",
+        "Navigate procurement processes with confidence",
+        "Build a commercial strategy that drives agency success"
+      ],
+      whyAttend: [
+        "Global Experience: Learn from someone with 14+ years of global marketing procurement experience",
+        "Practical Insights: Get actionable frameworks for positioning, pricing, and procurement",
+        "Commercial Focus: Improve margin, conversion, and overall commercial performance",
+        "Real-World Application: Apply strategies from major brands like Reckitt, Nike, and Danone"
+      ],
+      outcome: "By attending this masterclass, you will get 5% off on PAAN Summit 2026 tickets & 6% off on the Africa Creative Excellence Awards entry.",
+      status: "upcoming"
     }
   };
 
@@ -603,6 +669,32 @@ const MasterclassDetailPage = () => {
     "dateModified": new Date().toISOString()
   };
 
+  const handlePromoCodeValidation = async () => {
+    if (!promoCode.trim()) {
+      setPromoCodeError('');
+      setAppliedPromoCode(null);
+      return;
+    }
+
+    setIsValidatingPromoCode(true);
+    setPromoCodeError('');
+
+    const basePrice = selectedPricing === 'member' ? masterclass.memberPrice : masterclass.nonMemberPrice;
+    const totalPrice = basePrice * seatCount;
+
+    const validation = await validateMasterclassPromoCode(promoCode.trim(), masterclass.id, totalPrice);
+    
+    setIsValidatingPromoCode(false);
+
+    if (validation.valid) {
+      setAppliedPromoCode(validation.promoCode);
+      setPromoCodeError('');
+    } else {
+      setAppliedPromoCode(null);
+      setPromoCodeError(validation.error || 'Invalid promo code');
+    }
+  };
+
   const handlePaystackPayment = async () => {
     if (!customerInfo.email || !customerInfo.name) {
       alert('Please fill in your email and name to proceed.');
@@ -619,8 +711,13 @@ const MasterclassDetailPage = () => {
 
     const basePrice = selectedPricing === 'member' ? masterclass.memberPrice : masterclass.nonMemberPrice;
     const totalPrice = basePrice * seatCount;
+    
+    // Apply discount if promo code is valid
+    const discountAmount = appliedPromoCode ? appliedPromoCode.discountAmount : 0;
+    const finalPrice = totalPrice - discountAmount;
+    
     const currency = "USD";
-    const amountInCents = totalPrice * 100;
+    const amountInCents = Math.max(0, Math.round(finalPrice * 100));
 
     // Check if Paystack key is configured
     if (!process.env.NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY) {
@@ -715,7 +812,10 @@ const MasterclassDetailPage = () => {
                 seatCount: seatCount,
                 basePrice: basePrice,
                 totalAmount: totalPrice,
-                amount: totalPrice,
+                discountAmount: discountAmount,
+                finalAmount: finalPrice,
+                promoCode: appliedPromoCode ? appliedPromoCode.code : null,
+                amount: finalPrice,
                 currency: currency,
                 date: masterclass.date,
                 time: masterclass.time,
@@ -1205,7 +1305,11 @@ const MasterclassDetailPage = () => {
                       </div>
                       <div className="flex items-center gap-3 mb-1">
                         <div className="text-3xl font-bold text-slate-900">
-                          ${masterclass.memberPrice * seatCount}
+                          ${(() => {
+                            const basePrice = masterclass.memberPrice * seatCount;
+                            const discount = (appliedPromoCode && selectedPricing === 'member') ? appliedPromoCode.discountAmount : 0;
+                            return (basePrice - discount).toFixed(2);
+                          })()}
                         </div>
                         {masterclass.memberOriginalPrice && (
                           <div className="text-lg text-gray-500 line-through">
@@ -1247,7 +1351,11 @@ const MasterclassDetailPage = () => {
                       </div>
                       <div className="flex items-center gap-3 mb-1">
                         <div className="text-3xl font-bold text-slate-900">
-                          ${masterclass.nonMemberPrice * seatCount}
+                          ${(() => {
+                            const basePrice = masterclass.nonMemberPrice * seatCount;
+                            const discount = (appliedPromoCode && selectedPricing === 'non-member') ? appliedPromoCode.discountAmount : 0;
+                            return (basePrice - discount).toFixed(2);
+                          })()}
                         </div>
                         {masterclass.nonMemberOriginalPrice && (
                           <div className="text-lg text-gray-500 line-through">
@@ -1266,6 +1374,60 @@ const MasterclassDetailPage = () => {
                         )}
                       </div>
                     </button>
+                  </div>
+
+                  {/* Promo Code Section */}
+                  <div className="mb-6">
+                    <h3 className="font-semibold text-slate-900 text-sm mb-3">Have a Discount Code?</h3>
+                    <div className="flex gap-2">
+                      <input
+                        type="text"
+                        placeholder="Enter promo code"
+                        value={promoCode}
+                        onChange={(e) => {
+                          setPromoCode(e.target.value.toUpperCase());
+                          setPromoCodeError('');
+                          setAppliedPromoCode(null);
+                        }}
+                        onBlur={handlePromoCodeValidation}
+                        className="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent outline-none text-sm"
+                      />
+                      <button
+                        onClick={handlePromoCodeValidation}
+                        disabled={isValidatingPromoCode || !promoCode.trim()}
+                        className="px-6 py-3 bg-gray-100 text-gray-700 rounded-lg font-medium hover:bg-gray-200 transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-sm"
+                      >
+                        {isValidatingPromoCode ? (
+                          <Icon icon="mdi:loading" className="w-5 h-5 animate-spin" />
+                        ) : (
+                          'Apply'
+                        )}
+                      </button>
+                    </div>
+                    {promoCodeError && (
+                      <p className="text-red-500 text-xs mt-2 flex items-center gap-1">
+                        <Icon icon="mdi:alert-circle" className="w-4 h-4" />
+                        {promoCodeError}
+                      </p>
+                    )}
+                    {appliedPromoCode && (
+                      <div className="mt-2 p-3 bg-green-50 border border-green-200 rounded-lg">
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center gap-2">
+                            <Icon icon="mdi:check-circle" className="text-green-600 w-5 h-5" />
+                            <span className="text-green-800 text-sm font-medium">
+                              {appliedPromoCode.code} applied
+                            </span>
+                          </div>
+                          <span className="text-green-800 text-sm font-semibold">
+                            -${appliedPromoCode.discountAmount.toFixed(2)}
+                          </span>
+                        </div>
+                        {appliedPromoCode.description && (
+                          <p className="text-green-700 text-xs mt-1">{appliedPromoCode.description}</p>
+                        )}
+                      </div>
+                    )}
                   </div>
 
                   {/* Customer Information */}
@@ -1343,7 +1505,13 @@ const MasterclassDetailPage = () => {
                       ) : (
                         <>
                           <Icon icon="mdi:credit-card" className="w-5 h-5" />
-                          Register Now - ${selectedPricing === 'member' ? masterclass.memberPrice * seatCount : masterclass.nonMemberPrice * seatCount}
+                          Register Now - ${(() => {
+                            const basePrice = selectedPricing === 'member' ? masterclass.memberPrice : masterclass.nonMemberPrice;
+                            const totalPrice = basePrice * seatCount;
+                            const discountAmount = appliedPromoCode ? appliedPromoCode.discountAmount : 0;
+                            const finalPrice = totalPrice - discountAmount;
+                            return finalPrice.toFixed(2);
+                          })()}
                         </>
                       )}
                     </button>
