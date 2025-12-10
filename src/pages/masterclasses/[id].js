@@ -540,8 +540,8 @@ const MasterclassDetailPage = () => {
     9: {
       id: 9,
       title: "Agency Positioning Masterclass",
-      description: "Learn how to position your agency for growth in 2026. This masterclass explores the core pillars every agency must master: positioning, pricing, and procurement. Discover how to improve margin, conversion, and commercial performance.",
-      fullDescription: "This masterclass helps you reshape how you position your agency in competitive markets. Led by agency growth expert Stuart Dunk, who brings 14+ years of global marketing procurement experience (Reckitt, Nike, Danone) and now coaches agencies on improving margin, conversion, and commercial performance. Through real-world examples and interactive exercises, you'll learn how to position your agency strategically, price effectively, and navigate procurement processes with confidence.",
+      description: "Most agencies struggle with positioning because they build it from the inside out, focusing on what they do instead of what clients truly value or what the market actually needs. This masterclass helps agencies step into the shoes of the buyer, understanding how clients assess expertise, evaluate risk, and choose partners. You'll learn how to create a brand narrative that attracts the right clients, filters out the wrong ones, and strengthens every pitch, proposal, and first meeting.",
+      fullDescription: "\"Creative-led,\" \"customer-focused,\" \"insight-driven\". Clients see these statements daily, yet none explain why an agency is unique or worth a premium price. Stuart Dunk will break down proven frameworks used by agencies across multiple countries to build sharp, differentiated positioning rooted in client value, competitive advantage, and strategic clarity. You'll learn how top-performing agencies craft value propositions that challenge assumptions, stand out in pitch rooms, and attract the right clients.",
       format: "90-minute Interactive Training Course",
       date: "January 28th, 2026",
       time: "TBC",
@@ -556,14 +556,14 @@ const MasterclassDetailPage = () => {
       partnership: "PAAN, in collaboration with agency growth experts",
       instructor: {
         name: "Stuart Dunk",
-        title: "Agency Growth Expert with 14+ years global marketing procurement experience",
+        title: "Founder & Managing Director, Don't Forget to Look",
         image: "https://ik.imagekit.io/nkmvdjnna/PAAN/instructors/stuart-dunk.jpg",
-        bio: "Stuart Dunk brings 14+ years of global marketing procurement experience working with major brands including Reckitt, Nike, and Danone. He now coaches agencies on improving margin, conversion, and commercial performance. Stu's unique perspective comes from understanding both sides of the agency-client relationship, having worked in procurement and now helping agencies navigate these challenges effectively.",
+        bio: "After starting his career agency-side, Stuart worked in Marketing Procurement for 14 years at global brands like Reckitt, Nike, and Danone. For the last 6 years, he has been taking that knowledge of how brands buy, with the mission of \"Helping Agency Leaders Sleep Better at Night.\" He is one of the very few consultants who understands both sides of the table, agency and procurement, giving him unmatched insight into how agencies can differentiate, influence buyers, and win high-value deals. Stu runs workshops on various aspects of agency growth, provides pitch and proposal-writing support, and also runs bespoke programs on agency marketing, sales, positioning, and outreach for his clients. His work is designed to increase margin, conversion, and retention, and create more capability and confidence for both agency leaders and their teams.",
         expertise: [
-          "Agency Positioning & Strategy",
-          "Pricing Models & Commercial Performance",
-          "Marketing Procurement",
-          "Agency Growth & Development"
+          "Marketing Procurement & Buyer Psychology",
+          "Agency Positioning & Differentiation",
+          "Pitching & Proposal Writing",
+          "Pricing Models"
         ]
       },
       benefits: [
@@ -571,29 +571,30 @@ const MasterclassDetailPage = () => {
         "6% off Africa Creative Excellence Awards entry"
       ],
       whoShouldAttend: [
-        "Agency founders & partners",
-        "Business development professionals",
-        "Account directors & agency leaders",
-        "Marketing and strategy professionals"
+        "Agency founders & CEOs",
+        "Mid to senior-level agency teams",
+        "Business development & sales leads",
+        "Client service directors & account leads"
       ],
       learningOutcomes: [
-        "Master the fundamentals of agency positioning in competitive markets",
-        "Learn strategic pricing models that improve margin and conversion",
-        "Understand procurement processes and how to navigate them effectively",
-        "Develop frameworks for improving commercial performance",
-        "Apply practical insights from global marketing procurement experience"
+        "The \"3C Framework\" for building world-class agency positioning",
+        "How to craft a value proposition that cuts through the noise",
+        "Why most positioning fails and how to avoid generic traps",
+        "The Benefit Ladder: a tool for connecting client needs to agency strengths",
+        "How to build a \"client value map\" to influence perception and buying decisions",
+        "Examples of exceptional agency positioning and why they work"
       ],
       courseObjectives: [
-        "Position your agency for sustainable growth in 2026",
-        "Improve margin and conversion rates through strategic pricing",
-        "Navigate procurement processes with confidence",
-        "Build a commercial strategy that drives agency success"
+        "Define a differentiated positioning that aligns with client value",
+        "Build a strong, repeatable value proposition for pitches and website copy",
+        "Identify and eliminate weak, generic messaging",
+        "Align service offerings, marketing, and BD processes to the new positioning"
       ],
       whyAttend: [
-        "Global Experience: Learn from someone with 14+ years of global marketing procurement experience",
-        "Practical Insights: Get actionable frameworks for positioning, pricing, and procurement",
-        "Commercial Focus: Improve margin, conversion, and overall commercial performance",
-        "Real-World Application: Apply strategies from major brands like Reckitt, Nike, and Danone"
+        "Stand out instantly in RFPs, pitches, and first-touch conversations",
+        "Attract better-fit clients who already see your agency as \"the right choice\"",
+        "Build messaging that increases lead quality and reduces price objections",
+        "Move from \"service provider\" to \"strategic partner\" in the eyes of clients"
       ],
       outcome: "By attending this masterclass, you will get 5% off on PAAN Summit 2026 tickets & 6% off on the Africa Creative Excellence Awards entry.",
       status: "upcoming"
