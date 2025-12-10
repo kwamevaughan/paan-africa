@@ -315,9 +315,9 @@ const SummitPage = () => {
     return () => clearInterval(interval);
   }, []);
 
-  // Set target date to January 25, 2026 for Early Bird deadline
+  // Set target date to February 21, 2026 for Early Bird deadline
   useEffect(() => {
-    const targetDate = new Date('2026-01-25T23:59:59+03:00'); // January 25, 2026 at 11:59 PM EAT
+    const targetDate = new Date('2026-02-21T23:59:59+03:00'); // February 21, 2026 at 11:59 PM EAT
     
     const interval = setInterval(() => {
       const now = new Date();
@@ -1396,7 +1396,7 @@ const SummitPage = () => {
                         </div>
                         <div className="flex items-center gap-2">
                           <Icon icon="mdi:check" className="text-yellow-300" width="16" height="16" />
-                          <span>Save 30% before January 25th, 2026</span>
+                          <span>Save 30% before February 21st, 2026</span>
                         </div>
                       </div>
                     </div>
@@ -1678,7 +1678,10 @@ const SummitPage = () => {
                             </div>
                             <div className="flex flex-col items-left bg-white/20 border border-white rounded-lg px-2 sm:px-3 md:px-4 py-1 sm:py-2 md:py-3">
                               <h4 className="text-xs sm:text-sm font-light">Virtual: </h4>
-                              <p className="text-lg sm:text-xl md:text-2xl font-bold">$10</p>
+                              <div className="flex items-baseline gap-1 sm:gap-2">
+                                <span className="text-xs sm:text-sm line-through opacity-60">$25</span>
+                                <p className="text-lg sm:text-xl md:text-2xl font-bold">$20</p>
+                              </div>
                             </div>
                           </div>
                           <ul className="text-xs sm:text-sm font-light space-y-1 sm:space-y-2">

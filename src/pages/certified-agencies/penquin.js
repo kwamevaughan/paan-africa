@@ -342,11 +342,11 @@ const HomePage = () => {
                   transition={{ duration: 1, type: "spring" }}
                 >
                   <Image 
-                    src="/assets/images/certified-members/penquin/logo.svg" 
+                    src="/assets/images/certified-members/penquin/logo.png" 
                     width={400} 
                     height={280} 
                     alt="Penquin Logo" 
-                    className="mx-auto w-40 sm:w-64 h-24 sm:h-32 object-contain invert" 
+                    className="mx-auto w-40 sm:w-64 h-24 sm:h-40 object-contain" 
                   />
                 </motion.div>
                 <motion.div
@@ -446,6 +446,10 @@ const HomePage = () => {
                         <div className="flex items-center space-x-3">
                           <div className="w-2 h-2 bg-paan-dark-blue rounded-full"></div>
                           <span className="text-paan-dark-blue/90">B2B Solutions</span>
+                        </div>
+                        <div className="flex items-center space-x-3">
+                          <div className="w-2 h-2 bg-paan-dark-blue rounded-full"></div>
+                          <span className="text-paan-dark-blue/90">AI-Powered Creative Production</span>
                         </div>
                       </div>
                     </div>

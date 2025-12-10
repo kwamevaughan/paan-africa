@@ -99,3 +99,62 @@ export const getLeadByEmail = async (email) => {
     return null;
   }
 };
+
+/**
+ * Check if user has submitted contact info within the last 24 hours
+ * Returns true if they should skip Step 1, false if they should see it
+ */
+export const shouldSkipContactStep = async (email) => {
+  if (!email || typeof window === 'undefined') {
+    return false;
+  }
+
+  try {
+    // First check localStorage as a quick check
+    const storedData = localStorage.getItem('paan_summit_contact_submission');
+    if (storedData) {
+      try {
+        const { email: storedEmail, timestamp } = JSON.parse(storedData);
+        if (storedEmail === email.toLowerCase().trim()) {
+          const submissionTime = new Date(timestamp);
+          const now = new Date();
+          const hoursSinceSubmission = (now - submissionTime) / (1000 * 60 * 60);
+          
+          // If less than 24 hours, skip Step 1
+          if (hoursSinceSubmission < 24) {
+            return true;
+          }
+        }
+      } catch (e) {
+        console.error('Error parsing localStorage data:', e);
+      }
+    }
+
+    // Also check database for more accurate timestamp
+    const lead = await getLeadByEmail(email);
+    if (lead) {
+      // Use updated_at if available, otherwise created_at
+      const lastSubmissionTime = lead.updated_at || lead.created_at;
+      if (lastSubmissionTime) {
+        const submissionTime = new Date(lastSubmissionTime);
+        const now = new Date();
+        const hoursSinceSubmission = (now - submissionTime) / (1000 * 60 * 60);
+        
+        // If less than 24 hours, skip Step 1
+        if (hoursSinceSubmission < 24) {
+          // Update localStorage to match
+          localStorage.setItem('paan_summit_contact_submission', JSON.stringify({
+            email: email.toLowerCase().trim(),
+            timestamp: lastSubmissionTime
+          }));
+          return true;
+        }
+      }
+    }
+
+    return false;
+  } catch (error) {
+    console.error('Error checking contact submission:', error);
+    return false;
+  }
+};

@@ -230,7 +230,7 @@ const TermsAndConditions = () => {
                 <li>All attendees must provide accurate and complete information during registration.</li>
                 <li>PAAN reserves the right to verify the identity and credentials of all registrants.</li>
                 <li>Registration fees are non-refundable except as specified in our cancellation policy.</li>
-                <li>Early bird pricing is available until January 25th, 2026, after which standard pricing applies.</li>
+                <li>Early bird pricing is available until February 21st, 2026, after which standard pricing applies.</li>
                 <li>Group discounts may be available for organizations registering 5 or more attendees.</li>
               </ul>
             </div>
