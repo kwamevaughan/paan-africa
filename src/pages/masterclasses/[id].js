@@ -539,7 +539,7 @@ const MasterclassDetailPage = () => {
     },
     9: {
       id: 9,
-      title: "Agency Positioning Masterclass",
+      title: "Agency Positioning That Cuts Through the Noise",
       description: "Most agencies struggle with positioning because they build it from the inside out, focusing on what they do instead of what clients truly value or what the market actually needs. This masterclass helps agencies step into the shoes of the buyer, understanding how clients assess expertise, evaluate risk, and choose partners. You'll learn how to create a brand narrative that attracts the right clients, filters out the wrong ones, and strengthens every pitch, proposal, and first meeting.",
       fullDescription: "\"Creative-led,\" \"customer-focused,\" \"insight-driven\". Clients see these statements daily, yet none explain why an agency is unique or worth a premium price. Stuart Dunk will break down proven frameworks used by agencies across multiple countries to build sharp, differentiated positioning rooted in client value, competitive advantage, and strategic clarity. You'll learn how top-performing agencies craft value propositions that challenge assumptions, stand out in pitch rooms, and attract the right clients.",
       format: "90-minute Interactive Training Course",
