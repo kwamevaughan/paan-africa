@@ -638,9 +638,11 @@ const SummitPage = () => {
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 sm:gap-8">
               {/* Creative Industry Leaders */}
               <div className="group relative bg-[#E6F2F7] rounded-xl p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border border-paan-blue/10 overflow-hidden">
+                {/* Gradient Overlay on Hover */}
+                <div className="absolute inset-0 bg-gradient-to-b from-paan-blue/0 to-paan-yellow/0 group-hover:from-paan-blue/30 group-hover:to-paan-yellow/30 transition-all duration-300 rounded-xl z-[1]"></div>
                 {/* Pattern Background */}
                 <div 
-                  className="absolute inset-0 opacity-60 group-hover:opacity-80 transition-opacity duration-300 z-0"
+                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-[2]"
                   style={{
                     backgroundImage: "url('https://ik.imagekit.io/nkmvdjnna/PAAN/summit/who-should-join/card-pattern.webp')",
                     backgroundRepeat: 'repeat',
@@ -648,8 +650,6 @@ const SummitPage = () => {
                     backgroundSize: '200px 200px'
                   }}
                 ></div>
-                {/* Gradient Overlay on Hover */}
-                <div className="absolute inset-0 bg-gradient-to-b from-paan-blue/0 to-paan-yellow/0 group-hover:from-paan-blue/20 group-hover:to-paan-yellow/20 transition-all duration-300 rounded-xl z-[1]"></div>
                 {/* Content */}
                 <div className="relative z-10">
                 <div className="w-12 h-12 mb-4 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
@@ -662,9 +662,11 @@ const SummitPage = () => {
 
               {/* Tech & Platform Innovators */}
               <div className="group relative bg-[#E6F2F7] rounded-xl p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border border-paan-blue/10 overflow-hidden">
+                {/* Gradient Overlay on Hover */}
+                <div className="absolute inset-0 bg-gradient-to-b from-paan-blue/0 to-paan-yellow/0 group-hover:from-paan-blue/30 group-hover:to-paan-yellow/30 transition-all duration-300 rounded-xl z-[1]"></div>
                 {/* Pattern Background */}
                 <div 
-                  className="absolute inset-0 opacity-60 group-hover:opacity-80 transition-opacity duration-300 z-0"
+                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-[2]"
                   style={{
                     backgroundImage: "url('https://ik.imagekit.io/nkmvdjnna/PAAN/summit/who-should-join/card-pattern.webp')",
                     backgroundRepeat: 'repeat',
@@ -672,8 +674,6 @@ const SummitPage = () => {
                     backgroundSize: '200px 200px'
                   }}
                 ></div>
-                {/* Gradient Overlay on Hover */}
-                <div className="absolute inset-0 bg-gradient-to-b from-paan-blue/0 to-paan-yellow/0 group-hover:from-paan-blue/20 group-hover:to-paan-yellow/20 transition-all duration-300 rounded-xl z-[1]"></div>
                 {/* Content */}
                 <div className="relative z-10">
                 <div className="w-12 h-12 mb-4 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
@@ -686,9 +686,11 @@ const SummitPage = () => {
 
               {/* Policy makers & trade stakeholders */}
               <div className="group relative bg-[#E6F2F7] rounded-xl p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border border-paan-blue/10 overflow-hidden">
+                {/* Gradient Overlay on Hover */}
+                <div className="absolute inset-0 bg-gradient-to-b from-paan-blue/0 to-paan-yellow/0 group-hover:from-paan-blue/30 group-hover:to-paan-yellow/30 transition-all duration-300 rounded-xl z-[1]"></div>
                 {/* Pattern Background */}
                 <div 
-                  className="absolute inset-0 opacity-60 group-hover:opacity-80 transition-opacity duration-300 z-0"
+                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-[2]"
                   style={{
                     backgroundImage: "url('https://ik.imagekit.io/nkmvdjnna/PAAN/summit/who-should-join/card-pattern.webp')",
                     backgroundRepeat: 'repeat',
@@ -696,8 +698,6 @@ const SummitPage = () => {
                     backgroundSize: '200px 200px'
                   }}
                 ></div>
-                {/* Gradient Overlay on Hover */}
-                <div className="absolute inset-0 bg-gradient-to-b from-paan-blue/0 to-paan-yellow/0 group-hover:from-paan-blue/20 group-hover:to-paan-yellow/20 transition-all duration-300 rounded-xl z-[1]"></div>
                 {/* Content */}
                 <div className="relative z-10">
                 <div className="w-12 h-12 mb-4 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
@@ -710,9 +710,11 @@ const SummitPage = () => {
 
               {/* Agencies */}
               <div className="group relative bg-[#E6F2F7] rounded-xl p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border border-paan-blue/10 overflow-hidden">
+                {/* Gradient Overlay on Hover */}
+                <div className="absolute inset-0 bg-gradient-to-b from-paan-blue/0 to-paan-yellow/0 group-hover:from-paan-blue/30 group-hover:to-paan-yellow/30 transition-all duration-300 rounded-xl z-[1]"></div>
                 {/* Pattern Background */}
                 <div 
-                  className="absolute inset-0 opacity-60 group-hover:opacity-80 transition-opacity duration-300 z-0"
+                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-[2]"
                   style={{
                     backgroundImage: "url('https://ik.imagekit.io/nkmvdjnna/PAAN/summit/who-should-join/card-pattern.webp')",
                     backgroundRepeat: 'repeat',
@@ -720,8 +722,6 @@ const SummitPage = () => {
                     backgroundSize: '200px 200px'
                   }}
                 ></div>
-                {/* Gradient Overlay on Hover */}
-                <div className="absolute inset-0 bg-gradient-to-b from-paan-blue/0 to-paan-yellow/0 group-hover:from-paan-blue/20 group-hover:to-paan-yellow/20 transition-all duration-300 rounded-xl z-[1]"></div>
                 {/* Content */}
                 <div className="relative z-10">
                 <div className="w-12 h-12 mb-4 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
@@ -734,9 +734,11 @@ const SummitPage = () => {
 
               {/* Freelancers */}
               <div className="group relative bg-[#E6F2F7] rounded-xl p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border border-paan-blue/10 overflow-hidden">
+                {/* Gradient Overlay on Hover */}
+                <div className="absolute inset-0 bg-gradient-to-b from-paan-blue/0 to-paan-yellow/0 group-hover:from-paan-blue/30 group-hover:to-paan-yellow/30 transition-all duration-300 rounded-xl z-[1]"></div>
                 {/* Pattern Background */}
                 <div 
-                  className="absolute inset-0 opacity-60 group-hover:opacity-80 transition-opacity duration-300 z-0"
+                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-[2]"
                   style={{
                     backgroundImage: "url('https://ik.imagekit.io/nkmvdjnna/PAAN/summit/who-should-join/card-pattern.webp')",
                     backgroundRepeat: 'repeat',
@@ -744,8 +746,6 @@ const SummitPage = () => {
                     backgroundSize: '200px 200px'
                   }}
                 ></div>
-                {/* Gradient Overlay on Hover */}
-                <div className="absolute inset-0 bg-gradient-to-b from-paan-blue/0 to-paan-yellow/0 group-hover:from-paan-blue/20 group-hover:to-paan-yellow/20 transition-all duration-300 rounded-xl z-[1]"></div>
                 {/* Content */}
                 <div className="relative z-10">
                 <div className="w-12 h-12 mb-4 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
@@ -758,9 +758,11 @@ const SummitPage = () => {
 
               {/* Investors & Financial Institutions */}
               <div className="group relative bg-[#E6F2F7] rounded-xl p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border border-paan-blue/10 overflow-hidden">
+                {/* Gradient Overlay on Hover */}
+                <div className="absolute inset-0 bg-gradient-to-b from-paan-blue/0 to-paan-yellow/0 group-hover:from-paan-blue/30 group-hover:to-paan-yellow/30 transition-all duration-300 rounded-xl z-[1]"></div>
                 {/* Pattern Background */}
                 <div 
-                  className="absolute inset-0 opacity-60 group-hover:opacity-80 transition-opacity duration-300 z-0"
+                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-[2]"
                   style={{
                     backgroundImage: "url('https://ik.imagekit.io/nkmvdjnna/PAAN/summit/who-should-join/card-pattern.webp')",
                     backgroundRepeat: 'repeat',
@@ -768,8 +770,6 @@ const SummitPage = () => {
                     backgroundSize: '200px 200px'
                   }}
                 ></div>
-                {/* Gradient Overlay on Hover */}
-                <div className="absolute inset-0 bg-gradient-to-b from-paan-blue/0 to-paan-yellow/0 group-hover:from-paan-blue/20 group-hover:to-paan-yellow/20 transition-all duration-300 rounded-xl z-[1]"></div>
                 {/* Content */}
                 <div className="relative z-10">
                 <div className="w-12 h-12 mb-4 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
@@ -782,9 +782,11 @@ const SummitPage = () => {
 
               {/* Marketing & creative teams */}
               <div className="group relative bg-[#E6F2F7] rounded-xl p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border border-paan-blue/10 overflow-hidden">
+                {/* Gradient Overlay on Hover */}
+                <div className="absolute inset-0 bg-gradient-to-b from-paan-blue/0 to-paan-yellow/0 group-hover:from-paan-blue/30 group-hover:to-paan-yellow/30 transition-all duration-300 rounded-xl z-[1]"></div>
                 {/* Pattern Background */}
                 <div 
-                  className="absolute inset-0 opacity-60 group-hover:opacity-80 transition-opacity duration-300 z-0"
+                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-[2]"
                   style={{
                     backgroundImage: "url('https://ik.imagekit.io/nkmvdjnna/PAAN/summit/who-should-join/card-pattern.webp')",
                     backgroundRepeat: 'repeat',
@@ -792,8 +794,6 @@ const SummitPage = () => {
                     backgroundSize: '200px 200px'
                   }}
                 ></div>
-                {/* Gradient Overlay on Hover */}
-                <div className="absolute inset-0 bg-gradient-to-b from-paan-blue/0 to-paan-yellow/0 group-hover:from-paan-blue/20 group-hover:to-paan-yellow/20 transition-all duration-300 rounded-xl z-[1]"></div>
                 {/* Content */}
                 <div className="relative z-10">
                 <div className="w-12 h-12 mb-4 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
@@ -806,9 +806,11 @@ const SummitPage = () => {
 
               {/* Hubs & Ecosystem Builders */}
               <div className="group relative bg-[#E6F2F7] rounded-xl p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border border-paan-blue/10 overflow-hidden">
+                {/* Gradient Overlay on Hover */}
+                <div className="absolute inset-0 bg-gradient-to-b from-paan-blue/0 to-paan-yellow/0 group-hover:from-paan-blue/30 group-hover:to-paan-yellow/30 transition-all duration-300 rounded-xl z-[1]"></div>
                 {/* Pattern Background */}
                 <div 
-                  className="absolute inset-0 opacity-60 group-hover:opacity-80 transition-opacity duration-300 z-0"
+                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-[2]"
                   style={{
                     backgroundImage: "url('https://ik.imagekit.io/nkmvdjnna/PAAN/summit/who-should-join/card-pattern.webp')",
                     backgroundRepeat: 'repeat',
@@ -816,8 +818,6 @@ const SummitPage = () => {
                     backgroundSize: '200px 200px'
                   }}
                 ></div>
-                {/* Gradient Overlay on Hover */}
-                <div className="absolute inset-0 bg-gradient-to-b from-paan-blue/0 to-paan-yellow/0 group-hover:from-paan-blue/20 group-hover:to-paan-yellow/20 transition-all duration-300 rounded-xl z-[1]"></div>
                 {/* Content */}
                 <div className="relative z-10">
                 <div className="w-12 h-12 mb-4 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
@@ -830,9 +830,11 @@ const SummitPage = () => {
 
               {/* Academia & research */}
               <div className="group relative bg-[#E6F2F7] rounded-xl p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border border-paan-blue/10 overflow-hidden">
+                {/* Gradient Overlay on Hover */}
+                <div className="absolute inset-0 bg-gradient-to-b from-paan-blue/0 to-paan-yellow/0 group-hover:from-paan-blue/30 group-hover:to-paan-yellow/30 transition-all duration-300 rounded-xl z-[1]"></div>
                 {/* Pattern Background */}
                 <div 
-                  className="absolute inset-0 opacity-60 group-hover:opacity-80 transition-opacity duration-300 z-0"
+                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-[2]"
                   style={{
                     backgroundImage: "url('https://ik.imagekit.io/nkmvdjnna/PAAN/summit/who-should-join/card-pattern.webp')",
                     backgroundRepeat: 'repeat',
@@ -840,8 +842,6 @@ const SummitPage = () => {
                     backgroundSize: '200px 200px'
                   }}
                 ></div>
-                {/* Gradient Overlay on Hover */}
-                <div className="absolute inset-0 bg-gradient-to-b from-paan-blue/0 to-paan-yellow/0 group-hover:from-paan-blue/20 group-hover:to-paan-yellow/20 transition-all duration-300 rounded-xl z-[1]"></div>
                 {/* Content */}
                 <div className="relative z-10">
                 <div className="w-12 h-12 mb-4 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
@@ -854,9 +854,11 @@ const SummitPage = () => {
 
               {/* Corporate & Brand Partners */}
               <div className="group relative bg-[#E6F2F7] rounded-xl p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border border-paan-blue/10 overflow-hidden">
+                {/* Gradient Overlay on Hover */}
+                <div className="absolute inset-0 bg-gradient-to-b from-paan-blue/0 to-paan-yellow/0 group-hover:from-paan-blue/30 group-hover:to-paan-yellow/30 transition-all duration-300 rounded-xl z-[1]"></div>
                 {/* Pattern Background */}
                 <div 
-                  className="absolute inset-0 opacity-60 group-hover:opacity-80 transition-opacity duration-300 z-0"
+                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-[2]"
                   style={{
                     backgroundImage: "url('https://ik.imagekit.io/nkmvdjnna/PAAN/summit/who-should-join/card-pattern.webp')",
                     backgroundRepeat: 'repeat',
@@ -864,8 +866,6 @@ const SummitPage = () => {
                     backgroundSize: '200px 200px'
                   }}
                 ></div>
-                {/* Gradient Overlay on Hover */}
-                <div className="absolute inset-0 bg-gradient-to-b from-paan-blue/0 to-paan-yellow/0 group-hover:from-paan-blue/20 group-hover:to-paan-yellow/20 transition-all duration-300 rounded-xl z-[1]"></div>
                 {/* Content */}
                 <div className="relative z-10">
                 <div className="w-12 h-12 mb-4 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
@@ -879,131 +879,102 @@ const SummitPage = () => {
           </section>
         </div>
 
+        {/* Do business */}
         <div className="bg-white relative mt-10 py-20" isFixed={isFixed}>
           <section className="relative mx-auto max-w-6xl">
-              <div className="text-left mb-12 space-y-4">
-               <h2 className="text-xs w-fit text-paan-dark-blue mb-4 bg-paan-blue text-white rounded-full px-4 py-2">Why Attend</h2>
-               <h3 className="text-3xl text-paan-dark-blue font-bold uppercase">Crossborder  Connections</h3>
-               <p className="text-xl font-normal text-paan-dark-blue mb-4">Walk away with meaningful connections, matched partners, and real deals.</p>
-             </div>
-             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                <div className="bg-paan-dark-blue rounded-xl shadow-xl overflow-hidden relative">
-                  <div className="p-6 pt-8 text-left">
-                    <div className="flex justify-start mb-6">
-                      <Image
-                        src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/icons/030-idea%201.svg"
-                        alt="Who Should Attend"
-                        width={80}
-                        height={80}
-                        className="w-20 h-20"
-                      />
-                    </div>
-                    <h4 className="text-xl font-bold text-white mb-2">Connect with continental leaders</h4>
-                    <p className="text-white mb-8">Investor connections, signed NDAs, and draft term sheets.</p>
-                  </div>
-                  <div className="w-full h-[20px] sm:h-[30px] md:h-[40px]">
+            <div className="text-left mb-12 space-y-4">
+              <h2 className="text-4xl text-paan-dark-blue font-normal">Do business, not just talk.</h2>
+              <p className="text-xl font-normal text-paan-dark-blue mb-4">Walk away with meaningful connections, matched partners, and real deals.</p>
+            </div>
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+              <div className="bg-paan-dark-blue rounded-xl shadow-xl overflow-hidden relative">
+                <div className="absolute inset-0 bg-gradient-to-br from-paan-blue to-paan-blue/60 rounded-xl z-0"></div>
+                <div className="p-6 pt-8 text-left relative z-10">
+                  <div className="flex justify-start mb-6">
                     <Image
-                      src="https://ik.imagekit.io/nkmvdjnna/PAAN/footer-pattern.svg"
-                      width={400}
-                      height={40}
-                      alt=""
-                      className="w-full h-full object-cover"
-                      loading="lazy"
+                      src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/icons/030-idea%201.svg"
+                      alt="Who Should Attend"
+                      width={80}
+                      height={80}
+                      className="w-20 h-20"
                     />
                   </div>
+                  <h4 className="text-xl font-normal text-white mb-2">Do Business, Not Just Talk</h4>
+                  <p className="text-white mb-8">Investor connections, signed NDAs, and draft term sheets.</p>
                 </div>
-                <div className="bg-paan-dark-blue rounded-xl shadow-xl overflow-hidden relative">
-                  <div className="p-6 pt-8 text-left">
-                    <div className="flex justify-start mb-6">
-                      <Image
-                        src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/icons/007-puzzle%201.svg"
-                        alt="Who Should Attend"
-                        width={80}
-                        height={80}
-                        className="w-20 h-20"
-                      />
-                    </div>
-                    <h4 className="text-xl font-bold text-white mb-2">Cross-Border Enablement</h4>
-                    <p className="text-white mb-8">How AfCFTA, PAPSS, and digital rails help you scale across Africa.</p>
-                  </div>
-                  <div className="w-full h-[20px] sm:h-[30px] md:h-[40px]">
+              </div>
+              <div className="bg-paan-dark-blue rounded-xl shadow-xl overflow-hidden relative">
+                <div className="absolute inset-0 bg-gradient-to-br from-paan-yellow to-paan-yellow/60 rounded-xl z-0"></div>
+                <div className="p-6 pt-8 text-left relative z-10">
+                  <div className="flex justify-start mb-6">
                     <Image
-                      src="https://ik.imagekit.io/nkmvdjnna/PAAN/footer-pattern.svg"
-                      width={400}
-                      height={40}
-                      alt=""
-                      className="w-full h-full object-cover"
-                      loading="lazy"
+                      src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/icons/007-puzzle%201.svg"
+                      alt="Who Should Attend"
+                      width={80}
+                      height={80}
+                      className="w-20 h-20"
                     />
                   </div>
+                  <h4 className="text-xl font-normal text-white mb-2">Cross-Border Enablement</h4>
+                  <p className="text-white mb-8">How AfCFTA, PAPSS, and digital rails help you scale across Africa.</p>
                 </div>
-                <div className="bg-paan-dark-blue rounded-xl shadow-xl overflow-hidden relative">
-                  <div className="p-6 pt-8 text-left">
-                    <div className="flex justify-start mb-6">
-                      <Image
-                        src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/icons/040-user%201.svg"
-                        alt="Who Should Attend"
-                        width={80}
-                        height={80}
-                        className="w-20 h-20"
-                      />
-                    </div>
-                    <h4 className="text-xl font-bold text-white mb-2">Hands-On Clinics</h4>
-                    <p className="text-white mb-8">Solve payments, IP rights, residency, and AI tooling with experts at your side.</p>
-                  </div>
-                  <div className="w-full h-[20px] sm:h-[30px] md:h-[40px]">
+              </div>
+              <div className="bg-paan-dark-blue rounded-xl shadow-xl overflow-hidden relative">
+                <div className="absolute inset-0 bg-gradient-to-br from-paan-red to-paan-red/60 rounded-xl z-0"></div>
+                <div className="p-6 pt-8 text-left relative z-10">
+                  <div className="flex justify-start mb-6">
                     <Image
-                      src="https://ik.imagekit.io/nkmvdjnna/PAAN/footer-pattern.svg"
-                      width={400}
-                      height={40}
-                      alt=""
-                      className="w-full h-full object-cover"
-                      loading="lazy"
+                      src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/icons/040-user%201.svg"
+                      alt="Who Should Attend"
+                      width={80}
+                      height={80}
+                      className="w-20 h-20"
                     />
                   </div>
+                  <h4 className="text-xl font-normal text-white mb-2">Hands-On Clinics</h4>
+                  <p className="text-white mb-8">Solve payments, IP rights, residency, and AI tooling with experts at your side.</p>
                 </div>
-             </div>
-          </section>
-        </div>
+              </div>
+            </div>
 
-        {/* Stats Section */}
-        <div className="bg-paan-red relative py-20" id="stats-section" isFixed={isFixed}>
-          {/* Background clip art */}
-          <div className="absolute inset-0 opacity-10">
-            <img 
-              src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/clip-art.svg" 
-              alt="Background clip art" 
-              className="w-full h-full object-cover"
-            />
-          </div>
-          <section className="relative mx-auto max-w-6xl flex items-center justify-center min-h-[400px]">
-            <div className="text-center grid grid-cols-1 lg:grid-cols-4 gap-8">
-             <div className="text-white">
-               <div className="p-6 pt-8 text-center">
-                 <h4 className="text-5xl font-bold mb-2 text-white">{counts.investorMeetings}+</h4>
-                 <p className="text-white mb-8 text-xl">Curated 1:1 investor meetings</p>
-               </div>
-             </div>
-             <div className="text-white">
-               <div className="p-6 pt-8 text-center">
-                 <h4 className="text-5xl font-bold mb-2 text-white">{counts.ndasSigned}+</h4>
-                 <p className="text-white mb-8 text-xl">NDAs signed during Deal Rooms</p>
-               </div>
-             </div>
-             <div className="text-white">
-               <div className="p-6 pt-8 text-center">
-                 <h4 className="text-5xl font-bold mb-2 text-white">${counts.termSheets}M+</h4>
-                 <p className="text-white mb-8 text-xl">In term sheets & MoUs within 90 days</p>
-               </div>
-             </div>
-             <div className="text-white">
-               <div className="p-6 pt-8 text-center">
-                 <div className="flex justify-center mb-2">
-                   <Icon icon="mdi:user-group" className="text-white" width="72" height="72" />
-                 </div>
-                 <p className="text-white mb-8 text-xl">Dozens of freelancers & creators onboarded to cross-border systems</p>
-               </div>
-             </div>
+            {/* Stats Section */}
+            <div className="mt-10 relative rounded-xl overflow-hidden p-8 sm:p-12">
+              {/* Gradient Overlay */}
+              <div 
+                className="absolute inset-0 rounded-xl z-0"
+                style={{
+                  background: 'linear-gradient(to bottom right, #172840, #F25849)'
+                }}
+              ></div>
+              {/* Pattern Background */}
+              <div 
+                className="absolute inset-0 opacity-50 z-[1]"
+                style={{
+                  backgroundImage: "url('https://ik.imagekit.io/nkmvdjnna/PAAN/summit/stats-pattern.webp')",
+                  backgroundRepeat: 'repeat',
+                  backgroundPosition: 'center',
+                  backgroundSize: '100% 100%'
+                }}
+              ></div>
+              {/* Content */}
+              <div className="relative z-10 grid grid-cols-2 lg:grid-cols-4 gap-8">
+                  <div className="flex flex-col gap-4 text-center items-center">
+                      <h2 className="text-3xl sm:text-4xl md:text-5xl text-white">150+</h2>
+                      <p className="text-white text-sm sm:text-base">Curated 1:1 investor meetings</p>
+                  </div>
+                  <div className="flex flex-col gap-4 text-center items-center">
+                      <h2 className="text-3xl sm:text-4xl md:text-5xl text-white">50+</h2>
+                      <p className="text-white text-sm sm:text-base">NDAs signed during Deal Rooms</p>
+                  </div>
+                  <div className="flex flex-col gap-4 text-center items-center">
+                      <h2 className="text-3xl sm:text-4xl md:text-5xl text-white">$10M+</h2>
+                      <p className="text-white text-sm sm:text-base">In term sheets & MoUs within 90 days</p>
+                  </div>
+                  <div className="flex flex-col gap-4 text-center items-center">
+                      <Icon icon="mdi:user-group" className="text-white" width="72" height="72" />
+                      <p className="text-white text-sm sm:text-base">Dozens of freelancers & creators onboarded to cross-border systems</p>
+                  </div>
+              </div>
             </div>
           </section>
         </div>
