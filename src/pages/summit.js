@@ -984,8 +984,7 @@ const SummitPage = () => {
            <section className="relative mx-auto max-w-6xl px-4 sm:px-6">
              <div className="flex flex-col sm:flex-row justify-between items-start mb-6 sm:mb-8 gap-4">
                <div>
-                 <h2 className="text-xs sm:text-sm w-fit text-paan-dark-blue mb-3 sm:mb-4 bg-paan-blue text-white rounded-full px-3 sm:px-4 py-1">Our Speakers</h2>
-                 <h3 className="text-2xl sm:text-3xl text-paan-dark-blue font-bold uppercase">Meet the speakers</h3>
+                 <h3 className="text-3xl sm:text-4xl text-paan-dark-blue font-normal">Meet the speakers</h3>
                  <p className="text-base sm:text-lg md:text-xl font-normal text-paan-dark-blue mb-4">Africa's top creators, innovators, and enablers.</p>
                </div>
                {/* Navigation arrows */}
@@ -1007,58 +1006,54 @@ const SummitPage = () => {
                </div>
              </div>
              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-               {getVisibleSpeakers().map((speaker) => (
-                 <div key={speaker.id} className="relative rounded-xl shadow-xl overflow-hidden group cursor-pointer h-80 sm:h-96">
-                   <Image
-                     src={speaker.image}
-                     alt={speaker.name}
-                     width={400}
-                     height={500}
-                     className="w-full h-full object-cover"
-                   />
-                   {/* White overlay on hover */}
-                   <div className="absolute inset-0 bg-white/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                     <div className="text-center p-4 sm:p-6">
-                       <h4 className="text-lg sm:text-xl md:text-2xl font-bold text-paan-dark-blue mb-2">{speaker.name}</h4>
-                       <p className="text-paan-dark-blue mb-4 text-sm sm:text-base">{speaker.title}</p>
-                       <div className="flex justify-center">
-                         <a 
-                           href={speaker.linkedin} 
-                           target="_blank" 
-                           rel="noopener noreferrer"
-                           className="hover:scale-110 transition-transform duration-200"
-                         >
-                           <Icon icon="mdi:linkedin" className="text-paan-dark-blue" width="28" height="28" />
-                         </a>
+               {getVisibleSpeakers().map((speaker, index) => {
+                 // Cycle through PAAN colors: yellow, red, blue, dark-blue
+                 const colors = ['#F2B706', '#F25849', '#84C1D9', '#172840']; // paan-yellow, paan-red, paan-blue, paan-dark-blue
+                 const hoverColor = colors[index % 4];
+                 
+                 return (
+                   <div key={speaker.id} className="relative rounded-xl shadow-xl overflow-hidden group cursor-pointer h-80 sm:h-96">
+                    <Image
+                      src={speaker.image}
+                      alt={speaker.name}
+                      width={400}
+                      height={500}
+                      className="w-full h-full object-cover"
+                    />
+                     {/* Speaker info at bottom with PAAN colors overlay on hover */}
+                     <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent group-hover:bg-gradient-to-t group-hover:from-black/0 group-hover:to-transparent transition-all duration-300 p-4 sm:p-6">
+                       {/* PAAN color overlay with fade to top on hover */}
+                       <div 
+                         className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                         style={{ 
+                           background: `linear-gradient(to top, ${hoverColor} 0%, ${hoverColor} 40%, rgba(0,0,0,0) 100%)`
+                         }}
+                       ></div>
+                       <div className="relative z-10 flex justify-between items-center">
+                         <div>
+                           <h4 className="text-lg sm:text-xl font-bold text-white mb-1">{speaker.name}</h4>
+                           <p className="text-white/90 text-xs sm:text-sm">{speaker.title}</p>
+                         </div>
+                         <div className="flex-shrink-0">
+                           <a 
+                             href={speaker.linkedin} 
+                             target="_blank" 
+                             rel="noopener noreferrer"
+                             className="hover:scale-110 transition-transform duration-200"
+                           >
+                             <Icon icon="mdi:linkedin" className="text-white" width="20" height="20" />
+                           </a>
+                         </div>
                        </div>
                      </div>
                    </div>
-                   {/* Speaker info at bottom */}
-                   <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4 sm:p-6">
-                     <div className="flex justify-between items-center">
-                       <div>
-                         <h4 className="text-lg sm:text-xl font-bold text-white mb-1">{speaker.name}</h4>
-                         <p className="text-white/90 text-xs sm:text-sm">{speaker.title}</p>
-                       </div>
-                       <div className="flex-shrink-0">
-                         <a 
-                           href={speaker.linkedin} 
-                           target="_blank" 
-                           rel="noopener noreferrer"
-                           className="hover:scale-110 transition-transform duration-200"
-                         >
-                           <Icon icon="mdi:linkedin" className="text-white" width="20" height="20" />
-                         </a>
-                       </div>
-                     </div>
-                   </div>
-                 </div>
-               ))}
+                 );
+               })}
              </div>
               <div className="flex justify-center sm:justify-start gap-2 mt-6 sm:mt-8">
                 <button 
                   onClick={() => window.location.href = '/summit/speaker-application'} 
-                  className="bg-transparent border border-paan-dark-blue text-paan-dark-blue px-6 sm:px-8 py-3 rounded-full hover:bg-paan-dark-blue hover:text-white transition-all duration-300 font-medium text-sm sm:text-base shadow-lg flex items-center justify-center gap-2 w-full sm:w-auto"
+                  className="bg-gradient-to-r from-paan-yellow to-paan-blue border border-transparent text-white px-6 sm:px-8 py-3 rounded-full hover:opacity-90 transition-all duration-300 font-medium text-sm sm:text-base shadow-lg flex items-center justify-center gap-2 w-full sm:w-auto"
                 >
                   Apply to Speak
                 </button>
@@ -1079,13 +1074,15 @@ const SummitPage = () => {
                  <div className="flex space-x-4 sm:space-x-6 md:space-x-8 whitespace-nowrap">
                    {[...Array(4)].map((_, i) => (
                      <div key={`right-${i}`} className="flex items-center space-x-4 sm:space-x-6 md:space-x-8">
-                       <span className="text-lg sm:text-xl md:text-2xl font-semibold text-paan-dark-blue whitespace-nowrap">Creative Industry Leaders</span>
+                       <span className="text-lg sm:text-xl md:text-2xl font-semibold text-paan-dark-blue whitespace-nowrap">Film Director</span>
                        <span className="text-2xl sm:text-3xl text-paan-red">•</span>
-                       <span className="text-lg sm:text-xl md:text-2xl font-semibold text-paan-dark-blue whitespace-nowrap">Tech & Platform Innovators</span>
+                       <span className="text-lg sm:text-xl md:text-2xl font-semibold text-paan-dark-blue whitespace-nowrap">Music Producers</span>
                        <span className="text-2xl sm:text-3xl text-paan-blue">•</span>
-                       <span className="text-lg sm:text-xl md:text-2xl font-semibold text-paan-dark-blue whitespace-nowrap">Policy Makers</span>
+                       <span className="text-lg sm:text-xl md:text-2xl font-semibold text-paan-dark-blue whitespace-nowrap">Fashion Designers</span>
                        <span className="text-2xl sm:text-3xl text-paan-dark-blue">•</span>
-                       <span className="text-lg sm:text-xl md:text-2xl font-semibold text-paan-dark-blue whitespace-nowrap">Investors </span>
+                       <span className="text-lg sm:text-xl md:text-2xl font-semibold text-paan-dark-blue whitespace-nowrap">Gaming Studios</span>
+                       <span className="text-2xl sm:text-3xl text-paan-yellow">•</span>
+                       <span className="text-lg sm:text-xl md:text-2xl font-semibold text-paan-dark-blue whitespace-nowrap">SaaS Founders</span>
                        <span className="text-2xl sm:text-3xl text-paan-yellow">•</span>
                      </div>
                    ))}
@@ -1099,9 +1096,9 @@ const SummitPage = () => {
                  <div className="flex space-x-4 sm:space-x-6 md:space-x-8 whitespace-nowrap">
                    {[...Array(4)].map((_, i) => (
                      <div key={`left-${i}`} className="flex items-center space-x-4 sm:space-x-6 md:space-x-8">
-                       <span className="text-lg sm:text-xl md:text-2xl font-semibold text-paan-dark-blue whitespace-nowrap">Brand Owners</span>
+                       <span className="text-lg sm:text-xl md:text-2xl font-semibold text-paan-dark-blue whitespace-nowrap">Producers</span>
                        <span className="text-2xl sm:text-3xl text-paan-red">•</span>
-                       <span className="text-lg sm:text-xl md:text-2xl font-semibold text-paan-dark-blue whitespace-nowrap">Brand Strategists</span>
+                       <span className="text-lg sm:text-xl md:text-2xl font-semibold text-paan-dark-blue whitespace-nowrap">Fashion Designers</span>
                        <span className="text-2xl sm:text-3xl text-paan-blue">•</span>
                        <span className="text-lg sm:text-xl md:text-2xl font-semibold text-paan-dark-blue whitespace-nowrap">UX/UI Designers</span>
                        <span className="text-2xl sm:text-3xl text-paan-maroon">•</span>
@@ -1116,34 +1113,34 @@ const SummitPage = () => {
          </div>
 
          {/* Session section */}
-         <div className="bg-paan-dark-blue relative py-12 sm:py-16 md:py-20" id="sessions-section" isFixed={isFixed}>
-           <section className="relative mx-auto max-w-6xl px-4 sm:px-6">
-             <div className="flex flex-col sm:flex-row justify-between items-start mb-6 sm:mb-8 gap-4">
-               <div>
-                 <h2 className="text-xs sm:text-sm w-fit text-white border border-white mb-3 sm:mb-4 bg-transparent text-white rounded-full px-3 sm:px-4 py-1">Special Features</h2>
-                 <h3 className="text-2xl sm:text-3xl text-white font-bold uppercase">Beyond the sessions</h3>
+         <div className="relative py-12 sm:py-16 md:py-20 overflow-hidden" id="sessions-section" isFixed={isFixed}>
+           {/* Gradient Background */}
+           <div 
+             className="absolute inset-0 z-0"
+             style={{
+               background: 'linear-gradient(to bottom right, #172840, #F25849)'
+             }}
+           ></div>
+           {/* Pattern Background */}
+           <div 
+             className="absolute inset-0 z-[1]"
+             style={{
+               backgroundImage: "url('https://ik.imagekit.io/nkmvdjnna/PAAN/summit/beyond-session-pattern.webp?updatedAt=1765954397048')",
+               backgroundRepeat: 'repeat',
+               backgroundPosition: 'center',
+               backgroundSize: 'cover',
+               opacity: 0.3
+             }}
+           ></div>
+           <section className="relative mx-auto max-w-6xl px-4 sm:px-6 z-10">
+             <div className="flex flex-col sm:flex-row justify-center items-center mb-6 sm:mb-8 gap-4">
+               <div>                 
+                 <h3 className="text-3xl sm:text-4xl text-white font-normal">Beyond the sessions</h3>
                  <p className="text-base sm:text-lg md:text-xl font-normal text-white mb-4">Experience Nairobi and make connections that last.</p>
-               </div>
-               {/* Navigation arrows */}
-               <div className="flex gap-2 self-end">
-                 <button 
-                   onClick={prevSessions}
-                   className="w-10 h-10 sm:w-12 sm:h-12 border border-white text-white rounded-full flex items-center justify-center hover:bg-white hover:text-paan-dark-blue transition-colors duration-300 shadow-lg"
-                   disabled={currentSessionIndex === 0}
-                 >
-                   <Icon icon="mdi:chevron-left" width="20" height="20" />
-                 </button>
-                 <button 
-                   onClick={nextSessions}
-                   className="w-10 h-10 sm:w-12 sm:h-12 border border-white text-white rounded-full flex items-center justify-center hover:bg-white hover:text-paan-dark-blue transition-colors duration-300 shadow-lg"
-                   disabled={currentSessionIndex + visibleSessions >= sessions.length}
-                 >
-                   <Icon icon="mdi:chevron-right" width="20" height="20" />
-                 </button>
                </div>
              </div>
              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-               {getVisibleSessions().map((session) => (
+               {sessions.slice(0, 3).map((session) => (
                  <div key={session.id} className="relative rounded-xl shadow-xl overflow-hidden group cursor-pointer h-80 sm:h-96">
                    <Image
                      src={session.image}
@@ -1156,19 +1153,13 @@ const SummitPage = () => {
                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
                    
                    {/* Session info at bottom */}
-                   <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6">
-                     <div className="space-y-2 sm:space-y-3">
-                       <div>
-                         <h4 className="text-lg sm:text-xl font-bold text-white mb-2">{session.title}</h4>
-                         <p className="text-white/90 text-xs sm:text-sm leading-relaxed">{session.description}</p>
-                       </div>
-                       <div className="flex justify-between items-center">
-                         <span className="inline-block bg-paan-blue text-white px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm font-medium">
-                           {session.category}
-                         </span>
+                   <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 group-hover:bg-white transition-all duration-300 rounded-t-xl flex flex-col">
+                     <div className="flex-1"></div>
+                     <div>
+                       <h4 className="text-lg sm:text-xl font-bold text-white group-hover:text-paan-dark-blue transition-colors duration-300">{session.title}</h4>
+                       <p className="hidden group-hover:block transition-all duration-300 text-paan-dark-blue text-xs sm:text-sm leading-relaxed mt-2">{session.description}</p>
                      </div>
                    </div>
-                       </div>
                        </div>
                ))}
                      </div>
