@@ -632,12 +632,12 @@ const SummitPage = () => {
           <section className="mx-auto max-w-6xl px-4 sm:px-6">
             <div className="text-center mb-8 sm:mb-12">
               <h2 className="text-2xl sm:text-3xl font-normal text-paan-dark-blue mb-3 sm:mb-4">Who Should Join</h2>
-              <p className="text-base sm:text-lg text-gray-600">Connect with diverse professionals shaping Africa's creative economy</p>
+              <p className="text-sm sm:text-base md:text-lg text-gray-600 px-2">Connect with diverse professionals shaping Africa's creative economy</p>
             </div>
             
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 sm:gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
               {/* Creative Industry Leaders */}
-              <div className="group relative bg-[#E6F2F7] rounded-xl p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border border-paan-blue/10 overflow-hidden">
+              <div className="group relative bg-[#E6F2F7] rounded-xl p-4 sm:p-5 md:p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border border-paan-blue/10 overflow-hidden">
                 {/* Gradient Overlay on Hover */}
                 <div className="absolute inset-0 bg-gradient-to-b from-paan-blue/0 to-paan-yellow/0 group-hover:from-paan-blue/30 group-hover:to-paan-yellow/30 transition-all duration-300 rounded-xl z-[1]"></div>
                 {/* Pattern Background */}
@@ -652,16 +652,16 @@ const SummitPage = () => {
                 ></div>
                 {/* Content */}
                 <div className="relative z-10">
-                <div className="w-12 h-12 mb-4 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                  <Image src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/who-should-join/fi_4578507.webp" alt="Creative Industry Leaders" width={48} height={48} />
+                <div className="w-10 h-10 sm:w-12 sm:h-12 mb-3 sm:mb-4 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <Image src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/who-should-join/fi_4578507.webp" alt="Creative Industry Leaders" width={48} height={48} className="w-full h-full" />
                 </div>
-                <h3 className="text-lg font-bold text-paan-dark-blue mb-2">Creative Industry Leaders</h3>
-                <p className="text-gray-600 text-sm">Artists, directors, producers, and creative visionaries driving innovation across Africa's entertainment and media landscape.</p>
+                <h3 className="text-base sm:text-lg font-bold text-paan-dark-blue mb-1.5 sm:mb-2">Creative Industry Leaders</h3>
+                <p className="text-gray-600 text-xs sm:text-sm leading-relaxed">Artists, directors, producers, and creative visionaries driving innovation across Africa's entertainment and media landscape.</p>
                 </div>
               </div>
 
               {/* Tech & Platform Innovators */}
-              <div className="group relative bg-[#E6F2F7] rounded-xl p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border border-paan-blue/10 overflow-hidden">
+              <div className="group relative bg-[#E6F2F7] rounded-xl p-4 sm:p-5 md:p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border border-paan-blue/10 overflow-hidden">
                 {/* Gradient Overlay on Hover */}
                 <div className="absolute inset-0 bg-gradient-to-b from-paan-blue/0 to-paan-yellow/0 group-hover:from-paan-blue/30 group-hover:to-paan-yellow/30 transition-all duration-300 rounded-xl z-[1]"></div>
                 {/* Pattern Background */}
@@ -676,16 +676,16 @@ const SummitPage = () => {
                 ></div>
                 {/* Content */}
                 <div className="relative z-10">
-                <div className="w-12 h-12 mb-4 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                  <Image src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/who-should-join/fi_4657328.webp" alt="Tech & Platform Innovators" width={48} height={48} />
+                <div className="w-10 h-10 sm:w-12 sm:h-12 mb-3 sm:mb-4 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <Image src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/who-should-join/fi_4657328.webp" alt="Tech & Platform Innovators" width={48} height={48} className="w-full h-full" />
                 </div>
-                <h3 className="text-lg font-bold text-paan-dark-blue mb-2">Tech & Platform Innovators</h3>
-                <p className="text-gray-600 text-sm">Technology entrepreneurs, platform builders, and digital innovators creating the infrastructure for creative commerce.</p>
+                <h3 className="text-base sm:text-lg font-bold text-paan-dark-blue mb-1.5 sm:mb-2">Tech & Platform Innovators</h3>
+                <p className="text-gray-600 text-xs sm:text-sm leading-relaxed">Technology entrepreneurs, platform builders, and digital innovators creating the infrastructure for creative commerce.</p>
                 </div>
               </div>
 
               {/* Policy makers & trade stakeholders */}
-              <div className="group relative bg-[#E6F2F7] rounded-xl p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border border-paan-blue/10 overflow-hidden">
+              <div className="group relative bg-[#E6F2F7] rounded-xl p-4 sm:p-5 md:p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border border-paan-blue/10 overflow-hidden">
                 {/* Gradient Overlay on Hover */}
                 <div className="absolute inset-0 bg-gradient-to-b from-paan-blue/0 to-paan-yellow/0 group-hover:from-paan-blue/30 group-hover:to-paan-yellow/30 transition-all duration-300 rounded-xl z-[1]"></div>
                 {/* Pattern Background */}
@@ -700,16 +700,16 @@ const SummitPage = () => {
                 ></div>
                 {/* Content */}
                 <div className="relative z-10">
-                <div className="w-12 h-12 mb-4 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                  <Image src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/who-should-join/fi_8206224.webp" alt="Policy Makers & Trade Stakeholders" width={48} height={48} />
+                <div className="w-10 h-10 sm:w-12 sm:h-12 mb-3 sm:mb-4 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <Image src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/who-should-join/fi_8206224.webp" alt="Policy Makers & Trade Stakeholders" width={48} height={48} className="w-full h-full" />
                 </div>
-                <h3 className="text-lg font-bold text-paan-dark-blue mb-2">Policy Makers & Trade Stakeholders</h3>
-                <p className="text-gray-600 text-sm">Government officials, trade representatives, and policy experts shaping regulatory frameworks for creative industries.</p>
+                <h3 className="text-base sm:text-lg font-bold text-paan-dark-blue mb-1.5 sm:mb-2">Policy Makers & Trade Stakeholders</h3>
+                <p className="text-gray-600 text-xs sm:text-sm leading-relaxed">Government officials, trade representatives, and policy experts shaping regulatory frameworks for creative industries.</p>
                 </div>
               </div>
 
               {/* Agencies */}
-              <div className="group relative bg-[#E6F2F7] rounded-xl p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border border-paan-blue/10 overflow-hidden">
+              <div className="group relative bg-[#E6F2F7] rounded-xl p-4 sm:p-5 md:p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border border-paan-blue/10 overflow-hidden">
                 {/* Gradient Overlay on Hover */}
                 <div className="absolute inset-0 bg-gradient-to-b from-paan-blue/0 to-paan-yellow/0 group-hover:from-paan-blue/30 group-hover:to-paan-yellow/30 transition-all duration-300 rounded-xl z-[1]"></div>
                 {/* Pattern Background */}
@@ -724,16 +724,16 @@ const SummitPage = () => {
                 ></div>
                 {/* Content */}
                 <div className="relative z-10">
-                <div className="w-12 h-12 mb-4 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                  <Image src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/who-should-join/fi_9453411.webp" alt="Agencies & Service Providers" width={48} height={48} />
+                <div className="w-10 h-10 sm:w-12 sm:h-12 mb-3 sm:mb-4 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <Image src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/who-should-join/fi_9453411.webp" alt="Agencies & Service Providers" width={48} height={48} className="w-full h-full" />
                 </div>
-                <h3 className="text-lg font-bold text-paan-dark-blue mb-2">Agencies & Service Providers</h3>
-                <p className="text-gray-600 text-sm">Marketing, creative, advertising, IT, and tech agencies providing specialized services to creative businesses.</p>
+                <h3 className="text-base sm:text-lg font-bold text-paan-dark-blue mb-1.5 sm:mb-2">Agencies & Service Providers</h3>
+                <p className="text-gray-600 text-xs sm:text-sm leading-relaxed">Marketing, creative, advertising, IT, and tech agencies providing specialized services to creative businesses.</p>
                 </div>
               </div>
 
               {/* Freelancers */}
-              <div className="group relative bg-[#E6F2F7] rounded-xl p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border border-paan-blue/10 overflow-hidden">
+              <div className="group relative bg-[#E6F2F7] rounded-xl p-4 sm:p-5 md:p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border border-paan-blue/10 overflow-hidden">
                 {/* Gradient Overlay on Hover */}
                 <div className="absolute inset-0 bg-gradient-to-b from-paan-blue/0 to-paan-yellow/0 group-hover:from-paan-blue/30 group-hover:to-paan-yellow/30 transition-all duration-300 rounded-xl z-[1]"></div>
                 {/* Pattern Background */}
@@ -748,16 +748,16 @@ const SummitPage = () => {
                 ></div>
                 {/* Content */}
                 <div className="relative z-10">
-                <div className="w-12 h-12 mb-4 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                  <Image src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/who-should-join/fi_2408265.webp" alt="Freelancers" width={48} height={48} />
+                <div className="w-10 h-10 sm:w-12 sm:h-12 mb-3 sm:mb-4 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <Image src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/who-should-join/fi_2408265.webp" alt="Freelancers" width={48} height={48} className="w-full h-full" />
                 </div>
-                <h3 className="text-lg font-bold text-paan-dark-blue mb-2">Freelancers</h3>
-                <p className="text-gray-600 text-sm">Independent creative professionals, digital nomads, and gig economy participants building scalable creative careers.</p>
+                <h3 className="text-base sm:text-lg font-bold text-paan-dark-blue mb-1.5 sm:mb-2">Freelancers</h3>
+                <p className="text-gray-600 text-xs sm:text-sm leading-relaxed">Independent creative professionals, digital nomads, and gig economy participants building scalable creative careers.</p>
                 </div>
               </div>
 
               {/* Investors & Financial Institutions */}
-              <div className="group relative bg-[#E6F2F7] rounded-xl p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border border-paan-blue/10 overflow-hidden">
+              <div className="group relative bg-[#E6F2F7] rounded-xl p-4 sm:p-5 md:p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border border-paan-blue/10 overflow-hidden">
                 {/* Gradient Overlay on Hover */}
                 <div className="absolute inset-0 bg-gradient-to-b from-paan-blue/0 to-paan-yellow/0 group-hover:from-paan-blue/30 group-hover:to-paan-yellow/30 transition-all duration-300 rounded-xl z-[1]"></div>
                 {/* Pattern Background */}
@@ -772,16 +772,16 @@ const SummitPage = () => {
                 ></div>
                 {/* Content */}
                 <div className="relative z-10">
-                <div className="w-12 h-12 mb-4 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                  <Image src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/who-should-join/fi_9601394.webp" alt="Investors & Financial Institutions" width={48} height={48} />
+                <div className="w-10 h-10 sm:w-12 sm:h-12 mb-3 sm:mb-4 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <Image src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/who-should-join/fi_9601394.webp" alt="Investors & Financial Institutions" width={48} height={48} className="w-full h-full" />
                 </div>
-                <h3 className="text-lg font-bold text-paan-dark-blue mb-2">Investors & Financial Institutions</h3>
-                <p className="text-gray-600 text-sm">VCs, angel investors, banks, and fintech companies providing capital and financial services to creative ventures.</p>
+                <h3 className="text-base sm:text-lg font-bold text-paan-dark-blue mb-1.5 sm:mb-2">Investors & Financial Institutions</h3>
+                <p className="text-gray-600 text-xs sm:text-sm leading-relaxed">VCs, angel investors, banks, and fintech companies providing capital and financial services to creative ventures.</p>
                 </div>
               </div>
 
               {/* Marketing & creative teams */}
-              <div className="group relative bg-[#E6F2F7] rounded-xl p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border border-paan-blue/10 overflow-hidden">
+              <div className="group relative bg-[#E6F2F7] rounded-xl p-4 sm:p-5 md:p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border border-paan-blue/10 overflow-hidden">
                 {/* Gradient Overlay on Hover */}
                 <div className="absolute inset-0 bg-gradient-to-b from-paan-blue/0 to-paan-yellow/0 group-hover:from-paan-blue/30 group-hover:to-paan-yellow/30 transition-all duration-300 rounded-xl z-[1]"></div>
                 {/* Pattern Background */}
@@ -796,16 +796,16 @@ const SummitPage = () => {
                 ></div>
                 {/* Content */}
                 <div className="relative z-10">
-                <div className="w-12 h-12 mb-4 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                  <Image src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/who-should-join/fi_596092.webp" alt="Marketing & Creative Teams" width={48} height={48} />
+                <div className="w-10 h-10 sm:w-12 sm:h-12 mb-3 sm:mb-4 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <Image src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/who-should-join/fi_596092.webp" alt="Marketing & Creative Teams" width={48} height={48} className="w-full h-full" />
                 </div>
-                <h3 className="text-lg font-bold text-paan-dark-blue mb-2">Marketing & Creative Teams</h3>
-                <p className="text-gray-600 text-sm">In-house marketing departments and creative teams from brands and corporations seeking innovative partnerships.</p>
+                <h3 className="text-base sm:text-lg font-bold text-paan-dark-blue mb-1.5 sm:mb-2">Marketing & Creative Teams</h3>
+                <p className="text-gray-600 text-xs sm:text-sm leading-relaxed">In-house marketing departments and creative teams from brands and corporations seeking innovative partnerships.</p>
                 </div>
               </div>
 
               {/* Hubs & Ecosystem Builders */}
-              <div className="group relative bg-[#E6F2F7] rounded-xl p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border border-paan-blue/10 overflow-hidden">
+              <div className="group relative bg-[#E6F2F7] rounded-xl p-4 sm:p-5 md:p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border border-paan-blue/10 overflow-hidden">
                 {/* Gradient Overlay on Hover */}
                 <div className="absolute inset-0 bg-gradient-to-b from-paan-blue/0 to-paan-yellow/0 group-hover:from-paan-blue/30 group-hover:to-paan-yellow/30 transition-all duration-300 rounded-xl z-[1]"></div>
                 {/* Pattern Background */}
@@ -820,16 +820,16 @@ const SummitPage = () => {
                 ></div>
                 {/* Content */}
                 <div className="relative z-10">
-                <div className="w-12 h-12 mb-4 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                  <Image src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/who-should-join/fi_957980.webp" alt="Hubs & Ecosystem Builders" width={48} height={48} />
+                <div className="w-10 h-10 sm:w-12 sm:h-12 mb-3 sm:mb-4 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <Image src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/who-should-join/fi_957980.webp" alt="Hubs & Ecosystem Builders" width={48} height={48} className="w-full h-full" />
                 </div>
-                <h3 className="text-lg font-bold text-paan-dark-blue mb-2">Hubs & Ecosystem Builders</h3>
-                <p className="text-gray-600 text-sm">Innovation hubs, incubators, accelerators, and community builders fostering creative entrepreneurship across Africa.</p>
+                <h3 className="text-base sm:text-lg font-bold text-paan-dark-blue mb-1.5 sm:mb-2">Hubs & Ecosystem Builders</h3>
+                <p className="text-gray-600 text-xs sm:text-sm leading-relaxed">Innovation hubs, incubators, accelerators, and community builders fostering creative entrepreneurship across Africa.</p>
                 </div>
               </div>
 
               {/* Academia & research */}
-              <div className="group relative bg-[#E6F2F7] rounded-xl p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border border-paan-blue/10 overflow-hidden">
+              <div className="group relative bg-[#E6F2F7] rounded-xl p-4 sm:p-5 md:p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border border-paan-blue/10 overflow-hidden">
                 {/* Gradient Overlay on Hover */}
                 <div className="absolute inset-0 bg-gradient-to-b from-paan-blue/0 to-paan-yellow/0 group-hover:from-paan-blue/30 group-hover:to-paan-yellow/30 transition-all duration-300 rounded-xl z-[1]"></div>
                 {/* Pattern Background */}
@@ -844,16 +844,16 @@ const SummitPage = () => {
                 ></div>
                 {/* Content */}
                 <div className="relative z-10">
-                <div className="w-12 h-12 mb-4 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                  <Image src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/who-should-join/fi_19025369.webp" alt="Academia & Research" width={48} height={48} />
+                <div className="w-10 h-10 sm:w-12 sm:h-12 mb-3 sm:mb-4 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <Image src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/who-should-join/fi_19025369.webp" alt="Academia & Research" width={48} height={48} className="w-full h-full" />
                 </div>
-                <h3 className="text-lg font-bold text-paan-dark-blue mb-2">Academia & Research</h3>
-                <p className="text-gray-600 text-sm">Researchers, academics, and educational institutions studying and teaching creative economy, digital transformation, and innovation.</p>
+                <h3 className="text-base sm:text-lg font-bold text-paan-dark-blue mb-1.5 sm:mb-2">Academia & Research</h3>
+                <p className="text-gray-600 text-xs sm:text-sm leading-relaxed">Researchers, academics, and educational institutions studying and teaching creative economy, digital transformation, and innovation.</p>
                 </div>
               </div>
 
               {/* Corporate & Brand Partners */}
-              <div className="group relative bg-[#E6F2F7] rounded-xl p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border border-paan-blue/10 overflow-hidden">
+              <div className="group relative bg-[#E6F2F7] rounded-xl p-4 sm:p-5 md:p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border border-paan-blue/10 overflow-hidden">
                 {/* Gradient Overlay on Hover */}
                 <div className="absolute inset-0 bg-gradient-to-b from-paan-blue/0 to-paan-yellow/0 group-hover:from-paan-blue/30 group-hover:to-paan-yellow/30 transition-all duration-300 rounded-xl z-[1]"></div>
                 {/* Pattern Background */}
@@ -868,11 +868,11 @@ const SummitPage = () => {
                 ></div>
                 {/* Content */}
                 <div className="relative z-10">
-                <div className="w-12 h-12 mb-4 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                  <Image src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/who-should-join/fi_951681.webp" alt="Corporate & Brand Partners" width={48} height={48} />
+                <div className="w-10 h-10 sm:w-12 sm:h-12 mb-3 sm:mb-4 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <Image src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/who-should-join/fi_951681.webp" alt="Corporate & Brand Partners" width={48} height={48} className="w-full h-full" />
                 </div>
-                <h3 className="text-lg font-bold text-paan-dark-blue mb-2">Corporate & Brand Partners</h3>
-                <p className="text-gray-600 text-sm">Large corporations, multinational brands, and enterprise clients seeking to engage with Africa's creative talent and markets.</p>
+                <h3 className="text-base sm:text-lg font-bold text-paan-dark-blue mb-1.5 sm:mb-2">Corporate & Brand Partners</h3>
+                <p className="text-gray-600 text-xs sm:text-sm leading-relaxed">Large corporations, multinational brands, and enterprise clients seeking to engage with Africa's creative talent and markets.</p>
                 </div>
               </div>
             </div>
@@ -880,65 +880,65 @@ const SummitPage = () => {
         </div>
 
         {/* Do business */}
-        <div className="bg-white relative mt-10 py-20" isFixed={isFixed}>
-          <section className="relative mx-auto max-w-6xl">
-            <div className="text-left mb-12 space-y-4">
-              <h2 className="text-4xl text-paan-dark-blue font-normal">Do business, not just talk.</h2>
-              <p className="text-xl font-normal text-paan-dark-blue mb-4">Walk away with meaningful connections, matched partners, and real deals.</p>
+        <div className="bg-white relative mt-10 py-12 sm:py-16 md:py-20" isFixed={isFixed}>
+          <section className="relative mx-auto max-w-6xl px-4 sm:px-6">
+            <div className="text-left mb-8 sm:mb-10 md:mb-12 space-y-3 sm:space-y-4">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl text-paan-dark-blue font-normal">Do business, not just talk.</h2>
+              <p className="text-base sm:text-lg md:text-xl font-normal text-paan-dark-blue mb-4">Walk away with meaningful connections, matched partners, and real deals.</p>
             </div>
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7 md:gap-8">
               <div className="bg-paan-dark-blue rounded-xl shadow-xl overflow-hidden relative">
                 <div className="absolute inset-0 bg-gradient-to-br from-paan-blue to-paan-blue/60 rounded-xl z-0"></div>
-                <div className="p-6 pt-8 text-left relative z-10">
-                  <div className="flex justify-start mb-6">
+                <div className="p-5 sm:p-6 pt-6 sm:pt-8 text-left relative z-10">
+                  <div className="flex justify-start mb-4 sm:mb-6">
                     <Image
                       src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/icons/030-idea%201.svg"
                       alt="Who Should Attend"
                       width={80}
                       height={80}
-                      className="w-20 h-20"
+                      className="w-16 h-16 sm:w-20 sm:h-20"
                     />
                   </div>
-                  <h4 className="text-xl font-normal text-white mb-2">Do Business, Not Just Talk</h4>
-                  <p className="text-white mb-8">Investor connections, signed NDAs, and draft term sheets.</p>
+                  <h4 className="text-lg sm:text-xl font-normal text-white mb-2">Do Business, Not Just Talk</h4>
+                  <p className="text-white text-sm sm:text-base mb-6 sm:mb-8">Investor connections, signed NDAs, and draft term sheets.</p>
                 </div>
               </div>
               <div className="bg-paan-dark-blue rounded-xl shadow-xl overflow-hidden relative">
                 <div className="absolute inset-0 bg-gradient-to-br from-paan-yellow to-paan-yellow/60 rounded-xl z-0"></div>
-                <div className="p-6 pt-8 text-left relative z-10">
-                  <div className="flex justify-start mb-6">
+                <div className="p-5 sm:p-6 pt-6 sm:pt-8 text-left relative z-10">
+                  <div className="flex justify-start mb-4 sm:mb-6">
                     <Image
                       src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/icons/007-puzzle%201.svg"
                       alt="Who Should Attend"
                       width={80}
                       height={80}
-                      className="w-20 h-20"
+                      className="w-16 h-16 sm:w-20 sm:h-20"
                     />
                   </div>
-                  <h4 className="text-xl font-normal text-white mb-2">Cross-Border Enablement</h4>
-                  <p className="text-white mb-8">How AfCFTA, PAPSS, and digital rails help you scale across Africa.</p>
+                  <h4 className="text-lg sm:text-xl font-normal text-white mb-2">Cross-Border Enablement</h4>
+                  <p className="text-white text-sm sm:text-base mb-6 sm:mb-8">How AfCFTA, PAPSS, and digital rails help you scale across Africa.</p>
                 </div>
               </div>
               <div className="bg-paan-dark-blue rounded-xl shadow-xl overflow-hidden relative">
                 <div className="absolute inset-0 bg-gradient-to-br from-paan-red to-paan-red/60 rounded-xl z-0"></div>
-                <div className="p-6 pt-8 text-left relative z-10">
-                  <div className="flex justify-start mb-6">
+                <div className="p-5 sm:p-6 pt-6 sm:pt-8 text-left relative z-10">
+                  <div className="flex justify-start mb-4 sm:mb-6">
                     <Image
                       src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/icons/040-user%201.svg"
                       alt="Who Should Attend"
                       width={80}
                       height={80}
-                      className="w-20 h-20"
+                      className="w-16 h-16 sm:w-20 sm:h-20"
                     />
                   </div>
-                  <h4 className="text-xl font-normal text-white mb-2">Hands-On Clinics</h4>
-                  <p className="text-white mb-8">Solve payments, IP rights, residency, and AI tooling with experts at your side.</p>
+                  <h4 className="text-lg sm:text-xl font-normal text-white mb-2">Hands-On Clinics</h4>
+                  <p className="text-white text-sm sm:text-base mb-6 sm:mb-8">Solve payments, IP rights, residency, and AI tooling with experts at your side.</p>
                 </div>
               </div>
             </div>
 
             {/* Stats Section */}
-            <div className="mt-10 relative rounded-xl overflow-hidden p-8 sm:p-12">
+            <div className="mt-8 sm:mt-10 relative rounded-xl overflow-hidden p-6 sm:p-8 md:p-12">
               {/* Gradient Overlay */}
               <div 
                 className="absolute inset-0 rounded-xl z-0"
@@ -957,22 +957,22 @@ const SummitPage = () => {
                 }}
               ></div>
               {/* Content */}
-              <div className="relative z-10 grid grid-cols-2 lg:grid-cols-4 gap-8">
-                  <div className="flex flex-col gap-4 text-center items-center">
-                      <h2 className="text-3xl sm:text-4xl md:text-5xl text-white">150+</h2>
-                      <p className="text-white text-sm sm:text-base">Curated 1:1 investor meetings</p>
+              <div className="relative z-10 grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
+                  <div className="flex flex-col gap-2 sm:gap-3 md:gap-4 text-center items-center">
+                      <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-white">150+</h2>
+                      <p className="text-white text-xs sm:text-sm md:text-base leading-tight">Curated 1:1 investor meetings</p>
                   </div>
-                  <div className="flex flex-col gap-4 text-center items-center">
-                      <h2 className="text-3xl sm:text-4xl md:text-5xl text-white">50+</h2>
-                      <p className="text-white text-sm sm:text-base">NDAs signed during Deal Rooms</p>
+                  <div className="flex flex-col gap-2 sm:gap-3 md:gap-4 text-center items-center">
+                      <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-white">50+</h2>
+                      <p className="text-white text-xs sm:text-sm md:text-base leading-tight">NDAs signed during Deal Rooms</p>
                   </div>
-                  <div className="flex flex-col gap-4 text-center items-center">
-                      <h2 className="text-3xl sm:text-4xl md:text-5xl text-white">$10M+</h2>
-                      <p className="text-white text-sm sm:text-base">In term sheets & MoUs within 90 days</p>
+                  <div className="flex flex-col gap-2 sm:gap-3 md:gap-4 text-center items-center">
+                      <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-white">$10M+</h2>
+                      <p className="text-white text-xs sm:text-sm md:text-base leading-tight">In term sheets & MoUs within 90 days</p>
                   </div>
-                  <div className="flex flex-col gap-4 text-center items-center">
-                      <Icon icon="mdi:user-group" className="text-white" width="72" height="72" />
-                      <p className="text-white text-sm sm:text-base">Dozens of freelancers & creators onboarded to cross-border systems</p>
+                  <div className="flex flex-col gap-2 sm:gap-3 md:gap-4 text-center items-center">
+                      <Icon icon="mdi:user-group" className="text-white w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-[72px] lg:h-[72px]" />
+                      <p className="text-white text-xs sm:text-sm md:text-base leading-tight">Dozens of freelancers & creators onboarded to cross-border systems</p>
                   </div>
               </div>
             </div>
@@ -1167,70 +1167,93 @@ const SummitPage = () => {
         </div>
 
          {/* PAAN AWARDS SECTION */}
-         <div className="bg-[#DAECF3] relative py-20" id="paan-awards-section" isFixed={isFixed}>
+         <div className="bg-[#DAECF3] relative py-10 sm:py-16 md:py-20 px-4 sm:px-6" id="paan-awards-section" isFixed={isFixed}>
            <section className="relative mx-auto max-w-6xl">
-             <div className="text-left mb-12">
-               <h2 className="text-sm w-fit text-white mb-4 bg-paan-blue text-white rounded-full px-4 py-1">Awards</h2>        
-               <h3 className="text-3xl text-paan-dark-blue font-bold uppercase">Pan-African Creative Awards</h3>
-               <p className="text-xl font-normal text-paan-dark-blue mb-8">Celebrating Africa's boldest agencies and creators.</p>
+             <div className="text-center mb-8 sm:mb-12">     
+               <h3 className="text-2xl sm:text-3xl md:text-4xl text-paan-dark-blue">Pan-African Creative Awards</h3>
+               <p className="text-base sm:text-lg md:text-xl font-normal text-paan-dark-blue mb-6 sm:mb-8 mt-2">Celebrating Africa's boldest agencies and creators.</p>
               </div>
              
-             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 justify-items-center">
+             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 justify-items-center md:justify-items-left">
                {/* Award Card 1 */}
-               <div className="bg-paan-dark-blue w-80 h-80 rounded-full shadow-xl overflow-hidden relative flex items-center justify-center">
-                 {/* Ring image inside the circle with padding */}
-                 <div className="absolute inset-4 flex items-center justify-center">
-                   <img 
-                     src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/awards-ring.svg?updatedAt=1757757368902" 
-                     alt="Awards Ring" 
-                     className="w-full h-full object-contain"
-                   />
-                 </div>
-                 
-                 <div className="text-center relative z-10 max-w-48">
-                   <h4 className="text-lg font-bold text-white mb-3">Pan African<br/>Agency of the Year</h4>
-                   <p className="text-white font-light text-xs leading-relaxed">Honoring the agency pushing creative boundaries across markets.</p>
-                 </div>
+              <div className="w-full max-w-80 h-64 sm:h-72 md:h-80 rounded-md shadow-xl overflow-hidden relative flex flex-col items-left justify-center p-4 sm:p-6" style={{background: 'linear-gradient(to bottom right, #172840, #84C1D9)'}}>
+                <div 
+                  className="absolute inset-0 opacity-80"
+                  style={{
+                    backgroundImage: "url('https://ik.imagekit.io/nkmvdjnna/PAAN/awards/paan-award-pattern.svg')",
+                    backgroundSize: '40%',
+                    backgroundPosition: 'right bottom',
+                    backgroundRepeat: 'no-repeat',
+                    marginRight: '30px'
+                  }}
+                />
+                <div className="relative z-10 flex flex-col items-left">
+                  <img 
+                    src="https://ik.imagekit.io/nkmvdjnna/PAAN/awards/new-paan-award.svg" 
+                    alt="PAAN Award" 
+                    className="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 mb-3 sm:mb-4 flex-shrink-0"
+                  />
+                  <div className="flex flex-col text-left">
+                    <h4 className="text-base sm:text-lg font-bold text-white mb-1 sm:mb-2">Creative Innovation Award</h4>
+                    <p className="text-white font-light text-xs leading-relaxed">Recognizing breakthrough creative solutions and innovative approaches.</p>
+                  </div>
+                </div>
                </div>
 
                {/* Award Card 2 */}
-               <div className="bg-paan-dark-blue w-80 h-80 rounded-full shadow-xl overflow-hidden relative flex items-center justify-center">
-                 {/* Ring image inside the circle with padding */}
-                 <div className="absolute inset-4 flex items-center justify-center">
-                   <img 
-                     src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/awards-ring.svg?updatedAt=1757757368902" 
-                     alt="Awards Ring" 
-                     className="w-full h-full object-contain"
-                   />
-                 </div>
-                 
-                 <div className="text-center relative z-10 max-w-48">
-                   <h4 className="text-lg font-bold text-white mb-3">Creative<br/>Innovation Award</h4>
-                   <p className="text-white font-light text-xs leading-relaxed">Recognizing breakthrough creative solutions and innovative approaches.</p>
-                 </div>
+              <div className="w-full max-w-80 h-64 sm:h-72 md:h-80 rounded-md shadow-xl overflow-hidden relative flex flex-col items-left justify-center p-4 sm:p-6" style={{background: 'linear-gradient(to bottom right, #172840, #84C1D9)'}}>
+                <div 
+                  className="absolute inset-0 opacity-80"
+                  style={{
+                    backgroundImage: "url('https://ik.imagekit.io/nkmvdjnna/PAAN/awards/paan-award-pattern.svg')",
+                    backgroundSize: '40%',
+                    backgroundPosition: 'right bottom',
+                    backgroundRepeat: 'no-repeat',
+                    marginRight: '30px'
+                  }}
+                />
+                <div className="relative z-10 flex flex-col items-left">
+                  <img 
+                    src="https://ik.imagekit.io/nkmvdjnna/PAAN/awards/new-paan-award.svg" 
+                    alt="PAAN Award" 
+                    className="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 mb-3 sm:mb-4 flex-shrink-0"
+                  />
+                  <div className="flex flex-col text-left">
+                    <h4 className="text-base sm:text-lg font-bold text-white mb-1 sm:mb-2">Pan African Agency of the Year</h4>
+                    <p className="text-white font-light text-xs leading-relaxed">Honoring the agency pushing creative boundaries across markets.</p>
+                  </div>
+                </div>
                </div>
 
                {/* Award Card 3 */}
-               <div className="bg-paan-dark-blue w-80 h-80 rounded-full shadow-xl overflow-hidden relative flex items-center justify-center">
-                 {/* Ring image inside the circle with padding */}
-                 <div className="absolute inset-4 flex items-center justify-center">
-                   <img 
-                     src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/awards-ring.svg?updatedAt=1757757368902" 
-                     alt="Awards Ring" 
-                     className="w-full h-full object-contain"
-                   />
-                 </div>
-                 
-                 <div className="text-center relative z-10 max-w-48">
-                   <h4 className="text-lg font-bold text-white mb-3">Digital Excellence<br/>Award</h4>
-                   <p className="text-white font-light text-xs leading-relaxed">Celebrating outstanding digital campaigns and tech integration.</p>
-                 </div>
+              <div className="w-full max-w-80 h-64 sm:h-72 md:h-80 rounded-md shadow-xl overflow-hidden relative flex flex-col items-left justify-center p-4 sm:p-6" style={{background: 'linear-gradient(to bottom right, #172840, #84C1D9)'}}>
+                <div 
+                  className="absolute inset-0 opacity-80"
+                  style={{
+                    backgroundImage: "url('https://ik.imagekit.io/nkmvdjnna/PAAN/awards/paan-award-pattern.svg')",
+                    backgroundSize: '40%',
+                    backgroundPosition: 'right bottom',
+                    backgroundRepeat: 'no-repeat',
+                    marginRight: '30px'
+                  }}
+                />
+                <div className="relative z-10 flex flex-col items-left">
+                  <img 
+                    src="https://ik.imagekit.io/nkmvdjnna/PAAN/awards/new-paan-award.svg" 
+                    alt="PAAN Award" 
+                    className="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 mb-3 sm:mb-4 flex-shrink-0"
+                  />
+                  <div className="flex flex-col text-left">
+                    <h4 className="text-base sm:text-lg font-bold text-white mb-1 sm:mb-2">Digital Excellence Award</h4>
+                    <p className="text-white font-light text-xs leading-relaxed">Celebrating outstanding digital campaigns and tech integration.</p>
                </div>
              </div>
-             <div className="flex justify-center gap-2 mt-12">
+              </div>
+             </div>
+             <div className="flex justify-center gap-2 mt-8 sm:mt-12">
                 <button 
                   onClick={() => window.location.href = '/paan-awards'} 
-                  className="bg-paan-red text-white px-8 py-3 rounded-full hover:bg-paan-red/90 transition-all duration-300 font-medium text-base shadow-lg flex items-center gap-2"
+                  className="bg-paan-red text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-full hover:bg-paan-red/90 transition-all duration-300 font-medium text-sm sm:text-base shadow-lg flex items-center gap-2"
                 >
                   Explore All Categories
                 </button>
@@ -1252,16 +1275,15 @@ const SummitPage = () => {
             {/* Dark overlay for better text readability */}
             <div className="absolute inset-0 bg-paan-dark-blue/40 sm:bg-paan-dark-blue/30"></div>
             
+            {/* Paan-yellow gradient overlay from right to left */}
+            <div className="absolute inset-0 bg-gradient-to-l from-paan-yellow/30 to-transparent"></div>
+            
             <section className="relative mx-auto max-w-7xl px-3 sm:px-4 md:px-6 lg:px-8 h-full flex items-center">
               <div className="w-full">
                 <div className="flex flex-col justify-center items-center text-center sm:text-left sm:items-start space-y-4 sm:space-y-6 md:space-y-8">
-                  {/* Badge */}
-                  <h2 className="text-xs sm:text-sm w-fit text-white border border-white/80 bg-transparent rounded-full px-3 sm:px-4 py-1.5 sm:py-2 backdrop-blur-sm">
-                    Exhibition Opportunities
-                  </h2>
                   
                   {/* Main Heading */}
-                  <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-white font-bold uppercase leading-tight max-w-3xl">
+                  <h3 className="text-lg sm:text-2xl md:text-3xl lg:text-4xl text-white font-normal leading-tight max-w-3xl">
                     Showcase your brand at Africa's Borderless Creative Economy Summit.
                   </h3>
                   
@@ -1291,422 +1313,89 @@ const SummitPage = () => {
           <div className="bg-white relative py-12 sm:py-16 md:py-20" id="tickets-section" isFixed={isFixed}>
             <section className="relative mx-auto max-w-6xl px-4 sm:px-6">
               <div className="flex flex-col text-center mb-6 sm:mb-8 md:mb-12">
-                <h3 className="text-xl sm:text-2xl md:text-3xl text-paan-dark-blue font-bold uppercase">Secure Your Spot</h3>
-                <p className="text-sm sm:text-base md:text-lg lg:text-xl font-normal text-paan-dark-blue mb-4 sm:mb-6 md:mb-8 leading-relaxed">Join leading agencies, startups, and creative innovators in the Exhibition Zone. Share your work, connect with investors and partners, and stand out at Africa's most influential creative economy gathering.</p>
+                <h3 className="text-xl sm:text-3xl md:text-4xl text-paan-dark-blue font-bold">Secure Your Spot</h3>
+                <p className="text-sm sm:text-base md:text-lg lg:text-xl font-normal text-paan-dark-blue mb-4 sm:mb-6 md:mb-8 leading-relaxed">Deal rooms, clinics, awards. Register now.</p>
               </div>
               
-              {/* Mobile Ticket Section */}
-              <div className="block sm:hidden">
-                <div className="space-y-6">
-                  {/* Mobile Ticket Cards */}
-                  <div className="grid grid-cols-1 gap-4">
-                    {/* Early Bird Pass */}
-                    <div className="bg-gradient-to-r from-green-500 to-green-600 rounded-2xl p-6 text-white shadow-xl">
-                      <div className="flex justify-between items-start mb-4">
-                        <div>
-                          <h4 className="text-lg font-bold mb-1">Early Bird Pass</h4>
-                          <p className="text-sm opacity-90">Only 100 slots available</p>
-                        </div>
-                        <div className="text-right">
-                          <div className="text-3xl font-bold">$65</div>
-                          <div className="text-xs opacity-75">per ticket</div>
-                        </div>
+              {/* Ticket Card */}
+              <div className="bg-[#F3F9FB] rounded-2xl shadow-2xl overflow-hidden">
+                <div className="flex flex-col lg:flex-row">
+                  {/* Left part */}
+                  <div className="flex-1 text-paan-dark-blue">
+                    <div className="p-4 sm:p-5 md:p-6" style={{background: 'linear-gradient(to bottom, #CA983C, #F9EC97, #CA983C)'}}>
+                      <h2 className="text-2xl sm:text-3xl md:text-4xl mb-2 sm:mb-3 text-paan-dark-blue">PAAN SUMMIT 2026</h2>
+                      <p className="text-base text-paan-dark-blue/90">Africa Borderless Creative Economy Summit</p>
                       </div>
                       
-                      {/* Early Bird Countdown Timer */}
-                      {earlyBirdTimeLeft.days > 0 || earlyBirdTimeLeft.hours > 0 || earlyBirdTimeLeft.minutes > 0 || earlyBirdTimeLeft.seconds > 0 ? (
-                        <div className="mb-4 p-3 bg-white/20 rounded-lg">
-                          <div className="text-center">
-                            <p className="text-xs font-medium mb-2 opacity-90">Early Bird Offer Ends In:</p>
-                            <div className="flex justify-center gap-2 text-sm">
-                              <div className="bg-white/30 rounded px-2 py-1 min-w-[40px]">
-                                <div className="font-bold">{earlyBirdTimeLeft.days}</div>
-                                <div className="text-xs opacity-75">Days</div>
+                    {/* Location and Date */}
+                    <div className="bg-[#F3F9FB] p-4 sm:p-5 mb-6 sm:mb-8 flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-6 border-b-2 border-paan-dark-blue ml-4 sm:ml-6">
+                      <div className="flex items-center gap-2 sm:gap-3">
+                        <Icon icon="mdi:calendar" className="text-paan-red w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0" />
+                        <span className="text-sm sm:text-base font-normal text-paan-dark-blue">April 21-22, 2026</span>
                               </div>
-                              <div className="bg-white/30 rounded px-2 py-1 min-w-[40px]">
-                                <div className="font-bold">{earlyBirdTimeLeft.hours}</div>
-                                <div className="text-xs opacity-75">Hrs</div>
-                              </div>
-                              <div className="bg-white/30 rounded px-2 py-1 min-w-[40px]">
-                                <div className="font-bold">{earlyBirdTimeLeft.minutes}</div>
-                                <div className="text-xs opacity-75">Min</div>
-                              </div>
-                              <div className="bg-white/30 rounded px-2 py-1 min-w-[40px]">
-                                <div className="font-bold">{earlyBirdTimeLeft.seconds}</div>
-                                <div className="text-xs opacity-75">Sec</div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      ) : (
-                        <div className="mb-4 p-3 bg-red-500/30 rounded-lg">
-                          <p className="text-center text-sm font-medium">Early Bird Offer Has Ended</p>
-                        </div>
-                      )}
-                      <div className="space-y-2 text-sm">
-                        <div className="flex items-center gap-2">
-                          <Icon icon="mdi:check" className="text-yellow-300" width="16" height="16" />
-                          <span>Full 2-day summit access</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <Icon icon="mdi:check" className="text-yellow-300" width="16" height="16" />
-                          <span>Exhibition showcase & networking lounge</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <Icon icon="mdi:check" className="text-yellow-300" width="16" height="16" />
-                          <span>Digital speaker presentations post-event</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <Icon icon="mdi:check" className="text-yellow-300" width="16" height="16" />
-                          <span>Save 30% before February 21st, 2026</span>
-                        </div>
+                      <div className="flex items-center gap-2 sm:gap-3">
+                        <Icon icon="mdi:map-marker" className="text-paan-red w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0" />
+                        <span className="text-sm sm:text-base font-normal text-paan-dark-blue">Sarit Centre, Nairobi, Kenya</span>
                       </div>
                     </div>
 
-                    {/* General Admission */}
-                    <div className="bg-gradient-to-r from-paan-red to-paan-maroon rounded-2xl p-6 text-white shadow-xl">
-                      <div className="flex justify-between items-start mb-4">
-                        <div>
-                          <h4 className="text-lg font-bold mb-1">General Admission</h4>
-                          <p className="text-sm opacity-90">Most Popular Standard</p>
-                        </div>
-                        <div className="text-right">
-                          <div className="text-3xl font-bold">$95</div>
-                          <div className="text-xs opacity-75">per ticket</div>
-                        </div>
-                      </div>
-                      <div className="space-y-2 text-sm">
-                        <div className="flex items-center gap-2">
-                          <Icon icon="mdi:check" className="text-paan-yellow" width="16" height="16" />
-                          <span>Full 2-day summit access</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <Icon icon="mdi:check" className="text-paan-yellow" width="16" height="16" />
-                          <span>Networking app & exhibition</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <Icon icon="mdi:check" className="text-paan-yellow" width="16" height="16" />
-                          <span>Digital certificate of participation</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <Icon icon="mdi:check" className="text-paan-yellow" width="16" height="16" />
-                          <span>Access to all keynotes & panels</span>
-                        </div>
+                    <div className="mb-6 sm:mb-8 text-paan-dark-blue/90 ml-4">
+                      <ul className="space-y-3 sm:space-y-4">
+                        <li className="flex items-start gap-3">
+                          <Icon icon="mdi:check-circle" className="text-paan-dark-blue w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0 mt-0.5" />
+                          <span className="text-sm sm:text-base md:text-lg">Actionable sessions & workshops</span>
+                        </li>
+                        <li className="flex items-start gap-3">
+                          <Icon icon="mdi:check-circle" className="text-paan-dark-blue w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0 mt-0.5" />
+                          <span className="text-sm sm:text-base md:text-lg">Investor & partnership deal rooms</span>
+                        </li>
+                        <li className="flex items-start gap-3">
+                          <Icon icon="mdi:check-circle" className="text-paan-dark-blue w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0 mt-0.5" />
+                          <span className="text-sm sm:text-base md:text-lg">High-level networking experiences</span>
+                        </li>
+                        <li className="flex items-start gap-3">
+                          <Icon icon="mdi:check-circle" className="text-paan-dark-blue w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0 mt-0.5" />
+                          <span className="text-sm sm:text-base md:text-lg">Creator Crawl & cultural immersions</span>
+                        </li>
+                      </ul>
+                    </div>
+
+                    <div className="bg-gradient-to-br from-[#F25849] to-[#172840] p-4 sm:p-6">
+                      <p className="text-xs text-white/80 italic">This preview shows standard event access. Final benefits vary by pass type.</p>
                       </div>
                     </div>
 
-                    {/* VIP Delegate Pass */}
-                    <div className="bg-gradient-to-r from-purple-600 to-purple-700 rounded-2xl p-6 text-white shadow-xl">
-                      <div className="flex justify-between items-start mb-4">
-                        <div>
-                          <h4 className="text-lg font-bold mb-1">VIP Delegate Pass</h4>
-                          <p className="text-sm opacity-90">Exclusive Access</p>
-                        </div>
-                        <div className="text-right">
-                          <div className="text-3xl font-bold">$220</div>
-                          <div className="text-xs opacity-75">per ticket</div>
-                        </div>
-                      </div>
-                      <div className="space-y-2 text-sm">
-                        <div className="flex items-center gap-2">
-                          <Icon icon="mdi:check" className="text-yellow-300" width="16" height="16" />
-                          <span>All Agency Growth benefits</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <Icon icon="mdi:check" className="text-yellow-300" width="16" height="16" />
-                          <span>VIP Networking Cocktail</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <Icon icon="mdi:check" className="text-yellow-300" width="16" height="16" />
-                          <span>Premium lounge w/ WiFi & refreshments</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <Icon icon="mdi:check" className="text-yellow-300" width="16" height="16" />
-                          <span>Reserved front-row seating</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <Icon icon="mdi:check" className="text-yellow-300" width="16" height="16" />
-                          <span>PAAN Awards Gala</span>
-                        </div>
-                      </div>
+                  {/* Right Part */}
+                  <div className="flex-1 p-6 sm:p-8 md:p-10 lg:p-12 flex flex-col items-center justify-center border-t lg:border-t-0 lg:border-l border-white/20" style={{background: 'linear-gradient(to bottom, #CA983C, #F9EC97, #CA983C)'}}>
+                    <div className="text-center mb-6 sm:mb-8">
+                      <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-paan-dark-blue mb-2 sm:mb-3">Summit Access Pass</h3>
+                      <p className="text-sm sm:text-base text-paan-dark-blue/80">Seat: To be Assigned</p>
                     </div>
 
-                    {/* Student & Young Creatives */}
-                    <div className="bg-gradient-to-r from-blue-500 to-blue-600 rounded-2xl p-6 text-white shadow-xl">
-                      <div className="flex justify-between items-start mb-4">
-                        <div>
-                          <h4 className="text-lg font-bold mb-1">Student & Young Creatives</h4>
-                          <p className="text-sm opacity-90">For students and young professionals</p>
-                        </div>
-                        <div className="text-right">
-                          <div className="text-3xl font-bold">$50</div>
-                          <div className="text-xs opacity-75">per ticket</div>
-                        </div>
-                      </div>
-                      <div className="space-y-2 text-sm">
-                        <div className="flex items-center gap-2">
-                          <Icon icon="mdi:check" className="text-yellow-300" width="16" height="16" />
-                          <span>Full 2 Day access</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <Icon icon="mdi:check" className="text-yellow-300" width="16" height="16" />
-                          <span>Exhibition & networking sessions</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <Icon icon="mdi:check" className="text-yellow-300" width="16" height="16" />
-                          <span>Student-only networking with recruiters</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <Icon icon="mdi:check" className="text-yellow-300" width="16" height="16" />
-                          <span>Certificate of participation</span>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Virtual Access */}
-                    <div className="bg-gradient-to-r from-gray-600 to-gray-700 rounded-2xl p-6 text-white shadow-xl">
-                      <div className="flex justify-between items-start mb-4">
-                        <div>
-                          <h4 className="text-lg font-bold mb-1">Virtual Access Pass</h4>
-                          <p className="text-sm opacity-90">Join from anywhere</p>
-                        </div>
-                        <div className="text-right">
-                          <div className="text-3xl font-bold">$15</div>
-                          <div className="text-xs opacity-75">per ticket</div>
-                        </div>
-                      </div>
-                      <div className="space-y-2 text-sm">
-                        <div className="flex items-center gap-2">
-                          <Icon icon="mdi:check" className="text-yellow-300" width="16" height="16" />
-                          <span>Live streaming of keynotes & panels</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <Icon icon="mdi:check" className="text-yellow-300" width="16" height="16" />
-                          <span>Access to a networking platform</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <Icon icon="mdi:check" className="text-yellow-300" width="16" height="16" />
-                          <span>30-day access to recordings</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <Icon icon="mdi:check" className="text-yellow-300" width="16" height="16" />
-                          <span>Join from anywhere</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Ticket Benefits Overview */}
-                  <div className="bg-white border border-gray-200 rounded-2xl p-6">
-                    <h4 className="text-lg font-bold text-paan-dark-blue mb-6 text-center">What's Included in Your Ticket</h4>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <div className="space-y-4">
-                        <div className="flex items-start gap-3">
-                          <Icon icon="mdi:calendar-check" className="w-6 h-6 text-paan-red mt-1 flex-shrink-0" />
-                          <div>
-                            <h5 className="font-semibold text-paan-dark-blue">Full Summit Access</h5>
-                            <p className="text-sm text-gray-600">2-day access to all keynotes, panels, and workshops</p>
-                          </div>
-                        </div>
-                        <div className="flex items-start gap-3">
-                          <Icon icon="mdi:account-group" className="w-6 h-6 text-paan-red mt-1 flex-shrink-0" />
-                          <div>
-                            <h5 className="font-semibold text-paan-dark-blue">Networking Opportunities</h5>
-                            <p className="text-sm text-gray-600">Connect with industry leaders, investors, and fellow creatives</p>
-                          </div>
-                        </div>
-                        <div className="flex items-start gap-3">
-                          <Icon icon="mdi:certificate" className="w-6 h-6 text-paan-red mt-1 flex-shrink-0" />
-                          <div>
-                            <h5 className="font-semibold text-paan-dark-blue">Digital Certificate</h5>
-                            <p className="text-sm text-gray-600">Certificate of participation for your professional portfolio</p>
-                          </div>
-                        </div>
-                        <div className="flex items-start gap-3">
-                          <Icon icon="mdi:store" className="w-6 h-6 text-paan-red mt-1 flex-shrink-0" />
-                          <div>
-                            <h5 className="font-semibold text-paan-dark-blue">Exhibition Access</h5>
-                            <p className="text-sm text-gray-600">Explore innovative projects and connect with exhibitors</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="space-y-4">
-                        <div className="flex items-start gap-3">
-                          <Icon icon="mdi:play-circle" className="w-6 h-6 text-paan-red mt-1 flex-shrink-0" />
-                          <div>
-                            <h5 className="font-semibold text-paan-dark-blue">Post-Event Access</h5>
-                            <p className="text-sm text-gray-600">Digital recordings and speaker presentations</p>
-                          </div>
-                        </div>
-                        <div className="flex items-start gap-3">
-                          <Icon icon="mdi:coffee" className="w-6 h-6 text-paan-red mt-1 flex-shrink-0" />
-                          <div>
-                            <h5 className="font-semibold text-paan-dark-blue">Refreshments</h5>
-                            <p className="text-sm text-gray-600">Lunch and refreshments during the summit</p>
-                          </div>
-                        </div>
-                        <div className="flex items-start gap-3">
-                          <Icon icon="mdi:gift" className="w-6 h-6 text-paan-red mt-1 flex-shrink-0" />
-                          <div>
-                            <h5 className="font-semibold text-paan-dark-blue">Welcome Kit</h5>
-                            <p className="text-sm text-gray-600">Exclusive summit materials and branded items</p>
-                          </div>
-                        </div>
-                        <div className="flex items-start gap-3">
-                          <Icon icon="mdi:handshake" className="w-6 h-6 text-paan-red mt-1 flex-shrink-0" />
-                          <div>
-                            <h5 className="font-semibold text-paan-dark-blue">Business Opportunities</h5>
-                            <p className="text-sm text-gray-600">Access to deal rooms and partnership opportunities</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    
-                    {/* Premium Benefits Note */}
-                    <div className="mt-6 p-4 bg-gradient-to-r from-paan-red/10 to-paan-maroon/10 border border-paan-red/20 rounded-xl">
-                      <div className="flex items-center gap-3">
-                        <Icon icon="mdi:crown" className="w-6 h-6 text-paan-red" />
-                        <div>
-                          <h5 className="font-semibold text-paan-dark-blue">Premium Ticket Benefits</h5>
-                          <p className="text-sm text-gray-600">
-                            VIP, Agency Growth, and International Delegate passes include additional perks like priority seating, 
-                            exclusive networking events, premium lounges, and access to the PAAN Awards Gala.
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Event Details */}
-                  <div className="bg-gray-50 rounded-2xl p-6">
-                    <h4 className="text-lg font-bold text-paan-dark-blue mb-4">Event Details</h4>
-                    <div className="space-y-3">
-                      <div className="flex items-center gap-3">
-                        <Icon icon="mdi:calendar" className="text-paan-red" width="20" height="20" />
-                        <span className="text-sm font-medium">April 21-22, 2026</span>
-                      </div>
-                      <div className="flex items-center gap-3">
-                        <Icon icon="mdi:map-marker" className="text-paan-red" width="20" height="20" />
-                        <span className="text-sm font-medium">Sarit Centre, Nairobi, Kenya</span>
-                      </div>
-                      <div className="flex items-center gap-3">
-                        <Icon icon="mdi:users" className="text-paan-red" width="20" height="20" />
-                        <span className="text-sm font-medium">300+ In-Person Attendees</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Registration Button */}
-                  <div className="pt-4">
+                    <div className="flex flex-col gap-3 sm:gap-4 w-full max-w-xs mb-6 sm:mb-8">
                     <button 
                       onClick={() => window.location.href = '/summit/purchase-ticket'}
-                      className="bg-paan-red text-white w-full py-4 text-lg font-semibold rounded-full hover:bg-paan-red/90 transition-all duration-300 shadow-lg flex items-center justify-center gap-2"
+                        className="bg-paan-dark-blue text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full hover:bg-paan-dark-blue/90 transition-all duration-300 font-semibold text-sm sm:text-base md:text-lg shadow-lg flex items-center justify-center gap-2"
                     >
                       <Icon icon="mdi:ticket" width="20" height="20" />
-                      Register Now
+                        View Tickets
+                      </button>
+                      <button 
+                        onClick={() => window.location.href = '/summit/purchase-ticket'}
+                        className="bg-transparent border-2 border-paan-dark-blue text-paan-dark-blue px-6 sm:px-8 py-3 sm:py-4 rounded-full hover:bg-paan-dark-blue hover:text-white transition-all duration-300 font-semibold text-sm sm:text-base md:text-lg flex items-center justify-center gap-2"
+                      >
+                        Learn More
                     </button>
-                  </div>
-                </div>
               </div>
 
-              {/* Desktop Ticket Badge */}
-              <div className="hidden sm:flex justify-center mb-6 sm:mb-8 md:mb-12">
-                <div className="relative w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-none">
-                  <img 
-                    src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/ticket.svg" 
-                    alt="PAAN Summit Ticket" 
-                    className="w-full h-auto"
-                  />
-                  
-                  {/* Content overlay on ticket */}
-                  <div className="absolute inset-0 flex items-center justify-center p-3 sm:p-4 md:p-6 lg:p-8">
-                    <div className="text-paan-dark-blue w-full flex flex-col sm:flex-row items-center">
-                      {/* Left part */}
-                        <div className="flex-1 text-left pl-2 sm:pl-4 md:pl-6 lg:pl-8 text-white mb-3 sm:mb-4 md:mb-0">
-                          <h4 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold mb-1 sm:mb-2 md:mb-3">PAAN SUMMIT 2026</h4>
-                          <p className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-semibold mb-3 sm:mb-4 md:mb-6">Ticket Options</p>
-                          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2 sm:gap-3 md:gap-4 mb-3 sm:mb-4 md:mb-6">
-                            <div className="flex flex-col items-left bg-white/20 border border-white rounded-lg px-2 sm:px-3 md:px-4 py-1 sm:py-2 md:py-3">
-                              <h4 className="text-xs sm:text-sm font-light">Early Bird: </h4>
-                              <p className="text-lg sm:text-xl md:text-2xl font-bold">$65</p>
+                    <div className="text-center">
+                      <p className="text-xs sm:text-sm md:text-base text-paan-dark-blue/90 font-medium">Early Bird • General • VIP • Virtual +More</p>
                             </div>
-                            <div className="flex flex-col items-left bg-white/20 border border-white rounded-lg px-2 sm:px-3 md:px-4 py-1 sm:py-2 md:py-3">
-                              <h4 className="text-xs sm:text-sm font-light">General: </h4>
-                              <p className="text-lg sm:text-xl md:text-2xl font-bold">$95</p>
                             </div>
-                            <div className="flex flex-col items-left bg-white/20 border border-white rounded-lg px-2 sm:px-3 md:px-4 py-1 sm:py-2 md:py-3">
-                              <h4 className="text-xs sm:text-sm font-light">VIP: </h4>
-                              <p className="text-lg sm:text-xl md:text-2xl font-bold">$220</p>
                             </div>
-                            <div className="flex flex-col items-left bg-white/20 border border-white rounded-lg px-2 sm:px-3 md:px-4 py-1 sm:py-2 md:py-3">
-                              <h4 className="text-xs sm:text-sm font-light">Virtual: </h4>
-                              <div className="flex items-baseline gap-1 sm:gap-2">
-                                <span className="text-xs sm:text-sm line-through opacity-60">$25</span>
-                                <p className="text-lg sm:text-xl md:text-2xl font-bold">$20</p>
-                              </div>
-                            </div>
-                          </div>
-                          <ul className="text-xs sm:text-sm font-light space-y-1 sm:space-y-2">
-                            <li className="flex items-center gap-1 sm:gap-2 md:gap-3">
-                              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" className="flex-shrink-0 sm:w-4 sm:h-4">
-                                <path fill="currentColor" d="m10.6 16.6l7.05-7.05l-1.4-1.4l-5.65 5.65l-2.85-2.85l-1.4 1.4zM12 22q-2.075 0-3.9-.788t-3.175-2.137T2.788 15.9T2 12t.788-3.9t2.137-3.175T8.1 2.788T12 2t3.9.788t3.175 2.137T21.213 8.1T22 12t-.788 3.9t-2.137 3.175t-3.175 2.138T12 22"/>
-                              </svg>
-                              Access to all sessions & workshops.
-                            </li>
-                            <li className="flex items-center gap-1 sm:gap-2 md:gap-3">
-                              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" className="flex-shrink-0 sm:w-4 sm:h-4">
-                                <path fill="currentColor" d="m10.6 16.6l7.05-7.05l-1.4-1.4l-5.65 5.65l-2.85-2.85l-1.4 1.4zM12 22q-2.075 0-3.9-.788t-3.175-2.137T2.788 15.9T2 12t.788-3.9t2.137-3.175T8.1 2.788T12 2t3.9.788t3.175 2.137T21.213 8.1T22 12t-.788 3.9t-2.137 3.175t-3.175 2.138T12 22"/>
-                              </svg>
-                              Deal Rooms priority (Business/Investor pass).
-                            </li> 
-                            <li className="flex items-center gap-1 sm:gap-2 md:gap-3">
-                              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" className="flex-shrink-0 sm:w-4 sm:h-4">
-                                <path fill="currentColor" d="m10.6 16.6l7.05-7.05l-1.4-1.4l-5.65 5.65l-2.85-2.85l-1.4 1.4zM12 22q-2.075 0-3.9-.788t-3.175-2.137T2.788 15.9T2 12t.788-3.9t2.137-3.175T8.1 2.788T12 2t3.9.788t3.175 2.137T21.213 8.1T22 12t-.788 3.9t-2.137 3.175t-3.175 2.138T12 22"/>
-                              </svg>
-                              Networking events, including Creator Crawl
-                            </li>
-                            <li className="flex items-center gap-1 sm:gap-2 md:gap-3">
-                              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" className="flex-shrink-0 sm:w-4 sm:h-4">
-                                <path fill="currentColor" d="m10.6 16.6l7.05-7.05l-1.4-1.4l-5.65 5.65l-2.85-2.85l-1.4 1.4zM12 22q-2.075 0-3.9-.788t-3.175-2.137T2.788 15.9T2 12t.788-3.9t2.137-3.175T8.1 2.788T12 2t3.9.788t3.175 2.137T21.213 8.1T22 12t-.788 3.9t-2.137 3.175t-3.175 2.138T12 22"/>
-                              </svg>
-                              Select recordings post‑event
-                            </li>
-                          </ul>
                         </div>
                       
-                      {/* White vertical dotted line at center - hidden on mobile */}
-                      <div className="hidden sm:block mx-2 sm:mx-4 md:mx-6 self-center" style={{
-                        width: '2px',
-                        height: '300px',
-                        background: 'repeating-linear-gradient(to bottom, white 0px, white 4px, transparent 4px, transparent 8px)'
-                      }}></div>
-                      
-                      {/* Right part */}
-                      <div className="flex-1 text-left text-white space-y-1 sm:space-y-2 md:space-y-3 text-xs sm:text-sm pl-2 sm:pl-4 md:pl-6 lg:pl-8">
-                        <p className="font-semibold text-xs sm:text-sm md:text-lg">Admit One</p>
-                        <p className="font-bold text-lg sm:text-xl md:text-2xl lg:text-3xl">PAAN Summit 2026</p>
-                        <p className="font-semibold text-xs sm:text-sm md:text-lg">Seat . TBA</p>
-
-                        <div className="flex flex-col gap-1 sm:gap-2 md:gap-3 mt-3 sm:mt-4 md:mt-6">
-                          <button className="bg-paan-yellow text-paan-dark-blue px-2 sm:px-3 py-1 sm:py-2 rounded-full hover:bg-paan-yellow/90 transition-all duration-300 font-medium text-xs sm:text-sm shadow-lg flex items-center justify-center w-fit">April 21-22, 2026</button>
-                          <button className="bg-transparent border border-white text-white px-2 sm:px-3 py-1 sm:py-2 rounded-full hover:bg-white hover:text-paan-dark-blue transition-all duration-300 font-medium text-xs sm:text-sm shadow-lg flex items-center justify-center w-fit">Sarit Center, Nairobi, Kenya</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              
-              {/* Desktop Registration Button */}
-              <div className="hidden sm:flex justify-center">
-                <button 
-                  onClick={() => window.location.href = '/summit/purchase-ticket'}
-                  className="bg-paan-red text-white px-6 sm:px-8 md:px-12 py-2 sm:py-3 md:py-4 text-sm sm:text-base md:text-lg w-full sm:w-auto rounded-full hover:bg-paan-red/90 transition-all duration-300 font-medium shadow-lg flex items-center justify-center gap-2"
-                >
-                  <Icon icon="mdi:ticket" width="16" height="16" className="sm:w-5 sm:h-5" />
-                  View Tickets
-                </button>
-             </div>
+             
           </section>
         </div>
 
@@ -1884,18 +1573,6 @@ const SummitPage = () => {
                    />
              </div>
            </section>
-         </div>
-         <div className="bg-paan-dark-blue relative">
-           <div className="w-full h-[20px] sm:h-[30px] md:h-[40px] relative">
-              <Image
-                src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/summit-pattern.svg"
-                fill
-                alt=""
-               className="object-cover w-full h-full"
-                loading="lazy"
-                sizes="100vw"
-              />
-            </div>
          </div>
         <SummitFooter />
         <ScrollToTop />
