@@ -461,19 +461,13 @@ const HomePage = () => {
                 <div className="relative group">
                   {/* Video Container */}
                   <div className="relative overflow-hidden rounded-2xl shadow-2xl bg-black/20 backdrop-blur-sm border border-white/10">
-                    <video
-                      ref={videoRef}
-                      className="w-full h-auto aspect-video object-cover"
-                      controls
-                      autoPlay
-                      muted
-                      loop
-                      playsInline
-                      preload="auto"
-                    >
-                      <source src="/assets/images/certified-members/penquin/video.mp4" type="video/mp4" />
-                      {t('certifiedAgencies.common.hero.videoFallback')}
-                    </video>
+                    <iframe
+                      className="w-full aspect-video"
+                      src="https://www.youtube.com/embed/hVyO0Rtzql8?autoplay=1&mute=1&loop=1&playlist=hVyO0Rtzql8&start=6&controls=1&modestbranding=1&rel=0"
+                      title="PENQUIN Video"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                    />
                   </div>
 
                   {/* Decorative Elements */}
