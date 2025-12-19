@@ -354,7 +354,7 @@ const MasterclassDetailPage = () => {
         "Future Planning: Develop your talent pipeline for sustainable growth"
       ],
       outcome: "By attending this masterclass, you will get 5% off on PAAN Summit 2026 tickets & 10% off on the Africa Creative Excellence Awards entry.",
-      status: "upcoming"
+      status: "completed"
     },
     6: {
       id: 6,
@@ -540,11 +540,11 @@ const MasterclassDetailPage = () => {
     9: {
       id: 9,
       title: "Agency Positioning That Cuts Through the Noise",
-      description: "Most agencies struggle with positioning because they build it from the inside out, focusing on what they do instead of what clients truly value or what the market actually needs. This masterclass helps agencies step into the shoes of the buyer, understanding how clients assess expertise, evaluate risk, and choose partners. You'll learn how to create a brand narrative that attracts the right clients, filters out the wrong ones, and strengthens every pitch, proposal, and first meeting.",
+      description: "Learn how to sharpen your agency's positioning so clients understand your value quickly, clearly, and confidently. This session focuses on differentiation, clarity, and how to move away from being seen as \"just another agency.\"",
       fullDescription: "\"Creative-led,\" \"customer-focused,\" \"insight-driven\". Clients see these statements daily, yet none explain why an agency is unique or worth a premium price. Stuart Dunk will break down proven frameworks used by agencies across multiple countries to build sharp, differentiated positioning rooted in client value, competitive advantage, and strategic clarity. You'll learn how top-performing agencies craft value propositions that challenge assumptions, stand out in pitch rooms, and attract the right clients.",
       format: "90-minute Interactive Training Course",
       date: "January 28th, 2026",
-      time: "TBC",
+      time: "12PM EAT",
       memberPrice: 150,
       memberOriginalPrice: 250,
       nonMemberPrice: 170,
@@ -577,27 +577,159 @@ const MasterclassDetailPage = () => {
         "Client service directors & account leads"
       ],
       learningOutcomes: [
-        "The \"3C Framework\" for building world-class agency positioning",
+        "The \"3C Framework\" + \"The Benefit Ladder:\"  2 frameworks for building great agency positioning",
         "How to craft a value proposition that cuts through the noise",
-        "Why most positioning fails and how to avoid generic traps",
-        "The Benefit Ladder: a tool for connecting client needs to agency strengths",
+        "How to avoid generic position that undermines client perception",
         "How to build a \"client value map\" to influence perception and buying decisions",
         "Examples of exceptional agency positioning and why they work"
       ],
       courseObjectives: [
-        "Define a differentiated positioning that aligns with client value",
+        "Define a differentiated positioning that influences targets and clients to see you as rare, rather than one of many",
         "Build a strong, repeatable value proposition for pitches and website copy",
         "Identify and eliminate weak, generic messaging",
         "Align service offerings, marketing, and BD processes to the new positioning"
       ],
       whyAttend: [
-        "Stand out instantly in RFPs, pitches, and first-touch conversations",
-        "Attract better-fit clients who already see your agency as \"the right choice\"",
-        "Build messaging that increases lead quality and reduces price objections",
+        "Agencies who are well-positioned win more, and increase their margin",
+        "Stand out across marketing + sales touchpoints like web, creds and proposals",
+        "Attract better-fit clients who already see your agency as 'the right choice'",
+        "Build messaging that increases lead quality",
         "Move from \"service provider\" to \"strategic partner\" in the eyes of clients"
       ],
       outcome: "By attending this masterclass, you will get 5% off on PAAN Summit 2026 tickets & 6% off on the Africa Creative Excellence Awards entry.",
-      status: "upcoming"
+      status: "upcoming",
+      series: "Mastering Agency Growth in 2026",
+      seriesOrder: 1
+    },
+    11: {
+      id: 11,
+      title: "Pricing for Maximum Profit Margin & Conversion",
+      description: "Pricing is one of the most emotional and misunderstood parts of agency life. Most teams default to hourly or blended rates, under-valuing their work value and undermining their position as the expert, because they feel \"safe\" in doing it \"how it's always been done.\" Meanwhile, clients are under pressure to justify spending and prove ROI, creating tension in negotiations that agencies often don't know how to navigate. Armed with a wider pricing toolkit, pricing signals expertise and confidence to clients. Agencies finally claim power in the commercial conversation.",
+      fullDescription: "This masterclass will show you how to shift pricing from being about you (your time and effort) to the client (deliverables and outcomes). By understanding how to build and land pricing in a progressive way, with value-based pricing principles at the centre, you'll learn how to present fees with confidence, defend your worth, and structure pricing that profit margins and gives the client more ways to say yes. From performance-based structures to pricing psychology, Stuart will teach you exactly how to navigate pricing conversations so you win more high margin deals.",
+      format: "90-minute Interactive Training Course",
+      date: "March 26th, 2026",
+      time: "12 PM EAT",
+      memberPrice: 150,
+      memberOriginalPrice: 250,
+      nonMemberPrice: 170,
+      nonMemberOriginalPrice: 320,
+      currency: "USD",
+      category: "Business Development",
+      level: "Intermediate",
+      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/masterclass-pricing.jpg",
+      partnership: "PAAN, in collaboration with agency growth experts",
+      instructor: {
+        name: "Stuart Dunk",
+        title: "Founder & Managing Director, Don't Forget to Look",
+        image: "https://ik.imagekit.io/nkmvdjnna/PAAN/instructors/stuart-dunk.jpg",
+        bio: "After starting his career agency-side, Stuart worked in Marketing Procurement for 14 years at global brands like Reckitt, Nike, and Danone. For the last 6 years, he has been taking that knowledge of how brands buy, with the mission of \"Helping Agency Leaders Sleep Better at Night.\" He is one of the very few consultants who understands both sides of the table, agency and procurement, giving him unmatched insight into how agencies can differentiate, influence buyers, and win high-value deals. Stu runs workshops on various aspects of agency growth, provides pitch and proposal-writing support, and also runs bespoke programs on agency marketing, sales, positioning, and outreach for his clients. His work is designed to increase margin, conversion, and retention, and create more capability and confidence for both agency leaders and their teams.",
+        expertise: [
+          "Marketing Procurement & Buyer Psychology",
+          "Agency Positioning & Differentiation",
+          "Pitching & Proposal Writing",
+          "Pricing Models",
+          "Value-based selling",
+          "Negotiation & Influence"
+        ]
+      },
+      benefits: [
+        "5% off on PAAN Summit 2026 tickets"
+      ],
+      whoShouldAttend: [
+        "Agency founders & CEOs",
+        "Finance and commercial leads",
+        "Business development & sales leads",
+        "Client service directors & account leads"
+      ],
+      learningOutcomes: [
+        "How to shift from roles and rates to value & performance based pricing",
+        "Total Economic Value (TEV) - how to calculate (and charge for!) the value of the work, not the time it takes to do it",
+        "Pricing Psychology: tips and tricks to help clients say yes",
+        "The benefits of building products and programs, and how to do it",
+        "When to discount + and when not to",
+        "How top agencies structure pricing to win premium clients"
+      ],
+      courseObjectives: [
+        "Skills and frameworks to win your higher margin deals whilst being seen as the expert choice",
+        "Build pricing based on outputs + outcomes, not inputs, to break free of low margin deals & having to track and report on time",
+        "Build a Pricing \"stack\" or menu of programs / products that is unique to you, allowing you to charge more",
+        "Increase average deal size and profitability"
+      ],
+      whyAttend: [
+        "Learn how to land higher-margin deals consistently",
+        "Reduce pushback on pricing and negotiate from a position of strength",
+        "Move away from rate-card dependency",
+        "Gain tools used by high-performing global agencies"
+      ],
+      outcome: "By attending this masterclass, you will get 5% off on PAAN Summit 2026 tickets.",
+      status: "upcoming",
+      series: "Mastering Agency Growth in 2026",
+      seriesOrder: 2
+    },
+    12: {
+      id: 12,
+      title: "How to Navigate Procurement Processes & People",
+      description: "Procurement is often seen as an obstacle — the department that cuts budgets, tightens scopes, and pushes for discounts. But behind the scenes, procurement is driven by specific pressures, performance metrics, and risk factors that agencies rarely understand. By understanding how procurement think, are trained, and incentivised, you'll be able to influence decisions earlier, avoid price-led conversations, and win business with far more confidence.",
+      fullDescription: "Procurement can be one of the biggest barriers, or biggest allies, in agency growth. When agencies fear procurement, or allow past experiences to shape their thinking and approach, we undermine our own power. By better knowing procurement, their goals, language, and how to navigate them, we enter pitches and negotiations at a disadvantage. In this masterclass, Stuart will demystify procurement and give agencies the tools to influence commercial decisions confidently and effectively. You'll uncover how procurement prepares for negotiations, how buyers categorize agencies in a way that often leads to price negotiations, (and how you can avoid that!), how to identify and navigate the buyer type you're dealing with, and how to optimise communication to win trust and close deals.",
+      format: "90-minute Interactive Training Course",
+      date: "May 26th, 2026",
+      time: "12 PM EAT",
+      memberPrice: 150,
+      memberOriginalPrice: 250,
+      nonMemberPrice: 170,
+      nonMemberOriginalPrice: 320,
+      currency: "USD",
+      category: "Business Development",
+      level: "Intermediate",
+      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/masterclass-procurement.jpg",
+      partnership: "PAAN, in collaboration with agency growth experts",
+      instructor: {
+        name: "Stuart Dunk",
+        title: "Founder & Managing Director, Don't Forget to Look",
+        image: "https://ik.imagekit.io/nkmvdjnna/PAAN/instructors/stuart-dunk.jpg",
+        bio: "After starting his career agency-side, Stuart worked in Marketing Procurement for 14 years at global brands like Reckitt, Nike, and Danone. For the last 6 years, he has been taking that knowledge of how brands buy, with the mission of \"Helping Agency Leaders Sleep Better at Night.\" He is one of the very few consultants who understands both sides of the table, agency and procurement, giving him unmatched insight into how agencies can differentiate, influence buyers, and win high-value deals. Stu runs workshops on various aspects of agency growth, provides pitch and proposal-writing support, and also runs bespoke programs on agency marketing, sales, positioning, and outreach for his clients. His work is designed to increase margin, conversion, and retention, and create more capability and confidence for both agency leaders and their teams.",
+        expertise: [
+          "Marketing Procurement & Buyer Psychology",
+          "Agency Positioning & Differentiation",
+          "Pitching & Proposal Writing",
+          "Pricing Models",
+          "Value-based selling",
+          "Negotiation & Influence"
+        ]
+      },
+      benefits: [
+        "5% off on PAAN Summit 2026 tickets"
+      ],
+      whoShouldAttend: [
+        "Agency founders & CEOs",
+        "Finance and commercial leads",
+        "Business development & sales leads",
+        "Client service directors & account leads"
+      ],
+      learningOutcomes: [
+        "How marketing procurement is trained and incentivised",
+        "Different buyer types and how to communicate successfully with each",
+        "How to talk about savings and value to influence procurement decisions",
+        "How to prepare for procurement negotiations using their own frameworks",
+        "Techniques to differentiate your agency in price-focused deals"
+      ],
+      courseObjectives: [
+        "Identify buyer types and adapt your communication to suit them",
+        "Influence procurement expectations before price discussions",
+        "Position your expertise to shift perception from \"vendor\" to \"strategic partner\"",
+        "Increase your conversion of procurement-led deal"
+      ],
+      whyAttend: [
+        "Increase capability and confidence to win procurement-led deals",
+        "Understand the people & hidden rules of procurement-led deals",
+        "Reduce the risk of being price-compared or commoditized",
+        "Influence procurement before pricing becomes a barrier",
+        "Improve negotiation outcomes"
+      ],
+      outcome: "By attending this masterclass, you will get 5% off on PAAN Summit 2026 tickets.",
+      status: "upcoming",
+      series: "Mastering Agency Growth in 2026",
+      seriesOrder: 3
     }
   };
 

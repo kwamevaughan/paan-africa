@@ -27,65 +27,57 @@ const MasterclassesPage = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [searchTerm, setSearchTerm] = useState('');
 
-  // Featured masterclass data - separate from regular masterclasses
-  const featuredMasterclass = {
-    id: 9,
-    title: "Agency Positioning That Cuts Through the Noise",
-    description: "Most agencies struggle with positioning because they build it from the inside out, focusing on what they do instead of what clients truly value or what the market actually needs. This masterclass helps agencies step into the shoes of the buyer, understanding how clients assess expertise, evaluate risk, and choose partners. You'll learn how to create a brand narrative that attracts the right clients, filters out the wrong ones, and strengthens every pitch, proposal, and first meeting.",
-    fullDescription: "\"Creative-led,\" \"customer-focused,\" \"insight-driven\". Clients see these statements daily, yet none explain why an agency is unique or worth a premium price. Stuart Dunk will break down proven frameworks used by agencies across multiple countries to build sharp, differentiated positioning rooted in client value, competitive advantage, and strategic clarity. You'll learn how top-performing agencies craft value propositions that challenge assumptions, stand out in pitch rooms, and attract the right clients.",
+  // Featured masterclass series - "Mastering Agency Growth in 2026"
+  const featuredMasterclassSeries = {
+    id: 'series-mastering-agency-growth',
+    title: "Mastering Agency Growth in 2026",
+    subtitle: "Positioning. Pricing. Procurement.",
+    description: "Agencies are under more pressure than ever. Clients are more cautious, competition is sharper, and margins are harder to protect. Growth today comes from clarity, capability, and commercial discipline that cuts through the competition. This three-part, bi-monthly Masterclass Series with Stuart Dunk is designed to help agency leaders and their teams strengthen the fundamentals that directly impact conversion, retention, revenue, profitability, and long-term sustainability.",
+    dates: ["January 28th", "March 26th", "May 26th"],
+    time: "12 PM EAT",
     format: "90-minute Interactive Training Course",
-    date: "January 28th, 2026",
-    time: "TBC",
-    memberPrice: 150,
-    memberOriginalPrice: 250,
-    nonMemberPrice: 170,
-    nonMemberOriginalPrice: 320,
-    currency: "USD",
-    category: "Business Development",
-    level: "Intermediate",
-    image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/positioning.jpg",
     instructor: "Stuart Dunk",
-    instructorTitle: "Founder & Managing Director, Don't Forget to Look",
-    instructorBio: "After starting his career agency-side, Stuart worked in Marketing Procurement for 14 years at global brands like Reckitt, Nike, and Danone. For the last 6 years, he has been taking that knowledge of how brands buy, with the mission of \"Helping Agency Leaders Sleep Better at Night.\" He is one of the very few consultants who understands both sides of the table, agency and procurement, giving him unmatched insight into how agencies can differentiate, influence buyers, and win high-value deals. Stu runs workshops on various aspects of agency growth, provides pitch and proposal-writing support, and also runs bespoke programs on agency marketing, sales, positioning, and outreach for his clients. His work is designed to increase margin, conversion, and retention, and create more capability and confidence for both agency leaders and their teams.",
-    instructorExpertise: [
-      "Marketing Procurement & Buyer Psychology",
-      "Agency Positioning & Differentiation",
-      "Pitching & Proposal Writing",
-      "Pricing Models"
-    ],
-    benefits: [
-      "5% off on PAAN Summit 2026 tickets",
-      "6% off Africa Creative Excellence Awards entry"
+    instructorTitle: "Former global marketing procurement leader turned agency growth advisor",
+    instructorBio: "Led by Stuart Dunk, a former global marketing procurement leader turned agency growth advisor, this series bridges the gap between how agencies sell and how brands actually buy. With over 20 years of experience working on both sides of the table - both agency-side and inside global brands like Nike, Reckitt, and Danone - Stu brings a rare, honest perspective on what really influences buying decisions, pricing pressure, and agency selection.",
+    whyAttend: [
+      "Position your agency to win and retain more high-margin deals",
+      "Understand buyer behaviour and decision-making so you can influence them with confidence",
+      "Build stronger, more commercial client relationships",
+      "Reduce stress around pitching, pricing, and negotiations with ready-to-use best practice"
     ],
     whoShouldAttend: [
       "Agency founders & CEOs",
+      "Finance and commercial leads",
       "Mid to senior-level agency teams",
       "Business development & sales leads",
       "Client service directors & account leads"
     ],
-    learningOutcomes: [
-      "The \"3C Framework\" for building world-class agency positioning",
-      "How to craft a value proposition that cuts through the noise",
-      "Why most positioning fails and how to avoid generic traps",
-      "The Benefit Ladder: a tool for connecting client needs to agency strengths",
-      "How to build a \"client value map\" to influence perception and buying decisions",
-      "Examples of exceptional agency positioning and why they work"
+    subMasterclasses: [
+      {
+        id: 9,
+        title: "Agency Positioning That Cuts Through The Noise",
+        date: "January 28th, 2026",
+        description: "Learn how to sharpen your agency's positioning so clients understand your value quickly, clearly, and confidently. This session focuses on differentiation, clarity, and how to move away from being seen as \"just another agency.\"",
+        image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/positioning.jpg"
+      },
+      {
+        id: 11,
+        title: "Pricing for Maximum Profit Margin & Conversion",
+        date: "March 26th, 2026",
+        description: "This session tackles one of the most uncomfortable but critical areas of agency growth: pricing. Learn how to move away from hours-based, discounted pricing and build structures that support profitability, conversion, and longer-term client relationships.",
+        image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/masterclass-pricing.jpg"
+      },
+      {
+        id: 12,
+        title: "How to Navigate Procurement Processes & People",
+        date: "May 26th, 2026",
+        description: "Marketing procurement can feel like a black box designed to squeeze agencies. This masterclass demystifies how procurement really works, what they care about, and how agencies can engage more effectively when the pressure is on.",
+        image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/masterclass-procurement.jpg"
+      }
     ],
-    courseObjectives: [
-      "Define a differentiated positioning that aligns with client value",
-      "Build a strong, repeatable value proposition for pitches and website copy",
-      "Identify and eliminate weak, generic messaging",
-      "Align service offerings, marketing, and BD processes to the new positioning"
-    ],
-    whyAttend: [
-      "Stand out instantly in RFPs, pitches, and first-touch conversations",
-      "Attract better-fit clients who already see your agency as \"the right choice\"",
-      "Build messaging that increases lead quality and reduces price objections",
-      "Move from \"service provider\" to \"strategic partner\" in the eyes of clients"
-    ],
-    outcome: "By attending this masterclass, you will get 5% off on PAAN Summit 2026 tickets & 6% off on the Africa Creative Excellence Awards entry.",
-    partnership: "PAAN, in collaboration with agency growth experts",
-    status: "upcoming"
+    image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/positioning.jpg",
+    status: "upcoming",
+    isSeries: true
   };
 
   // Sample masterclasses data - this would come from your database
@@ -260,15 +252,15 @@ const MasterclassesPage = () => {
       series: "Agency Growth & Leadership Masterclass Series",
       moduleNumber: 3,
       featured: false,
-      status: "upcoming"
+      status: "completed"
     },
     {
       id: 9,
       title: "Agency Positioning That Cuts Through the Noise",
-      description: "Most agencies struggle with positioning because they build it from the inside out, focusing on what they do instead of what clients truly value or what the market actually needs. This masterclass helps agencies step into the shoes of the buyer, understanding how clients assess expertise, evaluate risk, and choose partners. You'll learn how to create a brand narrative that attracts the right clients, filters out the wrong ones, and strengthens every pitch, proposal, and first meeting.",
+      description: "Learn how to sharpen your agency's positioning so clients understand your value quickly, clearly, and confidently. This session focuses on differentiation, clarity, and how to move away from being seen as \"just another agency.\"",
       format: "90-minute Interactive Training Course",
       date: "January 28th, 2026",
-      time: "TBC",
+      time: "12 PM EAT",
       memberPrice: 150,
       memberOriginalPrice: 250,
       nonMemberPrice: 170,
@@ -279,6 +271,8 @@ const MasterclassesPage = () => {
       instructor: "Stuart Dunk",
       instructorTitle: "Founder & Managing Director, Don't Forget to Look",
       image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/positioning.jpg",
+      series: "Mastering Agency Growth in 2026",
+      seriesOrder: 1,
       benefits: [
         "5% off on PAAN Summit 2026 tickets",
         "6% off Africa Creative Excellence Awards entry"
@@ -302,6 +296,110 @@ const MasterclassesPage = () => {
         "Build a strong, repeatable value proposition for pitches and website copy",
         "Identify and eliminate weak, generic messaging",
         "Align service offerings, marketing, and BD processes to the new positioning"
+      ],
+      partnership: "PAAN, in collaboration with agency growth experts",
+      featured: false,
+      status: "upcoming"
+    },
+    {
+      id: 11,
+      title: "Pricing for Maximum Profit Margin & Conversion",
+      description: "Pricing is one of the most emotional and misunderstood parts of agency life. Most teams default to hourly or blended rates, under-valuing their work value and undermining their position as the expert, because they feel \"safe\" in doing it \"how it's always been done.\" Meanwhile, clients are under pressure to justify spending and prove ROI, creating tension in negotiations that agencies often don't know how to navigate. Armed with a wider pricing toolkit, pricing signals expertise and confidence to clients. Agencies finally claim power in the commercial conversation.",
+      format: "90-minute Interactive Training Course",
+      date: "March 26th, 2026",
+      time: "12 PM EAT",
+      memberPrice: 150,
+      memberOriginalPrice: 250,
+      nonMemberPrice: 170,
+      nonMemberOriginalPrice: 320,
+      currency: "USD",
+      category: "Business Development",
+      level: "Intermediate",
+      instructor: "Stuart Dunk",
+      instructorTitle: "Founder & Managing Director, Don't Forget to Look",
+      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/masterclass-pricing.jpg",
+      series: "Mastering Agency Growth in 2026",
+      seriesOrder: 2,
+      benefits: [
+        "5% off on PAAN Summit 2026 tickets"
+      ],
+      whoShouldAttend: [
+        "Agency founders & CEOs",
+        "Finance and commercial leads",
+        "Business development & sales leads",
+        "Client service directors & account leads"
+      ],
+      learningOutcomes: [
+        "How to shift from roles and rates to value & performance based pricing",
+        "Total Economic Value (TEV) - how to calculate (and charge for!) the value of the work, not the time it takes to do it",
+        "Pricing Psychology: tips and tricks to help clients say yes",
+        "The benefits of building products and programs, and how to do it",
+        "When to discount + and when not to",
+        "How top agencies structure pricing to win premium clients"
+      ],
+      courseObjectives: [
+        "Skills and frameworks to win your higher margin deals whilst being seen as the expert choice",
+        "Build pricing based on outputs + outcomes, not inputs, to break free of low margin deals & having to track and report on time",
+        "Build a Pricing \"stack\" or menu of programs / products that is unique to you, allowing you to charge more",
+        "Increase average deal size and profitability"
+      ],
+      whyAttend: [
+        "Learn how to land higher-margin deals consistently",
+        "Reduce pushback on pricing and negotiate from a position of strength",
+        "Move away from rate-card dependency",
+        "Gain tools used by high-performing global agencies"
+      ],
+      partnership: "PAAN, in collaboration with agency growth experts",
+      featured: false,
+      status: "upcoming"
+    },
+    {
+      id: 12,
+      title: "How to Navigate Procurement Processes & People",
+      description: "Procurement is often seen as an obstacle — the department that cuts budgets, tightens scopes, and pushes for discounts. But behind the scenes, procurement is driven by specific pressures, performance metrics, and risk factors that agencies rarely understand. By understanding how procurement think, are trained, and incentivised, you'll be able to influence decisions earlier, avoid price-led conversations, and win business with far more confidence.",
+      format: "90-minute Interactive Training Course",
+      date: "May 26th, 2026",
+      time: "12 PM EAT",
+      memberPrice: 150,
+      memberOriginalPrice: 250,
+      nonMemberPrice: 170,
+      nonMemberOriginalPrice: 320,
+      currency: "USD",
+      category: "Business Development",
+      level: "Intermediate",
+      instructor: "Stuart Dunk",
+      instructorTitle: "Founder & Managing Director, Don't Forget to Look",
+      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/masterclass-procurement.jpg",
+      series: "Mastering Agency Growth in 2026",
+      seriesOrder: 3,
+      benefits: [
+        "5% off on PAAN Summit 2026 tickets"
+      ],
+      whoShouldAttend: [
+        "Agency founders & CEOs",
+        "Finance and commercial leads",
+        "Business development & sales leads",
+        "Client service directors & account leads"
+      ],
+      learningOutcomes: [
+        "How marketing procurement is trained and incentivised",
+        "Different buyer types and how to communicate successfully with each",
+        "How to talk about savings and value to influence procurement decisions",
+        "How to prepare for procurement negotiations using their own frameworks",
+        "Techniques to differentiate your agency in price-focused deals"
+      ],
+      courseObjectives: [
+        "Identify buyer types and adapt your communication to suit them",
+        "Influence procurement expectations before price discussions",
+        "Position your expertise to shift perception from \"vendor\" to \"strategic partner\"",
+        "Increase your conversion of procurement-led deal"
+      ],
+      whyAttend: [
+        "Increase capability and confidence to win procurement-led deals",
+        "Understand the people & hidden rules of procurement-led deals",
+        "Reduce the risk of being price-compared or commoditized",
+        "Influence procurement before pricing becomes a barrier",
+        "Improve negotiation outcomes"
       ],
       partnership: "PAAN, in collaboration with agency growth experts",
       featured: false,
@@ -397,9 +495,12 @@ const MasterclassesPage = () => {
     { id: 'digital-marketing', name: 'Digital Marketing', count: 0 }
   ];
 
+  // Series masterclass IDs that are part of the featured series
+  const seriesMasterclassIds = featuredMasterclassSeries.subMasterclasses.map(mc => mc.id);
+
   const filteredMasterclasses = masterclasses.filter(masterclass => {
-    // Exclude the featured masterclass from the regular list to avoid duplicates
-    if (masterclass.id === featuredMasterclass.id) {
+    // Exclude series masterclasses from the regular list since they're shown in the featured series section
+    if (seriesMasterclassIds.includes(masterclass.id)) {
       return false;
     }
     const matchesCategory = selectedCategory === 'all' || 
@@ -409,16 +510,7 @@ const MasterclassesPage = () => {
     return matchesCategory && matchesSearch;
   });
 
-  // When "all" category is selected or when featured masterclass category matches, add the featured masterclass at the beginning
-  const featuredCategoryMatch = selectedCategory === 'all' || 
-    featuredMasterclass.category.toLowerCase().replace(/\s+/g, '-') === selectedCategory;
-  const featuredMatchesSearch = searchTerm === '' || 
-    featuredMasterclass.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    featuredMasterclass.description.toLowerCase().includes(searchTerm.toLowerCase());
-  
-  const finalFilteredMasterclasses = featuredCategoryMatch && featuredMatchesSearch
-    ? [featuredMasterclass, ...filteredMasterclasses]
-    : filteredMasterclasses;
+  const finalFilteredMasterclasses = filteredMasterclasses;
 
   return (
     <>
@@ -548,145 +640,138 @@ const MasterclassesPage = () => {
           </div>
         </section>
 
-        {/* Featured Masterclass */}
-       <section id="upcoming-masterclass" className="bg-gray-50 py-20">
-  <div className="mx-auto max-w-6xl px-4 sm:px-6">
-    <div className="text-center mb-12">
-      <span className="inline-block bg-[#F25849] text-white px-6 py-2 rounded-full text-sm font-semibold mb-4">
-        Featured Masterclass
-      </span>
-      <h2 className="text-3xl md:text-4xl font-bold text-[#172840] mb-4">
-        Don't Miss Our Next Session
-      </h2>
-      <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-        Join our upcoming masterclass and take your agency to the next level
-      </p>
-    </div>
-
-    <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
-        {/* Image Section */}
-        <Link 
-          href={`/masterclasses/${featuredMasterclass.id}`} 
-          className="relative lg:aspect-auto lg:h-full cursor-pointer overflow-hidden bg-gray-100"
-        >
-          <Image
-            src={featuredMasterclass.image}
-            fill
-            alt={featuredMasterclass.title}
-            className="object-contain object-center w-auto hover:scale-105 transition-transform duration-300"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-          <div className="absolute top-4 left-4">
-            <span className="bg-[#F2B706] text-[#172840] px-3 py-1.5 rounded-full text-sm font-bold">
-              {featuredMasterclass.status === 'upcoming' ? 'UPCOMING' : 'LIVE'}
-            </span>
-          </div>
-        </Link>
-
-        {/* Content Section */}
-        <div className="p-6 lg:p-8 flex flex-col justify-center">
-          <div className="mb-4">
-            <div className="flex items-center gap-3 mb-3">
-              <span className="bg-[#84C1D9] text-white px-3 py-1 rounded-full text-sm font-medium">
-                {featuredMasterclass.category}
+        {/* Featured Masterclass Series */}
+        <section id="upcoming-masterclass" className="bg-gray-50 py-20">
+          <div className="mx-auto max-w-6xl px-4 sm:px-6">
+            <div className="text-center mb-12">
+              <span className="inline-block bg-[#F25849] text-white px-6 py-2 rounded-full text-sm font-semibold mb-4">
+                Featured Masterclass Series
               </span>
-              <span className="text-gray-500 text-sm">{featuredMasterclass.level}</span>
+              <h2 className="text-3xl md:text-4xl font-bold text-[#172840] mb-4">
+                {featuredMasterclassSeries.title}
+              </h2>
+              <p className="text-xl text-[#F25849] font-semibold mb-2">
+                {featuredMasterclassSeries.subtitle}
+              </p>
+              <p className="text-lg text-gray-600 max-w-4xl mx-auto">
+                {featuredMasterclassSeries.description}
+              </p>
             </div>
-            
-            <h3 className="text-xl lg:text-2xl font-bold text-[#172840] mb-3 leading-tight">
-              {featuredMasterclass.title}
-            </h3>
-            
-            <p className="text-gray-600 mb-4 leading-relaxed text-sm">
-              {featuredMasterclass.description.substring(0, 150)}...
-            </p>
-          </div>
 
-          {/* Session Details */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
-            <div className="flex items-center gap-3">
-              <Icon icon="mdi:calendar" className="text-[#F25849] w-5 h-5" />
-              <span className="text-gray-700 text-sm">{featuredMasterclass.date}</span>
-            </div>
-            <div className="flex items-center gap-3">
-              <Icon icon="mdi:clock" className="text-[#F25849] w-5 h-5" />
-              <span className="text-gray-700 text-sm">{featuredMasterclass.time}</span>
-            </div>
-            <div className="flex items-center gap-3">
-              <Icon icon="mdi:play-circle" className="text-[#F25849] w-5 h-5" />
-              <span className="text-gray-700 text-sm">{featuredMasterclass.format}</span>
-            </div>
-            <div className="flex items-center gap-3">
-              <Icon icon="mdi:account-tie" className="text-[#F25849] w-5 h-5" />
-              <span className="text-gray-700 text-sm">{featuredMasterclass.instructor}</span>
-            </div>
-          </div>
-
-          {/* Pricing */}
-          <div className="bg-gray-50 rounded-xl p-4 mb-4">
-            <div className="flex items-center justify-between mb-3">
-              <div>
-                <div className="text-xs text-gray-500 mb-1">Members</div>
-                <div className="flex items-center gap-2">
-                  <div className="text-xl font-bold text-[#172840]">
-                    ${featuredMasterclass.memberPrice}
-                  </div>
-                  {featuredMasterclass.memberOriginalPrice && (
-                    <div className="text-sm text-gray-500 line-through">
-                      ${featuredMasterclass.memberOriginalPrice}
+            <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
+              {/* Series Header */}
+              <div className="bg-[#172840] text-white p-6 lg:p-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+                  <div className="flex items-center gap-3">
+                    <Icon icon="mdi:calendar-multiple" className="text-[#F2B706] w-6 h-6" />
+                    <div>
+                      <div className="text-xs text-gray-300">Dates</div>
+                      <div className="text-sm font-medium">
+                        {featuredMasterclassSeries.dates.join(', ')}
+                      </div>
                     </div>
-                  )}
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <Icon icon="mdi:clock" className="text-[#F2B706] w-6 h-6" />
+                    <div>
+                      <div className="text-xs text-gray-300">Time</div>
+                      <div className="text-sm font-medium">{featuredMasterclassSeries.time}</div>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <Icon icon="mdi:play-circle" className="text-[#F2B706] w-6 h-6" />
+                    <div>
+                      <div className="text-xs text-gray-300">Duration</div>
+                      <div className="text-sm font-medium">{featuredMasterclassSeries.format}</div>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <Icon icon="mdi:account-tie" className="text-[#F2B706] w-6 h-6" />
+                    <div>
+                      <div className="text-xs text-gray-300">Trainer</div>
+                      <div className="text-sm font-medium">{featuredMasterclassSeries.instructor}</div>
+                    </div>
+                  </div>
                 </div>
               </div>
-              <div>
-                <div className="text-xs text-gray-500 mb-1">Non-Members</div>
-                <div className="flex items-center gap-2">
-                  <div className="text-xl font-bold text-[#172840]">
-                    ${featuredMasterclass.nonMemberPrice}
+
+              {/* Series Content */}
+              <div className="p-6 lg:p-8">
+                {/* About the Series */}
+                <div className="mb-8">
+                  <h3 className="text-2xl font-bold text-[#172840] mb-4">About the Masterclass Series</h3>
+                  <p className="text-gray-700 leading-relaxed mb-4">
+                    {featuredMasterclassSeries.instructorBio}
+                  </p>
+                </div>
+
+                {/* Why Attend */}
+                <div className="mb-8">
+                  <h3 className="text-xl font-bold text-[#172840] mb-4">Why Attend?</h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    {featuredMasterclassSeries.whyAttend.map((reason, index) => (
+                      <div key={index} className="flex items-start gap-3 p-3 bg-[#F25849]/5 rounded-lg">
+                        <Icon icon="mdi:check-circle" className="text-[#F25849] w-5 h-5 mt-0.5 flex-shrink-0" />
+                        <span className="text-gray-700 text-sm">{reason}</span>
+                      </div>
+                    ))}
                   </div>
-                  {featuredMasterclass.nonMemberOriginalPrice && (
-                    <div className="text-sm text-gray-500 line-through">
-                      ${featuredMasterclass.nonMemberOriginalPrice}
-                    </div>
-                  )}
+                </div>
+
+                {/* Who Should Attend */}
+                <div className="mb-8">
+                  <h3 className="text-xl font-bold text-[#172840] mb-4">Who Should Attend</h3>
+                  <div className="flex flex-wrap gap-2">
+                    {featuredMasterclassSeries.whoShouldAttend.map((attendee, index) => (
+                      <span key={index} className="bg-[#84C1D9] text-white px-4 py-2 rounded-full text-sm">
+                        {attendee}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                {/* The Three Masterclasses */}
+                <div className="mb-6">
+                  <h3 className="text-2xl font-bold text-[#172840] mb-6">The Three Masterclasses</h3>
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    {featuredMasterclassSeries.subMasterclasses.map((masterclass, index) => (
+                      <div key={masterclass.id} className="bg-gray-50 rounded-xl overflow-hidden border-2 border-transparent hover:border-[#F25849] transition-all duration-300">
+                        <Link href={`/masterclasses/${masterclass.id}`} className="block">
+                          <div className="relative h-48">
+                            <Image
+                              src={masterclass.image}
+                              fill
+                              alt={masterclass.title}
+                              className="object-cover"
+                            />
+                            <div className="absolute top-3 left-3">
+                              <span className="bg-[#F2B706] text-[#172840] px-3 py-1 rounded-full text-xs font-bold">
+                                {index + 1}
+                              </span>
+                            </div>
+                          </div>
+                          <div className="p-4">
+                            <div className="text-xs text-gray-500 mb-2 font-medium">{masterclass.date}</div>
+                            <h4 className="text-lg font-bold text-[#172840] mb-2 leading-tight">
+                              {masterclass.title}
+                            </h4>
+                            <p className="text-gray-600 text-sm mb-4 line-clamp-3">
+                              {masterclass.description}
+                            </p>
+                            <div className="flex items-center gap-2 text-[#F25849] font-semibold text-sm">
+                              <span>Explore the {index === 0 ? 'Positioning' : index === 1 ? 'Pricing' : 'Procurement'} Masterclass</span>
+                              <Icon icon="mdi:arrow-right" className="w-4 h-4" />
+                            </div>
+                          </div>
+                        </Link>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
-            
-            {featuredMasterclass.benefits && (
-              <div className="border-t pt-3">
-                <div className="text-xs font-semibold text-gray-700 mb-2">Bonus Benefits:</div>
-                {featuredMasterclass.benefits.slice(0, 2).map((benefit, index) => (
-                  <div key={index} className="flex items-center gap-2 text-xs text-gray-600 mb-1">
-                    <Icon icon="mdi:check-circle" className="text-green-500 w-3 h-3 flex-shrink-0" />
-                    {benefit}
-                  </div>
-                ))}
-              </div>
-            )}
           </div>
-
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-3">
-            <Link
-              href={`/masterclasses/${featuredMasterclass.id}`}
-              className="flex-1 bg-[#F25849] text-white px-4 py-3 rounded-full font-semibold text-center hover:bg-[#D6473C] transition-all duration-300 shadow-lg hover:shadow-xl text-sm"
-            >
-              Register Now
-            </Link>
-            <Link
-              href={`/masterclasses/${featuredMasterclass.id}`}
-              className="flex-1 bg-transparent border-2 border-[#172840] text-[#172840] px-4 py-3 rounded-full font-semibold text-center hover:bg-[#172840] hover:text-white transition-all duration-300 text-sm"
-            >
-              Learn More
-            </Link>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+        </section>
 
         {/* All Masterclasses */}
         <section id="masterclasses-grid" className="bg-white py-20">
@@ -759,10 +844,10 @@ const MasterclassesPage = () => {
                            masterclass.status === 'completed' ? 'COMPLETED' : 'LIVE'}
                         </span>
                       </div>
-                      {masterclass.id === featuredMasterclass.id && (
+                      {masterclass.series === featuredMasterclassSeries.title && (
                         <div className="absolute top-4 right-4">
                           <span className="bg-[#F25849] text-white px-3 py-1 rounded-full text-xs font-bold">
-                            FEATURED
+                            SERIES
                           </span>
                         </div>
                       )}
