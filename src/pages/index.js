@@ -17,6 +17,7 @@ import ContactSection from "@/components/ContactSection";
 import AgencyEnquiryModal from "@/components/AgencyEnquiryModal";
 import AgenciesMarquee from "@/components/AgenciesMarquee";
 import AgencyLogosGrid from "@/components/AgencyLogosGrid";
+import AgencyLogosMarquee from "@/components/AgencyLogosMarquee";
 import ScrollToTop from "@/components/ScrollToTop";
 import ConnectingDots from "@/components/ConnectingDots";
 import ProgramCard from "@/components/ProgramCard";
@@ -345,79 +346,46 @@ const HomePage = () => {
           </div>
         </div>
 
+        {/* Agency Logos Marquee Section */}
+        <AgencyLogosMarquee />
+
+              {/* Who we are section */}
         <div
-          className="mx-auto max-w-6xl relative section mb-10"
+          className="mx-auto max-w-6xl relative section mb-10 px-4 sm:px-6 py-10 sm:py-16 md:py-20"
           id="about-us"
           ref={sectionRefs.aboutUs}
         >
-          {/* <div className="absolute -top-36 -left-36 w-28 h-28 bg-[#F2B706] rounded-full z-30"></div> */}
-          {/* <div className="absolute -top-10 -right-20 w-16 h-16 bg-[#F25849] rounded-full z-0"></div> */}
-          <div className="absolute bottom-60 -left-20 w-11 h-11 bg-[#D1D3D4] rounded-full z-30"></div>
-          {/* <div className="absolute bottom-0 -right-10 w-11 h-11 bg-[#172840] rounded-full z-0"></div> */}
-          <section className="relative z-10">
-            <p className="uppercase font-semibold mb-4">{t('homepage.aboutUs.title')}</p>
-            <p className="text-2xl">
-              {t('homepage.aboutUs.description')}
-            </p>
-          </section>
-          <section className="relative z-10 grid grid-cols-1 sm:grid-cols-2 gap-8 items-center mt-20">
-            <div className="relative">
-              <Image
-                src="/assets/images/team.webp"
-                width={500}
-                height={300}
-                alt="Team collaboration"
-                className="rounded-lg object-cover w-full h-auto"
-              />
-              <div className="">
-                <button
-                  onClick={() => window.location.href = '/about'}
-                  className="absolute -bottom-1 bg-[#F25849] text-white px-4 py-2 sm:px-10 sm:py-4 rounded-full font-bold text-xs sm:text-lg hover:bg-[#D6473C] transition duration-300 shadow-lg"
-                >
-                  {t('homepage.aboutUs.discoverMore')}
+          <div className="absolute bottom-60 -left-20 w-11 h-11 bg-paan-yellow rounded-full z-30 hidden sm:block"></div>
+          
+          <section 
+            className="bg-[#E6F3F7] rounded-lg sm:rounded-xl relative z-10 p-8 sm:p-12 lg:p-16"
+            style={{
+              backgroundImage: 'url(https://ik.imagekit.io/nkmvdjnna/PAAN/who-we-are.webp)',
+              backgroundSize: '50%',
+              backgroundPosition: 'center',
+              backgroundRepeat: 'no-repeat',
+            }}
+          >
+            <div className="absolute -top-6 -right-6 sm:-top-8 sm:-right-8 w-12 h-12 sm:w-16 sm:h-16 bg-[#84C1D9] rounded-full z-20"></div>
+            <div className="relative z-10 space-y-6 sm:space-y-8">
+              <div>
+                <p className="uppercase font-semibold mb-4 text-sm sm:text-base text-[#172840] tracking-wider">
+                  {t('homepage.aboutUs.title')}
+                </p>
+                <p className="text-xl sm:text-2xl lg:text-3xl font-light text-[#172840] leading-relaxed">
+                  {t('homepage.aboutUs.description')}
+                </p>
+              </div>
+              <div className="pt-4">
+                <button className="bg-[#F25849] text-white px-6 sm:px-8 lg:px-10 py-3 sm:py-4 rounded-full font-semibold text-sm sm:text-base hover:bg-[#D6473C] transition duration-300 shadow-lg hover:shadow-xl flex items-center gap-2 group">
+                  <span>{t('homepage.aboutUs.discoverMore')}</span>
+                  <Icon icon="mdi:arrow-right" className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
                 </button>
-              </div>
-            </div>
-            <div className="flex flex-col gap-4">
-              <div className="flex items-center gap-3 border-b border-gray-200 pb-4 transform transition-transform duration-300 hover:translate-y-[-5px]">
-                <Image
-                  src="/assets/images/icons/pan-african-reach.svg"
-                  width={50}
-                  height={50}
-                  alt={t('homepage.aboutUs.features.panAfricanReach')}
-                />
-                <p className="text-xl font-base">{t('homepage.aboutUs.features.panAfricanReach')}</p>
-              </div>
-              <div className="flex items-center gap-3 border-b border-gray-200 pb-4 transform transition-transform duration-300 hover:translate-y-[-5px]">
-                <Image
-                  src="/assets/images/icons/strategic-collaboration.svg"
-                  width={50}
-                  height={50}
-                  alt={t('homepage.aboutUs.features.strategicCollaboration')}
-                />
-                <p className="text-xl font-base">{t('homepage.aboutUs.features.strategicCollaboration')}</p>
-              </div>
-              <div className="flex items-center gap-3 border-b border-gray-200 pb-4 transform transition-transform duration-300 hover:translate-y-[-5px]">
-                <Image
-                  src="/assets/images/icons/innovation-driven.svg"
-                  width={50}
-                  height={50}
-                  alt={t('homepage.aboutUs.features.innovationDriven')}
-                />
-                <p className="text-xl font-base">{t('homepage.aboutUs.features.innovationDriven')}</p>
-              </div>
-              <div className="flex items-center gap-3 border-b border-gray-200 pb-4 transform transition-transform duration-300 hover:translate-y-[-5px]">
-                <Image
-                  src="/assets/images/icons/shared-knowledge-growth.svg"
-                  width={50}
-                  height={50}
-                  alt={t('homepage.aboutUs.features.sharedKnowledgeGrowth')}
-                />
-                <p className="text-xl font-base">{t('homepage.aboutUs.features.sharedKnowledgeGrowth')}</p>
               </div>
             </div>
           </section>
         </div>
+
         <AgenciesMarquee />
         
         <div
