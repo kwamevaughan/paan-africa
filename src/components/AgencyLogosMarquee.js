@@ -39,7 +39,7 @@ const AgencyLogosMarquee = () => {
     {
       id: 7,
       name: 'Xperia-agency',
-      logo: '/assets/images/agencies/xperia-agency.png',
+      logo: '/assets/images/agencies/Xperia-agency.png',
     },
   ];
 
