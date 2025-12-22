@@ -34,7 +34,7 @@ const AgencyLogosMarquee = () => {
     {
       id: 6,
       name: 'Penguin Agency',
-      logo: '/assets/images/agencies/penquin.svg',
+      logo: '/assets/images/agencies/penquin.png',
     },
     {
       id: 7,

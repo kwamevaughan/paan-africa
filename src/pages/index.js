@@ -377,7 +377,7 @@ const HomePage = () => {
                 </p>
               </div>
               <div className="pt-4">
-                <button className="bg-[#F25849] text-white px-6 sm:px-8 lg:px-10 py-3 sm:py-4 rounded-full font-semibold text-sm sm:text-base hover:bg-[#D6473C] transition duration-300 shadow-lg hover:shadow-xl flex items-center gap-2 group">
+                <button onClick={() => window.location.href = '/about'} className="bg-[#F25849] text-white px-6 sm:px-8 lg:px-10 py-3 sm:py-4 rounded-full font-semibold text-sm sm:text-base hover:bg-[#D6473C] transition duration-300 shadow-lg hover:shadow-xl flex items-center gap-2 group">
                   <span>{t('homepage.aboutUs.discoverMore')}</span>
                   <Icon icon="mdi:arrow-right" className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
                 </button>
