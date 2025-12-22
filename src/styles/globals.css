@@ -310,3 +310,15 @@ html {
 .goog-te-gadget {
   font-size: 0 !important;
 }
+
+/* Christmas Effects Animations */
+@keyframes twinkle {
+  0%, 100% { 
+    opacity: 0.7; 
+    transform: scale(1); 
+  }
+  50% { 
+    opacity: 1; 
+    transform: scale(1.2); 
+  }
+}

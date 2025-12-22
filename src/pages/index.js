@@ -305,11 +305,44 @@ const HomePage = () => {
                   Book a Demo
                 </button>
               </div>
+              {/* Stats */}
+              <div className="flex flex-col sm:flex-row items-center gap-6 sm:gap-8 mt-10 sm:mt-12">
+                  <div className="flex flex-col">
+                      <h2 className="text-2xl sm:text-3xl text-paan-dark-blue mb-1">200+</h2>
+                      <h3 className="text-xs sm:text-sm text-gray-600 font-medium">Agencies</h3>
+                  </div>
+                  <div className="hidden sm:block w-2 h-2 bg-[#F2B706] rounded-full"></div>
+                  <div className="flex flex-col">
+                      <h2 className="text-2xl sm:text-3xl text-paan-dark-blue mb-1">2000+</h2>
+                      <h3 className="text-xs sm:text-sm text-gray-600 font-medium">Freelancers</h3>
+                  </div>
+                  <div className="hidden sm:block w-2 h-2 bg-[#F2B706] rounded-full"></div>
+                  <div className="flex flex-col">
+                      <h2 className="text-2xl sm:text-3xl text-paan-dark-blue mb-1">20+</h2>
+                      <h3 className="text-xs sm:text-sm text-gray-600 font-medium">African Markets</h3>
+                  </div>
+              </div>
             </div>
             <div className="mt-8 sm:mt-0">
               <CustomSlider />
             </div>
           </section>
+          {/* Animated Explore Arrow */}
+          <div className="flex flex-col items-center justify-center mt-12 sm:mt-16 pb-8 relative z-10">
+            <button
+              onClick={(e) => {
+                handleScroll(e, "#about-us", isFixed);
+              }}
+              className="flex flex-col items-center gap-2 text-paan-dark-blue hover:text-[#F25849] transition-colors duration-300 group"
+              aria-label="Explore PAAN"
+            >
+              <span className="text-sm sm:text-base font-medium">Explore PAAN</span>
+              <Icon 
+                icon="mdi:chevron-down" 
+                className="w-6 h-6 animate-bounce group-hover:text-[#F25849] transition-colors duration-300"
+              />
+            </button>
+          </div>
         </div>
 
         <div
@@ -317,7 +350,7 @@ const HomePage = () => {
           id="about-us"
           ref={sectionRefs.aboutUs}
         >
-          <div className="absolute -top-36 -left-36 w-28 h-28 bg-[#F2B706] rounded-full z-30"></div>
+          {/* <div className="absolute -top-36 -left-36 w-28 h-28 bg-[#F2B706] rounded-full z-30"></div> */}
           {/* <div className="absolute -top-10 -right-20 w-16 h-16 bg-[#F25849] rounded-full z-0"></div> */}
           <div className="absolute bottom-60 -left-20 w-11 h-11 bg-[#D1D3D4] rounded-full z-30"></div>
           {/* <div className="absolute bottom-0 -right-10 w-11 h-11 bg-[#172840] rounded-full z-0"></div> */}

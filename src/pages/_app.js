@@ -5,6 +5,8 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import '../styles/globals.css';
 import Script from 'next/script';
+import { ChristmasProvider } from '../contexts/ChristmasContext';
+import ChristmasEffects from '../components/ChristmasEffects';
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
@@ -204,7 +206,10 @@ function MyApp({ Component, pageProps }) {
           `,
         }}
       />
-      <Component {...pageProps} />
+      <ChristmasProvider>
+        <ChristmasEffects />
+        <Component {...pageProps} />
+      </ChristmasProvider>
 
       <Toaster position="top-right" toastOptions={{
         duration: 4000,
