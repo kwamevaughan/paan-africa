@@ -14,15 +14,15 @@ export const ChristmasProvider = ({ children }) => {
   const [isChristmasMode, setIsChristmasMode] = useState(false);
 
   useEffect(() => {
-    // Check if it's Christmas season (December 1st - January 6th)
+    // Check if it's Christmas season (December 24th - January 1st)
     const checkChristmasSeason = () => {
       const now = new Date();
       const month = now.getMonth(); // 0-11 (0 = January)
       const day = now.getDate();
       
-      // December 1st to December 31st, or January 1st to January 6th
-      const isDecember = month === 11; // December
-      const isEarlyJanuary = month === 0 && day <= 6; // January 1-6
+      // December 24th to December 31st, or January 1st
+      const isDecember = month === 11 && day >= 24; // December 24th onwards
+      const isEarlyJanuary = month === 0 && day <= 1; // January 1st
       
       setIsChristmasMode(isDecember || isEarlyJanuary);
     };
