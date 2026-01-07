@@ -84,12 +84,15 @@
 }
 
 .logo {
-  max-width: 120px;
-  max-height: 60px;
-  width: auto;
-  height: auto;
+  width: 120px;
+  height: 60px;
   object-fit: contain;
+  object-position: center;
   transition: all 0.3s ease;
+}
+
+.logoInverted {
+  filter: invert(1);
 }
 
 .logoContainer:hover .logo {
