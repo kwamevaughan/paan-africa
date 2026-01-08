@@ -58,7 +58,7 @@ function MyApp({ Component, pageProps }) {
         },
         "address": {
           "@type": "PostalAddress",
-          "streetAddress": "7th Floor, Mitsumi Business Park, Westlands, Nairobi, Kenya",
+          "streetAddress": "The Westwood Office, 6th Floor 6A, Comply Guide Advisory, Westlands, Nairobi, Kenya",
           "addressLocality": "Nairobi",
           "addressRegion": "Nairobi County",
           "postalCode": "00100",

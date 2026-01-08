@@ -69,7 +69,7 @@ const Footer = () => {
             <div className="space-y-2 text-paan-dark-blue">
               <p className="text-sm">Email: secretariat@paan.africa</p>
               <p className="text-sm">Phone: +254701 850 850</p>
-              <p className="text-sm">Address: 7th Floor, Mitsumi Business Park, Westlands, Nairobi, Kenya</p>
+              <p className="text-sm">Address: The Westwood Office, 6th Floor 6A, Comply Guide Advisory, Westlands, Nairobi, Kenya</p>
             </div>
           </div>
           
