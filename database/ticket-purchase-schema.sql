@@ -134,7 +134,7 @@ INSERT INTO ticket_types (name, description, price, original_price, category, fe
 ('Agency/Team Pass', 'Special pricing for creative agencies and teams.', 145.00, 180.00, 'in-person', '["Full 2-day access", "Team networking zone", "Agency showcase", "Digital certificate"]'),
 ('Students & Young Creatives', 'Special discounted access for students and emerging creatives.', 50.00, 60.00, 'student', '["Full 2-day access", "Student networking", "Career development sessions", "Digital certificate"]'),
 ('International Delegate', 'Special pricing for international attendees.', 250.00, 280.00, 'in-person', '["Full 2-day access", "International networking", "Global insights sessions", "Digital certificate"]'),
-('Virtual Access', 'Online access to all summit sessions and content.', 10.00, 15.00, 'virtual', '["Live stream access", "On-demand recordings", "Virtual networking", "Digital certificate"]');
+('Virtual Access', 'Online access to all summit sessions and content.', 20.00, 25.00, 'virtual', '["Live stream access", "On-demand recordings", "Virtual networking", "Digital certificate"]');
 
 -- Insert sample promo codes
 INSERT INTO promo_codes (code, description, discount_type, discount_value, minimum_amount, maximum_discount, usage_limit, valid_until, applicable_ticket_types) VALUES

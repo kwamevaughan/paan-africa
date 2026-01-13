@@ -8,7 +8,7 @@ export const tracks = [
   },
   {
     id: 2,
-    title: "Creative Effectiveness, Design & Media Performance",
+    title: "Creative Effectiveness & Media Performance",
     description: "Turn bold ideas into measurable Business outcomes across channels.",
     image: "https://ik.imagekit.io/nkmvdjnna/PAAN/summit/tracks/2.png",
     features: ["Design Thinking", "Brand Lift", "Story telling", "Attention Metrics"]

@@ -6,6 +6,7 @@ import Header from "@/layouts/standard-header";
 import Footer from "@/layouts/footer";
 import PaystackScript from "@/components/PaystackScript";
 import jsPDF from 'jspdf';
+import { validateMasterclassPromoCode } from "@/lib/masterclassPromoCodeService";
 
 const MasterclassDetailPage = () => {
   const router = useRouter();
@@ -20,6 +21,10 @@ const MasterclassDetailPage = () => {
     phone: '',
     organization: ''
   });
+  const [promoCode, setPromoCode] = useState('');
+  const [promoCodeError, setPromoCodeError] = useState('');
+  const [appliedPromoCode, setAppliedPromoCode] = useState(null);
+  const [isValidatingPromoCode, setIsValidatingPromoCode] = useState(false);
 
   // Check if Paystack is ready
   useEffect(() => {
@@ -349,7 +354,7 @@ const MasterclassDetailPage = () => {
         "Future Planning: Develop your talent pipeline for sustainable growth"
       ],
       outcome: "By attending this masterclass, you will get 5% off on PAAN Summit 2026 tickets & 10% off on the Africa Creative Excellence Awards entry.",
-      status: "upcoming"
+      status: "completed"
     },
     6: {
       id: 6,
@@ -470,6 +475,261 @@ const MasterclassDetailPage = () => {
       ],
       outcome: "This course provides an ideal opportunity to really focus on what makes a good Account Handler GREAT, with tried and trusted methods of the art of Account Handling.",
       status: "completed"
+    },
+    8: {
+      id: 8,
+      title: "How To Present Creative Work to Clients",
+      description: "Creative presentations are make-or-break moments. Yet most teams rarely pause to consider what the experience feels like on the client side — the pressure, the uncertainty, the fear of making the wrong call in the room. When these dynamics aren't understood, feedback becomes scattered, key decisions happen offline, and strong ideas lose momentum.",
+      fullDescription: "This masterclass helps you reshape how you present creative work by stepping inside your clients' world. Led by former agency MD turned Unilever Global Brand Director James Hayhurst, this session equips you with practical tools to present ideas clearly, build empathy, and create presentation environments where great work can genuinely thrive. Through real-world examples and interactive exercises, you'll learn how to structure presentations that reduce anxiety, improve feedback quality, and increase the chance of clients buying your strongest ideas.",
+      format: "90-minute Interactive Training Course",
+      date: "December 4th, 2025",
+      time: "10:00 am EAT",
+      memberPrice: 174,
+      memberOriginalPrice: 250,
+      nonMemberPrice: 250,
+      nonMemberOriginalPrice: 320,
+      currency: "USD",
+      category: "Creative Strategy",
+      level: "Junior to Mid-Level",
+      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/how-to-present-creative-work-to-clients-2.jpg",
+      partnership: "PAAN, in collaboration with the Alliance of Independent Agencies, UK",
+      instructor: {
+        name: "James Hayhurst",
+        title: "Former Agency MD & Unilever Global Brand Director",
+        image: "https://ik.imagekit.io/nkmvdjnna/PAAN/instructors/james-hayhurst.jpg",
+        bio: "James Hayhurst began his career agency-side at BMP DDB (now Adam&Eve DDB), contributing to award-winning work for brands such as Volkswagen, Channel 4, and the Teacher Training Agency. He later became Managing Director at Leagas Delaney, overseeing brands including Glenfiddich, Patek Philippe, and Timberland. In 2014, James moved client-side to Unilever as Global Brand Equity Director for OMO/Persil, gaining firsthand insight into client culture, decision-making, and the often-unspoken challenges agencies rarely see. Recognising the empathy gap between agencies and clients, he created The Magic Sauce, a programme designed to bridge that gap by improving understanding, collaboration, and creative outcomes across both sides of the industry.",
+        expertise: [
+          "Creative presentation strategy",
+          "Client-agency collaboration",
+          "Brand equity management",
+          "Award-winning creative work"
+        ]
+      },
+      benefits: [
+        "5% off on PAAN Summit 2026 tickets",
+        "6% off Africa Creative Excellence Awards entry"
+      ],
+      whoShouldAttend: [
+        "Junior to mid-level agency teams",
+        "Creative professionals presenting to clients",
+        "Account handlers and client-facing staff",
+        "Creative directors and team leads"
+      ],
+      learningOutcomes: [
+        "What it feels like to be on the receiving end of creative presentations and the pressures clients face",
+        "How to present ideas clearly - distinguishing the core idea, the execution, and what truly matters",
+        "How to design a gamified presentation format that is engaging, structured, and more enjoyable for all",
+        "How to ask stronger feedback questions that help clients feel heard and lead to better solutions",
+        "How to plan stakeholder management in partnership with your client teams"
+      ],
+      courseObjectives: [
+        "Master the art of presenting creative work with clarity and confidence",
+        "Build empathy and understanding of client perspectives during presentations",
+        "Create presentation environments where great work can genuinely thrive",
+        "Improve feedback quality and increase the chance of clients buying your strongest ideas"
+      ],
+      whyAttend: [
+        "Client Perspective: Step inside your clients' world and understand their pressures and decision-making process",
+        "Expert Guidance: Learn from someone who's been on both sides - agency MD and global brand director",
+        "Practical Tools: Get actionable frameworks and techniques you can apply immediately",
+        "Real-World Examples: Learn through interactive exercises and live creative presentation practice"
+      ],
+      outcome: "By attending this masterclass, you will get 5% off on PAAN Summit 2026 tickets & 6% off on the Africa Creative Excellence Awards entry.",
+      status: "upcoming"
+    },
+    9: {
+      id: 9,
+      title: "Agency Positioning That Cuts Through the Noise",
+      description: "Learn how to sharpen your agency's positioning so clients understand your value quickly, clearly, and confidently. This session focuses on differentiation, clarity, and how to move away from being seen as \"just another agency.\"",
+      fullDescription: "\"Creative-led,\" \"customer-focused,\" \"insight-driven\". Clients see these statements daily, yet none explain why an agency is unique or worth a premium price. Stuart Dunk will break down proven frameworks used by agencies across multiple countries to build sharp, differentiated positioning rooted in client value, competitive advantage, and strategic clarity. You'll learn how top-performing agencies craft value propositions that challenge assumptions, stand out in pitch rooms, and attract the right clients.",
+      format: "90-minute Interactive Training Course",
+      date: "January 28th, 2026",
+      time: "12PM EAT",
+      memberPrice: 150,
+      memberOriginalPrice: 250,
+      nonMemberPrice: 170,
+      nonMemberOriginalPrice: 320,
+      currency: "USD",
+      category: "Business Development",
+      level: "Intermediate",
+      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/positioning.jpg",
+      partnership: "PAAN, in collaboration with agency growth experts",
+      instructor: {
+        name: "Stuart Dunk",
+        title: "Founder & Managing Director, Don't Forget to Look",
+        image: "https://ik.imagekit.io/nkmvdjnna/PAAN/instructors/stuart-dunk.jpg",
+        bio: "After starting his career agency-side, Stuart worked in Marketing Procurement for 14 years at global brands like Reckitt, Nike, and Danone. For the last 6 years, he has been taking that knowledge of how brands buy, with the mission of \"Helping Agency Leaders Sleep Better at Night.\" He is one of the very few consultants who understands both sides of the table, agency and procurement, giving him unmatched insight into how agencies can differentiate, influence buyers, and win high-value deals. Stu runs workshops on various aspects of agency growth, provides pitch and proposal-writing support, and also runs bespoke programs on agency marketing, sales, positioning, and outreach for his clients. His work is designed to increase margin, conversion, and retention, and create more capability and confidence for both agency leaders and their teams.",
+        expertise: [
+          "Marketing Procurement & Buyer Psychology",
+          "Agency Positioning & Differentiation",
+          "Pitching & Proposal Writing",
+          "Pricing Models"
+        ]
+      },
+      benefits: [
+        "5% off on PAAN Summit 2026 tickets",
+        "6% off Africa Creative Excellence Awards entry"
+      ],
+      whoShouldAttend: [
+        "Agency founders & CEOs",
+        "Mid to senior-level agency teams",
+        "Business development & sales leads",
+        "Client service directors & account leads"
+      ],
+      learningOutcomes: [
+        "The \"3C Framework\" + \"The Benefit Ladder:\"  2 frameworks for building great agency positioning",
+        "How to craft a value proposition that cuts through the noise",
+        "How to avoid generic position that undermines client perception",
+        "How to build a \"client value map\" to influence perception and buying decisions",
+        "Examples of exceptional agency positioning and why they work"
+      ],
+      courseObjectives: [
+        "Define a differentiated positioning that influences targets and clients to see you as rare, rather than one of many",
+        "Build a strong, repeatable value proposition for pitches and website copy",
+        "Identify and eliminate weak, generic messaging",
+        "Align service offerings, marketing, and BD processes to the new positioning"
+      ],
+      whyAttend: [
+        "Agencies who are well-positioned win more, and increase their margin",
+        "Stand out across marketing + sales touchpoints like web, creds and proposals",
+        "Attract better-fit clients who already see your agency as 'the right choice'",
+        "Build messaging that increases lead quality",
+        "Move from \"service provider\" to \"strategic partner\" in the eyes of clients"
+      ],
+      outcome: "By attending this masterclass, you will get 5% off on PAAN Summit 2026 tickets & 6% off on the Africa Creative Excellence Awards entry.",
+      status: "upcoming",
+      series: "Mastering Agency Growth in 2026",
+      seriesOrder: 1
+    },
+    11: {
+      id: 11,
+      title: "Pricing for Maximum Profit Margin & Conversion",
+      description: "Pricing is one of the most emotional and misunderstood parts of agency life. Most teams default to hourly or blended rates, under-valuing their work value and undermining their position as the expert, because they feel \"safe\" in doing it \"how it's always been done.\" Meanwhile, clients are under pressure to justify spending and prove ROI, creating tension in negotiations that agencies often don't know how to navigate. Armed with a wider pricing toolkit, pricing signals expertise and confidence to clients. Agencies finally claim power in the commercial conversation.",
+      fullDescription: "This masterclass will show you how to shift pricing from being about you (your time and effort) to the client (deliverables and outcomes). By understanding how to build and land pricing in a progressive way, with value-based pricing principles at the centre, you'll learn how to present fees with confidence, defend your worth, and structure pricing that profit margins and gives the client more ways to say yes. From performance-based structures to pricing psychology, Stuart will teach you exactly how to navigate pricing conversations so you win more high margin deals.",
+      format: "90-minute Interactive Training Course",
+      date: "March 26th, 2026",
+      time: "12 PM EAT",
+      memberPrice: 150,
+      memberOriginalPrice: 250,
+      nonMemberPrice: 170,
+      nonMemberOriginalPrice: 320,
+      currency: "USD",
+      category: "Business Development",
+      level: "Intermediate",
+      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/masterclass-pricing.jpg",
+      partnership: "PAAN, in collaboration with agency growth experts",
+      instructor: {
+        name: "Stuart Dunk",
+        title: "Founder & Managing Director, Don't Forget to Look",
+        image: "https://ik.imagekit.io/nkmvdjnna/PAAN/instructors/stuart-dunk.jpg",
+        bio: "After starting his career agency-side, Stuart worked in Marketing Procurement for 14 years at global brands like Reckitt, Nike, and Danone. For the last 6 years, he has been taking that knowledge of how brands buy, with the mission of \"Helping Agency Leaders Sleep Better at Night.\" He is one of the very few consultants who understands both sides of the table, agency and procurement, giving him unmatched insight into how agencies can differentiate, influence buyers, and win high-value deals. Stu runs workshops on various aspects of agency growth, provides pitch and proposal-writing support, and also runs bespoke programs on agency marketing, sales, positioning, and outreach for his clients. His work is designed to increase margin, conversion, and retention, and create more capability and confidence for both agency leaders and their teams.",
+        expertise: [
+          "Marketing Procurement & Buyer Psychology",
+          "Agency Positioning & Differentiation",
+          "Pitching & Proposal Writing",
+          "Pricing Models",
+          "Value-based selling",
+          "Negotiation & Influence"
+        ]
+      },
+      benefits: [
+        "5% off on PAAN Summit 2026 tickets"
+      ],
+      whoShouldAttend: [
+        "Agency founders & CEOs",
+        "Finance and commercial leads",
+        "Business development & sales leads",
+        "Client service directors & account leads"
+      ],
+      learningOutcomes: [
+        "How to shift from roles and rates to value & performance based pricing",
+        "Total Economic Value (TEV) - how to calculate (and charge for!) the value of the work, not the time it takes to do it",
+        "Pricing Psychology: tips and tricks to help clients say yes",
+        "The benefits of building products and programs, and how to do it",
+        "When to discount + and when not to",
+        "How top agencies structure pricing to win premium clients"
+      ],
+      courseObjectives: [
+        "Skills and frameworks to win your higher margin deals whilst being seen as the expert choice",
+        "Build pricing based on outputs + outcomes, not inputs, to break free of low margin deals & having to track and report on time",
+        "Build a Pricing \"stack\" or menu of programs / products that is unique to you, allowing you to charge more",
+        "Increase average deal size and profitability"
+      ],
+      whyAttend: [
+        "Learn how to land higher-margin deals consistently",
+        "Reduce pushback on pricing and negotiate from a position of strength",
+        "Move away from rate-card dependency",
+        "Gain tools used by high-performing global agencies"
+      ],
+      outcome: "By attending this masterclass, you will get 5% off on PAAN Summit 2026 tickets.",
+      status: "upcoming",
+      series: "Mastering Agency Growth in 2026",
+      seriesOrder: 2
+    },
+    12: {
+      id: 12,
+      title: "How to Navigate Procurement Processes & People",
+      description: "Procurement is often seen as an obstacle — the department that cuts budgets, tightens scopes, and pushes for discounts. But behind the scenes, procurement is driven by specific pressures, performance metrics, and risk factors that agencies rarely understand. By understanding how procurement think, are trained, and incentivised, you'll be able to influence decisions earlier, avoid price-led conversations, and win business with far more confidence.",
+      fullDescription: "Procurement can be one of the biggest barriers, or biggest allies, in agency growth. When agencies fear procurement, or allow past experiences to shape their thinking and approach, we undermine our own power. By better knowing procurement, their goals, language, and how to navigate them, we enter pitches and negotiations at a disadvantage. In this masterclass, Stuart will demystify procurement and give agencies the tools to influence commercial decisions confidently and effectively. You'll uncover how procurement prepares for negotiations, how buyers categorize agencies in a way that often leads to price negotiations, (and how you can avoid that!), how to identify and navigate the buyer type you're dealing with, and how to optimise communication to win trust and close deals.",
+      format: "90-minute Interactive Training Course",
+      date: "May 26th, 2026",
+      time: "12 PM EAT",
+      memberPrice: 150,
+      memberOriginalPrice: 250,
+      nonMemberPrice: 170,
+      nonMemberOriginalPrice: 320,
+      currency: "USD",
+      category: "Business Development",
+      level: "Intermediate",
+      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/masterclass-procurement.jpg",
+      partnership: "PAAN, in collaboration with agency growth experts",
+      instructor: {
+        name: "Stuart Dunk",
+        title: "Founder & Managing Director, Don't Forget to Look",
+        image: "https://ik.imagekit.io/nkmvdjnna/PAAN/instructors/stuart-dunk.jpg",
+        bio: "After starting his career agency-side, Stuart worked in Marketing Procurement for 14 years at global brands like Reckitt, Nike, and Danone. For the last 6 years, he has been taking that knowledge of how brands buy, with the mission of \"Helping Agency Leaders Sleep Better at Night.\" He is one of the very few consultants who understands both sides of the table, agency and procurement, giving him unmatched insight into how agencies can differentiate, influence buyers, and win high-value deals. Stu runs workshops on various aspects of agency growth, provides pitch and proposal-writing support, and also runs bespoke programs on agency marketing, sales, positioning, and outreach for his clients. His work is designed to increase margin, conversion, and retention, and create more capability and confidence for both agency leaders and their teams.",
+        expertise: [
+          "Marketing Procurement & Buyer Psychology",
+          "Agency Positioning & Differentiation",
+          "Pitching & Proposal Writing",
+          "Pricing Models",
+          "Value-based selling",
+          "Negotiation & Influence"
+        ]
+      },
+      benefits: [
+        "5% off on PAAN Summit 2026 tickets"
+      ],
+      whoShouldAttend: [
+        "Agency founders & CEOs",
+        "Finance and commercial leads",
+        "Business development & sales leads",
+        "Client service directors & account leads"
+      ],
+      learningOutcomes: [
+        "How marketing procurement is trained and incentivised",
+        "Different buyer types and how to communicate successfully with each",
+        "How to talk about savings and value to influence procurement decisions",
+        "How to prepare for procurement negotiations using their own frameworks",
+        "Techniques to differentiate your agency in price-focused deals"
+      ],
+      courseObjectives: [
+        "Identify buyer types and adapt your communication to suit them",
+        "Influence procurement expectations before price discussions",
+        "Position your expertise to shift perception from \"vendor\" to \"strategic partner\"",
+        "Increase your conversion of procurement-led deal"
+      ],
+      whyAttend: [
+        "Increase capability and confidence to win procurement-led deals",
+        "Understand the people & hidden rules of procurement-led deals",
+        "Reduce the risk of being price-compared or commoditized",
+        "Influence procurement before pricing becomes a barrier",
+        "Improve negotiation outcomes"
+      ],
+      outcome: "By attending this masterclass, you will get 5% off on PAAN Summit 2026 tickets.",
+      status: "upcoming",
+      series: "Mastering Agency Growth in 2026",
+      seriesOrder: 3
     }
   };
 
@@ -542,6 +802,32 @@ const MasterclassDetailPage = () => {
     "dateModified": new Date().toISOString()
   };
 
+  const handlePromoCodeValidation = async () => {
+    if (!promoCode.trim()) {
+      setPromoCodeError('');
+      setAppliedPromoCode(null);
+      return;
+    }
+
+    setIsValidatingPromoCode(true);
+    setPromoCodeError('');
+
+    const basePrice = selectedPricing === 'member' ? masterclass.memberPrice : masterclass.nonMemberPrice;
+    const totalPrice = basePrice * seatCount;
+
+    const validation = await validateMasterclassPromoCode(promoCode.trim(), masterclass.id, totalPrice);
+    
+    setIsValidatingPromoCode(false);
+
+    if (validation.valid) {
+      setAppliedPromoCode(validation.promoCode);
+      setPromoCodeError('');
+    } else {
+      setAppliedPromoCode(null);
+      setPromoCodeError(validation.error || 'Invalid promo code');
+    }
+  };
+
   const handlePaystackPayment = async () => {
     if (!customerInfo.email || !customerInfo.name) {
       alert('Please fill in your email and name to proceed.');
@@ -558,8 +844,13 @@ const MasterclassDetailPage = () => {
 
     const basePrice = selectedPricing === 'member' ? masterclass.memberPrice : masterclass.nonMemberPrice;
     const totalPrice = basePrice * seatCount;
+    
+    // Apply discount if promo code is valid
+    const discountAmount = appliedPromoCode ? appliedPromoCode.discountAmount : 0;
+    const finalPrice = totalPrice - discountAmount;
+    
     const currency = "USD";
-    const amountInCents = totalPrice * 100;
+    const amountInCents = Math.max(0, Math.round(finalPrice * 100));
 
     // Check if Paystack key is configured
     if (!process.env.NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY) {
@@ -654,7 +945,10 @@ const MasterclassDetailPage = () => {
                 seatCount: seatCount,
                 basePrice: basePrice,
                 totalAmount: totalPrice,
-                amount: totalPrice,
+                discountAmount: discountAmount,
+                finalAmount: finalPrice,
+                promoCode: appliedPromoCode ? appliedPromoCode.code : null,
+                amount: finalPrice,
                 currency: currency,
                 date: masterclass.date,
                 time: masterclass.time,
@@ -959,8 +1253,16 @@ const MasterclassDetailPage = () => {
                     <span className="bg-cyan-500 text-white px-3 py-1 rounded-full text-xs font-semibold">
                       {masterclass.level}
                     </span>
-                    <span className="bg-red-500 text-white px-3 py-1 rounded-full text-xs font-semibold">
-                      UPCOMING
+                    <span className={`px-3 py-1 rounded-full text-xs font-semibold ${
+                      masterclass.status === 'upcoming' ? 'bg-red-500 text-white' :
+                      masterclass.status === 'completed' ? 'bg-gray-500 text-white' :
+                      masterclass.status === 'not-accepting-bookings' ? 'bg-gray-500 text-white' :
+                      'bg-red-500 text-white'
+                    }`}>
+                      {masterclass.status === 'upcoming' ? 'UPCOMING' :
+                       masterclass.status === 'completed' ? 'COMPLETED' :
+                       masterclass.status === 'not-accepting-bookings' ? 'NOT ACCEPTING BOOKINGS' :
+                       'UPCOMING'}
                     </span>
                   </div>
                   
@@ -1136,7 +1438,11 @@ const MasterclassDetailPage = () => {
                       </div>
                       <div className="flex items-center gap-3 mb-1">
                         <div className="text-3xl font-bold text-slate-900">
-                          ${masterclass.memberPrice * seatCount}
+                          ${(() => {
+                            const basePrice = masterclass.memberPrice * seatCount;
+                            const discount = (appliedPromoCode && selectedPricing === 'member') ? appliedPromoCode.discountAmount : 0;
+                            return (basePrice - discount).toFixed(2);
+                          })()}
                         </div>
                         {masterclass.memberOriginalPrice && (
                           <div className="text-lg text-gray-500 line-through">
@@ -1178,7 +1484,11 @@ const MasterclassDetailPage = () => {
                       </div>
                       <div className="flex items-center gap-3 mb-1">
                         <div className="text-3xl font-bold text-slate-900">
-                          ${masterclass.nonMemberPrice * seatCount}
+                          ${(() => {
+                            const basePrice = masterclass.nonMemberPrice * seatCount;
+                            const discount = (appliedPromoCode && selectedPricing === 'non-member') ? appliedPromoCode.discountAmount : 0;
+                            return (basePrice - discount).toFixed(2);
+                          })()}
                         </div>
                         {masterclass.nonMemberOriginalPrice && (
                           <div className="text-lg text-gray-500 line-through">
@@ -1197,6 +1507,60 @@ const MasterclassDetailPage = () => {
                         )}
                       </div>
                     </button>
+                  </div>
+
+                  {/* Promo Code Section */}
+                  <div className="mb-6">
+                    <h3 className="font-semibold text-slate-900 text-sm mb-3">Have a Discount Code?</h3>
+                    <div className="flex gap-2">
+                      <input
+                        type="text"
+                        placeholder="Enter promo code"
+                        value={promoCode}
+                        onChange={(e) => {
+                          setPromoCode(e.target.value.toUpperCase());
+                          setPromoCodeError('');
+                          setAppliedPromoCode(null);
+                        }}
+                        onBlur={handlePromoCodeValidation}
+                        className="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent outline-none text-sm"
+                      />
+                      <button
+                        onClick={handlePromoCodeValidation}
+                        disabled={isValidatingPromoCode || !promoCode.trim()}
+                        className="px-6 py-3 bg-gray-100 text-gray-700 rounded-lg font-medium hover:bg-gray-200 transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-sm"
+                      >
+                        {isValidatingPromoCode ? (
+                          <Icon icon="mdi:loading" className="w-5 h-5 animate-spin" />
+                        ) : (
+                          'Apply'
+                        )}
+                      </button>
+                    </div>
+                    {promoCodeError && (
+                      <p className="text-red-500 text-xs mt-2 flex items-center gap-1">
+                        <Icon icon="mdi:alert-circle" className="w-4 h-4" />
+                        {promoCodeError}
+                      </p>
+                    )}
+                    {appliedPromoCode && (
+                      <div className="mt-2 p-3 bg-green-50 border border-green-200 rounded-lg">
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center gap-2">
+                            <Icon icon="mdi:check-circle" className="text-green-600 w-5 h-5" />
+                            <span className="text-green-800 text-sm font-medium">
+                              {appliedPromoCode.code} applied
+                            </span>
+                          </div>
+                          <span className="text-green-800 text-sm font-semibold">
+                            -${appliedPromoCode.discountAmount.toFixed(2)}
+                          </span>
+                        </div>
+                        {appliedPromoCode.description && (
+                          <p className="text-green-700 text-xs mt-1">{appliedPromoCode.description}</p>
+                        )}
+                      </div>
+                    )}
                   </div>
 
                   {/* Customer Information */}
@@ -1274,7 +1638,13 @@ const MasterclassDetailPage = () => {
                       ) : (
                         <>
                           <Icon icon="mdi:credit-card" className="w-5 h-5" />
-                          Register Now - ${selectedPricing === 'member' ? masterclass.memberPrice * seatCount : masterclass.nonMemberPrice * seatCount}
+                          Register Now - ${(() => {
+                            const basePrice = selectedPricing === 'member' ? masterclass.memberPrice : masterclass.nonMemberPrice;
+                            const totalPrice = basePrice * seatCount;
+                            const discountAmount = appliedPromoCode ? appliedPromoCode.discountAmount : 0;
+                            const finalPrice = totalPrice - discountAmount;
+                            return finalPrice.toFixed(2);
+                          })()}
                         </>
                       )}
                     </button>

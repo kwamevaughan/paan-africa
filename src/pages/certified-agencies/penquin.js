@@ -1,5 +1,5 @@
 import SEO from "@/components/SEO";
-import Header from "../../layouts/header";
+import Header from "@/layouts/standard-header";
 import Image from "next/image";
 import Footer from "../../layouts/footer";
 import { useEffect, useRef, useState } from "react";
@@ -302,8 +302,8 @@ const HomePage = () => {
   return (
     <>
     <SEO
-        title="Penquin Airtime Pty (Ltd) - PAAN Certified Agency | Integrated Brand & Communication Agency"
-        description="Penquin Airtime Pty (Ltd) is a PAAN certified, independent integrated brand and communication agency based in Johannesburg, South Africa. With 82 creative professionals, we deliver award-winning multi-channel marketing solutions through strategy, digital media, creative, social, production, and events & activations."
+        title="PENQUIN - PAAN Certified Agency | Integrated Brand & Communication Agency"
+        description="PENQUIN (Ltd) is a PAAN certified, independent integrated brand and communication agency based in Johannesburg, South Africa. With 82 creative professionals, we deliver award-winning multi-channel marketing solutions through strategy, digital media, creative, social, production, and events & activations."
         keywords="Penquin Airtime, Penquin agency, integrated brand agency, communication agency, Johannesburg, South Africa, PAAN certified, marketing agency, digital media, creative agency, brand strategy, B-BBEE Level 1, award-winning agency, multi-channel marketing"
       />
     <div className="relative">
@@ -342,11 +342,11 @@ const HomePage = () => {
                   transition={{ duration: 1, type: "spring" }}
                 >
                   <Image 
-                    src="/assets/images/certified-members/penquin/logo.svg" 
+                    src="/assets/images/certified-members/penquin/logo.png" 
                     width={400} 
                     height={280} 
                     alt="Penquin Logo" 
-                    className="mx-auto w-40 sm:w-64 h-24 sm:h-32 object-contain invert" 
+                    className="mx-auto w-40 sm:w-64 h-24 sm:h-40 object-contain" 
                   />
                 </motion.div>
                 <motion.div
@@ -364,7 +364,7 @@ const HomePage = () => {
                 </motion.div>
               </div>
               <h1 className="text-2xl sm:text-4xl lg:text-6xl uppercase font-bold text-gray-900 mb-2 sm:mb-4">
-                Penquin Airtime Pty (Ltd)
+                PENQUIN
               </h1>
               <p className="text-sm sm:text-md lg:text-lg text-gray-600 max-w-2xl mx-auto mb-2 sm:mb-4">
                 {t('certifiedAgencies.common.hero.memberDescription')}
@@ -397,14 +397,16 @@ const HomePage = () => {
                   {/* Main Heading */}
                   <div className="space-y-4">
                     <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-paan-dark-blue leading-tight">
-                        Penquin Airtime Pty
+                        We are Penquin.
                     </h2>
                     <div className="w-16 h-1 bg-gradient-to-r from-paan-dark-blue to-paan-dark-blue/60"></div>
                   </div>
 
                   {/* Description */}
                   <p className="text-lg sm:text-xl leading-relaxed text-paan-dark-blue/90 font-light">
-                  PENQUIN is an independent, mid-sized integrated brand and communication agency based in Johannesburg, with a team of 82 creative professionals. As a Level 1 B-BBEE contributor, the agency delivers award-winning, multi-channel marketing solutions through strategic research, collaboration, and storytelling. PENQUIN helps brands build authentic human connections and stand out with clarity, creativity, and purpose.
+                    An independent, mid-sized, 360-degree Integrated Brand and Communication agency based in Johannesburg with a talented team of 80. We craft award-winning brand experiences, working closely with trusted partners to deliver impactful, multi-channel marketing solutions. We help brands create authentic human connections with confidence and clarity, ensuring they stand out.
+                    We believe every brand, product, and business decision has a unique story, waiting to be told, our job is to uncover it and bring it to life.
+                    We are a level one B-BBEE contributor.
                   </p>
 
                                       {/* Areas of Specialization */}
@@ -419,15 +421,19 @@ const HomePage = () => {
                         </div>
                         <div className="flex items-center space-x-3">
                           <div className="w-2 h-2 bg-paan-dark-blue rounded-full"></div>
-                          <span className="text-paan-dark-blue/90">Digital Media</span>
-                        </div>
-                        <div className="flex items-center space-x-3">
-                          <div className="w-2 h-2 bg-paan-dark-blue rounded-full"></div>
                           <span className="text-paan-dark-blue/90">Creative</span>
                         </div>
                         <div className="flex items-center space-x-3">
                           <div className="w-2 h-2 bg-paan-dark-blue rounded-full"></div>
-                          <span className="text-paan-dark-blue/90">Social</span>
+                          <span className="text-paan-dark-blue/90">Social Media</span>
+                        </div>
+                        <div className="flex items-center space-x-3">
+                          <div className="w-2 h-2 bg-paan-dark-blue rounded-full"></div>
+                          <span className="text-paan-dark-blue/90">Digital Media</span>
+                        </div>
+                        <div className="flex items-center space-x-3">
+                          <div className="w-2 h-2 bg-paan-dark-blue rounded-full"></div>
+                          <span className="text-paan-dark-blue/90">Traditional Media</span>
                         </div>
                         <div className="flex items-center space-x-3">
                           <div className="w-2 h-2 bg-paan-dark-blue rounded-full"></div>
@@ -436,6 +442,14 @@ const HomePage = () => {
                         <div className="flex items-center space-x-3">
                           <div className="w-2 h-2 bg-paan-dark-blue rounded-full"></div>
                           <span className="text-paan-dark-blue/90">Events & Activations</span>
+                        </div>
+                        <div className="flex items-center space-x-3">
+                          <div className="w-2 h-2 bg-paan-dark-blue rounded-full"></div>
+                          <span className="text-paan-dark-blue/90">B2B Solutions</span>
+                        </div>
+                        <div className="flex items-center space-x-3">
+                          <div className="w-2 h-2 bg-paan-dark-blue rounded-full"></div>
+                          <span className="text-paan-dark-blue/90">AI-Powered Creative Production</span>
                         </div>
                       </div>
                     </div>
@@ -447,19 +461,13 @@ const HomePage = () => {
                 <div className="relative group">
                   {/* Video Container */}
                   <div className="relative overflow-hidden rounded-2xl shadow-2xl bg-black/20 backdrop-blur-sm border border-white/10">
-                    <video
-                      ref={videoRef}
-                      className="w-full h-auto aspect-video object-cover"
-                      controls
-                      autoPlay
-                      muted
-                      loop
-                      playsInline
-                      preload="auto"
-                    >
-                      <source src="/assets/images/certified-members/penquin/video.mp4" type="video/mp4" />
-                      {t('certifiedAgencies.common.hero.videoFallback')}
-                    </video>
+                    <iframe
+                      className="w-full aspect-video"
+                      src="https://www.youtube.com/embed/hVyO0Rtzql8?autoplay=1&mute=1&loop=1&playlist=hVyO0Rtzql8&start=6&controls=1&modestbranding=1&rel=0"
+                      title="PENQUIN Video"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                    />
                   </div>
 
                   {/* Decorative Elements */}
@@ -519,7 +527,7 @@ const HomePage = () => {
         {/* Clients They Have Worked With Section */}
         <div className="bg-white py-16 sm:py-20 relative z-10">
           <section className="relative mx-auto max-w-6xl px-4 sm:px-6">
-            <h2 className="text-3xl sm:text-4xl font-bold text-paan-dark-blue text-center mb-10">Clients Penquin Airtime Pty Have Worked With</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold text-paan-dark-blue text-center mb-10">Clients PENQUIN Have Worked With</h2>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 md:gap-10 items-center justify-center">
               {[1,2,3,4,5,6,7,8,].map((num) => (
                 <div key={num} className="flex items-center justify-center p-4 bg-gray-50 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-200">
@@ -554,7 +562,7 @@ const HomePage = () => {
                   <div className="flex-1">
                     {/* Testimonial text */}
                     <blockquote className="text-xl sm:text-2xl font-medium text-gray-800 leading-relaxed mb-8 italic">
-                      {t('certifiedAgencies.aquila.testimonial.quote')}
+                    There's a story in every brand, a fable in every product, and a reason behind every business decision - each different, each waiting to be told. It's our job to find those stories.
                     </blockquote>
                     
                     {/* Attribution */}
@@ -562,7 +570,6 @@ const HomePage = () => {
                       <div className="w-16 h-px bg-gradient-to-r from-paan-dark-blue to-paan-purple"></div>
                       <cite className="not-italic">
                         <div className="font-semibold text-lg text-gray-900">Penquin Team</div>
-                        <div className="text-gray-600 text-sm">Penquin Airtime Pty</div>
                       </cite>
                     </div>
                   </div>
@@ -586,7 +593,7 @@ const HomePage = () => {
 
           {/* Social Media Links */}
           <div className="space-y-4">
-            <p className="text-gray-600 text-sm">Follow Penquin Airtime Pty on social media</p>
+            <p className="text-gray-600 text-sm">Follow PENQUIN on social media</p>
             <div className="flex justify-center items-center gap-6">
               {/* LinkedIn */}
               <a
@@ -692,7 +699,7 @@ const HomePage = () => {
             {/* Modal content */}
             <div className="p-8">
               <div className="text-center mb-8">
-                <h2 className="text-2xl font-semibold text-[#172840] mb-2">Contact Penquin Airtime Pty</h2>
+                <h2 className="text-2xl font-semibold text-[#172840] mb-2">Contact PENQUIN</h2>
                 <p className="text-gray-600">{t('certifiedAgencies.aquila.contactModal.description')}</p>
               </div>
 

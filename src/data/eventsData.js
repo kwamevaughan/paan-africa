@@ -17,6 +17,24 @@ export const eventsData = {
       featured: true
     },
     {
+      id: 11,
+      title: "Unlocking Agency Growth in 2026: An Introduction to Our Positioning, Pricing & Procurement Masterclasses",
+      date: "2025-12-10",
+      time: "12:00 PM - 1:00 PM EAT",
+      location: "Virtual Event",
+      venue: "Zoom",
+      description: "Join agency growth expert Stuart Dunk for a high-value introductory webinar exploring the core pillars every agency must master in 2026: positioning, pricing, and procurement. Stu brings 14+ years of global marketing procurement experience (Reckitt, Nike, Danone) and now coaches agencies on improving margin, conversion, and commercial performance. This session gives you practical insights and a preview of the three upcoming 90-minute PAAN Masterclasses happening in 2026.",
+      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/webinars/unlocking-agency-growth.png",
+      category: "Webinar",
+      price: "Free for All Members",
+      registrationUrl: "https://tinyurl.com/bdfd9ddz",
+      status: "upcoming",
+      featured: true,
+      speakers: ["Stuart Dunk"]
+    }
+  ],
+  past: [
+    {
       id: 9,
       title: "Agency Journey to AI: Building Future-Ready Agency Models",
       date: "2025-11-26",
@@ -27,13 +45,12 @@ export const eventsData = {
       image: "https://ik.imagekit.io/nkmvdjnna/PAAN/webinars/agency-joueney-to-ai.png",
       category: "Webinar",
       price: "Free for All Members",
-      registrationUrl: "https://tinyurl.com/4f6p33az",
-      status: "upcoming",
+      registrationUrl: "#",
+      status: "past",
       featured: true,
-      speakers: ["Spencer Gallagher", "Joanne Reid"]
-    }
-  ],
-  past: [
+      attendees: 201,
+      speakers: 2
+    },
     {
       id: 6,
       title: "Cross-Border Growth: How African Agencies Can Conquer Markets Beyond Their Country Borders",
@@ -136,6 +153,22 @@ export const eventsData = {
       attendees: 115,
       speakers: 2,
       featured: true
+    },
+    {
+      id: 10,
+      title: "Leveraging AI for Real-World Agency Projects",
+      date: "2025-12-3",
+      time: "12:00 PM - 1:15 PM EAT",
+      location: "Virtual Event",
+      venue: "Zoom",
+      description: "Are you an agency team looking to transition from experimenting with AI tools to building AI-enabled client solutions? This webinar brings together three industry voices who've already built, tested, and deployed AI-based solutions in creative, digital, and strategic contexts to help you do just that. Their experience spans innovation, AI chatbots, digital strategy, and purpose-led marketing transformations across Africa.",
+      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/webinars/leveraging-ai-for-agency-projects.png",
+      category: "Webinar",
+      price: "Completed",
+      registrationUrl: "https://www.youtube.com/watch?v=IRenN5r-F2w&t=1s",
+      status: "past",
+      featured: true,
+      speakers: ["Musa Kalenga (Brave Group)", "Nyandia Gachago (MintyLime)", "Mpumelelo Tembe (Sotflytic)"]
     }
   ]
 };

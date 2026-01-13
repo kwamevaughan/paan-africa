@@ -47,8 +47,8 @@ const TicketsStep = ({ selectedTickets, setSelectedTickets, onNext, onPrev, erro
     {
       name: 'Virtual Access',
       description: 'Online access to all summit sessions and content.',
-      price: 10,
-      originalPrice: 15,
+      price: 20,
+      originalPrice: 25,
       features: ['Live stream access', 'On-demand recordings', 'Virtual networking', 'Digital certificate'],
       category: 'virtual'
     }
@@ -161,7 +161,7 @@ const TicketsStep = ({ selectedTickets, setSelectedTickets, onNext, onPrev, erro
                       </span>
                     </div>
                     <h3 className="text-2xl sm:text-3xl font-bold text-paan-dark-blue">${ticket.price}</h3>
-                    <p className="text-xs text-paan-red mt-1">Early bird pricing (until Nov 14th 2025)</p>
+                    <p className="text-xs text-paan-red mt-1">Early bird pricing (until February 21st, 2026)</p>
                   </div>
                   <div className="mb-4 sm:mb-6">
                     <ul className="space-y-1 text-paan-dark-blue text-xs sm:text-sm">

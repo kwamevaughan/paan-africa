@@ -9,6 +9,10 @@ import ScrollToTop from "@/components/ScrollToTop";
 import Head from "next/head";
 import TicketPurchaseButton from "@/components/TicketPurchaseButton";
 import { motion } from "framer-motion";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
 
 // Animation variants - defined outside component for global access
 const fadeInUp = {
@@ -1003,6 +1007,9 @@ const TravelGuide = () => {
             </section>
         </motion.div>
 
+        {/* Summit Experiences Section */}
+        <SummitExperiencesSection />
+
          <motion.div 
            className="bg-paan-dark-blue relative pt-16 sm:pt-20 md:pt-24" 
            id="explore-nairobi"
@@ -1248,5 +1255,392 @@ const SeminarLocationAndDate = ()=> {
     </div>
   );
 }
+
+// Export experiences data for use in detail pages
+export const summitExperiences = [
+    {
+      id: 'purple-tea-farm',
+      category: 'Nairobi Tours',
+      title: 'Purple Tea Farm Tour',
+      subtitle: 'Gatura Greens - Experience the perfect combination of tea and nature',
+      description: 'A serene escape combining tea and nature. Visit the Purple Tea Farm in Gatura Greens for tea picking, waterfall trek, and tasting.',
+      price: 124,
+      priceUnit: 'USD',
+      priceNote: 'Per Person (Minimum 2 pax)',
+      image: 'https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=800&q=80',
+      duration: 'Full Day (8:00 AM - 3:30 PM)',
+      availability: 'Daily',
+      highlights: [
+        'Tea picking and processing experience',
+        'Waterfall trek and swimming',
+        '3-course lunch',
+        'Tea tasting session'
+      ]
+    },
+    {
+      id: 'nairobi-national-park-ololo',
+      category: 'Nairobi Tours',
+      title: 'Nairobi National Park Game Drive & Ololo Lodge',
+      subtitle: 'Full day tour with game drive, lunch and farm tour',
+      description: 'Full day tour combining game drives at Nairobi National Park with lunch and a farm tour at Ololo Safari Lodge.',
+      price: 247,
+      priceUnit: 'USD',
+      priceNote: 'Per Person (6 pax rate)',
+      image: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?w=800&q=80',
+      duration: 'Full Day (7:00 AM - 6:00 PM)',
+      availability: 'Daily',
+      highlights: [
+        'Morning and evening game drives',
+        'Lunch at Ololo Safari Lodge',
+        'Farm tour with fresh produce',
+        'Wildlife viewing (Big 4)'
+      ]
+    },
+    {
+      id: 'elephant-giraffe-bomas',
+      category: 'Nairobi Tours',
+      title: 'Elephant Orphanage, Giraffe Centre & Bomas',
+      subtitle: 'Wildlife and cultural experience in one day',
+      description: 'Unforgettable day combining wildlife and culture. Visit elephant orphanage, giraffe center, Karen Blixen Museum, and Bomas of Kenya.',
+      price: 315,
+      priceUnit: 'USD',
+      priceNote: 'Per Person',
+      image: 'https://images.unsplash.com/photo-1526080676457-4544bf0ebba9?w=800&q=80',
+      duration: '6 Hours (10:00 AM - 4:30 PM)',
+      availability: 'Daily',
+      highlights: [
+        'Baby elephant interaction',
+        'Giraffe feeding experience',
+        'Karen Blixen Museum tour',
+        'Traditional dance performance at Bomas'
+      ]
+    },
+    {
+      id: 'bomas-carnivore',
+      category: 'Nairobi Tours',
+      title: 'Bomas of Kenya & Carnivore Dinner',
+      subtitle: 'Cultural performance and ultimate feast experience',
+      description: 'Experience Kenya\'s cultural diversity at Bomas of Kenya, enjoy souvenir shopping, then feast at the famous Carnivore Restaurant.',
+      price: 111,
+      priceUnit: 'USD',
+      priceNote: 'Per Person',
+      image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=800&q=80',
+      duration: '8 Hours (1:00 PM - 9:30 PM)',
+      availability: 'Daily',
+      highlights: [
+        'Traditional dance and music performance',
+        'Souvenir shopping',
+        'All-you-can-eat game meat dinner',
+        'Vegetarian options available'
+      ]
+    },
+    {
+      id: 'karura-forest',
+      category: 'Nairobi Tours',
+      title: 'Karura Forest Tour',
+      subtitle: 'Walking, jogging or running in Nairobi\'s urban forest',
+      description: 'Explore Nairobi\'s urban forest on walking trails, jogging paths, or by bike. Discover waterfalls and abundant wildlife.',
+      price: 86,
+      priceUnit: 'USD',
+      priceNote: 'Per Person',
+      image: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800&q=80',
+      duration: '3 Hours',
+      availability: 'Daily (9:00 AM or 3:00 PM)',
+      highlights: [
+        'Forest walking trails',
+        'Waterfall views',
+        'Bicycle rental included',
+        'Abundant wildlife'
+      ]
+    },
+    {
+      id: 'sunrise-safari',
+      category: 'Nairobi Tours',
+      title: 'Sunrise at Nairobi National Park',
+      subtitle: 'The only safari in a wildlife capital',
+      description: 'Experience sunrise game viewing at Nairobi National Park. Spot the Big 4 wildlife with optional bush breakfast.',
+      price: 97,
+      priceUnit: 'USD',
+      priceNote: 'Per Person (6 pax rate)',
+      image: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?w=800&q=80',
+      duration: 'Half Day (Early Morning)',
+      availability: 'Daily',
+      highlights: [
+        'Sunrise game viewing',
+        'Big 4 wildlife spotting',
+        'Bush breakfast option',
+        'Ivory burning site visit'
+      ]
+    },
+    {
+      id: 'half-day-tour',
+      category: 'Nairobi Tours',
+      title: 'Nairobi Half-Day Tour with Lunch',
+      subtitle: 'Wildlife + Shopping Experience',
+      description: 'Half-day tour visiting elephant orphanage, giraffe center, and lunch at Carnivore Restaurant. Includes shopping experience.',
+      price: 254,
+      priceUnit: 'USD',
+      priceNote: 'Per Person (6 pax rate)',
+      image: 'https://images.unsplash.com/photo-1526080676457-4544bf0ebba9?w=800&q=80',
+      duration: '5 Hours (10:00 AM - 3:00 PM)',
+      availability: 'Daily',
+      highlights: [
+        'Elephant orphanage visit',
+        'Giraffe center interaction',
+        'Carnivore restaurant lunch',
+        'Shopping tour included'
+      ]
+    },
+    {
+      id: 'sunset-safari',
+      category: 'Nairobi Tours',
+      title: 'Sunset at Nairobi National Park',
+      subtitle: 'Evening Game Viewing Drive',
+      description: 'Evening game drive at Nairobi National Park. Watch the sunset while spotting Big 4 wildlife with sundowners included.',
+      price: 97,
+      priceUnit: 'USD',
+      priceNote: 'Per Person (6 pax rate)',
+      image: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?w=800&q=80',
+      duration: '3 Hours (3:00 PM - 6:00 PM)',
+      availability: 'Daily',
+      highlights: [
+        'Evening game drive',
+        'Sunset viewing',
+        'Big 4 wildlife',
+        'Sundowners included'
+      ]
+    },
+    {
+      id: 'coffee-farm',
+      category: 'Nairobi Tours',
+      title: 'Nairobi Coffee Farm Tour',
+      subtitle: 'Coffee Farm Tour Along Kiambu Road',
+      description: 'Discover coffee cultivation and processing at a nearby estate. Includes coffee tasting, waterfall visit, and optional picnic lunch.',
+      price: 57,
+      priceUnit: 'USD',
+      priceNote: 'Per Person (6 pax rate)',
+      image: 'https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=800&q=80',
+      duration: '4 Hours (9:00 AM or 1:00 PM)',
+      availability: 'Monday to Sunday',
+      highlights: [
+        'Coffee estate tour',
+        'Coffee tasting',
+        'Waterfall visit',
+        'Picnic lunch option'
+      ]
+    },
+    {
+      id: 'nightlife',
+      category: 'Nairobi Tours',
+      title: 'Nairobi Nightlife Experience',
+      subtitle: 'Museum, sunset, dinner and party',
+      description: 'Evening experience including museum tour, sunset views from KICC rooftop, dinner at revolving restaurant, and nightclub party.',
+      price: 160,
+      priceUnit: 'USD',
+      priceNote: 'Per Person (6 pax rate)',
+      image: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=800&q=80',
+      duration: '7 Hours (4:00 PM - 11:00 PM)',
+      availability: 'Daily (Closed Mondays)',
+      highlights: [
+        'Nairobi National Museum tour',
+        'KICC rooftop sunset views',
+        'Revolving restaurant dinner',
+        'Nightclub experience'
+      ]
+    },
+    {
+      id: 'shopping-tour',
+      category: 'Nairobi Tours',
+      title: 'African Cultural Shopping Tour',
+      subtitle: 'Souvenir Shopping Experience',
+      description: 'Shop for authentic African souvenirs at Utamaduni Craft Center, Kobe Tough Beads & Leather, and Maasai Market.',
+      price: 55,
+      priceUnit: 'USD',
+      priceNote: 'Per Person',
+      image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&q=80',
+      duration: '3 Hours',
+      availability: 'Daily (Morning or Afternoon)',
+      highlights: [
+        'Utamaduni Craft Center',
+        'Kobe Tough Beads & Leather',
+        'Maasai Market',
+        'Authentic African products'
+      ]
+    }
+];
+
+const SummitExperiencesSection = () => {
+  const swiperRef = useRef(null);
+
+  const handleBookNow = (experience) => {
+    window.location.href = `/summit/travel-guide/experiences/${experience.id}`;
+  };
+
+  return (
+    <motion.div 
+      className="bg-white py-12 sm:py-16 md:py-20" 
+      id="summit-experiences"
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      viewport={{ once: true, margin: "-100px" }}
+    >
+      <section className="mx-auto max-w-7xl px-4 sm:px-6">
+        <motion.div 
+          className="text-center mb-8 sm:mb-12"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          viewport={{ once: true, margin: "-50px" }}
+        >
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl uppercase font-bold leading-tight mb-4 sm:mb-6 text-paan-dark-blue">
+            Summit Experiences
+          </h2>
+          <p className="text-base sm:text-lg font-light leading-relaxed text-gray-600 max-w-3xl mx-auto">
+            Enhance your summit experience with exclusive wellness and cultural tours in Nairobi
+          </p>
+        </motion.div>
+
+        <div className="relative">
+          <Swiper
+            modules={[Navigation]}
+            spaceBetween={24}
+            slidesPerView={1}
+            navigation={{
+              nextEl: '.summit-exp-button-next',
+              prevEl: '.summit-exp-button-prev',
+            }}
+            breakpoints={{
+              640: {
+                slidesPerView: 2,
+                spaceBetween: 20,
+              },
+              1024: {
+                slidesPerView: 3,
+                spaceBetween: 24,
+              },
+            }}
+            className="summit-experiences-swiper"
+            onBeforeInit={(swiper) => {
+              swiperRef.current = swiper;
+            }}
+          >
+            {summitExperiences.map((experience) => (
+              <SwiperSlide key={experience.id}>
+                <motion.div
+                  className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 h-full flex flex-col min-h-[600px]"
+                  whileHover={{ y: -8 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  {/* Image */}
+                  <div className="relative h-56 sm:h-64 flex-shrink-0">
+                    <Image
+                      src={experience.image}
+                      alt={experience.title}
+                      fill
+                      className="object-cover"
+                    />
+                    <div className="absolute top-4 left-4">
+                      <span className="bg-paan-red text-white px-3 py-1 rounded-full text-xs font-semibold uppercase">
+                        {experience.category}
+                      </span>
+                    </div>
+                    <div className="absolute top-4 right-4">
+                      <span className="bg-white/90 backdrop-blur-sm text-paan-dark-blue px-4 py-2 rounded-full text-lg font-bold">
+                        ${experience.price}
+                        <span className="text-xs font-normal ml-1">{experience.priceUnit}</span>
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Content */}
+                  <div className="p-6 flex flex-col flex-grow">
+                    <h3 className="text-xl font-bold text-paan-dark-blue mb-2 line-clamp-2">
+                      {experience.title}
+                    </h3>
+                    <p className="text-sm text-gray-600 mb-4 line-clamp-2">
+                      {experience.subtitle}
+                    </p>
+                    <p className="text-sm text-gray-700 mb-4 line-clamp-3 flex-grow">
+                      {experience.description}
+                    </p>
+
+                    {/* Features/Highlights */}
+                    {experience.highlights && (
+                      <div className="mb-4">
+                        <ul className="space-y-2">
+                          {experience.highlights.slice(0, 3).map((highlight, idx) => (
+                            <li key={idx} className="flex items-start gap-2 text-xs text-gray-600">
+                              <Icon icon="mdi:check-circle" className="text-paan-red mt-0.5 flex-shrink-0" width="16" height="16" />
+                              <span>{highlight}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+
+                    {/* Duration & Availability */}
+                    <div className="mb-4 space-y-1 text-xs text-gray-500">
+                      {experience.duration && (
+                        <div className="flex items-center gap-2">
+                          <Icon icon="mdi:clock-outline" width="14" height="14" />
+                          <span>{experience.duration}</span>
+                        </div>
+                      )}
+                      {experience.availability && (
+                        <div className="flex items-center gap-2">
+                          <Icon icon="mdi:calendar-check" width="14" height="14" />
+                          <span>{experience.availability}</span>
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Price Note */}
+                    {experience.priceNote && (
+                      <p className="text-xs text-gray-500 mb-4 italic">
+                        {experience.priceNote}
+                      </p>
+                    )}
+
+                    {/* Action Button */}
+                    <div className="mt-auto">
+                      <motion.button
+                        onClick={() => handleBookNow(experience)}
+                        className="w-full bg-paan-red text-white px-6 py-3 rounded-full hover:bg-paan-red/90 transition-all duration-300 font-medium text-sm shadow-lg flex items-center justify-center gap-2"
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                      >
+                        <Icon icon="mdi:calendar-plus" width="20" height="20" />
+                        Book Now
+                      </motion.button>
+                    </div>
+                  </div>
+                </motion.div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+
+          {/* Navigation Buttons */}
+          <button className="summit-exp-button-prev absolute left-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white shadow-lg rounded-full flex items-center justify-center hover:bg-paan-red hover:text-white transition-all duration-300 group">
+            <Icon
+              icon="mdi:chevron-left"
+              width={28}
+              height={28}
+              className="text-paan-dark-blue group-hover:text-white"
+            />
+          </button>
+          <button className="summit-exp-button-next absolute right-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white shadow-lg rounded-full flex items-center justify-center hover:bg-paan-red hover:text-white transition-all duration-300 group">
+            <Icon
+              icon="mdi:chevron-right"
+              width={28}
+              height={28}
+              className="text-paan-dark-blue group-hover:text-white"
+            />
+          </button>
+        </div>
+      </section>
+    </motion.div>
+  );
+};
 
 export default TravelGuide;

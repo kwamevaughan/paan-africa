@@ -38,7 +38,7 @@ export default function ContactSection() {
             </div>
             <div className="flex items-center gap-2 pb-4">
               <Link
-                href="https://www.google.com/maps?q=7th+Floor,+Mitsumi+Business+Park,+Westlands,+Nairobi,+Kenya"
+                href="https://www.google.com/maps?q=The+Westwood+Office,+6th+Floor+6A,+Comply+Guide+Advisory,+Westlands,+Nairobi,+Kenya"
                 target="_blank"
                 className="flex items-center gap-2 transform translate-y-[-5px] hover:translate-y-[-10px] transition-transform duration-200"
               >

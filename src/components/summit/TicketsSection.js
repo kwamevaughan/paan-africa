@@ -72,7 +72,7 @@ const TicketsSection = ({ earlyBirdTimeLeft }) => {
                   </div>
                   <div className="flex items-center gap-2">
                     <Icon icon="mdi:check" className="text-yellow-300" width="16" height="16" />
-                    <span>Save 30% before January 25th, 2026</span>
+                    <span>Save 30% before February 21st, 2026</span>
                   </div>
                 </div>
               </div>
@@ -184,10 +184,14 @@ const TicketsSection = ({ earlyBirdTimeLeft }) => {
                     <h4 className="text-lg font-bold mb-1">Virtual Access Pass</h4>
                     <p className="text-sm opacity-90">Join from anywhere</p>
                   </div>
-                  <div className="text-right">
-                    <div className="text-3xl font-bold">$15</div>
-                    <div className="text-xs opacity-75">per ticket</div>
-                  </div>
+                      <div className="text-right">
+                        <div className="flex items-baseline gap-2 justify-end mb-1">
+                          <span className="text-lg line-through opacity-60">$25</span>
+                          <span className="text-xs text-yellow-300 font-medium">Early Bird</span>
+                        </div>
+                        <div className="text-3xl font-bold">$20</div>
+                        <div className="text-xs opacity-75">per ticket</div>
+                      </div>
                 </div>
                 <div className="space-y-2 text-sm">
                   <div className="flex items-center gap-2">
@@ -354,7 +358,10 @@ const TicketsSection = ({ earlyBirdTimeLeft }) => {
                       </div>
                       <div className="flex flex-col items-left bg-white/20 border border-white rounded-lg px-2 sm:px-3 md:px-4 py-1 sm:py-2 md:py-3">
                         <h4 className="text-xs sm:text-sm font-light">Virtual: </h4>
-                        <p className="text-lg sm:text-xl md:text-2xl font-bold">$10</p>
+                        <div className="flex items-baseline gap-1 sm:gap-2">
+                          <span className="text-xs sm:text-sm line-through opacity-60">$25</span>
+                          <p className="text-lg sm:text-xl md:text-2xl font-bold">$20</p>
+                        </div>
                       </div>
                     </div>
                     <ul className="text-xs sm:text-sm font-light space-y-1 sm:space-y-2">

@@ -168,18 +168,31 @@ const nextConfig = {
     buildActivityPosition: 'bottom-right',
   }, // Disables the development indicators, including the Next.js logo
   images: {
-    domains: ['ik.imagekit.io', 'flagcdn.com', 'images.unsplash.com'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'ik.imagekit.io',
+      },
+      {
+        protocol: 'https',
+        hostname: 'flagcdn.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'drive.google.com',
+      },
+    ],
   },
   reactStrictMode: true,
   experimental: {
     // ... existing experimental options ...
   },
-  // Internationalization configuration
-  i18n: {
-    locales: ['en', 'fr'],
-    defaultLocale: 'en',
-    localeDetection: true,
-  },
+  // Turbopack configuration for Next.js 16
+  turbopack: {},
 
   async redirects() {
     return [

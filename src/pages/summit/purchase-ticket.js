@@ -16,7 +16,7 @@ import { completePurchase, verifyAndCompletePayment } from '../../lib/ticketServ
 import { initializePayment, generatePaymentReference } from '../../lib/paystack';
 import { validatePromoCode } from '../../lib/promoCodeService';
 import { convertUSDToKES, formatCurrency } from '../../utils/currencyConverter';
-import { saveLeadContact, updateLeadStatus } from '../../lib/leadService';
+import { saveLeadContact, updateLeadStatus, shouldSkipContactStep, getLeadByEmail } from '../../lib/leadService';
 import ContactInfoStep from '@/components/summit/ContactInfoStep';
 import TicketsStep from '@/components/summit/TicketsStep';
 import AttendeesStep from '@/components/summit/AttendeesStep';
@@ -67,7 +67,8 @@ const SummitPage = () => {
   const [filteredTickets, setFilteredTickets] = useState();
   const [seatCount, setSeatCount] = useState(1);
   const [selectedTickets, setSelectedTickets] = useState([]);
-  const [currentStep, setCurrentStep] = useState(1); // 1: Select Tickets, 2: Attendee Details, 3: Payment
+  const [currentStep, setCurrentStep] = useState(1); // 1: Contact Info, 2: Select Tickets, 3: Attendee Details, 4: Payment
+  const [isCheckingContactStep, setIsCheckingContactStep] = useState(true); // Track if we're checking whether to skip Step 1
   
   // Form state management
   const [purchaserInfo, setPurchaserInfo] = useState({
@@ -188,6 +189,16 @@ const SummitPage = () => {
           country: purchaserInfo.country
         });
         console.log('✅ Lead saved successfully:', leadData);
+        
+        // Store submission timestamp in localStorage for 24-hour check
+        if (typeof window !== 'undefined') {
+          const submissionData = {
+            email: purchaserInfo.email.toLowerCase().trim(),
+            timestamp: new Date().toISOString()
+          };
+          localStorage.setItem('paan_summit_contact_submission', JSON.stringify(submissionData));
+        }
+        
         toast.success("Contact information saved!");
       } catch (error) {
         console.error('❌ Error saving lead:', error);
@@ -440,10 +451,61 @@ const SummitPage = () => {
     }
   };
   
+  // Check if user should skip Step 1 (Contact Information) on mount
+  useEffect(() => {
+    const checkAndSkipContactStep = async () => {
+      if (typeof window === 'undefined') {
+        setIsCheckingContactStep(false);
+        return;
+      }
+
+      try {
+        // Check localStorage first for quick check
+        const storedData = localStorage.getItem('paan_summit_contact_submission');
+        if (storedData) {
+          try {
+            const { email: storedEmail, timestamp } = JSON.parse(storedData);
+            const submissionTime = new Date(timestamp);
+            const now = new Date();
+            const hoursSinceSubmission = (now - submissionTime) / (1000 * 60 * 60);
+            
+            // If less than 24 hours, check database and load user info
+            if (hoursSinceSubmission < 24 && storedEmail) {
+              const lead = await getLeadByEmail(storedEmail);
+              if (lead) {
+                // Pre-fill the form with previous data
+                setPurchaserInfo({
+                  fullName: lead.full_name || '',
+                  email: lead.email || '',
+                  phone: lead.phone || '',
+                  organization: '',
+                  country: lead.country || '',
+                  attending: false
+                });
+                // Skip to Step 2 (Ticket Selection)
+                setCurrentStep(2);
+                setIsCheckingContactStep(false);
+                return;
+              }
+            }
+          } catch (e) {
+            console.error('Error parsing stored contact data:', e);
+          }
+        }
+      } catch (error) {
+        console.error('Error checking contact step:', error);
+      } finally {
+        setIsCheckingContactStep(false);
+      }
+    };
+
+    checkAndSkipContactStep();
+  }, []);
+
   // Countdown timer effect
   useEffect(() => {
-    // Set the target date (November 14th, 2025)
-    const targetDate = new Date('2025-11-14T00:00:00').getTime();
+    // (Early Bird deadline: February 21st, 2026 at 11:59 PM EAT)
+    const targetDate = new Date('2026-02-21T23:59:59+03:00').getTime();
     
     const updateCountdown = () => {
       const now = new Date().getTime();
@@ -554,6 +616,34 @@ const SummitPage = () => {
       return () => observer.unobserve(statsSection);
     }
   }, [isVisible]);
+
+  // Intersection observer for What's Included section animation
+  const [whatsIncludedVisible, setWhatsIncludedVisible] = useState(false);
+  const whatsIncludedRef = useRef(null);
+
+  useEffect(() => {
+    if (whatsIncludedRef.current) {
+      const element = whatsIncludedRef.current;
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting && !whatsIncludedVisible) {
+              setWhatsIncludedVisible(true);
+            }
+          });
+        },
+        { threshold: 0.2 }
+      );
+      
+      observer.observe(element);
+      
+      return () => {
+        if (element) {
+          observer.unobserve(element);
+        }
+      };
+    }
+  }, [whatsIncludedVisible]);
   
   useEffect(() => {
       let tickets;
@@ -581,7 +671,7 @@ const SummitPage = () => {
         title="Purchase Tickets - PAAN Summit 2026"
         description="Secure your spot at PAAN Summit 2026. Choose from various ticket options including General Admission, VIP Delegate, Agency Pass, and more."
         keywords="PAAN Summit tickets, buy summit tickets, conference registration, PAAN 2026 tickets"
-        image="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/summit-hero.webp?updatedAt=1757505455932"
+        image="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/purchase-ticket-hero.webp"
       />
 
       <main className="px-3 sm:px-0 relative">
@@ -591,31 +681,143 @@ const SummitPage = () => {
 
           {/* Main Section */}
           <div className="bg-[#DAECF3]">
+              {/* What's Included */}
+              <div ref={whatsIncludedRef}>
+                <section className="relative mx-auto max-w-6xl px-3 sm:px-4 md:px-6 py-12 sm:py-16 md:py-20">
+                  <motion.div 
+                    className="text-center mb-6 sm:mb-8 md:mb-12 px-2"
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={whatsIncludedVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+                    transition={{ duration: 0.6, ease: "easeOut" }}
+                  >
+                    <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-[#172840] font-bold mb-2 sm:mb-3 md:mb-4">What's Included</h2>
+                    <h3 className="text-sm sm:text-base md:text-lg lg:text-xl text-[#172840] font-normal max-w-3xl mx-auto px-2">Your full access to sessions, networking, and experiences.</h3>
+                  </motion.div>
+                  <motion.div 
+                    className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6"
+                    variants={staggerContainer}
+                    initial="initial"
+                    animate={whatsIncludedVisible ? "animate" : "initial"}
+                  >
+                    {[
+                      {
+                        icon: "https://ik.imagekit.io/nkmvdjnna/PAAN/summit/icons/keynote-panel.svg",
+                        title: "Keynotes & Panels",
+                        description: "Learn from top African and global leaders shaping the creative and business landscape."
+                      },
+                      {
+                        icon: "https://ik.imagekit.io/nkmvdjnna/PAAN/summit/icons/exhibition-hall.svg",
+                        title: "Exhibition Hall",
+                        description: "Explore tools, technologies, agencies, and brands driving innovation across the continent."
+                      },
+                      {
+                        icon: "https://ik.imagekit.io/nkmvdjnna/PAAN/summit/icons/smart-networking.svg",
+                        title: "Smart Networking",
+                        description: "Meet collaborators, clients, agencies, creators, and investors through the Summit app."
+                      },
+                      {
+                        icon: "https://ik.imagekit.io/nkmvdjnna/PAAN/summit/icons/career-lounge.svg",
+                        title: "Career Lounge",
+                        description: "Get career guidance, portfolio reviews, job leads, and mentorship opportunities."
+                      },
+                      {
+                        icon: "https://ik.imagekit.io/nkmvdjnna/PAAN/summit/icons/business-opportunity.svg",
+                        title: "Business Opportunities",
+                        description: "Discover cross-border projects, partnerships, co-bidding options, and new market entry paths."
+                      },
+                      {
+                        icon: "https://ik.imagekit.io/nkmvdjnna/PAAN/summit/icons/certificate.svg",
+                        title: "Certificates",
+                        description: "Receive a digital participation certificate and access session materials (where applicable)."
+                      },
+                      {
+                        icon: "https://ik.imagekit.io/nkmvdjnna/PAAN/summit/icons/creative-experinces.svg",
+                        title: "Creative Experiences",
+                        description: "Enjoy showcases, brand activations, live demos, and curated summit experiences."
+                      },
+                      {
+                        icon: "https://ik.imagekit.io/nkmvdjnna/PAAN/summit/icons/onground-support.svg",
+                        title: "On-Ground Support",
+                        description: "Benefit from visa letters, priority check-in, and help desk support depending on your ticket."
+                      }
+                    ].map((item, index) => (
+                      <motion.div
+                        key={index}
+                        className="group bg-paan-dark-blue rounded-lg shadow-lg p-4 sm:p-5 md:p-6 flex flex-col h-full transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:scale-[1.02] cursor-pointer"
+                        variants={scaleIn}
+                      >
+                        <motion.div 
+                          className="flex items-start justify-start mb-3 sm:mb-4"
+                          initial={{ opacity: 0, scale: 0 }}
+                          animate={whatsIncludedVisible ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0 }}
+                          transition={{ duration: 0.4, delay: index * 0.1 + 0.2, ease: "easeOut" }}
+                        >
+                          <img 
+                            src={item.icon} 
+                            alt={`${item.title} Icon`} 
+                            className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3 flex-shrink-0" 
+                          />
+                        </motion.div>
+                        <motion.h3 
+                          className="text-white text-left my-2 sm:my-3 md:my-4 font-bold text-sm sm:text-base md:text-lg"
+                          initial={{ opacity: 0, x: -20 }}
+                          animate={whatsIncludedVisible ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
+                          transition={{ duration: 0.5, delay: index * 0.1 + 0.3, ease: "easeOut" }}
+                        >
+                          {item.title}
+                        </motion.h3>
+                        <motion.p 
+                          className="text-white text-xs sm:text-sm md:text-base font-normal text-left mt-auto leading-relaxed"
+                          initial={{ opacity: 0, y: 20 }}
+                          animate={whatsIncludedVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                          transition={{ duration: 0.5, delay: index * 0.1 + 0.4, ease: "easeOut" }}
+                        >
+                          {item.description}
+                        </motion.p>
+                      </motion.div>
+                    ))}
+                  </motion.div>
+                </section>
+              </div>
               {/* Progress bar */}
               <StepBar currentStep={currentStep} />
               {/* Main Content Area */}
               <div className="mx-auto max-w-7xl ">
                 {/* Header */}
-                <div className="text-paan-dark-blue text-center py-4">
-                    <h2 className="font-bold text-2xl">
-                      {currentStep === 1 && 'Your Contact Information'}
-                      {currentStep === 2 && 'Select Your Tickets'}
-                      {currentStep === 3 && 'Attendee Details'}
-                      {currentStep === 4 && 'Payment'}
-                    </h2>
-                    <p className="font-normal">
-                      {currentStep === 1 && "Let's start with your basic information to secure your registration."}
-                      {currentStep === 2 && 'Choose the tickets that best fit your needs for PAAN Summit 2026.'}
-                      {currentStep === 3 && `You're registering ${attendeeSelected} attendee(s) for PAAN Summit 2026.`}
-                      {currentStep === 4 && 'Complete your payment to secure your tickets.'}
-                    </p>
-                </div>
+                {!isCheckingContactStep && (
+                  <div className="text-paan-dark-blue text-center py-4">
+                      <h2 className="font-bold text-2xl">
+                        {currentStep === 1 && 'Your Contact Information'}
+                        {currentStep === 2 && 'Select Your Tickets'}
+                        {currentStep === 3 && 'Attendee Details'}
+                        {currentStep === 4 && 'Payment'}
+                      </h2>
+                      <p className="font-normal">
+                        {currentStep === 1 && "Let's start with your basic information to secure your registration."}
+                        {currentStep === 2 && 'Choose the tickets that best fit your needs for PAAN Summit 2026.'}
+                        {currentStep === 3 && `You're registering ${attendeeSelected} attendee(s) for PAAN Summit 2026.`}
+                        {currentStep === 4 && 'Complete your payment to secure your tickets.'}
+                      </p>
+                  </div>
+                )}
 
                 {/* Step Content */}
-                {currentStep === 1 && <ContactInfoStep onNext={handleNext} purchaserInfo={purchaserInfo} handlePurchaserChange={handlePurchaserChange} errors={errors} />}
-                {currentStep === 2 && <TicketsStep selectedTickets={selectedTickets} setSelectedTickets={setSelectedTickets} onNext={handleNext} onPrev={handlePrev} errors={errors} />}
-                {currentStep === 3 && <AttendeesStep onNext={handleNext} onPrev={handlePrev} purchaserInfo={purchaserInfo} handlePurchaserChange={handlePurchaserChange} attendees={attendees} handleAttendeeChange={handleAttendeeChange} errors={errors} selectedTickets={selectedTickets} promoCodeValidation={promoCodeValidation} termsAccepted={termsAccepted} setTermsAccepted={setTermsAccepted} paymentInfo={paymentInfo} handlePaymentChange={handlePaymentChange} />}
-                {currentStep === 4 && <PaymentStep onNext={handleNext} onPrev={handlePrev} paymentInfo={paymentInfo} handlePaymentChange={handlePaymentChange} selectedTickets={selectedTickets} errors={errors} isSubmitting={isSubmitting} promoCode={promoCode} setPromoCode={setPromoCode} promoCodeValidation={promoCodeValidation} setPromoCodeValidation={setPromoCodeValidation} handlePromoCodeValidation={handlePromoCodeValidation} isValidatingPromo={isValidatingPromo} />}
+                {isCheckingContactStep ? (
+                  <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
+                    <div className="p-6 sm:p-8 lg:p-10 bg-white border border-gray-200 rounded-2xl shadow-xl">
+                      <div className="flex items-center justify-center py-12">
+                        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-paan-blue"></div>
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                  <>
+                    {currentStep === 1 && <ContactInfoStep onNext={handleNext} purchaserInfo={purchaserInfo} handlePurchaserChange={handlePurchaserChange} errors={errors} />}
+                    {currentStep === 2 && <TicketsStep selectedTickets={selectedTickets} setSelectedTickets={setSelectedTickets} onNext={handleNext} onPrev={handlePrev} errors={errors} />}
+                    {currentStep === 3 && <AttendeesStep onNext={handleNext} onPrev={handlePrev} purchaserInfo={purchaserInfo} handlePurchaserChange={handlePurchaserChange} attendees={attendees} handleAttendeeChange={handleAttendeeChange} errors={errors} selectedTickets={selectedTickets} promoCodeValidation={promoCodeValidation} termsAccepted={termsAccepted} setTermsAccepted={setTermsAccepted} paymentInfo={paymentInfo} handlePaymentChange={handlePaymentChange} />}
+                    {currentStep === 4 && <PaymentStep onNext={handleNext} onPrev={handlePrev} paymentInfo={paymentInfo} handlePaymentChange={handlePaymentChange} selectedTickets={selectedTickets} errors={errors} isSubmitting={isSubmitting} promoCode={promoCode} setPromoCode={setPromoCode} promoCodeValidation={promoCodeValidation} setPromoCodeValidation={setPromoCodeValidation} handlePromoCodeValidation={handlePromoCodeValidation} isValidatingPromo={isValidatingPromo} />}
+                  </>
+                )}
                 
               </div>
           </div>

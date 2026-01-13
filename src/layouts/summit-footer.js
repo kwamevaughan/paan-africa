@@ -34,7 +34,15 @@ const SummitFooter = () => {
   ], []);
 
   return (
-    <footer className="bg-paan-dark-blue text-white relative">
+    <footer 
+      className="text-white relative"
+      style={{
+        backgroundImage: 'url(https://ik.imagekit.io/nkmvdjnna/PAAN/summit/summit-footer-pattern.webp), linear-gradient(to right, #84C1D9, #172840)',
+        backgroundRepeat: 'repeat, no-repeat',
+        backgroundPosition: 'center, center',
+        backgroundSize: 'auto, cover'
+      }}
+    >
       
       <div className="relative z-10">
         {/* Main Footer Content */}

@@ -8,7 +8,7 @@ const SummitAgenda = () => {
     <div className="bg-[#F3F9FB] py-12 sm:py-16 md:py-20" id="agenda">          
       <section className="mx-auto max-w-6xl px-4 sm:px-6">            
         <div className="text-center mb-8 sm:mb-12">
-          <h2 className="text-2xl sm:text-3xl font-bold text-[#1a365d] mb-3 sm:mb-4">Summit Agenda</h2>
+          <h2 className="text-2xl sm:text-3xl font-normal text-[#1a365d] mb-3 sm:mb-4">Summit Agenda</h2>
           <p className="text-base sm:text-lg text-gray-600">Two days of intensive learning, networking, and deal-making</p>
         </div>
         
@@ -17,8 +17,8 @@ const SummitAgenda = () => {
             onClick={() => setActiveDay('day1')}
             className={`px-6 sm:px-8 py-2 sm:py-3 rounded-full transition-all duration-300 font-medium text-sm sm:text-base shadow-lg flex items-center gap-2 uppercase ${
               activeDay === 'day1' 
-                ? 'bg-[#84C1D9] border border-[#84C1D9] text-white' 
-                : 'bg-transparent border border-[#84C1D9] text-[#84C1D9] hover:bg-[#84C1D9] hover:text-white'
+                ? 'bg-gradient-to-r from-[#F2B706] to-[#F25849] border border-transparent text-white' 
+                : 'bg-transparent border border-[#84C1D9] text-[#84C1D9] hover:bg-paan-red hover:text-white'
             }`}
           >
             Day 1
@@ -27,8 +27,8 @@ const SummitAgenda = () => {
             onClick={() => setActiveDay('day2')}
             className={`px-6 sm:px-8 py-2 sm:py-3 rounded-full transition-all duration-300 font-medium text-sm sm:text-base shadow-lg flex items-center gap-2 ${
               activeDay === 'day2' 
-                ? 'bg-[#84C1D9] border border-[#84C1D9] text-white' 
-                : 'bg-transparent border border-[#84C1D9] text-[#84C1D9] hover:bg-[#84C1D9] hover:text-white'
+                ? 'bg-gradient-to-r from-[#F2B706] to-[#F25849] border border-transparent text-white' 
+                : 'bg-transparent border border-[#84C1D9] text-[#84C1D9] hover:bg-paan-red hover:text-white'
             }`}
           >
             Day 2
@@ -70,7 +70,7 @@ const SummitAgenda = () => {
           <div className="bg-white rounded-xl shadow-xl overflow-hidden flex flex-col" style={{ height: '680px' }}>
             {activeDay === 'day1' ? (
               <>
-                <div className="bg-[#1a365d] text-white p-4 sm:p-6 flex-shrink-0">
+                <div className="bg-gradient-to-r from-paan-yellow to-paan-dark-blue text-white p-4 sm:p-6 flex-shrink-0">
                   <h4 className="text-lg sm:text-xl font-bold">Day 1 – Creativity, Intelligence & Innovation</h4>
                   <p className="text-xs sm:text-sm opacity-90 mt-1">April 21, 2026</p>
                 </div>
@@ -267,7 +267,7 @@ const SummitAgenda = () => {
               </>
             ) : (
               <>
-                <div className="bg-[#1a365d] text-white p-4 sm:p-6 flex-shrink-0">
+                <div className="bg-gradient-to-r from-paan-yellow to-paan-dark-blue text-white p-4 sm:p-6 flex-shrink-0">
                   <h4 className="text-lg sm:text-xl font-bold">Day 2 – Execution, Commerce & Collaboration</h4>
                   <p className="text-xs sm:text-sm opacity-90 mt-1">April 22, 2026</p>
                 </div>

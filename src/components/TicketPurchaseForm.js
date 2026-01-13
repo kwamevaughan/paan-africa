@@ -72,7 +72,7 @@ const TicketPurchaseForm = ({ onClose }) => {
 
   // Early Bird countdown timer
   useEffect(() => {
-    const targetDate = new Date('2026-01-25T23:59:59+03:00'); // January 25, 2026 at 11:59 PM EAT
+    const targetDate = new Date('2026-02-21T23:59:59+03:00'); // February 21, 2026 at 11:59 PM EAT
     
     const interval = setInterval(() => {
       const now = new Date();
@@ -102,13 +102,13 @@ const TicketPurchaseForm = ({ onClose }) => {
       name: "Early Bird Pass",
       price: 65,
       currency: "USD",
-      description: "Only 100 slots, until Jan 25th 2026",
-      validUntil: "January 25th, 2026",
+      description: "Only 100 slots, until Feb 21st 2026",
+      validUntil: "February 21st, 2026",
       features: [
         "Full 2-day summit access",
         "Exhibition showcase & networking lounge",
         "Digital speaker presentations post-event",
-        "Save 30% before January 25th, 2026"
+        "Save 30% before February 21st, 2026"
       ]
     },
     {
@@ -197,9 +197,10 @@ const TicketPurchaseForm = ({ onClose }) => {
     {
       id: "virtual-access",
       name: "Virtual Access Pass",
-      price: 10,
+      price: 20,
+      originalPrice: 25,
       currency: "USD",
-      description: "Join from anywhere",
+      description: "Join from anywhere - Early Bird Pricing",
       features: [
         "Live streaming of keynotes & panels",
         "Access to a networking platform",
@@ -574,6 +575,14 @@ const TicketPurchaseForm = ({ onClose }) => {
                   <div className="text-center">
                     <h4 className="font-bold text-paan-dark-blue mb-2">{ticket.name}</h4>
                     <div className="mb-3">
+                      {ticket.originalPrice && (
+                        <div className="flex items-center justify-center gap-2 mb-1">
+                          <span className="text-lg text-gray-500 line-through">${ticket.originalPrice}</span>
+                          <span className="text-xs text-paan-red font-medium">
+                            Save {Math.round((1 - ticket.price / ticket.originalPrice) * 100)}%
+                          </span>
+                        </div>
+                      )}
                       <span className="text-3xl font-bold text-paan-red">
                         ${ticket.price}
                       </span>
