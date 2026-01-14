@@ -232,6 +232,64 @@ const SummitPage = () => {
     }
   };
 
+  // Helper function to send confirmation email
+  const sendPurchaseConfirmationEmail = async (purchase, purchaser, paymentReference, finalAmount, currency = 'USD') => {
+    try {
+      // Format ticket information for email
+      const ticketDetails = selectedTickets.map(ticket => ({
+        name: ticket.name,
+        quantity: ticket.quantity,
+        price: ticket.price,
+        total: ticket.price * ticket.quantity
+      }));
+
+      // Prepare email data - send email for primary ticket (first ticket)
+      // The email API expects single ticket format, so we'll use the first ticket
+      const primaryTicket = selectedTickets[0];
+      const ticketData = {
+        name: purchaserInfo.fullName,
+        email: purchaserInfo.email,
+        phone: purchaserInfo.phone,
+        country: purchaserInfo.country,
+        role: attendees[0]?.role || '',
+        company: purchaserInfo.organization,
+        ticketType: primaryTicket.name,
+        currency: currency,
+        amount: finalAmount,
+        features: primaryTicket.features || []
+      };
+
+      const paymentData = {
+        currency: currency,
+        amount: Math.round(finalAmount * 100), // Convert to cents
+        status: 'success',
+        paidAt: new Date().toISOString()
+      };
+
+      const response = await fetch('/api/send-summit-ticket', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          paymentData,
+          ticketData,
+          reference: paymentReference
+        }),
+      });
+
+      const result = await response.json();
+      if (result.success) {
+        console.log('Purchase confirmation email sent successfully');
+      } else {
+        console.error('Failed to send purchase confirmation email:', result.message);
+      }
+    } catch (error) {
+      console.error('Error sending purchase confirmation email:', error);
+      // Don't throw error - email failure shouldn't block purchase completion
+    }
+  };
+
   const handleFinalSubmission = async () => {
     setIsSubmitting(true);
     const toastId = toast.loading("Processing your purchase...");
@@ -274,6 +332,9 @@ const SummitPage = () => {
           
           // Mark purchase as paid
           await updatePurchaseStatus(purchase.id, 'paid', paymentReference);
+          
+          // Send confirmation email
+          await sendPurchaseConfirmationEmail(purchase, purchaser, paymentReference, finalAmount, 'USD');
           
           toast.dismiss('free-purchase');
           toast.success("Purchase completed successfully! Your tickets are confirmed. You will receive a confirmation email shortly.", { id: 'free-success' });
@@ -369,6 +430,10 @@ const SummitPage = () => {
               
               // Verify payment and complete the process
               const result = await verifyAndCompletePayment(purchase.id, response.reference);
+              
+              // Send confirmation email
+              const paymentCurrency = paymentInfo.method === 'mpesa' ? 'KES' : 'USD';
+              await sendPurchaseConfirmationEmail(purchase, purchaser, response.reference, finalAmount, paymentCurrency);
               
               toast.dismiss('payment-verify');
               toast.success("Payment completed successfully! You will receive a confirmation email shortly.", { id: 'success' });
