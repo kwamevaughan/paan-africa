@@ -13,7 +13,7 @@ import { motion } from "framer-motion";
 import { useAppTranslations } from '../../hooks/useTranslations';
 import { toast } from "react-hot-toast";
 import { completePurchase, verifyAndCompletePayment } from '../../lib/ticketService';
-import { initializePayment, generatePaymentReference } from '../../lib/paystack';
+import { initializePayment, generatePaymentReference, updatePurchaseStatus } from '../../lib/paystack';
 import { validatePromoCode } from '../../lib/promoCodeService';
 import { convertUSDToKES, formatCurrency } from '../../utils/currencyConverter';
 import { saveLeadContact, updateLeadStatus, shouldSkipContactStep, getLeadByEmail } from '../../lib/leadService';
@@ -261,6 +261,50 @@ const SummitPage = () => {
 
       // Complete the purchase (save to database)
       const { purchase, purchaser, totalAmount: finalAmount } = await completePurchase(purchaseData);
+      
+      // Check if discount is 100% (final amount is 0 or less)
+      if (finalAmount <= 0) {
+        // For 100% discount, mark purchase as paid directly without Paystack
+        toast.dismiss(toastId);
+        toast.loading("Completing purchase...", { id: 'free-purchase' });
+        
+        try {
+          // Generate a reference for free purchases
+          const paymentReference = generatePaymentReference();
+          
+          // Mark purchase as paid
+          await updatePurchaseStatus(purchase.id, 'paid', paymentReference);
+          
+          toast.dismiss('free-purchase');
+          toast.success("Purchase completed successfully! Your tickets are confirmed. You will receive a confirmation email shortly.", { id: 'free-success' });
+          
+          // Reset form after successful purchase
+          setTimeout(() => {
+            setSelectedTickets([]);
+            setPurchaserInfo({
+              fullName: '',
+              email: '',
+              phone: '',
+              organization: '',
+              country: '',
+              attending: false
+            });
+            setAttendees([]);
+            setPaymentInfo({
+              method: 'card',
+              promoCode: '',
+              invoiceDetails: ''
+            });
+            setCurrentStep(1);
+            setErrors({});
+          }, 3000);
+        } catch (error) {
+          console.error('Error completing free purchase:', error);
+          toast.dismiss('free-purchase');
+          toast.error("Error completing purchase. Please contact support.", { id: 'free-error' });
+        }
+        return;
+      }
       
       if (paymentInfo.method === 'bank') {
         // For bank transfer, just show success message
