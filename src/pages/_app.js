@@ -144,6 +144,7 @@ function MyApp({ Component, pageProps }) {
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
             gtag('config', 'AW-437483343');
+            gtag('config', 'AW-17855286131');
           `,
         }}
       />
