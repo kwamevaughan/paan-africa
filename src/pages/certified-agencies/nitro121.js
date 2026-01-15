@@ -585,7 +585,7 @@ const HomePage = () => {
             <div className="flex justify-center items-center gap-6">
               {/* LinkedIn */}
               <a
-                href="#"
+                href="https://www.linkedin.com/company/nitro121/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group transition-all duration-300 hover:scale-110"
@@ -601,7 +601,7 @@ const HomePage = () => {
 
               {/* Instagram */}
               <a
-                href="#"
+                href="https://www.instagram.com/nitro_121/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group transition-all duration-300 hover:scale-110"
@@ -617,7 +617,7 @@ const HomePage = () => {
 
               {/* Facebook */}
               <a
-                href="#"
+                href="https://www.facebook.com/141worldwide"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group transition-all duration-300 hover:scale-110"
@@ -633,7 +633,7 @@ const HomePage = () => {
 
               {/* X (Twitter) */}
               <a
-                href="#"
+                href="https://x.com/Nitro_121"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group transition-all duration-300 hover:scale-110"

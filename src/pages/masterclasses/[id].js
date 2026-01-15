@@ -730,6 +730,63 @@ const MasterclassDetailPage = () => {
       status: "upcoming",
       series: "Mastering Agency Growth in 2026",
       seriesOrder: 3
+    },
+    13: {
+      id: 13,
+      title: "Effective Time Management",
+      description: "Learn how to take control of your time in hybrid and remote agency environments without burning out or working longer hours.",
+      fullDescription: "Working patterns have changed, but many of our habits haven't. In hybrid and remote setups, boundaries blur, priorities compete, and time pressure quietly builds. This practical session helps agency professionals step back, reassess how they work, and adopt clearer, calmer approaches to managing time, tasks, and energy. You'll leave with tools you can apply immediately.",
+      format: "Live Online | 60 mins",
+      date: "January 27th, 2026",
+      time: "12:15 pm – 1:15 pm EAT",
+      memberPrice: 100,
+      nonMemberPrice: 150,
+      currency: "GBP",
+      category: "Leadership",
+      level: "Junior to Mid-Level",
+      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/effective-time-management.jpg",
+      instructor: {
+        name: "Fran Longford",
+        title: "Founder & Lead Trainer, FL Training",
+        image: "https://ik.imagekit.io/nkmvdjnna/PAAN/instructors/fran-longford.jpg",
+        bio: "Fran spent 15 years leading client business at top agencies before becoming Joint MD of Triangle Communications, where she focused on client retention and people development. She later founded FL Training to pursue her passion for helping managers and teams perform at their best. Fran works across the marcoms industry, delivering practical training and coaching that empowers people to work smarter, not harder.",
+        expertise: [
+          "Time Management",
+          "Productivity & Focus",
+          "Team Development",
+          "Agency Operations"
+        ]
+      },
+      benefits: [
+        "5% off on PAAN Summit 2026 tickets",
+        "10% off ACE awards"
+      ],
+      whoShouldAttend: [
+        "Junior to mid-level agency staff",
+        "Client-facing teams managing multiple priorities",
+        "Anyone feeling stretched or reactive in their day-to-day work"
+      ],
+      learningOutcomes: [
+        "How to refresh and rethink your current time management habits",
+        "Practical approaches to task and time planning",
+        "How to prioritise work without constant urgency",
+        "Techniques to improve focus and productivity",
+        "How to manage time-related stress and pressure"
+      ],
+      courseObjectives: [
+        "Have a clearer understanding of how they currently use their time",
+        "Identify key behaviours that undermine productivity",
+        "Understand how to plan work more realistically",
+        "Recognise how time management supports wellbeing and performance"
+      ],
+      whyAttend: [
+        "Regain a sense of control over your workload",
+        "Reduce stress caused by poor planning and constant interruptions",
+        "Improve focus and consistency in day-to-day work",
+        "Work more effectively in hybrid and remote settings"
+      ],
+      outcome: "By attending this masterclass, you will get 5% off on PAAN Summit 2026 tickets & 10% off ACE awards.",
+      status: "upcoming"
     }
   };
 

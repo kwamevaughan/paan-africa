@@ -445,6 +445,55 @@ const MasterclassesPage = () => {
       featured: false,
       status: "completed"
     },
+    {
+      id: 13,
+      title: "Effective Time Management",
+      description: "Managing time in a WFH or hybrid environment brings practical challenges, competing priorities, constant interruptions, and blurred boundaries between work and personal time. This session focuses on practical ways to plan tasks, prioritise work, and manage time more effectively so participants feel more in control of their workload.",
+      bannerDescription: "Learn how to take control of your time in hybrid and remote agency environments without burning out or working longer hours.",
+      format: "Live Online | 60 mins",
+      date: "January 27th, 2026",
+      time: "12:15 pm – 1:15 pm EAT",
+      memberPrice: 100,
+      nonMemberPrice: 150,
+      currency: "GBP",
+      category: "Leadership",
+      level: "Junior to Mid-Level",
+      instructor: "Fran Longford",
+      instructorTitle: "Founder & Lead Trainer, FL Training",
+      instructorBio: "Fran spent 15 years leading client business at top agencies before becoming Joint MD of Triangle Communications, where she focused on client retention and people development. She later founded FL Training to pursue her passion for helping managers and teams perform at their best. Fran works across the marcoms industry, delivering practical training and coaching that empowers people to work smarter, not harder.",
+      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/effective-time-management.jpg",
+      benefits: [
+        "5% off on PAAN Summit 2026 tickets",
+        "10% off ACE awards"
+      ],
+      aboutThisMasterclass: "Working patterns have changed, but many of our habits haven't. In hybrid and remote setups, boundaries blur, priorities compete, and time pressure quietly builds. This practical session helps agency professionals step back, reassess how they work, and adopt clearer, calmer approaches to managing time, tasks, and energy. You'll leave with tools you can apply immediately.",
+      whoShouldAttend: [
+        "Junior to mid-level agency staff",
+        "Client-facing teams managing multiple priorities",
+        "Anyone feeling stretched or reactive in their day-to-day work"
+      ],
+      learningOutcomes: [
+        "How to refresh and rethink your current time management habits",
+        "Practical approaches to task and time planning",
+        "How to prioritise work without constant urgency",
+        "Techniques to improve focus and productivity",
+        "How to manage time-related stress and pressure"
+      ],
+      whyAttend: [
+        "Regain a sense of control over your workload",
+        "Reduce stress caused by poor planning and constant interruptions",
+        "Improve focus and consistency in day-to-day work",
+        "Work more effectively in hybrid and remote settings"
+      ],
+      courseObjectives: [
+        "Have a clearer understanding of how they currently use their time",
+        "Identify key behaviours that undermine productivity",
+        "Understand how to plan work more realistically",
+        "Recognise how time management supports wellbeing and performance"
+      ],
+      featured: false,
+      status: "upcoming"
+    },
     
   ];
 
