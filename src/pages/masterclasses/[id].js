@@ -744,7 +744,7 @@ const MasterclassDetailPage = () => {
       currency: "GBP",
       category: "Leadership",
       level: "Junior to Mid-Level",
-      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/effective-time-management.jpg",
+      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/effective-time-management.jpg?updatedAt=1768544129255",
       instructor: {
         name: "Fran Longford",
         title: "Founder & Lead Trainer, FL Training",

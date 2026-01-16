@@ -461,7 +461,7 @@ const MasterclassesPage = () => {
       instructor: "Fran Longford",
       instructorTitle: "Founder & Lead Trainer, FL Training",
       instructorBio: "Fran spent 15 years leading client business at top agencies before becoming Joint MD of Triangle Communications, where she focused on client retention and people development. She later founded FL Training to pursue her passion for helping managers and teams perform at their best. Fran works across the marcoms industry, delivering practical training and coaching that empowers people to work smarter, not harder.",
-      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/effective-time-management.jpg",
+      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/effective-time-management.jpg?updatedAt=1768544129255",
       benefits: [
         "5% off on PAAN Summit 2026 tickets",
         "10% off ACE awards"
