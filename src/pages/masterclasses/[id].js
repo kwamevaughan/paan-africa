@@ -740,7 +740,7 @@ const MasterclassDetailPage = () => {
       date: "January 27th, 2026",
       time: "12:15 pm – 1:15 pm EAT",
       memberPrice: 100,
-      nonMemberPrice: 150,
+      nonMemberPrice: 174,
       currency: "GBP",
       category: "Leadership",
       level: "Junior to Mid-Level",
