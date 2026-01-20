@@ -787,6 +787,291 @@ const MasterclassDetailPage = () => {
       ],
       outcome: "By attending this masterclass, you will get 5% off on PAAN Summit 2026 tickets & 10% off ACE awards.",
       status: "upcoming"
+    },
+    14: {
+      id: 14,
+      title: "Storytelling and Making Complex Arguments Buyable",
+      description: "Learn how to structure ideas so that clients understand them, trust them, and are more likely to say yes.",
+      fullDescription: "Agencies regularly present complex ideas, strategy, creativity, data, and transformation. Too often, the argument gets lost, the audience disengages, and good ideas fail to land. This session focuses on clarity, structure, and persuasion. You'll learn how to turn complexity into compelling narratives that make ideas easier to follow, easier to believe, and easier to buy.",
+      format: "Live Online | 60 mins",
+      date: "February 17th, 2026",
+      time: "12:30 PM – 1:30 PM EAT",
+      memberPrice: 174,
+      nonMemberPrice: 250,
+      currency: "USD",
+      category: "Account Management",
+      level: "Junior to Mid-Level",
+      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/making-complex-arguments-buyable.jpg",
+      partnership: "PAAN, in collaboration with the Alliance of Independent Agencies, UK",
+      instructor: {
+        name: "Paul Burns",
+        title: "Former Training Director, Saatchi & Saatchi",
+        image: "https://ik.imagekit.io/nkmvdjnna/PAAN/instructors/paul-burns.jpg",
+        bio: "Paul spent 25 years at Saatchi & Saatchi, where he became Training Director and Director of Knowledge Practices, sitting on the agency's management board. He has led accounts across major FMCG, financial, and media brands, including the launch of the UK National Lottery. Paul is widely recognised for his ability to develop people and teams, winning multiple industry awards for Learning and Development.",
+        expertise: [
+          "Presentation Structure & Clarity",
+          "Storytelling & Persuasion",
+          "Team Development",
+          "Agency Training"
+        ]
+      },
+      benefits: [
+        "5% off on PAAN Summit 2026 tickets",
+        "10% off ACE awards"
+      ],
+      whoShouldAttend: [
+        "Junior to mid-level agency staff",
+        "Account handlers, planners, analysts, creatives",
+        "Anyone who presents ideas internally or to clients"
+      ],
+      learningOutcomes: [
+        "A clear, simple methodology for constructing persuasive arguments",
+        "How to structure presentations for clarity and impact",
+        "How to adapt your presentation style to different audiences",
+        "How to use a Presentation Brief to organise team input",
+        "How storytelling strengthens logic and persuasion"
+      ],
+      courseObjectives: [
+        "Master the art of structuring complex arguments clearly",
+        "Learn to adapt presentations to different audience types",
+        "Develop storytelling skills that strengthen logical arguments",
+        "Create more persuasive and buyable presentations"
+      ],
+      whyAttend: [
+        "Reduce unnecessary discounting",
+        "Improve confidence in pricing discussions",
+        "Strengthen profitability",
+        "Align pricing with perceived value"
+      ],
+      outcome: "By attending this masterclass, you will get 5% off on PAAN Summit 2026 tickets & 10% off ACE awards.",
+      status: "upcoming"
+    },
+    15: {
+      id: 15,
+      title: "The 7 Deadly Sins of Pitching",
+      description: "Understand where pitches go wrong and how to turn mistakes into momentum.",
+      fullDescription: "Rather than focusing only on \"perfect pitching,\" this session takes a more revealing approach: examining the common mistakes that derail pitches and how to recover from them. By learning what not to do — and why — teams gain confidence, clarity, and practical techniques to deliver more engaging, persuasive pitch performances.",
+      format: "Live Online | 60 mins",
+      date: "March 3rd, 2026",
+      time: "12:30 PM – 1:30 PM EAT",
+      memberPrice: 174,
+      nonMemberPrice: 250,
+      currency: "USD",
+      category: "Business Development",
+      level: "All Levels",
+      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/deadly-sins-of-pitching.jpg",
+      partnership: "PAAN, in collaboration with the Alliance of Independent Agencies, UK",
+      instructor: {
+        name: "James Appleby",
+        title: "Founder, Conquis & Former Managing Director, Assembly Media",
+        image: "https://ik.imagekit.io/nkmvdjnna/PAAN/instructors/james-appleby.jpg",
+        bio: "James has spent nearly 25 years leading media and technology agencies, working with brands including Sainsbury's, CompareTheMarket.com, Oatly, and McVitie's. He has chaired and mentored the NABS Fastforward pitch programme for nearly a decade. After serving as Managing Director of Assembly Media, he founded Conquis, where he helps teams sharpen pitching, collaboration, and communication skills.",
+        expertise: [
+          "Pitching & Presentation",
+          "Team Collaboration",
+          "Agency Leadership",
+          "Communication Skills"
+        ]
+      },
+      benefits: [
+        "5% off on PAAN Summit 2026 tickets",
+        "10% off ACE awards"
+      ],
+      whoShouldAttend: [
+        "Agency professionals at all levels",
+        "Regular pitchers and first-time pitchers alike",
+        "Anyone involved in preparing or delivering pitches"
+      ],
+      learningOutcomes: [
+        "The seven most common pitching mistakes and how they show up",
+        "Why these mistakes damage ideas and credibility",
+        "Practical techniques to avoid or recover from them",
+        "How to coach pitch teams constructively and calmly",
+        "How to create pitches that feel confident, clear, and engaging"
+      ],
+      courseObjectives: [
+        "Build awareness of the behaviours and habits that weaken pitches",
+        "Develop a shared language for identifying and fixing pitch problems",
+        "Strengthen team confidence in both preparation and performance",
+        "Improve how feedback is given during pitch development",
+        "Create a more consistent standard of pitching across the agency"
+      ],
+      whyAttend: [
+        "This session is for anyone who has ever left a pitch knowing the work was strong, but the room didn't feel convinced",
+        "It helps teams understand how good ideas lose power through poor preparation, unclear storytelling, weak performance, or internal confusion",
+        "You'll leave knowing how to protect your ideas and present them in a way that earns belief, trust, and momentum"
+      ],
+      outcome: "By attending this masterclass, you will get 5% off on PAAN Summit 2026 tickets & 10% off ACE awards.",
+      status: "upcoming"
+    },
+    16: {
+      id: 16,
+      title: "Critical Thinking in the Age of AI",
+      description: "Equip your team to think clearly, ethically, and creatively alongside AI.",
+      fullDescription: "AI is now embedded in creative and strategic workflows, but automation without judgment creates risk. In an AI-powered environment, critical thinking becomes an agency's true competitive advantage. This practical session helps teams recognise where AI can mislead, challenge assumptions, and apply human judgment to improve decisions, outputs, and client work.",
+      format: "Live Online | 60 mins",
+      date: "April 24th, 2026",
+      time: "12:30 PM – 1:30 PM EAT",
+      memberPrice: 174,
+      nonMemberPrice: 250,
+      currency: "USD",
+      category: "Creative Strategy",
+      level: "All Levels",
+      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/critical-thinking.jpg",
+      partnership: "PAAN, in collaboration with the Alliance of Independent Agencies, UK",
+      instructor: {
+        name: "Tiffany St James",
+        title: "Chief AI Officer, Liverpool City Region, Founder, Transmute",
+        image: "https://ik.imagekit.io/nkmvdjnna/PAAN/instructors/tiffany-st-james.jpg",
+        bio: "Tiffany is a global award-winning digital strategist and Founder of Transmute. She is currently Chief AI Officer for Liverpool City Region and is completing an MSc in Applied Positive Psychology. Tiffany has worked with organisations including Google, Microsoft, BBC, Capgemini, and government bodies, delivering over 300 training programmes to more than 10,000 people worldwide.",
+        expertise: [
+          "AI Strategy & Implementation",
+          "Digital Transformation",
+          "Critical Thinking & Ethics",
+          "Training & Development"
+        ]
+      },
+      benefits: [
+        "5% off on PAAN Summit 2026 tickets",
+        "10% off ACE awards"
+      ],
+      whoShouldAttend: [
+        "All agency staff",
+        "Creative, strategy, data, and leadership teams",
+        "Anyone using AI tools in their workflow"
+      ],
+      learningOutcomes: [
+        "What critical thinking really means in AI-augmented work",
+        "Where AI tools can mislead or limit thinking",
+        "How to evaluate AI-generated outputs critically",
+        "How to spot bias, flawed logic, and weak assumptions",
+        "A practical toolkit to embed critical thinking into daily work"
+      ],
+      courseObjectives: [
+        "Strengthen human judgment in AI-supported workflows",
+        "Build awareness of bias, hallucination, and over-reliance on AI tools",
+        "Create a shared standard for evaluating AI-generated work",
+        "Improve team confidence in decision-making",
+        "Protect creative and strategic quality in fast-moving environments"
+      ],
+      whyAttend: [
+        "This masterclass is for agencies that want to use AI without losing strategic rigour, creative depth, or professional responsibility",
+        "It helps teams move beyond tool usage into stronger thinking, clearer questioning, and better decision-making when AI is involved in the process"
+      ],
+      outcome: "By attending this masterclass, you will get 5% off on PAAN Summit 2026 tickets & 10% off ACE awards.",
+      status: "upcoming"
+    },
+    17: {
+      id: 17,
+      title: "Account Managers as Agency Growth Drivers",
+      description: "Turn great client service into predictable, sustainable account growth.",
+      fullDescription: "Many agencies want to grow revenue from existing clients but lack a shared, practical approach for doing so. This session introduces a clear framework for client-centric account growth, helping account managers build confidence, add commercial value, and support growth without feeling pushy or sales-driven.",
+      format: "Live Online | 60 mins",
+      date: "May 27th, 2026",
+      time: "12:30 PM – 1:30 PM EAT",
+      memberPrice: 174,
+      nonMemberPrice: 250,
+      currency: "USD",
+      category: "Account Management",
+      level: "Mid-Level to Senior",
+      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/account-managers-as-agency-growth.jpg",
+      partnership: "PAAN, in collaboration with the Alliance of Independent Agencies, UK",
+      instructor: {
+        name: "Jenny Plant",
+        title: "Account Management Trainer & Coach, Host, Creative Agency Account Manager Podcast",
+        image: "https://ik.imagekit.io/nkmvdjnna/PAAN/instructors/jenny-plant.jpg",
+        bio: "Jenny is a trainer and coach for account managers in creative agencies, with 30 years' experience in account management and client-side marketing. She hosts the Creative Agency Account Manager podcast and runs the Account Accelerator™ programme, helping client-facing teams grow accounts confidently through practical, non-salesy commercial skills.",
+        expertise: [
+          "Account Management",
+          "Client Growth Strategies",
+          "Commercial Skills Development",
+          "Team Coaching"
+        ]
+      },
+      benefits: [
+        "5% off on PAAN Summit 2026 tickets",
+        "10% off ACE awards"
+      ],
+      whoShouldAttend: [
+        "Agency owners and senior leaders",
+        "Client service leaders",
+        "Anyone responsible for growing existing accounts"
+      ],
+      learningOutcomes: [
+        "Why great service alone doesn't always lead to growth",
+        "The three levers of client-centric account growth",
+        "How to identify growth clients versus maintenance clients",
+        "How to position teams as trusted advisers",
+        "Practical examples of repeatable growth processes"
+      ],
+      courseObjectives: [
+        "To shift account management from delivery-focused to growth-aware",
+        "To improve commercial confidence across client teams",
+        "To create structure around client growth conversations",
+        "To reduce reliance on new business for revenue stability"
+      ],
+      whyAttend: [
+        "This session is for agencies that want predictable, sustainable growth from their current clients",
+        "It helps account teams understand how growth happens in practice and gives leaders a way to support commercial thinking without pressure or awkward selling"
+      ],
+      outcome: "By attending this masterclass, you will get 5% off on PAAN Summit 2026 tickets & 10% off ACE awards.",
+      status: "upcoming"
+    },
+    18: {
+      id: 18,
+      title: "How to Listen so Clients Talk",
+      description: "Build trust, reduce friction, and unlock better client conversations.",
+      fullDescription: "In competitive agency environments, trust is a differentiator. When clients feel heard, conversations become more open, productive, and collaborative. This session focuses on practical listening skills that help teams manage difficult conversations, reduce tension, and strengthen client relationships — while opening doors to better work and new opportunities.",
+      format: "Live Online | 60 mins",
+      date: "June 23rd, 2026",
+      time: "12:30 PM – 1:30 PM EAT",
+      memberPrice: 174,
+      nonMemberPrice: 250,
+      currency: "USD",
+      category: "Client Management",
+      level: "Mid-Level to Senior",
+      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/listen-so-clients-can-talk.jpg",
+      partnership: "PAAN, in collaboration with the Alliance of Independent Agencies, UK",
+      instructor: {
+        name: "Sharon Baker",
+        title: "Leadership Coach & Former Managing Director, Zinc Media",
+        image: "https://ik.imagekit.io/nkmvdjnna/PAAN/instructors/sharon-baker.jpg",
+        bio: "Sharon spent 20 years in creative agencies as a content producer, client services director, and Managing Director. She later transitioned into coaching and people development, working with organisations including BBC, Barclays, Esso, and Vodafone. Sharon combines agency experience, psychology, and coaching to help leaders and teams communicate with confidence and emotional intelligence.",
+        expertise: [
+          "Leadership Coaching",
+          "Client Relationship Management",
+          "Emotional Intelligence",
+          "Communication Skills"
+        ]
+      },
+      benefits: [
+        "5% off on PAAN Summit 2026 tickets",
+        "10% off ACE awards"
+      ],
+      whoShouldAttend: [
+        "Mid-level to senior agency staff",
+        "Client service and leadership teams",
+        "Anyone managing complex client relationships"
+      ],
+      learningOutcomes: [
+        "How to listen in ways that encourage openness",
+        "How to ask better questions and uncover real issues",
+        "How to manage emotion in challenging conversations",
+        "How to be assertive without blame or defensiveness",
+        "How listening supports trust, retention, and growth"
+      ],
+      courseObjectives: [
+        "To improve emotional intelligence in client conversations",
+        "To reduce conflict and misinterpretation",
+        "To increase confidence in handling difficult discussions",
+        "To strengthen long-term client relationships"
+      ],
+      whyAttend: [
+        "This session is for teams who want stronger client trust, smoother conversations, and fewer misunderstandings",
+        "It helps agencies move from reactive communication to confident, grounded dialogue that builds partnership rather than tension"
+      ],
+      outcome: "By attending this masterclass, you will get 5% off on PAAN Summit 2026 tickets & 10% off ACE awards.",
+      status: "upcoming"
     }
   };
 

@@ -15,22 +15,6 @@ export const eventsData = {
       registrationUrl: "/summit",
       status: "upcoming",
       featured: true
-    },
-    {
-      id: 11,
-      title: "Unlocking Agency Growth in 2026: An Introduction to Our Positioning, Pricing & Procurement Masterclasses",
-      date: "2025-12-10",
-      time: "12:00 PM - 1:00 PM EAT",
-      location: "Virtual Event",
-      venue: "Zoom",
-      description: "Join agency growth expert Stuart Dunk for a high-value introductory webinar exploring the core pillars every agency must master in 2026: positioning, pricing, and procurement. Stu brings 14+ years of global marketing procurement experience (Reckitt, Nike, Danone) and now coaches agencies on improving margin, conversion, and commercial performance. This session gives you practical insights and a preview of the three upcoming 90-minute PAAN Masterclasses happening in 2026.",
-      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/webinars/unlocking-agency-growth.png",
-      category: "Webinar",
-      price: "Free for All Members",
-      registrationUrl: "https://tinyurl.com/bdfd9ddz",
-      status: "upcoming",
-      featured: true,
-      speakers: ["Stuart Dunk"]
     }
   ],
   past: [
@@ -169,6 +153,22 @@ export const eventsData = {
       status: "past",
       featured: true,
       speakers: ["Musa Kalenga (Brave Group)", "Nyandia Gachago (MintyLime)", "Mpumelelo Tembe (Sotflytic)"]
+    },
+    {
+      id: 11,
+      title: "Unlocking Agency Growth in 2026: An Introduction to Our Positioning, Pricing & Procurement Masterclasses",
+      date: "2025-12-10",
+      time: "12:00 PM - 1:00 PM EAT",
+      location: "Virtual Event",
+      venue: "Zoom",
+      description: "Join agency growth expert Stuart Dunk for a high-value introductory webinar exploring the core pillars every agency must master in 2026: positioning, pricing, and procurement. Stu brings 14+ years of global marketing procurement experience (Reckitt, Nike, Danone) and now coaches agencies on improving margin, conversion, and commercial performance. This session gives you practical insights and a preview of the three upcoming 90-minute PAAN Masterclasses happening in 2026.",
+      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/webinars/unlocking-agency-growth.png",
+      category: "Webinar",
+      price: "Completed",
+      registrationUrl: "https://tinyurl.com/bdfd9ddz",
+      status: "past",
+      featured: true,
+      speakers: ["Stuart Dunk"]
     }
   ]
 };
