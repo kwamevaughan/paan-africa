@@ -15,6 +15,22 @@ export const eventsData = {
       registrationUrl: "/summit",
       status: "upcoming",
       featured: true
+    },
+    {
+      id: 12,
+      title: "From Data to Decisions: How Agencies Can Turn Insight into Measurable Growth",
+      date: "2025-02-04",
+      time: "12:00 PM - 1:20 PM EAT",
+      location: "Virtual Event",
+      venue: "Zoom",
+      description: "This session brings together agency leaders and data practitioners who sit at the intersection of strategy, performance, and technology. The focus is on how agencies can use data to make better decisions, optimize performance, prove value, and unlock growth both internally and for their clients.",
+      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/webinars/From-Data-to-Decisions.png",
+      category: "Webinar",
+      price: "Free for All Members",
+      registrationUrl: "#",
+      status: "upcoming",
+      featured: true,
+      speakers: ["Thomas Henderson (WeFuse)", "Yannic Lefang (Kasi Insights)"]
     }
   ],
   past: [
