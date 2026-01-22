@@ -27,7 +27,7 @@ export const eventsData = {
       image: "https://ik.imagekit.io/nkmvdjnna/PAAN/webinars/From-Data-to-Decisions.png",
       category: "Webinar",
       price: "Free for All Members",
-      registrationUrl: "#",
+      registrationUrl: "https://tinyurl.com/tr8exd3u",
       status: "upcoming",
       featured: true,
       speakers: ["Thomas Henderson (WeFuse)", "Yannic Lefang (Kasi Insights)"]
