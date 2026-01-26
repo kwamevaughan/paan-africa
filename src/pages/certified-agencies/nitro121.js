@@ -404,7 +404,7 @@ const HomePage = () => {
 
                   {/* Description */}
                   <p className="text-lg sm:text-xl leading-relaxed text-paan-dark-blue/90 font-light">
-                  Nitro 121 is a dynamic marketing and creative agency based in Nigeria, dedicated to delivering innovative solutions that help brands connect with their audiences across Africa. As an Associate Member of PAAN, we combine strategic thinking, creative excellence, and digital innovation to create impactful campaigns that drive results. Our team is committed to helping businesses grow through effective communication, brand development, and multi-channel marketing strategies.
+                  Nitro 121 is a through-the-line marketing communications driving force, a catalyst for bold narratives and transformative brand stories across Nigeria and beyond. From strategy and consumer insight to creative development, production, digital innovation, media, PR, and experiential engagements, we craft ideas that shape markets.
                   </p>
 
                                       {/* Areas of Specialization */}
@@ -415,7 +415,15 @@ const HomePage = () => {
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                         <div className="flex items-center space-x-3">
                           <div className="w-2 h-2 bg-paan-dark-blue rounded-full"></div>
-                          <span className="text-paan-dark-blue/90">Brand Strategy</span>
+                          <span className="text-paan-dark-blue/90">Brand Management</span>
+                        </div>
+                        <div className="flex items-center space-x-3">
+                          <div className="w-2 h-2 bg-paan-dark-blue rounded-full"></div>
+                          <span className="text-paan-dark-blue/90">Strategy & Planning</span>
+                        </div>
+                        <div className="flex items-center space-x-3">
+                          <div className="w-2 h-2 bg-paan-dark-blue rounded-full"></div>
+                          <span className="text-paan-dark-blue/90">Creative Development</span>
                         </div>
                         <div className="flex items-center space-x-3">
                           <div className="w-2 h-2 bg-paan-dark-blue rounded-full"></div>
@@ -423,19 +431,11 @@ const HomePage = () => {
                         </div>
                         <div className="flex items-center space-x-3">
                           <div className="w-2 h-2 bg-paan-dark-blue rounded-full"></div>
-                          <span className="text-paan-dark-blue/90">Creative Services</span>
+                          <span className="text-paan-dark-blue/90">Experiential Marketing</span>
                         </div>
                         <div className="flex items-center space-x-3">
                           <div className="w-2 h-2 bg-paan-dark-blue rounded-full"></div>
-                          <span className="text-paan-dark-blue/90">Social Media</span>
-                        </div>
-                        <div className="flex items-center space-x-3">
-                          <div className="w-2 h-2 bg-paan-dark-blue rounded-full"></div>
-                          <span className="text-paan-dark-blue/90">Content Creation</span>
-                        </div>
-                        <div className="flex items-center space-x-3">
-                          <div className="w-2 h-2 bg-paan-dark-blue rounded-full"></div>
-                          <span className="text-paan-dark-blue/90">Brand Communication</span>
+                          <span className="text-paan-dark-blue/90">Production</span>
                         </div>
                       </div>
                     </div>
@@ -447,14 +447,18 @@ const HomePage = () => {
                 <div className="relative group">
                   {/* Video Container */}
                   <div className="relative overflow-hidden rounded-2xl shadow-2xl bg-black/20 backdrop-blur-sm border border-white/10">
-                    <iframe
+                    <video
+                      ref={videoRef}
                       className="w-full h-auto aspect-video object-cover"
-                      src="https://www.youtube.com/embed/zJd1akSivAw"
-                      title="Nitro 121"
-                      frameBorder="0"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowFullScreen
-                    ></iframe>
+                      src="https://ik.imagekit.io/nkmvdjnna/PAAN/NITRO121.mp4"
+                      controls
+                      playsInline
+                      autoPlay
+                      loop
+                      preload="metadata"
+                    >
+                      Your browser does not support the video tag.
+                    </video>
                   </div>
 
                   {/* Decorative Elements */}
@@ -519,7 +523,7 @@ const HomePage = () => {
               {[1,2,3,4,5,6,7,8,].map((num) => (
                 <div key={num} className="flex items-center justify-center p-4 bg-gray-50 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-200">
                   <Image
-                    src={`/assets/images/certified-members/nitro21/${num}.jpg`}
+                    src={`/assets/images/certified-members/nitro21/${num}.png`}
                     alt={`Client logo ${num}`}
                     width={120}
                     height={60}
@@ -585,7 +589,7 @@ const HomePage = () => {
             <div className="flex justify-center items-center gap-6">
               {/* LinkedIn */}
               <a
-                href="https://www.linkedin.com/company/nitro121/"
+                href="https://www.instagram.com/nitro_121/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group transition-all duration-300 hover:scale-110"
@@ -616,7 +620,7 @@ const HomePage = () => {
               </a>
 
               {/* Facebook */}
-              <a
+              {/* <a
                 href="https://www.facebook.com/141worldwide"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -629,11 +633,11 @@ const HomePage = () => {
                   height="28"
                   className="text-gray-400 group-hover:text-[#1877F2] transition-colors duration-300"
                 />
-              </a>
+              </a> */}
 
               {/* X (Twitter) */}
               <a
-                href="https://x.com/Nitro_121"
+                href="http://x.com/nitro_121"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group transition-all duration-300 hover:scale-110"
@@ -649,7 +653,7 @@ const HomePage = () => {
 
               {/* Website */}
               <a
-                href="#"
+                href="https://nitro121ng.com/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group transition-all duration-300 hover:scale-110"
