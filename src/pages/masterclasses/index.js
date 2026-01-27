@@ -56,9 +56,9 @@ const MasterclassesPage = () => {
       {
         id: 9,
         title: "Agency Positioning That Cuts Through The Noise",
-        date: "January 28th, 2026",
+        date: "February 11th, 2026",
         description: "Learn how to sharpen your agency's positioning so clients understand your value quickly, clearly, and confidently. This session focuses on differentiation, clarity, and how to move away from being seen as \"just another agency.\"",
-        image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/positioning.jpg"
+        image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/agency_positioning_that_cuts_through_the_noise.jpg"
       },
       {
         id: 11,

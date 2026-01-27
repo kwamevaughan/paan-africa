@@ -543,7 +543,7 @@ const MasterclassDetailPage = () => {
       description: "Learn how to sharpen your agency's positioning so clients understand your value quickly, clearly, and confidently. This session focuses on differentiation, clarity, and how to move away from being seen as \"just another agency.\"",
       fullDescription: "\"Creative-led,\" \"customer-focused,\" \"insight-driven\". Clients see these statements daily, yet none explain why an agency is unique or worth a premium price. Stuart Dunk will break down proven frameworks used by agencies across multiple countries to build sharp, differentiated positioning rooted in client value, competitive advantage, and strategic clarity. You'll learn how top-performing agencies craft value propositions that challenge assumptions, stand out in pitch rooms, and attract the right clients.",
       format: "90-minute Interactive Training Course",
-      date: "January 28th, 2026",
+      date: "February 11th, 2026",
       time: "12PM EAT",
       memberPrice: 150,
       memberOriginalPrice: 250,
@@ -552,7 +552,7 @@ const MasterclassDetailPage = () => {
       currency: "USD",
       category: "Business Development",
       level: "Intermediate",
-      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/positioning.jpg",
+      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/masterclasses/agency_positioning_that_cuts_through_the_noise.jpg",
       partnership: "PAAN, in collaboration with agency growth experts",
       instructor: {
         name: "Stuart Dunk",
