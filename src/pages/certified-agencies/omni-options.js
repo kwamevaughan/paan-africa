@@ -341,13 +341,21 @@ const HomePage = () => {
                   animate={{ x: 0, opacity: 1 }}
                   transition={{ duration: 1, type: "spring" }}
                 >
-                  <Image 
-                    src="/assets/images/certified-members/omni_options/logo.avif" 
-                    width={400} 
-                    height={280} 
-                    alt="Omni Options Logo" 
-                    className="mx-auto w-40 sm:w-64 h-24 sm:h-32 object-contain" 
-                  />
+                  <a
+                    href="https://www.omnioptions.co/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-block transition-opacity duration-300 hover:opacity-80"
+                    aria-label="Visit Omni Options website"
+                  >
+                    <Image 
+                      src="/assets/images/certified-members/omni_options/logo.avif" 
+                      width={400} 
+                      height={280} 
+                      alt="Omni Options Logo" 
+                      className="mx-auto w-40 sm:w-64 h-24 sm:h-32 object-contain" 
+                    />
+                  </a>
                 </motion.div>
                 <motion.div
                   initial={{ x: -150, opacity: 0 }}

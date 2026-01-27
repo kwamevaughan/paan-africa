@@ -341,13 +341,21 @@ const HomePage = () => {
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ duration: 1, type: "spring" }}
               >
-                <Image 
-                  src="/assets/images/certified-members/media_seal/logo.png" 
-                  width={400} 
-                  height={280} 
-                  alt="LiftUp Logo" 
-                  className="mx-auto w-40 sm:w-64 h-auto object-contain" 
-                />
+                <a
+                  href="https://mediaseal-ng.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block transition-opacity duration-300 hover:opacity-80"
+                  aria-label="Visit Media Seal website"
+                >
+                  <Image 
+                    src="/assets/images/certified-members/media_seal/logo.png" 
+                    width={400} 
+                    height={280} 
+                    alt="LiftUp Logo" 
+                    className="mx-auto w-40 sm:w-64 h-auto object-contain" 
+                  />
+                </a>
               </motion.div>
               
               {/* Badge Container with both certification and membership level */}

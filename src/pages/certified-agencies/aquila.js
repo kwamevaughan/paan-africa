@@ -341,13 +341,21 @@ const HomePage = () => {
                   animate={{ x: 0, opacity: 1 }}
                   transition={{ duration: 1, type: "spring" }}
                 >
-                  <Image 
-                    src="/assets/images/certified-members/aquila/aquila-logo.svg" 
-                    width={400} 
-                    height={280} 
-                    alt="AQCILLA Logo" 
-                    className="mx-auto w-40 sm:w-64 h-auto object-contain" 
-                  />
+                  <a
+                    href="https://www.aquilaeastafrica.co.ke"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-block transition-opacity duration-300 hover:opacity-80"
+                    aria-label="Visit Aquila East Africa website"
+                  >
+                    <Image 
+                      src="/assets/images/certified-members/aquila/aquila-logo.svg" 
+                      width={400} 
+                      height={280} 
+                      alt="AQCILLA Logo" 
+                      className="mx-auto w-40 sm:w-64 h-auto object-contain" 
+                    />
+                  </a>
                 </motion.div>
                 <motion.div
                   initial={{ x: -150, opacity: 0 }}
