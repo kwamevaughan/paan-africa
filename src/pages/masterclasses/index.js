@@ -33,7 +33,7 @@ const MasterclassesPage = () => {
     title: "Mastering Agency Growth in 2026",
     subtitle: "Positioning. Pricing. Procurement.",
     description: "Agencies are under more pressure than ever. Clients are more cautious, competition is sharper, and margins are harder to protect. Growth today comes from clarity, capability, and commercial discipline that cuts through the competition. This three-part, bi-monthly Masterclass Series with Stuart Dunk is designed to help agency leaders and their teams strengthen the fundamentals that directly impact conversion, retention, revenue, profitability, and long-term sustainability.",
-    dates: ["January 28th", "March 26th", "May 26th"],
+    dates: ["February 11th", "March 26th", "May 26th"],
     time: "12 PM EAT",
     format: "90-minute Interactive Training Course",
     instructor: "Stuart Dunk",
