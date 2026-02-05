@@ -545,7 +545,7 @@ const MasterclassDetailPage = () => {
       format: "90-minute Interactive Training Course",
       date: "February 11th, 2026",
       time: "12PM EAT",
-      memberPrice: 150,
+      memberPrice: 130,
       memberOriginalPrice: 250,
       nonMemberPrice: 170,
       nonMemberOriginalPrice: 320,
