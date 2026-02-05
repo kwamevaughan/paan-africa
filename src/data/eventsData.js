@@ -16,6 +16,8 @@ export const eventsData = {
       status: "upcoming",
       featured: true
     },
+  ],
+  past: [
     {
       id: 12,
       title: "From Data to Decisions: How Agencies Can Turn Insight into Measurable Growth",
@@ -27,13 +29,12 @@ export const eventsData = {
       image: "https://ik.imagekit.io/nkmvdjnna/PAAN/webinars/From-Data-to-Decisions.png",
       category: "Webinar",
       price: "Free for All Members",
-      registrationUrl: "https://tinyurl.com/tr8exd3u",
-      status: "upcoming",
+      registrationUrl: "https://youtu.be/pny8wn-LiNk",
+      status: "past",
       featured: true,
-      speakers: ["Thomas Henderson (WeFuse)", "Yannic Lefang (Kasi Insights)"]
-    }
-  ],
-  past: [
+      attendees: 120,
+      speakers: 3,
+    },
     {
       id: 9,
       title: "Agency Journey to AI: Building Future-Ready Agency Models",
