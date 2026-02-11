@@ -28,7 +28,7 @@ const MemberTiers = () => {
                 Associate<br/>
                 <button
                   className="mt-2 px-4 py-2 bg-paan-red text-white rounded-md shadow hover:bg-paan-blue transition-colors text-sm font-medium"
-                  onClick={() => window.open('https://calendly.com/antony-paan/45min', '_blank')}
+                  onClick={() => window.open('https://calendly.com/antony-paan/30min', '_blank')}
                 >
                   Book a call for pricing
                 </button>
@@ -37,7 +37,7 @@ const MemberTiers = () => {
                 Full<br/>
                 <button
                   className="mt-2 px-4 py-2 bg-paan-dark-blue text-white rounded-md shadow hover:bg-paan-blue transition-colors text-sm font-medium"
-                  onClick={() => window.open('https://calendly.com/antony-paan/45min', '_blank')}
+                  onClick={() => window.open('https://calendly.com/antony-paan/30min', '_blank')}
                 >
                   Book a call for pricing
                 </button>
@@ -46,7 +46,7 @@ const MemberTiers = () => {
                 Gold<br/>
                 <button
                   className="mt-2 px-4 py-2 bg-paan-blue text-white rounded-md shadow hover:bg-paan-red transition-colors text-sm font-medium"
-                  onClick={() => window.open('https://calendly.com/antony-paan/45min', '_blank')}
+                  onClick={() => window.open('https://calendly.com/antony-paan/30min', '_blank')}
                 >
                   Book a call for pricing
                 </button>
