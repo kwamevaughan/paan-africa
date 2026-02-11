@@ -80,7 +80,7 @@ const MasterclassesPage = () => {
     isSeries: true
   };
 
-  // Sample masterclasses data - this would come from your database
+  // Sample masterclasses data - this would come from database
   const masterclassesData = [
     {
       id: 6,
