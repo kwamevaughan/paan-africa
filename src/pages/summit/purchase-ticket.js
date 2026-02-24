@@ -290,6 +290,7 @@ const SummitPage = () => {
     }
   };
 
+  //Where the payment magic is happening
   const handleFinalSubmission = async () => {
     setIsSubmitting(true);
     const toastId = toast.loading("Processing your purchase...");
@@ -431,6 +432,11 @@ const SummitPage = () => {
               // Verify payment and complete the process
               const result = await verifyAndCompletePayment(purchase.id, response.reference);
               
+              if(!result.success){
+                toast.dismiss('payment-verify');
+                toast.error("Payment failed. You can try again!", { id: 'payment-verification-failed'});
+                return;
+              }
               // Send confirmation email
               const paymentCurrency = paymentInfo.method === 'mpesa' ? 'KES' : 'USD';
               await sendPurchaseConfirmationEmail(purchase, purchaser, response.reference, finalAmount, paymentCurrency);

@@ -31,7 +31,7 @@ export default async function handler(req, res) {
       },
     });
 
-    // Format ticket data for email
+    // ticket data for email
     const formatTicketData = (data) => {
       let formatted = '';
       

@@ -112,7 +112,7 @@ export const completePurchase = async (purchaseData) => {
   } = purchaseData;
 
   try {
-    // Start transaction
+    // Start transaction - Store the purchaser in Purchasers table
     const { data: purchaser, error: purchaserError } = await supabase
       .from('purchasers')
       .insert(purchaserInfo)
@@ -164,6 +164,7 @@ export const completePurchase = async (purchaseData) => {
       final_amount: finalAmount
     };
 
+    //Store ticket purchased in ticket_purchases table
     const { data: purchase, error: purchaseError } = await supabase
       .from('ticket_purchases')
       .insert(purchaseRecord)
@@ -231,12 +232,12 @@ export const verifyAndCompletePayment = async (purchaseId, paymentReference) => 
     // Verify payment with Paystack
     const verificationResult = await verifyPayment(paymentReference);
 
-    if (verificationResult.status !== 'success') {
+    if (verificationResult.status !== 'true') {
       throw new Error('Payment verification failed');
     }
 
     // Convert amount from Paystack response
-    // Paystack returns all amounts in the smallest unit (cents)
+    // Paystack returns all amounts in the smallest unit (cents) for example - $290.00 will be returned as 29000
     // So we need to divide by 100 for both USD and KES to get the actual amount
     const currency = verificationResult.data.currency || 'USD';
     const amount = verificationResult.data.amount / 100; // Convert from cents to dollars/shillings
