@@ -63,17 +63,17 @@ export async function generateTicketImage(ticketData) {
 
   // Header text - "PAAN SUMMIT 2026" (positioned to the right of logo)
   ctx.fillStyle = '#FFFFFF';
-  ctx.font = 'bold 48px Arial';
+  ctx.font = '700 48px sans-serif';
   ctx.textAlign = 'left';
   ctx.fillText('PAAN SUMMIT 2026', 230, 60);
 
   // Subtitle
-  ctx.font = '20px Arial';
+  ctx.font = '20px sans-serif';
   ctx.fillText('Africa Borderless Creative Economy Summit', 230, 95);
 
   // Ticket type section
   ctx.fillStyle = '#1A252F';
-  ctx.font = 'bold 36px Arial';
+  ctx.font = '700 36px sans-serif';
   ctx.textAlign = 'left';
   ctx.fillText((ticketData.ticketType || 'GENERAL ADMISSION').toUpperCase(), 60, 190);
 
@@ -83,39 +83,39 @@ export async function generateTicketImage(ticketData) {
   const lineHeight = 35;
 
   ctx.fillStyle = '#2C3E50';
-  ctx.font = 'bold 18px Arial';
+  ctx.font = '700 18px sans-serif';
   
   // Name
   ctx.fillText('Name:', leftX, currentY);
-  ctx.font = '18px Arial';
+  ctx.font = '18px sans-serif';
   ctx.fillText(ticketData.name || 'N/A', leftX + 180, currentY);
   currentY += lineHeight;
 
   // Ticket ID
-  ctx.font = 'bold 18px Arial';
+  ctx.font = '700 18px sans-serif';
   ctx.fillText('Ticket ID:', leftX, currentY);
-  ctx.font = '18px Arial';
+  ctx.font = '18px sans-serif';
   ctx.fillText(ticketData.ticketId || 'N/A', leftX + 180, currentY);
   currentY += lineHeight;
 
   // Registration No
-  ctx.font = 'bold 18px Arial';
+  ctx.font = '700 18px sans-serif';
   ctx.fillText('Registration No:', leftX, currentY);
-  ctx.font = '16px Arial';
+  ctx.font = '16px sans-serif';
   ctx.fillText(ticketData.registrationNo || 'N/A', leftX + 180, currentY);
   currentY += lineHeight;
 
   // Email
-  ctx.font = 'bold 18px Arial';
+  ctx.font = '700 18px sans-serif';
   ctx.fillText('Email:', leftX, currentY);
-  ctx.font = '18px Arial';
+  ctx.font = '18px sans-serif';
   ctx.fillText(ticketData.email || 'N/A', leftX + 180, currentY);
   currentY += lineHeight;
 
   // Issued On
-  ctx.font = 'bold 18px Arial';
+  ctx.font = '700 18px sans-serif';
   ctx.fillText('Issued On:', leftX, currentY);
-  ctx.font = '18px Arial';
+  ctx.font = '18px sans-serif';
   ctx.fillText(ticketData.issuedOn || 'N/A', leftX + 180, currentY);
 
   // Right column - Event details
@@ -123,34 +123,34 @@ export async function generateTicketImage(ticketData) {
   currentY = 270;
 
   // Event Dates
-  ctx.font = 'bold 18px Arial';
+  ctx.font = '700 18px sans-serif';
   ctx.fillText('Event Dates:', rightX, currentY);
-  ctx.font = '18px Arial';
+  ctx.font = '18px sans-serif';
   ctx.fillText('April 21-22, 2026', rightX + 150, currentY);
   currentY += lineHeight;
 
   // City
-  ctx.font = 'bold 18px Arial';
+  ctx.font = '700 18px sans-serif';
   ctx.fillText('City:', rightX, currentY);
-  ctx.font = '18px Arial';
+  ctx.font = '18px sans-serif';
   ctx.fillText('Nairobi, Kenya', rightX + 150, currentY);
   currentY += lineHeight;
 
   // Venue
-  ctx.font = 'bold 18px Arial';
+  ctx.font = '700 18px sans-serif';
   ctx.fillText('Venue:', rightX, currentY);
-  ctx.font = '18px Arial';
+  ctx.font = '18px sans-serif';
   ctx.fillText('TBA', rightX + 150, currentY);
   currentY += lineHeight + 10;
 
   // Powered by text
-  ctx.font = 'italic 14px Arial';
+  ctx.font = 'italic 14px sans-serif';
   ctx.fillStyle = '#555555';
   ctx.fillText('Powered by the Pan African Agency Network (PAAN)', rightX, currentY);
 
   // Footer text
   ctx.fillStyle = '#FFFFFF';
-  ctx.font = '16px Arial';
+  ctx.font = '16px sans-serif';
   ctx.textAlign = 'center';
   ctx.fillText('This Ticket admits one delegate only. You must present a valid ID matching the name on the ticket.', width / 2, 460);
   ctx.fillText('Access level is based on pass type.', width / 2, 485);
