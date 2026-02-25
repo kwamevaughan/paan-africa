@@ -75,7 +75,7 @@ export async function generateTicketImage(ticketData) {
   ctx.fillStyle = '#1A252F';
   ctx.font = 'bold 36px Arial';
   ctx.textAlign = 'left';
-  ctx.fillText(ticketData.ticketType.toUpperCase(), 60, 190);
+  ctx.fillText((ticketData.ticketType || 'GENERAL ADMISSION').toUpperCase(), 60, 190);
 
   // Left column - Attendee details
   const leftX = 60;
@@ -88,7 +88,7 @@ export async function generateTicketImage(ticketData) {
   // Name
   ctx.fillText('Name:', leftX, currentY);
   ctx.font = '18px Arial';
-  ctx.fillText(ticketData.name, leftX + 180, currentY);
+  ctx.fillText(ticketData.name || 'N/A', leftX + 180, currentY);
   currentY += lineHeight;
 
   // Ticket ID
@@ -102,21 +102,21 @@ export async function generateTicketImage(ticketData) {
   ctx.font = 'bold 18px Arial';
   ctx.fillText('Registration No:', leftX, currentY);
   ctx.font = '16px Arial';
-  ctx.fillText(ticketData.registrationNo, leftX + 180, currentY);
+  ctx.fillText(ticketData.registrationNo || 'N/A', leftX + 180, currentY);
   currentY += lineHeight;
 
   // Email
   ctx.font = 'bold 18px Arial';
   ctx.fillText('Email:', leftX, currentY);
   ctx.font = '18px Arial';
-  ctx.fillText(ticketData.email, leftX + 180, currentY);
+  ctx.fillText(ticketData.email || 'N/A', leftX + 180, currentY);
   currentY += lineHeight;
 
   // Issued On
   ctx.font = 'bold 18px Arial';
   ctx.fillText('Issued On:', leftX, currentY);
   ctx.font = '18px Arial';
-  ctx.fillText(ticketData.issuedOn, leftX + 180, currentY);
+  ctx.fillText(ticketData.issuedOn || 'N/A', leftX + 180, currentY);
 
   // Right column - Event details
   const rightX = width / 2 + 30;
@@ -168,9 +168,9 @@ export async function generateTicketImage(ticketData) {
  */
 export function formatTicketData(purchase, attendee, reference) {
   return {
-    name: attendee.name || attendee.full_name,
-    email: attendee.email,
-    ticketType: attendee.ticket_type || 'General Admission',
+    name: attendee.name || attendee.full_name || 'N/A',
+    email: attendee.email || 'N/A',
+    ticketType: attendee.ticket_type || attendee.ticketType || 'General Admission',
     ticketId: attendee.id?.toString() || 'N/A',
     registrationNo: `PAAN_${reference}_${attendee.id || Date.now()}`,
     issuedOn: new Date().toLocaleDateString('en-US', { 

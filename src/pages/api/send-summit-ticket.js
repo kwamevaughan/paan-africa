@@ -1,5 +1,6 @@
 import nodemailer from 'nodemailer';
-import { generateTicketImage, formatTicketData } from '../../lib/ticketGenerator';
+import { generateTicketImage } from '../../lib/ticketGenerator';
+import { generatePDFTicket } from '../../lib/pdfTicketGenerator';
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -50,8 +51,8 @@ export default async function handler(req, res) {
       formatted += 'TICKET INFORMATION\n';
       formatted += '==================\n';
       formatted += `Ticket Type: ${data.ticketType}\n`;
-      formatted += `Price: ${data.currency} ${data.amount.toLocaleString()}\n`;
-      formatted += `Features: ${data.features.join(', ')}\n\n`;
+      formatted += `Price: ${data.currency} ${data.amount ? data.amount.toLocaleString() : 'N/A'}\n`;
+      formatted += `Features: ${data.features ? data.features.join(', ') : 'N/A'}\n\n`;
 
       // Student & Young Creatives Information
       if (data.ticketType === 'student-creatives' && (data.studentId || data.institution || data.graduationYear)) {
@@ -199,7 +200,7 @@ PAAN Summit Team
                 <div class="section">
                     <h3>Ticket Information</h3>
                     <div class="field"><strong>Ticket Type:</strong> ${ticketData.ticketType}</div>
-                    <div class="field"><strong>Price:</strong> ${ticketData.currency} ${ticketData.amount.toLocaleString()}</div>
+                    <div class="field"><strong>Price:</strong> ${ticketData.currency} ${ticketData.amount ? ticketData.amount.toLocaleString() : 'N/A'}</div>
                     <div class="field"><strong>Features:</strong>
                         <ul>
                             ${ticketData.features.map(feature => `<li>${feature}</li>`).join('')}
@@ -297,26 +298,47 @@ PAAN Summit Team
     </html>
     `;
 
-    // Generate ticket image
+    // Generate ticket image (PNG) and PDF
     let ticketImageBuffer = null;
+    let ticketPdfBuffer = null;
+    
     try {
-      const ticketImageData = formatTicketData(
-        { id: reference }, // purchase object
-        {
-          name: ticketData.name,
-          email: ticketData.email,
-          ticket_type: ticketData.ticketType
-        },
-        reference
-      );
-      ticketImageBuffer = await generateTicketImage(ticketImageData);
+      const ticketImageData = {
+        name: ticketData.name,
+        email: ticketData.email,
+        ticketType: ticketData.ticketType,
+        ticketId: reference.substring(0, 10),
+        registrationNo: reference,
+        issuedOn: new Date().toLocaleDateString('en-US', { 
+          year: 'numeric', 
+          month: '2-digit', 
+          day: '2-digit' 
+        })
+      };
+      
+      // Generate both formats in parallel
+      [ticketImageBuffer, ticketPdfBuffer] = await Promise.all([
+        generateTicketImage(ticketImageData),
+        generatePDFTicket(ticketImageData)
+      ]);
     } catch (error) {
-      console.error('Error generating ticket image:', error);
-      // Continue without ticket image if generation fails
+      console.error('Error generating ticket:', error);
+      // Continue without tickets if generation fails
     }
 
     // Prepare attachments
     const attachments = [];
+    
+    // Add PDF ticket (primary)
+    if (ticketPdfBuffer) {
+      attachments.push({
+        filename: `PAAN-Summit-2026-Ticket-${reference}.pdf`,
+        content: ticketPdfBuffer,
+        contentType: 'application/pdf'
+      });
+    }
+    
+    // Add PNG image (secondary/preview)
     if (ticketImageBuffer) {
       attachments.push({
         filename: `PAAN-Summit-2026-Ticket-${reference}.png`,
@@ -353,7 +375,7 @@ Your ticket has been successfully confirmed and your payment of ${paymentData.cu
 Ticket Details:
 - Reference: ${reference}
 - Ticket Type: ${ticketData.ticketType}
-- Price: ${ticketData.currency} ${ticketData.amount.toLocaleString()}
+- Price: ${ticketData.currency} ${ticketData.amount ? ticketData.amount.toLocaleString() : 'N/A'}
 - Purchase Date: ${new Date().toLocaleString()}
 
 Summit Information:
@@ -363,7 +385,7 @@ Summit Information:
 - Venue: TBA (Details will be shared closer to the event)
 
 What's Next:
-1. Your digital ticket is attached to this email
+1. Your digital ticket is attached to this email (PDF and image formats)
 2. Venue details will be shared closer to the event
 3. Check your email for updates and important information
 4. Follow us on social media for the latest updates
@@ -414,7 +436,7 @@ PAAN Summit Team
                   <ul>
                       <li><strong>Reference:</strong> ${reference}</li>
                       <li><strong>Ticket Type:</strong> ${ticketData.ticketType}</li>
-                      <li><strong>Price:</strong> ${ticketData.currency} ${ticketData.amount.toLocaleString()}</li>
+                      <li><strong>Price:</strong> ${ticketData.currency} ${ticketData.amount ? ticketData.amount.toLocaleString() : 'N/A'}</li>
                       <li><strong>Purchase Date:</strong> ${new Date().toLocaleString()}</li>
                   </ul>
 
@@ -430,7 +452,7 @@ PAAN Summit Team
 
                   <h3>What's Next:</h3>
                   <ol>
-                      <li>Your digital ticket is attached to this email</li>
+                      <li>Your digital ticket is attached to this email (PDF and image formats)</li>
                       <li>Venue details will be shared closer to the event</li>
                       <li>Check your email for updates and important information</li>
                       <li>Follow us on social media for the latest updates</li>
@@ -438,7 +460,7 @@ PAAN Summit Team
 
                   <div class="important">
                       <h3>⚠️ Important</h3>
-                      <p>Please bring a <strong>printed or digital copy of your ticket</strong> and a <strong>valid ID</strong> to the event.</p>
+                      <p>Please bring a <strong>printed or digital copy of your ticket (PDF recommended)</strong> and a <strong>valid ID</strong> to the event.</p>
                   </div>
 
                   <p>If you have any questions, please contact us at <a href="mailto:secretariat@paan.africa">secretariat@paan.africa</a>.</p>

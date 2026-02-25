@@ -12,6 +12,7 @@ export default function TestTicketPage() {
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState(null);
   const [ticketImage, setTicketImage] = useState(null);
+  const [ticketPdf, setTicketPdf] = useState(null);
 
   const ticketTypes = [
     'General Admission',
@@ -34,6 +35,7 @@ export default function TestTicketPage() {
     setLoading(true);
     setResult(null);
     setTicketImage(null);
+    setTicketPdf(null);
 
     try {
       // Generate ticket data
@@ -50,8 +52,8 @@ export default function TestTicketPage() {
         })
       };
 
-      // Generate ticket image
-      const response = await fetch('/api/generate-ticket', {
+      // Generate ticket image (PNG)
+      const imageResponse = await fetch('/api/generate-ticket', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -59,18 +61,33 @@ export default function TestTicketPage() {
         body: JSON.stringify({ ticketData })
       });
 
-      if (!response.ok) {
-        throw new Error('Failed to generate ticket');
+      if (!imageResponse.ok) {
+        throw new Error('Failed to generate ticket image');
       }
 
       // Convert response to blob and create object URL
-      const blob = await response.blob();
-      const imageUrl = URL.createObjectURL(blob);
+      const imageBlob = await imageResponse.blob();
+      const imageUrl = URL.createObjectURL(imageBlob);
       setTicketImage(imageUrl);
+
+      // Generate PDF ticket
+      const pdfResponse = await fetch('/api/generate-pdf-ticket', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ ticketData })
+      });
+
+      if (pdfResponse.ok) {
+        const pdfBlob = await pdfResponse.blob();
+        const pdfUrl = URL.createObjectURL(pdfBlob);
+        setTicketPdf(pdfUrl);
+      }
 
       setResult({
         success: true,
-        message: 'Ticket generated successfully!',
+        message: 'Tickets generated successfully!',
         ticketData
       });
 
@@ -153,11 +170,14 @@ export default function TestTicketPage() {
     }
   };
 
-  const handleDownloadTicket = () => {
-    if (ticketImage) {
+  const handleDownloadTicket = (format = 'png') => {
+    const url = format === 'pdf' ? ticketPdf : ticketImage;
+    const extension = format === 'pdf' ? 'pdf' : 'png';
+    
+    if (url) {
       const link = document.createElement('a');
-      link.href = ticketImage;
-      link.download = `PAAN-Summit-Ticket-${formData.name.replace(/\s+/g, '-')}.png`;
+      link.href = url;
+      link.download = `PAAN-Summit-Ticket-${formData.name.replace(/\s+/g, '-')}.${extension}`;
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
@@ -264,9 +284,12 @@ export default function TestTicketPage() {
                     <div className="text-sm text-blue-700">
                       <p className="font-semibold mb-1">Testing Options:</p>
                       <ul className="list-disc list-inside space-y-1">
-                        <li><strong>Generate Ticket Image:</strong> Creates and displays the ticket (no email sent)</li>
-                        <li><strong>Send Test Email:</strong> Generates ticket and sends it to the email address above</li>
+                        <li><strong>Generate Ticket Image:</strong> Creates PNG ticket (no email sent)</li>
+                        <li><strong>Send Test Email:</strong> Generates PDF + PNG tickets and sends to email</li>
                       </ul>
+                      <p className="mt-2 text-xs">
+                        📄 Email will include both PDF (professional) and PNG (mobile-friendly) formats
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -313,15 +336,28 @@ export default function TestTicketPage() {
                 <div className="mt-8">
                   <div className="flex items-center justify-between mb-4">
                     <h2 className="text-xl font-bold text-gray-800">Generated Ticket Preview</h2>
-                    <button
-                      onClick={handleDownloadTicket}
-                      className="bg-green-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-green-700 transition-colors flex items-center gap-2"
-                    >
-                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                      </svg>
-                      Download
-                    </button>
+                    <div className="flex gap-2">
+                      <button
+                        onClick={() => handleDownloadTicket('png')}
+                        className="bg-green-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-green-700 transition-colors flex items-center gap-2"
+                      >
+                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                        </svg>
+                        PNG
+                      </button>
+                      {ticketPdf && (
+                        <button
+                          onClick={() => handleDownloadTicket('pdf')}
+                          className="bg-red-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-red-700 transition-colors flex items-center gap-2"
+                        >
+                          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                          </svg>
+                          PDF
+                        </button>
+                      )}
+                    </div>
                   </div>
                   <div className="border-2 border-gray-200 rounded-lg overflow-hidden">
                     <img 
@@ -330,6 +366,13 @@ export default function TestTicketPage() {
                       className="w-full h-auto"
                     />
                   </div>
+                  {ticketPdf && (
+                    <div className="mt-4 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+                      <p className="text-sm text-blue-700">
+                        📄 <strong>PDF version available!</strong> The PDF includes the ticket image above plus additional event information and terms & conditions on page 2.
+                      </p>
+                    </div>
+                  )}
                 </div>
               )}
             </div>
