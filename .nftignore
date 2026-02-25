@@ -1,6 +1,0 @@
-# Tell Next.js File Tracing to ignore these large directories
-# They're not needed in serverless functions
-public/assets/images/**
-public/assets/videos/**
-public/assets/documents/**
-

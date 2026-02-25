@@ -162,11 +162,12 @@ const withBundleAnalyzer = initializeBundleAnalyzer({
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: "standalone", // Keeps the build output as standalone (recommended for deployment)
+  // Don't use standalone output - it causes issues with static assets
+  // output: "standalone",
   devIndicators: {
     buildActivity: false,
     buildActivityPosition: 'bottom-right',
-  }, // Disables the development indicators, including the Next.js logo
+  },
   images: {
     remotePatterns: [
       {
@@ -190,15 +191,19 @@ const nextConfig = {
   },
   reactStrictMode: true,
   experimental: {
-    // ... existing experimental options ...
+    // Optimize serverless function size by excluding large directories
+    outputFileTracingExcludes: {
+      '*': [
+        'node_modules/@swc/core-linux-x64-gnu',
+        'node_modules/@swc/core-linux-x64-musl',
+        'node_modules/@esbuild/linux-x64',
+      ],
+    },
   },
-  // Add empty turbopack config to silence the warning
   turbopack: {},
   
-  // Webpack configuration for @napi-rs/canvas
   webpack: (config, { isServer }) => {
     if (isServer) {
-      // Mark @napi-rs/canvas as external for server-side
       config.externals = config.externals || [];
       config.externals.push({
         '@napi-rs/canvas': 'commonjs @napi-rs/canvas'
