@@ -193,10 +193,11 @@ const nextConfig = {
   experimental: {
     // Optimize serverless function size by excluding large directories
     outputFileTracingExcludes: {
-      '*': [
-        'node_modules/@swc/core-linux-x64-gnu',
-        'node_modules/@swc/core-linux-x64-musl',
-        'node_modules/@esbuild/linux-x64',
+      // Exclude large public assets from ALL API routes
+      '/api/**': [
+        './public/assets/images/**',
+        './public/assets/videos/**',
+        './public/assets/documents/**',
       ],
     },
   },
