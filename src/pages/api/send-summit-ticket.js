@@ -1,4 +1,5 @@
 import nodemailer from 'nodemailer';
+import { generateTicketImage, formatTicketData } from '../../lib/ticketGenerator';
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -296,6 +297,34 @@ PAAN Summit Team
     </html>
     `;
 
+    // Generate ticket image
+    let ticketImageBuffer = null;
+    try {
+      const ticketImageData = formatTicketData(
+        { id: reference }, // purchase object
+        {
+          name: ticketData.name,
+          email: ticketData.email,
+          ticket_type: ticketData.ticketType
+        },
+        reference
+      );
+      ticketImageBuffer = await generateTicketImage(ticketImageData);
+    } catch (error) {
+      console.error('Error generating ticket image:', error);
+      // Continue without ticket image if generation fails
+    }
+
+    // Prepare attachments
+    const attachments = [];
+    if (ticketImageBuffer) {
+      attachments.push({
+        filename: `PAAN-Summit-2026-Ticket-${reference}.png`,
+        content: ticketImageBuffer,
+        contentType: 'image/png'
+      });
+    }
+
     // Send email to secretariat
     const mailOptions = {
       from: process.env.SMTP_FROM || process.env.SMTP_EMAIL,
@@ -304,6 +333,7 @@ PAAN Summit Team
       subject: emailSubject,
       text: emailText,
       html: emailHtml,
+      attachments: attachments
     };
 
     await transporter.sendMail(mailOptions);
@@ -333,10 +363,12 @@ Summit Information:
 - Venue: TBA (Details will be shared closer to the event)
 
 What's Next:
-1. You'll receive your digital ticket via email shortly
+1. Your digital ticket is attached to this email
 2. Venue details will be shared closer to the event
 3. Check your email for updates and important information
 4. Follow us on social media for the latest updates
+
+IMPORTANT: Please bring a printed or digital copy of your ticket and a valid ID to the event.
 
 If you have any questions, please contact us at secretariat@paan.africa.
 
@@ -358,6 +390,7 @@ PAAN Summit Team
               .content { background: #f9f9f9; padding: 20px; }
               .highlight { background: #e8f5e8; padding: 15px; border-left: 4px solid #4CAF50; margin: 20px 0; }
               .summit-info { background: #e3f2fd; padding: 15px; border-left: 4px solid #2196F3; margin: 20px 0; }
+              .important { background: #fff3cd; padding: 15px; border-left: 4px solid #ffc107; margin: 20px 0; }
               .footer { text-align: center; margin-top: 20px; color: #666; }
           </style>
       </head>
@@ -397,11 +430,16 @@ PAAN Summit Team
 
                   <h3>What's Next:</h3>
                   <ol>
-                      <li>You'll receive your digital ticket via email shortly</li>
+                      <li>Your digital ticket is attached to this email</li>
                       <li>Venue details will be shared closer to the event</li>
                       <li>Check your email for updates and important information</li>
                       <li>Follow us on social media for the latest updates</li>
                   </ol>
+
+                  <div class="important">
+                      <h3>⚠️ Important</h3>
+                      <p>Please bring a <strong>printed or digital copy of your ticket</strong> and a <strong>valid ID</strong> to the event.</p>
+                  </div>
 
                   <p>If you have any questions, please contact us at <a href="mailto:secretariat@paan.africa">secretariat@paan.africa</a>.</p>
                   
@@ -414,7 +452,8 @@ PAAN Summit Team
           </div>
       </body>
       </html>
-      `
+      `,
+      attachments: attachments
     };
 
     await transporter.sendMail(confirmationEmailOptions);
