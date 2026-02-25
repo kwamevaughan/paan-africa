@@ -1,0 +1,13 @@
+# *
+User-agent: *
+Allow: /
+Disallow: /thank-you
+Disallow: /pricing
+Disallow: /api/*
+
+# Host
+Host: https://paan.africa
+
+# Sitemaps
+Sitemap: https://paan.africa/sitemap-static.xml
+Sitemap: https://paan.africa/sitemap-blogs.xml

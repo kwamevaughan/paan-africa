@@ -369,7 +369,7 @@ export default function TestTicketPage() {
                   {ticketPdf && (
                     <div className="mt-4 p-4 bg-blue-50 border border-blue-200 rounded-lg">
                       <p className="text-sm text-blue-700">
-                        📄 <strong>PDF version available!</strong> The PDF includes the ticket image above plus additional event information and terms & conditions on page 2.
+                        📄 <strong>PDF version available!</strong> The PDF contains the exact ticket design above in a print-ready format.
                       </p>
                     </div>
                   )}

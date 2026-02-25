@@ -192,6 +192,8 @@ const nextConfig = {
   experimental: {
     // ... existing experimental options ...
   },
+  // Add empty turbopack config to silence the warning
+  turbopack: {},
 
   async redirects() {
     return [
