@@ -156,7 +156,9 @@ export async function generateTicketImage(ticketData) {
   ctx.fillText('Access level is based on pass type.', width / 2, 485);
 
   // Return the image as a buffer
-  return canvas.toBuffer('image/png');
+  // @napi-rs/canvas returns a Promise<Buffer> for toBuffer
+  const buffer = await canvas.encode('png');
+  return buffer;
 }
 
 /**

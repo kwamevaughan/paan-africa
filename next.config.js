@@ -194,6 +194,18 @@ const nextConfig = {
   },
   // Add empty turbopack config to silence the warning
   turbopack: {},
+  
+  // Webpack configuration for @napi-rs/canvas
+  webpack: (config, { isServer }) => {
+    if (isServer) {
+      // Mark @napi-rs/canvas as external for server-side
+      config.externals = config.externals || [];
+      config.externals.push({
+        '@napi-rs/canvas': 'commonjs @napi-rs/canvas'
+      });
+    }
+    return config;
+  },
 
   async redirects() {
     return [

@@ -15,22 +15,37 @@ export default async function handler(req, res) {
       });
     }
 
+    console.log('Generating ticket for:', ticketData);
+
     // Generate the ticket image
     const imageBuffer = await generateTicketImage(ticketData);
 
+    console.log('Image buffer generated, size:', imageBuffer?.length || 0);
+    console.log('Is Buffer:', Buffer.isBuffer(imageBuffer));
+
+    if (!imageBuffer || imageBuffer.length === 0) {
+      throw new Error('Generated image buffer is empty');
+    }
+
+    // Ensure it's a proper Node.js Buffer
+    const buffer = Buffer.isBuffer(imageBuffer) ? imageBuffer : Buffer.from(imageBuffer);
+
     // Set response headers for image
     res.setHeader('Content-Type', 'image/png');
-    res.setHeader('Content-Disposition', `attachment; filename="paan-summit-ticket-${ticketData.ticketId}.png"`);
+    res.setHeader('Content-Length', buffer.length);
+    res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
     
     // Send the image buffer
-    res.status(200).send(imageBuffer);
+    return res.status(200).end(buffer);
 
   } catch (error) {
     console.error('Error generating ticket:', error);
-    res.status(500).json({
+    console.error('Error stack:', error.stack);
+    return res.status(500).json({
       success: false,
       message: 'Failed to generate ticket image',
-      error: error.message
+      error: error.message,
+      stack: process.env.NODE_ENV === 'development' ? error.stack : undefined
     });
   }
 }
