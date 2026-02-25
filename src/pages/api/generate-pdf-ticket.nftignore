@@ -2,3 +2,6 @@
 ../../../public/assets/images/**
 ../../../public/assets/videos/**
 ../../../public/assets/documents/**
+
+# But DO include the summit logo
+!../../../public/assets/images/summit-logo-white.png
