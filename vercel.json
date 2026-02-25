@@ -1,0 +1,11 @@
+{
+  "functions": {
+    "src/pages/api/**/*.js": {
+      "memory": 1024,
+      "maxDuration": 10
+    }
+  },
+  "env": {
+    "FONTCONFIG_PATH": "/tmp"
+  }
+}
