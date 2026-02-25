@@ -123,8 +123,11 @@ export async function generateTicketImage(ticketData) {
 
   // Load and draw logo
   try {
-    const logoPath = path.join(process.cwd(), 'public', 'assets', 'images', 'summit-logo-white.png');
-    const logo = await loadImage(logoPath);
+    // Use CDN URL for logo (avoids file bundling issues in serverless)
+    const logoUrl = 'https://ik.imagekit.io/nkmvdjnna/PAAN/summit/summit-logo-white.svg';
+    console.log('Loading logo from CDN:', logoUrl);
+    
+    const logo = await loadImage(logoUrl);
     
     // Draw logo on the left side of the header
     const logoWidth = 150;

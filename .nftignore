@@ -4,6 +4,3 @@ public/assets/images/**
 public/assets/videos/**
 public/assets/documents/**
 
-# But DO include the summit logo (needed for ticket generation)
-!public/assets/images/summit-logo-white.png
-
