@@ -23,8 +23,6 @@ export async function generatePDFTicket(ticketData) {
     const { generateTicketImage } = await import('./ticketGenerator.js');
     const ticketImageBuffer = await generateTicketImage(ticketData);
     
-    console.log('PDF: Ticket image buffer size:', ticketImageBuffer?.length || 0);
-    
     if (!ticketImageBuffer || ticketImageBuffer.length === 0) {
       throw new Error('Ticket image buffer is empty');
     }

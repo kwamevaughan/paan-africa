@@ -15,13 +15,8 @@ export default async function handler(req, res) {
       });
     }
 
-    console.log('Generating ticket for:', ticketData);
-
     // Generate the ticket image
     const imageBuffer = await generateTicketImage(ticketData);
-
-    console.log('Image buffer generated, size:', imageBuffer?.length || 0);
-    console.log('Is Buffer:', Buffer.isBuffer(imageBuffer));
 
     if (!imageBuffer || imageBuffer.length === 0) {
       throw new Error('Generated image buffer is empty');
@@ -40,12 +35,10 @@ export default async function handler(req, res) {
 
   } catch (error) {
     console.error('Error generating ticket:', error);
-    console.error('Error stack:', error.stack);
     return res.status(500).json({
       success: false,
       message: 'Failed to generate ticket image',
-      error: error.message,
-      stack: process.env.NODE_ENV === 'development' ? error.stack : undefined
+      error: error.message
     });
   }
 }

@@ -9,64 +9,29 @@ let fontsAvailable = false;
 function registerFonts() {
   if (fontsRegistered) return fontsAvailable;
   
-  fontsRegistered = true; // Mark as attempted
+  fontsRegistered = true;
   
   try {
-    console.log('=== FONT REGISTRATION DEBUG ===');
-    console.log('process.cwd():', process.cwd());
-    console.log('__dirname:', typeof __dirname !== 'undefined' ? __dirname : 'undefined');
-    
-    // Only try public/fonts directory (accessible in both dev and production)
     const fontDir = path.join(process.cwd(), 'public', 'fonts');
-    
-    console.log('Font directory path:', fontDir);
-    console.log('Directory exists:', fs.existsSync(fontDir));
-    
-    if (fs.existsSync(fontDir)) {
-      const files = fs.readdirSync(fontDir);
-      console.log('Files in font directory:', files);
-    }
     
     if (!fs.existsSync(fontDir)) {
       console.warn('⚠ Font directory not found, using fallback rendering');
-      
-      // Try to list what's in public
-      const publicDir = path.join(process.cwd(), 'public');
-      if (fs.existsSync(publicDir)) {
-        console.log('Public directory contents:', fs.readdirSync(publicDir).slice(0, 10));
-      }
-      
       return false;
     }
     
-    // Register Helvetica (TTC file contains multiple fonts)
     const helveticaPath = path.join(fontDir, 'Helvetica.ttc');
-    console.log('Checking Helvetica font:', helveticaPath);
-    console.log('Helvetica font exists:', fs.existsSync(helveticaPath));
     
     if (fs.existsSync(helveticaPath)) {
-      // Register the TTC file - it contains regular, bold, etc.
       GlobalFonts.registerFromPath(helveticaPath, 'Helvetica');
-      console.log('✓ Helvetica registered');
+      console.log('✓ Helvetica font registered');
       fontsAvailable = true;
     } else {
-      console.error('❌ Helvetica.ttc not found');
+      console.warn('⚠ Helvetica.ttc not found');
     }
-    
-    if (fontsAvailable) {
-      console.log('✓ Fonts registered successfully');
-      console.log('Available font families:', GlobalFonts.families);
-    } else {
-      console.warn('⚠ No fonts were registered');
-    }
-    
-    console.log('=== END FONT REGISTRATION DEBUG ===');
     
     return fontsAvailable;
   } catch (error) {
     console.error('❌ Error registering fonts:', error.message);
-    console.error('Stack:', error.stack);
-    console.warn('⚠ Continuing without custom fonts');
     return false;
   }
 }
@@ -87,8 +52,6 @@ export async function generateTicketImage(ticketData) {
   const hasFonts = registerFonts();
   const fontFamily = hasFonts ? 'Helvetica' : 'sans-serif';
   const fontFamilyBold = hasFonts ? 'Helvetica' : 'sans-serif';
-  
-  console.log('Using font family:', fontFamily);
   
   // Canvas dimensions (matching the design aspect ratio)
   const width = 1024;
@@ -125,8 +88,6 @@ export async function generateTicketImage(ticketData) {
   try {
     // Use CDN URL for logo (avoids file bundling issues in serverless)
     const logoUrl = 'https://ik.imagekit.io/nkmvdjnna/PAAN/summit/summit-logo-white.svg';
-    console.log('Loading logo from CDN:', logoUrl);
-    
     const logo = await loadImage(logoUrl);
     
     // Draw logo on the left side of the header
