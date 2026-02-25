@@ -1,3 +1,5 @@
-# Don't ignore font files - they need to be deployed
-!src/lib/fonts/*.ttf
-!public/fonts/*.ttf
+# Exclude large assets from serverless functions
+# These are served statically and don't need to be in function bundles
+public/assets/images/**
+public/assets/videos/**
+public/assets/documents/**

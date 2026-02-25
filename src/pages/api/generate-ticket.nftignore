@@ -1,0 +1,4 @@
+# Ignore large assets for this specific API route
+../../../public/assets/images/**
+../../../public/assets/videos/**
+../../../public/assets/documents/**

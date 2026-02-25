@@ -1,4 +1,6 @@
-# Ensure font files are NOT ignored by Next.js File Tracing
-# The ! prefix means "do not ignore"
-!public/fonts/**
-!public/fonts/*.ttf
+# Tell Next.js File Tracing to ignore these large directories
+# They're not needed in serverless functions
+public/assets/images/**
+public/assets/videos/**
+public/assets/documents/**
+
