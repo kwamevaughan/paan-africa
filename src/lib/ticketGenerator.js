@@ -4,61 +4,54 @@ import fs from 'fs';
 
 // Register fonts once
 let fontsRegistered = false;
+let fontsAvailable = false;
 
 function registerFonts() {
-  if (fontsRegistered) return;
+  if (fontsRegistered) return fontsAvailable;
+  
+  fontsRegistered = true; // Mark as attempted
   
   try {
-    // Try multiple possible font locations
-    const possiblePaths = [
-      // Development: relative to this file
-      path.join(__dirname, 'fonts'),
-      // Production: relative to process.cwd()
-      path.join(process.cwd(), 'src', 'lib', 'fonts'),
-      // Vercel serverless: relative to function root
-      path.join(process.cwd(), '.next', 'server', 'chunks', 'fonts'),
-      // Alternative: from public folder
-      path.join(process.cwd(), 'public', 'fonts'),
-    ];
+    // Only try public/fonts directory (accessible in both dev and production)
+    const fontDir = path.join(process.cwd(), 'public', 'fonts');
     
-    let fontDir = null;
-    for (const dir of possiblePaths) {
-      if (fs.existsSync(dir)) {
-        fontDir = dir;
-        console.log('✓ Found font directory:', dir);
-        break;
-      }
-    }
+    console.log('Checking font directory:', fontDir);
+    console.log('Directory exists:', fs.existsSync(fontDir));
     
-    if (!fontDir) {
-      throw new Error('Font directory not found in any expected location');
+    if (!fs.existsSync(fontDir)) {
+      console.warn('⚠ Font directory not found, using fallback rendering');
+      return false;
     }
     
     // Register Inter Regular
     const regularPath = path.join(fontDir, 'Inter-Regular.ttf');
     if (fs.existsSync(regularPath)) {
       GlobalFonts.registerFromPath(regularPath, 'Inter');
-      console.log('✓ Inter Regular registered from:', regularPath);
+      console.log('✓ Inter Regular registered');
+      fontsAvailable = true;
     } else {
-      console.error('Inter-Regular.ttf not found at:', regularPath);
+      console.error('Inter-Regular.ttf not found');
     }
     
     // Register Inter Bold
     const boldPath = path.join(fontDir, 'Inter-Bold.ttf');
     if (fs.existsSync(boldPath)) {
       GlobalFonts.registerFromPath(boldPath, 'Inter-Bold');
-      console.log('✓ Inter Bold registered from:', boldPath);
+      console.log('✓ Inter Bold registered');
     } else {
-      console.error('Inter-Bold.ttf not found at:', boldPath);
+      console.error('Inter-Bold.ttf not found');
     }
     
-    console.log('✓ Font registration complete');
-    console.log('Available fonts:', GlobalFonts.families);
-    fontsRegistered = true;
+    if (fontsAvailable) {
+      console.log('✓ Fonts registered successfully');
+      console.log('Available font families:', GlobalFonts.families);
+    }
+    
+    return fontsAvailable;
   } catch (error) {
     console.error('Error registering fonts:', error.message);
-    console.error('Stack:', error.stack);
-    console.error('⚠ Text may not render correctly without fonts');
+    console.warn('⚠ Continuing without custom fonts');
+    return false;
   }
 }
 
@@ -75,7 +68,11 @@ function registerFonts() {
  */
 export async function generateTicketImage(ticketData) {
   // Register fonts before generating
-  registerFonts();
+  const hasFonts = registerFonts();
+  const fontFamily = hasFonts ? 'Inter' : 'sans-serif';
+  const fontFamilyBold = hasFonts ? 'Inter-Bold' : 'sans-serif';
+  
+  console.log('Using font family:', fontFamily);
   
   // Canvas dimensions (matching the design aspect ratio)
   const width = 1024;
@@ -127,18 +124,18 @@ export async function generateTicketImage(ticketData) {
 
   // Header text - "PAAN SUMMIT 2026" (positioned to the right of logo)
   ctx.fillStyle = '#FFFFFF';
-  ctx.font = '48px Inter-Bold';
+  ctx.font = `48px ${fontFamilyBold}`;
   ctx.textAlign = 'left';
   ctx.textBaseline = 'alphabetic';
   ctx.fillText('PAAN SUMMIT 2026', 230, 80);
 
   // Subtitle
-  ctx.font = '20px Inter';
+  ctx.font = `20px ${fontFamily}`;
   ctx.fillText('Africa Borderless Creative Economy Summit', 230, 110);
 
   // Ticket type section
   ctx.fillStyle = '#1A252F';
-  ctx.font = '36px Inter-Bold';
+  ctx.font = `36px ${fontFamilyBold}`;
   ctx.textAlign = 'left';
   ctx.fillText((ticketData.ticketType || 'GENERAL ADMISSION').toUpperCase(), 60, 190);
 
@@ -148,39 +145,39 @@ export async function generateTicketImage(ticketData) {
   const lineHeight = 35;
 
   ctx.fillStyle = '#2C3E50';
-  ctx.font = '18px Inter-Bold';
+  ctx.font = `18px ${fontFamilyBold}`;
   
   // Name
   ctx.fillText('Name:', leftX, currentY);
-  ctx.font = '18px Inter';
+  ctx.font = `18px ${fontFamily}`;
   ctx.fillText(ticketData.name || 'N/A', leftX + 180, currentY);
   currentY += lineHeight;
 
   // Ticket ID
-  ctx.font = '18px Inter-Bold';
+  ctx.font = `18px ${fontFamilyBold}`;
   ctx.fillText('Ticket ID:', leftX, currentY);
-  ctx.font = '18px Inter';
+  ctx.font = `18px ${fontFamily}`;
   ctx.fillText(ticketData.ticketId || 'N/A', leftX + 180, currentY);
   currentY += lineHeight;
 
   // Registration No
-  ctx.font = '18px Inter-Bold';
+  ctx.font = `18px ${fontFamilyBold}`;
   ctx.fillText('Registration No:', leftX, currentY);
-  ctx.font = '16px Inter';
+  ctx.font = `16px ${fontFamily}`;
   ctx.fillText(ticketData.registrationNo || 'N/A', leftX + 180, currentY);
   currentY += lineHeight;
 
   // Email
-  ctx.font = '18px Inter-Bold';
+  ctx.font = `18px ${fontFamilyBold}`;
   ctx.fillText('Email:', leftX, currentY);
-  ctx.font = '18px Inter';
+  ctx.font = `18px ${fontFamily}`;
   ctx.fillText(ticketData.email || 'N/A', leftX + 180, currentY);
   currentY += lineHeight;
 
   // Issued On
-  ctx.font = '18px Inter-Bold';
+  ctx.font = `18px ${fontFamilyBold}`;
   ctx.fillText('Issued On:', leftX, currentY);
-  ctx.font = '18px Inter';
+  ctx.font = `18px ${fontFamily}`;
   ctx.fillText(ticketData.issuedOn || 'N/A', leftX + 180, currentY);
 
   // Right column - Event details
@@ -188,34 +185,34 @@ export async function generateTicketImage(ticketData) {
   currentY = 270;
 
   // Event Dates
-  ctx.font = '18px Inter-Bold';
+  ctx.font = `18px ${fontFamilyBold}`;
   ctx.fillText('Event Dates:', rightX, currentY);
-  ctx.font = '18px Inter';
+  ctx.font = `18px ${fontFamily}`;
   ctx.fillText('April 21-22, 2026', rightX + 150, currentY);
   currentY += lineHeight;
 
   // City
-  ctx.font = '18px Inter-Bold';
+  ctx.font = `18px ${fontFamilyBold}`;
   ctx.fillText('City:', rightX, currentY);
-  ctx.font = '18px Inter';
+  ctx.font = `18px ${fontFamily}`;
   ctx.fillText('Nairobi, Kenya', rightX + 150, currentY);
   currentY += lineHeight;
 
   // Venue
-  ctx.font = '18px Inter-Bold';
+  ctx.font = `18px ${fontFamilyBold}`;
   ctx.fillText('Venue:', rightX, currentY);
-  ctx.font = '18px Inter';
+  ctx.font = `18px ${fontFamily}`;
   ctx.fillText('TBA', rightX + 150, currentY);
   currentY += lineHeight + 10;
 
   // Powered by text
-  ctx.font = '14px Inter';
+  ctx.font = `14px ${fontFamily}`;
   ctx.fillStyle = '#555555';
   ctx.fillText('Powered by the Pan African Agency Network (PAAN)', rightX, currentY);
 
   // Footer text
   ctx.fillStyle = '#FFFFFF';
-  ctx.font = '16px Inter';
+  ctx.font = `16px ${fontFamily}`;
   ctx.textAlign = 'center';
   ctx.fillText('This Ticket admits one delegate only. You must present a valid ID matching the name on the ticket.', width / 2, 460);
   ctx.fillText('Access level is based on pass type.', width / 2, 485);
