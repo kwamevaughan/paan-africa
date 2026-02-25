@@ -190,7 +190,11 @@ const nextConfig = {
   },
   reactStrictMode: true,
   experimental: {
-    // ... existing experimental options ...
+    // Ensure fonts are included in serverless functions
+    outputFileTracingIncludes: {
+      '/api/generate-ticket': ['./src/lib/fonts/**/*'],
+      '/api/generate-pdf-ticket': ['./src/lib/fonts/**/*'],
+    },
   },
   // Add empty turbopack config to silence the warning
   turbopack: {},

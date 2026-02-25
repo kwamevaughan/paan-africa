@@ -1,6 +1,6 @@
 import { createCanvas, loadImage, GlobalFonts } from '@napi-rs/canvas';
 import path from 'path';
-import { fileURLToPath } from 'url';
+import fs from 'fs';
 
 // Register fonts once
 let fontsRegistered = false;
@@ -9,21 +9,56 @@ function registerFonts() {
   if (fontsRegistered) return;
   
   try {
-    const fontDir = path.join(process.cwd(), 'public', 'fonts');
+    // Try multiple possible font locations
+    const possiblePaths = [
+      // Development: relative to this file
+      path.join(__dirname, 'fonts'),
+      // Production: relative to process.cwd()
+      path.join(process.cwd(), 'src', 'lib', 'fonts'),
+      // Vercel serverless: relative to function root
+      path.join(process.cwd(), '.next', 'server', 'chunks', 'fonts'),
+      // Alternative: from public folder
+      path.join(process.cwd(), 'public', 'fonts'),
+    ];
+    
+    let fontDir = null;
+    for (const dir of possiblePaths) {
+      if (fs.existsSync(dir)) {
+        fontDir = dir;
+        console.log('✓ Found font directory:', dir);
+        break;
+      }
+    }
+    
+    if (!fontDir) {
+      throw new Error('Font directory not found in any expected location');
+    }
     
     // Register Inter Regular
     const regularPath = path.join(fontDir, 'Inter-Regular.ttf');
-    GlobalFonts.registerFromPath(regularPath, 'Inter');
+    if (fs.existsSync(regularPath)) {
+      GlobalFonts.registerFromPath(regularPath, 'Inter');
+      console.log('✓ Inter Regular registered from:', regularPath);
+    } else {
+      console.error('Inter-Regular.ttf not found at:', regularPath);
+    }
     
     // Register Inter Bold
     const boldPath = path.join(fontDir, 'Inter-Bold.ttf');
-    GlobalFonts.registerFromPath(boldPath, 'Inter-Bold');
+    if (fs.existsSync(boldPath)) {
+      GlobalFonts.registerFromPath(boldPath, 'Inter-Bold');
+      console.log('✓ Inter Bold registered from:', boldPath);
+    } else {
+      console.error('Inter-Bold.ttf not found at:', boldPath);
+    }
     
-    console.log('✓ Fonts registered successfully');
+    console.log('✓ Font registration complete');
+    console.log('Available fonts:', GlobalFonts.families);
     fontsRegistered = true;
   } catch (error) {
     console.error('Error registering fonts:', error.message);
-    console.log('Falling back to system fonts');
+    console.error('Stack:', error.stack);
+    console.error('⚠ Text may not render correctly without fonts');
   }
 }
 

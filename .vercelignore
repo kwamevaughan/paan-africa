@@ -1,0 +1,3 @@
+# Don't ignore font files - they need to be deployed
+!src/lib/fonts/*.ttf
+!public/fonts/*.ttf
