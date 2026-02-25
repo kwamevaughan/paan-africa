@@ -186,13 +186,12 @@ const nextConfig = {
         hostname: 'drive.google.com',
       },
     ],
+    qualities: [100, 75],
   },
   reactStrictMode: true,
   experimental: {
     // ... existing experimental options ...
   },
-  // Turbopack configuration for Next.js 16
-  turbopack: {},
 
   async redirects() {
     return [
