@@ -1,0 +1,4 @@
+# Ensure font files are NOT ignored by Next.js File Tracing
+# The ! prefix means "do not ignore"
+!public/fonts/**
+!public/fonts/*.ttf
