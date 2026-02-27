@@ -232,7 +232,7 @@ export const verifyAndCompletePayment = async (purchaseId, paymentReference) => 
     // Verify payment with Paystack
     const verificationResult = await verifyPayment(paymentReference);
 
-    if (verificationResult.status !== 'true') {
+    if (!verificationResult.status || verificationResult.data.status !== 'success') {
       throw new Error('Payment verification failed');
     }
 
