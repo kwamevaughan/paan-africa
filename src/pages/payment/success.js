@@ -42,10 +42,11 @@ const PaymentSuccessPage = () => {
           title: 'Summit Ticket Purchase Successful',
           message: 'Your PAAN Summit 2026 ticket has been confirmed and payment processed successfully.',
           nextSteps: [
-            'Check your email for ticket confirmation',
+            'Check your email for ticket confirmation with PDF and image attachments',
+            'Lost your ticket? Use the "Retrieve Ticket" button to download it anytime',
             'You\'ll receive venue details closer to the event',
             'Follow us on social media for updates',
-            'Mark your calendar: April 21-22, 2026 in Nairobi, Kenya'
+            'Mark your calendar: April 10-12, 2026 in Nairobi, Kenya'
           ],
           returnLink: '/summit',
           returnText: 'Back to Summit'
@@ -146,6 +147,14 @@ const PaymentSuccessPage = () => {
                 >
                   {successInfo.returnText}
                 </Link>
+                {type === 'summit' && (
+                  <Link
+                    href="/retrieve-ticket"
+                    className="flex-1 bg-[#84C1D9] text-white px-6 py-3.5 rounded-lg font-medium text-sm text-center hover:bg-[#6BA8C4] transition-colors duration-200 shadow-sm"
+                  >
+                    Retrieve Ticket
+                  </Link>
+                )}
                 <Link
                   href="/contact-us"
                   className="flex-1 bg-white text-gray-700 px-6 py-3.5 rounded-lg font-medium text-sm text-center hover:bg-gray-50 transition-colors duration-200 border border-gray-300"

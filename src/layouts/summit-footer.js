@@ -82,6 +82,11 @@ const SummitFooter = () => {
                     Plan Your Trip
                   </a>
                 </li>
+                <li>
+                  <a href="/retrieve-ticket" className="text-white/80 hover:text-paan-red transition-colors">
+                    Retrieve Ticket
+                  </a>
+                </li>
               </ul>
             </div>
 
