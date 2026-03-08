@@ -265,10 +265,17 @@ export const verifyAndCompletePayment = async (purchaseId, paymentReference) => 
   } catch (error) {
     console.error('Error verifying payment:', error);
     
-    // Update purchase status to failed
-    await updatePurchaseStatus(purchaseId, 'cancelled');
+    // return a failure object so the caller can handle it gracefully
+    try {
+      await updatePurchaseStatus(purchaseId, 'cancelled');
+    } catch (updateError) {
+      console.error('Failed to update purchase status to cancelled:', updateError);
+    }
     
-    throw error;
+    return {
+      success: false,
+      error: error.message
+    };
   }
 };
 

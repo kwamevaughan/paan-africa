@@ -1,8 +1,7 @@
 import { supabase } from './supabase';
 
 // Paystack configuration
-const PAYSTACK_PUBLIC_KEY = process.env.NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY;
-const PAYSTACK_SECRET_KEY = process.env.PAYSTACK_SECRET_KEY || process.env.NEXT_PUBLIC_PAYSTACK_SECRET_KEY;
+const PAYSTACK_PUBLIC_KEY = process.env.PAYSTACK_PUBLIC_KEY;
 
 // Initialize Paystack
 export const initializePaystack = () => {
@@ -76,9 +75,8 @@ export const initializePayment = async (paymentData) => {
       currency,
       ref: reference,
       metadata,
-      callback: callback_url,
+      callback: onSuccess || (() => console.log('Payment successful')),
       onClose: onClose || (() => console.log('Payment cancelled')),
-      onSuccess: onSuccess || (() => console.log('Payment successful'))
     });
 
     return handler;
@@ -91,20 +89,13 @@ export const initializePayment = async (paymentData) => {
 // Verify payment with Paystack API
 export const verifyPayment = async (reference) => {
   try {
-    const response = await fetch(`https://api.paystack.co/transaction/verify/${reference}`, {
-      method: 'GET',
-      headers: {
-        'Authorization': `Bearer ${PAYSTACK_SECRET_KEY}`,
-        'Content-Type': 'application/json'
-      }
-    });
+    const response = await fetch(`/api/verify-payment?reference=${reference}`);
 
     if (!response.ok) {
       throw new Error(`Payment verification failed: ${response.statusText}`);
     }
 
-    const result = await response.json();
-    return result;
+    return await response.json();
   } catch (error) {
     console.error('Payment verification error:', error);
     throw error;

@@ -430,7 +430,10 @@ const SummitPage = () => {
               toast.loading("Verifying payment...", { id: 'payment-verify' });
               
               // Verify payment and complete the process
-              const result = await verifyAndCompletePayment(purchase.id, response.reference);
+              const result = await verifyAndCompletePayment(
+                purchase.id,
+                response.reference || response.trxref
+              );
               
               if(!result.success){
                 toast.dismiss('payment-verify');
@@ -439,14 +442,14 @@ const SummitPage = () => {
               }
               // Send confirmation email
               const paymentCurrency = paymentInfo.method === 'mpesa' ? 'KES' : 'USD';
-              await sendPurchaseConfirmationEmail(purchase, purchaser, response.reference, finalAmount, paymentCurrency);
+              await sendPurchaseConfirmationEmail(purchase, purchaser, response.reference || response.trxref, finalAmount, paymentCurrency);
               
               toast.dismiss('payment-verify');
               toast.success("Payment completed successfully! You will receive a confirmation email shortly.", { id: 'success' });
               
               // Reset form after successful payment
               setTimeout(() => {
-                setSelectedTickets([]);
+                setSelectedTickets([]);s
                 setPurchaserInfo({
                   fullName: '',
                   email: '',
