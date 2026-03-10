@@ -449,7 +449,7 @@ const SummitPage = () => {
               
               // Reset form after successful payment
               setTimeout(() => {
-                setSelectedTickets([]);s
+                setSelectedTickets([]);
                 setPurchaserInfo({
                   fullName: '',
                   email: '',

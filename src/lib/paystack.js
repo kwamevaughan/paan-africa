@@ -1,7 +1,7 @@
 import { supabase } from './supabase';
 
 // Paystack configuration
-const PAYSTACK_PUBLIC_KEY = process.env.PAYSTACK_PUBLIC_KEY;
+const PAYSTACK_PUBLIC_KEY = process.env.NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY;
 
 // Initialize Paystack
 export const initializePaystack = () => {
@@ -75,8 +75,8 @@ export const initializePayment = async (paymentData) => {
       currency,
       ref: reference,
       metadata,
-      callback: onSuccess || (() => console.log('Payment successful')),
-      onClose: onClose || (() => console.log('Payment cancelled')),
+      callback: (response) => onSuccess ? onSuccess(response) : console.log('Payment successful', response),
+      onClose: onClose ?? (() => console.log('Payment cancelled')),
     });
 
     return handler;
