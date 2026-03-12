@@ -561,7 +561,7 @@ const HomePage = () => {
                   <div className="flex-1">
                     {/* Testimonial text */}
                     <blockquote className="text-xl sm:text-2xl font-medium text-gray-800 leading-relaxed mb-8 italic">
-                      {t('certifiedAgencies.aquila.testimonial.quote')}
+                        PAAN has opened access to new business opportunities across Africa and played a role in upskilling our teams through training programs and webinars
                     </blockquote>
                     
                     {/* Attribution */}
