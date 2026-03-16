@@ -746,7 +746,7 @@ const HomePage = () => {
                 <div className="flex items-center gap-4 mb-6">
                   <div className="flex items-center gap-2 text-[#F25849]">
                     <Icon icon="mdi:calendar" className="w-5 h-5" />
-                    <span className="font-semibold">{t('homepage.events.featuredEvent.date')}</span>
+                    <span className="font-semibold">22-23 September</span>
                   </div>
                   <div className="flex items-center gap-2 text-[#172840]">
                     <Icon icon="mdi:map-marker" className="w-5 h-5" />

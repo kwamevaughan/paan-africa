@@ -292,7 +292,7 @@ const SummitPage = () => {
 
   // Set target date to April 21, 2026
   useEffect(() => {
-    const targetDate = new Date('2026-04-21T00:00:00+03:00'); // April 21, 2026 at midnight EAT
+    const targetDate = new Date('2026-09-22T00:00:00+03:00'); // September 22, 2026 at midnight EAT
     
     const interval = setInterval(() => {
       const now = new Date();
@@ -315,9 +315,9 @@ const SummitPage = () => {
     return () => clearInterval(interval);
   }, []);
 
-  // Set target date to February 21, 2026 for Early Bird deadline
+  // Set target date to August 20, 2026 for Early Bird deadline
   useEffect(() => {
-    const targetDate = new Date('2026-02-21T23:59:59+03:00'); // February 21, 2026 at 11:59 PM EAT
+    const targetDate = new Date('2026-08-20T23:59:59+03:00'); // August 20, 2026 at 11:59 PM EAT
     
     const interval = setInterval(() => {
       const now = new Date();
@@ -435,8 +435,8 @@ const SummitPage = () => {
                 name: "PAAN Summit 2026 - Africa's Premier Creative & Tech Leadership Conference",
                 alternateName: "PAAN Inaugural Summit 2026",
                 description: "Join the inaugural PAAN Summit in Nairobi, Kenya — a groundbreaking event uniting Africa's top creative and tech leaders for three days of innovation, collaboration, and growth. Connect with industry leaders, explore cutting-edge trends, and shape the future of African creativity and technology.",
-                startDate: "2026-04-21T09:00:00+03:00",
-                endDate: "2026-04-23T17:00:00+03:00",
+                startDate: "2026-09-22T09:00:00+03:00",
+                endDate: "2026-09-22T17:00:00+03:00",
                 eventAttendanceMode: "https://schema.org/MixedEventAttendanceMode",
                 eventStatus: "https://schema.org/EventScheduled",
                 location: {
@@ -1331,7 +1331,7 @@ const SummitPage = () => {
                     <div className="bg-[#F3F9FB] p-4 sm:p-5 mb-6 sm:mb-8 flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-6 border-b-2 border-paan-dark-blue ml-4 sm:ml-6">
                       <div className="flex items-center gap-2 sm:gap-3">
                         <Icon icon="mdi:calendar" className="text-paan-red w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0" />
-                        <span className="text-sm sm:text-base font-normal text-paan-dark-blue">April 21-22, 2026</span>
+                        <span className="text-sm sm:text-base font-normal text-paan-dark-blue">Sep 22-23, 2026</span>
                               </div>
                       <div className="flex items-center gap-2 sm:gap-3">
                         <Icon icon="mdi:map-marker" className="text-paan-red w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0" />
@@ -1508,7 +1508,7 @@ const SummitPage = () => {
                        <Icon icon="mdi:calendar" className="text-paan-red" width="16" height="16" />
                        <h4 className="font-semibold text-paan-dark-blue text-sm sm:text-base">Event Dates</h4>
                      </div>
-                     <p className="text-paan-dark-blue text-sm sm:text-base">April 21-22, 2026</p>
+                     <p className="text-paan-dark-blue text-sm sm:text-base">Sep 22-23, 2026</p>
                    </div>
                  </div>
                </div>
@@ -1680,7 +1680,7 @@ const SeminarLocationAndDate = ()=> {
     <div className="flex flex-col sm:flex-row gap-2 sm:gap-4">
       <div className="flex items-center gap-2 text-white text-xs sm:text-sm">
         <Icon icon="mdi:map-marker" className="text-red-500 flex-shrink-0" width="20" height="20" />
-        <span className="break-words sm:whitespace-nowrap">Sarit Centre, Nairobi, Kenya - <strong>21 - 22 April 2026</strong></span>
+        <span className="break-words sm:whitespace-nowrap">Sarit Centre, Nairobi, Kenya - <strong>22 - 23 September 2026</strong></span>
       </div>
       
       <div className="flex items-center gap-2 text-white text-xs sm:text-sm">

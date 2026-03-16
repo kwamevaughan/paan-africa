@@ -94,7 +94,7 @@ const ContactInfoStep = ({ onNext, purchaserInfo, handlePurchaserChange, errors 
               <div className="flex items-start gap-3">
                 <Icon icon="mdi:information-outline" className="w-5 h-5 text-paan-blue mt-0.5 flex-shrink-0" />
                 <p className="text-sm text-gray-700 leading-relaxed">
-                  By continuing, you agree to receive updates about PAAN Summit 2026. We respect your privacy and won't spam you.
+                  By continuing, you agree to receive updates about PAAN Summit 2026 (22–23 September 2026). We respect your privacy and won't spam you.
                 </p>
               </div>
             </div>

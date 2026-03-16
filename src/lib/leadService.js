@@ -39,9 +39,28 @@ export const saveLeadContact = async (contactData) => {
           .single();
 
         if (updateError) throw updateError;
+
+        // Persist lead submission info in localStorage to track contact step completion
+        if (typeof window !== 'undefined') {
+          const submissionData = {
+            email: contactData.email.toLowerCase().trim(),
+            timestamp: new Date().toISOString()
+          };
+          localStorage.setItem('paan_summit_contact_submission', JSON.stringify(submissionData));
+        }
+
         return updateData;
       }
       throw error;
+    }
+
+    // Persist lead submission info in localStorage to track contact step completion
+    if (typeof window !== 'undefined') {
+      const submissionData = {
+        email: contactData.email.toLowerCase().trim(),
+        timestamp: new Date().toISOString()
+      };
+      localStorage.setItem('paan_summit_contact_submission', JSON.stringify(submissionData));
     }
 
     return data;
@@ -101,7 +120,7 @@ export const getLeadByEmail = async (email) => {
 };
 
 /**
- * Check if user has submitted contact info within the last 24 hours
+ * Check if user has submitted contact info within the last 72 hours
  * Returns true if they should skip Step 1, false if they should see it
  */
 export const shouldSkipContactStep = async (email) => {
@@ -120,8 +139,8 @@ export const shouldSkipContactStep = async (email) => {
           const now = new Date();
           const hoursSinceSubmission = (now - submissionTime) / (1000 * 60 * 60);
           
-          // If less than 24 hours, skip Step 1
-          if (hoursSinceSubmission < 24) {
+          // If less than 72 hours, skip Step 1
+          if (hoursSinceSubmission < 72) {
             return true;
           }
         }
@@ -132,7 +151,7 @@ export const shouldSkipContactStep = async (email) => {
 
     // Also check database for more accurate timestamp
     const lead = await getLeadByEmail(email);
-    if (lead) {
+      if (lead) {
       // Use updated_at if available, otherwise created_at
       const lastSubmissionTime = lead.updated_at || lead.created_at;
       if (lastSubmissionTime) {
@@ -140,8 +159,8 @@ export const shouldSkipContactStep = async (email) => {
         const now = new Date();
         const hoursSinceSubmission = (now - submissionTime) / (1000 * 60 * 60);
         
-        // If less than 24 hours, skip Step 1
-        if (hoursSinceSubmission < 24) {
+        // If less than 72 hours, skip Step 1
+        if (hoursSinceSubmission < 72) {
           // Update localStorage to match
           localStorage.setItem('paan_summit_contact_submission', JSON.stringify({
             email: email.toLowerCase().trim(),

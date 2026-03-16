@@ -161,7 +161,7 @@ const TicketsStep = ({ selectedTickets, setSelectedTickets, onNext, onPrev, erro
                       </span>
                     </div>
                     <h3 className="text-2xl sm:text-3xl font-bold text-paan-dark-blue">${ticket.price}</h3>
-                    <p className="text-xs text-paan-red mt-1">Early bird pricing (until February 21st, 2026)</p>
+                    <p className="text-xs text-paan-red mt-1">Early bird pricing (until August 20th, 2026)</p>
                   </div>
                   <div className="mb-4 sm:mb-6">
                     <ul className="space-y-1 text-paan-dark-blue text-xs sm:text-sm">

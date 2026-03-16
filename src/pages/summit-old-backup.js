@@ -111,7 +111,7 @@ const SummitPage = () => {
 
   // Set target date to April 21, 2026
   useEffect(() => {
-    const targetDate = new Date('2026-04-21T00:00:00+03:00');
+    const targetDate = new Date('2026-09-22T00:00:00+03:00');
     
     const interval = setInterval(() => {
       const now = new Date();

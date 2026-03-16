@@ -34,7 +34,7 @@ async function sendTicketEmail() {
     currency: 'USD',
     amount: 65,
     features: [
-      'Full 3-day access (10-12 April 2026)',
+      'Full 2-day access (22-23 September 2026)',
       'Access to all exhibitions & keynotes',
       'Networking opportunities',
       'Digital certificate'
@@ -56,7 +56,7 @@ async function sendTicketEmail() {
   console.log('- Ticket Type:', ticketData.ticketType);
   console.log('- Registration No:', reference);
   console.log('- Issued On: 12-27-2025');
-  console.log('- Event Dates: 10-12 April 2026');
+  console.log('- Event Dates: 22-23 September 2026');
   console.log('- Venue: Sarit Centre, Westlands, Nairobi, Kenya\n');
 
   try {
@@ -142,7 +142,7 @@ async function sendTicketEmail() {
                 </div>
 
                 <h3>Ticket Details:</h3>
-                <ul>
+                    <ul>
                     <li><strong>Reference:</strong> ${reference}</li>
                     <li><strong>Ticket Type:</strong> ${ticketData.ticketType}</li>
                     <li><strong>Issued On:</strong> December 27, 2025</li>
@@ -151,11 +151,11 @@ async function sendTicketEmail() {
                 <div class="summit-info">
                     <h3>Summit Information</h3>
                     <ul>
-                        <li><strong>Event:</strong> PAAN Summit 2026</li>
-                        <li><strong>Date:</strong> 10-12 April 2026</li>
-                        <li><strong>Location:</strong> Nairobi, Kenya</li>
-                        <li><strong>Venue:</strong> Sarit Centre, Westlands</li>
-                    </ul>
+                    <li><strong>Event:</strong> PAAN Summit 2026</li>
+                    <li><strong>Date:</strong> 22-23 September 2026</li>
+                    <li><strong>Location:</strong> Nairobi, Kenya</li>
+                    <li><strong>Venue:</strong> Sarit Centre, Westlands</li>
+                </ul>
                 </div>
 
                 <h3>What's Next:</h3>

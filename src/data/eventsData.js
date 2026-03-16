@@ -4,7 +4,7 @@ export const eventsData = {
     {
       id: 2,
       title: "PAAN Creative Summit 2026",
-      date: "2026-04-21",
+      date: "2026-09-22",
       time: "09:00 AM - 06:00 PM",
       location: "Nairobi, Kenya",
       venue: "Sarit Centre, Nairobi",

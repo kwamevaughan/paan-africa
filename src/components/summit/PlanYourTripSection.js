@@ -45,7 +45,7 @@ const PlanYourTripSection = () => {
                   <Icon icon="mdi:calendar" className="text-paan-red" width="16" height="16" />
                   <h4 className="font-semibold text-paan-dark-blue text-sm sm:text-base">Event Dates</h4>
                 </div>
-                <p className="text-paan-dark-blue text-sm sm:text-base">April 21-22, 2026</p>
+                <p className="text-paan-dark-blue text-sm sm:text-base">September 22-23, 2026</p>
               </div>
             </div>
           </div>

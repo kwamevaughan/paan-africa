@@ -72,7 +72,7 @@ const SummitAgenda = () => {
               <>
                 <div className="bg-gradient-to-r from-paan-yellow to-paan-dark-blue text-white p-4 sm:p-6 flex-shrink-0">
                   <h4 className="text-lg sm:text-xl font-bold">Day 1 – Creativity, Intelligence & Innovation</h4>
-                  <p className="text-xs sm:text-sm opacity-90 mt-1">April 21, 2026</p>
+                  <p className="text-xs sm:text-sm opacity-90 mt-1">September 22, 2026</p>
                 </div>
             
                 <div className="p-4 sm:p-6 relative flex-1 overflow-y-auto">
@@ -269,7 +269,7 @@ const SummitAgenda = () => {
               <>
                 <div className="bg-gradient-to-r from-paan-yellow to-paan-dark-blue text-white p-4 sm:p-6 flex-shrink-0">
                   <h4 className="text-lg sm:text-xl font-bold">Day 2 – Execution, Commerce & Collaboration</h4>
-                  <p className="text-xs sm:text-sm opacity-90 mt-1">April 22, 2026</p>
+                  <p className="text-xs sm:text-sm opacity-90 mt-1">September 23, 2026</p>
                 </div>
             
                 <div className="p-4 sm:p-6 relative flex-1 overflow-y-auto">

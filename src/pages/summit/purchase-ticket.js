@@ -188,9 +188,8 @@ const SummitPage = () => {
           phone: purchaserInfo.phone,
           country: purchaserInfo.country
         });
-        console.log('✅ Lead saved successfully:', leadData);
         
-        // Store submission timestamp in localStorage for 24-hour check
+        // Store submission timestamp in localStorage for 72-hour check
         if (typeof window !== 'undefined') {
           const submissionData = {
             email: purchaserInfo.email.toLowerCase().trim(),
@@ -587,8 +586,8 @@ const SummitPage = () => {
             const now = new Date();
             const hoursSinceSubmission = (now - submissionTime) / (1000 * 60 * 60);
             
-            // If less than 24 hours, check database and load user info
-            if (hoursSinceSubmission < 24 && storedEmail) {
+            // If less than 72 hours, check database and load user info
+            if (hoursSinceSubmission < 72 && storedEmail) {
               const lead = await getLeadByEmail(storedEmail);
               if (lead) {
                 // Pre-fill the form with previous data
@@ -622,8 +621,8 @@ const SummitPage = () => {
 
   // Countdown timer effect
   useEffect(() => {
-    // (Early Bird deadline: February 21st, 2026 at 11:59 PM EAT)
-    const targetDate = new Date('2026-02-21T23:59:59+03:00').getTime();
+    // (Early Bird deadline: August 20th, 2026 at 11:59 PM EAT)
+    const targetDate = new Date('2026-08-20T23:59:59+03:00').getTime();
     
     const updateCountdown = () => {
       const now = new Date().getTime();
@@ -787,8 +786,8 @@ const SummitPage = () => {
     <>
       <SEO
         title="Purchase Tickets - PAAN Summit 2026"
-        description="Secure your spot at PAAN Summit 2026. Choose from various ticket options including General Admission, VIP Delegate, Agency Pass, and more."
-        keywords="PAAN Summit tickets, buy summit tickets, conference registration, PAAN 2026 tickets"
+        description="Secure your spot at PAAN Summit 2026, happening on 22-23 September 2026 in Nairobi, Kenya. Choose from various ticket options including General Admission, VIP Delegate, Agency Pass, and more."
+        keywords="PAAN Summit tickets, buy summit tickets, conference registration, PAAN 2026 tickets, September 22-23 2026"
         image="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/purchase-ticket-hero.webp"
       />
 

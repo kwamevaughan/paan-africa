@@ -72,7 +72,7 @@ const TicketsSection = ({ earlyBirdTimeLeft }) => {
                   </div>
                   <div className="flex items-center gap-2">
                     <Icon icon="mdi:check" className="text-yellow-300" width="16" height="16" />
-                    <span>Save 30% before February 21st, 2026</span>
+                    <span>Save 30% before August 20th, 2026</span>
                   </div>
                 </div>
               </div>
@@ -301,7 +301,7 @@ const TicketsSection = ({ earlyBirdTimeLeft }) => {
               <div className="space-y-3">
                 <div className="flex items-center gap-3">
                   <Icon icon="mdi:calendar" className="text-paan-red" width="20" height="20" />
-                  <span className="text-sm font-medium">April 21-22, 2026</span>
+                  <span className="text-sm font-medium">September 22-23, 2026</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <Icon icon="mdi:map-marker" className="text-paan-red" width="20" height="20" />
@@ -406,7 +406,7 @@ const TicketsSection = ({ earlyBirdTimeLeft }) => {
                   <p className="font-semibold text-xs sm:text-sm md:text-lg">Seat . TBA</p>
 
                   <div className="flex flex-col gap-1 sm:gap-2 md:gap-3 mt-3 sm:mt-4 md:mt-6">
-                    <button className="bg-paan-yellow text-paan-dark-blue px-2 sm:px-3 py-1 sm:py-2 rounded-full hover:bg-paan-yellow/90 transition-all duration-300 font-medium text-xs sm:text-sm shadow-lg flex items-center justify-center w-fit">April 21-22, 2026</button>
+                    <button className="bg-paan-yellow text-paan-dark-blue px-2 sm:px-3 py-1 sm:py-2 rounded-full hover:bg-paan-yellow/90 transition-all duration-300 font-medium text-xs sm:text-sm shadow-lg flex items-center justify-center w-fit">September 22-23, 2026</button>
                     <button className="bg-transparent border border-white text-white px-2 sm:px-3 py-1 sm:py-2 rounded-full hover:bg-white hover:text-paan-dark-blue transition-all duration-300 font-medium text-xs sm:text-sm shadow-lg flex items-center justify-center w-fit">Sarit Center, Nairobi, Kenya</button>
                   </div>
                 </div>
