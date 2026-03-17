@@ -314,12 +314,12 @@ const HomePage = () => {
                   </div>
                   <div className="hidden sm:block w-2 h-2 bg-[#F2B706] rounded-full"></div>
                   <div className="flex flex-col">
-                      <h2 className="text-2xl sm:text-3xl text-paan-dark-blue mb-1">2000+</h2>
+                      <h2 className="text-2xl sm:text-3xl text-paan-dark-blue mb-1">5,000+</h2>
                       <h3 className="text-xs sm:text-sm text-gray-600 font-medium">Freelancers</h3>
                   </div>
                   <div className="hidden sm:block w-2 h-2 bg-[#F2B706] rounded-full"></div>
                   <div className="flex flex-col">
-                      <h2 className="text-2xl sm:text-3xl text-paan-dark-blue mb-1">20+</h2>
+                      <h2 className="text-2xl sm:text-3xl text-paan-dark-blue mb-1">23+</h2>
                       <h3 className="text-xs sm:text-sm text-gray-600 font-medium">African Markets</h3>
                   </div>
               </div>
