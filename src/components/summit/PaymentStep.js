@@ -110,7 +110,7 @@ const PaymentStep = ({
           <div class="header">
             <div class="logo-container">
               <div class="logo">
-                <img src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/paan-summit-logo.svg?updatedAt=1757505542572" alt="PAAN Summit Logo" />
+                <img src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/paan-summit-sept-logo.png" alt="PAAN Summit Logo" />
               </div>
               <div class="company-name">PAAN AFRICA</div>
               <div class="invoice-title">PAAN Summit 2026 - Invoice</div>

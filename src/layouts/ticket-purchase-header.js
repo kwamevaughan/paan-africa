@@ -30,7 +30,7 @@ const Header = ({ navLinkColor }) => {
             <div className="flex-shrink-0">
               <Link href="/summit" passHref>
                 <Image
-                  src="/assets/images/paan-summit-logo.svg"
+                  src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/paan-summit-sept-logo.png"
                   alt="PAAN Summit Logo"
                   width={200}
                   height={70}
