@@ -50,7 +50,13 @@ const SummitFooter = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-8">
             {/* Summit Info */}
              <div className="w-full">
-              <Image src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/summit-logo-white.svg" alt="Summit Logo" width={300} height={300} />
+              <Image
+                src="https://ik.imagekit.io/nkmvdjnna/PAAN/summit/paan-summit-sept-logo.png"
+                alt="PAAN Summit Logo"
+                width={280}
+                height={98}
+                className="h-auto w-full max-w-[280px]"
+              />
              </div>
 
             {/* Quick Links */}

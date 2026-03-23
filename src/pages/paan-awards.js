@@ -530,9 +530,9 @@ const SummitPage = () => {
     seconds: 0
   });
 
-  // Set target date to April 22, 2026
+  // Set target date to September 24, 2026
   useEffect(() => {
-    const targetDate = new Date('2026-04-22T00:00:00+03:00'); // April 22, 2026 at midnight EAT
+    const targetDate = new Date('2026-09-24T00:00:00+03:00'); // September 24, 2026 at midnight EAT
     
     const interval = setInterval(() => {
       const now = new Date();
@@ -638,8 +638,8 @@ const SummitPage = () => {
               "@type": "Event",
               "name": "PAAN Awards 2026 - Celebrating Excellence in African Creative & Tech Industry",
               "alternateName": "PAAN Creative & Tech Awards 2026",
-              "startDate": "2026-04-22T19:00:00+03:00",
-              "endDate": "2026-04-22T23:00:00+03:00",
+              "startDate": "2026-09-24T19:00:00+03:00",
+              "endDate": "2026-09-24T23:00:00+03:00",
               "eventAttendanceMode": "https://schema.org/MixedEventAttendanceMode",
               "eventStatus": "https://schema.org/EventScheduled",
               "location": {
@@ -1372,7 +1372,7 @@ const SummitPage = () => {
           <section className="relative mx-auto max-w-6xl">
             <div className="text-center mb-12 md:mb-16">
               <h2 className="text-3xl md:text-4xl lg:text-5xl text-paan-dark-blue uppercase font-bold leading-tight mb-4 md:mb-6 px-4">
-                Key Dates 2025/2026
+                Key Dates 2026
               </h2>
               <p className="text-base md:text-lg text-paan-dark-blue font-light leading-relaxed max-w-4xl mx-auto px-4">
                 Mark your calendar for the PAAN Summit & Creative Excellence Awards 2026.
@@ -1391,28 +1391,28 @@ const SummitPage = () => {
                 </thead>
                 <tbody>
                   <tr className="border-t border-paan-dark-blue/20">
-                    <td className="py-6 px-6 text-paan-dark-blue font-medium">5 November 2025</td>
-                    <td className="py-6 px-6 text-paan-red font-medium">Entries Open</td>
-                    <td className="py-6 px-6 text-paan-dark-blue font-light">Submit your entries starting November 5. Showcase your agency, brand, or freelance work to a continental jury.</td>
+                    <td className="py-6 px-6 text-paan-dark-blue font-medium">5 June 2026</td>
+                    <td className="py-6 px-6 text-paan-red font-medium">Entry Portal Opens</td>
+                    <td className="py-6 px-6 text-paan-dark-blue font-light">Submit your entries starting 5 June 2026. Showcase your agency, brand, or freelance work to a continental jury.</td>
                   </tr>
                   <tr className="border-t border-paan-dark-blue/20">
-                    <td className="py-6 px-6 text-paan-dark-blue font-medium">25 November 2025</td>
+                    <td className="py-6 px-6 text-paan-dark-blue font-medium">30 July 2026</td>
                     <td className="py-6 px-6 text-paan-red font-medium">Early Bird Deadline</td>
                     <td className="py-6 px-6 text-paan-dark-blue font-light">Take advantage of reduced entry fees and priority review for submissions received by this date.</td>
                   </tr>
                   <tr className="border-t border-paan-dark-blue/20">
-                    <td className="py-6 px-6 text-paan-dark-blue font-medium">10 February 2026</td>
+                    <td className="py-6 px-6 text-paan-dark-blue font-medium">15 Aug 2026</td>
+                    <td className="py-6 px-6 text-paan-red font-medium">Jury Review &amp; Shortlist</td>
+                    <td className="py-6 px-6 text-paan-dark-blue font-light">Our jury reviews submissions and prepares the shortlist ahead of the final entry deadline.</td>
+                  </tr>
+                  <tr className="border-t border-paan-dark-blue/20">
+                    <td className="py-6 px-6 text-paan-dark-blue font-medium">5 Sept 2026</td>
                     <td className="py-6 px-6 text-paan-red font-medium">Final Entry Deadline</td>
                     <td className="py-6 px-6 text-paan-dark-blue font-light">All award entries must be submitted by midnight EAT. Late submissions will not be accepted.</td>
                   </tr>
                   <tr className="border-t border-paan-dark-blue/20">
-                    <td className="py-6 px-6 text-paan-dark-blue font-medium">15 March 2026</td>
-                    <td className="py-6 px-6 text-paan-red font-medium">Finalists Announced</td>
-                    <td className="py-6 px-6 text-paan-dark-blue font-light">The shortlisted entries will be revealed across all categories. Finalists will be notified directly.</td>
-                  </tr>
-                  <tr className="border-t border-paan-dark-blue/20">
-                    <td className="py-6 px-6 text-paan-dark-blue font-medium">22 April 2026</td>
-                    <td className="py-6 px-6 text-paan-red font-medium">Awards Ceremony</td>
+                    <td className="py-6 px-6 text-paan-dark-blue font-medium">23 Sept 2026</td>
+                    <td className="py-6 px-6 text-paan-red font-medium">Awards Night / Summit</td>
                     <td className="py-6 px-6 text-paan-dark-blue font-light">Join us at the PAAN Summit in Nairobi for the prestigious awards ceremony celebrating Africa's creative excellence.</td>
                   </tr>
                 </tbody>
@@ -1423,16 +1423,16 @@ const SummitPage = () => {
             <div className="lg:hidden space-y-6 px-4">
               {/* Card 1 */}
               <div className="bg-white rounded-lg shadow-sm p-6 border border-paan-dark-blue/10">
-                <div className="text-paan-dark-blue font-medium text-sm mb-2">10 October 2025</div>
-                <div className="text-paan-red font-semibold text-xl mb-3">Entries Open</div>
+                <div className="text-paan-dark-blue font-medium text-sm mb-2">5 June 2026</div>
+                <div className="text-paan-red font-semibold text-xl mb-3">Entry Portal Opens</div>
                 <div className="text-paan-dark-blue font-light text-sm leading-relaxed">
-                  Submit your entries starting March 10. Showcase your agency, brand, or freelance work to a continental jury.
+                  Submit your entries starting 5 June 2026. Showcase your agency, brand, or freelance work to a continental jury.
                 </div>
               </div>
 
               {/* Card 2 */}
               <div className="bg-white rounded-lg shadow-sm p-6 border border-paan-dark-blue/10">
-                <div className="text-paan-dark-blue font-medium text-sm mb-2">15 November 2025</div>
+                <div className="text-paan-dark-blue font-medium text-sm mb-2">30 July 2026</div>
                 <div className="text-paan-red font-semibold text-xl mb-3">Early Bird Deadline</div>
                 <div className="text-paan-dark-blue font-light text-sm leading-relaxed">
                   Take advantage of reduced entry fees and priority review for submissions received by this date.
@@ -1441,26 +1441,26 @@ const SummitPage = () => {
 
               {/* Card 3 */}
               <div className="bg-white rounded-lg shadow-sm p-6 border border-paan-dark-blue/10">
-                <div className="text-paan-dark-blue font-medium text-sm mb-2">30 November 2025</div>
+                <div className="text-paan-dark-blue font-medium text-sm mb-2">15 August 2026</div>
+                <div className="text-paan-red font-semibold text-xl mb-3">Jury Review &amp; Shortlist</div>
+                <div className="text-paan-dark-blue font-light text-sm leading-relaxed">
+                  Our jury reviews submissions and prepares the shortlist ahead of the final entry deadline.
+                </div>
+              </div>
+
+              {/* Card 4 */}
+              <div className="bg-white rounded-lg shadow-sm p-6 border border-paan-dark-blue/10">
+                <div className="text-paan-dark-blue font-medium text-sm mb-2">5 Sept 2026</div>
                 <div className="text-paan-red font-semibold text-xl mb-3">Final Entry Deadline</div>
                 <div className="text-paan-dark-blue font-light text-sm leading-relaxed">
                   All award entries must be submitted by midnight EAT. Late submissions will not be accepted.
                 </div>
               </div>
 
-              {/* Card 4 */}
-              <div className="bg-white rounded-lg shadow-sm p-6 border border-paan-dark-blue/10">
-                <div className="text-paan-dark-blue font-medium text-sm mb-2">15 January 2026</div>
-                <div className="text-paan-red font-semibold text-xl mb-3">Finalists Announced</div>
-                <div className="text-paan-dark-blue font-light text-sm leading-relaxed">
-                  The shortlisted entries will be revealed across all categories. Finalists will be notified directly.
-                </div>
-              </div>
-
               {/* Card 5 */}
               <div className="bg-white rounded-lg shadow-sm p-6 border border-paan-dark-blue/10">
-                <div className="text-paan-dark-blue font-medium text-sm mb-2">22 April 2026</div>
-                <div className="text-paan-red font-semibold text-xl mb-3">Awards Ceremony</div>
+                <div className="text-paan-dark-blue font-medium text-sm mb-2">23 Sept 2026</div>
+                <div className="text-paan-red font-semibold text-xl mb-3">Awards Night / Summit</div>
                 <div className="text-paan-dark-blue font-light text-sm leading-relaxed">
                   Join us at the PAAN Summit in Nairobi for the prestigious awards ceremony celebrating Africa's creative excellence.
                 </div>
