@@ -1391,12 +1391,12 @@ const SummitPage = () => {
                 </thead>
                 <tbody>
                   <tr className="border-t border-paan-dark-blue/20">
-                    <td className="py-6 px-6 text-paan-dark-blue font-medium">5 June 2026</td>
+                    <td className="py-6 px-6 text-paan-dark-blue font-medium">5 Feb 2026</td>
                     <td className="py-6 px-6 text-paan-red font-medium">Entry Portal Opens</td>
                     <td className="py-6 px-6 text-paan-dark-blue font-light">Submit your entries starting 5 June 2026. Showcase your agency, brand, or freelance work to a continental jury.</td>
                   </tr>
                   <tr className="border-t border-paan-dark-blue/20">
-                    <td className="py-6 px-6 text-paan-dark-blue font-medium">30 July 2026</td>
+                    <td className="py-6 px-6 text-paan-dark-blue font-medium">30 March 2026</td>
                     <td className="py-6 px-6 text-paan-red font-medium">Early Bird Deadline</td>
                     <td className="py-6 px-6 text-paan-dark-blue font-light">Take advantage of reduced entry fees and priority review for submissions received by this date.</td>
                   </tr>
