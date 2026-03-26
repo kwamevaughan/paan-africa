@@ -2,21 +2,6 @@
 export const eventsData = {
   upcoming: [
     {
-      id: 13,
-      title: "The New Rules of Influencer Marketing: Scaling Across Africa with Data, AI, and Creativity",
-      date: "2026-03-25",
-      time: "12:00 PM EAT",
-      location: "Virtual Event",
-      venue: "Zoom",
-      description: "Influencer marketing is evolving rapidly across Africa, driven by changing consumer behavior, platform growth, and advances in data and AI. For agencies and brands, the challenge is no longer just running campaigns, but scaling them effectively across markets while maintaining authenticity and delivering measurable impact.",
-      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/webinars/New_Rules_of_Influencer_Marketing.png",
-      category: "Webinar",
-      price: "Free for All Members",
-      registrationUrl: "https://tinyurl.com/y9exdx7t",
-      status: "upcoming",
-      featured: true
-    },
-    {
       id: 2,
       title: "PAAN Creative Summit 2026",
       date: "2026-09-22",
@@ -33,6 +18,23 @@ export const eventsData = {
     },
   ],
   past: [
+    {
+      id: 13,
+      title: "The New Rules of Influencer Marketing: Scaling Across Africa with Data, AI, and Creativity",
+      date: "2026-03-25",
+      time: "12:00 PM EAT",
+      location: "Virtual Event",
+      venue: "Zoom",
+      description: "Influencer marketing is evolving rapidly across Africa, driven by changing consumer behavior, platform growth, and advances in data and AI. For agencies and brands, the challenge is no longer just running campaigns, but scaling them effectively across markets while maintaining authenticity and delivering measurable impact.",
+      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/webinars/New_Rules_of_Influencer_Marketing.png",
+      category: "Webinar",
+      price: "Completed",
+      registrationUrl: "https://youtu.be/u2a3agTBcTQ",
+      status: "past",
+      featured: true,
+      attendees: 150,
+      speakers: 5
+    },
     {
       id: 12,
       title: "From Data to Decisions: How Agencies Can Turn Insight into Measurable Growth",
