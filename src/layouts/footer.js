@@ -206,6 +206,15 @@ const Footer = () => {
                   AI Business Plan Generator
                 </Link>
               </li>
+              <li>
+                <Link
+                  href="/pdf-editor"
+                  className="font-normal text-gray-200 hover:text-white hover:underline transition-all duration-300 cursor-pointer flex items-center gap-2"
+                >
+                  <Icon icon="mdi:file-pdf-box" className="w-4 h-4" />
+                  PDF Editor
+                </Link>
+              </li>
               {/* <li>
                 <Link
                   href="/talent-discovery"

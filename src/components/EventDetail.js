@@ -180,6 +180,22 @@ const EventDetail = ({ event, isPast = false }) => {
                 >
                   Register Now
                 </Link>
+              ) : event.registrationUrl && /^https?:\/\//.test(event.registrationUrl) ? (
+                <a
+                  href={event.registrationUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full text-center px-6 py-3 rounded-full font-semibold transition-all duration-300 bg-paan-red text-white hover:bg-paan-red/90 hover:scale-105 inline-block"
+                >
+                  Register Now
+                </a>
+              ) : event.registrationUrl && event.registrationUrl.startsWith("/") ? (
+                <Link
+                  href={event.registrationUrl}
+                  className="w-full text-center px-6 py-3 rounded-full font-semibold transition-all duration-300 bg-paan-red text-white hover:bg-paan-red/90 hover:scale-105"
+                >
+                  Register Now
+                </Link>
               ) : (
                 <TicketPurchaseButton 
                   variant="primary" 
