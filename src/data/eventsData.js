@@ -16,21 +16,21 @@ export const eventsData = {
       status: "upcoming",
       featured: true
     },
-    {
-      id: 15,
-      title: "Culture, Data & Behaviour: Understanding Today's African Consumer",
-      date: "2026-04-15",
-      time: "12:00 PM EAT",
-      location: "Virtual Event",
-      venue: "Zoom",
-      description: "African consumers are evolving rapidly, shaped by shifting cultural identities, digital adoption, economic realities, and global influences. For agencies and brands, understanding these nuances is critical to building relevance, trust, and long-term growth across diverse African markets.",
-      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/webinars/culture_data_and_behaviour.png",
-      category: "Webinar",
-      price: "Free",
-      registrationUrl: "https://shorturl.at/Do5Au",
-      status: "upcoming",
-      featured: true
-    },
+    // {
+    //   id: 15,
+    //   title: "Culture, Data & Behaviour: Understanding Today's African Consumer",
+    //   date: "2026-04-15",
+    //   time: "12:00 PM EAT",
+    //   location: "Virtual Event",
+    //   venue: "Zoom",
+    //   description: "African consumers are evolving rapidly, shaped by shifting cultural identities, digital adoption, economic realities, and global influences. For agencies and brands, understanding these nuances is critical to building relevance, trust, and long-term growth across diverse African markets.",
+    //   image: "https://ik.imagekit.io/nkmvdjnna/PAAN/webinars/culture_data_and_behaviour.png",
+    //   category: "Webinar",
+    //   price: "Free",
+    //   registrationUrl: "https://shorturl.at/Do5Au",
+    //   status: "upcoming",
+    //   featured: true
+    // },
     {
       id: 2,
       title: "PAAN Creative Summit 2026",
