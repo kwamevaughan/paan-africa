@@ -1,21 +1,21 @@
 // data/eventsData.js
 export const eventsData = {
   upcoming: [
-    {
-      id: 14,
-      title: "How Fintech Brands Can Succeed in Cross-Regional Campaigns",
-      date: "2026-04-08",
-      time: "12:00 PM EAT",
-      location: "Virtual Event",
-      venue: "Online",
-      description: "Fintech brands often scale faster than their understanding of local markets. This session focuses on how fintech teams can run cross-regional campaigns that feel relevant, trustworthy, and compliant, without fragmenting the brand or oversimplifying cultural differences.",
-      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/webinars/cross-regional-campaigns.png",
-      category: "Webinar",
-      price: "Free",
-      registrationUrl: "https://tinyurl.com/3hs8mhx8",
-      status: "upcoming",
-      featured: true
-    },
+    // {
+    //   id: 14,
+    //   title: "How Fintech Brands Can Succeed in Cross-Regional Campaigns",
+    //   date: "2026-04-08",
+    //   time: "12:00 PM EAT",
+    //   location: "Virtual Event",
+    //   venue: "Online",
+    //   description: "Fintech brands often scale faster than their understanding of local markets. This session focuses on how fintech teams can run cross-regional campaigns that feel relevant, trustworthy, and compliant, without fragmenting the brand or oversimplifying cultural differences.",
+    //   image: "https://ik.imagekit.io/nkmvdjnna/PAAN/webinars/cross-regional-campaigns.png",
+    //   category: "Webinar",
+    //   price: "Free",
+    //   registrationUrl: "https://tinyurl.com/3hs8mhx8",
+    //   status: "upcoming",
+    //   featured: true
+    // },
     // {
     //   id: 15,
     //   title: "Culture, Data & Behaviour: Understanding Today's African Consumer",
