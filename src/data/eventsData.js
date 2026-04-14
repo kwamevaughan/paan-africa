@@ -19,7 +19,7 @@ export const eventsData = {
     {
       id: 15,
       title: "Culture, Data & Behaviour: Understanding Today's African Consumer",
-      date: "2026-04-15",
+      date: "2026-05-13",
       time: "12:00 PM EAT",
       location: "Virtual Event",
       venue: "Zoom",
