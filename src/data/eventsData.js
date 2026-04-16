@@ -17,6 +17,21 @@ export const eventsData = {
     //   featured: true
     // },
     {
+      id: 16,
+      title: "Scaling Campaigns Across Africa: How to Reach the Right Audiences at the Right Time",
+      date: "2026-04-29",
+      time: "12:00 PM EAT",
+      location: "Virtual Event",
+      venue: "Zoom",
+      description: "Explore how brands and agencies can better identify, understand, and reach the right audiences across multiple African markets, while maintaining relevance, efficiency, and performance at scale.",
+      image: "https://ik.imagekit.io/nkmvdjnna/PAAN/webinars/scaling-campaigns.png",
+      category: "Webinar",
+      price: "Free",
+      registrationUrl: "https://tinyurl.com/2p7dxe85",
+      status: "upcoming",
+      featured: true
+    },
+    {
       id: 15,
       title: "Culture, Data & Behaviour: Understanding Today's African Consumer",
       date: "2026-05-13",
