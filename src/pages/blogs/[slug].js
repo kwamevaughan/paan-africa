@@ -16,16 +16,12 @@ import { supabase } from "@/lib/supabase";
 import ScrollToTop from "@/components/ScrollToTop";
 import { calculateReadTime } from '@/utils/readTime';
 
-// Social share icons component
+// ─── Social Share Icons ────────────────────────────────────────────────────────
 const SocialShare = ({ url, title }) => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY;
-      setIsVisible(scrollPosition > 300);
-    };
-
+    const handleScroll = () => setIsVisible(window.scrollY > 300);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -40,40 +36,16 @@ const SocialShare = ({ url, title }) => {
   return (
     <div className={`fixed left-4 top-1/2 transform -translate-y-1/2 z-50 transition-all duration-300 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'}`}>
       <div className="flex flex-col gap-3 bg-white/40 rounded-full p-3 shadow-lg">
-        <a
-          href={shareLinks.twitter}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-[#1DA1F2] hover:scale-110 transition-transform"
-          title="Share on Twitter"
-        >
+        <a href={shareLinks.twitter} target="_blank" rel="noopener noreferrer" className="text-[#1DA1F2] hover:scale-110 transition-transform" title="Share on Twitter">
           <Icon icon="mdi:twitter" className="w-6 h-6" />
         </a>
-        <a
-          href={shareLinks.facebook}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-[#4267B2] hover:scale-110 transition-transform"
-          title="Share on Facebook"
-        >
+        <a href={shareLinks.facebook} target="_blank" rel="noopener noreferrer" className="text-[#4267B2] hover:scale-110 transition-transform" title="Share on Facebook">
           <Icon icon="mdi:facebook" className="w-6 h-6" />
         </a>
-        <a
-          href={shareLinks.linkedin}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-[#0077B5] hover:scale-110 transition-transform"
-          title="Share on LinkedIn"
-        >
+        <a href={shareLinks.linkedin} target="_blank" rel="noopener noreferrer" className="text-[#0077B5] hover:scale-110 transition-transform" title="Share on LinkedIn">
           <Icon icon="mdi:linkedin" className="w-6 h-6" />
         </a>
-        <a
-          href={shareLinks.whatsapp}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-[#25D366] hover:scale-110 transition-transform"
-          title="Share on WhatsApp"
-        >
+        <a href={shareLinks.whatsapp} target="_blank" rel="noopener noreferrer" className="text-[#25D366] hover:scale-110 transition-transform" title="Share on WhatsApp">
           <Icon icon="mdi:whatsapp" className="w-6 h-6" />
         </a>
       </div>
@@ -81,32 +53,170 @@ const SocialShare = ({ url, title }) => {
   );
 };
 
-// Format date helper
+// ─── Sticky Sidebar CTA ────────────────────────────────────────────────────────
+// Appears on the right side after the user has scrolled past the hero.
+const StickySidebarCTA = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const [isDismissed, setIsDismissed] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setIsVisible(window.scrollY > 600);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  if (isDismissed) return null;
+
+  return (
+    <div
+      className={`fixed right-4 top-1/2 -translate-y-1/2 z-50 transition-all duration-500
+        ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8 pointer-events-none'}
+        hidden xl:block`}
+    >
+      <div className="relative w-56 bg-[#172840] rounded-2xl shadow-2xl p-5 text-white overflow-hidden">
+  
+        {/* dismiss button */}
+        <button
+          onClick={() => setIsDismissed(true)}
+          className="absolute top-2 right-2 text-white/40 hover:text-white/80 transition-colors"
+          aria-label="Dismiss"
+        >
+          <Icon icon="heroicons:x-mark" className="w-4 h-4" />
+        </button>
+
+        <div className="relative z-10">
+          <div className="w-10 h-10 bg-paan-red/20 rounded-xl flex items-center justify-center mb-3">
+            <Icon icon="heroicons:building-office-2" className="w-5 h-5 text-white" />
+          </div>
+          <p className="text-xs font-semibold text-paan-yellow uppercase tracking-widest mb-1">
+            Work with PAAN
+          </p>
+          <h4 className="text-sm font-bold leading-snug mb-3">
+            Ready to grow your brand across Africa?
+          </h4>
+          <Link
+            href="/contact-us"
+            className="block text-center bg-paan-red hover:bg-paan-red/90 text-white text-xs font-semibold px-4 py-2.5 rounded-full transition-all duration-300 hover:scale-105 shadow-lg"
+          >
+            Enquire Now
+          </Link>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// ─── Mid-Article Inline CTA ────────────────────────────────────────────────────
+// Injected inside the prose area roughly at the midpoint of the article.
+const MidArticleCTA = () => (
+  <div className="not-prose my-10 rounded-2xl overflow-hidden border border-paan-red/10 bg-gradient-to-r from-[#172840] to-[#1e3f5c] text-white relative">
+    {/* decorative blobs */}
+    <div className="absolute top-0 right-0 w-40 h-40 bg-paan-yellow/10 rounded-full -translate-y-1/2 translate-x-1/4" />
+    <div className="absolute bottom-0 left-0 w-28 h-28 bg-paan-red/10 rounded-full translate-y-1/2 -translate-x-1/4" />
+
+    <div className="relative z-10 flex flex-col sm:flex-row items-center gap-6 p-7 sm:p-8">
+      <div className="flex-shrink-0 w-14 h-14 bg-paan-red/20 rounded-2xl flex items-center justify-center">
+        <Icon icon="heroicons:light-bulb" className="w-7 h-7 text-paan-red" />
+      </div>
+
+      <div className="flex-1 text-center sm:text-left">
+        <p className="text-xs font-semibold text-paan-yellow uppercase tracking-widest mb-1">
+          PAAN Services
+        </p>
+        <h4 className="text-lg font-bold mb-1 leading-snug">
+          Inspired by what you just read?
+        </h4>
+        <p className="text-sm text-gray-300">
+          PAAN connects brands with Africa's top creative agencies. Let's build something exceptional together.
+        </p>
+      </div>
+
+      <Link
+        href="/contact-us"
+        className="flex-shrink-0 inline-flex items-center gap-2 bg-paan-red hover:bg-paan-red/90 text-white text-sm font-semibold px-6 py-3 rounded-full transition-all duration-300 hover:scale-105 shadow-lg whitespace-nowrap"
+      >
+        <Icon icon="heroicons:envelope" className="w-4 h-4" />
+        Get in Touch
+      </Link>
+    </div>
+  </div>
+);
+
+// ─── Post-Article CTA Banner ───────────────────────────────────────────────────
+// Sits between the article body and the comments section.
+const PostArticleCTABanner = () => (
+  <div className="my-10 rounded-2xl bg-white border border-gray-100 shadow-md overflow-hidden">
+    <div className="flex flex-col md:flex-row">
+      {/* Left accent strip */}
+      <div className="md:w-2 bg-gradient-to-b from-paan-red via-paan-yellow to-paan-blue flex-shrink-0" />
+
+      <div className="flex-1 p-7 sm:p-8 md:p-10">
+        <div className="flex flex-col sm:flex-row sm:items-center gap-6">
+          {/* Icon cluster */}
+          <div className="flex -space-x-2 flex-shrink-0">
+            {['heroicons:globe-africa', 'heroicons:chart-bar', 'heroicons:megaphone'].map((icon, i) => (
+              <div
+                key={i}
+                className="w-10 h-10 rounded-full bg-[#172840] border-2 border-white flex items-center justify-center shadow"
+              >
+                <Icon icon={icon} className="w-5 h-5 text-paan-yellow" />
+              </div>
+            ))}
+          </div>
+
+          <div className="flex-1">
+            <p className="text-xs font-semibold text-paan-red uppercase tracking-widest mb-1">
+              Partner with us
+            </p>
+            <h4 className="text-xl font-bold text-[#172840] mb-1">
+              Unlock Africa's creative economy for your brand
+            </h4>
+            <p className="text-sm text-gray-500">
+              From strategy to execution: PAAN's network of vetted agencies delivers results across the continent.
+            </p>
+          </div>
+
+          <div className="flex flex-col sm:items-end gap-3 flex-shrink-0">
+            <Link
+              href="/contact"
+              className="inline-flex items-center gap-2 bg-[#172840] hover:bg-[#1e3f5c] text-white text-sm font-semibold px-6 py-3 rounded-full transition-all duration-300 hover:scale-105 shadow-lg whitespace-nowrap"
+            >
+              Enquire About Services
+              <Icon icon="heroicons:arrow-right" className="w-4 h-4" />
+            </Link>
+            <Link
+              href="/about"
+              className="text-xs text-gray-400 hover:text-paan-red underline underline-offset-2 transition-colors text-center"
+            >
+              Learn More
+            </Link>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
+// ─── Format date helper ────────────────────────────────────────────────────────
 const formatDate = (dateString) => {
   const date = new Date(dateString);
   const day = date.getDate();
   const month = date.toLocaleString('default', { month: 'long' });
   const year = date.getFullYear();
-  
-  // Add ordinal suffix to day
-  const ordinal = (day) => {
-    if (day > 3 && day < 21) return 'th';
-    switch (day % 10) {
-      case 1: return 'st';
-      case 2: return 'nd';
-      case 3: return 'rd';
-      default: return 'th';
+  const ordinal = (d) => {
+    if (d > 3 && d < 21) return 'th';
+    switch (d % 10) {
+      case 1: return 'st'; case 2: return 'nd'; case 3: return 'rd'; default: return 'th';
     }
   };
-
   return `Published on ${day}${ordinal(day)} ${month}, ${year}`;
 };
 
+// ─── getServerSideProps ────────────────────────────────────────────────────────
 export async function getServerSideProps(context) {
   const { slug } = context.params;
 
   try {
-    // Fetch blog data
     const { data: blogData, error: blogError } = await supabase
       .from("blogs")
       .select(`
@@ -123,22 +233,15 @@ export async function getServerSideProps(context) {
     if (blogError) throw blogError;
 
     if (!blogData) {
-      return {
-        props: {
-          blog: null,
-          error: 'Blog not found'
-        }
-      };
+      return { props: { blog: null, error: 'Blog not found' } };
     }
 
-    // Fetch author data
     const { data: authorData } = await supabase
       .from("hr_users")
       .select('id, name')
       .eq('id', blogData.author)
       .single();
 
-    // Transform the blog data
     const transformedBlog = {
       ...blogData,
       article_category: blogData.category?.name || 'Uncategorized',
@@ -151,37 +254,28 @@ export async function getServerSideProps(context) {
       focus_keyword: blogData.focus_keyword || ''
     };
 
-    return {
-      props: {
-        blog: transformedBlog,
-        error: null
-      }
-    };
+    return { props: { blog: transformedBlog, error: null } };
   } catch (error) {
     console.error('Error in getServerSideProps:', error);
-    return {
-      props: {
-        blog: null,
-        error: error.message
-      }
-    };
+    return { props: { blog: null, error: error.message } };
   }
 }
 
+// ─── Page Component ────────────────────────────────────────────────────────────
 export default function BlogPost({ blog: initialBlog, error: serverError }) {
   const router = useRouter();
   const { slug } = router.query;
-  const { 
-    currentBlog, 
-    loading, 
-    error: clientError, 
-    fetchBlogBySlug, 
-    comments, 
-    fetchComments, 
-    commentsLoading, 
+  const {
+    currentBlog,
+    loading,
+    error: clientError,
+    fetchBlogBySlug,
+    comments,
+    fetchComments,
+    commentsLoading,
     commentsError,
     relatedPosts,
-    relatedPostsLoading 
+    relatedPostsLoading
   } = usePublicBlog();
   const [currentUrl, setCurrentUrl] = useState('');
   const [subscribeForm, setSubscribeForm] = useState({ name: '', email: '' });
@@ -189,20 +283,16 @@ export default function BlogPost({ blog: initialBlog, error: serverError }) {
   const hasFetchedRef = useRef(false);
   const authorRef = useRef(null);
 
-  // Use the server-rendered blog data if available
   const blog = currentBlog || initialBlog;
   const error = clientError || serverError;
 
-  // Fetch blog and comments when slug changes
   useEffect(() => {
     if (slug && slug !== 'index') {
-      console.log('Slug changed, fetching new blog:', slug);
       hasFetchedRef.current = false;
       fetchBlogBySlug(slug);
     }
   }, [slug, fetchBlogBySlug]);
 
-  // Add debug logging for comments
   useEffect(() => {
     console.log('Comments state in [slug].js:', {
       comments,
@@ -217,13 +307,8 @@ export default function BlogPost({ blog: initialBlog, error: serverError }) {
     setCurrentUrl(window.location.href);
   }, []);
 
-  if (!router.isReady) {
-    return null;
-  }
-
-  if (slug === 'index') {
-    return null;
-  }
+  if (!router.isReady) return null;
+  if (slug === 'index') return null;
 
   if (loading && !initialBlog) {
     return (
@@ -257,19 +342,11 @@ export default function BlogPost({ blog: initialBlog, error: serverError }) {
         <Header />
         <div className="min-h-screen bg-gray-50 flex items-center justify-center">
           <div className="text-center">
-            <Icon
-              icon="heroicons:document-text"
-              className="mx-auto h-12 w-12 text-[#172840]"
-            />
+            <Icon icon="heroicons:document-text" className="mx-auto h-12 w-12 text-[#172840]" />
             <h3 className="mt-2 text-sm font-medium text-[#172840]">Blog not found</h3>
-            <p className="mt-1 text-sm text-gray-500">
-              The blog post you&apos;re looking for doesn&apos;t exist.
-            </p>
+            <p className="mt-1 text-sm text-gray-500">The blog post you&apos;re looking for doesn&apos;t exist.</p>
             <div className="mt-6">
-              <Link
-                href="/blogs"
-                className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-full shadow-sm text-white bg-paan-red hover:bg-paan-red transition-all duration-300"
-              >
+              <Link href="/blogs" className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-full shadow-sm text-white bg-paan-red hover:bg-paan-red transition-all duration-300">
                 <Icon icon="heroicons:arrow-left" className="mr-2 h-4 w-4" />
                 Back to Blogs
               </Link>
@@ -280,10 +357,24 @@ export default function BlogPost({ blog: initialBlog, error: serverError }) {
     );
   }
 
-  const hasContent = blog.article_body !== null && 
-                    blog.article_body !== undefined && 
-                    blog.article_body !== '' && 
-                    blog.article_body.trim().length > 0;
+  const hasContent = blog.article_body !== null &&
+    blog.article_body !== undefined &&
+    blog.article_body !== '' &&
+    blog.article_body.trim().length > 0;
+
+  // ── Split article body at the midpoint for inline CTA injection ──
+  const getMidpointSplit = (html) => {
+    if (!html) return { before: '', after: '' };
+    // Split on paragraph tags to find a clean insertion point
+    const parts = html.split(/(?=<p[\s>])/i);
+    const midIndex = Math.floor(parts.length / 2);
+    return {
+      before: parts.slice(0, midIndex).join(''),
+      after: parts.slice(midIndex).join('')
+    };
+  };
+
+  const { before: contentBefore, after: contentAfter } = getMidpointSplit(blog.article_body);
 
   const handleSubscribe = async (e) => {
     e.preventDefault();
@@ -291,12 +382,9 @@ export default function BlogPost({ blog: initialBlog, error: serverError }) {
     try {
       const response = await fetch('/api/subscribe', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(subscribeForm),
       });
-
       if (response.ok) {
         setSubscribeStatus({ loading: false, message: 'Subscription successful!', error: false });
       } else {
@@ -311,23 +399,23 @@ export default function BlogPost({ blog: initialBlog, error: serverError }) {
     <>
       <Head>
         <title>{blog.meta_title || blog.article_name}</title>
-        <meta name="description" content={blog.meta_description || 
-          (blog.article_body ? 
-            blog.article_body.replace(/<[^>]*>/g, '').substring(0, 160) + '...' : 
-            'Read the latest insights and trends from Africa\'s creative and tech landscape on the PAAN blog.')} 
+        <meta name="description" content={blog.meta_description ||
+          (blog.article_body ?
+            blog.article_body.replace(/<[^>]*>/g, '').substring(0, 160) + '...' :
+            "Read the latest insights and trends from Africa's creative and tech landscape on the PAAN blog.")}
         />
-        <meta name="keywords" content={blog.meta_keywords || 
-          (blog.article_tags ? 
-            blog.article_tags.join(', ') + ', PAAN blog, African tech insights, creative industry Africa' : 
-            'PAAN blog, African tech insights, creative industry Africa, tech trends Africa')} 
+        <meta name="keywords" content={blog.meta_keywords ||
+          (blog.article_tags ?
+            blog.article_tags.join(', ') + ', PAAN blog, African tech insights, creative industry Africa' :
+            'PAAN blog, African tech insights, creative industry Africa, tech trends Africa')}
         />
-        
+
         {/* Open Graph */}
         <meta property="og:title" content={blog.meta_title || blog.article_name} />
-        <meta property="og:description" content={blog.meta_description || 
-          (blog.article_body ? 
-            blog.article_body.replace(/<[^>]*>/g, '').substring(0, 160) + '...' : 
-            'Read the latest insights and trends from Africa\'s creative and tech landscape on the PAAN blog.')} 
+        <meta property="og:description" content={blog.meta_description ||
+          (blog.article_body ?
+            blog.article_body.replace(/<[^>]*>/g, '').substring(0, 160) + '...' :
+            "Read the latest insights and trends from Africa's creative and tech landscape on the PAAN blog.")}
         />
         <meta property="og:type" content="article" />
         <meta property="og:url" content={`https://paan.africa/blogs/${slug}`} />
@@ -336,19 +424,19 @@ export default function BlogPost({ blog: initialBlog, error: serverError }) {
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:site_name" content="Pan-African Agency Network (PAAN)" />
-        
+
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={blog.meta_title || blog.article_name} />
-        <meta name="twitter:description" content={blog.meta_description || 
-          (blog.article_body ? 
-            blog.article_body.replace(/<[^>]*>/g, '').substring(0, 160) + '...' : 
-            'Read the latest insights and trends from Africa\'s creative and tech landscape on the PAAN blog.')} 
+        <meta name="twitter:description" content={blog.meta_description ||
+          (blog.article_body ?
+            blog.article_body.replace(/<[^>]*>/g, '').substring(0, 160) + '...' :
+            "Read the latest insights and trends from Africa's creative and tech landscape on the PAAN blog.")}
         />
         <meta name="twitter:image" content={blog.article_image || 'https://ik.imagekit.io/nkmvdjnna/PAAN/paan-logo.jpg?updatedAt=1757522406296'} />
         <meta name="twitter:site" content="@paan_network" />
         <meta name="twitter:creator" content="@paan_network" />
-        
+
         {/* Canonical URL */}
         <link rel="canonical" href={`https://paan.africa/blogs/${slug}`} />
       </Head>
@@ -357,11 +445,15 @@ export default function BlogPost({ blog: initialBlog, error: serverError }) {
 
       <main className="bg-gray-50 min-h-screen relative">
         <ScrollToTop />
+
         {/* Social Share Icons */}
         <SocialShare url={currentUrl} title={blog?.article_name || ""} />
 
+        {/* Sticky Sidebar CTA (desktop only, right side) */}
+        <StickySidebarCTA />
+
         {/* Hero Section */}
-        <div 
+        <div
           className="relative py-12 sm:py-16 md:py-24 pt-20 sm:pt-24 md:pt-32 overflow-hidden"
           style={{
             backgroundImage: blog?.article_image ? `url(${blog.article_image})` : 'linear-gradient(to bottom right, #172840, #243a52)',
@@ -370,10 +462,8 @@ export default function BlogPost({ blog: initialBlog, error: serverError }) {
             backgroundAttachment: 'fixed'
           }}
         >
-          {/* Dark Overlay */}
           <div className="absolute inset-0 bg-gradient-to-br from-[#172840]/90 via-[#1e3147]/90 to-[#243a52]/90"></div>
 
-          {/* Decorative Elements */}
           <div className="absolute -top-4 left-8 w-6 h-6 sm:w-8 sm:h-8 bg-paan-blue rounded-full opacity-80 animate-pulse"></div>
           <div className="absolute -top-6 right-12 w-16 h-16 sm:w-20 sm:h-20 bg-paan-yellow rounded-full opacity-70"></div>
           <div className="absolute -bottom-10 right-8 w-24 h-24 sm:w-32 sm:h-32 bg-paan-red rounded-full opacity-60"></div>
@@ -392,9 +482,8 @@ export default function BlogPost({ blog: initialBlog, error: serverError }) {
               </span>
             </div>
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6 tracking-tight px-4 leading-snug lg:leading-tight">
-  {blog?.article_name}
-</h1>
-
+              {blog?.article_name}
+            </h1>
             <div className="mt-6 sm:mt-8 flex justify-center">
               <div className="w-20 sm:w-24 h-1 bg-gradient-to-r from-paan-red via-paan-yellow to-paan-blue rounded-full"></div>
             </div>
@@ -403,12 +492,11 @@ export default function BlogPost({ blog: initialBlog, error: serverError }) {
 
         {/* Article Content and Comments */}
         <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16 md:py-20">
+
           {/* Article */}
           <div className="flex gap-8">
-            {/* Table of Contents Sidebar - now on the left */}
             <TableOfContents content={blog.article_body} />
 
-            {/* Main Content */}
             <article className="flex-1 bg-white rounded-xl overflow-hidden">
               {blog?.article_image && (
                 <div className="relative w-full h-[500px]">
@@ -424,7 +512,7 @@ export default function BlogPost({ blog: initialBlog, error: serverError }) {
               )}
 
               <div className="p-6 sm:p-8 md:p-12 lg:p-10">
-                {/* Add read time and author info */}
+                {/* Meta row: read time, author, comment count */}
                 <div className="flex items-center gap-4 text-sm text-gray-500 mb-6 border-b border-gray-100 pb-6">
                   {blog?.read_time && (
                     <div className="flex items-center gap-2">
@@ -439,28 +527,19 @@ export default function BlogPost({ blog: initialBlog, error: serverError }) {
                     </div>
                   )}
                   {hasContent && blog?.id && (
-                    <CommentCount 
+                    <CommentCount
                       comments={comments}
                       loading={commentsLoading}
-                      onClick={() => {
-                        document.querySelector('#comments-section')?.scrollIntoView({ behavior: 'smooth' });
-                      }}
+                      onClick={() => document.querySelector('#comments-section')?.scrollIntoView({ behavior: 'smooth' })}
                     />
                   )}
                 </div>
 
                 {!hasContent && (
                   <div className="text-center py-12 sm:py-16">
-                    <Icon
-                      icon="heroicons:document-text"
-                      className="mx-auto h-12 w-12 sm:h-16 sm:w-16 text-[#172840]"
-                    />
-                    <h3 className="mt-4 text-base sm:text-lg font-medium text-[#172840]">
-                      Content Coming Soon
-                    </h3>
-                    <p className="mt-2 text-sm sm:text-base text-gray-500">
-                      This article is being prepared. Please check back later.
-                    </p>
+                    <Icon icon="heroicons:document-text" className="mx-auto h-12 w-12 sm:h-16 sm:w-16 text-[#172840]" />
+                    <h3 className="mt-4 text-base sm:text-lg font-medium text-[#172840]">Content Coming Soon</h3>
+                    <p className="mt-2 text-sm sm:text-base text-gray-500">This article is being prepared. Please check back later.</p>
                   </div>
                 )}
 
@@ -485,42 +564,45 @@ export default function BlogPost({ blog: initialBlog, error: serverError }) {
                       prose-hr:my-8 prose-hr:border-gray-200"
                     id="blog-content"
                   >
-                    <div dangerouslySetInnerHTML={{ __html: blog.article_body }} />
+                    {/* First half of article */}
+                    <div dangerouslySetInnerHTML={{ __html: contentBefore }} />
+
+                    {/* ── CTA 1: Mid-Article Inline ── */}
+                    <MidArticleCTA />
+
+                    {/* Second half of article */}
+                    <div dangerouslySetInnerHTML={{ __html: contentAfter }} />
                   </div>
                 )}
 
-                {/* Add BlogAuthor component with ref */}
+                {/* Author bio */}
                 {blog?.author && <div ref={authorRef}><BlogAuthor author={blog.author} /></div>}
 
-                {blog?.article_tags &&
-                  blog.article_tags.length > 0 && (
-                    <div className="mt-8 sm:mt-12 pt-6 sm:pt-8 border-t border-gray-200">
-                      <h3 className="text-sm sm:text-base font-medium text-[#172840] mb-3 sm:mb-4">
-                        Tags:
-                      </h3>
-                      <div className="flex flex-wrap gap-2 sm:gap-3">
-                        {blog.article_tags.map((tag, index) => (
-                          <span
-                            key={index}
-                            className="px-3 py-1 sm:px-4 sm:py-1.5 text-xs sm:text-sm text-paan-dark-blue bg-paan-dark-blue/5 rounded-full"
-                          >
-                            #{tag}
-                          </span>
-                        ))}
-                      </div>
+                {/* Tags */}
+                {blog?.article_tags && blog.article_tags.length > 0 && (
+                  <div className="mt-8 sm:mt-12 pt-6 sm:pt-8 border-t border-gray-200">
+                    <h3 className="text-sm sm:text-base font-medium text-[#172840] mb-3 sm:mb-4">Tags:</h3>
+                    <div className="flex flex-wrap gap-2 sm:gap-3">
+                      {blog.article_tags.map((tag, index) => (
+                        <span key={index} className="px-3 py-1 sm:px-4 sm:py-1.5 text-xs sm:text-sm text-paan-dark-blue bg-paan-dark-blue/5 rounded-full">
+                          #{tag}
+                        </span>
+                      ))}
                     </div>
-                  )}
+                  </div>
+                )}
+
+                {/* ── CTA 2: Post-Article Banner ── */}
+                {hasContent && <PostArticleCTABanner />}
               </div>
             </article>
           </div>
 
-          {/* Newsletter Section */}
-
-          {/* Comments Section - Only show if article has content */}
+          {/* Comments Section */}
           {hasContent && blog?.id && (
             <div id="comments-section" className="bg-white rounded-xl sm:rounded-2xl overflow-hidden">
-              <BlogComments 
-                blogId={blog.id} 
+              <BlogComments
+                blogId={blog.id}
                 comments={comments}
                 commentsLoading={commentsLoading}
                 commentsError={commentsError}
@@ -529,41 +611,29 @@ export default function BlogPost({ blog: initialBlog, error: serverError }) {
             </div>
           )}
 
-          {/* Back to Blogs Button */}
+          {/* Back to Blogs */}
           <div className="mt-8 sm:mt-12 flex justify-center">
             <Link
               href="/blogs"
               className="inline-flex items-center bg-gradient-to-r from-paan-red to-paan-red text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full text-sm sm:text-base font-semibold hover:from-paan-red hover:to-paan-red transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
             >
-              <Icon
-                icon="heroicons:arrow-left"
-                className="mr-2 h-4 w-4 sm:h-5 sm:w-5"
-              />
+              <Icon icon="heroicons:arrow-left" className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
               Back to Blogs
             </Link>
           </div>
 
+          {/* Newsletter */}
           <div className="bg-gradient-to-r from-paan-dark-blue to-paan-dark-blue rounded-xl p-8 mt-12 md:p-12 text-center text-white mb-8">
             <h3 className="text-3xl font-bold mb-4">Stay Updated</h3>
             <p className="text-gray-300 mb-8 text-lg max-w-2xl mx-auto">
-              Subscribe to our newsletter and never miss the latest insights
-              from Africa's creative and tech landscape.
+              Subscribe to our newsletter and never miss the latest insights from Africa's creative and tech landscape.
             </p>
-
-            <form
-              onSubmit={handleSubscribe}
-              className="flex flex-col sm:flex-row gap-4 max-w-2xl mx-auto"
-            >
+            <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-4 max-w-2xl mx-auto">
               <input
                 type="text"
                 placeholder="Enter your name"
                 value={subscribeForm.name}
-                onChange={(e) =>
-                  setSubscribeForm((prev) => ({
-                    ...prev,
-                    name: e.target.value,
-                  }))
-                }
+                onChange={(e) => setSubscribeForm((prev) => ({ ...prev, name: e.target.value }))}
                 required
                 className="flex-1 px-6 py-3 rounded-full text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-paan-yellow"
               />
@@ -571,57 +641,36 @@ export default function BlogPost({ blog: initialBlog, error: serverError }) {
                 type="email"
                 placeholder="Enter your email address"
                 value={subscribeForm.email}
-                onChange={(e) =>
-                  setSubscribeForm((prev) => ({
-                    ...prev,
-                    email: e.target.value,
-                  }))
-                }
+                onChange={(e) => setSubscribeForm((prev) => ({ ...prev, email: e.target.value }))}
                 required
                 className="flex-1 px-6 py-3 rounded-full text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-paan-yellow"
               />
               <button
                 type="submit"
                 disabled={subscribeStatus.loading}
-                className={`bg-paan-red text-white px-8 py-3 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 whitespace-nowrap ${
-                  subscribeStatus.loading
-                    ? "opacity-75 cursor-not-allowed"
-                    : "hover:bg-paan-red"
-                }`}
+                className={`bg-paan-red text-white px-8 py-3 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 whitespace-nowrap ${subscribeStatus.loading ? 'opacity-75 cursor-not-allowed' : 'hover:bg-paan-red'}`}
               >
                 {subscribeStatus.loading ? (
                   <span className="flex items-center justify-center">
                     <Icon icon="eos-icons:loading" className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" />
                     Subscribing...
                   </span>
-                ) : (
-                  "Subscribe"
-                )}
+                ) : 'Subscribe'}
               </button>
             </form>
-
-            {/* Status Message */}
             {subscribeStatus.message && (
-              <div
-                className={`mt-4 text-sm font-medium ${
-                  subscribeStatus.error ? "text-red-300" : "text-green-300"
-                }`}
-              >
+              <div className={`mt-4 text-sm font-medium ${subscribeStatus.error ? 'text-red-300' : 'text-green-300'}`}>
                 {subscribeStatus.message}
               </div>
             )}
           </div>
         </div>
 
-        {/* Add Related Posts with authorRef */}
-        <RelatedPosts 
-          posts={relatedPosts}
-          loading={relatedPostsLoading}
-          authorRef={authorRef}
-        />
+        {/* Related Posts */}
+        <RelatedPosts posts={relatedPosts} loading={relatedPostsLoading} authorRef={authorRef} />
 
         <Footer />
       </main>
     </>
   );
-} 
+}
