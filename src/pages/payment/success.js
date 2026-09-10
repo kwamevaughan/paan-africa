@@ -8,7 +8,7 @@ import SEO from '@/components/SEO';
 
 const PaymentSuccessPage = () => {
   const router = useRouter();
-  const { reference, type } = router.query;
+  const { reference, type, amount, currency } = router.query;
   const [paymentDetails, setPaymentDetails] = useState(null);
 
   useEffect(() => {
@@ -21,6 +21,47 @@ const PaymentSuccessPage = () => {
       });
     }
   }, [reference, type]);
+
+  // Fire purchase/conversion tracking once per transaction reference
+  useEffect(() => {
+    if (!reference || typeof window === 'undefined') return;
+
+    const dedupeKey = `purchase_tracked_${reference}`;
+    try {
+      if (sessionStorage.getItem(dedupeKey)) return;
+      sessionStorage.setItem(dedupeKey, '1');
+    } catch (e) {
+      // sessionStorage unavailable (private mode) - proceed without dedupe
+    }
+
+    const value = amount ? parseFloat(amount) : undefined;
+    const currencyCode = (currency || 'USD').toString().toUpperCase();
+
+    // GA4 purchase event
+    if (typeof window.gtag === 'function') {
+      window.gtag('event', 'purchase', {
+        transaction_id: reference,
+        value: value,
+        currency: currencyCode,
+        items: [{ item_name: `${type} ticket`, item_category: type }]
+      });
+    }
+
+    // Google Ads conversion
+    if (typeof window.gtag_report_conversion === 'function') {
+      window.gtag_report_conversion();
+    }
+
+    // Meta Pixel purchase event
+    if (typeof window.fbq === 'function') {
+      window.fbq('track', 'Purchase', {
+        value: value,
+        currency: currencyCode,
+        content_name: `${type} ticket`,
+        content_type: 'product'
+      });
+    }
+  }, [reference, type, amount, currency]);
 
   const getSuccessMessage = () => {
     switch (type) {

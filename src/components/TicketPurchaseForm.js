@@ -513,7 +513,7 @@ const TicketPurchaseForm = ({ onClose }) => {
           });
 
           // Redirect to success page with reference
-          window.location.href = `/payment/success?reference=${response.reference}&type=summit`;
+          window.location.href = `/payment/success?reference=${response.reference}&type=summit&amount=${encodeURIComponent(totalAmount)}&currency=${encodeURIComponent(currency)}`;
         } else {
           alert('Payment failed. Please try again.');
           setIsLoading(false);
