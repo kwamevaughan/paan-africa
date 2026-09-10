@@ -52,13 +52,18 @@ const PaymentSuccessPage = () => {
       window.gtag_report_conversion();
     }
 
-    // Meta Pixel purchase event
+    // Meta Pixel purchase event.
+    // eventID is shared with the server-side Conversions API event fired from
+    // the Paystack webhook (same value = payment reference) so Meta deduplicates
+    // the browser and server events into a single Purchase.
     if (typeof window.fbq === 'function') {
       window.fbq('track', 'Purchase', {
         value: value,
         currency: currencyCode,
         content_name: `${type} ticket`,
         content_type: 'product'
+      }, {
+        eventID: reference
       });
     }
   }, [reference, type, amount, currency]);

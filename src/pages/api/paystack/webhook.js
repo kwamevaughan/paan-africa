@@ -1,5 +1,6 @@
 import { createClient } from '@supabase/supabase-js';
 import { updatePurchaseStatus } from '../../../lib/paystack';
+import { sendMetaPurchaseEvent } from '../../../lib/meta-capi';
 import crypto from 'crypto';
 
 // Disable body parsing to get raw body for signature verification
@@ -108,9 +109,32 @@ async function handleSuccessfulPayment(data) {
 
     // Log the successful payment
     console.log(`Payment successful for purchase ${purchase.id}: ${reference}`);
-    
-    // Here you could trigger email notifications, etc.
-    
+
+    // Server-side Meta Purchase event (Conversions API).
+    // Shares event_id (= Paystack reference) with the browser Pixel event on
+    // /payment/success so Meta deduplicates and counts a single Purchase.
+    // Non-blocking: a CAPI failure must never affect the webhook 200 response.
+    try {
+      // Paystack sends amounts in the smallest currency unit (e.g. cents/kobo).
+      const amountMajor =
+        typeof amount === 'number' ? amount / 100 : parseFloat(amount) / 100;
+
+      await sendMetaPurchaseEvent({
+        eventId: reference,
+        value: Number.isNaN(amountMajor) ? undefined : amountMajor,
+        currency: data.currency || 'USD',
+        email: customer?.email,
+        phone: customer?.phone,
+        firstName: customer?.first_name,
+        lastName: customer?.last_name,
+        clientIpAddress: data.ip_address,
+        eventSourceUrl: 'https://paan.africa/payment/success',
+        contentName: 'summit ticket',
+      });
+    } catch (capiError) {
+      console.error('Error sending Meta CAPI Purchase event:', capiError);
+    }
+
   } catch (error) {
     console.error('Error handling successful payment:', error);
   }

@@ -12,7 +12,8 @@
     "lint:fix": "eslint --fix \"src/**/*.{js,jsx,ts,tsx}\"",
     "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx}\"",
     "postbuild": "next-sitemap",
-    "generate-sitemap": "node scripts/generate-sitemap.js"
+    "generate-sitemap": "node scripts/generate-sitemap.js",
+    "test:meta-capi": "node scripts/test-meta-capi.js"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.4",
